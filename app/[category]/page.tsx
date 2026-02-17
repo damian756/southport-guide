@@ -43,7 +43,7 @@ export default async function CategoryPage({ params }: Props) {
     if (categoryRecord) {
       businesses = await prisma.business.findMany({
         where: { categoryId: categoryRecord.id },
-        orderBy: [{ listingTier: "desc" }, { rating: "desc" }, { name: "asc" }],
+        orderBy: [{ listingTier: "desc" }, { name: "asc" }],
         select: { slug: true, name: true, shortDescription: true, listingTier: true, address: true, rating: true, reviewCount: true, priceRange: true },
       });
     }
