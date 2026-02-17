@@ -41,3 +41,13 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/prisma
+
+.vercel
+
+# Business data (generated locally)
+businesses.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class

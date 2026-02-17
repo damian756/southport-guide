@@ -46,9 +46,45 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Neon’s free tier is enough for this project; use the pooler URL so Vercel/serverless works without connection limits.
 
+## Deploy (Vercel)
+
+1. Push to GitHub, then in Vercel: **Add New → Project** → import `southport-guide`.
+2. **Environment variables** (Production, and Preview if you use it):
+   - `DATABASE_URL` – your Neon pooled connection string (required).
+   - When you add auth: `NEXTAUTH_URL` = your live URL (e.g. `https://southport-guide.vercel.app`), `NEXTAUTH_SECRET` = a random secret.
+   - When you add payments: Stripe keys and price IDs.
+3. Deploy. Each push to `main` will trigger a production deployment.
+
 ## Day 2 (content)
 
-- Scrape businesses (Google Places / script) → CSV.
-- Import CSV into `Business` (with category IDs from seed).
-- Generate descriptions (e.g. Claude API) and add blog posts.
-- Point domain at Vercel and go live.
+### Scrape & Import Businesses
+
+1. **Get a Google Places API key:**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+   - Create a project, enable **Places API**, create an API key
+   - Add `GOOGLE_PLACES_API_KEY=your_key_here` to `.env.local`
+
+2. **Install Python dependencies:**
+   ```bash
+   pip install -r scripts/requirements.txt
+   ```
+
+3. **Run the scraper:**
+   ```bash
+   python scripts/scrape-businesses.py
+   ```
+   This will create `businesses.csv` with ~500 Southport businesses.
+
+4. **Import to database:**
+   ```bash
+   npm run import-businesses
+   ```
+   Reads `businesses.csv` and inserts into `Business` table (with correct `categoryId`).
+
+5. **Generate descriptions (optional):**
+   - Use Claude API to batch-generate descriptions for businesses
+   - Add `ANTHROPIC_API_KEY` to `.env.local` and create a script in `scripts/generate-descriptions.ts`
+
+6. **Go live:**
+   - Point domain at Vercel
+   - Submit sitemap to Google Search Console
