@@ -149,11 +149,9 @@ export default async function BusinessPage({ params }: Props) {
               {business.openingHours != null && typeof business.openingHours === "object" ? (
                 <div>
                   <h2 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Clock className="w-4 h-4" /> Opening hours
+                    <Clock className="w-4 h-4" /> Opening Hours
                   </h2>
-                  <pre className="text-sm text-gray-600 whitespace-pre-wrap">
-                    {JSON.stringify(business.openingHours, null, 2)}
-                  </pre>
+                  <OpeningHours data={business.openingHours} />
                 </div>
               ) : null}
             </div>
@@ -172,4 +170,58 @@ export default async function BusinessPage({ params }: Props) {
       </div>
     </div>
   );
+}
+
+const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+function OpeningHours({ data }: { data: unknown }) {
+  if (!data || typeof data !== "object") return null;
+
+  const hours = data as { weekdayText?: string[]; periods?: Array<{ open: { day: number; time: string }; close?: { day: number; time: string } }> };
+
+  if (hours.weekdayText && hours.weekdayText.length > 0) {
+    const today = new Date().getDay();
+    const reordered = [...hours.weekdayText.slice(1), hours.weekdayText[0]];
+    const todayIndex = today === 0 ? 6 : today - 1;
+
+    return (
+      <ul className="space-y-1">
+        {reordered.map((line, i) => {
+          const parts = line.split(": ");
+          const day = parts[0];
+          const time = parts.slice(1).join(": ");
+          const isToday = i === todayIndex;
+          return (
+            <li key={day} className={cn("flex justify-between text-sm py-1 px-2 rounded", isToday ? "bg-blue-50 font-semibold text-blue-800" : "text-gray-600")}>
+              <span>{day}</span>
+              <span>{time}</span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+
+  if (hours.periods && hours.periods.length > 0) {
+    const formatTime = (t: string) => {
+      const h = parseInt(t.slice(0, 2));
+      const m = t.slice(2);
+      const ampm = h >= 12 ? "PM" : "AM";
+      const h12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+      return `${h12}:${m} ${ampm}`;
+    };
+
+    return (
+      <ul className="space-y-1">
+        {hours.periods.map((p, i) => (
+          <li key={i} className="flex justify-between text-sm text-gray-600">
+            <span>{DAY_NAMES[p.open.day]}</span>
+            <span>{formatTime(p.open.time)}{p.close ? ` – ${formatTime(p.close.time)}` : " (Open 24h)"}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  return <p className="text-sm text-gray-500">Hours not available</p>;
 }
