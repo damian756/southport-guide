@@ -31,6 +31,7 @@ type Business = {
   slug: string;
   name: string;
   shortDescription: string | null;
+  description: string | null;
   listingTier: string;
   address: string;
   rating: number | null;
@@ -39,6 +40,16 @@ type Business = {
   hygieneRating: string | null;
   hygieneRatingShow: boolean;
 };
+
+function getSnippet(b: Business): string | null {
+  if (b.shortDescription) return b.shortDescription;
+  if (b.description) {
+    // Use first sentence, capped at 140 chars
+    const first = b.description.split(/(?<=[.!?])\s+/)[0] ?? b.description;
+    return first.length > 140 ? first.slice(0, 137) + "…" : first;
+  }
+  return null;
+}
 
 function getArea(address: string): string {
   const areas = ["Birkdale", "Ainsdale", "Churchtown", "Crossens", "Marshside",
@@ -93,14 +104,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     if (categoryRecord) {
       const catId = categoryRecord.id;
 
+      const SELECT_COLS = `slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"`;
+
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
           FROM "Business" WHERE "categoryId" = ${catId} ORDER BY name ASC
         `;
       } else if (sort === "hygiene") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
@@ -108,7 +121,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else if (sort === "google") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
@@ -116,7 +129,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
@@ -254,11 +267,14 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                     </p>
 
                     {/* Description */}
-                    {b.shortDescription && (
-                      <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4 leading-relaxed">
-                        {b.shortDescription}
-                      </p>
-                    )}
+                    {(() => {
+                      const snippet = getSnippet(b);
+                      return snippet ? (
+                        <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4 leading-relaxed">
+                          {snippet}
+                        </p>
+                      ) : <div className="flex-1 mb-4" />;
+                    })()}
 
                     {/* Ratings row */}
                     <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-50">
