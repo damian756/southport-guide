@@ -3,7 +3,9 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = "damian@churchtownmedia.co.uk";
-const FROM_EMAIL = "SouthportGuide <contact@southportguide.co.uk>";
+// Use onboarding@resend.dev until southportguide.co.uk is verified as a sending domain in Resend.
+// Once verified, change to: "SouthportGuide <contact@southportguide.co.uk>"
+const FROM_EMAIL = "SouthportGuide <onboarding@resend.dev>";
 
 export async function POST(req: NextRequest) {
   try {
@@ -70,7 +72,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend send error:", JSON.stringify(error));
       return NextResponse.json({ error: "Failed to send email. Please try again." }, { status: 500 });
     }
 
