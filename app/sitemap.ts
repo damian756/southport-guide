@@ -31,10 +31,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let businessPages: MetadataRoute.Sitemap = [];
   try {
     const { prisma } = await import("@/lib/prisma");
-    const businesses = await prisma.business.findMany({
+    const businesses: { slug: string; category: { slug: string } }[] = await prisma.business.findMany({
       select: { slug: true, category: { select: { slug: true } } },
     });
-    businessPages = businesses.map((b: { slug: string; category: { slug: string } }) => ({
+    businessPages = businesses.map((b) => ({
       url: `${BASE}/${b.category.slug}/${b.slug}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
