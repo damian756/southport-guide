@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { Menu, Search } from "lucide-react";
+import NavMenu from "./components/NavMenu";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,38 +35,13 @@ function Navigation() {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="relative flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-blue-600">
+          <Link href="/" className="text-2xl font-bold text-blue-600 flex-shrink-0">
             SouthportGuide
           </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/restaurants" className="text-gray-700 hover:text-blue-600 transition">
-              Restaurants
-            </Link>
-            <Link href="/hotels" className="text-gray-700 hover:text-blue-600 transition">
-              Hotels
-            </Link>
-            <Link href="/attractions" className="text-gray-700 hover:text-blue-600 transition">
-              Things to Do
-            </Link>
-            <Link href="/the-open-2026" className="text-green-600 hover:text-green-700 font-semibold transition">
-              The Open 2026
-            </Link>
-            <Link href="/mlec" className="text-purple-600 hover:text-purple-700 font-semibold transition">
-              MLEC
-            </Link>
-            <Link href="/advertise" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
-              List Your Business
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-gray-700">
-            <Menu className="w-6 h-6" />
-          </button>
+          {/* Nav items (client component handles dropdown + mobile) */}
+          <NavMenu />
         </div>
       </div>
     </nav>

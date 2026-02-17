@@ -144,7 +144,7 @@ export default async function BusinessPage({ params }: Props) {
                 <h2 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                   <MapPin className="w-4 h-4" /> Address
                 </h2>
-                <p className="text-gray-700">{business.address}, {business.postcode}</p>
+                <p className="text-gray-700">{formatAddress(business.address, business.postcode)}</p>
               </div>
               {business.openingHours != null && typeof business.openingHours === "object" ? (
                 <div>
@@ -170,6 +170,16 @@ export default async function BusinessPage({ params }: Props) {
       </div>
     </div>
   );
+}
+
+function formatAddress(address: string, postcode: string): string {
+  // Remove trailing ", United Kingdom" or ", UK"
+  let addr = address.replace(/,?\s*(United Kingdom|UK)$/i, "").trim();
+  // Only append postcode if not already present
+  if (postcode && !addr.includes(postcode)) {
+    addr = `${addr}, ${postcode}`;
+  }
+  return addr;
 }
 
 const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

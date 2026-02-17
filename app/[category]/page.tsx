@@ -41,11 +41,21 @@ export default async function CategoryPage({ params }: Props) {
   try {
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
     if (categoryRecord) {
-      businesses = await prisma.business.findMany({
-        where: { categoryId: categoryRecord.id },
-        orderBy: [{ listingTier: "desc" }, { name: "asc" }],
-        select: { slug: true, name: true, shortDescription: true, listingTier: true, address: true, rating: true, reviewCount: true, priceRange: true },
-      });
+      // Weighted sort: featured first, then rating × log10(reviewCount+1) desc, then name asc
+      businesses = await prisma.$queryRaw<typeof businesses>`
+        SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange"
+        FROM "Business"
+        WHERE "categoryId" = ${categoryRecord.id}
+        ORDER BY
+          CASE "listingTier"
+            WHEN 'premium'  THEN 1
+            WHEN 'featured' THEN 2
+            WHEN 'standard' THEN 3
+            ELSE 4
+          END ASC,
+          (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC,
+          name ASC
+      `;
     }
   } catch {
     // DB not connected yet – show empty state
