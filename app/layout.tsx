@@ -17,10 +17,79 @@ const inter = Inter({
   display: "swap",
 });
 
+const BASE_URL = "https://www.southportguide.co.uk";
+
 export const metadata: Metadata = {
-  title: "SouthportGuide.co.uk | Your Definitive Guide to Southport",
-  description: "Discover the best restaurants, hotels, attractions, and things to do in Southport. Your complete visitor guide for The Open 2026 and beyond.",
-  keywords: "Southport, restaurants Southport, hotels Southport, things to do Southport, The Open 2026, Royal Birkdale",
+  metadataBase: new URL(BASE_URL),
+
+  title: {
+    default: "SouthportGuide.co.uk — The Complete Visitor Guide to Southport",
+    template: "%s | SouthportGuide.co.uk",
+  },
+  description:
+    "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide — home of The Open Championship 2026.",
+  keywords:
+    "Southport, restaurants Southport, hotels Southport, things to do Southport, The Open 2026, Royal Birkdale, visitor guide, Southport Guide",
+  authors: [{ name: "Churchtown Media", url: "https://churchtownmedia.co.uk" }],
+  creator: "Churchtown Media",
+  publisher: "SouthportGuide.co.uk",
+
+  // Canonical
+  alternates: {
+    canonical: BASE_URL,
+  },
+
+  // Open Graph
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: BASE_URL,
+    siteName: "SouthportGuide.co.uk",
+    title: "SouthportGuide.co.uk — The Complete Visitor Guide to Southport",
+    description:
+      "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide — home of The Open Championship 2026.",
+    images: [
+      {
+        url: `${BASE_URL}/og-default.png`,
+        width: 1200,
+        height: 630,
+        alt: "SouthportGuide.co.uk — Discover Southport",
+      },
+    ],
+  },
+
+  // Twitter / X
+  twitter: {
+    card: "summary_large_image",
+    title: "SouthportGuide.co.uk — The Complete Visitor Guide to Southport",
+    description: "Discover the best restaurants, hotels, bars, attractions and things to do in Southport.",
+    images: [`${BASE_URL}/og-default.png`],
+    creator: "@SouthportGuide",
+  },
+
+  // Icons
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#1B2E4B" }],
+  },
+
+  // PWA
+  manifest: "/manifest.json",
+
+  // Verification (add Search Console token when ready)
+  // verification: { google: "YOUR_SEARCH_CONSOLE_VERIFICATION_TOKEN" },
+
+  // Misc
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

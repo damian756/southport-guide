@@ -80,14 +80,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const desc = buildMetaDescription(b.name, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
     const imageUrl = b.images?.[0] || null;
 
+    const canonicalUrl = `https://www.southportguide.co.uk/${category}/${slug}`;
+
     return {
       title,
       description: desc,
+      alternates: { canonical: canonicalUrl },
       openGraph: {
         title,
         description: desc,
+        url: canonicalUrl,
         type: "website",
         siteName: "SouthportGuide.co.uk",
+        locale: "en_GB",
         ...(imageUrl ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: b.name }] } : {}),
       },
       twitter: {
@@ -237,10 +242,22 @@ export default async function BusinessPage({ params }: Props) {
         : null
     : null;
 
+  // Breadcrumb JSON-LD
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home",    item: "https://www.southportguide.co.uk" },
+      { "@type": "ListItem", position: 2, name: cat.name,  item: `https://www.southportguide.co.uk/${category}` },
+      { "@type": "ListItem", position: 3, name: business.name, item: `https://www.southportguide.co.uk/${category}/${slug}` },
+    ],
+  };
+
   return (
     <>
-      {/* JSON-LD */}
+      {/* JSON-LD structured data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <div className="min-h-screen bg-[#FAF8F5]">
         <div className="container mx-auto px-4 py-8 max-w-5xl">

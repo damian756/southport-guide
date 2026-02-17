@@ -78,14 +78,33 @@ export async function generateStaticParams() {
   return Object.keys(THEMES).map((category) => ({ category }));
 }
 
+const BASE_URL = "https://www.southportguide.co.uk";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
   const cat = getCategoryBySlug(category);
   if (!cat) return { title: "Category" };
   const theme = THEMES[category];
+  const title = `${cat.name} in Southport`;
+  const description = `${theme?.tagline || cat.description} — browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
+  const url = `${BASE_URL}/${category}`;
+
   return {
-    title: `${cat.name} in Southport | SouthportGuide.co.uk`,
-    description: `${theme?.tagline || cat.description} — browse all listings with ratings, food hygiene scores and contact details on SouthportGuide.co.uk`,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      siteName: "SouthportGuide.co.uk",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
