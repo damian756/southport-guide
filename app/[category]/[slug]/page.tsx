@@ -134,6 +134,7 @@ export default async function BusinessPage({ params }: Props) {
     hygieneRating: string | null;
     hygieneRatingDate: Date | null;
     hygieneRatingShow: boolean;
+    fhrsId: string | null;
   };
 
   let business: Business | null = null;
@@ -149,7 +150,7 @@ export default async function BusinessPage({ params }: Props) {
           phone: true, website: true, description: true, shortDescription: true,
           listingTier: true, priceRange: true, openingHours: true, images: true,
           claimed: true, rating: true, reviewCount: true, placeId: true,
-          hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true,
+          hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
         },
       }) as Business | null;
 
@@ -307,6 +308,7 @@ export default async function BusinessPage({ params }: Props) {
                         date={business.hygieneRatingDate}
                         claimed={business.claimed}
                         show={business.hygieneRatingShow}
+                        fhrsId={business.fhrsId}
                       />
                     )}
                   </div>
@@ -316,13 +318,30 @@ export default async function BusinessPage({ params }: Props) {
                   {/* Google rating */}
                   {business.rating && (
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="flex items-center gap-1.5 bg-amber-50 text-amber-700 font-semibold px-3 py-1.5 rounded-full border border-amber-200 text-sm">
-                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                        {business.rating.toFixed(1)}
-                        {business.reviewCount && (
-                          <span className="text-amber-600 font-normal ml-0.5">({business.reviewCount.toLocaleString()} reviews)</span>
-                        )}
-                      </span>
+                      {business.placeId ? (
+                        <a
+                          href={`https://www.google.com/maps/place/?q=place_id:${business.placeId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 font-semibold px-3 py-1.5 rounded-full border border-amber-200 text-sm transition-colors cursor-pointer group"
+                          title="Read Google reviews"
+                        >
+                          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                          {business.rating.toFixed(1)}
+                          {business.reviewCount && (
+                            <span className="text-amber-600 font-normal ml-0.5">({business.reviewCount.toLocaleString()} reviews)</span>
+                          )}
+                          <span className="text-amber-400 text-xs group-hover:translate-x-0.5 transition-transform">↗</span>
+                        </a>
+                      ) : (
+                        <span className="flex items-center gap-1.5 bg-amber-50 text-amber-700 font-semibold px-3 py-1.5 rounded-full border border-amber-200 text-sm">
+                          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                          {business.rating.toFixed(1)}
+                          {business.reviewCount && (
+                            <span className="text-amber-600 font-normal ml-0.5">({business.reviewCount.toLocaleString()} reviews)</span>
+                          )}
+                        </span>
+                      )}
                       <span className="text-xs text-gray-400">Google rating</span>
                     </div>
                   )}
@@ -424,6 +443,7 @@ export default async function BusinessPage({ params }: Props) {
                   date={business.hygieneRatingDate}
                   claimed={business.claimed}
                   show={business.hygieneRatingShow}
+                  fhrsId={business.fhrsId}
                 />
               )}
 
@@ -501,10 +521,23 @@ export default async function BusinessPage({ params }: Props) {
 
                 {business.rating && (
                   <InfoRow icon={<Star className="w-4 h-4 text-amber-400 fill-amber-400" />} label="Google rating">
-                    <span className="text-gray-800 text-sm">
-                      {business.rating.toFixed(1)}/5
-                      {business.reviewCount && <span className="text-gray-500"> ({business.reviewCount.toLocaleString()} reviews)</span>}
-                    </span>
+                    {business.placeId ? (
+                      <a
+                        href={`https://www.google.com/maps/place/?q=place_id:${business.placeId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-600 text-sm font-semibold hover:underline"
+                        title="Read Google reviews"
+                      >
+                        {business.rating.toFixed(1)}/5
+                        {business.reviewCount && <span className="font-normal text-gray-500"> ({business.reviewCount.toLocaleString()} reviews) ↗</span>}
+                      </a>
+                    ) : (
+                      <span className="text-gray-800 text-sm">
+                        {business.rating.toFixed(1)}/5
+                        {business.reviewCount && <span className="text-gray-500"> ({business.reviewCount.toLocaleString()} reviews)</span>}
+                      </span>
+                    )}
                   </InfoRow>
                 )}
               </div>
@@ -516,6 +549,7 @@ export default async function BusinessPage({ params }: Props) {
                   date={business.hygieneRatingDate}
                   claimed={business.claimed}
                   show={business.hygieneRatingShow}
+                  fhrsId={business.fhrsId}
                 />
               )}
 
@@ -576,28 +610,36 @@ const HYGIENE_CONFIG: Record<string, { label: string; color: string; bg: string;
   "Exempt": { label: "Exempt", color: "text-gray-500", bg: "bg-gray-50", border: "border-gray-200", icon: <Shield className="w-5 h-5 text-gray-400" />, description: "Not required to be rated" },
 };
 
-function HygieneBadgeInline({ rating, date: _date, claimed: _claimed, show }: {
-  rating: string | null; date: Date | null; claimed: boolean; show: boolean;
+function fsaUrl(fhrsId: string | null): string {
+  return fhrsId
+    ? `https://ratings.food.gov.uk/business/en-GB/${fhrsId}`
+    : "https://ratings.food.gov.uk/";
+}
+
+function HygieneBadgeInline({ rating, date: _date, claimed: _claimed, show, fhrsId }: {
+  rating: string | null; date: Date | null; claimed: boolean; show: boolean; fhrsId: string | null;
 }) {
-  // Always show publicly if rating exists and not hidden by owner
   if (!rating || !show) return null;
   const cfg = HYGIENE_CONFIG[rating];
   if (!cfg) return null;
   return (
-    <span className={cn("inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border font-medium", cfg.bg, cfg.color, cfg.border)}>
+    <a
+      href={fsaUrl(fhrsId)}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={fhrsId ? "View FSA food hygiene rating" : "Food Standards Agency"}
+      className={cn("inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border font-medium hover:opacity-80 transition-opacity", cfg.bg, cfg.color, cfg.border)}
+    >
       {rating === "5" || rating === "4" ? <ShieldCheck className="w-3 h-3" /> : <Shield className="w-3 h-3" />}
-      FSA {cfg.label}
-    </span>
+      FSA {cfg.label} ↗
+    </a>
   );
 }
 
-function HygieneCard({ name, rating, date, claimed, show }: {
-  name: string; rating: string | null; date: Date | null; claimed: boolean; show: boolean;
+function HygieneCard({ name, rating, date, claimed, show, fhrsId }: {
+  name: string; rating: string | null; date: Date | null; claimed: boolean; show: boolean; fhrsId: string | null;
 }) {
-  // If owner has hidden it after claiming — don't show
   if (claimed && !show) return null;
-
-  // No rating data at all — show nothing (no padlock, just silent)
   if (!rating) return null;
 
   const cfg = HYGIENE_CONFIG[rating];
@@ -610,12 +652,13 @@ function HygieneCard({ name, rating, date, claimed, show }: {
       <div className="flex items-start justify-between mb-4">
         <h2 className="font-semibold text-gray-900">Food Hygiene Rating</h2>
         <a
-          href="https://ratings.food.gov.uk/"
+          href={fsaUrl(fhrsId)}
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 text-xs hover:text-blue-500 hover:underline"
+          title={fhrsId ? "View this business on the FSA website" : "Food Standards Agency"}
         >
-          food.gov.uk ↗
+          {fhrsId ? "View on food.gov.uk ↗" : "food.gov.uk ↗"}
         </a>
       </div>
 
@@ -668,12 +711,10 @@ function HygieneCard({ name, rating, date, claimed, show }: {
   );
 }
 
-function HygieneSidebar({ rating, date, claimed, show }: {
-  rating: string | null; date: Date | null; claimed: boolean; show: boolean;
+function HygieneSidebar({ rating, date, claimed, show, fhrsId }: {
+  rating: string | null; date: Date | null; claimed: boolean; show: boolean; fhrsId: string | null;
 }) {
-  // Owner has hidden it — don't show
   if (claimed && !show) return null;
-  // No rating data — show nothing
   if (!rating) return null;
 
   const cfg = HYGIENE_CONFIG[rating];
@@ -687,8 +728,15 @@ function HygieneSidebar({ rating, date, claimed, show }: {
           {cfg.icon}
           <span className={cn("font-semibold text-sm", cfg.color)}>Food Hygiene</span>
         </div>
-        <a href="https://ratings.food.gov.uk/" target="_blank" rel="noopener noreferrer"
-           className="text-gray-400 text-xs hover:underline">FSA ↗</a>
+        <a
+          href={fsaUrl(fhrsId)}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={fhrsId ? "View on food.gov.uk" : "Food Standards Agency"}
+          className="text-gray-400 text-xs hover:underline"
+        >
+          FSA ↗
+        </a>
       </div>
       <p className={cn("font-bold text-base", cfg.color)}>{cfg.label}</p>
       {date && (

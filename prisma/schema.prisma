@@ -34,6 +34,7 @@ model Business {
   hygieneRating         String?   // FSA food hygiene: "5","4","3","2","1","0","AwaitingInspection","Exempt"
   hygieneRatingDate     DateTime? // Date of last FSA inspection
   hygieneRatingShow     Boolean   @default(true) // owner can hide it after claiming
+  fhrsId                String?   // FSA establishment ID — links to ratings.food.gov.uk/business/en-GB/{id}
   userId                String?
   user                  User?     @relation(fields: [userId], references: [id])
   stripeSubscriptionId  String?

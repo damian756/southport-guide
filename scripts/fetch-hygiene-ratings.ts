@@ -55,6 +55,7 @@ function postcodeSector(pc: string): string {
 
 // ── FSA API ───────────────────────────────────────────────────────────────
 type FsaEstablishment = {
+  FHRSID: number;         // FSA unique establishment ID
   BusinessName: string;
   RatingValue: string;
   RatingDate: string | null;
@@ -108,7 +109,7 @@ async function searchFsa(name: string, postcode: string): Promise<FsaEstablishme
   return null;
 }
 
-function parseRating(est: FsaEstablishment): { rating: string | null; date: Date | null } {
+function parseRating(est: FsaEstablishment): { rating: string | null; date: Date | null; fhrsId: string | null } {
   const rv = est.RatingValue?.trim() || "";
   let rating: string | null = null;
 
@@ -130,7 +131,9 @@ function parseRating(est: FsaEstablishment): { rating: string | null; date: Date
     } catch {/* skip */}
   }
 
-  return { rating, date };
+  const fhrsId = est.FHRSID ? String(est.FHRSID) : null;
+
+  return { rating, date, fhrsId };
 }
 
 // ── Progress ──────────────────────────────────────────────────────────────
@@ -151,14 +154,16 @@ async function main() {
 
   const businesses = await prisma.business.findMany({
     where: { postcode: { not: "" } },
-    select: { id: true, name: true, postcode: true, address: true },
+    select: { id: true, name: true, postcode: true, address: true, fhrsId: true },
     orderBy: { name: "asc" },
   });
 
   console.log(`Found ${businesses.length} businesses\n`);
 
   const done = loadProgress();
-  const remaining = businesses.filter((b) => !done.has(b.id));
+  // Process: not yet done AND (no fhrsId saved yet, OR never processed)
+  const remaining = businesses.filter((b) => !done.has(b.id) || !b.fhrsId);
+  console.log(`Resuming: ${done.size} done previously, ${remaining.length} to process (including fhrsId backfill)\n`);
   console.log(`Resuming: ${done.size} done, ${remaining.length} to process\n`);
 
   let matched = 0;
@@ -172,19 +177,20 @@ async function main() {
       const est = await searchFsa(b.name, b.postcode);
 
       if (est) {
-        const { rating, date } = parseRating(est);
+        const { rating, date, fhrsId } = parseRating(est);
         if (rating !== null) {
           await prisma.business.update({
             where: { id: b.id },
             data: {
               hygieneRating: rating,
               hygieneRatingDate: date ?? undefined,
+              fhrsId: fhrsId ?? undefined,
             },
           });
           matched++;
           const fsaName = est.BusinessName.slice(0, 35).replace(/[^\x20-\x7E]/g, "?");
           const nameSafe = b.name.slice(0, 38).replace(/[^\x20-\x7E]/g, "?").padEnd(40);
-          console.log(`  ${label} ${nameSafe} -> ${rating}  (${fsaName})`);
+          console.log(`  ${label} ${nameSafe} -> ${rating}  FHRS:${fhrsId}  (${fsaName})`);
         } else {
           notFound++;
         }
