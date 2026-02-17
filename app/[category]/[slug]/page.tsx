@@ -242,16 +242,16 @@ export default async function BusinessPage({ params }: Props) {
       {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#FAF8F5]">
         <div className="container mx-auto px-4 py-8 max-w-5xl">
 
           {/* Breadcrumb */}
-          <nav className="text-sm text-gray-500 mb-6 flex items-center gap-1 flex-wrap">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
+          <nav className="text-sm text-gray-400 mb-6 flex items-center gap-1 flex-wrap">
+            <Link href="/" className="hover:text-[#C9A84C] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href={`/${category}`} className="hover:text-blue-600">{cat.name}</Link>
+            <Link href={`/${category}`} className="hover:text-[#C9A84C] transition-colors">{cat.name}</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-gray-900 font-medium">{business.name}</span>
+            <span className="text-[#1B2E4B] font-medium">{business.name}</span>
           </nav>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -260,13 +260,17 @@ export default async function BusinessPage({ params }: Props) {
             <div className="lg:col-span-2 space-y-6">
 
               {/* Hero card */}
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                <div className="h-56 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+                <div className="h-52 bg-gradient-to-br from-[#1B2E4B] to-[#2A4A73] flex items-center justify-center relative overflow-hidden">
                   {business.images?.[0] ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={business.images[0]} alt={business.name} className="w-full h-full object-cover" />
                   ) : (
-                    <span className="text-7xl text-blue-200 select-none">📍</span>
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#1B2E4B] to-[#2A4A73]" />
+                      <div className="absolute top-4 right-4 w-32 h-32 bg-[#C9A84C]/10 rounded-full blur-2xl" />
+                      <span className="relative text-6xl select-none opacity-40">📍</span>
+                    </>
                   )}
                 </div>
 
@@ -274,13 +278,12 @@ export default async function BusinessPage({ params }: Props) {
                   {/* Badges row */}
                   <div className="flex flex-wrap items-center gap-2 mb-3">
                     {isFeatured && (
-                      <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">FEATURED</span>
+                      <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-xs font-bold px-3 py-1 rounded-full border border-[#C9A84C]/20">✦ FEATURED</span>
                     )}
-                    <span className="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">{cat.name}</span>
+                    <span className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200">{cat.name}</span>
                     {business.priceRange && (
-                      <span className="bg-green-50 text-green-700 text-xs font-medium px-3 py-1 rounded-full border border-green-200">{business.priceRange}</span>
+                      <span className="bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full border border-green-200">{business.priceRange}</span>
                     )}
-                    {/* Food Hygiene badge inline with other badges */}
                     {isFoodCategory && (
                       <HygieneBadgeInline
                         rating={business.hygieneRating}
@@ -291,16 +294,16 @@ export default async function BusinessPage({ params }: Props) {
                     )}
                   </div>
 
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{business.name}</h1>
+                  <h1 className="font-display text-3xl font-bold text-[#1B2E4B] mb-3">{business.name}</h1>
 
                   {/* Google rating */}
                   {business.rating && (
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="flex items-center gap-1 bg-amber-50 text-amber-700 font-semibold px-3 py-1.5 rounded-full border border-amber-200 text-sm">
+                      <span className="flex items-center gap-1.5 bg-amber-50 text-amber-700 font-semibold px-3 py-1.5 rounded-full border border-amber-200 text-sm">
                         <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                         {business.rating.toFixed(1)}
                         {business.reviewCount && (
-                          <span className="text-amber-600 font-normal ml-1">({business.reviewCount.toLocaleString()} reviews)</span>
+                          <span className="text-amber-600 font-normal ml-0.5">({business.reviewCount.toLocaleString()} reviews)</span>
                         )}
                       </span>
                       <span className="text-xs text-gray-400">Google rating</span>
@@ -314,7 +317,7 @@ export default async function BusinessPage({ params }: Props) {
                         href={business.website.startsWith("http") ? business.website : `https://${business.website}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition font-medium text-sm"
+                        className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full hover:bg-[#2A4A73] transition font-semibold text-sm"
                       >
                         <Globe className="w-4 h-4" /> Visit Website
                       </a>
@@ -322,9 +325,9 @@ export default async function BusinessPage({ params }: Props) {
                     {business.phone && (
                       <a
                         href={`tel:${business.phone.replace(/\s/g, "")}`}
-                        className="inline-flex items-center gap-2 bg-white text-gray-700 border border-gray-200 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition font-medium text-sm"
+                        className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#1B2E4B] border border-[#C9A84C]/30 px-5 py-2.5 rounded-full hover:bg-[#C9A84C]/20 transition font-semibold text-sm"
                       >
-                        <Phone className="w-4 h-4 text-blue-500" /> {business.phone}
+                        <Phone className="w-4 h-4 text-[#C9A84C]" /> {business.phone}
                       </a>
                     )}
                   </div>
@@ -436,7 +439,7 @@ export default async function BusinessPage({ params }: Props) {
                       </Link>
                     ))}
                   </div>
-                  <Link href={`/${category}`} className="block text-center text-blue-600 text-sm mt-4 hover:underline font-medium">
+                  <Link href={`/${category}`} className="block text-center text-[#C9A84C] text-sm mt-4 hover:underline font-bold">
                     View all {cat.name} →
                   </Link>
                 </div>
@@ -501,23 +504,26 @@ export default async function BusinessPage({ params }: Props) {
 
               {/* Claim listing */}
               {!business.claimed && (
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5">
-                  <p className="font-semibold text-blue-900 mb-1">Is this your business?</p>
-                  <p className="text-blue-700 text-sm mb-4">Claim your free listing to update details, add photos, manage your hygiene rating display, and attract more customers.</p>
-                  <Link
-                    href="/claim-listing"
-                    className="block text-center bg-blue-600 text-white px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-blue-700 transition"
-                  >
-                    Claim Free Listing
-                  </Link>
+                <div className="bg-[#1B2E4B] rounded-2xl p-5 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/10 rounded-full -translate-y-8 translate-x-8 blur-2xl" />
+                  <div className="relative">
+                    <p className="font-display font-bold text-white mb-1">Is this your business?</p>
+                    <p className="text-white/60 text-sm mb-4">Claim your free listing to update details, manage your food hygiene display, and attract more customers.</p>
+                    <Link
+                      href="/claim-listing"
+                      className="block text-center bg-[#C9A84C] text-white px-4 py-2.5 rounded-full font-bold text-sm hover:bg-[#E8C87A] transition"
+                    >
+                      Claim Free Listing →
+                    </Link>
+                  </div>
                 </div>
               )}
 
               {/* Upgrade */}
-              <div className="bg-white border border-gray-100 rounded-xl p-5 text-center">
-                <p className="text-xs text-gray-500 uppercase tracking-wide font-medium mb-2">Upgrade this listing</p>
-                <p className="text-gray-700 text-sm mb-3">Get more visibility with a featured listing from £29/month</p>
-                <Link href="/pricing" className="text-blue-600 text-sm font-medium hover:underline">View pricing →</Link>
+              <div className="bg-white border border-gray-100 rounded-2xl p-5 text-center">
+                <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-2">Upgrade this listing</p>
+                <p className="text-gray-600 text-sm mb-3">Get more visibility with a featured listing from £29/month</p>
+                <Link href="/pricing" className="text-[#C9A84C] text-sm font-bold hover:underline">View pricing →</Link>
               </div>
             </div>
           </div>

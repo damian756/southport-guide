@@ -2,20 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Star } from "lucide-react";
+import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles } from "lucide-react";
 
 const CATEGORIES = [
-  { slug: "restaurants",   label: "Restaurants",       icon: Utensils },
-  { slug: "hotels",        label: "Hotels",             icon: Hotel },
-  { slug: "bars-nightlife",label: "Bars & Pubs",        icon: Beer },
-  { slug: "cafes",         label: "Cafes",              icon: Coffee },
-  { slug: "attractions",   label: "Attractions",        icon: MapPin },
-  { slug: "shopping",      label: "Shopping",           icon: ShoppingBag },
-  { slug: "golf",          label: "Golf",               icon: Flag },
-  { slug: "beaches-parks", label: "Beaches & Parks",    icon: Waves },
-  { slug: "wellness",      label: "Wellness & Beauty",  icon: Star },
-  { slug: "activities",    label: "Activities",         icon: Dumbbell },
-  { slug: "transport",     label: "Transport",          icon: Car },
+  { slug: "restaurants",    label: "Restaurants",      icon: Utensils,    color: "text-red-500" },
+  { slug: "hotels",         label: "Hotels",           icon: Hotel,       color: "text-blue-600" },
+  { slug: "bars-nightlife", label: "Bars & Pubs",      icon: Beer,        color: "text-purple-500" },
+  { slug: "cafes",          label: "Cafes",            icon: Coffee,      color: "text-amber-600" },
+  { slug: "attractions",    label: "Attractions",      icon: MapPin,      color: "text-teal-600" },
+  { slug: "shopping",       label: "Shopping",         icon: ShoppingBag, color: "text-rose-500" },
+  { slug: "golf",           label: "Golf",             icon: Flag,        color: "text-green-600" },
+  { slug: "beaches-parks",  label: "Beaches & Parks",  icon: Waves,       color: "text-sky-500" },
+  { slug: "wellness",       label: "Wellness",         icon: Sparkles,    color: "text-violet-500" },
+  { slug: "activities",     label: "Activities",       icon: Dumbbell,    color: "text-orange-500" },
+  { slug: "transport",      label: "Transport",        icon: Car,         color: "text-slate-500" },
 ];
 
 export default function NavMenu() {
@@ -24,94 +24,105 @@ export default function NavMenu() {
 
   return (
     <>
-      {/* Desktop nav */}
-      <div className="hidden md:flex items-center space-x-6">
+      {/* ── Desktop ─────────────────────────────────────────── */}
+      <div className="hidden md:flex items-center gap-1">
+
         {/* Explore dropdown */}
-        <div className="relative" onMouseEnter={() => setExploreOpen(true)} onMouseLeave={() => setExploreOpen(false)}>
-          <button className="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium py-4">
-            Explore <ChevronDown className={`w-4 h-4 transition-transform ${exploreOpen ? "rotate-180" : ""}`} />
+        <div
+          className="relative"
+          onMouseEnter={() => setExploreOpen(true)}
+          onMouseLeave={() => setExploreOpen(false)}
+        >
+          <button className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] transition-colors font-medium px-3 py-2 rounded-lg text-sm">
+            Explore
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180" : ""}`} />
           </button>
-          {exploreOpen && (
-            <div className="absolute top-full left-0 bg-white shadow-xl rounded-xl border border-gray-100 p-4 w-64 grid grid-cols-1 gap-1 z-50">
-              {CATEGORIES.map(({ slug, label, icon: Icon }) => (
+
+          {/* Mega dropdown */}
+          <div className={`absolute top-full right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-72 z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-3 px-2">Browse all categories</p>
+            <div className="grid grid-cols-1 gap-0.5">
+              {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
                 <Link
                   key={slug}
                   href={`/${slug}`}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 text-gray-700 text-sm transition"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors group"
                   onClick={() => setExploreOpen(false)}
                 >
-                  <Icon className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                  {label}
+                  <Icon className={`w-4 h-4 flex-shrink-0 ${color} group-hover:scale-110 transition-transform`} />
+                  <span className="font-medium group-hover:text-[#C9A84C] transition-colors">{label}</span>
                 </Link>
               ))}
             </div>
-          )}
+          </div>
         </div>
 
-        <Link href="/the-open-2026" className="text-green-600 hover:text-green-700 font-semibold transition">
-          The Open 2026
+        <div className="w-px h-5 bg-gray-200 mx-1" />
+
+        <Link href="/the-open-2026" className="text-green-700 hover:text-green-800 font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-green-50">
+          🏌️ The Open 2026
         </Link>
-        <Link href="/mlec" className="text-purple-600 hover:text-purple-700 font-semibold transition">
-          MLEC
+        <Link href="/mlec" className="text-purple-700 hover:text-purple-800 font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-purple-50">
+          🎭 MLEC
         </Link>
+
+        <div className="w-px h-5 bg-gray-200 mx-1" />
+
         <Link
-          href="/advertise"
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-sm font-medium"
+          href="/claim-listing"
+          className="bg-[#C9A84C] hover:bg-[#B8972A] text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm shadow-[#C9A84C]/30"
         >
           List Your Business
         </Link>
       </div>
 
-      {/* Mobile hamburger button */}
+      {/* ── Mobile hamburger ────────────────────────────────── */}
       <button
-        className="md:hidden text-gray-700 p-1"
+        className="md:hidden text-[#1B2E4B] p-2 rounded-lg hover:bg-gray-100 transition-colors"
         onClick={() => setMobileOpen(!mobileOpen)}
         aria-label="Toggle menu"
       >
-        {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Mobile slide-down menu */}
-      {mobileOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-xl border-t border-gray-100 z-50 max-h-[80vh] overflow-y-auto">
-          <div className="px-4 py-3">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Explore</p>
-            <div className="grid grid-cols-2 gap-1 mb-4">
-              {CATEGORIES.map(({ slug, label, icon: Icon }) => (
-                <Link
-                  key={slug}
-                  href={`/${slug}`}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 text-sm"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <Icon className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                  {label}
-                </Link>
-              ))}
-            </div>
+      {/* ── Mobile menu ─────────────────────────────────────── */}
+      <div className={`md:hidden absolute top-16 left-0 right-0 bg-white shadow-2xl border-t border-gray-100 z-50 overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className="overflow-y-auto max-h-[85vh] px-4 py-4">
 
-            <div className="border-t border-gray-100 pt-3 space-y-1">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Events</p>
-              <Link href="/the-open-2026" className="flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-green-50 text-green-700 font-medium text-sm" onClick={() => setMobileOpen(false)}>
-                🏌️ The Open 2026 at Royal Birkdale
-              </Link>
-              <Link href="/mlec" className="flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-purple-50 text-purple-700 font-medium text-sm" onClick={() => setMobileOpen(false)}>
-                🎭 MLEC Opening April 2027
-              </Link>
-            </div>
-
-            <div className="border-t border-gray-100 pt-3 mt-3">
+          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Explore Southport</p>
+          <div className="grid grid-cols-2 gap-1 mb-5">
+            {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
               <Link
-                href="/advertise"
-                className="block w-full text-center bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                key={slug}
+                href={`/${slug}`}
+                className="flex items-center gap-2.5 px-3 py-3 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                List Your Business
+                <Icon className={`w-4 h-4 flex-shrink-0 ${color}`} />
+                <span className="font-medium">{label}</span>
               </Link>
-            </div>
+            ))}
           </div>
+
+          <div className="border-t border-gray-100 pt-4 space-y-1 mb-4">
+            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Events</p>
+            <Link href="/the-open-2026" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-green-50 text-green-800 text-sm font-medium" onClick={() => setMobileOpen(false)}>
+              🏌️ <span>The Open 2026 — Royal Birkdale</span>
+            </Link>
+            <Link href="/mlec" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-purple-50 text-purple-800 text-sm font-medium" onClick={() => setMobileOpen(false)}>
+              🎭 <span>MLEC — Opening April 2027</span>
+            </Link>
+          </div>
+
+          <Link
+            href="/claim-listing"
+            className="block w-full text-center bg-[#C9A84C] text-white px-4 py-3.5 rounded-xl font-semibold hover:bg-[#B8972A] transition-colors mb-4"
+            onClick={() => setMobileOpen(false)}
+          >
+            List Your Business →
+          </Link>
         </div>
-      )}
+      </div>
     </>
   );
 }

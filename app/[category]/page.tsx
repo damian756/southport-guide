@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Star, MapPin, ArrowUpDown, ShieldCheck, ShieldAlert, ShieldX, Shield } from "lucide-react";
+import { Star, ArrowUpDown, ShieldCheck, ShieldAlert, ShieldX, Shield, MapPin, ChevronRight } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 
@@ -10,31 +10,22 @@ type Props = {
   searchParams: Promise<{ sort?: string }>;
 };
 
-export async function generateStaticParams() {
-  return [
-    { category: "restaurants" },
-    { category: "hotels" },
-    { category: "bars-nightlife" },
-    { category: "cafes" },
-    { category: "attractions" },
-    { category: "beaches-parks" },
-    { category: "shopping" },
-    { category: "golf" },
-    { category: "activities" },
-    { category: "wellness" },
-    { category: "transport" },
-  ];
-}
+// Category visual themes
+const THEMES: Record<string, { gradient: string; light: string; accent: string; emoji: string; tagline: string }> = {
+  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", light: "#FDF0EE", accent: "#C94B3B", emoji: "🍽️", tagline: "The best places to eat in Southport" },
+  hotels:           { gradient: "from-[#1B2E4B] to-[#2A4A73]", light: "#EEF1F7", accent: "#1B2E4B", emoji: "🏨", tagline: "Where to stay in Southport" },
+  "bars-nightlife": { gradient: "from-[#3D1A5C] to-[#6B3AA0]", light: "#F3EEF9", accent: "#5B2D8A", emoji: "🍺", tagline: "Pubs, bars and nightlife in Southport" },
+  cafes:            { gradient: "from-[#6B3A1F] to-[#A06040]", light: "#FAF0E8", accent: "#8B5E3C", emoji: "☕", tagline: "Great coffee, cafes and tea rooms" },
+  attractions:      { gradient: "from-[#1A5C5B] to-[#2E8B7A]", light: "#E8F5F3", accent: "#2E7D6E", emoji: "🎡", tagline: "Things to see and do in Southport" },
+  "beaches-parks":  { gradient: "from-[#1A5C7A] to-[#1E8AB0]", light: "#E8F4FA", accent: "#1A6B8A", emoji: "🏖️", tagline: "Beautiful beaches and open spaces" },
+  golf:             { gradient: "from-[#1A4020] to-[#2E6830]", light: "#E8F2E8", accent: "#2C5F2E", emoji: "⛳", tagline: "World-class golf courses near Southport" },
+  shopping:         { gradient: "from-[#8B2847] to-[#C45C6A]", light: "#FAE8EC", accent: "#C45C6A", emoji: "🛍️", tagline: "Shops, boutiques and markets" },
+  wellness:         { gradient: "from-[#4A2060] to-[#7B3FAA]", light: "#F0E8F8", accent: "#6B4C8B", emoji: "💆", tagline: "Spas, salons and wellness in Southport" },
+  activities:       { gradient: "from-[#8B3A1A] to-[#C46B2C]", light: "#FAF0E5", accent: "#C46B2C", emoji: "🏄", tagline: "Sport, leisure and outdoor activities" },
+  transport:        { gradient: "from-[#2A3F5C] to-[#3A5070]", light: "#E8EEF5", accent: "#3A4F6B", emoji: "🚌", tagline: "Getting around Southport" },
+};
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { category } = await params;
-  const cat = getCategoryBySlug(category);
-  if (!cat) return { title: "Category" };
-  return {
-    title: `${cat.name} in Southport | SouthportGuide.co.uk`,
-    description: `${cat.description} — browse all listings, compare Google ratings, food hygiene scores and more on SouthportGuide.co.uk`,
-  };
-}
+const FOOD_CATS = new Set(["restaurants", "cafes", "bars-nightlife", "hotels", "activities"]);
 
 type Business = {
   slug: string;
@@ -49,10 +40,6 @@ type Business = {
   hygieneRatingShow: boolean;
 };
 
-// Which categories show food hygiene
-const FOOD_CATS = new Set(["restaurants", "cafes", "bars-nightlife", "hotels", "activities"]);
-
-// Extract short area label from address
 function getArea(address: string): string {
   const areas = ["Birkdale", "Ainsdale", "Churchtown", "Crossens", "Marshside",
                  "Formby", "Ormskirk", "Scarisbrick", "Banks", "Halsall", "Burscough"];
@@ -60,30 +47,45 @@ function getArea(address: string): string {
   return "Southport";
 }
 
-// Hygiene rating colours
-function hygieneColor(r: string): { bg: string; text: string; border: string } {
+function hygieneStyle(r: string): { bg: string; text: string; border: string } {
   const n = parseInt(r);
-  if (n === 5 || n === 4) return { bg: "bg-green-50", text: "text-green-700", border: "border-green-200" };
-  if (n === 3)             return { bg: "bg-yellow-50", text: "text-yellow-700", border: "border-yellow-200" };
-  if (n <= 2)              return { bg: "bg-red-50", text: "text-red-700", border: "border-red-200" };
-  return                          { bg: "bg-gray-50", text: "text-gray-500", border: "border-gray-200" };
+  if (n >= 4) return { bg: "bg-green-50",  text: "text-green-700",  border: "border-green-200" };
+  if (n === 3) return { bg: "bg-yellow-50", text: "text-yellow-700", border: "border-yellow-200" };
+  if (n <= 2)  return { bg: "bg-red-50",    text: "text-red-700",    border: "border-red-200" };
+  return               { bg: "bg-gray-50",  text: "text-gray-500",   border: "border-gray-200" };
 }
 
-function hygieneIcon(r: string) {
+function HygieneIcon({ r }: { r: string }) {
   const n = parseInt(r);
-  if (n >= 4) return <ShieldCheck className="w-3.5 h-3.5" />;
-  if (n === 3) return <Shield className="w-3.5 h-3.5" />;
-  if (n <= 2 && n >= 0) return <ShieldAlert className="w-3.5 h-3.5" />;
-  return <ShieldX className="w-3.5 h-3.5" />;
+  if (n >= 4) return <ShieldCheck className="w-3 h-3" />;
+  if (n === 3) return <Shield className="w-3 h-3" />;
+  if (n >= 0)  return <ShieldAlert className="w-3 h-3" />;
+  return <ShieldX className="w-3 h-3" />;
+}
+
+export async function generateStaticParams() {
+  return Object.keys(THEMES).map((category) => ({ category }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category } = await params;
+  const cat = getCategoryBySlug(category);
+  if (!cat) return { title: "Category" };
+  const theme = THEMES[category];
+  return {
+    title: `${cat.name} in Southport | SouthportGuide.co.uk`,
+    description: `${theme?.tagline || cat.description} — browse all listings with ratings, food hygiene scores and contact details on SouthportGuide.co.uk`,
+  };
 }
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { category } = await params;
   const { sort } = await searchParams;
   if (!isValidCategory(category)) notFound();
-  const cat = getCategoryBySlug(category)!;
-  const isFoodCat = FOOD_CATS.has(category);
 
+  const cat = getCategoryBySlug(category)!;
+  const theme = THEMES[category] || THEMES.restaurants;
+  const isFoodCat = FOOD_CATS.has(category);
   let businesses: Business[] = [];
 
   try {
@@ -94,190 +96,202 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
-          FROM "Business"
-          WHERE "categoryId" = ${catId}
-          ORDER BY name ASC
+          FROM "Business" WHERE "categoryId" = ${catId} ORDER BY name ASC
         `;
       } else if (sort === "hygiene") {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
-          FROM "Business"
-          WHERE "categoryId" = ${catId}
+          FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
-            CASE
-              WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER)
-              ELSE -1
-            END DESC,
-            (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC,
-            name ASC
+            CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
+            (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
         `;
       } else if (sort === "google") {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
-          FROM "Business"
-          WHERE "categoryId" = ${catId}
+          FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
-            CASE "listingTier"
-              WHEN 'premium'  THEN 1
-              WHEN 'featured' THEN 2
-              WHEN 'standard' THEN 3
-              ELSE 4
-            END ASC,
-            COALESCE(rating, 0) DESC,
-            COALESCE("reviewCount", 0) DESC,
-            name ASC
+            CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
+            COALESCE(rating, 0) DESC, COALESCE("reviewCount", 0) DESC, name ASC
         `;
       } else {
-        // Default: featured first, then weighted score
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
-          FROM "Business"
-          WHERE "categoryId" = ${catId}
+          FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
-            CASE "listingTier"
-              WHEN 'premium'  THEN 1
-              WHEN 'featured' THEN 2
-              WHEN 'standard' THEN 3
-              ELSE 4
-            END ASC,
-            (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC,
-            name ASC
+            CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
+            (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
         `;
       }
     }
-  } catch {
-    // DB not connected
-  }
+  } catch { /* DB unavailable */ }
 
   const activeSort = sort || "default";
   const sortOptions = [
     { key: "default", label: "Best Match" },
     { key: "alpha",   label: "A – Z" },
-    { key: "google",  label: "Google Rating" },
-    ...(isFoodCat ? [{ key: "hygiene", label: "Hygiene Rating" }] : []),
+    { key: "google",  label: "⭐ Google Rating" },
+    ...(isFoodCat ? [{ key: "hygiene", label: "🛡️ Hygiene Rating" }] : []),
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="container mx-auto px-4 py-8 max-w-6xl">
-          <nav className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-1">/</span>
-            <span className="text-gray-900 font-medium">{cat.name}</span>
+    <div className="min-h-screen bg-[#FAF8F5]">
+
+      {/* ── Category Hero ─────────────────────────────────────── */}
+      <div className={`relative overflow-hidden bg-gradient-to-br ${theme.gradient}`}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full translate-y-8 -translate-x-8 blur-2xl" />
+        </div>
+
+        <div className="relative container mx-auto px-4 max-w-6xl py-12 md:py-16">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-1.5 text-white/50 text-sm mb-6">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-white font-medium">{cat.name}</span>
           </nav>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+
+          <div className="flex items-end justify-between gap-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">{cat.name} in Southport</h1>
-              <p className="text-gray-500 mt-1">{businesses.length} listings</p>
+              <div className="text-5xl mb-4">{theme.emoji}</div>
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2">
+                {cat.name}
+                <span className="text-white/50 font-normal"> in Southport</span>
+              </h1>
+              <p className="text-white/70 text-lg">{theme.tagline}</p>
+            </div>
+            <div className="hidden md:block text-right">
+              <div className="font-display text-5xl font-bold text-white/20">{businesses.length}</div>
+              <div className="text-white/40 text-sm uppercase tracking-widest">listings</div>
             </div>
           </div>
+        </div>
 
-          {/* Sort controls */}
-          <div className="flex items-center gap-2 mt-5 flex-wrap">
-            <ArrowUpDown className="w-4 h-4 text-gray-400 flex-shrink-0" />
-            <span className="text-sm text-gray-500 mr-1">Sort by:</span>
-            {sortOptions.map(({ key, label }) => (
-              <Link
-                key={key}
-                href={key === "default" ? `/${category}` : `/${category}?sort=${key}`}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
-                  activeSort === key
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white text-gray-600 border-gray-200 hover:border-blue-400 hover:text-blue-600"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
+        {/* Wave */}
+        <div className="relative h-8 overflow-hidden">
+          <svg viewBox="0 0 1440 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" preserveAspectRatio="none">
+            <path d="M0 32L360 16C720 0 1080 0 1440 16V32H0Z" fill="#FAF8F5"/>
+          </svg>
         </div>
       </div>
 
-      {/* Listings */}
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 max-w-6xl py-8">
+
+        {/* ── Sort bar ─────────────────────────────────────────── */}
+        <div className="flex items-center gap-2 mb-8 flex-wrap bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+          <ArrowUpDown className="w-4 h-4 text-gray-300 ml-1 flex-shrink-0" />
+          <span className="text-xs font-medium text-gray-400 mr-1">Sort:</span>
+          {sortOptions.map(({ key, label }) => (
+            <Link
+              key={key}
+              href={key === "default" ? `/${category}` : `/${category}?sort=${key}`}
+              className={`px-4 py-1.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                activeSort === key
+                  ? `text-white shadow-sm`
+                  : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+              }`}
+              style={activeSort === key ? { backgroundColor: theme.accent } : {}}
+            >
+              {label}
+            </Link>
+          ))}
+          <span className="ml-auto text-xs text-gray-400 hidden sm:block">{businesses.length} listings</span>
+        </div>
+
+        {/* ── Listings grid ─────────────────────────────────────── */}
         {businesses.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-xl shadow-sm border border-gray-100">
-            <p className="text-gray-500 mb-4 text-lg">No listings yet. Check back soon!</p>
-            <Link href="/claim-listing" className="text-blue-600 hover:underline font-medium">List your business →</Link>
+          <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+            <div className="text-5xl mb-4">{theme.emoji}</div>
+            <p className="text-gray-500 text-lg mb-2">No listings yet</p>
+            <p className="text-gray-400 text-sm mb-6">Be the first to list your business here.</p>
+            <Link href="/claim-listing" className="inline-block bg-[#C9A84C] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-[#B8972A] transition-colors">
+              Add Your Business
+            </Link>
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {businesses.map((b) => {
               const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
               const area = getArea(b.address);
-              const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow;
-              const hygieneNum = b.hygieneRating && /^\d+$/.test(b.hygieneRating) ? b.hygieneRating : null;
-              const hColor = hygieneNum ? hygieneColor(hygieneNum) : null;
+              const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
+              const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
 
               return (
                 <Link
                   key={b.slug}
                   href={`/${category}/${b.slug}`}
-                  className={`group flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border ${
-                    isFeatured ? "border-blue-300 ring-1 ring-blue-100" : "border-gray-100 hover:border-blue-200"
+                  className={`group flex flex-col bg-white rounded-2xl overflow-hidden card-hover border transition-colors ${
+                    isFeatured
+                      ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md"
+                      : "border-gray-100 hover:border-gray-200"
                   }`}
                 >
-                  {/* Featured banner */}
-                  {isFeatured && (
-                    <div className="bg-blue-600 text-white text-xs font-semibold px-4 py-1.5 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-300 inline-block" />
-                      FEATURED LISTING
-                    </div>
-                  )}
+                  {/* Coloured top strip */}
+                  <div
+                    className={`h-1.5 w-full bg-gradient-to-r ${theme.gradient} ${isFeatured ? "h-2" : ""}`}
+                  />
 
                   <div className="p-5 flex flex-col flex-1">
-                    {/* Name + area */}
-                    <div className="mb-3">
-                      <h2 className="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors leading-tight line-clamp-2">
-                        {b.name}
-                      </h2>
-                      <p className="text-gray-400 text-xs mt-1 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 flex-shrink-0" />
-                        {area}{area !== "Southport" ? ", Southport" : ""}
-                      </p>
-                    </div>
+                    {/* Featured badge */}
+                    {isFeatured && (
+                      <div className="flex items-center gap-1.5 mb-3">
+                        <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
+                          ✦ Featured
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Name */}
+                    <h2 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
+                      {b.name}
+                    </h2>
+
+                    {/* Location */}
+                    <p className="flex items-center gap-1 text-gray-400 text-xs mb-3">
+                      <MapPin className="w-3 h-3 flex-shrink-0" />
+                      {area}{area !== "Southport" ? ", Southport" : ""}
+                    </p>
 
                     {/* Description */}
                     {b.shortDescription && (
-                      <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4">
+                      <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4 leading-relaxed">
                         {b.shortDescription}
                       </p>
                     )}
 
                     {/* Ratings row */}
                     <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-50">
-                      {/* Google rating */}
                       {b.rating ? (
-                        <span className="flex items-center gap-1 bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-amber-100">
+                        <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
                           <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                           {b.rating.toFixed(1)}
                           {b.reviewCount && (
-                            <span className="text-amber-500 font-normal">
+                            <span className="font-normal text-amber-500">
                               ({b.reviewCount >= 1000 ? `${(b.reviewCount / 1000).toFixed(1)}k` : b.reviewCount})
                             </span>
                           )}
                         </span>
                       ) : null}
 
-                      {/* Hygiene rating */}
-                      {showHygiene && hColor && hygieneNum && (
-                        <span className={`flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full border ${hColor.bg} ${hColor.text} ${hColor.border}`}>
-                          {hygieneIcon(hygieneNum)}
-                          Hygiene {hygieneNum}/5
+                      {showHygiene && hStyle && b.hygieneRating && (
+                        <span className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full border ${hStyle.bg} ${hStyle.text} ${hStyle.border}`}>
+                          <HygieneIcon r={b.hygieneRating} />
+                          FSA {b.hygieneRating}★
                         </span>
                       )}
 
-                      {/* Price */}
-                      {b.priceRange && (
-                        <span className="text-gray-400 text-xs font-medium ml-auto">{b.priceRange}</span>
-                      )}
-
-                      {/* View arrow */}
-                      <span className={`text-blue-600 text-xs font-semibold group-hover:translate-x-0.5 transition-transform ${b.priceRange ? "" : "ml-auto"}`}>
-                        View →
-                      </span>
+                      <div className="ml-auto flex items-center gap-2">
+                        {b.priceRange && (
+                          <span className="text-gray-400 text-xs font-semibold">{b.priceRange}</span>
+                        )}
+                        <span
+                          className="text-xs font-bold group-hover:translate-x-0.5 transition-transform"
+                          style={{ color: theme.accent }}
+                        >
+                          View →
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -286,13 +300,23 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           </div>
         )}
 
-        {/* Bottom CTA */}
-        <div className="mt-12 bg-white rounded-xl border border-gray-100 shadow-sm p-8 text-center">
-          <p className="text-gray-900 font-semibold text-lg mb-1">Own a {cat.name.toLowerCase().replace(/s$/, "")} in Southport?</p>
-          <p className="text-gray-500 text-sm mb-4">Get your business listed for free — add photos, manage your food hygiene display, and attract more customers.</p>
-          <Link href="/claim-listing" className="inline-block bg-blue-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition text-sm">
-            Add Your Business →
-          </Link>
+        {/* ── Bottom CTA ───────────────────────────────────────── */}
+        <div className="mt-14 rounded-2xl overflow-hidden">
+          <div className={`bg-gradient-to-br ${theme.gradient} p-8 md:p-10 text-center`}>
+            <div className="text-4xl mb-3">{theme.emoji}</div>
+            <h3 className="font-display text-2xl font-bold text-white mb-2">
+              Own a business in this category?
+            </h3>
+            <p className="text-white/70 text-sm mb-6 max-w-sm mx-auto">
+              List for free and get discovered by thousands of visitors planning their Southport trip.
+            </p>
+            <Link
+              href="/claim-listing"
+              className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-white px-7 py-3 rounded-full font-bold text-sm transition-all hover:shadow-lg"
+            >
+              Add Your Business →
+            </Link>
+          </div>
         </div>
       </div>
     </div>
