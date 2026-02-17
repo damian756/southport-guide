@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """
-Scrape Southport businesses using Google Places API and export to CSV.
+Scrape Southport businesses using Google Places API with GRID SEARCH.
+Uses multiple overlapping search points to beat the 60-result-per-type cap.
 Requires: pip install requests python-dotenv
 Usage: python scripts/scrape-businesses.py
 """
 
 import os
 import csv
+import math
+import time
 import requests
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 API_KEY = os.getenv('GOOGLE_PLACES_API_KEY')
@@ -20,9 +22,11 @@ if not API_KEY:
     exit(1)
 
 # Southport coordinates (town center)
-SOUTHPORT_LAT = 53.6476
-SOUTHPORT_LNG = -3.0052
-RADIUS_METERS = 10000  # 10km radius (comprehensive Southport + surrounds, edge of Formby)
+CENTER_LAT = 53.6476
+CENTER_LNG = -3.0052
+COVERAGE_RADIUS_KM = 10  # Overall area to cover
+SEARCH_RADIUS_M = 3000   # Each grid point searches 3km radius
+GRID_SPACING_KM = 4      # Grid points spaced 4km apart (overlap ensures full coverage)
 
 # Category mapping: Google Places type -> our category slug
 CATEGORY_MAP = {
@@ -50,7 +54,7 @@ CATEGORY_MAP = {
     'health': 'wellness',
     'physiotherapist': 'wellness',
     'taxi_stand': 'transport',
-    'gas_station': 'transport',  # Google API uses US term but we'll display as petrol
+    'gas_station': 'transport',
     'bicycle_store': 'transport',
     'car_rental': 'transport',
     'car_wash': 'transport',
@@ -86,27 +90,44 @@ CATEGORY_MAP = {
     'sporting_goods_store': 'shopping',
 }
 
-# Google Places types to search
-SEARCH_TYPES = [
-    # Food & Drink
+# High-volume types that benefit most from grid search (hit 60 cap easily)
+HIGH_VOLUME_TYPES = [
     'restaurant',
     'cafe',
     'bar',
-    'night_club',
-    'bakery',
     'meal_takeaway',
-    'meal_delivery',
     'food',
-    # Accommodation
     'lodging',
     'hotel',
     'bed_and_breakfast',
     'guest_house',
+    'store',
+    'clothing_store',
+    'beauty_salon',
+    'hair_care',
+    'gym',
+    'health',
+    'parking',
+    'gift_shop',
+    'home_goods_store',
+    'furniture_store',
+    'toy_store',
+    'sporting_goods_store',
+    'theater',
+    'beach',
+    'park',
+    'golf_course',
+]
+
+# Low-volume types (single center search is enough)
+LOW_VOLUME_TYPES = [
+    'night_club',
+    'bakery',
+    'meal_delivery',
     'motel',
     'resort_hotel',
     'campground',
     'rv_park',
-    # Attractions & Activities
     'tourist_attraction',
     'museum',
     'art_gallery',
@@ -114,53 +135,68 @@ SEARCH_TYPES = [
     'aquarium',
     'zoo',
     'movie_theater',
-    'theater',
     'casino',
     'bowling_alley',
     'stadium',
     'travel_agency',
-    'golf_course',
-    # Parks & Beaches
-    'park',
-    'beach',
-    # Shopping
-    'store',
     'shopping_mall',
     'department_store',
-    'clothing_store',
     'jewelry_store',
     'shoe_store',
     'book_store',
     'florist',
-    'gift_shop',
-    'home_goods_store',
-    'furniture_store',
     'electronics_store',
     'pet_store',
-    'toy_store',
-    'sporting_goods_store',
-    # Wellness
     'spa',
-    'beauty_salon',
-    'hair_care',
-    'gym',
-    'health',
     'physiotherapist',
-    # Transport
     'taxi_stand',
     'gas_station',
     'bicycle_store',
     'car_rental',
     'car_wash',
-    'parking',
 ]
 
-def search_places(place_type):
-    """Search for places of a given type near Southport."""
+
+def haversine_km(lat1, lng1, lat2, lng2):
+    """Distance between two points in km."""
+    R = 6371
+    dlat = math.radians(lat2 - lat1)
+    dlng = math.radians(lng2 - lng1)
+    a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng/2)**2
+    return R * 2 * math.asin(math.sqrt(a))
+
+
+def generate_grid_points():
+    """Generate a grid of search points covering the target area."""
+    points = []
+    
+    # At latitude 53.6, 1 degree lat ~ 111km, 1 degree lng ~ 65.7km
+    lat_step = GRID_SPACING_KM / 111.0
+    lng_step = GRID_SPACING_KM / (111.0 * math.cos(math.radians(CENTER_LAT)))
+    
+    # Generate grid
+    lat_range = COVERAGE_RADIUS_KM / 111.0
+    lng_range = COVERAGE_RADIUS_KM / (111.0 * math.cos(math.radians(CENTER_LAT)))
+    
+    lat = CENTER_LAT - lat_range
+    while lat <= CENTER_LAT + lat_range:
+        lng = CENTER_LNG - lng_range
+        while lng <= CENTER_LNG + lng_range:
+            dist = haversine_km(CENTER_LAT, CENTER_LNG, lat, lng)
+            if dist <= COVERAGE_RADIUS_KM:
+                points.append((lat, lng))
+            lng += lng_step
+        lat += lat_step
+    
+    return points
+
+
+def search_places(lat, lng, place_type, radius):
+    """Search for places of a given type at a specific point."""
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
     params = {
-        'location': f'{SOUTHPORT_LAT},{SOUTHPORT_LNG}',
-        'radius': RADIUS_METERS,
+        'location': f'{lat},{lng}',
+        'radius': radius,
         'type': place_type,
         'key': API_KEY
     }
@@ -170,98 +206,118 @@ def search_places(place_type):
         response = requests.get(url, params=params)
         data = response.json()
         
-        if data.get('status') != 'OK':
-            print(f"  Warning: {place_type} search returned status {data.get('status')}")
+        if data.get('status') not in ('OK', 'ZERO_RESULTS'):
+            print(f"    Warning: {place_type} returned {data.get('status')}")
             break
         
         results.extend(data.get('results', []))
         
-        # Check for next page
         next_page_token = data.get('next_page_token')
         if not next_page_token:
             break
         
-        # Wait a bit (Google requires delay before using next_page_token)
-        import time
         time.sleep(2)
         params = {'pagetoken': next_page_token, 'key': API_KEY}
     
     return results
 
-def get_place_details(place_id):
-    """Get detailed info for a place (phone, website)."""
-    url = 'https://maps.googleapis.com/maps/api/place/details/json'
-    params = {
-        'place_id': place_id,
-        'fields': 'formatted_phone_number,website,opening_hours,price_level',
-        'key': API_KEY
-    }
-    
-    response = requests.get(url, params=params)
-    data = response.json()
-    
-    if data.get('status') == 'OK':
-        return data.get('result', {})
-    return {}
 
 def main():
-    print("Scraping Southport businesses...")
-    print(f"Center: {SOUTHPORT_LAT}, {SOUTHPORT_LNG} | Radius: {RADIUS_METERS}m")
+    grid_points = generate_grid_points()
     
-    all_businesses = {}  # Use dict to dedupe by place_id
+    print(f"Grid Search Scraper for Southport Businesses")
+    print(f"=" * 60)
+    print(f"Centre: {CENTER_LAT}, {CENTER_LNG}")
+    print(f"Coverage: {COVERAGE_RADIUS_KM}km radius")
+    print(f"Search radius per point: {SEARCH_RADIUS_M}m")
+    print(f"Grid spacing: {GRID_SPACING_KM}km")
+    print(f"Grid points: {len(grid_points)}")
+    print(f"High-volume types (grid search): {len(HIGH_VOLUME_TYPES)}")
+    print(f"Low-volume types (centre only): {len(LOW_VOLUME_TYPES)}")
+    print(f"=" * 60)
     
-    for place_type in SEARCH_TYPES:
-        print(f"\nSearching: {place_type}...")
-        places = search_places(place_type)
-        print(f"  Found {len(places)} results")
+    all_businesses = {}  # Dedupe by place_id
+    api_calls = 0
+    
+    # Phase 1: Grid search for high-volume types
+    print(f"\nPHASE 1: Grid search ({len(HIGH_VOLUME_TYPES)} types x {len(grid_points)} points)")
+    print(f"-" * 60)
+    
+    for type_idx, place_type in enumerate(HIGH_VOLUME_TYPES, 1):
+        type_count = 0
+        print(f"\n[{type_idx}/{len(HIGH_VOLUME_TYPES)}] {place_type}...")
         
+        for point_idx, (lat, lng) in enumerate(grid_points):
+            places = search_places(lat, lng, place_type, SEARCH_RADIUS_M)
+            api_calls += 1 + (len(places) // 20)  # Approximate page count
+            
+            new_count = 0
+            for place in places:
+                place_id = place.get('place_id')
+                if place_id not in all_businesses:
+                    category_slug = CATEGORY_MAP.get(place_type, 'attractions')
+                    all_businesses[place_id] = {
+                        'name': place.get('name', ''),
+                        'category': category_slug,
+                        'address': place.get('vicinity', ''),
+                        'postcode': '',
+                        'lat': place.get('geometry', {}).get('location', {}).get('lat'),
+                        'lng': place.get('geometry', {}).get('location', {}).get('lng'),
+                        'phone': '',
+                        'website': '',
+                        'price_range': '',
+                    }
+                    new_count += 1
+            type_count += new_count
+        
+        print(f"  Total new: {type_count} | Running total: {len(all_businesses)}")
+    
+    # Phase 2: Single centre search for low-volume types
+    print(f"\nPHASE 2: Centre search ({len(LOW_VOLUME_TYPES)} low-volume types)")
+    print(f"-" * 60)
+    
+    for type_idx, place_type in enumerate(LOW_VOLUME_TYPES, 1):
+        places = search_places(CENTER_LAT, CENTER_LNG, place_type, COVERAGE_RADIUS_KM * 1000)
+        api_calls += 1 + (len(places) // 20)
+        
+        new_count = 0
         for place in places:
             place_id = place.get('place_id')
-            if place_id in all_businesses:
-                continue  # Skip duplicates
-            
-            # Get category slug
-            category_slug = CATEGORY_MAP.get(place_type, 'attractions')
-            
-            # Get basic info
-            name = place.get('name', '')
-            address = place.get('vicinity', '')
-            lat = place.get('geometry', {}).get('location', {}).get('lat')
-            lng = place.get('geometry', {}).get('location', {}).get('lng')
-            
-            # Get detailed info (phone, website) - optional to reduce API calls
-            # Uncomment if you want full details (will be slower and use more quota)
-            # details = get_place_details(place_id)
-            # phone = details.get('formatted_phone_number', '')
-            # website = details.get('website', '')
-            # price_level = details.get('price_level', '')
-            
-            all_businesses[place_id] = {
-                'name': name,
-                'category': category_slug,
-                'address': address,
-                'postcode': '',  # Extract from address if needed
-                'lat': lat,
-                'lng': lng,
-                'phone': '',  # details.get('formatted_phone_number', ''),
-                'website': '',  # details.get('website', ''),
-                'price_range': '',  # Convert price_level to £ symbols if needed
-            }
+            if place_id not in all_businesses:
+                category_slug = CATEGORY_MAP.get(place_type, 'attractions')
+                all_businesses[place_id] = {
+                    'name': place.get('name', ''),
+                    'category': category_slug,
+                    'address': place.get('vicinity', ''),
+                    'postcode': '',
+                    'lat': place.get('geometry', {}).get('location', {}).get('lat'),
+                    'lng': place.get('geometry', {}).get('location', {}).get('lng'),
+                    'phone': '',
+                    'website': '',
+                    'price_range': '',
+                }
+                new_count += 1
+        
+        if new_count > 0:
+            print(f"  {place_type}: +{new_count} new")
     
-    # Write to CSV
+    # Write CSV
     output_file = 'businesses.csv'
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         fieldnames = ['name', 'category', 'address', 'postcode', 'lat', 'lng', 'phone', 'website', 'price_range']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
-        
         for business in all_businesses.values():
             writer.writerow(business)
     
-    print(f"\nScraped {len(all_businesses)} unique businesses")
-    print(f"Saved to {output_file}")
-    print("\nNext: Run the import script to add these to your database:")
-    print("  npm run import-businesses")
+    print(f"\n{'=' * 60}")
+    print(f"COMPLETE")
+    print(f"  Unique businesses: {len(all_businesses)}")
+    print(f"  Approximate API calls: {api_calls}")
+    print(f"  Estimated cost: ${api_calls * 0.032:.2f}")
+    print(f"  Saved to: {output_file}")
+    print(f"\nNext: npm run import-businesses")
+
 
 if __name__ == '__main__':
     main()
