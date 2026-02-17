@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SouthportGuide.co.uk
 
-## Getting Started
+Visitor guide for Southport. See **SouthportGuide-Project-Plan.md** in the repo root for full strategy and build plan.
 
-First, run the development server:
+## Quick start
 
 ```bash
+npm install
+cp .env.local .env.local
+# Set DATABASE_URL (Supabase/Neon Postgres) in .env.local
+npx prisma db push
+npm run db:seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 16 (App Router)
+- Prisma 7 + PostgreSQL (@prisma/adapter-pg)
+- Tailwind CSS
+- Stripe (subscriptions – wire up in .env)
+- NextAuth (auth – wire up when needed)
 
-## Learn More
+## Key routes
 
-To learn more about Next.js, take a look at the following resources:
+- `/` – Homepage
+- `/[category]` – Category pages (e.g. /restaurants, /hotels)
+- `/[category]/[slug]` – Business detail pages
+- `/the-open-2026` – The Open 2026 hub
+- `/mlec` – Marine Lake Events Centre hub
+- `/pricing`, `/claim-listing`, `/advertise`, `/contact`, `/about`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database (Neon)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a free project at [neon.tech](https://neon.tech).
+2. Copy the **connection string** from the dashboard (use the **pooled** one for serverless/Vercel).
+3. Put it in `.env.local` as `DATABASE_URL`, e.g.  
+   `DATABASE_URL="postgresql://user:password@ep-xxx-pooler.region.aws.neon.tech/neondb?sslmode=require"`
+4. Run:
+   ```bash
+   npx prisma db push
+   npm run db:seed
+   ```
 
-## Deploy on Vercel
+Neon’s free tier is enough for this project; use the pooler URL so Vercel/serverless works without connection limits.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Day 2 (content)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Scrape businesses (Google Places / script) → CSV.
+- Import CSV into `Business` (with category IDs from seed).
+- Generate descriptions (e.g. Claude API) and add blog posts.
+- Point domain at Vercel and go live.
