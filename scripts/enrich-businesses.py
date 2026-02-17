@@ -246,7 +246,8 @@ def main():
         lng = business['lng'] or -3.0052
         existing_place_id = business['placeId']
 
-        print(f"\n[{i+1}/{len(to_process)}] {biz_name}")
+        safe_name = biz_name.encode('ascii', 'replace').decode('ascii')
+        print(f"\n[{i+1}/{len(to_process)}] {safe_name}")
 
         # Step 1: Get place_id if we don't have one
         place_id = existing_place_id
@@ -291,7 +292,8 @@ def main():
             rating = details.get('rating', '-')
             reviews = details.get('user_ratings_total', 0)
             phone = details.get('formatted_phone_number', 'no phone')
-            print(f"  Rating: {rating}/5 ({reviews} reviews) | {phone}")
+            safe_phone = str(phone).encode('ascii', 'replace').decode('ascii')
+            print(f"  Rating: {rating}/5 ({reviews} reviews) | {safe_phone}")
             processed_count += 1
         except Exception as e:
             print(f"  DB update error: {e}")
