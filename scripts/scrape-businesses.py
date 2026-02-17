@@ -22,7 +22,7 @@ if not API_KEY:
 # Southport coordinates (town center)
 SOUTHPORT_LAT = 53.6476
 SOUTHPORT_LNG = -3.0052
-RADIUS_METERS = 8000  # 8km radius (includes Birkdale, Ainsdale, Churchtown)
+RADIUS_METERS = 10000  # 10km radius (comprehensive Southport + surrounds, edge of Formby)
 
 # Category mapping: Google Places type -> our category slug
 CATEGORY_MAP = {
