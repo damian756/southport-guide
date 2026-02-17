@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, Phone, Globe, Clock } from "lucide-react";
+import { MapPin, Phone, Globe, Clock, Star } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
@@ -45,6 +45,8 @@ export default async function BusinessPage({ params }: Props) {
     openingHours: unknown;
     images: string[];
     claimed: boolean;
+    rating: number | null;
+    reviewCount: number | null;
   } | null = null;
 
   try {
@@ -52,6 +54,12 @@ export default async function BusinessPage({ params }: Props) {
     if (categoryRecord) {
       business = await prisma.business.findFirst({
         where: { slug, categoryId: categoryRecord.id },
+        select: {
+          name: true, address: true, postcode: true, phone: true, website: true,
+          description: true, shortDescription: true, listingTier: true,
+          priceRange: true, openingHours: true, images: true, claimed: true,
+          rating: true, reviewCount: true,
+        },
       });
     }
   } catch {
@@ -88,8 +96,17 @@ export default async function BusinessPage({ params }: Props) {
               {isFeatured && (
                 <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded">FEATURED</span>
               )}
+              {business.rating && (
+                <span className="flex items-center gap-1 bg-amber-50 text-amber-700 font-semibold px-3 py-1 rounded-full border border-amber-200">
+                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  {business.rating.toFixed(1)}
+                  {business.reviewCount && (
+                    <span className="text-amber-600 font-normal text-sm">({business.reviewCount.toLocaleString()} reviews)</span>
+                  )}
+                </span>
+              )}
               {business.priceRange && (
-                <span className="text-gray-600">{business.priceRange}</span>
+                <span className="text-gray-600 font-medium">{business.priceRange}</span>
               )}
               <span className="text-gray-500">• {cat.name}</span>
             </div>

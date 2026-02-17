@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Star, MapPin } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 
@@ -36,14 +37,14 @@ export default async function CategoryPage({ params }: Props) {
   if (!isValidCategory(category)) notFound();
   const cat = getCategoryBySlug(category)!;
 
-  let businesses: { slug: string; name: string; shortDescription: string | null; listingTier: string; address: string }[] = [];
+  let businesses: { slug: string; name: string; shortDescription: string | null; listingTier: string; address: string; rating: number | null; reviewCount: number | null; priceRange: string | null }[] = [];
   try {
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
     if (categoryRecord) {
       businesses = await prisma.business.findMany({
         where: { categoryId: categoryRecord.id },
-        orderBy: [{ listingTier: "desc" }, { name: "asc" }],
-        select: { slug: true, name: true, shortDescription: true, listingTier: true, address: true },
+        orderBy: [{ listingTier: "desc" }, { rating: "desc" }, { name: "asc" }],
+        select: { slug: true, name: true, shortDescription: true, listingTier: true, address: true, rating: true, reviewCount: true, priceRange: true },
       });
     }
   } catch {
@@ -81,8 +82,26 @@ export default async function CategoryPage({ params }: Props) {
                   <span className="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded mb-2">FEATURED</span>
                 )}
                 <h2 className="text-xl font-bold text-gray-900">{b.name}</h2>
-                <p className="text-gray-600 mt-1 line-clamp-2">{b.shortDescription || b.address}</p>
-                <span className="text-blue-600 text-sm mt-2 inline-block">View details →</span>
+                <p className="text-gray-500 text-sm mt-1 flex items-center gap-1">
+                  <MapPin className="w-3 h-3 flex-shrink-0" />
+                  <span className="line-clamp-1">{b.address}</span>
+                </p>
+                {b.shortDescription && (
+                  <p className="text-gray-600 mt-2 text-sm line-clamp-2">{b.shortDescription}</p>
+                )}
+                <div className="flex items-center justify-between mt-3">
+                  {b.rating ? (
+                    <span className="flex items-center gap-1 text-amber-600 text-sm font-medium">
+                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      {b.rating.toFixed(1)}
+                      {b.reviewCount && <span className="text-gray-400 font-normal">({b.reviewCount.toLocaleString()})</span>}
+                    </span>
+                  ) : <span />}
+                  <div className="flex items-center gap-2">
+                    {b.priceRange && <span className="text-gray-500 text-sm">{b.priceRange}</span>}
+                    <span className="text-blue-600 text-sm">View →</span>
+                  </div>
+                </div>
               </Link>
             ))
           )}
