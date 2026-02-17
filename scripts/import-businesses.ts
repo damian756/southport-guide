@@ -9,6 +9,7 @@ import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import * as fs from "fs";
 import * as path from "path";
+import { parse } from "csv-parse/sync";
 
 const connectionString = process.env.DATABASE_URL || "";
 const adapter = new PrismaPg({ connectionString });
@@ -45,25 +46,12 @@ function parsePriceRange(priceRange: string): string | undefined {
 
 async function parseCSV(filePath: string): Promise<CSVRow[]> {
   const content = fs.readFileSync(filePath, "utf-8");
-  const lines = content.split("\n").filter((line) => line.trim());
-  
-  if (lines.length === 0) {
-    throw new Error("CSV file is empty");
-  }
-  
-  const headers = lines[0].split(",").map((h) => h.trim().replace(/"/g, ""));
-  const rows: CSVRow[] = [];
-  
-  for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split(",").map((v) => v.trim().replace(/^"|"$/g, ""));
-    const row: any = {};
-    headers.forEach((header, index) => {
-      row[header] = values[index] || "";
-    });
-    rows.push(row as CSVRow);
-  }
-  
-  return rows;
+  const records = parse(content, {
+    columns: true,
+    skip_empty_lines: true,
+    trim: true,
+  });
+  return records as CSVRow[];
 }
 
 async function main() {
