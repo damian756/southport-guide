@@ -31,6 +31,9 @@ model Business {
   placeId               String?   // Google Places ID
   rating                Float?    // Google rating 1-5
   reviewCount           Int?      // Number of Google reviews
+  hygieneRating         String?   // FSA food hygiene: "5","4","3","2","1","0","AwaitingInspection","Exempt"
+  hygieneRatingDate     DateTime? // Date of last FSA inspection
+  hygieneRatingShow     Boolean   @default(true) // owner can hide it after claiming
   userId                String?
   user                  User?     @relation(fields: [userId], references: [id])
   stripeSubscriptionId  String?

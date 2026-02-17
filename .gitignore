@@ -46,6 +46,8 @@ next-env.d.ts
 
 # Business data (generated locally)
 businesses.csv
+hygiene-progress.json
+enrich-progress.json
 
 # Python
 __pycache__/
