@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { MapPin, Phone, Globe, Clock, Star, ChevronRight, Lock, ShieldCheck, ShieldAlert, ShieldX, Shield } from "lucide-react";
+import { MapPin, Phone, Globe, Clock, Star, ChevronRight, ShieldCheck, ShieldAlert, ShieldX, Shield } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
@@ -503,7 +503,7 @@ export default async function BusinessPage({ params }: Props) {
               {!business.claimed && (
                 <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5">
                   <p className="font-semibold text-blue-900 mb-1">Is this your business?</p>
-                  <p className="text-blue-700 text-sm mb-4">Claim your free listing to update details, manage your food hygiene display, and attract more customers.</p>
+                  <p className="text-blue-700 text-sm mb-4">Claim your free listing to update details, add photos, manage your hygiene rating display, and attract more customers.</p>
                   <Link
                     href="/claim-listing"
                     className="block text-center bg-blue-600 text-white px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-blue-700 transition"
@@ -553,17 +553,11 @@ const HYGIENE_CONFIG: Record<string, { label: string; color: string; bg: string;
   "Exempt": { label: "Exempt", color: "text-gray-500", bg: "bg-gray-50", border: "border-gray-200", icon: <Shield className="w-5 h-5 text-gray-400" />, description: "Not required to be rated" },
 };
 
-function HygieneBadgeInline({ rating, date: _date, claimed, show }: {
+function HygieneBadgeInline({ rating, date: _date, claimed: _claimed, show }: {
   rating: string | null; date: Date | null; claimed: boolean; show: boolean;
 }) {
-  if (!claimed) {
-    return (
-      <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-500 text-xs px-2.5 py-1 rounded-full border border-gray-200">
-        <Lock className="w-3 h-3" /> Hygiene rating
-      </span>
-    );
-  }
-  if (!show || !rating) return null;
+  // Always show publicly if rating exists and not hidden by owner
+  if (!rating || !show) return null;
   const cfg = HYGIENE_CONFIG[rating];
   if (!cfg) return null;
   return (
@@ -577,62 +571,76 @@ function HygieneBadgeInline({ rating, date: _date, claimed, show }: {
 function HygieneCard({ name, rating, date, claimed, show }: {
   name: string; rating: string | null; date: Date | null; claimed: boolean; show: boolean;
 }) {
-  const cfg = rating ? HYGIENE_CONFIG[rating] : null;
+  // If owner has hidden it after claiming — don't show
+  if (claimed && !show) return null;
 
-  if (!claimed) {
-    return (
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center">
-            <Lock className="w-7 h-7 text-gray-400" />
-          </div>
-          <div className="flex-1">
-            <h2 className="font-semibold text-gray-900 mb-1">Food Hygiene Rating</h2>
-            <p className="text-gray-500 text-sm mb-3">
-              The food hygiene rating for <strong>{name}</strong> from the Food Standards Agency is available to verified owners.
-              Businesses with a high rating can choose to display it as a trust signal.
-            </p>
-            <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
-              <Lock className="w-4 h-4 text-blue-500 flex-shrink-0" />
-              <span className="text-blue-800 text-sm font-medium">Claim this listing to view and manage your hygiene rating display</span>
-            </div>
-            <Link href="/claim-listing" className="inline-block mt-3 text-blue-600 text-sm font-medium hover:underline">
-              Claim this listing →
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // No rating data at all — show nothing (no padlock, just silent)
+  if (!rating) return null;
 
-  if (!show || !rating || !cfg) return null;
+  const cfg = HYGIENE_CONFIG[rating];
+  if (!cfg) return null;
+
+  const numRating = parseInt(rating);
 
   return (
     <div className={cn("bg-white rounded-xl shadow-sm border p-6", cfg.border)}>
-      <h2 className="font-semibold text-gray-900 mb-4">Food Hygiene Rating</h2>
-      <div className="flex items-center gap-4">
+      <div className="flex items-start justify-between mb-4">
+        <h2 className="font-semibold text-gray-900">Food Hygiene Rating</h2>
+        <a
+          href="https://ratings.food.gov.uk/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 text-xs hover:text-blue-500 hover:underline"
+        >
+          food.gov.uk ↗
+        </a>
+      </div>
+
+      <div className="flex items-center gap-5">
+        {/* Score box */}
         <div className={cn("w-20 h-20 rounded-xl flex flex-col items-center justify-center border-2 flex-shrink-0", cfg.bg, cfg.border)}>
-          <span className={cn("text-3xl font-black", cfg.color)}>{rating === "AwaitingInspection" || rating === "Exempt" ? "–" : rating}</span>
-          <span className={cn("text-xs font-medium", cfg.color)}>/ 5</span>
+          <span className={cn("text-3xl font-black leading-none", cfg.color)}>
+            {rating === "AwaitingInspection" || rating === "Exempt" ? "–" : rating}
+          </span>
+          {!isNaN(numRating) && <span className={cn("text-xs font-medium mt-0.5", cfg.color)}>/ 5</span>}
         </div>
-        <div>
-          <p className={cn("text-lg font-bold", cfg.color)}>{cfg.label}</p>
-          <p className="text-gray-600 text-sm mt-1">{cfg.description} as rated by the Food Standards Agency</p>
+
+        <div className="flex-1">
+          <p className={cn("text-xl font-bold", cfg.color)}>{cfg.label}</p>
+          <p className="text-gray-500 text-sm mt-1">{cfg.description}, as rated by the Food Standards Agency</p>
           {date && (
-            <p className="text-gray-400 text-xs mt-1">
+            <p className="text-gray-400 text-xs mt-2">
               Last inspected: {new Date(date).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}
             </p>
           )}
-          <a
-            href="https://ratings.food.gov.uk/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 text-xs hover:underline mt-2 inline-block"
-          >
-            food.gov.uk
-          </a>
+          {/* Score bar */}
+          {!isNaN(numRating) && (
+            <div className="flex gap-1 mt-3">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <div
+                  key={n}
+                  className={cn(
+                    "h-2 flex-1 rounded-full",
+                    n <= numRating
+                      ? numRating >= 4 ? "bg-green-400" : numRating === 3 ? "bg-yellow-400" : "bg-red-400"
+                      : "bg-gray-100"
+                  )}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* If unclaimed — invite them to manage it */}
+      {!claimed && (
+        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+          <p className="text-gray-400 text-xs">Own <strong className="text-gray-600">{name}</strong>? Claim your listing to manage how this rating is displayed.</p>
+          <Link href="/claim-listing" className="flex-shrink-0 ml-4 text-blue-600 text-xs font-semibold hover:underline">
+            Claim →
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
@@ -640,43 +648,50 @@ function HygieneCard({ name, rating, date, claimed, show }: {
 function HygieneSidebar({ rating, date, claimed, show }: {
   rating: string | null; date: Date | null; claimed: boolean; show: boolean;
 }) {
-  if (!claimed) {
-    return (
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-        <div className="flex items-center gap-2 mb-2">
-          <Lock className="w-4 h-4 text-amber-600" />
-          <span className="font-semibold text-amber-900 text-sm">Food Hygiene Rating</span>
-        </div>
-        <p className="text-amber-800 text-xs mb-3">
-          Claim this listing to view your FSA food hygiene rating and choose whether to display it to visitors.
-        </p>
-        <Link href="/claim-listing" className="block text-center bg-amber-500 text-white text-xs font-semibold px-3 py-2 rounded-lg hover:bg-amber-600 transition">
-          Claim to view rating
-        </Link>
-      </div>
-    );
-  }
-
-  if (!show || !rating) return null;
+  // Owner has hidden it — don't show
+  if (claimed && !show) return null;
+  // No rating data — show nothing
+  if (!rating) return null;
 
   const cfg = HYGIENE_CONFIG[rating];
   if (!cfg) return null;
-
   const numRating = parseInt(rating);
+
   return (
     <div className={cn("rounded-xl border p-4", cfg.bg, cfg.border)}>
-      <div className="flex items-center gap-2 mb-1">
-        {cfg.icon}
-        <span className={cn("font-semibold text-sm", cfg.color)}>Food Hygiene</span>
+      <div className="flex items-center justify-between mb-1">
+        <div className="flex items-center gap-1.5">
+          {cfg.icon}
+          <span className={cn("font-semibold text-sm", cfg.color)}>Food Hygiene</span>
+        </div>
+        <a href="https://ratings.food.gov.uk/" target="_blank" rel="noopener noreferrer"
+           className="text-gray-400 text-xs hover:underline">FSA ↗</a>
       </div>
-      <p className={cn("font-bold text-lg", cfg.color)}>{cfg.label}</p>
-      {date && <p className="text-gray-500 text-xs mt-1">Inspected {new Date(date).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}</p>}
+      <p className={cn("font-bold text-base", cfg.color)}>{cfg.label}</p>
+      {date && (
+        <p className="text-gray-500 text-xs mt-1">
+          Inspected {new Date(date).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
+        </p>
+      )}
       {!isNaN(numRating) && (
         <div className="flex gap-1 mt-2">
           {[1, 2, 3, 4, 5].map((n) => (
-            <div key={n} className={cn("h-2 flex-1 rounded-full", n <= numRating ? (numRating >= 4 ? "bg-green-400" : numRating === 3 ? "bg-yellow-400" : "bg-red-400") : "bg-gray-200")} />
+            <div key={n} className={cn("h-2 flex-1 rounded-full",
+              n <= numRating
+                ? numRating >= 4 ? "bg-green-400" : numRating === 3 ? "bg-yellow-400" : "bg-red-400"
+                : "bg-white/60 border border-white"
+            )} />
           ))}
         </div>
+      )}
+      {!claimed && (
+        <Link href="/claim-listing" className={cn("block text-center text-xs font-semibold px-3 py-1.5 rounded-lg mt-3 transition",
+          numRating >= 4 ? "bg-green-600 text-white hover:bg-green-700"
+          : numRating === 3 ? "bg-yellow-500 text-white hover:bg-yellow-600"
+          : "bg-red-600 text-white hover:bg-red-700"
+        )}>
+          Claim to manage →
+        </Link>
       )}
     </div>
   );
