@@ -22,7 +22,7 @@ if not API_KEY:
 # Southport coordinates (town center)
 SOUTHPORT_LAT = 53.6476
 SOUTHPORT_LNG = -3.0052
-RADIUS_METERS = 5000  # 5km radius
+RADIUS_METERS = 8000  # 8km radius (includes Birkdale, Ainsdale, Churchtown)
 
 # Category mapping: Google Places type -> our category slug
 CATEGORY_MAP = {
@@ -31,32 +31,128 @@ CATEGORY_MAP = {
     'bar': 'bars-nightlife',
     'night_club': 'bars-nightlife',
     'lodging': 'hotels',
+    'bed_and_breakfast': 'hotels',
+    'guest_house': 'hotels',
+    'hotel': 'hotels',
+    'motel': 'hotels',
+    'resort_hotel': 'hotels',
+    'campground': 'hotels',
+    'rv_park': 'hotels',
     'tourist_attraction': 'attractions',
     'park': 'beaches-parks',
+    'beach': 'beaches-parks',
     'store': 'shopping',
     'shopping_mall': 'shopping',
     'spa': 'wellness',
     'beauty_salon': 'wellness',
     'hair_care': 'wellness',
     'gym': 'wellness',
+    'health': 'wellness',
+    'physiotherapist': 'wellness',
     'taxi_stand': 'transport',
-    'gas_station': 'transport',
+    'gas_station': 'transport',  # Google API uses US term but we'll display as petrol
+    'bicycle_store': 'transport',
+    'car_rental': 'transport',
+    'car_wash': 'transport',
+    'parking': 'transport',
+    'golf_course': 'golf',
+    'museum': 'attractions',
+    'art_gallery': 'attractions',
+    'amusement_park': 'attractions',
+    'aquarium': 'attractions',
+    'zoo': 'attractions',
+    'movie_theater': 'attractions',
+    'theater': 'attractions',
+    'casino': 'attractions',
+    'bowling_alley': 'activities',
+    'stadium': 'activities',
+    'travel_agency': 'activities',
+    'bakery': 'cafes',
+    'meal_takeaway': 'restaurants',
+    'meal_delivery': 'restaurants',
+    'food': 'restaurants',
+    'department_store': 'shopping',
+    'clothing_store': 'shopping',
+    'jewelry_store': 'shopping',
+    'shoe_store': 'shopping',
+    'book_store': 'shopping',
+    'florist': 'shopping',
+    'gift_shop': 'shopping',
+    'home_goods_store': 'shopping',
+    'furniture_store': 'shopping',
+    'electronics_store': 'shopping',
+    'pet_store': 'shopping',
+    'toy_store': 'shopping',
+    'sporting_goods_store': 'shopping',
 }
 
 # Google Places types to search
 SEARCH_TYPES = [
+    # Food & Drink
     'restaurant',
     'cafe',
     'bar',
     'night_club',
+    'bakery',
+    'meal_takeaway',
+    'meal_delivery',
+    'food',
+    # Accommodation
     'lodging',
+    'hotel',
+    'bed_and_breakfast',
+    'guest_house',
+    'motel',
+    'resort_hotel',
+    'campground',
+    'rv_park',
+    # Attractions & Activities
     'tourist_attraction',
+    'museum',
+    'art_gallery',
+    'amusement_park',
+    'aquarium',
+    'zoo',
+    'movie_theater',
+    'theater',
+    'casino',
+    'bowling_alley',
+    'stadium',
+    'travel_agency',
+    'golf_course',
+    # Parks & Beaches
     'park',
+    'beach',
+    # Shopping
     'store',
     'shopping_mall',
+    'department_store',
+    'clothing_store',
+    'jewelry_store',
+    'shoe_store',
+    'book_store',
+    'florist',
+    'gift_shop',
+    'home_goods_store',
+    'furniture_store',
+    'electronics_store',
+    'pet_store',
+    'toy_store',
+    'sporting_goods_store',
+    # Wellness
     'spa',
     'beauty_salon',
+    'hair_care',
     'gym',
+    'health',
+    'physiotherapist',
+    # Transport
+    'taxi_stand',
+    'gas_station',
+    'bicycle_store',
+    'car_rental',
+    'car_wash',
+    'parking',
 ]
 
 def search_places(place_type):
@@ -162,8 +258,8 @@ def main():
         for business in all_businesses.values():
             writer.writerow(business)
     
-    print(f"\n✓ Scraped {len(all_businesses)} unique businesses")
-    print(f"✓ Saved to {output_file}")
+    print(f"\nScraped {len(all_businesses)} unique businesses")
+    print(f"Saved to {output_file}")
     print("\nNext: Run the import script to add these to your database:")
     print("  npm run import-businesses")
 
