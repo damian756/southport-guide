@@ -14,7 +14,7 @@ const CATEGORIES = [
   { slug: "golf",           label: "Golf",            icon: Flag,        emoji: "⛳", gradient: "from-[#1A4020] to-[#2E6830]",  light: "#E8F2E8" },
   { slug: "shopping",       label: "Shopping",        icon: ShoppingBag, emoji: "🛍️", gradient: "from-[#8B2847] to-[#C45C6A]",  light: "#FAE8EC" },
   { slug: "wellness",       label: "Wellness",        icon: Sparkles,    emoji: "💆", gradient: "from-[#4A2060] to-[#7B3FAA]",  light: "#F0E8F8" },
-  { slug: "activities",     label: "Activities",      icon: Dumbbell,    emoji: "🏄", gradient: "from-[#8B3A1A] to-[#C46B2C]",  light: "#FAF0E5" },
+  { slug: "activities",     label: "Activities",      icon: Dumbbell,    emoji: "🏄", gradient: "from-[#0D6E6E] to-[#0F9B8E]",  light: "#E6F5F5" },
   { slug: "transport",      label: "Transport",       icon: Car,         emoji: "🚌", gradient: "from-[#2A3F5C] to-[#3A5070]",  light: "#E8EEF5" },
 ];
 

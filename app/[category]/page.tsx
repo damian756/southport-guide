@@ -13,7 +13,7 @@ type Props = {
 
 // Category visual themes
 const THEMES: Record<string, { gradient: string; light: string; accent: string; emoji: string; tagline: string; heroPos: string }> = {
-  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", light: "#FDF0EE", accent: "#C94B3B", emoji: "🍽️", tagline: "The best places to eat in Southport", heroPos: "center 25%" },
+  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", light: "#FDF0EE", accent: "#C94B3B", emoji: "🍽️", tagline: "The best places to eat in Southport", heroPos: "center 5%" },
   hotels:           { gradient: "from-[#1B2E4B] to-[#2A4A73]", light: "#EEF1F7", accent: "#1B2E4B", emoji: "🏨", tagline: "Where to stay in Southport", heroPos: "center" },
   "bars-nightlife": { gradient: "from-[#3D1A5C] to-[#6B3AA0]", light: "#F3EEF9", accent: "#5B2D8A", emoji: "🍺", tagline: "Pubs, bars and nightlife in Southport", heroPos: "center 30%" },
   cafes:            { gradient: "from-[#6B3A1F] to-[#A06040]", light: "#FAF0E8", accent: "#8B5E3C", emoji: "☕", tagline: "Great coffee, cafes and tea rooms", heroPos: "center 35%" },
@@ -22,7 +22,7 @@ const THEMES: Record<string, { gradient: string; light: string; accent: string; 
   golf:             { gradient: "from-[#1A4020] to-[#2E6830]", light: "#E8F2E8", accent: "#2C5F2E", emoji: "⛳", tagline: "World-class golf courses near Southport", heroPos: "center 20%" },
   shopping:         { gradient: "from-[#8B2847] to-[#C45C6A]", light: "#FAE8EC", accent: "#C45C6A", emoji: "🛍️", tagline: "Shops, boutiques and markets", heroPos: "center" },
   wellness:         { gradient: "from-[#4A2060] to-[#7B3FAA]", light: "#F0E8F8", accent: "#6B4C8B", emoji: "💆", tagline: "Spas, salons and wellness in Southport", heroPos: "center" },
-  activities:       { gradient: "from-[#8B3A1A] to-[#C46B2C]", light: "#FAF0E5", accent: "#C46B2C", emoji: "🏄", tagline: "Sport, leisure and outdoor activities", heroPos: "center" },
+  activities:       { gradient: "from-[#0D6E6E] to-[#0F9B8E]", light: "#E6F5F5", accent: "#0D6E6E", emoji: "🏄", tagline: "Sport, leisure and outdoor activities", heroPos: "center" },
   transport:        { gradient: "from-[#2A3F5C] to-[#3A5070]", light: "#E8EEF5", accent: "#3A4F6B", emoji: "🚌", tagline: "Getting around Southport", heroPos: "center" },
 };
 
