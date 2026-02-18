@@ -41,8 +41,27 @@ function formatAddress(address: string, postcode: string): string {
   return addr;
 }
 
-function buildTitle(name: string, catName: string, area: string): string {
-  return `${name} | ${catName} in ${area}, Southport | SouthportGuide.co.uk`;
+// Short category labels for concise page titles (template appends " | SouthportGuide.co.uk")
+const SHORT_CAT: Record<string, string> = {
+  restaurants:      "Restaurant",
+  hotels:           "Hotel",
+  "bars-nightlife": "Bar & Pub",
+  cafes:            "Café",
+  attractions:      "Attraction",
+  "beaches-parks":  "Park",
+  golf:             "Golf",
+  shopping:         "Shop",
+  wellness:         "Spa & Wellness",
+  activities:       "Activity",
+  transport:        "Transport",
+};
+
+function buildTitle(name: string, catSlug: string, area: string): string {
+  const cat = SHORT_CAT[catSlug] ?? catSlug;
+  const location = area === "Southport" ? "Southport" : `${area}, Southport`;
+  // Target ≤ 60 chars total (template adds "| SouthportGuide.co.uk" = 22 chars → local part ≤ 38)
+  const full = `${name} — ${cat}, ${location}`;
+  return full.length <= 60 ? full : `${name} — ${location}`;
 }
 
 function buildMetaDescription(
@@ -76,7 +95,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!b) return { title: slug };
 
     const area = extractArea(b.address, b.postcode);
-    const title = buildTitle(b.name, cat.name, area);
+    const title = buildTitle(b.name, category, area);
     const desc = buildMetaDescription(b.name, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
     const imageUrl = b.images?.[0] || null;
 

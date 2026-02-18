@@ -34,13 +34,20 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Canonical www redirect
+  // Canonical www redirect + permanent fixes
   async redirects() {
     return [
+      // Vercel preview → canonical domain
       {
         source: "/(.*)",
         has: [{ type: "host", value: "southport-guide.vercel.app" }],
         destination: "https://www.southportguide.co.uk/:path*",
+        permanent: true,
+      },
+      // "Another Place" was moved from hotels → attractions category
+      {
+        source: "/hotels/another-place",
+        destination: "/attractions/another-place",
         permanent: true,
       },
     ];

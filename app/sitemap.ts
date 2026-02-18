@@ -4,6 +4,18 @@ import { BLOG_POSTS } from "@/lib/southport-data";
 
 const BASE = "https://www.southportguide.co.uk";
 
+// Blog posts store dates as "D Mon YYYY" e.g. "15 Feb 2026"
+const MONTHS: Record<string, string> = {
+  Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06",
+  Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12",
+};
+function parsePostDate(dateStr: string): Date {
+  const [day, mon, year] = dateStr.split(" ");
+  const iso = `${year}-${MONTHS[mon] ?? "01"}-${day.padStart(2, "0")}`;
+  const d = new Date(iso);
+  return isNaN(d.getTime()) ? new Date() : d;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Static / editorial pages ────────────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
@@ -38,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Blog posts ───────────────────────────────────────────────
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
     url: `${BASE}/blog/${post.slug}`,
-    lastModified: new Date(post.date.split(" ").reverse().join("-")),
+    lastModified: parsePostDate(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
