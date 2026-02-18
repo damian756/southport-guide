@@ -81,7 +81,7 @@ export default function BlogClient({ posts, categories }: Props) {
 
       {/* ── Category tabs ──────────────────────────────────────────── */}
       <div className="sticky top-[64px] z-30 bg-[#FAF8F5] border-b border-gray-100 shadow-sm">
-        <div className="relative">
+        <div className="relative max-w-6xl mx-auto">
           {/* Right fade to signal scrollability */}
           <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#FAF8F5] to-transparent pointer-events-none z-10" />
           <div className="flex gap-2 overflow-x-auto py-3 px-4 scrollbar-none" style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>

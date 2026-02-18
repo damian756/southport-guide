@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper } from "lucide-react";
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",      icon: Utensils,    color: "text-red-500" },
@@ -59,6 +59,17 @@ export default function NavMenu() {
 
         <div className="w-px h-5 bg-gray-200 mx-1" />
 
+        <Link href="/events" className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-[#FAF8F5]">
+          <CalendarDays className="w-3.5 h-3.5" />
+          Events
+        </Link>
+        <Link href="/blog" className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-[#FAF8F5]">
+          <Newspaper className="w-3.5 h-3.5" />
+          Blog
+        </Link>
+
+        <div className="w-px h-5 bg-gray-200 mx-1" />
+
         <Link href="/the-open-2026" className="text-green-700 hover:text-green-800 font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-green-50">
           🏌️ The Open 2026
         </Link>
@@ -105,7 +116,13 @@ export default function NavMenu() {
           </div>
 
           <div className="border-t border-gray-100 pt-4 space-y-1 mb-4">
-            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Events</p>
+            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">What&apos;s On</p>
+            <Link href="/events" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-sm font-medium" onClick={() => setMobileOpen(false)}>
+              <CalendarDays className="w-4 h-4 text-[#C9A84C]" /> <span>Events Calendar</span>
+            </Link>
+            <Link href="/blog" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-sm font-medium" onClick={() => setMobileOpen(false)}>
+              <Newspaper className="w-4 h-4 text-[#C9A84C]" /> <span>Blog — Local Guides</span>
+            </Link>
             <Link href="/the-open-2026" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-green-50 text-green-800 text-sm font-medium" onClick={() => setMobileOpen(false)}>
               🏌️ <span>The Open 2026 — Royal Birkdale</span>
             </Link>
