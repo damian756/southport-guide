@@ -69,12 +69,14 @@ export const metadata: Metadata = {
     creator: "@SouthportGuide",
   },
 
-  // Icons — served from app/icon.png and app/apple-icon.png via Next.js file convention
+  // Icons
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "any", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "512x512", type: "image/png" }],
+    apple: [{ url: "/favicon.png", sizes: "512x512", type: "image/png" }],
+    shortcut: "/favicon.ico",
   },
 
   // PWA
