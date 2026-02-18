@@ -9,11 +9,11 @@ datasource db {
 }
 
 model Business {
-  id                    String    @id @default(uuid())
-  slug                  String    @unique
+  id                    String          @id @default(uuid())
+  slug                  String          @unique
   name                  String
   categoryId            String
-  category              Category  @relation(fields: [categoryId], references: [id])
+  category              Category        @relation(fields: [categoryId], references: [id])
   address               String
   postcode              String
   lat                   Float?
@@ -21,32 +21,45 @@ model Business {
   phone                 String?
   email                 String?
   website               String?
-  description           String?   @db.Text
+  description           String?         @db.Text
   shortDescription      String?
-  images                String[]  // Array of image URLs
+  images                String[]        // Array of image URLs
   openingHours          Json?
-  priceRange            String?   // £, ££, £££, ££££
-  listingTier           String    @default("free") // free, standard, featured, premium
-  claimed               Boolean   @default(false)
-  placeId               String?   // Google Places ID
-  rating                Float?    // Google rating 1-5
-  reviewCount           Int?      // Number of Google reviews
-  hygieneRating         String?   // FSA food hygiene: "5","4","3","2","1","0","AwaitingInspection","Exempt"
-  hygieneRatingDate     DateTime? // Date of last FSA inspection
-  hygieneRatingShow     Boolean   @default(true) // owner can hide it after claiming
-  fhrsId                String?   // FSA establishment ID — links to ratings.food.gov.uk/business/en-GB/{id}
+  priceRange            String?         // £, ££, £££, ££££
+  listingTier           String          @default("free") // free, standard, featured, premium
+  claimed               Boolean         @default(false)
+  placeId               String?         // Google Places ID
+  rating                Float?          // Google rating 1-5
+  reviewCount           Int?            // Number of Google reviews
+  hygieneRating         String?         // FSA food hygiene: "5","4","3","2","1","0","AwaitingInspection","Exempt"
+  hygieneRatingDate     DateTime?       // Date of last FSA inspection
+  hygieneRatingShow     Boolean         @default(true) // owner can hide it after claiming
+  fhrsId                String?         // FSA establishment ID — links to ratings.food.gov.uk/business/en-GB/{id}
   userId                String?
-  user                  User?     @relation(fields: [userId], references: [id])
+  user                  User?           @relation(fields: [userId], references: [id])
   stripeSubscriptionId  String?
   stripeCustomerId      String?
-  featured              Boolean   @default(false)
-  createdAt             DateTime  @default(now())
-  updatedAt             DateTime  @updatedAt
+  featured              Boolean         @default(false)
+  clicks                BusinessClick[]
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
 
   @@index([categoryId])
   @@index([slug])
   @@index([listingTier])
   @@index([claimed])
+}
+
+model BusinessClick {
+  id         String   @id @default(uuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  type       String   // "website" | "phone" | "directions" | "google_reviews"
+  createdAt  DateTime @default(now())
+
+  @@index([businessId])
+  @@index([createdAt])
+  @@index([businessId, type])
 }
 
 model Category {

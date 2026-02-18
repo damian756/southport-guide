@@ -8,6 +8,14 @@ import { cn } from "@/lib/utils";
 
 type Props = { params: Promise<{ category: string; slug: string }> };
 
+function trackUrl(businessId: string, type: string, dest: string): string {
+  return `/api/out?id=${businessId}&type=${type}&url=${encodeURIComponent(dest)}`;
+}
+
+function websiteHref(website: string): string {
+  return website.startsWith("http") ? website : `https://${website}`;
+}
+
 // Map category slugs to Schema.org @type
 const SCHEMA_TYPES: Record<string, string> = {
   restaurants:      "Restaurant",
@@ -339,7 +347,11 @@ export default async function BusinessPage({ params }: Props) {
                     <div className="flex items-center gap-2 mb-4">
                       {business.placeId ? (
                         <a
-                          href={`https://www.google.com/maps/place/?q=place_id:${business.placeId}`}
+                          href={trackUrl(
+                            business.id,
+                            "google_reviews",
+                            `https://www.google.com/maps/place/?q=place_id:${business.placeId}`
+                          )}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 font-semibold px-3 py-1.5 rounded-full border border-amber-200 text-sm transition-colors cursor-pointer group"
@@ -369,7 +381,7 @@ export default async function BusinessPage({ params }: Props) {
                   <div className="flex flex-wrap gap-3">
                     {business.website && (
                       <a
-                        href={business.website.startsWith("http") ? business.website : `https://${business.website}`}
+                        href={trackUrl(business.id, "website", websiteHref(business.website))}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full hover:bg-[#2A4A73] transition font-semibold text-sm"
@@ -414,7 +426,11 @@ export default async function BusinessPage({ params }: Props) {
                     </address>
                     {business.lat && business.lng && (
                       <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${business.lat},${business.lng}`}
+                        href={trackUrl(
+                          business.id,
+                          "directions",
+                          `https://www.google.com/maps/dir/?api=1&destination=${business.lat},${business.lng}`
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block mt-3 text-blue-600 text-sm hover:underline font-medium"
@@ -518,7 +534,7 @@ export default async function BusinessPage({ params }: Props) {
                 {business.website && (
                   <InfoRow icon={<Globe className="w-4 h-4 text-blue-500" />} label="Website">
                     <a
-                      href={business.website.startsWith("http") ? business.website : `https://${business.website}`}
+                      href={trackUrl(business.id, "website", websiteHref(business.website))}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 text-sm hover:underline break-all"
@@ -542,7 +558,11 @@ export default async function BusinessPage({ params }: Props) {
                   <InfoRow icon={<Star className="w-4 h-4 text-amber-400 fill-amber-400" />} label="Google rating">
                     {business.placeId ? (
                       <a
-                        href={`https://www.google.com/maps/place/?q=place_id:${business.placeId}`}
+                        href={trackUrl(
+                          business.id,
+                          "google_reviews",
+                          `https://www.google.com/maps/place/?q=place_id:${business.placeId}`
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-amber-600 text-sm font-semibold hover:underline"
