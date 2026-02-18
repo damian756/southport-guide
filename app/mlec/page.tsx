@@ -620,29 +620,47 @@ export default function MLECPage() {
         </section>
 
         {/* ── The History ── */}
-        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-3">Before MLEC</p>
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Remembering the Southport Theatre & Convention Centre
-            </h2>
-            <div className="prose text-gray-700 space-y-4">
-              <p>
-                The building that MLEC replaces hosted some of the biggest names in entertainment for over 50 years.
-                The Southport Theatre and Convention Centre was a genuine regional venue — the kind of place where
-                generations of Southport families made memories. It closed its doors for the last time in March 2020.
-              </p>
-              <p>
-                When demolition began in spring 2024, the team made a point of preserving the most historically
-                significant items from the old theatre — including original projectors and heritage artefacts — which
-                are being held in safe storage. They'll be incorporated into the new MLEC for public display.
-                It's a classy touch: the new building will carry a piece of what came before.
-              </p>
-              <p>
-                The MLEC isn't a replacement — it's a transformation. The site, the lake, the views, the Promenade:
-                all the same. But the building sitting on that plot in 2027 will be one of the finest venues in the
-                North of England.
-              </p>
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-3">Before MLEC</p>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Remembering the Southport Theatre &amp; Convention Centre
+              </h2>
+              <div className="prose text-gray-700 space-y-4">
+                <p>
+                  The building that MLEC replaces hosted some of the biggest names in entertainment for over 50 years.
+                  The Southport Theatre and Convention Centre was a genuine regional venue — the kind of place where
+                  generations of Southport families made memories. It closed its doors for the last time in March 2020.
+                </p>
+                <p>
+                  When demolition began in spring 2024, the team made a point of preserving the most historically
+                  significant items from the old theatre — including original projectors and heritage artefacts — which
+                  are being held in safe storage. They&apos;ll be incorporated into the new MLEC for public display.
+                  It&apos;s a classy touch: the new building will carry a piece of what came before.
+                </p>
+                <p>
+                  The MLEC isn&apos;t a replacement — it&apos;s a transformation. The site, the lake, the views, the Promenade:
+                  all the same. But the building sitting on that plot in 2027 will be one of the finest venues in the
+                  North of England.
+                </p>
+              </div>
+            </div>
+            <div className="relative min-h-[320px] md:min-h-0">
+              <Image
+                src="/images/southport-theatre-history.jpg"
+                alt="The former Southport Theatre and Convention Centre on the Promenade"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={80}
+                className="object-cover"
+                style={{ objectPosition: "center center" }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <p className="text-white text-xs italic">
+                  The Southport Theatre &amp; Convention Centre — closed March 2020, demolished 2024.
+                </p>
+              </div>
             </div>
           </div>
         </section>
