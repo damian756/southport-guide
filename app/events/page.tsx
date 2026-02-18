@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, ArrowLeft, ExternalLink } from "lucide-react";
 import { getEventsByMonth, getUpcomingEvents } from "@/lib/southport-data";
+import { Suspense } from "react";
+import MonthFilter from "./MonthFilter";
 
 export const metadata = {
   title: "What's On in Southport 2026 | Events Calendar | Southport Guide",
@@ -28,9 +30,19 @@ function categoryClass(cat: string) {
   return CATEGORY_COLORS[cat] ?? "bg-gray-100 text-gray-600";
 }
 
-export default function EventsPage() {
+export default async function EventsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ month?: string }>;
+}) {
+  const { month: activeMonth } = await searchParams;
   const eventsByMonth = getEventsByMonth();
+  const allMonths = Object.keys(eventsByMonth);
   const upcomingCount = getUpcomingEvents().length;
+
+  const filteredMonths = activeMonth
+    ? allMonths.filter((m) => m === activeMonth)
+    : allMonths;
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -69,88 +81,103 @@ export default function EventsPage() {
         </div>
       </section>
 
+      {/* Month filter tabs — client component */}
+      <Suspense fallback={<div className="h-12 bg-white border-b border-gray-100" />}>
+        <MonthFilter months={allMonths} />
+      </Suspense>
+
       {/* Events by month */}
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <div className="space-y-12">
-          {Object.entries(eventsByMonth).map(([month, events]) => {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const isPast = events.every((e) => new Date(e.isoDate) < today);
+        {activeMonth && !eventsByMonth[activeMonth] ? (
+          <div className="text-center py-20">
+            <p className="text-gray-400">No events found for this month.</p>
+            <Link href="/events" className="text-[#C9A84C] font-semibold mt-4 inline-block hover:underline">
+              View all events →
+            </Link>
+          </div>
+        ) : (
+          <div className="space-y-12">
+            {filteredMonths.map((month) => {
+              const events = eventsByMonth[month];
+              const today = new Date();
+              today.setHours(0, 0, 0, 0);
+              const isPast = events.every((e) => new Date(e.isoDate) < today);
 
-            return (
-              <div key={month}>
-                <div className="flex items-center gap-4 mb-5">
-                  <h2
-                    className={`font-display text-xl md:text-2xl font-bold ${
-                      isPast ? "text-gray-400" : "text-[#1B2E4B]"
-                    }`}
-                  >
-                    {month}
-                  </h2>
-                  {isPast && (
-                    <span className="text-xs font-semibold text-gray-400 bg-gray-100 px-3 py-1 rounded-full">
-                      Past
-                    </span>
-                  )}
-                  <div className="flex-1 h-px bg-gray-200" />
-                </div>
+              return (
+                <div key={month}>
+                  <div className="flex items-center gap-4 mb-5">
+                    <h2
+                      className={`font-display text-xl md:text-2xl font-bold ${
+                        isPast ? "text-gray-400" : "text-[#1B2E4B]"
+                      }`}
+                    >
+                      {month}
+                    </h2>
+                    {isPast && (
+                      <span className="text-xs font-semibold text-gray-400 bg-gray-100 px-3 py-1 rounded-full">
+                        Past
+                      </span>
+                    )}
+                    <div className="flex-1 h-px bg-gray-200" />
+                  </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {events.map((event, i) => {
-                    const isExternal = event.link.startsWith("http");
-                    const Tag = isExternal ? "a" : Link;
-                    const extraProps = isExternal
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {};
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {events.map((event, i) => {
+                      const isExternal = event.link.startsWith("http");
+                      const Tag = isExternal ? "a" : Link;
+                      const extraProps = isExternal
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {};
 
-                    return (
-                      <Tag
-                        key={i}
-                        href={event.link}
-                        {...extraProps}
-                        className={`group bg-white rounded-2xl p-5 border transition-all ${
-                          isPast
-                            ? "border-gray-100 opacity-50 pointer-events-none"
-                            : "border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md"
-                        }`}
-                      >
-                        <div className="flex items-start justify-between mb-3">
-                          <span className="text-2xl">{event.emoji}</span>
-                          {event.free ? (
-                            <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                              Free
+                      return (
+                        <Tag
+                          key={i}
+                          href={event.link}
+                          {...extraProps}
+                          className={`group bg-white rounded-2xl p-5 border transition-all ${
+                            isPast
+                              ? "border-gray-100 opacity-50 pointer-events-none"
+                              : "border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md"
+                          }`}
+                        >
+                          <div className="flex items-start justify-between mb-3">
+                            <span className="text-2xl">{event.emoji}</span>
+                            {event.free ? (
+                              <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
+                                Free
+                              </span>
+                            ) : (
+                              <span className="text-xs font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2.5 py-1 rounded-full">
+                                Tickets
+                              </span>
+                            )}
+                          </div>
+
+                          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">
+                            {event.dayLabel}
+                          </p>
+                          <h3 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-1 group-hover:text-[#C9A84C] transition-colors">
+                            {event.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm mb-3">{event.venue}</p>
+
+                          <div className="flex items-center justify-between">
+                            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${categoryClass(event.category)}`}>
+                              {event.category}
                             </span>
-                          ) : (
-                            <span className="text-xs font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2.5 py-1 rounded-full">
-                              Tickets
-                            </span>
-                          )}
-                        </div>
-
-                        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">
-                          {event.dayLabel}
-                        </p>
-                        <h3 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-1 group-hover:text-[#C9A84C] transition-colors">
-                          {event.title}
-                        </h3>
-                        <p className="text-gray-400 text-sm mb-3">{event.venue}</p>
-
-                        <div className="flex items-center justify-between">
-                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${categoryClass(event.category)}`}>
-                            {event.category}
-                          </span>
-                          {isExternal && (
-                            <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#C9A84C] transition-colors" />
-                          )}
-                        </div>
-                      </Tag>
-                    );
-                  })}
+                            {isExternal && (
+                              <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#C9A84C] transition-colors" />
+                            )}
+                          </div>
+                        </Tag>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
 
         {/* Submit event CTA */}
         <div className="mt-16 bg-[#1B2E4B] rounded-3xl p-8 text-center">

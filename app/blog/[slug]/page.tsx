@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock } from "lucide-react";
-import { BLOG_POSTS } from "@/lib/southport-data";
+import { BLOG_POSTS, getBlogPostCategory } from "@/lib/southport-data";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -22,6 +22,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
+
+  const cat = getBlogPostCategory(post);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -45,12 +47,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           >
             <ArrowLeft className="w-4 h-4" /> All posts
           </Link>
-          <span
-            className="inline-block text-xs font-bold text-white px-3 py-1 rounded-full mb-3"
-            style={{ backgroundColor: post.categoryColor }}
-          >
-            {post.category}
-          </span>
+          {cat && (
+            <span
+              className="inline-block text-xs font-bold text-white px-3 py-1 rounded-full mb-3"
+              style={{ backgroundColor: cat.color }}
+            >
+              {cat.label}
+            </span>
+          )}
           <h1 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight">
             {post.title}
           </h1>
@@ -66,6 +70,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
           <span className="text-gray-200">|</span>
           <span className="text-sm text-gray-500">Southport Guide Team</span>
+          {cat && (
+            <>
+              <span className="text-gray-200">|</span>
+              <Link
+                href={`/blog?category=${cat.slug}`}
+                className="text-sm font-semibold hover:underline"
+                style={{ color: cat.color }}
+              >
+                {cat.label}
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Placeholder content */}
@@ -97,33 +113,85 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
 
-        {/* More posts */}
+        {/* More posts in same category */}
+        {cat && (
+          <>
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="font-display text-xl font-bold text-[#1B2E4B]">More in {cat.label}</h3>
+              <Link href={`/blog?category=${cat.slug}`} className="text-sm text-[#C9A84C] font-semibold hover:underline">
+                View all →
+              </Link>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4 mb-12">
+              {BLOG_POSTS.filter((p) => p.categorySlug === post.categorySlug && p.slug !== slug)
+                .slice(0, 2)
+                .map((related) => {
+                  const relatedCat = getBlogPostCategory(related);
+                  return (
+                    <Link
+                      key={related.slug}
+                      href={`/blog/${related.slug}`}
+                      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
+                    >
+                      <div className="relative w-24 flex-none overflow-hidden">
+                        <Image
+                          src={related.image}
+                          alt={related.title}
+                          fill
+                          sizes="96px"
+                          quality={60}
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="p-4 flex flex-col justify-center">
+                        <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>
+                          {relatedCat?.label}
+                        </span>
+                        <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                          {related.title}
+                        </h4>
+                      </div>
+                    </Link>
+                  );
+                })}
+            </div>
+          </>
+        )}
+
+        {/* Other recent posts */}
         <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-5">More from the blog</h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
-          {BLOG_POSTS.filter((p) => p.slug !== slug).map((related) => (
-            <Link
-              key={related.slug}
-              href={`/blog/${related.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
-            >
-              <div className="relative w-24 flex-none overflow-hidden">
-                <Image
-                  src={related.image}
-                  alt={related.title}
-                  fill
-                  sizes="96px"
-                  quality={60}
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-4 flex flex-col justify-center">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{related.category}</span>
-                <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
-                  {related.title}
-                </h4>
-              </div>
-            </Link>
-          ))}
+          {BLOG_POSTS.filter((p) => p.slug !== slug && p.categorySlug !== post.categorySlug)
+            .slice(0, 4)
+            .map((related) => {
+              const relatedCat = getBlogPostCategory(related);
+              return (
+                <Link
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
+                >
+                  <div className="relative w-24 flex-none overflow-hidden">
+                    <Image
+                      src={related.image}
+                      alt={related.title}
+                      fill
+                      sizes="96px"
+                      quality={60}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col justify-center">
+                    <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>
+                      {relatedCat?.label}
+                    </span>
+                    <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                      {related.title}
+                    </h4>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </div>

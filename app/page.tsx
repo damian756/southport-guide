@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, ArrowRight, Trophy, Music, CalendarDays, Newspaper } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { BLOG_POSTS, getUpcomingEvents } from "@/lib/southport-data";
+import { BLOG_POSTS, getBlogPostCategory, getUpcomingEvents } from "@/lib/southport-data";
 
 // ── Category configuration ────────────────────────────────────────────────
 const CATEGORIES = [
@@ -257,43 +257,48 @@ export default async function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={75}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span
-                    className="absolute bottom-3 left-3 text-xs font-bold text-white px-3 py-1 rounded-full"
-                    style={{ backgroundColor: post.categoryColor }}
-                  >
-                    {post.category}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-gray-400">
-                    <span>{post.date}</span>
-                    <span className="text-[#C9A84C] font-semibold group-hover:translate-x-0.5 transition-transform inline-block">Read more →</span>
+            {BLOG_POSTS.slice(0, 3).map((post) => {
+              const cat = getBlogPostCategory(post);
+              return (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      quality={75}
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    {cat && (
+                      <span
+                        className="absolute bottom-3 left-3 text-xs font-bold text-white px-3 py-1 rounded-full"
+                        style={{ backgroundColor: cat.color }}
+                      >
+                        {cat.label}
+                      </span>
+                    )}
                   </div>
-                </div>
-              </Link>
-            ))}
+                  <div className="p-5">
+                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-gray-400">
+                      <span>{post.date}</span>
+                      <span className="text-[#C9A84C] font-semibold group-hover:translate-x-0.5 transition-transform inline-block">Read more →</span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
           <div className="mt-8 text-center sm:hidden">
