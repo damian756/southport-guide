@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, ArrowRight, Trophy, Music } from "lucide-react";
+import { Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, ArrowRight, Trophy, Music, CalendarDays, Newspaper } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { BLOG_POSTS, getUpcomingEvents } from "@/lib/southport-data";
 
 // ── Category configuration ────────────────────────────────────────────────
 const CATEGORIES = [
@@ -56,6 +57,13 @@ export default async function Home() {
   const catMeta: Record<string, { gradient: string; light: string; emoji: string }> =
     Object.fromEntries(CATEGORIES.map((c) => [c.slug, { gradient: c.gradient, light: c.light, emoji: c.emoji }]));
 
+  const upcomingEvents = getUpcomingEvents(12);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const openDays = Math.ceil(
+    (new Date("2026-07-12").getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
   return (
     <div className="min-h-screen flex flex-col">
 
@@ -80,29 +88,35 @@ export default async function Home() {
         {/* Gold top accent */}
         <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent relative z-10" />
 
-        <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 max-w-6xl">
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-24 max-w-6xl">
           <div className="max-w-3xl mx-auto text-center">
 
-            {/* Pre-heading pill */}
-            <div className="inline-flex items-center gap-2 bg-[#C9A84C]/15 text-[#C9A84C] text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-[#C9A84C]/25">
-              <Trophy className="w-3.5 h-3.5" />
-              Home of The Open Championship 2026
+            {/* Pre-heading pills */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-4 py-2 rounded-full border border-emerald-400/25">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
+                Updated Daily
+              </div>
+              <div className="inline-flex items-center gap-2 bg-[#C9A84C]/15 text-[#C9A84C] text-xs font-semibold px-4 py-2 rounded-full border border-[#C9A84C]/25">
+                <Trophy className="w-3.5 h-3.5" />
+                ⛳ The Open: {openDays} days away
+              </div>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-5 leading-tight tracking-tight">
-              Discover<br />
-              <span className="text-[#C9A84C]">Southport.</span>
+              Your Local Guide<br />
+              <span className="text-[#C9A84C]">to Southport.</span>
             </h1>
 
             <p className="text-white/70 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto">
-              The complete guide to eating, staying and exploring one of Britain&apos;s great seaside towns.
+              Events, restaurants, things to do — updated regularly by people who live here. Faster than the rest.
             </p>
 
             {/* Stats row */}
             <div className="flex items-center justify-center gap-8 mb-10">
               {[
                 { value: totalBusinesses || "999", label: "Businesses" },
-                { value: "11", label: "Categories" },
+                { value: upcomingEvents.length > 0 ? upcomingEvents.length + "+" : "20+", label: "Events Listed" },
                 { value: "Free", label: "To List" },
               ].map(({ value, label }) => (
                 <div key={label} className="text-center">
@@ -133,6 +147,131 @@ export default async function Home() {
           <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" preserveAspectRatio="none">
             <path d="M0 48L60 42C120 36 240 24 360 18C480 12 600 12 720 18C840 24 960 36 1080 38C1200 40 1320 30 1380 25L1440 20V48H1380C1320 48 1200 48 1080 48C960 48 840 48 720 48C600 48 480 48 360 48C240 48 120 48 60 48H0Z" fill="#FAF8F5"/>
           </svg>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          WHAT'S ON — EVENTS STRIP
+      ══════════════════════════════════════════════════════ */}
+      {upcomingEvents.length > 0 && (
+        <section className="py-12 bg-[#FAF8F5]">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="flex items-end justify-between mb-6">
+              <div>
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Updated weekly</p>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] flex items-center gap-2">
+                  <CalendarDays className="w-6 h-6 text-[#C9A84C]" />
+                  What&apos;s On in Southport
+                </h2>
+              </div>
+              <Link href="/events" className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#1B2E4B] hover:text-[#C9A84C] font-semibold transition-colors">
+                Full calendar <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Horizontally scrollable event cards */}
+            <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
+              {upcomingEvents.map((event, i) => (
+                <a
+                  key={i}
+                  href={event.link}
+                  target={event.link.startsWith("http") ? "_blank" : undefined}
+                  rel={event.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="flex-none w-44 snap-start bg-white rounded-2xl p-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all group cursor-pointer"
+                >
+                  <div className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest mb-2">{event.dayLabel}</div>
+                  <div className="text-2xl mb-2">{event.emoji}</div>
+                  <h3 className="font-bold text-[#1B2E4B] text-sm leading-tight mb-1 group-hover:text-[#C9A84C] transition-colors line-clamp-2">{event.title}</h3>
+                  <p className="text-gray-400 text-xs mb-3 line-clamp-1">{event.venue}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] text-gray-500">{event.category}</span>
+                    {event.free
+                      ? <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Free</span>
+                      : <span className="text-[10px] font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2 py-0.5 rounded-full">Tickets</span>
+                    }
+                  </div>
+                </a>
+              ))}
+
+              {/* View all card */}
+              <Link
+                href="/events"
+                className="flex-none w-44 snap-start bg-[#1B2E4B] rounded-2xl p-4 flex flex-col items-center justify-center text-center group hover:bg-[#C9A84C] transition-colors"
+              >
+                <CalendarDays className="w-8 h-8 text-[#C9A84C] group-hover:text-white mb-3 transition-colors" />
+                <span className="font-bold text-white text-sm">Full 2026 Calendar</span>
+                <span className="text-white/50 group-hover:text-white/80 text-xs mt-1 transition-colors">All events →</span>
+              </Link>
+            </div>
+
+            <Link href="/events" className="mt-4 text-sm text-[#C9A84C] font-semibold sm:hidden block text-center">
+              View full 2026 calendar →
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════════════════════════════════════════════
+          LATEST FROM THE BLOG
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Southport Guide Blog</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] flex items-center gap-2">
+                <Newspaper className="w-6 h-6 text-[#C9A84C]" />
+                Latest from the Guide
+              </h2>
+            </div>
+            <Link href="/blog" className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#1B2E4B] hover:text-[#C9A84C] font-semibold transition-colors">
+              All posts <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {BLOG_POSTS.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    quality={75}
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span
+                    className="absolute bottom-3 left-3 text-xs font-bold text-white px-3 py-1 rounded-full"
+                    style={{ backgroundColor: post.categoryColor }}
+                  >
+                    {post.category}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-400">
+                    <span>{post.date}</span>
+                    <span className="text-[#C9A84C] font-semibold group-hover:translate-x-0.5 transition-transform inline-block">Read more →</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center sm:hidden">
+            <Link href="/blog" className="text-sm text-[#C9A84C] font-semibold">All blog posts →</Link>
+          </div>
         </div>
       </section>
 
