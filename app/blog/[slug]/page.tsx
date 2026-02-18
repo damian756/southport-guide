@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Clock } from "lucide-react";
+import { ArrowLeft, Clock, User } from "lucide-react";
 import { BLOG_POSTS, getBlogPostCategory } from "@/lib/southport-data";
+import { BLOG_CONTENT, ContentBlock } from "@/lib/blog-content";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -18,17 +19,82 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+function renderBlock(block: ContentBlock, i: number) {
+  switch (block.type) {
+    case "h2":
+      return (
+        <h2 key={i} className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mt-10 mb-4 leading-snug">
+          {block.text}
+        </h2>
+      );
+    case "h3":
+      return (
+        <h3 key={i} className="font-display text-xl font-bold text-[#1B2E4B] mt-8 mb-3">
+          {block.text}
+        </h3>
+      );
+    case "p":
+      return (
+        <p key={i} className="text-gray-700 leading-relaxed mb-5 text-[1.0625rem]">
+          {block.text}
+        </p>
+      );
+    case "ul":
+      return (
+        <ul key={i} className="mb-6 space-y-2.5">
+          {block.items.map((item, j) => (
+            <li key={j} className="flex gap-3 text-gray-700 text-[1.0625rem]">
+              <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    case "ol":
+      return (
+        <ol key={i} className="mb-6 space-y-2.5 list-decimal list-inside">
+          {block.items.map((item, j) => (
+            <li key={j} className="text-gray-700 text-[1.0625rem]">
+              {item}
+            </li>
+          ))}
+        </ol>
+      );
+    case "callout":
+      return (
+        <div key={i} className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-7">
+          <p className="text-[#1B2E4B] font-medium leading-relaxed">
+            <span className="mr-2">{block.emoji}</span>
+            {block.text}
+          </p>
+        </div>
+      );
+    case "quote":
+      return (
+        <blockquote key={i} className="border-l-4 border-[#C9A84C] pl-5 py-1 my-7 italic text-gray-600 text-lg">
+          &ldquo;{block.text}&rdquo;
+          {block.attr && <cite className="block text-sm not-italic text-gray-400 mt-2">— {block.attr}</cite>}
+        </blockquote>
+      );
+    case "hr":
+      return <hr key={i} className="my-8 border-gray-200" />;
+    default:
+      return null;
+  }
+}
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
 
   const cat = getBlogPostCategory(post);
+  const content = BLOG_CONTENT[slug];
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
-      {/* Header image */}
-      <div className="relative h-72 md:h-96 bg-[#1B2E4B]">
+      {/* Hero image */}
+      <div className="relative h-72 md:h-[26rem] bg-[#1B2E4B]">
         <Image
           src={post.image}
           alt={post.title}
@@ -37,10 +103,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           sizes="100vw"
           quality={80}
           className="object-cover"
-          style={{ objectPosition: "center 30%" }}
+          style={{ objectPosition: "center 35%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/50 via-transparent to-[#1B2E4B]/80" />
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 container mx-auto max-w-3xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/40 via-transparent to-[#1B2E4B]/85" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-3xl mx-auto">
           <Link
             href="/blog"
             className="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm mb-4 transition-colors"
@@ -61,21 +127,30 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </div>
 
-      {/* Post meta */}
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="bg-white rounded-2xl border border-gray-100 -mt-6 relative z-10 p-6 mb-8 flex items-center gap-6 flex-wrap">
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Clock className="w-4 h-4" />
+      {/* Article */}
+      <div className="max-w-3xl mx-auto px-4">
+        {/* Byline card */}
+        <div className="bg-white rounded-2xl border border-gray-100 -mt-6 relative z-10 px-6 py-4 mb-10 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-none">
+              <User className="w-4 h-4 text-[#C9A84C]" />
+            </div>
+            <div>
+              <p className="font-semibold text-[#1B2E4B] text-xs">Terry</p>
+              <p className="text-[10px] text-gray-400">Chief Editor, SouthportGuide.co.uk</p>
+            </div>
+          </div>
+          <span className="text-gray-200 hidden sm:block">|</span>
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5" />
             {post.date}
           </div>
-          <span className="text-gray-200">|</span>
-          <span className="text-sm text-gray-500">Southport Guide Team</span>
           {cat && (
             <>
-              <span className="text-gray-200">|</span>
+              <span className="text-gray-200 hidden sm:block">|</span>
               <Link
                 href={`/blog?category=${cat.slug}`}
-                className="text-sm font-semibold hover:underline"
+                className="font-semibold hover:underline text-xs"
                 style={{ color: cat.color }}
               >
                 {cat.label}
@@ -84,48 +159,38 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
         </div>
 
-        {/* Placeholder content */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-8 md:p-10 mb-12">
-          <div className="prose prose-lg max-w-none">
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">{post.excerpt}</p>
+        {/* Content */}
+        <article className="bg-white rounded-2xl border border-gray-100 p-7 md:p-10 mb-12">
+          {content ? (
+            content.map((block, i) => renderBlock(block, i))
+          ) : (
+            <>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">{post.excerpt}</p>
+              <div className="bg-amber-50 border border-amber-100 rounded-xl p-6 text-center">
+                <div className="text-3xl mb-3">✍️</div>
+                <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Full article coming soon</h3>
+                <p className="text-gray-500 text-sm">Check back shortly — Terry&apos;s working on it.</p>
+              </div>
+            </>
+          )}
+        </article>
 
-            <div className="bg-amber-50 border border-amber-100 rounded-xl p-6 text-center">
-              <div className="text-3xl mb-3">✍️</div>
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Full article coming soon</h3>
-              <p className="text-gray-500 text-sm mb-4">
-                We&apos;re working on this guide. Check back shortly or explore the rest of the site while you wait.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white font-semibold px-5 py-2.5 rounded-full text-sm hover:bg-[#243d62] transition-colors"
-                >
-                  ← All blog posts
-                </Link>
-                <Link
-                  href="/events"
-                  className="inline-flex items-center gap-2 border-2 border-gray-200 text-[#1B2E4B] font-semibold px-5 py-2.5 rounded-full text-sm hover:border-[#C9A84C]/50 transition-colors"
-                >
-                  What&apos;s on in Southport →
+        {/* More in same category */}
+        {cat && (() => {
+          const sameCategory = BLOG_POSTS.filter(
+            (p) => p.categorySlug === post.categorySlug && p.slug !== slug
+          ).slice(0, 2);
+          if (sameCategory.length === 0) return null;
+          return (
+            <div className="mb-10">
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="font-display text-xl font-bold text-[#1B2E4B]">More in {cat.label}</h3>
+                <Link href={`/blog?category=${cat.slug}`} className="text-sm text-[#C9A84C] font-semibold hover:underline">
+                  View all →
                 </Link>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* More posts in same category */}
-        {cat && (
-          <>
-            <div className="flex items-center justify-between mb-5">
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B]">More in {cat.label}</h3>
-              <Link href={`/blog?category=${cat.slug}`} className="text-sm text-[#C9A84C] font-semibold hover:underline">
-                View all →
-              </Link>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4 mb-12">
-              {BLOG_POSTS.filter((p) => p.categorySlug === post.categorySlug && p.slug !== slug)
-                .slice(0, 2)
-                .map((related) => {
+              <div className="grid sm:grid-cols-2 gap-4">
+                {sameCategory.map((related) => {
                   const relatedCat = getBlogPostCategory(related);
                   return (
                     <Link
@@ -134,33 +199,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
                     >
                       <div className="relative w-24 flex-none overflow-hidden">
-                        <Image
-                          src={related.image}
-                          alt={related.title}
-                          fill
-                          sizes="96px"
-                          quality={60}
-                          className="object-cover"
-                        />
+                        <Image src={related.image} alt={related.title} fill sizes="96px" quality={60} className="object-cover" />
                       </div>
                       <div className="p-4 flex flex-col justify-center">
-                        <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>
-                          {relatedCat?.label}
-                        </span>
-                        <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
-                          {related.title}
-                        </h4>
+                        <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>{relatedCat?.label}</span>
+                        <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">{related.title}</h4>
                       </div>
                     </Link>
                   );
                 })}
+              </div>
             </div>
-          </>
-        )}
+          );
+        })()}
 
-        {/* Other recent posts */}
+        {/* Other posts */}
         <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-5">More from the blog</h3>
-        <div className="grid sm:grid-cols-2 gap-4 mb-12">
+        <div className="grid sm:grid-cols-2 gap-4 mb-14">
           {BLOG_POSTS.filter((p) => p.slug !== slug && p.categorySlug !== post.categorySlug)
             .slice(0, 4)
             .map((related) => {
@@ -172,22 +227,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
                 >
                   <div className="relative w-24 flex-none overflow-hidden">
-                    <Image
-                      src={related.image}
-                      alt={related.title}
-                      fill
-                      sizes="96px"
-                      quality={60}
-                      className="object-cover"
-                    />
+                    <Image src={related.image} alt={related.title} fill sizes="96px" quality={60} className="object-cover" />
                   </div>
                   <div className="p-4 flex flex-col justify-center">
-                    <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>
-                      {relatedCat?.label}
-                    </span>
-                    <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
-                      {related.title}
-                    </h4>
+                    <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>{relatedCat?.label}</span>
+                    <h4 className="font-bold text-[#1B2E4B] text-sm leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">{related.title}</h4>
                   </div>
                 </Link>
               );

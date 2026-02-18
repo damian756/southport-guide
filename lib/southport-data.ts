@@ -399,7 +399,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Royal Birkdale hosts golf's greatest major this July. Our guide to the best hotels and accommodation — and why you need to book now.",
     categorySlug: "where-to-stay",
-    image: "/images/open-2026.webp",
+    image: "/images/blog-hero.jpg",
     date: "10 Feb 2026",
   },
   {
@@ -437,7 +437,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Beyond the pier and the beach, Southport has a wealth of secret spots. A local's guide to the places visitors rarely find.",
     categorySlug: "outdoors",
-    image: "/images/categories/beaches-parks.webp",
+    image: "/images/categories/cafes.webp",
     date: "5 Feb 2026",
   },
   {
@@ -456,7 +456,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "The 154th Open Championship returns to Royal Birkdale in July 2026. Here's your complete guide to the course, tickets, and planning your visit.",
     categorySlug: "golf",
-    image: "/images/categories/golf.webp",
+    image: "/images/open-2026.webp",
     date: "7 Feb 2026",
   },
   {
@@ -465,7 +465,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Southport is one of England's premier golfing destinations. From Royal Birkdale to Hillside and Southport & Ainsdale — here's your guide.",
     categorySlug: "golf",
-    image: "/images/open-2026.webp",
+    image: "/images/categories/golf.webp",
     date: "2 Feb 2026",
   },
   // Shopping
@@ -485,7 +485,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Lord Street isn't just for shopping — Southport's main boulevard is home to some of the town's finest bars. Here's where locals actually drink.",
     categorySlug: "bars-nightlife",
-    image: "/images/categories/bars-nightlife.webp",
+    image: "/images/blog-pubs.jpg",
     date: "11 Feb 2026",
   },
   // Wellness
@@ -505,7 +505,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Marine Lake is one of the UK's largest man-made lakes — and it's right in the heart of Southport. Here's how to make the most of it.",
     categorySlug: "activities",
-    image: "/images/categories/activities.webp",
+    image: "/images/categories/beaches-parks.webp",
     date: "9 Feb 2026",
   },
   // Getting Around
