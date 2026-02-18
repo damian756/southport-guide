@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Star, ArrowUpDown, ShieldCheck, ShieldAlert, ShieldX, Shield, MapPin, ChevronRight } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
@@ -171,6 +172,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
       {/* ── Category Hero ─────────────────────────────────────── */}
       <div className={`relative overflow-hidden bg-gradient-to-br ${theme.gradient}`}>
+        <div className="absolute inset-0">
+          <Image
+            src={`/images/categories/${category}.png`}
+            alt=""
+            fill
+            sizes="100vw"
+            quality={95}
+            className="object-cover object-center"
+            priority
+          />
+          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-80`} />
+        </div>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full translate-y-8 -translate-x-8 blur-2xl" />

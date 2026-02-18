@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, MapPin, Hotel, Utensils, Car } from "lucide-react";
 
 export const metadata = {
@@ -9,8 +10,20 @@ export const metadata = {
 export default function TheOpen2026Page() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-br from-green-800 to-green-900 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
+      <div className="relative overflow-hidden bg-gradient-to-br from-green-800 to-green-900 text-white py-20">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/open-2026.png"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={95}
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-800/90 to-green-900/90" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative">
           <span className="inline-block text-green-300 text-sm font-semibold mb-2">JULY 12-19, 2026</span>
           <h1 className="text-5xl md:text-6xl font-bold mb-4">The 154th Open</h1>
           <p className="text-2xl text-green-100 mb-8">Royal Birkdale Golf Club, Southport</p>

@@ -152,7 +152,10 @@ export default async function Home() {
           <div className="grid md:grid-cols-2 gap-5">
             {/* The Open */}
             <Link href="/the-open-2026" className="group relative overflow-hidden rounded-2xl bg-[#1A4020] p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020] to-[#2E6830] opacity-90" />
+              <div className="absolute inset-0">
+                <Image src="/images/open-2026.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020]/92 to-[#2E6830]/92" />
+              </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
                 <span className="inline-block text-4xl mb-4">⛳</span>
@@ -169,7 +172,10 @@ export default async function Home() {
 
             {/* MLEC */}
             <Link href="/mlec" className="group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C] to-[#6B3AA0] opacity-90" />
+              <div className="absolute inset-0">
+                <Image src="/images/mlec.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/92 to-[#6B3AA0]/92" />
+              </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
                 <span className="inline-block text-4xl mb-4"><Music className="w-10 h-10 text-[#C9A84C]" /></span>
