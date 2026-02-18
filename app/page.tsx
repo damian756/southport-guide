@@ -66,7 +66,7 @@ export default async function Home() {
         {/* Hero background photo */}
         <div className="absolute inset-0">
           <Image
-            src="/southport-pier.jpg"
+            src="/southport-pier.png"
             alt="Southport Pier at sunset"
             fill
             priority
