@@ -193,8 +193,42 @@ export default function PrivacyPage() {
             </p>
           </section>
 
+          <section id="cookies">
+            <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">8. Cookies</h2>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              We use cookies and similar tracking technologies to operate the site and, with your consent, to improve your experience and support affiliate revenue. You can manage your cookie preferences at any time using the banner shown on your first visit, or by clearing your browser&apos;s local storage.
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-gray-100">
+              <table className="w-full text-sm">
+                <thead className="bg-[#FAF8F5]">
+                  <tr>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider">Category</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider">Purpose</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider">Consent required</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {[
+                    ["Necessary", "Session management, security, and storing your cookie preference (sg_cookie_consent in localStorage).", "No — always active"],
+                    ["Analytics", "Google Analytics — page views, traffic sources, device types. Helps us understand how the site is used.", "Yes — optional"],
+                    ["Marketing / Affiliate", "Booking.com and other affiliate partner tracking cookies. Set when you click through to a partner booking site.", "Yes — optional"],
+                  ].map(([cat, purpose, req]) => (
+                    <tr key={cat}>
+                      <td className="px-4 py-3 font-semibold text-[#1B2E4B] align-top whitespace-nowrap">{cat}</td>
+                      <td className="px-4 py-3 text-gray-600 align-top">{purpose}</td>
+                      <td className={`px-4 py-3 align-top whitespace-nowrap font-medium ${req.startsWith("No") ? "text-[#C9A84C]" : "text-gray-500"}`}>{req}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-gray-500 text-xs mt-3">
+              Your preference is stored in your browser&apos;s local storage and expires when you clear your browser data. You can withdraw consent at any time by clearing the <code className="bg-gray-100 px-1 rounded">sg_cookie_consent</code> entry from your browser&apos;s local storage.
+            </p>
+          </section>
+
           <section>
-            <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">8. Changes to this policy</h2>
+            <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">9. Changes to this policy</h2>
             <p className="text-gray-600 text-sm leading-relaxed">
               We may update this policy from time to time. When we do, we will update the &ldquo;last updated&rdquo; date at the top of this page. Continued use of the site constitutes acceptance of the updated policy.
             </p>

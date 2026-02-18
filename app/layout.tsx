@@ -3,6 +3,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavMenu from "./components/NavMenu";
+import { CookieProvider } from "./components/CookieProvider";
+import CookieBanner from "./components/CookieBanner";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -96,9 +98,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <CookieProvider>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+          <CookieBanner />
+        </CookieProvider>
       </body>
     </html>
   );
