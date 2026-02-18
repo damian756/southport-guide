@@ -12,8 +12,6 @@ export default function OpenGettingTherePage() {
       <div className="relative overflow-hidden bg-green-800 text-white py-16">
         <div className="absolute inset-0">
           <Image src="/images/open-2026.png" alt="" fill sizes="100vw" quality={90} className="object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-800/50 to-green-900/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
         <div className="container mx-auto px-4 relative">
           <Link href="/the-open-2026" className="text-green-200 hover:text-white text-sm mb-4 inline-block drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">← The Open 2026</Link>

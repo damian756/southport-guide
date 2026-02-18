@@ -74,10 +74,6 @@ export default async function Home() {
             className="object-cover object-center"
             quality={100}
           />
-          {/* Layered overlay: dark navy at top for text, lighter + warm at bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/85 via-[#1B2E4B]/60 to-[#1B2E4B]/80" />
-          {/* Subtle gold tint to echo the sunset */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#C9A84C]/10 via-transparent to-transparent" />
         </div>
 
         {/* Gold top accent */}
@@ -154,8 +150,6 @@ export default async function Home() {
             <Link href="/the-open-2026" className="group relative overflow-hidden rounded-2xl bg-[#1A4020] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
                 <Image src="/images/open-2026.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020]/50 to-[#2E6830]/50" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
@@ -175,8 +169,6 @@ export default async function Home() {
             <Link href="/mlec" className="group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
                 <Image src="/images/mlec.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/50 to-[#6B3AA0]/50" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
@@ -225,8 +217,7 @@ export default async function Home() {
                     quality={90}
                     className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20`} />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                   <div className="relative p-5 flex flex-col justify-end h-full text-center">
                     <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-110 transition-transform duration-200 inline-block">

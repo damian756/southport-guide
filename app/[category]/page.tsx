@@ -182,12 +182,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             className="object-cover object-center"
             priority
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-30`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
-        </div>
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full translate-y-8 -translate-x-8 blur-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
         </div>
 
         <div className="relative container mx-auto px-4 max-w-6xl py-12 md:py-16">

@@ -21,8 +21,6 @@ export default function MLECPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/40 to-purple-900/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
         <div className="container mx-auto px-4 text-center relative">
           <span className="inline-block text-purple-200 text-sm font-semibold mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">OPENING APRIL 2027</span>
