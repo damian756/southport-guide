@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, ArrowRight, Trophy, Music } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 
@@ -62,17 +63,26 @@ export default async function Home() {
           HERO
       ══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-[#1B2E4B]">
-        {/* Decorative blobs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 -left-24 w-80 h-80 bg-[#2E7D6E]/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/2 rounded-full blur-3xl" />
+        {/* Hero background photo */}
+        <div className="absolute inset-0">
+          <Image
+            src="/southport-pier.jpg"
+            alt="Southport Pier at sunset"
+            fill
+            priority
+            className="object-cover object-center"
+            quality={90}
+          />
+          {/* Layered overlay: dark navy at top for text, lighter + warm at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/85 via-[#1B2E4B]/60 to-[#1B2E4B]/80" />
+          {/* Subtle gold tint to echo the sunset */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#C9A84C]/10 via-transparent to-transparent" />
         </div>
 
         {/* Gold top accent */}
-        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent relative z-10" />
 
-        <div className="relative container mx-auto px-4 py-20 md:py-28 max-w-6xl">
+        <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 max-w-6xl">
           <div className="max-w-3xl mx-auto text-center">
 
             {/* Pre-heading pill */}
@@ -121,7 +131,7 @@ export default async function Home() {
         </div>
 
         {/* Wave divider */}
-        <div className="relative h-12 overflow-hidden">
+        <div className="relative z-10 h-12 overflow-hidden">
           <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" preserveAspectRatio="none">
             <path d="M0 48L60 42C120 36 240 24 360 18C480 12 600 12 720 18C840 24 960 36 1080 38C1200 40 1320 30 1380 25L1440 20V48H1380C1320 48 1200 48 1080 48C960 48 840 48 720 48C600 48 480 48 360 48C240 48 120 48 60 48H0Z" fill="#FAF8F5"/>
           </svg>
