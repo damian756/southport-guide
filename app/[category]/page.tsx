@@ -13,7 +13,7 @@ type Props = {
 
 // Category visual themes
 const THEMES: Record<string, { gradient: string; light: string; accent: string; emoji: string; tagline: string; heroPos: string }> = {
-  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", light: "#FDF0EE", accent: "#C94B3B", emoji: "🍽️", tagline: "The best places to eat in Southport", heroPos: "center 40%" },
+  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", light: "#FDF0EE", accent: "#C94B3B", emoji: "🍽️", tagline: "The best places to eat in Southport", heroPos: "center 25%" },
   hotels:           { gradient: "from-[#1B2E4B] to-[#2A4A73]", light: "#EEF1F7", accent: "#1B2E4B", emoji: "🏨", tagline: "Where to stay in Southport", heroPos: "center" },
   "bars-nightlife": { gradient: "from-[#3D1A5C] to-[#6B3AA0]", light: "#F3EEF9", accent: "#5B2D8A", emoji: "🍺", tagline: "Pubs, bars and nightlife in Southport", heroPos: "center 30%" },
   cafes:            { gradient: "from-[#6B3A1F] to-[#A06040]", light: "#FAF0E8", accent: "#8B5E3C", emoji: "☕", tagline: "Great coffee, cafes and tea rooms", heroPos: "center 35%" },
