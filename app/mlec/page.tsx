@@ -18,7 +18,8 @@ export default function MLECPage() {
             fill
             sizes="100vw"
             quality={80}
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: "center 15%" }}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800/50 to-purple-900/40" />

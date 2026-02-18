@@ -11,7 +11,7 @@ export default function MLECGettingTherePage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative overflow-hidden bg-purple-800 text-white py-16">
         <div className="absolute inset-0">
-          <Image src="/images/mlec.webp" alt="" fill sizes="100vw" quality={80} className="object-cover object-center" />
+          <Image src="/images/mlec.webp" alt="" fill sizes="100vw" quality={80} className="object-cover" style={{ objectPosition: "center 15%" }} />
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800/50 to-purple-900/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         </div>
