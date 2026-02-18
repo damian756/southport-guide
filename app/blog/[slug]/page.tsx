@@ -162,7 +162,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Content */}
         <article className="bg-white rounded-2xl border border-gray-100 p-7 md:p-10 mb-12">
           {content ? (
-            content.map((block, i) => renderBlock(block, i))
+            <>
+              {content.map((block, i) => renderBlock(block, i))}
+              {/* Author sign-off */}
+              <div className="mt-10 pt-8 border-t border-gray-100 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-none text-[#C9A84C] font-display font-bold text-xl">
+                  T
+                </div>
+                <div>
+                  <p className="font-bold text-[#1B2E4B] text-sm">Terry</p>
+                  <p className="text-gray-400 text-xs leading-snug mt-0.5">
+                    Chief Editor, SouthportGuide.co.uk — Lives in Churchtown with his wife,<br className="hidden sm:block" /> four kids, and Frank the bulldog.
+                  </p>
+                </div>
+              </div>
+            </>
           ) : (
             <>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">{post.excerpt}</p>
