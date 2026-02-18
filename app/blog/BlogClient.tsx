@@ -82,7 +82,7 @@ export default function BlogClient({ posts, categories }: Props) {
       {/* ── Category filter ────────────────────────────────────────── */}
       <div className="bg-[#FAF8F5] border-b border-gray-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 justify-center">
             <button
               onClick={() => selectCategory("")}
               className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
