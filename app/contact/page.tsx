@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Send, CheckCircle, AlertCircle, Mail, MapPin, Clock } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, MapPin, Clock } from "lucide-react";
 
 const SUBJECTS = [
   "Claim my listing",
@@ -67,17 +67,6 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl border border-gray-100 p-6">
               <h2 className="font-display font-bold text-[#1B2E4B] mb-4">Contact Info</h2>
               <div className="space-y-4">
-                <div className="flex gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-4 h-4 text-[#C9A84C]" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-0.5">Email</p>
-                    <a href="mailto:hello@southportguide.co.uk" className="text-[#1B2E4B] text-sm font-medium hover:text-[#C9A84C] transition-colors">
-                      hello@southportguide.co.uk
-                    </a>
-                  </div>
-                </div>
                 <div className="flex gap-3">
                   <div className="w-9 h-9 rounded-full bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-4 h-4 text-[#C9A84C]" />
