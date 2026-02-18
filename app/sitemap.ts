@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { CATEGORIES } from "@/lib/config";
+import { BLOG_POSTS } from "@/lib/southport-data";
 
 const BASE = "https://www.southportguide.co.uk";
 
@@ -7,6 +8,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Static / editorial pages ────────────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE,                           lastModified: new Date(), changeFrequency: "daily",   priority: 1.0 },
+    { url: `${BASE}/events`,               lastModified: new Date(), changeFrequency: "daily",   priority: 0.9  },
+    { url: `${BASE}/blog`,                 lastModified: new Date(), changeFrequency: "daily",   priority: 0.9  },
     { url: `${BASE}/the-open-2026`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.95 },
     { url: `${BASE}/mlec`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9  },
     { url: `${BASE}/claim-listing`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8  },
@@ -32,6 +35,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
+  // ── Blog posts ───────────────────────────────────────────────
+  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+    url: `${BASE}/blog/${post.slug}`,
+    lastModified: new Date(post.date.split(" ").reverse().join("-")),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
   // ── Individual business pages ────────────────────────────────
   let businessPages: MetadataRoute.Sitemap = [];
   try {
@@ -54,5 +65,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB unavailable at build time
   }
 
-  return [...staticPages, ...categoryPages, ...businessPages];
+  return [...staticPages, ...categoryPages, ...blogPages, ...businessPages];
 }

@@ -79,15 +79,13 @@ export default function BlogClient({ posts, categories }: Props) {
         </div>
       </div>
 
-      {/* ── Category tabs ──────────────────────────────────────────── */}
-      <div className="sticky top-[64px] z-30 bg-[#FAF8F5] border-b border-gray-100 shadow-sm">
-        <div className="relative max-w-6xl mx-auto">
-          {/* Right fade to signal scrollability */}
-          <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#FAF8F5] to-transparent pointer-events-none z-10" />
-          <div className="flex gap-2 overflow-x-auto py-3 px-4 scrollbar-none" style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>
+      {/* ── Category filter ────────────────────────────────────────── */}
+      <div className="bg-[#FAF8F5] border-b border-gray-100 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => selectCategory("")}
-              className={`flex-none px-4 py-2 rounded-full text-sm font-semibold transition-all whitespace-nowrap ${
+              className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                 activeCategory === ""
                   ? "bg-[#1B2E4B] text-white shadow"
                   : "bg-white text-gray-600 border border-gray-200 hover:border-[#1B2E4B] hover:text-[#1B2E4B]"
@@ -104,7 +102,7 @@ export default function BlogClient({ posts, categories }: Props) {
                 <button
                   key={cat.slug}
                   onClick={() => selectCategory(cat.slug)}
-                  className={`flex-none px-4 py-2 rounded-full text-sm font-semibold transition-all whitespace-nowrap ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                     isActive
                       ? "text-white shadow"
                       : "bg-white text-gray-600 border border-gray-200 hover:text-[#1B2E4B] hover:border-gray-300"
