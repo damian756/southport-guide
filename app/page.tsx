@@ -70,8 +70,9 @@ export default async function Home() {
             alt="Southport Pier at sunset"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center"
-            quality={90}
+            quality={100}
           />
           {/* Layered overlay: dark navy at top for text, lighter + warm at bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/85 via-[#1B2E4B]/60 to-[#1B2E4B]/80" />
