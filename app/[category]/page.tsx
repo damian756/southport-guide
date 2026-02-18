@@ -174,15 +174,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       <div className={`relative overflow-hidden bg-gradient-to-br ${theme.gradient}`}>
         <div className="absolute inset-0">
           <Image
-            src={`/images/categories/${category}.png`}
+            src={`/images/categories/${category}.webp`}
             alt=""
             fill
             sizes="100vw"
-            quality={95}
+            quality={80}
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-40`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
         </div>
 
         <div className="relative container mx-auto px-4 max-w-6xl py-12 md:py-16">

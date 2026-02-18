@@ -66,14 +66,15 @@ export default async function Home() {
         {/* Hero background photo */}
         <div className="absolute inset-0">
           <Image
-            src="/southport-pier.png"
+            src="/southport-pier.webp"
             alt="Southport Pier at sunset"
             fill
             priority
             sizes="100vw"
             className="object-cover object-center"
-            quality={100}
+            quality={80}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/70 via-[#1B2E4B]/40 to-[#1B2E4B]/70" />
         </div>
 
         {/* Gold top accent */}
@@ -149,7 +150,8 @@ export default async function Home() {
             {/* The Open */}
             <Link href="/the-open-2026" className="group relative overflow-hidden rounded-2xl bg-[#1A4020] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
-                <Image src="/images/open-2026.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
+                <Image src="/images/open-2026.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020]/60 to-[#2E6830]/40" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
@@ -168,7 +170,8 @@ export default async function Home() {
             {/* MLEC */}
             <Link href="/mlec" className="group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
-                <Image src="/images/mlec.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
+                <Image src="/images/mlec.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/60 to-[#6B3AA0]/40" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
@@ -210,11 +213,11 @@ export default async function Home() {
                   className="group relative overflow-hidden rounded-2xl card-hover min-h-[120px] sm:min-h-[140px]"
                 >
                   <Image
-                    src={`/images/categories/${cat.slug}.png`}
+                    src={`/images/categories/${cat.slug}.webp`}
                     alt=""
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
-                    quality={90}
+                    quality={80}
                     className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

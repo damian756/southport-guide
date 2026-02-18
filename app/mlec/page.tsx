@@ -13,14 +13,16 @@ export default function MLECPage() {
       <div className="relative overflow-hidden bg-gradient-to-br from-purple-800 to-purple-900 text-white py-20">
         <div className="absolute inset-0">
           <Image
-            src="/images/mlec.png"
+            src="/images/mlec.webp"
             alt=""
             fill
             sizes="100vw"
-            quality={95}
+            quality={80}
             className="object-cover object-center"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/50 to-purple-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         </div>
         <div className="container mx-auto px-4 text-center relative">
           <span className="inline-block text-purple-200 text-sm font-semibold mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">OPENING APRIL 2027</span>
