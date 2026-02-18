@@ -53,3 +53,6 @@ enrich-progress.json
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Original high-res uploads (copies already in place)
+/public/images/uploads/
