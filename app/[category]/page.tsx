@@ -18,7 +18,7 @@ const THEMES: Record<string, { gradient: string; light: string; accent: string; 
   "bars-nightlife": { gradient: "from-[#3D1A5C] to-[#6B3AA0]", light: "#F3EEF9", accent: "#5B2D8A", emoji: "🍺", tagline: "Pubs, bars and nightlife in Southport", heroPos: "center 30%" },
   cafes:            { gradient: "from-[#6B3A1F] to-[#A06040]", light: "#FAF0E8", accent: "#8B5E3C", emoji: "☕", tagline: "Great coffee, cafes and tea rooms", heroPos: "center 35%" },
   attractions:      { gradient: "from-[#1A5C5B] to-[#2E8B7A]", light: "#E8F5F3", accent: "#2E7D6E", emoji: "🎡", tagline: "Things to see and do in Southport", heroPos: "center 20%" },
-  "beaches-parks":  { gradient: "from-[#1A5C7A] to-[#1E8AB0]", light: "#E8F4FA", accent: "#1A6B8A", emoji: "🏖️", tagline: "Beautiful beaches and open spaces", heroPos: "center" },
+  "beaches-parks":  { gradient: "from-[#1A5C7A] to-[#1E8AB0]", light: "#E8F4FA", accent: "#1A6B8A", emoji: "🏖️", tagline: "Beautiful beaches and open spaces", heroPos: "center 15%" },
   golf:             { gradient: "from-[#1A4020] to-[#2E6830]", light: "#E8F2E8", accent: "#2C5F2E", emoji: "⛳", tagline: "World-class golf courses near Southport", heroPos: "center 20%" },
   shopping:         { gradient: "from-[#8B2847] to-[#C45C6A]", light: "#FAE8EC", accent: "#C45C6A", emoji: "🛍️", tagline: "Shops, boutiques and markets", heroPos: "center" },
   wellness:         { gradient: "from-[#4A2060] to-[#7B3FAA]", light: "#F0E8F8", accent: "#6B4C8B", emoji: "💆", tagline: "Spas, salons and wellness in Southport", heroPos: "center" },
