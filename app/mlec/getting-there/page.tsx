@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Getting to Marine Lake Events Centre | SouthportGuide",
@@ -8,11 +9,16 @@ export const metadata = {
 export default function MLECGettingTherePage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-purple-800 text-white py-12">
-        <div className="container mx-auto px-4">
-          <Link href="/mlec" className="text-purple-200 hover:text-white text-sm mb-4 inline-block">← MLEC</Link>
-          <h1 className="text-4xl font-bold">Getting to MLEC</h1>
-          <p className="text-purple-100 mt-2">Marine Lake Events Centre, Southport</p>
+      <div className="relative overflow-hidden bg-purple-800 text-white py-16">
+        <div className="absolute inset-0">
+          <Image src="/images/mlec.png" alt="" fill sizes="100vw" quality={90} className="object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/50 to-purple-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <Link href="/mlec" className="text-purple-200 hover:text-white text-sm mb-4 inline-block drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">← MLEC</Link>
+          <h1 className="text-4xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">Getting to MLEC</h1>
+          <p className="text-purple-100 mt-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">Marine Lake Events Centre, Southport</p>
         </div>
       </div>
       <div className="container mx-auto px-4 py-8">

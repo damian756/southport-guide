@@ -21,13 +21,14 @@ export default function MLECPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/90 to-purple-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/40 to-purple-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
         <div className="container mx-auto px-4 text-center relative">
-          <span className="inline-block text-purple-300 text-sm font-semibold mb-2">OPENING APRIL 2027</span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Marine Lake Events Centre</h1>
-          <p className="text-2xl text-purple-100 mb-8">Southport&apos;s new entertainment destination</p>
-          <p className="max-w-2xl mx-auto text-lg">
+          <span className="inline-block text-purple-200 text-sm font-semibold mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">OPENING APRIL 2027</span>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">Marine Lake Events Centre</h1>
+          <p className="text-2xl text-purple-100 mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">Southport&apos;s new entertainment destination</p>
+          <p className="max-w-2xl mx-auto text-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
             1,350-seat venue for concerts, theatre and events. Expected to bring 515,000 additional visitors to Southport every year.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mt-8">

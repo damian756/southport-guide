@@ -21,13 +21,14 @@ export default function TheOpen2026Page() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-800/90 to-green-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-800/40 to-green-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
         <div className="container mx-auto px-4 text-center relative">
-          <span className="inline-block text-green-300 text-sm font-semibold mb-2">JULY 12-19, 2026</span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">The 154th Open</h1>
-          <p className="text-2xl text-green-100 mb-8">Royal Birkdale Golf Club, Southport</p>
-          <p className="max-w-2xl mx-auto text-lg">
+          <span className="inline-block text-green-200 text-sm font-semibold mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">JULY 12-19, 2026</span>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">The 154th Open</h1>
+          <p className="text-2xl text-green-100 mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">Royal Birkdale Golf Club, Southport</p>
+          <p className="max-w-2xl mx-auto text-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
             Championship play runs Thursday 16th – Sunday 19th July. Plan where to stay, eat and explore in Southport.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mt-8">

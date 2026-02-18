@@ -154,7 +154,8 @@ export default async function Home() {
             <Link href="/the-open-2026" className="group relative overflow-hidden rounded-2xl bg-[#1A4020] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
                 <Image src="/images/open-2026.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020]/92 to-[#2E6830]/92" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020]/50 to-[#2E6830]/50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
@@ -174,7 +175,8 @@ export default async function Home() {
             <Link href="/mlec" className="group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
                 <Image src="/images/mlec.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={95} className="object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/92 to-[#6B3AA0]/92" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/50 to-[#6B3AA0]/50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
@@ -213,18 +215,25 @@ export default async function Home() {
                 <Link
                   key={cat.slug}
                   href={`/${cat.slug}`}
-                  className="group relative overflow-hidden rounded-2xl card-hover"
+                  className="group relative overflow-hidden rounded-2xl card-hover min-h-[120px] sm:min-h-[140px]"
                 >
-                  {/* Gradient background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} opacity-90`} />
+                  <Image
+                    src={`/images/categories/${cat.slug}.png`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                    quality={90}
+                    className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20`} />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200" />
 
-                  <div className="relative p-5 text-center">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-200 inline-block">
+                  <div className="relative p-5 flex flex-col justify-end h-full text-center">
+                    <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-110 transition-transform duration-200 inline-block">
                       {cat.emoji}
                     </div>
-                    <h3 className="text-white font-bold text-sm leading-tight mb-1">{cat.label}</h3>
-                    <p className="text-white/60 text-xs">
+                    <h3 className="text-white font-bold text-sm leading-tight mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">{cat.label}</h3>
+                    <p className="text-white/90 text-xs drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                       {count > 0 ? `${count} listings` : "Explore →"}
                     </p>
                   </div>

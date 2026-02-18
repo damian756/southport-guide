@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Getting to The Open 2026 | SouthportGuide",
@@ -8,11 +9,16 @@ export const metadata = {
 export default function OpenGettingTherePage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-800 text-white py-12">
-        <div className="container mx-auto px-4">
-          <Link href="/the-open-2026" className="text-green-200 hover:text-white text-sm mb-4 inline-block">← The Open 2026</Link>
-          <h1 className="text-4xl font-bold">Getting to Royal Birkdale</h1>
-          <p className="text-green-100 mt-2">Transport and parking for The Open 2026</p>
+      <div className="relative overflow-hidden bg-green-800 text-white py-16">
+        <div className="absolute inset-0">
+          <Image src="/images/open-2026.png" alt="" fill sizes="100vw" quality={90} className="object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-800/50 to-green-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <Link href="/the-open-2026" className="text-green-200 hover:text-white text-sm mb-4 inline-block drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">← The Open 2026</Link>
+          <h1 className="text-4xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">Getting to Royal Birkdale</h1>
+          <p className="text-green-100 mt-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">Transport and parking for The Open 2026</p>
         </div>
       </div>
       <div className="container mx-auto px-4 py-8">

@@ -182,7 +182,8 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             className="object-cover object-center"
             priority
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-80`} />
+          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-30`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
         </div>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
@@ -199,12 +200,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
           <div className="flex items-end justify-between gap-6">
             <div>
-              <div className="text-5xl mb-4">{theme.emoji}</div>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2">
+              <div className="text-5xl mb-4 drop-shadow-md">{theme.emoji}</div>
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
                 {cat.name}
                 <span className="text-white/50 font-normal"> in Southport</span>
               </h1>
-              <p className="text-white/70 text-lg">{theme.tagline}</p>
+              <p className="text-white/90 text-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">{theme.tagline}</p>
             </div>
             <div className="hidden md:block text-right">
               <div className="font-display text-5xl font-bold text-white/20">{businesses.length}</div>
