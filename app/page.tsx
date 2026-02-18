@@ -68,74 +68,101 @@ export default async function Home() {
     <div className="min-h-screen flex flex-col">
 
       {/* ══════════════════════════════════════════════════════
-          HERO
+          HERO — SPLIT LAYOUT
       ══════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#1B2E4B]">
-        {/* Hero background photo */}
-        <div className="absolute inset-0">
-          <Image
-            src="/southport-pier.webp"
-            alt="Southport Pier at sunset"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-            quality={80}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/70 via-[#1B2E4B]/40 to-[#1B2E4B]/70" />
-        </div>
-
+      <section className="bg-[#1B2E4B] overflow-hidden">
         {/* Gold top accent */}
-        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent relative z-10" />
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
 
-        <div className="relative z-10 container mx-auto px-4 py-16 md:py-24 max-w-6xl">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className="flex flex-col md:flex-row md:min-h-[560px]">
 
-            {/* Pre-heading pills */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-4 py-2 rounded-full border border-emerald-400/25">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
-                Updated Daily
-              </div>
-              <div className="inline-flex items-center gap-2 bg-[#C9A84C]/15 text-[#C9A84C] text-xs font-semibold px-4 py-2 rounded-full border border-[#C9A84C]/25">
-                <Trophy className="w-3.5 h-3.5" />
-                ⛳ The Open: {openDays} days away
-              </div>
+          {/* LEFT: Pier image — full colour, no heavy overlay */}
+          <div className="relative w-full h-60 sm:h-72 md:h-auto md:flex-none md:w-[58%] overflow-hidden">
+            <Image
+              src="/southport-pier.webp"
+              alt="Southport Pier at sunset"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 58vw"
+              quality={85}
+              className="object-cover object-center"
+            />
+            {/* Desktop: right-edge fade into the dark panel */}
+            <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#1B2E4B]" />
+            {/* Mobile: bottom fade */}
+            <div className="md:hidden absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1B2E4B]" />
+          </div>
+
+          {/* RIGHT: Live pulse panel */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-10 md:px-10 md:py-12">
+
+            {/* Updated Daily badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-3 py-1.5 rounded-full border border-emerald-400/25 mb-5 self-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
+              Updated Daily
             </div>
 
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-5 leading-tight tracking-tight">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight">
               Your Local Guide<br />
               <span className="text-[#C9A84C]">to Southport.</span>
             </h1>
 
-            <p className="text-white/70 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto">
-              Events, restaurants, things to do — updated regularly by people who live here. Faster than the rest.
+            <p className="text-white/60 text-sm md:text-base mb-7 leading-relaxed max-w-sm">
+              Events, restaurants, things to do — updated regularly by people who live here.
             </p>
 
-            {/* Stats row */}
-            <div className="flex items-center justify-center gap-8 mb-10">
-              {[
-                { value: totalBusinesses || "999", label: "Businesses" },
-                { value: upcomingEvents.length > 0 ? upcomingEvents.length + "+" : "20+", label: "Events Listed" },
-                { value: "Free", label: "To List" },
-              ].map(({ value, label }) => (
-                <div key={label} className="text-center">
-                  <div className="font-display text-2xl md:text-3xl font-bold text-[#C9A84C]">{value}</div>
-                  <div className="text-white/50 text-xs uppercase tracking-wider mt-0.5">{label}</div>
-                </div>
-              ))}
+            {/* Open countdown card */}
+            <Link
+              href="/the-open-2026"
+              className="group bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#C9A84C]/40 rounded-2xl p-4 mb-5 flex items-center gap-4 transition-all self-start w-full max-w-xs"
+            >
+              <div className="text-center flex-none">
+                <div className="font-display text-4xl font-bold text-[#C9A84C] leading-none">{openDays}</div>
+                <div className="text-white/40 text-[9px] uppercase tracking-widest mt-1">days</div>
+              </div>
+              <div className="w-px h-10 bg-white/10 flex-none" />
+              <div className="min-w-0">
+                <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open Championship</div>
+                <div className="text-white/50 text-xs mt-0.5">⛳ Royal Birkdale · July 2026</div>
+                <div className="text-[#C9A84C] text-xs mt-1.5">Plan your visit →</div>
+              </div>
+            </Link>
+
+            {/* Next 2 upcoming events */}
+            <div className="mb-6 w-full max-w-xs">
+              <p className="text-white/35 text-[10px] uppercase tracking-widest mb-2">Coming up</p>
+              <div className="space-y-2">
+                {upcomingEvents.slice(0, 2).map((event, i) => (
+                  <a
+                    key={i}
+                    href={event.link}
+                    target={event.link.startsWith("http") ? "_blank" : undefined}
+                    rel={event.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-3 bg-white/5 hover:bg-white/10 rounded-xl px-3 py-2.5 transition-colors group"
+                  >
+                    <span className="text-lg flex-none">{event.emoji}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white text-sm font-semibold truncate group-hover:text-[#C9A84C] transition-colors">{event.title}</p>
+                      <p className="text-white/40 text-xs">{event.dayLabel} · {event.venue}</p>
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 text-white/25 group-hover:text-[#C9A84C] flex-none transition-colors" />
+                  </a>
+                ))}
+              </div>
+              <Link href="/events" className="text-xs text-white/35 hover:text-[#C9A84C] transition-colors mt-2 inline-block">
+                View full 2026 calendar →
+              </Link>
             </div>
 
             {/* Category pills */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {CATEGORIES.slice(0, 8).map((cat) => (
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.slice(0, 6).map((cat) => (
                 <Link
                   key={cat.slug}
                   href={`/${cat.slug}`}
-                  className="flex items-center gap-1.5 bg-white/8 hover:bg-white/15 backdrop-blur border border-white/12 hover:border-white/25 text-white/80 hover:text-white text-sm px-4 py-2 rounded-full transition-all duration-200"
+                  className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/70 hover:text-white text-xs px-3 py-1.5 rounded-full transition-all"
                 >
-                  <span className="text-sm">{cat.emoji}</span>
-                  {cat.label}
+                  <span>{cat.emoji}</span> {cat.label}
                 </Link>
               ))}
             </div>
@@ -143,9 +170,9 @@ export default async function Home() {
         </div>
 
         {/* Wave divider */}
-        <div className="relative z-10 h-12 overflow-hidden">
-          <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" preserveAspectRatio="none">
-            <path d="M0 48L60 42C120 36 240 24 360 18C480 12 600 12 720 18C840 24 960 36 1080 38C1200 40 1320 30 1380 25L1440 20V48H1380C1320 48 1200 48 1080 48C960 48 840 48 720 48C600 48 480 48 360 48C240 48 120 48 60 48H0Z" fill="#FAF8F5"/>
+        <div className="h-10 overflow-hidden relative">
+          <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" preserveAspectRatio="none">
+            <path d="M0 40L60 35C120 30 240 20 360 15C480 10 600 10 720 15C840 20 960 30 1080 32C1200 33 1320 25 1380 21L1440 17V40H0Z" fill="#FAF8F5"/>
           </svg>
         </div>
       </section>
