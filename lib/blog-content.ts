@@ -117,6 +117,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "☔", text: "A rainy day in Southport isn't a ruined day. The Atkinson, the Arcade, and a long lunch covers it beautifully. Embrace the seaside greyness — it's part of the charm." },
     { type: "h2", text: "The honest advice" },
     { type: "p", text: "Dress for the weather and don't let it ruin the day. The best version of Southport in the rain is: morning at The Atkinson, lunch at Southport Market, afternoon in the arcade with the kids. That's a good day." },
+    { type: "cta", text: "Looking for more to do in Southport beyond rainy days? We've covered every beach, attraction, golf course, and hidden gem in one place.", href: "/things-to-do", label: "The Complete Things to Do in Southport Guide →" },
   ],
 
   "southport-with-kids-full-guide": [
@@ -139,6 +140,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Formby is 20 minutes south and has the Formby Squirrel Reserve (National Trust). Red squirrels, dunes, woodland paths. My youngest thinks it's the best place in the world. It's free for NT members and worth every penny for everyone else." },
     { type: "p", text: "Crosby Beach and the Anthony Gormley iron men ('Another Place') is a different kind of experience — more conceptual, a bit haunting, strangely beautiful. Good for older kids who can appreciate it. My thirteen-year-old was genuinely moved by it, which I did not expect." },
     { type: "callout", emoji: "🎡", text: "Summer school holidays are the busiest period for Southport's attractions. If you can visit mid-week, or in May/June before the main rush, you'll have a significantly better experience." },
+    { type: "cta", text: "Formby, Crosby, Marine Lake, Adventure Coast — our full guide covers every family option in and around Southport, with practical details on prices, parking, and opening times.", href: "/things-to-do", label: "Things to Do in Southport — Complete Family Guide →" },
   ],
 
   "southport-hidden-gems": [
@@ -156,6 +158,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Crossens — the overlooked corner" },
     { type: "p", text: "Crossens is at the northern edge of Southport, heading toward the RSPB reserve at Marshside. It's not a tourist destination. It's a quiet residential area with a marshland backdrop that's genuinely striking in autumn. If you want to understand the landscape around Southport — the flatness, the big skies, the coastal marshes — a walk out toward Crossens does it better than anything else." },
     { type: "callout", emoji: "🗺️", text: "None of these places are secret in the grand scheme of things. They're just not on the main tourist trail. Which is exactly why they're worth finding." },
+    { type: "cta", text: "Hidden gems are part of a bigger picture. Here's our full guide to everything worth doing in and around Southport — beaches, nature, culture, golf, and more.", href: "/things-to-do", label: "Things to Do in Southport — The Complete Guide →" },
   ],
 
   "best-beaches-near-southport": [
@@ -172,6 +175,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "🌊", text: "Always check tide times at Southport beach before you visit. The tide goes out extremely far — and it comes back in faster than people expect. Especially worth knowing if you're walking toward the water with kids." },
     { type: "h2", text: "The quick answer" },
     { type: "p", text: "Southport for atmosphere and facilities. Ainsdale for a quieter, more natural experience. Formby for dunes, woods, and red squirrels. Crosby for Gormley's iron men. You could do all four in a weekend and you'd have done something genuinely worthwhile." },
+    { type: "cta", text: "The beaches are just the start. Our full guide covers everything worth doing across Southport — golf, nature, culture, family days out, and the 2026 events calendar.", href: "/things-to-do", label: "Things to Do in Southport — Complete Guide →" },
   ],
 
   "royal-birkdale-guide-the-open": [
@@ -387,6 +391,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Sunday afternoon — extend or head home" },
     { type: "p", text: "If you're extending, Formby is 20 minutes south — squirrels, dunes, and a proper coastal walk. Crosby is 30 minutes — the Gormley iron men. If you're heading home, you've had a genuinely good weekend. That's the honest version of Southport at its best." },
     { type: "callout", emoji: "📅", text: "This itinerary works in most seasons. Summer gives you the beach at its best. Spring and autumn give you the town without the crowds. Winter gives you the Atkinson, the pubs, and a quieter version of everything that's still worth having." },
+    { type: "cta", text: "Planning your weekend in more detail? Our full guide covers every beach, attraction, golf course, and neighbourhood — with the practical details on prices, parking, and what's actually worth your time.", href: "/things-to-do", label: "Things to Do in Southport — Full Guide →" },
   ],
 
   "southport-events-guide-2026": [
@@ -408,6 +413,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "📅", text: "For the full 2026 events calendar with dates, venues, and ticket links, visit southportguide.co.uk/events. We update it regularly as new events are confirmed." },
     { type: "h2", text: "The bigger picture" },
     { type: "p", text: "2026 is the year Southport starts to properly announce itself. The Open brings global attention. The new events — Lightport, Cristal Palace, Big Top — signal a town with cultural ambition. And in the background, the MLEC is taking shape ready for 2027. If you've been meaning to visit Southport, this is the year to do it." },
+    { type: "cta", text: "Planning your visit around the 2026 events? Here's everything else worth doing while you're in town — beaches, golf, nature, culture, and the things most visitors miss.", href: "/things-to-do", label: "Things to Do in Southport — Complete Guide →" },
   ],
 
   // ── Open 2026 cluster ─────────────────────────────────────────────────────
@@ -717,6 +723,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "The verdict" },
     { type: "p", text: "For maximum seaside thrill, rides, and a full-noise British holiday: Blackpool, no question. For a more relaxed long weekend, better restaurants, better shopping, and one of the biggest sporting events in the world this summer: Southport. Personally, I know which one I'm biased toward. But I'll say this: the kind of person who reads a thoughtful local guide to help them choose is probably the kind of person who'd enjoy Southport more." },
     { type: "callout", emoji: "🏆", text: "You don't have to choose. Liverpool is 45 minutes from both. Do a Southport–Liverpool–Blackpool triangle and you've covered three very different experiences in a few days. The train connections make it easy." },
+    { type: "cta", text: "Convinced? Here's everything worth doing in Southport — every beach, attraction, golf course, and neighbourhood — in one honest local guide.", href: "/things-to-do", label: "Things to Do in Southport →" },
   ],
 
 };
