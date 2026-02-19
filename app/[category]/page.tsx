@@ -5,10 +5,12 @@ import type { Metadata } from "next";
 import { Star, ArrowUpDown, ShieldCheck, ShieldAlert, ShieldX, Shield, MapPin, ChevronRight } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
+import ViewToggle from "@/components/ViewToggle";
+import type { MapPin as MapPinType } from "@/components/CategoryMap";
 
 type Props = {
   params: Promise<{ category: string }>;
-  searchParams: Promise<{ sort?: string }>;
+  searchParams: Promise<{ sort?: string; area?: string }>;
 };
 
 // Category visual themes
@@ -28,6 +30,17 @@ const THEMES: Record<string, { gradient: string; light: string; accent: string; 
 
 const FOOD_CATS = new Set(["restaurants", "cafes", "bars-nightlife", "hotels", "activities"]);
 
+// Southport neighbourhoods — order matters (more specific first)
+const AREAS = [
+  { key: "birkdale",    label: "Birkdale",     match: ["Birkdale"] },
+  { key: "churchtown",  label: "Churchtown",   match: ["Churchtown"] },
+  { key: "ainsdale",    label: "Ainsdale",     match: ["Ainsdale"] },
+  { key: "town-centre", label: "Town Centre",  match: ["Lord Street", "Chapel Street", "Eastbank", "London Street", "King Street", "West Street", "Bold Street"] },
+  { key: "seafront",    label: "Seafront",     match: ["Marine Drive", "Promenade", "The Esplanade", "Ocean Plaza"] },
+  { key: "crossens",    label: "Crossens",     match: ["Crossens"] },
+  { key: "formby",      label: "Formby",       match: ["Formby"] },
+];
+
 type Business = {
   slug: string;
   name: string;
@@ -40,12 +53,13 @@ type Business = {
   priceRange: string | null;
   hygieneRating: string | null;
   hygieneRatingShow: boolean;
+  lat: number | null;
+  lng: number | null;
 };
 
 function getSnippet(b: Business): string | null {
   if (b.shortDescription) return b.shortDescription;
   if (b.description) {
-    // Use first sentence, capped at 140 chars
     const first = b.description.split(/(?<=[.!?])\s+/)[0] ?? b.description;
     return first.length > 140 ? first.slice(0, 137) + "…" : first;
   }
@@ -57,6 +71,12 @@ function getArea(address: string): string {
                  "Formby", "Ormskirk", "Scarisbrick", "Banks", "Halsall", "Burscough"];
   for (const a of areas) { if (address.includes(a)) return a; }
   return "Southport";
+}
+
+function matchesAreaFilter(address: string, areaKey: string): boolean {
+  const area = AREAS.find((a) => a.key === areaKey);
+  if (!area) return true;
+  return area.match.some((m) => address.toLowerCase().includes(m.toLowerCase()));
 }
 
 function hygieneStyle(r: string): { bg: string; text: string; border: string } {
@@ -111,7 +131,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { category } = await params;
-  const { sort } = await searchParams;
+  const { sort, area } = await searchParams;
   if (!isValidCategory(category)) notFound();
 
   const cat = getCategoryBySlug(category)!;
@@ -124,16 +144,14 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     if (categoryRecord) {
       const catId = categoryRecord.id;
 
-      const SELECT_COLS = `slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"`;
-
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId} ORDER BY name ASC
         `;
       } else if (sort === "hygiene") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
@@ -141,7 +159,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else if (sort === "google") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
@@ -149,7 +167,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow"
+          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
@@ -159,6 +177,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     }
   } catch { /* DB unavailable */ }
 
+  // Apply area filter in JS (address-string matching)
+  const filteredBusinesses = area
+    ? businesses.filter((b) => matchesAreaFilter(b.address, area))
+    : businesses;
+
   const activeSort = sort || "default";
   const sortOptions = [
     { key: "default", label: "Best Match" },
@@ -166,6 +189,140 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     { key: "google",  label: "⭐ Google Rating" },
     ...(isFoodCat ? [{ key: "hygiene", label: "🛡️ Hygiene Rating" }] : []),
   ];
+
+  // Build map pins (only businesses with coordinates)
+  const mapPins: MapPinType[] = filteredBusinesses
+    .filter((b) => b.lat != null && b.lng != null)
+    .map((b) => ({
+      slug: b.slug,
+      name: b.name,
+      lat: b.lat!,
+      lng: b.lng!,
+      rating: b.rating,
+      reviewCount: b.reviewCount,
+      priceRange: b.priceRange,
+      listingTier: b.listingTier,
+      address: b.address,
+      category,
+    }));
+
+  // Helper to build URL preserving all params
+  function buildUrl(overrides: Record<string, string | undefined>) {
+    const merged: Record<string, string> = {};
+    if (sort) merged.sort = sort;
+    if (area) merged.area = area;
+    Object.entries(overrides).forEach(([k, v]) => {
+      if (v === undefined) delete merged[k];
+      else merged[k] = v;
+    });
+    const qs = new URLSearchParams(merged).toString();
+    return `/${category}${qs ? `?${qs}` : ""}`;
+  }
+
+  // The list grid — passed as a React node to ViewToggle
+  const listGrid = (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-0">
+      {filteredBusinesses.length === 0 ? (
+        <div className="col-span-full text-center py-20 bg-white rounded-2xl border border-gray-100">
+          <div className="text-5xl mb-4">{theme.emoji}</div>
+          <p className="text-gray-500 text-lg mb-2">No listings {area ? "in this area" : "yet"}</p>
+          {area ? (
+            <Link href={`/${category}`} className="text-[#C9A84C] font-semibold text-sm hover:underline">
+              Clear area filter
+            </Link>
+          ) : (
+            <>
+              <p className="text-gray-400 text-sm mb-6">Be the first to list your business here.</p>
+              <Link href="/claim-listing" className="inline-block bg-[#C9A84C] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-[#B8972A] transition-colors">
+                Add Your Business
+              </Link>
+            </>
+          )}
+        </div>
+      ) : (
+        filteredBusinesses.map((b) => {
+          const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
+          const areaName = getArea(b.address);
+          const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
+          const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
+
+          return (
+            <Link
+              key={b.slug}
+              href={`/${category}/${b.slug}`}
+              className={`group flex flex-col bg-white rounded-2xl overflow-hidden card-hover border transition-colors ${
+                isFeatured
+                  ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md"
+                  : "border-gray-100 hover:border-gray-200"
+              }`}
+            >
+              {/* Coloured top strip */}
+              <div className={`h-1.5 w-full bg-gradient-to-r ${theme.gradient} ${isFeatured ? "h-2" : ""}`} />
+
+              <div className="p-5 flex flex-col flex-1">
+                {isFeatured && (
+                  <div className="flex items-center gap-1.5 mb-3">
+                    <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
+                      ✦ Featured
+                    </span>
+                  </div>
+                )}
+
+                <h2 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
+                  {b.name}
+                </h2>
+
+                <p className="flex items-center gap-1 text-gray-400 text-xs mb-3">
+                  <MapPin className="w-3 h-3 flex-shrink-0" />
+                  {areaName}{areaName !== "Southport" ? ", Southport" : ""}
+                </p>
+
+                {(() => {
+                  const snippet = getSnippet(b);
+                  return snippet ? (
+                    <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4 leading-relaxed">{snippet}</p>
+                  ) : <div className="flex-1 mb-4" />;
+                })()}
+
+                <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-50">
+                  {b.rating ? (
+                    <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                      <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                      {b.rating.toFixed(1)}
+                      {b.reviewCount && (
+                        <span className="font-normal text-amber-500">
+                          ({b.reviewCount >= 1000 ? `${(b.reviewCount / 1000).toFixed(1)}k` : b.reviewCount})
+                        </span>
+                      )}
+                    </span>
+                  ) : null}
+
+                  {showHygiene && hStyle && b.hygieneRating && (
+                    <span className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full border ${hStyle.bg} ${hStyle.text} ${hStyle.border}`}>
+                      <HygieneIcon r={b.hygieneRating} />
+                      FSA {b.hygieneRating}★
+                    </span>
+                  )}
+
+                  <div className="ml-auto flex items-center gap-2">
+                    {b.priceRange && (
+                      <span className="text-gray-400 text-xs font-semibold">{b.priceRange}</span>
+                    )}
+                    <span
+                      className="text-xs font-bold group-hover:translate-x-0.5 transition-transform"
+                      style={{ color: theme.accent }}
+                    >
+                      View →
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          );
+        })
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -205,7 +362,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               <p className="text-white/90 text-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">{theme.tagline}</p>
             </div>
             <div className="hidden md:block text-right">
-              <div className="font-display text-5xl font-bold text-white/20">{businesses.length}</div>
+              <div className="font-display text-5xl font-bold text-white/20">{filteredBusinesses.length}</div>
               <div className="text-white/40 text-sm uppercase tracking-widest">listings</div>
             </div>
           </div>
@@ -221,14 +378,43 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
       <div className="container mx-auto px-4 max-w-6xl py-8">
 
-        {/* ── Sort bar ─────────────────────────────────────────── */}
-        <div className="flex items-center gap-2 mb-8 flex-wrap bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+        {/* ── Area filter pills ──────────────────────────────── */}
+        <div className="flex items-center gap-2 mb-4 flex-wrap">
+          <span className="text-xs font-medium text-gray-400">Area:</span>
+          <Link
+            href={buildUrl({ area: undefined })}
+            className={`px-3 py-1 rounded-full text-xs font-semibold transition-all border ${
+              !area
+                ? "bg-[#1B2E4B] text-white border-[#1B2E4B]"
+                : "bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-700"
+            }`}
+          >
+            All areas
+          </Link>
+          {AREAS.map(({ key, label }) => (
+            <Link
+              key={key}
+              href={buildUrl({ area: key })}
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all border ${
+                area === key
+                  ? "text-white border-transparent"
+                  : "bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-700"
+              }`}
+              style={area === key ? { backgroundColor: theme.accent, borderColor: theme.accent } : {}}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+
+        {/* ── Sort bar + Map/List toggle ─────────────────────── */}
+        <div className="flex items-center gap-2 mb-6 flex-wrap bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
           <ArrowUpDown className="w-4 h-4 text-gray-300 ml-1 flex-shrink-0" />
           <span className="text-xs font-medium text-gray-400 mr-1">Sort:</span>
           {sortOptions.map(({ key, label }) => (
             <Link
               key={key}
-              href={key === "default" ? `/${category}` : `/${category}?sort=${key}`}
+              href={buildUrl({ sort: key === "default" ? undefined : key })}
               className={`px-4 py-1.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 activeSort === key
                   ? `text-white shadow-sm`
@@ -239,112 +425,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               {label}
             </Link>
           ))}
-          <span className="ml-auto text-xs text-gray-400 hidden sm:block">{businesses.length} listings</span>
+          <span className="ml-auto text-xs text-gray-400 hidden sm:block mr-2">
+            {filteredBusinesses.length} listing{filteredBusinesses.length !== 1 ? "s" : ""}
+            {area ? ` · ${AREAS.find((a) => a.key === area)?.label}` : ""}
+          </span>
+
+          {/* View toggle is client-side */}
+          <ViewToggle
+            pins={mapPins}
+            accentColor={theme.accent}
+            listView={listGrid}
+          />
         </div>
-
-        {/* ── Listings grid ─────────────────────────────────────── */}
-        {businesses.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
-            <div className="text-5xl mb-4">{theme.emoji}</div>
-            <p className="text-gray-500 text-lg mb-2">No listings yet</p>
-            <p className="text-gray-400 text-sm mb-6">Be the first to list your business here.</p>
-            <Link href="/claim-listing" className="inline-block bg-[#C9A84C] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-[#B8972A] transition-colors">
-              Add Your Business
-            </Link>
-          </div>
-        ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {businesses.map((b) => {
-              const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
-              const area = getArea(b.address);
-              const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
-              const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
-
-              return (
-                <Link
-                  key={b.slug}
-                  href={`/${category}/${b.slug}`}
-                  className={`group flex flex-col bg-white rounded-2xl overflow-hidden card-hover border transition-colors ${
-                    isFeatured
-                      ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md"
-                      : "border-gray-100 hover:border-gray-200"
-                  }`}
-                >
-                  {/* Coloured top strip */}
-                  <div
-                    className={`h-1.5 w-full bg-gradient-to-r ${theme.gradient} ${isFeatured ? "h-2" : ""}`}
-                  />
-
-                  <div className="p-5 flex flex-col flex-1">
-                    {/* Featured badge */}
-                    {isFeatured && (
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
-                          ✦ Featured
-                        </span>
-                      </div>
-                    )}
-
-                    {/* Name */}
-                    <h2 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
-                      {b.name}
-                    </h2>
-
-                    {/* Location */}
-                    <p className="flex items-center gap-1 text-gray-400 text-xs mb-3">
-                      <MapPin className="w-3 h-3 flex-shrink-0" />
-                      {area}{area !== "Southport" ? ", Southport" : ""}
-                    </p>
-
-                    {/* Description */}
-                    {(() => {
-                      const snippet = getSnippet(b);
-                      return snippet ? (
-                        <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4 leading-relaxed">
-                          {snippet}
-                        </p>
-                      ) : <div className="flex-1 mb-4" />;
-                    })()}
-
-                    {/* Ratings row */}
-                    <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-50">
-                      {b.rating ? (
-                        <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
-                          <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                          {b.rating.toFixed(1)}
-                          {b.reviewCount && (
-                            <span className="font-normal text-amber-500">
-                              ({b.reviewCount >= 1000 ? `${(b.reviewCount / 1000).toFixed(1)}k` : b.reviewCount})
-                            </span>
-                          )}
-                        </span>
-                      ) : null}
-
-                      {showHygiene && hStyle && b.hygieneRating && (
-                        <span className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full border ${hStyle.bg} ${hStyle.text} ${hStyle.border}`}>
-                          <HygieneIcon r={b.hygieneRating} />
-                          FSA {b.hygieneRating}★
-                        </span>
-                      )}
-
-                      <div className="ml-auto flex items-center gap-2">
-                        {b.priceRange && (
-                          <span className="text-gray-400 text-xs font-semibold">{b.priceRange}</span>
-                        )}
-                        <span
-                          className="text-xs font-bold group-hover:translate-x-0.5 transition-transform"
-                          style={{ color: theme.accent }}
-                        >
-                          View →
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        )}
 
         {/* ── Bottom CTA ───────────────────────────────────────── */}
         <div className="mt-14 rounded-2xl overflow-hidden">
