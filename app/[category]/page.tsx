@@ -210,8 +210,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       <div className="container mx-auto px-4 max-w-6xl py-6">
 
         {/* ── Category strip ──────────────────────────────────────────────── */}
-        <div className="overflow-x-hidden mb-6">
-        <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+        <div className="flex flex-wrap gap-2 mb-6">
           {CAT_ORDER.map((slug) => {
             const t = THEMES[slug];
             const c = getCategoryBySlug(slug);
@@ -233,7 +232,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               </Link>
             );
           })}
-        </div>
         </div>
 
         {/* ── CategoryBrowser: search + area + sort + list/map ────────────── */}
