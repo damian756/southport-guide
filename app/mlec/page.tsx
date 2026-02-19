@@ -145,8 +145,48 @@ const FAQS = [
   },
 ];
 
+const MLEC_EVENT_LD = {
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  name: "Marine Lake Events Centre (MLEC)",
+  description: "Southport's new £73m Marine Lake Events Centre — 1,500-seat theatre, 2,400-capacity exhibition hall, and The Light Fantastic water show. Opening April 2027.",
+  url: "https://www.southportguide.co.uk/mlec",
+  image: "https://www.southportguide.co.uk/images/mlec.webp",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Marine Drive",
+    addressLocality: "Southport",
+    postalCode: "PR8 1RX",
+    addressCountry: "GB",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 53.6435, longitude: -3.0089 },
+};
+
+const MLEC_BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "Marine Lake Events Centre", item: "https://www.southportguide.co.uk/mlec" },
+  ],
+};
+
+const MLEC_FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function MLECPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(MLEC_EVENT_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(MLEC_BREADCRUMB_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(MLEC_FAQ_LD) }} />
     <div className="min-h-screen bg-gray-50">
       {/* ── Hero ── */}
       <div className="relative min-h-[85vh] flex items-end bg-slate-900 text-white overflow-hidden">
@@ -713,5 +753,6 @@ export default function MLECPage() {
 
       </div>
     </div>
+    </>
   );
 }

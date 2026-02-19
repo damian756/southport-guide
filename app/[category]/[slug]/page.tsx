@@ -414,6 +414,28 @@ export default async function BusinessPage({ params }: Props) {
                 </div>
               )}
 
+              {/* Open 2026 callout — hotels category only */}
+              {category === "hotels" && (
+                <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
+                  <div className="px-6 py-5">
+                    <div className="flex items-start gap-4">
+                      <span className="text-3xl flex-none">⛳</span>
+                      <div>
+                        <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
+                        <p className="text-white font-semibold mb-1">Royal Birkdale, 12–19 July 2026</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Attending The Open? We&apos;ve ranked every hotel and B&amp;B in Southport by walking distance to the course — with prices, transport times, and availability links.</p>
+                        <a
+                          href="/the-open-2026/accommodation"
+                          className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors"
+                        >
+                          View Open 2026 accommodation guide →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Address + Hours */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <div className="grid sm:grid-cols-2 gap-6">

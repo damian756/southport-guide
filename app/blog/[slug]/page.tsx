@@ -87,6 +87,15 @@ function renderBlock(block: ContentBlock, i: number) {
           {block.attr && <cite className="block text-sm not-italic text-gray-400 mt-2">— {block.attr}</cite>}
         </blockquote>
       );
+    case "cta":
+      return (
+        <div key={i} className="my-8 rounded-2xl border border-[#C9A84C]/30 bg-[#1B2E4B] px-6 py-5">
+          <p className="text-white/80 text-sm mb-3 leading-relaxed">{block.text}</p>
+          <a href={block.href} className="inline-flex items-center font-bold text-[#C9A84C] hover:text-[#e0ba66] transition-colors text-sm">
+            {block.label}
+          </a>
+        </div>
+      );
     case "hr":
       return <hr key={i} className="my-8 border-gray-200" />;
     default:

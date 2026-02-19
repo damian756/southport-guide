@@ -75,8 +75,59 @@ const FAQS = [
 
 const golfPosts = BLOG_POSTS.filter((p) => p.categorySlug === "golf").slice(0, 2);
 
+const EVENT_LD = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: "The 154th Open Championship",
+  startDate: "2026-07-12",
+  endDate: "2026-07-19",
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location: {
+    "@type": "Place",
+    name: "Royal Birkdale Golf Club",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Waterloo Road",
+      addressLocality: "Birkdale, Southport",
+      postalCode: "PR8 2LX",
+      addressCountry: "GB",
+    },
+    geo: { "@type": "GeoCoordinates", latitude: 53.6267, longitude: -3.0450 },
+  },
+  organizer: { "@type": "Organization", name: "The R&A", url: "https://www.theopen.com" },
+  description: "The 154th Open Championship at Royal Birkdale, Southport — 12–19 July 2026. Practice rounds Monday to Wednesday, championship rounds Thursday to Sunday.",
+  image: "https://www.southportguide.co.uk/images/open-2026.webp",
+  url: "https://www.southportguide.co.uk/the-open-2026",
+};
+
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "The Open Championship 2026", item: "https://www.southportguide.co.uk/the-open-2026" },
+  ],
+};
+
+function buildFaqLd(faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
 export default function TheOpen2026Page() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(EVENT_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqLd(FAQS)) }} />
     <div className="min-h-screen bg-[#FAF8F5]">
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
@@ -510,5 +561,6 @@ export default function TheOpen2026Page() {
 
       </div>
     </div>
+    </>
   );
 }

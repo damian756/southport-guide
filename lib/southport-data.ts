@@ -451,6 +451,24 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   // Golf
   {
+    slug: "pubs-near-royal-birkdale-open-2026",
+    title: "Best Pubs Near Royal Birkdale for The Open 2026",
+    excerpt:
+      "Where to drink during Open week — from Birkdale village classics to town centre options that won't drive you mad with queues. A local's honest guide.",
+    categorySlug: "food-drink",
+    image: "/images/blog-pubs.jpg",
+    date: "17 Feb 2026",
+  },
+  {
+    slug: "getting-to-royal-birkdale-open-2026",
+    title: "Getting to Royal Birkdale for The Open 2026: Full Transport Guide",
+    excerpt:
+      "Don't drive. Seriously. Here's how to get to Royal Birkdale by train, shuttle, taxi, and on foot — everything you need to arrive without the stress.",
+    categorySlug: "getting-around",
+    image: "/images/categories/transport.webp",
+    date: "18 Feb 2026",
+  },
+  {
     slug: "royal-birkdale-guide-the-open",
     title: "Royal Birkdale: What to Know Before The Open 2026",
     excerpt:

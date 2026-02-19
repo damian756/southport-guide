@@ -10,6 +10,7 @@ export type ContentBlock =
   | { type: "ol"; items: string[] }
   | { type: "callout"; emoji: string; text: string }
   | { type: "quote"; text: string; attr?: string }
+  | { type: "cta"; text: string; href: string; label: string }
   | { type: "hr" };
 
 export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
@@ -71,6 +72,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "⚠️", text: "Don't rely on last-minute availability. The Open at Royal Birkdale is a once-in-several-years event. Southport fills up entirely. Book now." },
     { type: "h2", text: "The local's view on Open week" },
     { type: "p", text: "Open week is brilliant and chaotic in equal measure. Restaurants are packed, parking is a nightmare, and the atmosphere is electric. My advice: book a good hotel, get a shuttle bus pass sorted, and don't try to drive anywhere near the course. Walk instead. Enjoy it. There's nothing quite like having The Open on your doorstep." },
+    { type: "cta", text: "Want the full breakdown — distance to the course, price ranges, and walk times?", href: "/the-open-2026/accommodation", label: "View our Open 2026 accommodation guide →" },
   ],
 
   "best-bnbs-southport": [
@@ -196,6 +198,8 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Where to eat and drink near the course" },
     { type: "p", text: "There's a substantial hospitality village on site during Open week. Outside the course, Birkdale village is your best bet for food and drink. The Bold Hotel does Open week packages. Book everything well in advance — this is not a normal week in Southport." },
     { type: "callout", emoji: "⛳", text: "The Open at Royal Birkdale is, in my experience, one of those events that's better than you expect even if you're not a golf fan. The atmosphere, the proximity to world-class sport, the Southport setting. It's a special week." },
+    { type: "cta", text: "Still need somewhere to stay? We've ranked hotels by walking distance to the course.", href: "/the-open-2026/accommodation", label: "See the Open 2026 accommodation guide →" },
+    { type: "cta", text: "Sorted your transport to Royal Birkdale? Here's the full guide on getting there without a car.", href: "/the-open-2026/getting-there", label: "Getting to Royal Birkdale →" },
   ],
 
   "best-golf-courses-southport": [
@@ -231,6 +235,61 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "The charity shop circuit" },
     { type: "p", text: "This is the underrated one. Southport's charity shops punch above their weight. There are several along and adjacent to Lord Street, and they get good quality donations because of the demographics of the town. If you're a vintage or second-hand shopper, factor in an hour. You won't always find something, but when you do it's worth it." },
     { type: "callout", emoji: "🛍️", text: "Best time to visit: weekday mornings in spring and autumn. Avoid bank holiday weekends when Lord Street gets extremely busy and parking becomes a competitive sport." },
+  ],
+
+  "pubs-near-royal-birkdale-open-2026": [
+    { type: "p", text: "Open week in Southport is unlike any other week of the year. The town fills up, the pubs fill up, and if you haven't thought about where you're going to drink before you arrive, you'll end up standing outside somewhere wondering why you didn't plan this. Here's the plan." },
+    { type: "h2", text: "Birkdale village — your best bet" },
+    { type: "p", text: "Birkdale village is the first place to sort. It's right next to the course — 10 minutes on foot from the main gates — and it has a cluster of good pubs and restaurants. On practice days especially, you'll find players and caddies wandering around the village, which adds to the atmosphere. These are the pubs worth knowing." },
+    { type: "h2", text: "The Bold Hotel bar" },
+    { type: "p", text: "The Bold is the anchor of Birkdale village hospitality during Open week. It's a boutique hotel with a proper bar — good beer, good cocktails, and the kind of staff who take service seriously. It'll be busy. Book a table if you want one. Walk-ins are possible but don't bank on it. The Bold genuinely works for both pre-round drinks and post-round debrief sessions." },
+    { type: "h2", text: "The Birkdale Arms" },
+    { type: "p", text: "A traditional pub a short walk from the village centre. Proper ale, no pretensions, and the type of pub that will be heaving from Thursday onwards. Get there early on championship days if you want a seat. It's the kind of place where you end up talking to someone who's been coming to Birkdale Opens since the 70s, which is exactly what you want from an Open pub." },
+    { type: "h2", text: "Southport town centre — for the evenings" },
+    { type: "p", text: "After a day at the course, the town centre is where Open week turns into something more. Lord Street and the surrounding streets have a buzz during Open week that you don't get the rest of the year. These are the places worth heading to for the evening." },
+    { type: "ul", items: [
+      "Coopers Bar — live music most nights during Open week, proper atmosphere",
+      "The Hesketh Arms, Churchtown — quieter, more local, excellent if you want to escape the Open crowds",
+      "The Ship and Anchor — rock pub, dog-friendly, reliably lively",
+      "The Windmill — good beer garden if the weather behaves",
+      "The Auld Dubliner — traditional Irish pub, live music Fridays and Saturdays",
+    ]},
+    { type: "h2", text: "What to expect on championship days" },
+    { type: "p", text: "Thursday to Sunday, every pub in Southport will be busier than normal. Birkdale village in particular will be rammed from mid-afternoon as the day's play wraps up and 20,000 people decide they want a drink at once. The options: get to a pub early and claim your territory, or head into town centre where the crowds are slightly more spread out." },
+    { type: "callout", emoji: "🍺", text: "Book any pub with a restaurant for evening meals in advance. Championship week dinner bookings — especially Thursday and Friday — go fast. Anywhere on Lord Street or in Birkdale village will be full from 6pm. Don't wing it." },
+    { type: "h2", text: "The honest logistics" },
+    { type: "p", text: "There's booze inside the course too — the Open hospitality village and the various tented venues sell decent food and drink. If you're planning a day inside and an evening outside, you might not need a pre-round pub stop at all. But the post-round debrief in a proper pub, watching the leaderboard, talking through the day's play with strangers who know their golf — that's the part of The Open experience that the TV coverage doesn't show you. Make time for it." },
+    { type: "cta", text: "Not sorted your accommodation yet? Here's where to stay, ranked by distance to Royal Birkdale.", href: "/the-open-2026/accommodation", label: "Open 2026 accommodation guide →" },
+  ],
+
+  "getting-to-royal-birkdale-open-2026": [
+    { type: "p", text: "I'll say this once, clearly, and then we'll move on: do not drive to Royal Birkdale during Open week. I live five minutes from the course. I know these roads. During The Open, they are not for normal driving. The road closures alone make it complicated; add 40,000 spectators and accreditation-only parking to the mix, and the only people who drive are the ones who don't know better or have no other choice." },
+    { type: "h2", text: "Train — the best option" },
+    { type: "p", text: "Merseyrail runs from Liverpool Central and Southport town centre, and Birkdale station is 10–15 minutes on foot from the Royal Birkdale main entrance. This is the cleanest option: no traffic, no parking, no stress. If you're coming from outside the area, get a train to Southport first, then a local Merseyrail hop to Birkdale." },
+    { type: "ul", items: [
+      "Liverpool Central → Birkdale: approx. 45 minutes, direct on the Southport line",
+      "Southport station → Birkdale station: 2 stops, about 5 minutes",
+      "From Birkdale station, follow the clearly marked spectator route — about 15 minutes on foot",
+      "Trains run frequently during Open week — check the Merseyrail website for timetables",
+    ]},
+    { type: "h2", text: "Park and Ride — the crowd's choice" },
+    { type: "p", text: "The R&A operates official park and ride services from multiple sites across Southport during championship days. These are efficient, well-marshalled, and drop you close to the entrance. Buy your shuttle passes in advance — they sell out. The park and ride sites are typically on the outskirts of town, away from the congestion around the course." },
+    { type: "callout", emoji: "🚌", text: "Park and ride details and booking are managed by The R&A and published closer to the event at theopen.com. Set a reminder and book as soon as they go live — they sell quickly for Saturday and Sunday." },
+    { type: "h2", text: "Taxi and ride-share" },
+    { type: "p", text: "Getting a taxi TO the course is manageable in the mornings. Getting one AWAY from the course at the end of the day is a different matter — there will be thousands of people trying to do the same thing. If you're relying on a taxi, book it in advance with a local firm and agree a pickup point away from the main exit. The queues at the course entrance are grim after the final round." },
+    { type: "ul", items: [
+      "Book return journey in advance with a local Southport taxi firm",
+      "Agree a pickup point that isn't directly outside the main entrance",
+      "Uber availability during Open week in Southport is limited — don't rely on it",
+    ]},
+    { type: "h2", text: "Walking from Southport town centre" },
+    { type: "p", text: "If you're staying in Southport town centre, Royal Birkdale is approximately 2 miles. In decent weather with comfortable shoes, that's a 35–45 minute walk. The route is straightforward — follow the coast road south toward Birkdale. On practice days, walking is genuinely the nicest way to arrive. On championship days, you'll be walking in a river of spectators, which has its own atmosphere." },
+    { type: "h2", text: "Cycling" },
+    { type: "p", text: "Cycling to Royal Birkdale is a genuinely good option if you're based in Southport or Birkdale village. The cycle routes are flat — Southport is very flat — and bike parking is available near the course. Just be aware of the crowds on exit. This is more practical on practice days than championship days when the volume of people makes the whole area more chaotic." },
+    { type: "h2", text: "What to avoid" },
+    { type: "p", text: "Don't park in residential streets near the course hoping to get away with it. Local residents will have residents-only parking enforced during Open week and the stewards are thorough. Don't try to drop someone off on Waterloo Road — it will be closed. Don't arrive by car on Sunday expecting to find somewhere sensible — you won't." },
+    { type: "cta", text: "Need somewhere to stay within walking distance of the course?", href: "/the-open-2026/accommodation", label: "Open 2026 accommodation guide →" },
+    { type: "cta", text: "Planning your day at the course? Full spectator guide here.", href: "/the-open-2026", label: "The Open 2026 visitor guide →" },
   ],
 
   "best-bars-southport-lord-street": [
