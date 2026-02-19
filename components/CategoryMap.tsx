@@ -1,5 +1,6 @@
 "use client";
 
+import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 
@@ -137,11 +138,6 @@ export default function CategoryMap({ pins, accentColor }: Props) {
   return (
     <div className="relative w-full rounded-2xl overflow-hidden border border-gray-200 shadow-sm" style={{ height: 520 }}>
       <div ref={containerRef} className="w-full h-full" />
-      {/* Leaflet CSS */}
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      />
       {/* Legend */}
       <div className="absolute bottom-4 left-4 z-[1000] bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow text-xs text-gray-600 flex items-center gap-3">
         <span className="flex items-center gap-1.5">
