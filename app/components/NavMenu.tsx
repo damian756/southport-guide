@@ -109,7 +109,7 @@ export default function NavMenu() {
       </button>
 
       {/* ── Mobile menu ─────────────────────────────────────── */}
-      <div className={`md:hidden absolute top-16 left-0 right-0 bg-white shadow-2xl border-t border-gray-100 z-50 overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"}`}>
+      <div className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 z-50 overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"}`}>
         <div className="overflow-y-auto max-h-[85vh] px-4 py-4">
 
           <Link

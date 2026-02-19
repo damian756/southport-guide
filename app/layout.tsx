@@ -127,9 +127,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
 function Navigation() {
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-[#1B2E4B]/8 sticky top-0 z-50 shadow-sm">
+    <nav className="relative bg-white/95 backdrop-blur-sm border-b border-[#1B2E4B]/8 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="relative flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 flex-shrink-0 group">
             <span className="font-display text-xl font-bold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors">
               Southport<span className="text-[#C9A84C]">Guide</span>

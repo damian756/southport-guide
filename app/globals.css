@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 :root {
   --background: #FAF8F5;
   --foreground: #1B2E4B;
@@ -51,3 +57,12 @@ body {
 ::-webkit-scrollbar-track { background: #f1f1f1; }
 ::-webkit-scrollbar-thumb { background: #c9a84c44; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* Scrollbar hide utility (used on horizontal scroll strips) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
