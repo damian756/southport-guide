@@ -5,7 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
   Star, ShieldCheck, ShieldAlert, ShieldX, Shield,
-  MapPin, Search, X, LayoutGrid, Map, ArrowUpDown,
+  MapPin, Search, X, LayoutGrid, Map, SlidersHorizontal,
 } from "lucide-react";
 import { MapSkeleton, type MapPin as MapPinType } from "./CategoryMap";
 
@@ -14,7 +14,7 @@ const CategoryMap = dynamic(() => import("./CategoryMap"), {
   loading: () => <MapSkeleton />,
 });
 
-// ── Types ──────────────────────────────────────────────────
+// ── Types ───────────────────────────────────────────────────────────────────
 
 export type BrowserBusiness = {
   slug: string;
@@ -34,7 +34,6 @@ export type BrowserBusiness = {
 };
 
 type SortOption = { key: string; label: string };
-
 type AreaDef = { key: string; label: string };
 
 type Props = {
@@ -53,7 +52,7 @@ type Props = {
   currentArea: string | undefined;
 };
 
-// ── Helpers ────────────────────────────────────────────────
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
 function getSnippet(b: BrowserBusiness): string | null {
   if (b.shortDescription) return b.shortDescription;
@@ -87,7 +86,7 @@ function HygieneIcon({ r }: { r: string }) {
   return <ShieldX className="w-3 h-3" />;
 }
 
-// ── Component ──────────────────────────────────────────────
+// ── Component ────────────────────────────────────────────────────────────────
 
 export default function CategoryBrowser({
   businesses,
@@ -136,114 +135,124 @@ export default function CategoryBrowser({
     return mapPins.filter((p) => p.name.toLowerCase().includes(q));
   }, [mapPins, q]);
 
+  const activeAreaLabel = areas.find((a) => a.key === activeArea)?.label;
+
   return (
     <>
-      {/* ── Area filter pills ─────────────────────────────── */}
-      <div className="flex items-center gap-2 mb-4 flex-wrap">
-        <span className="text-xs font-medium text-gray-400 shrink-0">Area:</span>
-        <Link
-          href={buildUrl({ area: undefined })}
-          className={`px-3 py-1 rounded-full text-xs font-semibold transition-all border ${
-            !activeArea
-              ? "bg-[#1B2E4B] text-white border-[#1B2E4B]"
-              : "bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-700"
-          }`}
-        >
-          All areas
-        </Link>
-        {areas.map(({ key, label }) => (
-          <Link
-            key={key}
-            href={buildUrl({ area: key })}
-            className={`px-3 py-1 rounded-full text-xs font-semibold transition-all border ${
-              activeArea === key
-                ? "text-white border-transparent"
-                : "bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-700"
-            }`}
-            style={activeArea === key ? { backgroundColor: accentColor, borderColor: accentColor } : {}}
+      {/* ── Search bar ─────────────────────────────────────────────────────── */}
+      <div className="relative mb-4">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={`Search ${category} in Southport…`}
+          className="w-full pl-11 pr-11 py-3.5 text-sm bg-white border border-gray-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all placeholder:text-gray-400"
+          style={{ "--tw-ring-color": accentColor } as React.CSSProperties}
+        />
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
           >
-            {label}
-          </Link>
-        ))}
+            <X className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
-      {/* ── Sort bar + Search + View toggle ───────────────── */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 mb-6">
-        {/* Search row */}
-        <div className="px-4 pt-3 pb-2 border-b border-gray-50">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder={`Search ${category}…`}
-              className="w-full pl-9 pr-9 py-2 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all"
-              style={{ "--tw-ring-color": accentColor } as React.CSSProperties}
-            />
-            {search && (
-              <button
-                onClick={() => setSearch("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
+      {/* ── Area filter ────────────────────────────────────────────────────── */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3 mb-4">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wide shrink-0 mr-1">
+            <MapPin className="w-3 h-3" /> Area
+          </span>
+          <Link
+            href={buildUrl({ area: undefined })}
+            className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+              !activeArea
+                ? "text-white"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+            style={!activeArea ? { backgroundColor: accentColor } : {}}
+          >
+            All
+          </Link>
+          {areas.map(({ key, label }) => (
+            <Link
+              key={key}
+              href={buildUrl({ area: key })}
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                activeArea === key
+                  ? "text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+              style={activeArea === key ? { backgroundColor: accentColor } : {}}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
+      </div>
 
-        {/* Sort + count + view toggle */}
-        <div className="flex items-center gap-2 px-3 py-2 flex-wrap">
-          <ArrowUpDown className="w-4 h-4 text-gray-300 ml-1 flex-shrink-0" />
-          <span className="text-xs font-medium text-gray-400 mr-1">Sort:</span>
+      {/* ── Sort + count + view toggle ─────────────────────────────────────── */}
+      <div className="flex items-center gap-2 mb-6 flex-wrap">
+        {/* Sort options */}
+        <div className="flex items-center gap-1 bg-white rounded-xl border border-gray-200 shadow-sm px-2 py-1.5 flex-wrap">
+          <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400 mr-1 ml-1 shrink-0" />
           {sortOptions.map(({ key, label }) => (
             <Link
               key={key}
               href={buildUrl({ sort: key === "default" ? undefined : key })}
-              className={`px-4 py-1.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                 activeSort === key
-                  ? "text-white shadow-sm"
-                  : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+                  ? "text-white"
+                  : "text-gray-500 hover:text-gray-800 hover:bg-gray-100"
               }`}
               style={activeSort === key ? { backgroundColor: accentColor } : {}}
             >
               {label}
             </Link>
           ))}
+        </div>
 
-          <span className="ml-auto text-xs text-gray-400 hidden sm:block mr-2">
-            {q ? (
-              <><span className="font-semibold text-gray-700">{filtered.length}</span> of {businesses.length}</>
-            ) : (
-              <>{filtered.length} listing{filtered.length !== 1 ? "s" : ""}{activeArea ? ` · ${areas.find((a) => a.key === activeArea)?.label}` : ""}</>
-            )}
-          </span>
+        {/* Result count */}
+        <span className="text-xs text-gray-400 ml-1 hidden sm:block">
+          {q ? (
+            <><span className="font-semibold text-gray-700">{filtered.length}</span> of {businesses.length} results</>
+          ) : (
+            <>
+              <span className="font-semibold text-gray-700">{filtered.length}</span>
+              {" "}listing{filtered.length !== 1 ? "s" : ""}
+              {activeAreaLabel ? <span className="text-gray-300"> · </span> : null}
+              {activeAreaLabel && <span className="font-medium text-gray-600">{activeAreaLabel}</span>}
+            </>
+          )}
+        </span>
 
-          {/* View toggle */}
-          <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
-            <button
-              onClick={() => setView("list")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
-                view === "list" ? "bg-white text-gray-800 shadow-sm" : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              List
-            </button>
-            <button
-              onClick={() => setView("map")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
-                view === "map" ? "bg-white text-gray-800 shadow-sm" : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              <Map className="w-3.5 h-3.5" />
-              Map
-            </button>
-          </div>
+        {/* Map / List toggle — pushed to the right */}
+        <div className="ml-auto flex items-center gap-1 bg-white border border-gray-200 rounded-xl shadow-sm p-1">
+          <button
+            onClick={() => setView("list")}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              view === "list" ? "bg-gray-100 text-gray-800 shadow-sm" : "text-gray-400 hover:text-gray-600"
+            }`}
+          >
+            <LayoutGrid className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">List</span>
+          </button>
+          <button
+            onClick={() => setView("map")}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              view === "map" ? "bg-gray-100 text-gray-800 shadow-sm" : "text-gray-400 hover:text-gray-600"
+            }`}
+          >
+            <Map className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Map</span>
+          </button>
         </div>
       </div>
 
-      {/* ── Content ───────────────────────────────────────── */}
+      {/* ── Content ────────────────────────────────────────────────────────── */}
       {view === "map" ? (
         <CategoryMap pins={filteredPins} accentColor={accentColor} />
       ) : filtered.length === 0 ? (
@@ -252,10 +261,7 @@ export default function CategoryBrowser({
           {q ? (
             <>
               <p className="text-gray-500 text-lg mb-2">No results for &ldquo;{search}&rdquo;</p>
-              <button
-                onClick={() => setSearch("")}
-                className="text-[#C9A84C] font-semibold text-sm hover:underline"
-              >
+              <button onClick={() => setSearch("")} className="text-[#C9A84C] font-semibold text-sm hover:underline">
                 Clear search
               </button>
             </>
@@ -289,19 +295,18 @@ export default function CategoryBrowser({
               <Link
                 key={b.slug}
                 href={`/${category}/${b.slug}`}
-                className={`group flex flex-col bg-white rounded-2xl overflow-hidden card-hover border transition-colors ${
+                className={`group flex flex-col bg-white rounded-2xl overflow-hidden card-hover border transition-all ${
                   isFeatured
                     ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md"
-                    : "border-gray-100 hover:border-gray-200"
+                    : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
                 }`}
               >
-                <div
-                  className={`w-full bg-gradient-to-r ${themeGradient} ${isFeatured ? "h-2" : "h-1.5"}`}
-                />
+                {/* Colour accent strip */}
+                <div className={`w-full bg-gradient-to-r ${themeGradient} ${isFeatured ? "h-2" : "h-1"}`} />
 
                 <div className="p-5 flex flex-col flex-1">
                   {isFeatured && (
-                    <div className="flex items-center gap-1.5 mb-3">
+                    <div className="mb-2.5">
                       <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
                         ✦ Featured
                       </span>

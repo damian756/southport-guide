@@ -210,28 +210,30 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       <div className="container mx-auto px-4 max-w-6xl py-6">
 
         {/* ── Category strip ──────────────────────────────────────────────── */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {CAT_ORDER.map((slug) => {
-            const t = THEMES[slug];
-            const c = getCategoryBySlug(slug);
-            if (!t || !c) return null;
-            const isActive = slug === category;
-            return (
-              <Link
-                key={slug}
-                href={`/${slug}`}
-                className={`flex items-center gap-1.5 whitespace-nowrap px-3.5 py-2 rounded-full text-sm font-semibold transition-all border shrink-0 ${
-                  isActive
-                    ? "text-white border-transparent shadow-sm"
-                    : "bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-800"
-                }`}
-                style={isActive ? { backgroundColor: theme.accent, borderColor: theme.accent } : {}}
-              >
-                <span className="text-base leading-none">{t.emoji}</span>
-                {c.name}
-              </Link>
-            );
-          })}
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3 mb-5">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {CAT_ORDER.map((slug) => {
+              const t = THEMES[slug];
+              const c = getCategoryBySlug(slug);
+              if (!t || !c) return null;
+              const isActive = slug === category;
+              return (
+                <Link
+                  key={slug}
+                  href={`/${slug}`}
+                  className={`flex items-center gap-1.5 whitespace-nowrap px-3.5 py-1.5 rounded-full text-sm font-semibold transition-all border ${
+                    isActive
+                      ? "text-white border-transparent shadow-sm"
+                      : "text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-800 hover:bg-gray-50"
+                  }`}
+                  style={isActive ? { backgroundColor: theme.accent, borderColor: theme.accent } : {}}
+                >
+                  <span className="text-sm leading-none">{t.emoji}</span>
+                  {c.name}
+                </Link>
+              );
+            })}
+          </div>
         </div>
 
         {/* ── CategoryBrowser: search + area + sort + list/map ────────────── */}
