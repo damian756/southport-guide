@@ -665,7 +665,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Both Lancashire seaside towns. Very different experiences. Terry gives the honest comparison — and has a clear view on which one wins.",
     categorySlug: "local-guides",
-    image: "/southport-pier.webp",
+    image: "/images/blog/southport-vs-blackpool.jpg",
     date: "19 Feb 2026",
   },
 ];

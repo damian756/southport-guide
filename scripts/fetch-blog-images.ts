@@ -8,18 +8,8 @@ import * as fs from "fs";
 import * as path from "path";
 
 const BLOG_IMAGE_QUERIES: { slug: string; query: string; offset?: number }[] = [
-  { slug: "open-championship-2026-tickets-guide", query: "golf", offset: 0 },
-  { slug: "what-to-bring-open-championship-2026", query: "golf", offset: 2 },
-  { slug: "open-championship-2026-spectator-guide", query: "golf", offset: 4 },
-  { slug: "open-championship-2026-day-by-day", query: "golf", offset: 6 },
-  { slug: "restaurants-open-week-southport-2026", query: "restaurant" },
-  { slug: "best-cafes-southport", query: "coffee" },
-  { slug: "best-brunch-southport", query: "brunch" },
-  { slug: "best-hotels-southport-2026", query: "hotel" },
-  { slug: "southport-pier-guide", query: "pier" },
-  { slug: "day-trips-from-southport", query: "coast" },
-  { slug: "southport-flower-show-guide", query: "flower show" },
-  { slug: "southport-vs-blackpool", query: "beach" },
+  { slug: "southport-flower-show-guide", query: "flower show garden" },
+  { slug: "southport-vs-blackpool",      query: "Southport beach" },
 ];
 
 const OUT_DIR = path.join(process.cwd(), "public", "images", "blog");
