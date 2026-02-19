@@ -131,7 +131,7 @@ export default function TheOpen2026Page() {
     <div className="min-h-screen bg-[#FAF8F5]">
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-[85vh] flex items-end bg-[#1B2E4B] overflow-hidden">
+      <section className="relative flex items-end bg-[#1B2E4B] overflow-hidden" style={{ minHeight: "calc(100vh - 4rem)" }}>
         <Image
           src="/images/open-2026.webp"
           alt="Royal Birkdale Golf Club, Southport — host of The 154th Open Championship 2026"
@@ -142,10 +142,10 @@ export default function TheOpen2026Page() {
           className="object-cover object-center"
         />
         {/* Layered overlays for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E30]/95 via-[#0D1E30]/40 to-[#0D1E30]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E30]/95 via-[#0D1E30]/50 to-[#0D1E30]/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0D1E30]/60 to-transparent" />
 
-        <div className="relative container mx-auto px-4 max-w-6xl pb-16 pt-32">
+        <div className="relative container mx-auto px-4 max-w-6xl pb-20 pt-40">
           {/* Championship badge */}
           <div className="flex items-center gap-2 mb-5">
             <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
@@ -218,7 +218,10 @@ export default function TheOpen2026Page() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 max-w-6xl py-16 space-y-20">
+      {/* Dark-to-cream fade */}
+      <div className="h-12 bg-gradient-to-b from-[#1B2E4B] to-[#FAF8F5]" />
+
+      <div className="container mx-auto px-4 max-w-6xl pb-24 pt-8 space-y-20">
 
         {/* ── About Royal Birkdale ─────────────────────────────────── */}
         <section>
