@@ -556,6 +556,118 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/mlec.webp",
     date: "16 Feb 2026",
   },
+
+  // ── New posts: Open 2026 cluster ──────────────────────────────────────────
+  {
+    slug: "open-championship-2026-tickets-guide",
+    title: "How to Get Tickets for The Open Championship 2026",
+    excerpt:
+      "Practice rounds, championship days, hospitality packages — everything you need to know about buying Open 2026 tickets, what they cost, and what you get for your money.",
+    categorySlug: "golf",
+    image: "/images/open-2026.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "what-to-bring-open-championship-2026",
+    title: "What to Pack for The Open Championship 2026",
+    excerpt:
+      "The official restricted items list, Terry's personal packing checklist, and what to wear when you're spending a full day on a links course in Lancashire in July.",
+    categorySlug: "golf",
+    image: "/images/open-2026.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "open-championship-2026-spectator-guide",
+    title: "First-Timer's Guide to Watching The Open Championship",
+    excerpt:
+      "Never been to The Open before? Here's everything you need — how the day works, where to stand, how to follow the action, and how not to make a fool of yourself.",
+    categorySlug: "golf",
+    image: "/images/open-2026.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "restaurants-open-week-southport-2026",
+    title: "Where to Eat in Southport During Open Week 2026",
+    excerpt:
+      "Open week means 40,000 extra people wanting a table. Here's where to eat, when to book, and which restaurants are worth the effort when Southport is at full capacity.",
+    categorySlug: "food-drink",
+    image: "/images/categories/restaurants.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "open-championship-2026-day-by-day",
+    title: "The Open 2026: What's On Each Day at Royal Birkdale",
+    excerpt:
+      "A day-by-day breakdown — practice rounds Monday to Wednesday, championship rounds Thursday to Sunday, what to expect from each day, and which is worth attending most.",
+    categorySlug: "golf",
+    image: "/images/open-2026.webp",
+    date: "19 Feb 2026",
+  },
+
+  // ── New posts: Evergreen gaps ─────────────────────────────────────────────
+  {
+    slug: "best-cafes-southport",
+    title: "The Best Cafes and Coffee Shops in Southport",
+    excerpt:
+      "Independent coffee shops, proper tea rooms, and the spots where Southport locals actually go for a decent flat white. Terry's unfiltered guide.",
+    categorySlug: "food-drink",
+    image: "/images/categories/cafes.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "best-brunch-southport",
+    title: "Best Brunch Spots in Southport",
+    excerpt:
+      "Weekend brunch in Southport has improved considerably. Here's where to go — and where to avoid — for the best eggs, toast, and flat whites in town.",
+    categorySlug: "food-drink",
+    image: "/images/categories/cafes.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "best-hotels-southport-2026",
+    title: "The Best Hotels in Southport 2026",
+    excerpt:
+      "From The Grand on Lord Street to boutique options in Birkdale village — the definitive guide to where to stay in Southport, ranked honestly by a local.",
+    categorySlug: "where-to-stay",
+    image: "/images/categories/hotels.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "southport-pier-guide",
+    title: "Southport Pier: The Complete Guide",
+    excerpt:
+      "England's second-longest pier gets less credit than it deserves. Here's what's actually there, when to visit, and why it's worth walking the full length.",
+    categorySlug: "things-to-do",
+    image: "/southport-pier.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "day-trips-from-southport",
+    title: "The Best Day Trips from Southport",
+    excerpt:
+      "Within an hour of Southport you've got Liverpool, Formby, the Ribble Valley, and more. Here's how to make the most of what's on your doorstep.",
+    categorySlug: "local-guides",
+    image: "/images/categories/beaches-parks.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "southport-flower-show-guide",
+    title: "Southport Flower Show 2026: The Complete Guide",
+    excerpt:
+      "One of England's most prestigious flower shows returns to Victoria Park in August. Tickets, what to see, where to park, and tips from someone who has been more times than he'd like to admit.",
+    categorySlug: "events",
+    image: "/images/mlec.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "southport-vs-blackpool",
+    title: "Southport vs Blackpool: Which Should You Visit?",
+    excerpt:
+      "Both Lancashire seaside towns. Very different experiences. Terry gives the honest comparison — and has a clear view on which one wins.",
+    categorySlug: "local-guides",
+    image: "/southport-pier.webp",
+    date: "19 Feb 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
