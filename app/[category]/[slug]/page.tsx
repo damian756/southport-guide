@@ -163,6 +163,7 @@ export default async function BusinessPage({ params }: Props) {
     hygieneRatingShow: boolean;
     fhrsId: string | null;
     updatedAt: Date;
+    secondaryCategoryIds: string[];
     _count?: { clicks: number };
   };
 
@@ -173,14 +174,20 @@ export default async function BusinessPage({ params }: Props) {
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
     if (categoryRecord) {
       business = await prisma.business.findFirst({
-        where: { slug, categoryId: categoryRecord.id },
+        where: {
+          slug,
+          OR: [
+            { categoryId: categoryRecord.id },
+            { secondaryCategoryIds: { has: categoryRecord.id } },
+          ],
+        },
         select: {
           id: true, name: true, address: true, postcode: true, lat: true, lng: true,
           phone: true, website: true, description: true, shortDescription: true,
           listingTier: true, priceRange: true, openingHours: true, images: true,
           claimed: true, rating: true, reviewCount: true, placeId: true,
           hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
-          updatedAt: true,
+          updatedAt: true, secondaryCategoryIds: true,
           _count: { select: { clicks: true } },
         },
       }) as Business | null;
@@ -241,6 +248,18 @@ export default async function BusinessPage({ params }: Props) {
     if (diffDays < 31) return `Updated ${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? "s" : ""} ago`;
     return `Updated ${new Date(d).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}`;
   })();
+
+  // Resolve secondary category names for badge display
+  let secondaryCategories: { slug: string; name: string }[] = [];
+  if (business.secondaryCategoryIds?.length) {
+    try {
+      const secCats = await prisma.category.findMany({
+        where: { id: { in: business.secondaryCategoryIds } },
+        select: { slug: true, name: true },
+      });
+      secondaryCategories = secCats.filter((c) => c.slug !== category);
+    } catch { /* ignore */ }
+  }
 
   // Build JSON-LD structured data
   const schemaType = SCHEMA_TYPES[category] || "LocalBusiness";
@@ -369,7 +388,10 @@ export default async function BusinessPage({ params }: Props) {
                     {isFeatured && (
                       <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-xs font-bold px-3 py-1 rounded-full border border-[#C9A84C]/20">✦ FEATURED</span>
                     )}
-                    <span className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200">{cat.name}</span>
+                    <Link href={`/${category}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{cat.name}</Link>
+                    {secondaryCategories.map((sc) => (
+                      <Link key={sc.slug} href={`/${sc.slug}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{sc.name}</Link>
+                    ))}
                     {business.priceRange && (
                       <span className="bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full border border-green-200">{business.priceRange}</span>
                     )}

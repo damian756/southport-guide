@@ -28,6 +28,7 @@ model Business {
   priceRange            String?         // £, ££, £££, ££££
   listingTier           String          @default("free") // free, standard, featured, premium
   claimed               Boolean         @default(false)
+  secondaryCategoryIds  String[]        // Additional category IDs this business appears in
   placeId               String?         // Google Places ID
   rating                Float?          // Google rating 1-5
   reviewCount           Int?            // Number of Google reviews

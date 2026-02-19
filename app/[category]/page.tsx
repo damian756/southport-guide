@@ -184,12 +184,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
-          FROM "Business" WHERE "categoryId" = ${catId} ORDER BY name ASC
+          FROM "Business" WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds") ORDER BY name ASC
         `;
       } else if (sort === "hygiene") {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
-          FROM "Business" WHERE "categoryId" = ${catId}
+          FROM "Business" WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
           ORDER BY
             CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
             (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
@@ -197,7 +197,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       } else if (sort === "google") {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
-          FROM "Business" WHERE "categoryId" = ${catId}
+          FROM "Business" WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
             COALESCE(rating, 0) DESC, COALESCE("reviewCount", 0) DESC, name ASC
@@ -205,7 +205,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       } else {
         businesses = await prisma.$queryRaw<Business[]>`
           SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
-          FROM "Business" WHERE "categoryId" = ${catId}
+          FROM "Business" WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
             (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
