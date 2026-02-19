@@ -668,6 +668,44 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/southport-vs-blackpool.webp",
     date: "19 Feb 2026",
   },
+
+  // ── New posts: Content gap closers ────────────────────────────────────────
+  {
+    slug: "best-indian-restaurants-southport",
+    title: "The Best Indian Restaurants in Southport",
+    excerpt:
+      "Southport has a proper curry scene — most of it clustered around the town centre and Lord Street. Terry's honest guide to where to actually go.",
+    categorySlug: "food-drink",
+    image: "/images/categories/restaurants.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "best-italian-restaurants-southport",
+    title: "The Best Italian Restaurants in Southport",
+    excerpt:
+      "From Lord Street trattorias to neighbourhood Italian joints, Southport does Italian better than you'd expect. Here's where to actually go.",
+    categorySlug: "food-drink",
+    image: "/images/categories/restaurants.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "watersports-southport",
+    title: "Watersports in Southport: The Complete Guide",
+    excerpt:
+      "Marine Lake, the Sefton Coast, and Crosby Lakeside — Southport's watersports scene is better than most people expect. Wakeboarding, sailing, kayaking, and more.",
+    categorySlug: "activities",
+    image: "/images/categories/beaches-parks.webp",
+    date: "19 Feb 2026",
+  },
+  {
+    slug: "cocktail-bars-southport",
+    title: "The Best Cocktail Bars in Southport",
+    excerpt:
+      "Southport's cocktail scene has quietly improved. Here's where to go for a proper drink on Lord Street and beyond — from craft cocktails to classic pours.",
+    categorySlug: "bars-nightlife",
+    image: "/images/categories/bars-nightlife.webp",
+    date: "19 Feb 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
