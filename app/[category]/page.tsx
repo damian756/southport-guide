@@ -30,15 +30,51 @@ const THEMES: Record<string, { gradient: string; light: string; accent: string; 
 
 const FOOD_CATS = new Set(["restaurants", "cafes", "bars-nightlife", "hotels", "activities"]);
 
-// Southport neighbourhoods — order matters (more specific first)
-const AREAS = [
-  { key: "birkdale",    label: "Birkdale",     match: ["Birkdale"] },
-  { key: "churchtown",  label: "Churchtown",   match: ["Churchtown"] },
-  { key: "ainsdale",    label: "Ainsdale",     match: ["Ainsdale"] },
-  { key: "town-centre", label: "Town Centre",  match: ["Lord Street", "Chapel Street", "Eastbank", "London Street", "King Street", "West Street", "Bold Street"] },
-  { key: "seafront",    label: "Seafront",     match: ["Marine Drive", "Promenade", "The Esplanade", "Ocean Plaza"] },
-  { key: "crossens",    label: "Crossens",     match: ["Crossens"] },
-  { key: "formby",      label: "Formby",       match: ["Formby"] },
+// Southport neighbourhood definitions — postcode-first, address-string fallback
+// PR8 1 = town centre | PR8 2 = Birkdale | PR8 3 = Ainsdale
+// PR9 0 = north town/seafront | PR9 7/9 = Churchtown | PR9 8 = Crossens/Marshside
+const AREAS: { key: string; label: string; test: (addr: string, pc: string) => boolean }[] = [
+  {
+    key: "town-centre",
+    label: "Town Centre",
+    test: (addr, pc) => pc.startsWith("PR8 1") || pc.startsWith("PR9 0"),
+  },
+  {
+    key: "birkdale",
+    label: "Birkdale",
+    test: (addr, pc) => pc.startsWith("PR8 2") || addr.includes("Birkdale"),
+  },
+  {
+    key: "ainsdale",
+    label: "Ainsdale",
+    test: (addr, pc) => pc.startsWith("PR8 3") || addr.includes("Ainsdale"),
+  },
+  {
+    key: "seafront",
+    label: "Seafront",
+    test: (addr) =>
+      ["Promenade", "Marine Drive", "Esplanade", "Ocean Plaza"].some((s) =>
+        addr.toLowerCase().includes(s.toLowerCase())
+      ),
+  },
+  {
+    key: "churchtown",
+    label: "Churchtown",
+    test: (addr, pc) =>
+      pc.startsWith("PR9 7") || pc.startsWith("PR9 9") || addr.includes("Churchtown"),
+  },
+  {
+    key: "crossens",
+    label: "Crossens",
+    test: (addr, pc) =>
+      pc.startsWith("PR9 8") || addr.includes("Crossens") || addr.includes("Marshside"),
+  },
+  {
+    key: "formby",
+    label: "Formby",
+    test: (addr, pc) =>
+      addr.includes("Formby") || pc.startsWith("L37") || pc.startsWith("PR6"),
+  },
 ];
 
 type Business = {
@@ -48,6 +84,7 @@ type Business = {
   description: string | null;
   listingTier: string;
   address: string;
+  postcode: string;
   rating: number | null;
   reviewCount: number | null;
   priceRange: string | null;
@@ -73,10 +110,10 @@ function getArea(address: string): string {
   return "Southport";
 }
 
-function matchesAreaFilter(address: string, areaKey: string): boolean {
+function matchesAreaFilter(address: string, postcode: string, areaKey: string): boolean {
   const area = AREAS.find((a) => a.key === areaKey);
   if (!area) return true;
-  return area.match.some((m) => address.toLowerCase().includes(m.toLowerCase()));
+  return area.test(address, postcode);
 }
 
 function hygieneStyle(r: string): { bg: string; text: string; border: string } {
@@ -146,12 +183,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
+          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId} ORDER BY name ASC
         `;
       } else if (sort === "hygiene") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
+          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
@@ -159,7 +196,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else if (sort === "google") {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
+          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
@@ -167,7 +204,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else {
         businesses = await prisma.$queryRaw<Business[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
+          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode, rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business" WHERE "categoryId" = ${catId}
           ORDER BY
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
@@ -179,7 +216,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
   // Apply area filter in JS (address-string matching)
   const filteredBusinesses = area
-    ? businesses.filter((b) => matchesAreaFilter(b.address, area))
+    ? businesses.filter((b) => matchesAreaFilter(b.address, b.postcode, area))
     : businesses;
 
   const activeSort = sort || "default";
