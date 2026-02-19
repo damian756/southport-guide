@@ -8,6 +8,49 @@ export const metadata = {
     "Find the best hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips for events at the Marine Lake Events Centre.",
   keywords:
     "accommodation near MLEC, hotels near Marine Lake Events Centre, Southport hotels 2027, where to stay MLEC, Marine Lake accommodation",
+  alternates: { canonical: "https://www.southportguide.co.uk/mlec/accommodation" },
+};
+
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "Marine Lake Events Centre", item: "https://www.southportguide.co.uk/mlec" },
+    { "@type": "ListItem", position: 3, name: "Accommodation near MLEC", item: "https://www.southportguide.co.uk/mlec/accommodation" },
+  ],
+};
+
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Where is the best place to stay near the Marine Lake Events Centre?",
+      acceptedAnswer: { "@type": "Answer", text: "The closest accommodation to MLEC is on the Promenade itself — a 2–5 minute walk. Southport town centre and Lord Street hotels are the next best option, about 10–20 minutes on foot along the seafront. For the widest choice of price points, town centre B&Bs and hotels are recommended." },
+    },
+    {
+      "@type": "Question",
+      name: "How far is Southport town centre from MLEC?",
+      acceptedAnswer: { "@type": "Answer", text: "Southport town centre is approximately 10–20 minutes on foot from the Marine Lake Events Centre. The walk along the Promenade past King's Gardens is flat, well-lit, and pleasant — most visitors find it an enjoyable part of the evening rather than an inconvenience." },
+    },
+    {
+      "@type": "Question",
+      name: "Should I book accommodation in advance for MLEC events?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes — for major concerts and sell-out events, book accommodation the day tickets go on sale. Southport hotels fill quickly for large events, particularly those at the 2,400-capacity exhibition hall or the 1,500-seat theatre. Flexible cancellation rates are worth the small premium for events booked far in advance." },
+    },
+    {
+      "@type": "Question",
+      name: "Are there hotels within walking distance of MLEC?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Several hotels and B&Bs on the Promenade are within 2–5 minutes walk of MLEC. Southport town centre hotels on and around Lord Street are 10–20 minutes on foot. Birkdale village guest houses are further — a taxi or short Merseyrail hop from Birkdale station to Southport is recommended." },
+    },
+    {
+      "@type": "Question",
+      name: "Can I get a taxi back to my hotel after an MLEC event?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes, but pre-booking is strongly advised for major events. After large shows, demand for taxis in Southport rises sharply. Book a return taxi before attending the event. Taxi ranks on Lord Street and Cambridge Road serve the town. Uber and Bolt also operate in Southport." },
+    },
+  ],
 };
 
 const AREAS = [
@@ -94,6 +137,9 @@ const BOOKING_TIPS = [
 
 export default function MLECAccommodationPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="relative overflow-hidden min-h-[50vh] flex items-end bg-slate-900 text-white">
@@ -246,5 +292,6 @@ export default function MLECAccommodationPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

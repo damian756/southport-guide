@@ -8,6 +8,49 @@ export const metadata = {
     "Best restaurants, bars, and cafés near the Marine Lake Events Centre in Southport. Pre-show dining guide with options by area, price, and distance from MLEC.",
   keywords:
     "restaurants near MLEC, bars near Marine Lake Events Centre, pre-show dining Southport, eat near MLEC, Southport restaurants 2027",
+  alternates: { canonical: "https://www.southportguide.co.uk/mlec/restaurants" },
+};
+
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "Marine Lake Events Centre", item: "https://www.southportguide.co.uk/mlec" },
+    { "@type": "ListItem", position: 3, name: "Restaurants near MLEC", item: "https://www.southportguide.co.uk/mlec/restaurants" },
+  ],
+};
+
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Where should I eat before a show at MLEC?",
+      acceptedAnswer: { "@type": "Answer", text: "Lord Street in Southport town centre is the best pre-show dining option — it has the widest range of restaurants from independent bistros to cocktail bars, and is a pleasant 10–15 minute walk along the Promenade to MLEC. Book in advance for any show night, especially weekends. The Promenade itself will have MLEC's own lakeside café and signature restaurant from 2027." },
+    },
+    {
+      "@type": "Question",
+      name: "Does MLEC have its own restaurant?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes — MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both are due to open with the venue in April 2027. The signature restaurant is expected to be a popular pre-show dining option — book ahead for event nights." },
+    },
+    {
+      "@type": "Question",
+      name: "How long should I allow for dinner before a show at MLEC?",
+      acceptedAnswer: { "@type": "Answer", text: "Allow at least 90 minutes from sitting down to being in your seat at MLEC. This gives 60 minutes for dinner and 30 minutes to walk to the venue and find your seats. For restaurants on Lord Street, factor in the 10–15 minute Promenade walk to MLEC." },
+    },
+    {
+      "@type": "Question",
+      name: "Are restaurants near MLEC busy on event nights?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes — when MLEC opens for major events, Lord Street restaurants will fill up quickly from around 5:30–6pm. Always book a table in advance for show nights, particularly for Saturday events or high-profile concerts. Walk-in dining on event evenings is not reliable." },
+    },
+    {
+      "@type": "Question",
+      name: "What types of restaurant are near MLEC Southport?",
+      acceptedAnswer: { "@type": "Answer", text: "Within 15 minutes of MLEC you'll find modern British restaurants, Italian, Indian, Thai and Asian fusion, fish and chip shops, cocktail bars, traditional pubs, and independent cafés. Lord Street has the highest concentration. Birkdale village (accessible by taxi or Merseyrail) also has quality independent bistros and restaurants." },
+    },
+  ],
 };
 
 const DINING_AREAS = [
@@ -97,6 +140,9 @@ const FOOD_TYPES = [
 
 export default function MLECRestaurantsPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="relative overflow-hidden min-h-[45vh] flex items-end bg-slate-900 text-white">
@@ -252,5 +298,6 @@ export default function MLECRestaurantsPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

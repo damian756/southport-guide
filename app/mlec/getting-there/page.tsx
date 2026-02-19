@@ -8,6 +8,49 @@ export const metadata = {
     "How to get to MLEC Southport by train, bus, car, and taxi. Parking guide, Merseyrail directions, and accessibility information for Marine Lake Events Centre.",
   keywords:
     "getting to MLEC, Marine Lake Events Centre parking, Southport train MLEC, transport to Marine Lake Events Centre, how to get to MLEC",
+  alternates: { canonical: "https://www.southportguide.co.uk/mlec/getting-there" },
+};
+
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "Marine Lake Events Centre", item: "https://www.southportguide.co.uk/mlec" },
+    { "@type": "ListItem", position: 3, name: "Getting to MLEC", item: "https://www.southportguide.co.uk/mlec/getting-there" },
+  ],
+};
+
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do I get to the Marine Lake Events Centre by train?",
+      acceptedAnswer: { "@type": "Answer", text: "Take the Merseyrail Southport Line to Southport Station — the northern terminus. From the station, turn right onto Lord Street, walk toward the seafront (10 minutes), then turn right onto the Promenade. MLEC is on your left after 5 minutes. Total walking time from the station is approximately 15 minutes. Trains run from Liverpool Central (50 min), Formby (20 min), and other stops on the Southport Line." },
+    },
+    {
+      "@type": "Question",
+      name: "Is there parking at the Marine Lake Events Centre?",
+      acceptedAnswer: { "@type": "Answer", text: "MLEC does not have its own dedicated multi-storey car park. The closest parking is the Promenade surface car parks (1–3 min walk, pay and display), King's Gardens car park (5–8 min walk), and town centre multi-storey options on Chapel Street and Mornington Road (12–15 min walk). For major events, parking fills quickly — arrive at least 60 minutes early or use the train." },
+    },
+    {
+      "@type": "Question",
+      name: "What is the best way to get to MLEC?",
+      acceptedAnswer: { "@type": "Answer", text: "The train is the recommended option. Southport is the end of the Merseyrail Southport Line so you cannot miss your stop, the walk from the station to MLEC is flat and straightforward, and you avoid all parking and traffic issues. If driving, park in the town centre car parks and walk down — the Promenade route is pleasant and only 10–15 minutes." },
+    },
+    {
+      "@type": "Question",
+      name: "How far is MLEC from Southport town centre?",
+      acceptedAnswer: { "@type": "Answer", text: "MLEC is approximately 10–15 minutes on foot from Southport town centre and Lord Street. The walk is flat and follows the Promenade past King's Gardens. The route is well-lit and pleasant, making it a comfortable walk even after an evening event." },
+    },
+    {
+      "@type": "Question",
+      name: "Can I get a taxi to and from MLEC?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes — taxis and ride-share apps (Uber, Bolt) operate in Southport. For major events, pre-booking your return taxi is strongly advised as demand rises sharply after shows finish. Taxi ranks on Lord Street and Cambridge Road serve the town. For disabled-adapted vehicles, pre-book directly with a local specialist firm." },
+    },
+  ],
 };
 
 const TRANSPORT_OPTIONS = [
@@ -134,6 +177,9 @@ const PARKING_OPTIONS = [
 
 export default function MLECGettingTherePage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="relative overflow-hidden min-h-[45vh] flex items-end bg-slate-900 text-white">
@@ -352,5 +398,6 @@ export default function MLECGettingTherePage() {
         </section>
       </div>
     </div>
+    </>
   );
 }
