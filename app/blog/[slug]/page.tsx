@@ -5,6 +5,16 @@ import { BLOG_POSTS, getBlogPostCategory } from "@/lib/southport-data";
 import { BLOG_CONTENT, ContentBlock } from "@/lib/blog-content";
 import { notFound } from "next/navigation";
 
+const MONTHS: Record<string, string> = {
+  Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06",
+  Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12",
+};
+
+function toIso(dateStr: string): string {
+  const [day, mon, year] = dateStr.split(" ");
+  return `${year}-${MONTHS[mon] ?? "01"}-${day.padStart(2, "0")}`;
+}
+
 export async function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
@@ -16,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | Southport Guide`,
     description: post.excerpt,
+    alternates: { canonical: `https://www.southportguide.co.uk/blog/${slug}` },
   };
 }
 
@@ -91,7 +102,47 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const cat = getBlogPostCategory(post);
   const content = BLOG_CONTENT[slug];
 
+  const isoDate = toIso(post.date);
+  const canonicalUrl = `https://www.southportguide.co.uk/blog/${slug}`;
+
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image.startsWith("http")
+      ? post.image
+      : `https://www.southportguide.co.uk${post.image}`,
+    datePublished: isoDate,
+    dateModified: isoDate,
+    url: canonicalUrl,
+    author: {
+      "@type": "Person",
+      name: "Terry",
+      jobTitle: "Chief Editor",
+      worksFor: {
+        "@type": "Organization",
+        name: "SouthportGuide.co.uk",
+        url: "https://www.southportguide.co.uk",
+      },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
     <div className="min-h-screen bg-[#FAF8F5]">
       {/* Hero image */}
       <div className="relative h-72 md:h-[26rem] bg-[#1B2E4B]">
@@ -253,5 +304,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </div>
     </div>
+    </>
   );
 }
