@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper } from "lucide-react";
+import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass } from "lucide-react";
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",      icon: Utensils,    color: "text-red-500" },
@@ -27,20 +27,32 @@ export default function NavMenu() {
       {/* ── Desktop ─────────────────────────────────────────── */}
       <div className="hidden md:flex items-center gap-1">
 
-        {/* Explore dropdown */}
+        {/* Things to Do dropdown */}
         <div
           className="relative"
           onMouseEnter={() => setExploreOpen(true)}
           onMouseLeave={() => setExploreOpen(false)}
         >
-          <button className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] transition-colors font-medium px-3 py-2 rounded-lg text-sm">
-            Explore
+          <Link
+            href="/things-to-do"
+            className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] transition-colors font-medium px-3 py-2 rounded-lg text-sm"
+          >
+            <Compass className="w-3.5 h-3.5" />
+            Things to Do
             <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180" : ""}`} />
-          </button>
+          </Link>
 
           {/* Mega dropdown */}
           <div className={`absolute top-full right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-72 z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-3 px-2">Browse all categories</p>
+            <Link
+              href="/things-to-do"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm mb-2 hover:bg-[#2A4A73] transition-colors"
+              onClick={() => setExploreOpen(false)}
+            >
+              <Compass className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
+              <span className="font-semibold">Things to Do — Full Guide</span>
+            </Link>
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2 px-2 mt-3">Browse by category</p>
             <div className="grid grid-cols-1 gap-0.5">
               {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
                 <Link
@@ -100,7 +112,15 @@ export default function NavMenu() {
       <div className={`md:hidden absolute top-16 left-0 right-0 bg-white shadow-2xl border-t border-gray-100 z-50 overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"}`}>
         <div className="overflow-y-auto max-h-[85vh] px-4 py-4">
 
-          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Explore Southport</p>
+          <Link
+            href="/things-to-do"
+            className="flex items-center gap-2.5 px-4 py-3.5 rounded-xl bg-[#1B2E4B] text-white text-sm font-semibold mb-4"
+            onClick={() => setMobileOpen(false)}
+          >
+            <Compass className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
+            <span>Things to Do in Southport — Full Guide</span>
+          </Link>
+          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Browse by category</p>
           <div className="grid grid-cols-2 gap-1 mb-5">
             {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
               <Link

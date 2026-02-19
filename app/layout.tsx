@@ -172,6 +172,7 @@ function Footer() {
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Explore</h3>
             <ul className="space-y-2.5 text-sm">
               {[
+                ["Things to Do", "/things-to-do"],
                 ["Restaurants", "/restaurants"],
                 ["Hotels", "/hotels"],
                 ["Bars & Pubs", "/bars-nightlife"],
