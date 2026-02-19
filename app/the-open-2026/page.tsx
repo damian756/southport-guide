@@ -145,12 +145,13 @@ export default function TheOpen2026Page() {
       {/* ── Quick nav cards ───────────────────────────────────────── */}
       <section className="bg-[#1B2E4B] border-t border-white/10">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-white/10">
             {[
-              { href: "/the-open-2026/accommodation", icon: Hotel, label: "Where to Stay", sub: "Hotels, B&Bs, self-catering" },
+              { href: "/the-open-2026/accommodation", icon: Hotel, label: "Where to Stay", sub: "Hotels ranked by distance" },
               { href: "/the-open-2026/restaurants", icon: Utensils, label: "Eat & Drink", sub: "Restaurants and pubs" },
+              { href: "/the-open-2026/pubs", icon: MapPin, label: "Pubs", sub: "Near the course" },
               { href: "/the-open-2026/getting-there", icon: Car, label: "Getting There", sub: "Transport and parking" },
-              { href: "/attractions", icon: MapPin, label: "Things to Do", sub: "Explore Southport" },
+              { href: "/the-open-2026/things-to-do", icon: Trophy, label: "Things to Do", sub: "Explore Southport" },
             ].map(({ href, icon: Icon, label, sub }) => (
               <Link
                 key={href}

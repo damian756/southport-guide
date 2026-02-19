@@ -1,15 +1,52 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Train, Car, Bus, MapPin, AlertTriangle, Clock } from "lucide-react";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Getting to The Open 2026 at Royal Birkdale | Transport & Parking Guide | SouthportGuide",
+export const metadata: Metadata = {
+  title: "Getting to Royal Birkdale | Transport Guide for The Open 2026 | Southport Guide",
   description:
-    "How to get to Royal Birkdale for The Open Championship 2026. Park and ride, trains, taxis, road closures, and everything you need to know about transport during Open week in Southport.",
+    "How to get to Royal Birkdale for The Open Championship 2026. Merseyrail trains, park and ride, taxis, road closures and walking routes — everything you need for Open week in Southport.",
+  alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/getting-there" },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "The Open 2026", item: "https://www.southportguide.co.uk/the-open-2026" },
+    { "@type": "ListItem", position: 3, name: "Getting There", item: "https://www.southportguide.co.uk/the-open-2026/getting-there" },
+  ],
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do I get to Royal Birkdale for The Open 2026?",
+      acceptedAnswer: { "@type": "Answer", text: "Do not drive to the course — road closures around Birkdale make it impractical and parking is reserved for officials only. Take Merseyrail to Birkdale station (10–15 minute walk from the course), or use the R&A park and ride service from sites across Southport." },
+    },
+    {
+      "@type": "Question",
+      name: "Which train station is closest to Royal Birkdale?",
+      acceptedAnswer: { "@type": "Answer", text: "Birkdale station on the Merseyrail Southport line is the closest station, approximately 10–15 minutes walk from the course entrance. Trains run frequently from Liverpool Central and Southport station throughout the day." },
+    },
+    {
+      "@type": "Question",
+      name: "Is there parking at Royal Birkdale for The Open 2026?",
+      acceptedAnswer: { "@type": "Answer", text: "No public parking is available at or near Royal Birkdale during The Open. All nearby parking is reserved for officials, media, and accredited partners. Use the park and ride sites operated by the R&A from across Southport, or take the train to Birkdale station." },
+    },
+  ],
 };
 
 export default function OpenGettingTherePage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     <div className="min-h-screen bg-[#FAF8F5]">
 
       {/* Hero */}
@@ -179,5 +216,6 @@ export default function OpenGettingTherePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

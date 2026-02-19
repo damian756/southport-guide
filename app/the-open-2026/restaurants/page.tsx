@@ -2,11 +2,45 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Where to Eat During The Open 2026 | Restaurants Near Royal Birkdale | SouthportGuide",
+export const metadata: Metadata = {
+  title: "Restaurants Near Royal Birkdale | Where to Eat During The Open 2026 | Southport Guide",
   description:
-    "The best restaurants, pubs, and cafes in Southport for The Open Championship 2026. Book ahead — Birkdale and Lord Street venues fill up fast during Open week.",
+    "The best restaurants and dining in Southport and Birkdale for The Open Championship 2026. Book ahead — venues near Royal Birkdale fill up weeks in advance during Open week.",
+  alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/restaurants" },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+    { "@type": "ListItem", position: 2, name: "The Open 2026", item: "https://www.southportguide.co.uk/the-open-2026" },
+    { "@type": "ListItem", position: 3, name: "Restaurants", item: "https://www.southportguide.co.uk/the-open-2026/restaurants" },
+  ],
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Where should I eat near Royal Birkdale during The Open 2026?",
+      acceptedAnswer: { "@type": "Answer", text: "Birkdale village has the closest restaurants and pubs to Royal Birkdale, within a 5-minute walk of the course. Book well in advance — these venues fill up entirely during Open week. Southport town centre (10 minutes by taxi) has a wider selection of restaurants along Lord Street." },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need to book restaurants in advance for Open week 2026?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes, absolutely. With 250,000 spectators in the area, restaurant demand far exceeds normal capacity. Evening reservations from Thursday to Sunday within two miles of the course are essentially fully booked weeks in advance. Book now." },
+    },
+    {
+      "@type": "Question",
+      name: "Are there restaurants inside Royal Birkdale during The Open?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes — on-course hospitality and food concessions are available inside the grounds, but prices are high. Many spectators eat properly at their accommodation or a local restaurant before arriving, and use on-course facilities for snacks and drinks only." },
+    },
+  ],
 };
 
 const AREA_DINING = [
@@ -37,6 +71,7 @@ const OPEN_DINING_TIPS = [
 ];
 
 export default async function OpenRestaurantsPage() {
+  // Schema injected in JSX below
   let restaurants: { slug: string; name: string; shortDescription: string | null }[] = [];
   let bars: { slug: string; name: string; shortDescription: string | null }[] = [];
 
@@ -65,6 +100,9 @@ export default async function OpenRestaurantsPage() {
   }
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     <div className="min-h-screen bg-[#FAF8F5]">
 
       {/* Hero */}
@@ -214,5 +252,6 @@ export default async function OpenRestaurantsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
