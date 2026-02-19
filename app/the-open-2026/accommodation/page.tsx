@@ -17,17 +17,21 @@ export const metadata: Metadata = {
 };
 
 // Distance data — measured from Royal Birkdale Golf Club main entrance
+// Search-based URLs — guaranteed to work, no 404 risk.
+// Replace with CJ affiliate deep links once approved.
+const BOOKING_BASE = "https://www.booking.com/searchresults.html?checkin=2026-07-12&checkout=2026-07-19&dest_type=hotel&ss=";
+
 const HOTELS_BY_DISTANCE = [
-  { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible — book months ahead", bookingUrl: "https://www.booking.com/searchresults.html?ss=Birkdale%2C+Southport&checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest — luxury boutique", bookingUrl: "https://www.booking.com/hotel/gb/the-vincent.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "Ramada Plaza Southport", distance: "1.1 miles", walk: "22 min", drive: "5 min", price: "£££", note: "Large hotel, conference facilities, seafront", bookingUrl: "https://www.booking.com/hotel/gb/ramada-plaza-southport.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "Holiday Inn Southport", distance: "1.3 miles", walk: "26 min", drive: "6 min", price: "££", note: "Reliable chain, good availability", bookingUrl: "https://www.booking.com/hotel/gb/holiday-inn-southport.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "Scarisbrick Hotel", distance: "1.4 miles", walk: "28 min", drive: "6 min", price: "££", note: "Historic Lord Street hotel, character property", bookingUrl: "https://www.booking.com/hotel/gb/the-scarisbrick.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "Premier Inn Southport", distance: "1.5 miles", walk: "30 min", drive: "7 min", price: "£", note: "Best-value option, book early for Open week", bookingUrl: "https://www.booking.com/hotel/gb/premier-inn-southport-town-centre.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "The Bold Hotel", distance: "1.6 miles", walk: "32 min", drive: "7 min", price: "££", note: "Boutique hotel on Lord Street, popular with golfers", bookingUrl: "https://www.booking.com/hotel/gb/the-bold.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "The Metropole Hotel", distance: "1.7 miles", walk: "34 min", drive: "8 min", price: "££", note: "Victorian seafront hotel, traditional atmosphere", bookingUrl: "https://www.booking.com/hotel/gb/the-metropole-southport.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "Travelodge Southport", distance: "1.8 miles", walk: "36 min", drive: "8 min", price: "£", note: "Budget-friendly, no frills, functional", bookingUrl: "https://www.booking.com/hotel/gb/travelodge-southport-hotel.html?checkin=2026-07-12&checkout=2026-07-19" },
-  { name: "Royal Clifton Hotel", distance: "2.0 miles", walk: "40 min", drive: "9 min", price: "££", note: "Seafront location, sea views from upper floors", bookingUrl: "https://www.booking.com/hotel/gb/royal-clifton.html?checkin=2026-07-12&checkout=2026-07-19" },
+  { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible — book months ahead", bookingUrl: BOOKING_BASE + "Birkdale%2C+Southport%2C+UK" },
+  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest — luxury boutique", bookingUrl: BOOKING_BASE + "The+Vincent+Hotel+Southport" },
+  { name: "Ramada Plaza Southport", distance: "1.1 miles", walk: "22 min", drive: "5 min", price: "£££", note: "Large hotel, conference facilities, seafront", bookingUrl: BOOKING_BASE + "Ramada+Plaza+Southport" },
+  { name: "Holiday Inn Southport", distance: "1.3 miles", walk: "26 min", drive: "6 min", price: "££", note: "Reliable chain, good availability", bookingUrl: BOOKING_BASE + "Holiday+Inn+Southport" },
+  { name: "Scarisbrick Hotel", distance: "1.4 miles", walk: "28 min", drive: "6 min", price: "££", note: "Historic Lord Street hotel, character property", bookingUrl: BOOKING_BASE + "Scarisbrick+Hotel+Southport" },
+  { name: "Premier Inn Southport", distance: "1.5 miles", walk: "30 min", drive: "7 min", price: "£", note: "Best-value option, book early for Open week", bookingUrl: BOOKING_BASE + "Premier+Inn+Southport" },
+  { name: "The Bold Hotel", distance: "1.6 miles", walk: "32 min", drive: "7 min", price: "££", note: "Boutique hotel on Lord Street, popular with golfers", bookingUrl: BOOKING_BASE + "The+Bold+Hotel+Southport" },
+  { name: "The Metropole Hotel", distance: "1.7 miles", walk: "34 min", drive: "8 min", price: "££", note: "Victorian seafront hotel, traditional atmosphere", bookingUrl: BOOKING_BASE + "Metropole+Hotel+Southport" },
+  { name: "Travelodge Southport", distance: "1.8 miles", walk: "36 min", drive: "8 min", price: "£", note: "Budget-friendly, no frills, functional", bookingUrl: BOOKING_BASE + "Travelodge+Southport" },
+  { name: "Royal Clifton Hotel", distance: "2.0 miles", walk: "40 min", drive: "9 min", price: "££", note: "Seafront location, sea views from upper floors", bookingUrl: BOOKING_BASE + "Royal+Clifton+Hotel+Southport" },
 ];
 
 const AREA_GUIDE = [
