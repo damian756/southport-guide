@@ -8,6 +8,7 @@ export const metadata = {
   title: "Blog | Southport Guide | SouthportGuide.co.uk",
   description:
     "Local guides, tips and Southport stories — written by people who actually live here.",
+  alternates: { canonical: "https://www.southportguide.co.uk/blog" },
 };
 
 export default function BlogPage() {

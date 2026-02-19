@@ -4,6 +4,7 @@ import { ArrowLeft, Shield } from "lucide-react";
 export const metadata = {
   title: "Privacy Policy | SouthportGuide.co.uk",
   description: "Privacy Policy for SouthportGuide.co.uk — how we collect, use and protect your personal data in accordance with UK GDPR.",
+  alternates: { canonical: "https://www.southportguide.co.uk/privacy" },
 };
 
 export default function PrivacyPage() {

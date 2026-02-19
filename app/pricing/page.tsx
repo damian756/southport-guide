@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 export const metadata = {
   title: "Pricing | List Your Business on SouthportGuide",
   description: "Pricing for business listings on SouthportGuide.co.uk. Free, Standard, Featured and Premium tiers.",
+  alternates: { canonical: "https://www.southportguide.co.uk/pricing" },
 };
 
 const tiers = [

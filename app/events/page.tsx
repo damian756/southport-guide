@@ -9,6 +9,7 @@ export const metadata = {
   title: "What's On in Southport 2026 | Events Calendar | Southport Guide",
   description:
     "The complete guide to events in Southport in 2026. From The Open Championship to the Flower Show, Comedy Festival and more — updated regularly.",
+  alternates: { canonical: "https://www.southportguide.co.uk/events" },
 };
 
 const CATEGORY_COLORS: Record<string, string> = {

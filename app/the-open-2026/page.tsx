@@ -8,9 +8,11 @@ export const metadata = {
   description:
     "Your complete guide to The 154th Open Championship at Royal Birkdale, Southport — 12–19 July 2026. Accommodation, transport, tickets, restaurants, spectator tips, and everything you need to plan your visit.",
   keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
+  alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026" },
   openGraph: {
     title: "The Open Championship 2026 at Royal Birkdale | SouthportGuide",
     description: "Everything you need to plan your visit to The 154th Open at Royal Birkdale, Southport — 12–19 July 2026.",
+    url: "https://www.southportguide.co.uk/the-open-2026",
     images: [{ url: "/images/open-2026.webp" }],
   },
 };

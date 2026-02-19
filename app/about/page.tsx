@@ -3,6 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "About SouthportGuide | Your Guide to Southport",
   description: "SouthportGuide.co.uk is the definitive visitor guide to Southport. Built by Churchtown Media.",
+  alternates: { canonical: "https://www.southportguide.co.uk/about" },
 };
 
 export default function AboutPage() {
