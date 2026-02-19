@@ -162,6 +162,8 @@ export default async function BusinessPage({ params }: Props) {
     hygieneRatingDate: Date | null;
     hygieneRatingShow: boolean;
     fhrsId: string | null;
+    updatedAt: Date;
+    _count?: { clicks: number };
   };
 
   let business: Business | null = null;
@@ -178,6 +180,8 @@ export default async function BusinessPage({ params }: Props) {
           listingTier: true, priceRange: true, openingHours: true, images: true,
           claimed: true, rating: true, reviewCount: true, placeId: true,
           hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
+          updatedAt: true,
+          _count: { select: { clicks: true } },
         },
       }) as Business | null;
 
@@ -199,10 +203,44 @@ export default async function BusinessPage({ params }: Props) {
   if (!business) notFound();
 
   const isFeatured = business.listingTier === "featured" || business.listingTier === "premium";
+  const isPremium = business.listingTier === "premium";
   const area = extractArea(business.address, business.postcode);
   const formattedAddress = formatAddress(business.address, business.postcode);
   const mapsKey = process.env.GOOGLE_PLACES_API_KEY;
   const isFoodCategory = FOOD_CATS.has(category);
+  const totalClicks = business._count?.clicks ?? 0;
+
+  // Fetch a Google Places photo if no images stored and placeId + API key available
+  let placesPhoto: string | null = null;
+  if (!business.images?.[0] && business.placeId && mapsKey) {
+    try {
+      const detailsRes = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${business.placeId}&fields=photos&key=${mapsKey}`,
+        { next: { revalidate: 86400 } }
+      );
+      if (detailsRes.ok) {
+        const details = await detailsRes.json() as { result?: { photos?: Array<{ photo_reference: string }> } };
+        const ref = details.result?.photos?.[0]?.photo_reference;
+        if (ref) {
+          placesPhoto = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${ref}&key=${mapsKey}`;
+        }
+      }
+    } catch {
+      // silently skip — no photo
+    }
+  }
+
+  // Format "last updated" label
+  const updatedLabel = (() => {
+    const d = business.updatedAt;
+    if (!d) return null;
+    const now = new Date();
+    const diffDays = Math.floor((now.getTime() - new Date(d).getTime()) / 86_400_000);
+    if (diffDays < 1) return "Updated today";
+    if (diffDays < 7) return `Updated ${diffDays} day${diffDays > 1 ? "s" : ""} ago`;
+    if (diffDays < 31) return `Updated ${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? "s" : ""} ago`;
+    return `Updated ${new Date(d).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}`;
+  })();
 
   // Build JSON-LD structured data
   const schemaType = SCHEMA_TYPES[category] || "LocalBusiness";
@@ -310,6 +348,12 @@ export default async function BusinessPage({ params }: Props) {
                   {business.images?.[0] ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={business.images[0]} alt={business.name} className="w-full h-full object-cover" />
+                  ) : placesPhoto ? (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={placesPhoto} alt={business.name} className="w-full h-full object-cover" />
+                      <span className="absolute bottom-2 right-2 text-white/50 text-[10px]">Photo © Google</span>
+                    </>
                   ) : (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-br from-[#1B2E4B] to-[#2A4A73]" />
@@ -337,6 +381,14 @@ export default async function BusinessPage({ params }: Props) {
                         show={business.hygieneRatingShow}
                         fhrsId={business.fhrsId}
                       />
+                    )}
+                    {isPremium && totalClicks >= 10 && (
+                      <span className="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full border border-blue-200">
+                        {totalClicks.toLocaleString()} people clicked through
+                      </span>
+                    )}
+                    {updatedLabel && (
+                      <span className="text-gray-400 text-xs">{updatedLabel}</span>
                     )}
                   </div>
 
@@ -414,7 +466,7 @@ export default async function BusinessPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Open 2026 callout — hotels category only */}
+              {/* Open 2026 contextual callouts */}
               {category === "hotels" && (
                 <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
                   <div className="px-6 py-5">
@@ -424,11 +476,64 @@ export default async function BusinessPage({ params }: Props) {
                         <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
                         <p className="text-white font-semibold mb-1">Royal Birkdale, 12–19 July 2026</p>
                         <p className="text-white/70 text-sm leading-relaxed mb-4">Attending The Open? We&apos;ve ranked every hotel and B&amp;B in Southport by walking distance to the course — with prices, transport times, and availability links.</p>
-                        <a
-                          href="/the-open-2026/accommodation"
-                          className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors"
-                        >
+                        <a href="/the-open-2026/accommodation" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
                           View Open 2026 accommodation guide →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {(category === "restaurants" || category === "cafes" || category === "bars-nightlife") && (
+                <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
+                  <div className="px-6 py-5">
+                    <div className="flex items-start gap-4">
+                      <span className="text-3xl flex-none">🍺</span>
+                      <div>
+                        <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
+                        <p className="text-white font-semibold mb-1">Where to eat &amp; drink near Royal Birkdale</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Heading to The Open? We&apos;ve picked the best restaurants, pubs, and cafés near the course — sorted by distance and atmosphere.</p>
+                        <div className="flex flex-wrap gap-2">
+                          <a href="/the-open-2026/restaurants" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+                            Restaurants near Royal Birkdale →
+                          </a>
+                          <a href="/the-open-2026/pubs" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
+                            Best Open pubs →
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {category === "golf" && (
+                <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
+                  <div className="px-6 py-5">
+                    <div className="flex items-start gap-4">
+                      <span className="text-3xl flex-none">⛳</span>
+                      <div>
+                        <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
+                        <p className="text-white font-semibold mb-1">Royal Birkdale hosts The Open — 12–19 July 2026</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Southport is links golf country. See our full Open 2026 guide for tickets, accommodation, transport, and everything else you need.</p>
+                        <a href="/the-open-2026" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+                          Open 2026 hub →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {category === "transport" && (
+                <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
+                  <div className="px-6 py-5">
+                    <div className="flex items-start gap-4">
+                      <span className="text-3xl flex-none">🚆</span>
+                      <div>
+                        <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">Getting to The Open 2026</p>
+                        <p className="text-white font-semibold mb-1">Royal Birkdale, 12–19 July 2026</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Train, bus, taxi or park &amp; ride — we&apos;ve laid out every transport option to get you to and from Royal Birkdale during Open week.</p>
+                        <a href="/the-open-2026/getting-there" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+                          Transport guide →
                         </a>
                       </div>
                     </div>
