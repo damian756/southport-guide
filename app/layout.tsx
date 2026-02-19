@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { CookieProvider } from "./components/CookieProvider";
 import CookieBanner from "./components/CookieBanner";
@@ -101,6 +102,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Footer />
           <CookieBanner />
         </CookieProvider>
+        <Script id="crisp-chat" strategy="afterInteractive">{`
+          window.$crisp=[];
+          window.CRISP_WEBSITE_ID="919e43aa-c79a-4c34-8144-45ed2ba27b0d";
+          (function(){
+            var d=document,s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+          })();
+        `}</Script>
       </body>
     </html>
   );
