@@ -63,7 +63,7 @@ export default function PrivacyPage() {
                 },
                 {
                   title: "Usage data",
-                  desc: "Anonymised page view data via Google Analytics 4. IP addresses are anonymised before storage.",
+                  desc: "Privacy-friendly, cookieless page view analytics via Plausible. No personal data or IP addresses are collected or stored.",
                 },
                 {
                   title: "Cookies",
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
             <ul className="space-y-2 text-gray-600 text-sm">
               <li className="flex gap-3"><span className="text-[#C9A84C]">→</span> Contact form submissions: <strong>12 months</strong></li>
               <li className="flex gap-3"><span className="text-[#C9A84C]">→</span> Business listing data: <strong>for the duration of your listing plus 6 months</strong></li>
-              <li className="flex gap-3"><span className="text-[#C9A84C]">→</span> Analytics data: <strong>14 months</strong> (Google Analytics 4 default)</li>
+              <li className="flex gap-3"><span className="text-[#C9A84C]">→</span> Analytics data: <strong>aggregated, no personal data retained</strong> (Plausible Analytics)</li>
             </ul>
           </section>
 
@@ -121,7 +121,7 @@ export default function PrivacyPage() {
             <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">5. Third parties we share data with</h2>
             <div className="space-y-3">
               {[
-                { name: "Google (Analytics)", detail: "Anonymised usage data only. Data may be processed in the USA under Standard Contractual Clauses." },
+                { name: "Plausible (Analytics)", detail: "Privacy-friendly, cookieless analytics. All data is aggregated and processed in the EU. No personal data is collected." },
                 { name: "Stripe", detail: "Payment processing for paid business listings. Subject to Stripe's own privacy policy." },
                 { name: "Vercel", detail: "Website hosting infrastructure. Data is processed in UK/EU-region data centres where possible." },
               ].map(({ name, detail }) => (
@@ -148,7 +148,7 @@ export default function PrivacyPage() {
                 <tbody>
                   {[
                     ["Essential", "Site functionality (session, security)", "Yes"],
-                    ["Analytics (GA4)", "Understanding how visitors use the site", "No — can decline"],
+                    ["Analytics (Plausible)", "Understanding how visitors use the site", "No — cookieless, no consent needed"],
                   ].map(([type, purpose, required]) => (
                     <tr key={type}>
                       <td className="p-3 border border-gray-100 text-gray-700 font-medium">{type}</td>
@@ -210,7 +210,7 @@ export default function PrivacyPage() {
                 <tbody className="divide-y divide-gray-50">
                   {[
                     ["Necessary", "Session management, security, and storing your cookie preference (sg_cookie_consent in localStorage).", "No — always active"],
-                    ["Analytics", "Google Analytics — page views, traffic sources, device types. Helps us understand how the site is used.", "Yes — optional"],
+                    ["Analytics", "Plausible Analytics — aggregated page views, traffic sources, device types. Privacy-friendly and cookieless.", "No — does not require consent"],
                     ["Marketing / Affiliate", "Booking.com and other affiliate partner tracking cookies. Set when you click through to a partner booking site.", "Yes — optional"],
                   ].map(([cat, purpose, req]) => (
                     <tr key={cat}>

@@ -52,7 +52,7 @@ export default function CookieBanner() {
               </div>
               {[
                 { cat: "Necessary", purpose: "Session, security, your cookie preference", consent: "Always on" },
-                { cat: "Analytics", purpose: "Page views, traffic sources (Google Analytics)", consent: "Optional" },
+                { cat: "Analytics", purpose: "Privacy-friendly page views via Plausible (no personal data collected)", consent: "Not required" },
                 { cat: "Marketing", purpose: "Booking.com affiliate tracking, ad referrals", consent: "Optional" },
               ].map(({ cat, purpose, consent: c }) => (
                 <div key={cat} className="grid grid-cols-3 px-4 py-3 border-t border-white/5 text-white/70">
