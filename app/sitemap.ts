@@ -22,6 +22,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: BASE,                           lastModified: new Date(), changeFrequency: "daily",   priority: 1.0 },
     { url: `${BASE}/events`,               lastModified: new Date(), changeFrequency: "daily",   priority: 0.9  },
     { url: `${BASE}/blog`,                 lastModified: new Date(), changeFrequency: "daily",   priority: 0.9  },
+    { url: `${BASE}/things-to-do`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.95 },
+    { url: `${BASE}/attractions/another-place-crosby`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/the-open-2026`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.95 },
     { url: `${BASE}/mlec`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9  },
     { url: `${BASE}/claim-listing`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8  },
