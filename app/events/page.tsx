@@ -31,6 +31,16 @@ function categoryClass(cat: string) {
   return CATEGORY_COLORS[cat] ?? "bg-gray-100 text-gray-600";
 }
 
+function getTodayISO() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d.toISOString().slice(0, 10);
+}
+
+function eventDayLabel(event: { isoDate: string; dayLabel: string }) {
+  return event.isoDate === getTodayISO() ? "Today" : event.dayLabel;
+}
+
 export default async function EventsPage({
   searchParams,
 }: {
@@ -155,7 +165,7 @@ export default async function EventsPage({
                           </div>
 
                           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">
-                            {event.dayLabel}
+                            {eventDayLabel(event)}
                           </p>
                           <h3 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-1 group-hover:text-[#C9A84C] transition-colors">
                             {event.title}

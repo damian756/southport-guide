@@ -76,8 +76,13 @@ export default async function Home() {
 
   const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const todayLabel = `${today.getDate()} ${MONTHS[today.getMonth()]} ${today.getFullYear()}`;
+  const todayISO = today.toISOString().slice(0, 10);
+
   function formatPostDate(dateStr: string) {
     return dateStr === todayLabel ? "Today" : dateStr;
+  }
+  function formatEventLabel(event: { isoDate: string; dayLabel: string }) {
+    return event.isoDate === todayISO ? "Today" : event.dayLabel;
   }
   const openDays = Math.ceil(
     (new Date("2026-07-12").getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
@@ -162,7 +167,7 @@ export default async function Home() {
                     <span className="text-lg flex-none">{event.emoji}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-sm font-semibold truncate group-hover:text-[#C9A84C] transition-colors">{event.title}</p>
-                      <p className="text-white/40 text-xs">{event.dayLabel} · {event.venue}</p>
+                      <p className="text-white/40 text-xs">{formatEventLabel(event)} · {event.venue}</p>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-white/25 group-hover:text-[#C9A84C] flex-none transition-colors" />
                   </a>
@@ -225,7 +230,7 @@ export default async function Home() {
                   rel={event.link.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="flex-none w-44 snap-start bg-white rounded-2xl p-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all group cursor-pointer"
                 >
-                  <div className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest mb-2">{event.dayLabel}</div>
+                  <div className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest mb-2">{formatEventLabel(event)}</div>
                   <div className="text-2xl mb-2">{event.emoji}</div>
                   <h3 className="font-bold text-[#1B2E4B] text-sm leading-tight mb-1 group-hover:text-[#C9A84C] transition-colors line-clamp-2">{event.title}</h3>
                   <p className="text-gray-400 text-xs mb-3 line-clamp-1">{event.venue}</p>
