@@ -73,6 +73,12 @@ export default async function Home() {
   const upcomingEvents = getUpcomingEvents(12);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const todayLabel = `${today.getDate()} ${MONTHS[today.getMonth()]} ${today.getFullYear()}`;
+  function formatPostDate(dateStr: string) {
+    return dateStr === todayLabel ? "Today" : dateStr;
+  }
   const openDays = Math.ceil(
     (new Date("2026-07-12").getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
   );
@@ -305,7 +311,7 @@ export default async function Home() {
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between text-xs text-gray-400">
-                      <span>{post.date}</span>
+                      <span>{formatPostDate(post.date)}</span>
                       <span className="text-[#C9A84C] font-semibold group-hover:translate-x-0.5 transition-transform inline-block">Read more →</span>
                     </div>
                   </div>
