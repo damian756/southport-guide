@@ -418,9 +418,6 @@ export default async function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                   <div className="relative p-5 flex flex-col justify-end h-full text-center">
-                    <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-110 transition-transform duration-200 inline-block">
-                      {cat.emoji}
-                    </div>
                     <h3 className="text-white font-bold text-sm leading-tight mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">{cat.label}</h3>
                     <p className="text-white/90 text-xs drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                       {count > 0 ? `${count} listings` : "Explore →"}
