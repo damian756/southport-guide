@@ -1024,7 +1024,7 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Things to Do in Southport — FAQs</h2>
             </div>
-            <div className="max-w-3xl mx-auto space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {FAQS.map((faq) => (
                 <div key={faq.q} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                   <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-2 flex items-start gap-2">

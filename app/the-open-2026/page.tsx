@@ -490,7 +490,7 @@ export default function TheOpen2026Page() {
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-8">
             Everything You Need to Know About The Open 2026
           </h2>
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map(({ q, a }) => (
               <div key={q} className="bg-white rounded-2xl border border-gray-100 p-6">
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-3">{q}</h3>

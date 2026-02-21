@@ -713,7 +713,7 @@ export default function MLECPage() {
             <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-2">Got Questions?</p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">MLEC FAQs</h2>
           </div>
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
               <div
                 key={faq.q}
