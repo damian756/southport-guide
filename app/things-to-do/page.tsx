@@ -318,8 +318,7 @@ const AUDIENCE_PANELS = [
     desc: "King's Gardens (free), Adventure Coast (free entry), Marine Lake pedalos, Splash World, Model Railway Village, and 22 miles of beach. Southport is one of the best family destinations in the North West.",
     href: "/blog/southport-with-kids-full-guide",
     cta: "Full family guide →",
-    color: "bg-sky-50 border-sky-200",
-    iconColor: "text-sky-600",
+    image: "/images/things-to-do/kids.jpg",
   },
   {
     icon: PoundSterling,
@@ -327,8 +326,7 @@ const AUDIENCE_PANELS = [
     desc: "King's Gardens, Southport Beach, Ainsdale Beach, Antony Gormley's Another Place, The Atkinson gallery, Botanic Gardens, the Promenade, and the 21-mile Sefton Coastal Path. A full day out costs nothing.",
     href: "/blog/things-to-do-rainy-day-southport",
     cta: "See free days out →",
-    color: "bg-green-50 border-green-200",
-    iconColor: "text-green-600",
+    image: "/images/things-to-do/free.jpg",
   },
   {
     icon: CloudRain,
@@ -336,8 +334,7 @@ const AUDIENCE_PANELS = [
     desc: "The Atkinson (free), Splash World, Funland arcades, Southport Market street food hall, Wayfarers Arcade, and Southport's independent shops on Lord Street. Lancashire weather builds character.",
     href: "/blog/things-to-do-rainy-day-southport",
     cta: "Rainy day guide →",
-    color: "bg-slate-50 border-slate-200",
-    iconColor: "text-slate-600",
+    image: "/images/things-to-do/rainy.jpg",
   },
   {
     icon: Wine,
@@ -345,8 +342,7 @@ const AUDIENCE_PANELS = [
     desc: "Golf at England's Golf Coast, cocktails on Lord Street, The Atkinson theatre, spa days, coastal walks, and an events calendar that runs from February to December. Southport without children is a very different experience.",
     href: "/bars-nightlife",
     cta: "Bars & restaurants →",
-    color: "bg-purple-50 border-purple-200",
-    iconColor: "text-purple-600",
+    image: "/images/things-to-do/adults.jpg",
   },
 ];
 
@@ -512,8 +508,12 @@ export default function ThingsToDoPage() {
         </div>
 
         {/* ── Stats strip ── */}
-        <div className="bg-[#1B2E4B] text-white">
-          <div className="container mx-auto px-4 max-w-7xl">
+        <div className="relative bg-[#1B2E4B] text-white overflow-hidden">
+          <div className="absolute inset-0">
+            <Image src="/images/things-to-do/stats-bg.jpg" alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-25" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/80 via-[#1B2E4B]/60 to-[#1B2E4B]/80" />
+          </div>
+          <div className="relative container mx-auto px-4 max-w-7xl">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-white/10">
               {[
                 { value: "22", unit: "miles", label: "of coastline" },
@@ -534,6 +534,7 @@ export default function ThingsToDoPage() {
         </div>
 
         <div className="container mx-auto px-4 py-16 max-w-7xl space-y-24">
+
 
           {/* ── Terry's Take ── */}
           <section className="max-w-4xl mx-auto">
@@ -962,14 +963,25 @@ export default function ThingsToDoPage() {
                 <Link
                   key={panel.title}
                   href={panel.href}
-                  className={`rounded-2xl border p-6 hover:shadow-md transition-all group ${panel.color}`}
+                  className="relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end hover:shadow-xl transition-all group"
                 >
-                  <panel.icon className={`w-8 h-8 mb-3 ${panel.iconColor}`} />
-                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2 group-hover:text-[#C9A84C] transition-colors">{panel.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{panel.desc}</p>
-                  <span className="text-[#C9A84C] text-sm font-semibold flex items-center gap-1">
-                    {panel.cta} <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
+                  <Image
+                    src={panel.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    quality={75}
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+                  <div className="relative p-6">
+                    <panel.icon className="w-7 h-7 mb-2 text-[#C9A84C]" />
+                    <h3 className="font-display font-bold text-white text-lg mb-1.5 group-hover:text-[#C9A84C] transition-colors">{panel.title}</h3>
+                    <p className="text-white/70 text-xs leading-relaxed mb-3 line-clamp-3">{panel.desc}</p>
+                    <span className="text-[#C9A84C] text-sm font-semibold flex items-center gap-1">
+                      {panel.cta} <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
