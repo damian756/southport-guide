@@ -318,7 +318,7 @@ const AUDIENCE_PANELS = [
     desc: "King's Gardens (free), Adventure Coast (free entry), Marine Lake pedalos, Splash World, Model Railway Village, and 22 miles of beach. Southport is one of the best family destinations in the North West.",
     href: "/blog/southport-with-kids-full-guide",
     cta: "Full family guide →",
-    image: "/images/things-to-do/kids.jpg",
+    image: "/images/things-to-do/kids.webp",
   },
   {
     icon: PoundSterling,
@@ -326,7 +326,7 @@ const AUDIENCE_PANELS = [
     desc: "King's Gardens, Southport Beach, Ainsdale Beach, Antony Gormley's Another Place, The Atkinson gallery, Botanic Gardens, the Promenade, and the 21-mile Sefton Coastal Path. A full day out costs nothing.",
     href: "/blog/things-to-do-rainy-day-southport",
     cta: "See free days out →",
-    image: "/images/things-to-do/free.jpg",
+    image: "/images/things-to-do/free.webp",
   },
   {
     icon: CloudRain,
@@ -334,7 +334,7 @@ const AUDIENCE_PANELS = [
     desc: "The Atkinson (free), Splash World, Funland arcades, Southport Market street food hall, Wayfarers Arcade, and Southport's independent shops on Lord Street. Lancashire weather builds character.",
     href: "/blog/things-to-do-rainy-day-southport",
     cta: "Rainy day guide →",
-    image: "/images/things-to-do/rainy.jpg",
+    image: "/images/things-to-do/rainy.webp",
   },
   {
     icon: Wine,
@@ -342,7 +342,7 @@ const AUDIENCE_PANELS = [
     desc: "Golf at England's Golf Coast, cocktails on Lord Street, The Atkinson theatre, spa days, coastal walks, and an events calendar that runs from February to December. Southport without children is a very different experience.",
     href: "/bars-nightlife",
     cta: "Bars & restaurants →",
-    image: "/images/things-to-do/adults.jpg",
+    image: "/images/things-to-do/adults.webp",
   },
 ];
 
@@ -510,7 +510,7 @@ export default function ThingsToDoPage() {
         {/* ── Stats strip ── */}
         <div className="relative bg-[#1B2E4B] text-white overflow-hidden">
           <div className="absolute inset-0">
-            <Image src="/images/things-to-do/stats-bg.jpg" alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-25" />
+            <Image src="/images/things-to-do/stats-bg.webp" alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-25" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/80 via-[#1B2E4B]/60 to-[#1B2E4B]/80" />
           </div>
           <div className="relative container mx-auto px-4 max-w-7xl">
