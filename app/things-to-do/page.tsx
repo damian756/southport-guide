@@ -537,7 +537,7 @@ export default function ThingsToDoPage() {
 
 
           {/* ── Terry's Take ── */}
-          <section className="max-w-4xl mx-auto">
+          <section>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 border-l-4 border-l-[#C9A84C]">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
               <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Why Southport Surprises People</h2>
