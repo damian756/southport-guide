@@ -370,6 +370,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "events",
     label: "Events",
     color: "#8B5A1A",
+    emoji: "🎉",
     description: "Event previews, reviews, and what's on in Southport.",
   },
 ];
