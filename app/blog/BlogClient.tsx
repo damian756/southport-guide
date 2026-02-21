@@ -222,9 +222,11 @@ export default function BlogClient({ posts, categories }: Props) {
                   className="flex flex-col items-start p-4 bg-white border border-gray-100 rounded-2xl hover:border-[#C9A84C]/30 hover:shadow-md transition-all text-left group"
                 >
                   <div
-                    className="w-8 h-8 rounded-xl mb-3 flex-none"
+                    className="w-9 h-9 rounded-xl mb-3 flex-none flex items-center justify-center text-lg"
                     style={{ backgroundColor: cat.color + "25" }}
-                  />
+                  >
+                    {cat.emoji}
+                  </div>
                   <span className="font-semibold text-[#1B2E4B] text-sm leading-tight group-hover:text-[#C9A84C] transition-colors">{cat.label}</span>
                   <span className="text-xs text-gray-400 mt-1">{count} post{count !== 1 ? "s" : ""}</span>
                 </button>

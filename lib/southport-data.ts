@@ -264,6 +264,7 @@ export interface BlogCategory {
   slug: string;
   label: string;
   color: string;
+  emoji: string;
   description: string;
   /** Matches a site category slug for cross-linking */
   siteCategory?: string;
@@ -274,6 +275,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "food-drink",
     label: "Food & Drink",
     color: "#8B2635",
+    emoji: "🍽️",
     description: "Restaurant reviews, cafe guides, and food news from across Southport.",
     siteCategory: "restaurants",
   },
@@ -281,6 +283,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "where-to-stay",
     label: "Where to Stay",
     color: "#1B2E4B",
+    emoji: "🏨",
     description: "Hotels, B&Bs, and accommodation guides for every budget.",
     siteCategory: "hotels",
   },
@@ -288,6 +291,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "bars-nightlife",
     label: "Bars & Nightlife",
     color: "#3D1A5C",
+    emoji: "🍺",
     description: "The best bars, pubs, and live music venues in Southport.",
     siteCategory: "bars-nightlife",
   },
@@ -295,6 +299,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "cafes",
     label: "Coffee & Cafes",
     color: "#6B3A1F",
+    emoji: "☕",
     description: "Independent coffee shops, tea rooms, and brunch spots.",
     siteCategory: "cafes",
   },
@@ -302,6 +307,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "things-to-do",
     label: "Things to Do",
     color: "#1A5C5B",
+    emoji: "🎡",
     description: "Attractions, experiences, and activities for all ages.",
     siteCategory: "attractions",
   },
@@ -309,6 +315,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "outdoors",
     label: "Outdoors",
     color: "#1A5C7A",
+    emoji: "🏖️",
     description: "Beaches, parks, coastal walks, and outdoor adventures.",
     siteCategory: "beaches-parks",
   },
@@ -316,6 +323,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "golf",
     label: "Golf",
     color: "#1A4020",
+    emoji: "⛳",
     description: "Golf courses, news, and guides — including The Open 2026.",
     siteCategory: "golf",
   },
@@ -323,6 +331,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "shopping",
     label: "Shopping",
     color: "#8B2847",
+    emoji: "🛍️",
     description: "Lord Street boutiques, markets, and the best independent shops.",
     siteCategory: "shopping",
   },
@@ -330,6 +339,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "wellness",
     label: "Health & Wellness",
     color: "#4A2060",
+    emoji: "💆",
     description: "Spas, gyms, yoga, and wellbeing in Southport.",
     siteCategory: "wellness",
   },
@@ -337,6 +347,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "activities",
     label: "Activities",
     color: "#0D6E6E",
+    emoji: "🏄",
     description: "Family activities, watersports, and things to do for all ages.",
     siteCategory: "activities",
   },
@@ -344,6 +355,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "getting-around",
     label: "Getting Around",
     color: "#2A3F5C",
+    emoji: "🚌",
     description: "Parking, trains, and transport guides for visiting Southport.",
     siteCategory: "transport",
   },
@@ -351,6 +363,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     slug: "local-guides",
     label: "Local Guides",
     color: "#5C3A1A",
+    emoji: "📍",
     description: "In-depth guides written by locals who know Southport best.",
   },
   {
