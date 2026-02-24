@@ -127,18 +127,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     url: canonicalUrl,
     author: {
       "@type": "Person",
+      "@id": "https://www.southportguide.co.uk/about#terry",
       name: "Terry",
       jobTitle: "Chief Editor",
+      url: "https://www.southportguide.co.uk/about",
       worksFor: {
         "@type": "Organization",
+        "@id": "https://www.southportguide.co.uk/#website",
         name: "SouthportGuide.co.uk",
         url: "https://www.southportguide.co.uk",
       },
     },
     publisher: {
       "@type": "Organization",
-      name: "SouthportGuide.co.uk",
-      url: "https://www.southportguide.co.uk",
+      "@id": "https://www.churchtownmedia.co.uk/#organization",
+      name: "Churchtown Media",
+      url: "https://www.churchtownmedia.co.uk",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
