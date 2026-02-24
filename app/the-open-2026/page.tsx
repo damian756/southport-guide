@@ -242,6 +242,16 @@ export default function TheOpen2026Page() {
               <p className="text-gray-600 leading-relaxed">
                 In 2026, 250,000 spectators are expected across the week. The world&apos;s best players will be here. And for those of us who live nearby, it is genuinely extraordinary to have this on our doorstep.
               </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                If you&apos;re planning to play Royal Birkdale before or after Open week,{" "}
+                <a
+                  href="https://www.seftonlinks.com/courses/royal-birkdale"
+                  className="font-medium text-[#C9A84C] underline underline-offset-2 hover:text-[#1B2E4B] transition-colors"
+                >
+                  SeftonLinks has the full course guide
+                </a>{" "}
+                — green fees, visitor policy, handicap requirements, and what to expect on the day.
+              </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
