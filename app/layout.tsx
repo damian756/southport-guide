@@ -258,6 +258,16 @@ function Footer() {
           </div>
         </div>
 
+        <div className="border-t border-white/10 pt-5 pb-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+          <p className="text-white/50">
+            Local business in Southport?{" "}
+            <span className="text-[#C9A84C] font-semibold">Partner with the Sefton Coast Network</span>
+          </p>
+          <a href="mailto:hello@seftoncoast.network" className="text-[#C9A84C] hover:text-white transition font-medium text-sm">
+            hello@seftoncoast.network →
+          </a>
+        </div>
+
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
           <p>&copy; 2026 SouthportGuide.co.uk — All rights reserved.</p>
           <div className="flex gap-5">
