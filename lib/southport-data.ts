@@ -6,6 +6,8 @@ export interface SouthportEvent {
   title: string;
   /** ISO date string (YYYY-MM-DD) used for sorting / filtering */
   isoDate: string;
+  /** ISO end date for multi-day events (YYYY-MM-DD). Omit for single-day events. */
+  endIsoDate?: string;
   /** Human-readable date label shown on cards */
   dayLabel: string;
   venue: string;
@@ -49,6 +51,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Chess The Musical",
     isoDate: "2026-02-25",
+    endIsoDate: "2026-02-28",
     dayLabel: "25–28 Feb",
     venue: "Little Theatre",
     category: "Theatre",
@@ -79,6 +82,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Cristal Palace — Street Theatre",
     isoDate: "2026-04-03",
+    endIsoDate: "2026-04-04",
     dayLabel: "3–4 Apr",
     venue: "Lord Street",
     category: "Street Arts",
@@ -109,6 +113,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Big Top Festival",
     isoDate: "2026-05-02",
+    endIsoDate: "2026-05-03",
     dayLabel: "2–3 May",
     venue: "Town Centre",
     category: "Circus & Arts",
@@ -119,6 +124,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Lancashire County Cricket",
     isoDate: "2026-05-15",
+    endIsoDate: "2026-05-18",
     dayLabel: "15–18 May",
     venue: "S&B Sports Club",
     category: "Sport",
@@ -129,6 +135,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Southport Beer Week",
     isoDate: "2026-05-20",
+    endIsoDate: "2026-05-25",
     dayLabel: "20–25 May",
     venue: "Town Centre",
     category: "Food & Drink",
@@ -139,6 +146,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Food & Drink Festival",
     isoDate: "2026-05-29",
+    endIsoDate: "2026-05-31",
     dayLabel: "29–31 May",
     venue: "Town Centre",
     category: "Food & Drink",
@@ -159,6 +167,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Armed Forces Festival",
     isoDate: "2026-06-27",
+    endIsoDate: "2026-06-28",
     dayLabel: "27–28 Jun",
     venue: "Town Centre",
     category: "Community",
@@ -169,6 +178,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "The Open Championship",
     isoDate: "2026-07-12",
+    endIsoDate: "2026-07-19",
     dayLabel: "12–19 Jul",
     venue: "Royal Birkdale",
     category: "Golf",
@@ -179,6 +189,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Southport Flower Show",
     isoDate: "2026-08-20",
+    endIsoDate: "2026-08-23",
     dayLabel: "20–23 Aug",
     venue: "Victoria Park",
     category: "Festival",
@@ -189,6 +200,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Southport Air Show",
     isoDate: "2026-08-29",
+    endIsoDate: "2026-08-30",
     dayLabel: "29–30 Aug",
     venue: "Southport Beach",
     category: "Festival",
@@ -199,6 +211,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Yacht Race — 24 Hours",
     isoDate: "2026-09-12",
+    endIsoDate: "2026-09-13",
     dayLabel: "12–13 Sep",
     venue: "Marine Lake",
     category: "Sport",
@@ -209,6 +222,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "British Fireworks Championship",
     isoDate: "2026-09-26",
+    endIsoDate: "2026-09-27",
     dayLabel: "26–27 Sep",
     venue: "Victoria Park",
     category: "Festival",
@@ -219,6 +233,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Southport Comedy Festival",
     isoDate: "2026-10-02",
+    endIsoDate: "2026-10-18",
     dayLabel: "2–18 Oct",
     venue: "Victoria Park",
     category: "Comedy",
@@ -229,6 +244,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Books Alive! Literature Festival",
     isoDate: "2026-10-24",
+    endIsoDate: "2026-10-31",
     dayLabel: "24–31 Oct",
     venue: "Town Centre",
     category: "Arts & Culture",
@@ -239,6 +255,7 @@ export const EVENTS: SouthportEvent[] = [
   {
     title: "Oktoberfest Southport",
     isoDate: "2026-10-24",
+    endIsoDate: "2026-10-25",
     dayLabel: "24–25 Oct",
     venue: "Victoria Park",
     category: "Festival",

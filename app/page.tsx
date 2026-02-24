@@ -88,7 +88,48 @@ export default async function Home() {
     (new Date("2026-07-12").getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
   );
 
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.southportguide.co.uk/#website",
+        url: "https://www.southportguide.co.uk",
+        name: "SouthportGuide.co.uk",
+        description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
+        publisher: { "@id": "https://www.southportguide.co.uk/#organization" },
+        inLanguage: "en-GB",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://www.southportguide.co.uk/restaurants",
+        },
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.southportguide.co.uk/#organization",
+        name: "SouthportGuide.co.uk",
+        url: "https://www.southportguide.co.uk",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.southportguide.co.uk/og-default.png",
+          width: 1200,
+          height: 630,
+        },
+        sameAs: [
+          "https://www.formbyguide.co.uk",
+          "https://www.seftonlinks.com",
+          "https://seftoncoastwildlife.co.uk",
+          "https://seftoncoast.network",
+          "https://www.linkedin.com/company/churchtownmedia",
+          "https://churchtownmedia.co.uk",
+        ],
+      },
+    ],
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
     <div className="min-h-screen flex flex-col">
 
       {/* ══════════════════════════════════════════════════════
@@ -593,5 +634,6 @@ export default async function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }

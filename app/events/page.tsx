@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, ArrowLeft, ExternalLink } from "lucide-react";
-import { getEventsByMonth, getUpcomingEvents } from "@/lib/southport-data";
+import { getEventsByMonth, getUpcomingEvents, EVENTS } from "@/lib/southport-data";
 import { Suspense } from "react";
 import MonthFilter from "./MonthFilter";
 
@@ -55,7 +55,49 @@ export default async function EventsPage({
     ? allMonths.filter((m) => m === activeMonth)
     : allMonths;
 
+  const eventsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Southport Events 2026",
+    description: "The complete guide to events in Southport in 2026 — from The Open Championship to the Flower Show, Comedy Festival and more.",
+    url: "https://www.southportguide.co.uk/events",
+    numberOfItems: EVENTS.length,
+    itemListElement: EVENTS.map((event, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Event",
+        name: event.title,
+        startDate: event.isoDate,
+        endDate: event.endIsoDate ?? event.isoDate,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: {
+          "@type": "Place",
+          name: event.venue,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Southport",
+            addressRegion: "Merseyside",
+            addressCountry: "GB",
+          },
+        },
+        isAccessibleForFree: event.free,
+        url: event.link.startsWith("http")
+          ? event.link
+          : `https://www.southportguide.co.uk${event.link}`,
+        organizer: {
+          "@type": "Organization",
+          name: "SouthportGuide.co.uk",
+          url: "https://www.southportguide.co.uk",
+        },
+      },
+    })),
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }} />
     <div className="min-h-screen bg-[#FAF8F5]">
       {/* Hero */}
       <section className="relative bg-[#1B2E4B] overflow-hidden">
@@ -205,5 +247,6 @@ export default async function EventsPage({
         </div>
       </div>
     </div>
+    </>
   );
 }
