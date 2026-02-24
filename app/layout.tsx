@@ -233,6 +233,7 @@ function Footer() {
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">For Business</h3>
             <ul className="space-y-2.5 text-sm">
               {[
+                ["About this site", "/about"],
                 ["List Your Business", "/claim-listing"],
                 ["Pricing", "/pricing"],
                 ["Advertise With Us", "/advertise"],
