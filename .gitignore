@@ -53,3 +53,6 @@ enrich-progress.json
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Cursor AI
+.cursor/
