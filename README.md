@@ -1,90 +1,47 @@
 # SouthportGuide.co.uk
 
-Visitor guide for Southport. See **SouthportGuide-Project-Plan.md** in the repo root for full strategy and build plan.
+**The definitive local guide and business directory for Southport, Merseyside.**
 
-## Quick start
+Live site: [southportguide.co.uk](https://www.southportguide.co.uk)
 
-```bash
-npm install
-cp .env.local .env.local
-# Set DATABASE_URL (Supabase/Neon Postgres) in .env.local
-npx prisma db push
-npm run db:seed
-npm run dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000).
+## What This Is
+
+SouthportGuide is a full editorial directory covering restaurants, hotels, bars, attractions, beaches, golf, shopping, wellness and transport in Southport. It includes a business claiming and subscription system, click tracking analytics, and a dedicated hub for The Open Championship 2026 at Royal Birkdale.
+
+Part of the [Sefton Coast Network](https://www.churchtownmedia.co.uk/about) — built and operated by Churchtown Media.
 
 ## Stack
 
-- Next.js 16 (App Router)
-- Prisma 7 + PostgreSQL (@prisma/adapter-pg)
-- Tailwind CSS
-- Stripe (subscriptions – wire up in .env)
-- NextAuth (auth – wire up when needed)
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: PostgreSQL via Prisma
+- **Auth**: NextAuth v4
+- **Payments**: Stripe
+- **Email**: Resend
+- **Maps**: Google Places API, Leaflet
+- **Deployment**: Vercel
+- **Analytics**: Plausible
 
-## Key routes
+## Key Features
 
-- `/` – Homepage
-- `/[category]` – Category pages (e.g. /restaurants, /hotels)
-- `/[category]/[slug]` – Business detail pages
-- `/the-open-2026` – The Open 2026 hub
-- `/mlec` – Marine Lake Events Centre hub
-- `/pricing`, `/claim-listing`, `/advertise`, `/contact`, `/about`
+- 1,000+ business listings with Google Places data, ratings, hygiene ratings (FSA), opening hours
+- Business claiming flow — owners can claim, verify and manage their listing
+- Listing tiers: Free / Standard / Featured / Premium (Stripe subscriptions)
+- Click tracking — website visits, phone calls, directions, Google review clicks per listing
+- Business Hub dashboard — per-listing analytics for business owners
+- The Open 2026 hub — accommodation, restaurants, transport and ticket guides for Royal Birkdale
+- Full Schema.org JSON-LD on every page (LocalBusiness, Restaurant, Hotel, BreadcrumbList, FAQPage)
+- Food hygiene ratings pulled from FSA API
+- Sitemap generation, canonical URLs, OpenGraph on all pages
 
-## Database (Neon)
+## SEO Targets
 
-1. Create a free project at [neon.tech](https://neon.tech).
-2. Copy the **connection string** from the dashboard (use the **pooled** one for serverless/Vercel).
-3. Put it in `.env.local` as `DATABASE_URL`, e.g.  
-   `DATABASE_URL="postgresql://user:password@ep-xxx-pooler.region.aws.neon.tech/neondb?sslmode=require"`
-4. Run:
-   ```bash
-   npx prisma db push
-   npm run db:seed
-   ```
+Primary keywords: `southport`, `things to do in southport`, `restaurants southport`, `hotels southport`, `the open 2026 southport`
 
-Neon’s free tier is enough for this project; use the pooler URL so Vercel/serverless works without connection limits.
+## Developer
 
-## Deploy (Vercel)
-
-1. Push to GitHub, then in Vercel: **Add New → Project** → import `southport-guide`.
-2. **Environment variables** (Production, and Preview if you use it):
-   - `DATABASE_URL` – your Neon pooled connection string (required).
-   - When you add auth: `NEXTAUTH_URL` = your live URL (e.g. `https://southport-guide.vercel.app`), `NEXTAUTH_SECRET` = a random secret.
-   - When you add payments: Stripe keys and price IDs.
-3. Deploy. Each push to `main` will trigger a production deployment.
-
-## Day 2 (content)
-
-### Scrape & Import Businesses
-
-1. **Get a Google Places API key:**
-   - Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
-   - Create a project, enable **Places API**, create an API key
-   - Add `GOOGLE_PLACES_API_KEY=your_key_here` to `.env.local`
-
-2. **Install Python dependencies:**
-   ```bash
-   pip install -r scripts/requirements.txt
-   ```
-
-3. **Run the scraper:**
-   ```bash
-   python scripts/scrape-businesses.py
-   ```
-   This will create `businesses.csv` with ~500 Southport businesses.
-
-4. **Import to database:**
-   ```bash
-   npm run import-businesses
-   ```
-   Reads `businesses.csv` and inserts into `Business` table (with correct `categoryId`).
-
-5. **Generate descriptions (optional):**
-   - Use Claude API to batch-generate descriptions for businesses
-   - Add `ANTHROPIC_API_KEY` to `.env.local` and create a script in `scripts/generate-descriptions.ts`
-
-6. **Go live:**
-   - Point domain at Vercel
-   - Submit sitemap to Google Search Console
+**Damian Roche** — Churchtown Media  
+[churchtownmedia.co.uk](https://www.churchtownmedia.co.uk) · [LinkedIn](https://www.linkedin.com/in/damian-roche-7ba8293a5/)
