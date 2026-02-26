@@ -51,7 +51,7 @@ type Props = {
   areas: AreaDef[];
   currentSort: string | undefined;
   currentArea: string | undefined;
-  boostedBusinessIds?: Set<string>;
+  boostedBusinessIds?: string[];
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -104,7 +104,7 @@ export default function CategoryBrowser({
   areas,
   currentSort,
   currentArea,
-  boostedBusinessIds = new Set(),
+  boostedBusinessIds = [],
 }: Props) {
   const [search, setSearch] = useState("");
   const [view, setView] = useState<"list" | "map">("list");
@@ -289,7 +289,7 @@ export default function CategoryBrowser({
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((b) => {
             const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
-            const isBoosted = boostedBusinessIds.has(b.id);
+            const isBoosted = boostedBusinessIds.includes(b.id);
             const areaLabel = getAreaLabel(b.address);
             const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
             const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;

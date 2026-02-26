@@ -90,7 +90,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const theme = THEMES[category] || THEMES.restaurants;
   const isFoodCat = FOOD_CATS.has(category);
   let businesses: BrowserBusiness[] = [];
-  let boostedBusinessIds = new Set<string>();
+  let boostedIds: string[] = [];
 
   try {
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
@@ -106,7 +106,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         },
         select: { businessId: true, label: true },
       });
-      boostedBusinessIds = new Set(activeBoosts.map((b) => b.businessId));
+      boostedIds = activeBoosts.map((b) => b.businessId);
 
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<BrowserBusiness[]>`
@@ -148,10 +148,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       }
 
-      if (boostedBusinessIds.size > 0 && sort !== "alpha" && sort !== "hygiene") {
+      const boostedSet = new Set(boostedIds);
+      if (boostedSet.size > 0 && sort !== "alpha" && sort !== "hygiene") {
         businesses = [
-          ...businesses.filter((b) => boostedBusinessIds.has(b.id)),
-          ...businesses.filter((b) => !boostedBusinessIds.has(b.id)),
+          ...businesses.filter((b) => boostedSet.has(b.id)),
+          ...businesses.filter((b) => !boostedSet.has(b.id)),
         ];
       }
     }
@@ -159,7 +160,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
   // Area filter applied server-side (before passing to client)
   const filteredBusinesses = area
-    ? businesses.filter((b) => matchesArea(b.address, b.postcode, area))
+    ? businesses.filter((b) => matchesArea(b.address ?? "", b.postcode ?? "", area))
     : businesses;
 
   // Map pins (only geolocated businesses)
@@ -270,7 +271,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           areas={AREAS.map(({ key, label }) => ({ key, label }))}
           currentSort={sort}
           currentArea={area}
-          boostedBusinessIds={boostedBusinessIds}
+          boostedBusinessIds={boostedIds}
         />
 
         {/* ── Bottom CTA ──────────────────────────────────────────────────── */}
