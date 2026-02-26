@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Mail, Lock, Eye, EyeOff, LayoutDashboard, AlertCircle } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, LayoutDashboard, AlertCircle, ArrowLeft } from "lucide-react";
 
 export default function DashboardLoginClient() {
   const router = useRouter();
@@ -50,9 +50,16 @@ export default function DashboardLoginClient() {
             <LayoutDashboard className="w-4 h-4 text-[#C9A84C]" />
           </div>
           <span className="font-display font-bold text-white">
-            Southport<span className="text-[#C9A84C]">Guide</span>
-            <span className="text-white/40 font-normal text-sm ml-2">Business Portal</span>
-          </span>
+              Southport<span className="text-[#C9A84C]">Guide</span>
+              <span className="text-white/40 font-normal text-sm ml-2">Business Portal</span>
+            </span>
+            <Link
+              href="/"
+              className="ml-auto flex items-center gap-1.5 text-white/50 hover:text-white/80 text-xs font-medium transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Back to site
+            </Link>
         </div>
       </div>
 
