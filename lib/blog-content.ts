@@ -900,7 +900,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "hr" },
 
     { type: "h2", text: "What to do next" },
-    { type: "p", text: "Try the demo. Have a proper look around. If you like what you see, use the contact form to tell us you want to claim your listing or become a beta tester. We get back to people the same day." },
+    { type: "p", text: "Try the demo. Have a proper look around. If you like what you see, claim your listing or get in touch below. We get back to people the same day." },
 
     { type: "cta", text: "Your listing on SouthportGuide is free. Claim it, own it, and start measuring results from day one.", href: "/claim-listing", label: "Claim your listing for free" },
     { type: "cta", text: "Want to be a beta tester or have a question? Drop us a message and we'll come back to you the same day.", href: "/contact", label: "Contact us →" },
