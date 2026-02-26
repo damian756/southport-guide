@@ -390,6 +390,13 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     emoji: "🎉",
     description: "Event previews, reviews, and what's on in Southport.",
   },
+  {
+    slug: "for-business",
+    label: "For Business",
+    color: "#1A5C3A",
+    emoji: "📊",
+    description: "The SouthportGuide Business Hub — tools, news, and updates for Southport businesses.",
+  },
 ];
 
 // ── Blog posts ─────────────────────────────────────────────────────────────
@@ -401,6 +408,8 @@ export interface BlogPost {
   categorySlug: string;
   image: string;
   date: string;
+  /** Omit for default Terry author. Set to "damian" for posts written by Damian Roche. */
+  author?: "terry" | "damian";
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -736,6 +745,17 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "bars-nightlife",
     image: "/images/categories/bars-nightlife.webp",
     date: "19 Feb 2026",
+  },
+  // For Business
+  {
+    slug: "southport-business-hub-launch",
+    title: "The SouthportGuide Business Hub Is in Final Testing — Here Is What It Means for You",
+    excerpt:
+      "A free business dashboard for every Southport business. Real analytics, a weekly performance email, and full listing control. Try the demo today and register to claim your spot.",
+    categorySlug: "for-business",
+    image: "/images/blog/southport-business-hub.jpg",
+    date: "26 Feb 2026",
+    author: "damian",
   },
 ];
 

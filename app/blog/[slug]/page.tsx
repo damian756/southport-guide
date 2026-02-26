@@ -96,6 +96,26 @@ function renderBlock(block: ContentBlock, i: number) {
           </a>
         </div>
       );
+    case "image":
+      return (
+        <figure key={i} className="my-8 rounded-2xl overflow-hidden border border-gray-100">
+          <div className="relative w-full aspect-[16/9] bg-gray-100">
+            <Image
+              src={block.src}
+              alt={block.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 720px"
+              quality={85}
+              className="object-cover"
+            />
+          </div>
+          {block.caption && (
+            <figcaption className="bg-gray-50 px-5 py-3 text-sm text-gray-500 text-center leading-relaxed">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
     case "hr":
       return <hr key={i} className="my-8 border-gray-200" />;
     default:
@@ -114,6 +134,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const isoDate = toIso(post.date);
   const canonicalUrl = `https://www.southportguide.co.uk/blog/${slug}`;
 
+  const isDamian = post.author === "damian";
+
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -125,19 +147,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     datePublished: isoDate,
     dateModified: isoDate,
     url: canonicalUrl,
-    author: {
-      "@type": "Person",
-      "@id": "https://www.southportguide.co.uk/about#terry",
-      name: "Terry",
-      jobTitle: "Chief Editor",
-      url: "https://www.southportguide.co.uk/about",
-      worksFor: {
-        "@type": "Organization",
-        "@id": "https://www.southportguide.co.uk/#website",
-        name: "SouthportGuide.co.uk",
-        url: "https://www.southportguide.co.uk",
-      },
-    },
+    author: isDamian
+      ? {
+          "@type": "Person",
+          "@id": "https://www.churchtownmedia.co.uk/about#founder",
+          name: "Damian Roche",
+          jobTitle: "Founder, Churchtown Media",
+          url: "https://www.churchtownmedia.co.uk/about",
+          sameAs: ["https://www.linkedin.com/in/damian-roche-7ba8293a5/"],
+        }
+      : {
+          "@type": "Person",
+          "@id": "https://www.southportguide.co.uk/about#terry",
+          name: "Terry",
+          jobTitle: "Chief Editor",
+          url: "https://www.southportguide.co.uk/about",
+          worksFor: {
+            "@type": "Organization",
+            "@id": "https://www.southportguide.co.uk/#website",
+            name: "SouthportGuide.co.uk",
+            url: "https://www.southportguide.co.uk",
+          },
+        },
     publisher: {
       "@type": "Organization",
       "@id": "https://www.southportguide.co.uk/#organization",
@@ -196,12 +227,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Byline card */}
         <div className="bg-white rounded-2xl border border-gray-100 -mt-6 relative z-10 px-6 py-4 mb-10 flex flex-wrap items-center gap-4 text-sm text-gray-500">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-none">
-              <User className="w-4 h-4 text-[#C9A84C]" />
-            </div>
+            {isDamian ? (
+              <Image
+                src="/images/blog/damian-headshot.jpg"
+                alt="Damian Roche"
+                width={32}
+                height={32}
+                className="rounded-full flex-none object-cover w-8 h-8"
+                unoptimized
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-none">
+                <User className="w-4 h-4 text-[#C9A84C]" />
+              </div>
+            )}
             <div>
-              <p className="font-semibold text-[#1B2E4B] text-xs">Terry</p>
-              <p className="text-[10px] text-gray-400">Chief Editor, SouthportGuide.co.uk</p>
+              <p className="font-semibold text-[#1B2E4B] text-xs">{isDamian ? "Damian Roche" : "Terry"}</p>
+              <p className="text-[10px] text-gray-400">{isDamian ? "Founder, Churchtown Media" : "Chief Editor, SouthportGuide.co.uk"}</p>
             </div>
           </div>
           <span className="text-gray-200 hidden sm:block">|</span>
@@ -230,13 +272,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {content.map((block, i) => renderBlock(block, i))}
               {/* Author sign-off */}
               <div className="mt-10 pt-8 border-t border-gray-100 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-none text-[#C9A84C] font-display font-bold text-xl">
-                  T
-                </div>
+                {isDamian ? (
+                  <Image
+                    src="/images/blog/damian-headshot.jpg"
+                    alt="Damian Roche"
+                    width={48}
+                    height={48}
+                    className="rounded-full flex-none object-cover w-12 h-12"
+                    unoptimized
+                  />
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-none text-[#C9A84C] font-display font-bold text-xl">
+                    T
+                  </div>
+                )}
                 <div>
-                  <p className="font-bold text-[#1B2E4B] text-sm">Terry</p>
+                  <p className="font-bold text-[#1B2E4B] text-sm">{isDamian ? "Damian Roche" : "Terry"}</p>
                   <p className="text-gray-400 text-xs leading-snug mt-0.5">
-                    Chief Editor, SouthportGuide.co.uk — Lives in Churchtown with his wife,<br className="hidden sm:block" /> four kids, and Frank the bulldog.
+                    {isDamian
+                      ? "Founder, Churchtown Media. Builder of SouthportGuide.co.uk. Based in Churchtown, Southport."
+                      : <>Chief Editor, SouthportGuide.co.uk — Lives in Churchtown with his wife,<br className="hidden sm:block" /> four kids, and Frank the bulldog.</>
+                    }
                   </p>
                 </div>
               </div>

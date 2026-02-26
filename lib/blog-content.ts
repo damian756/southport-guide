@@ -11,6 +11,7 @@ export type ContentBlock =
   | { type: "callout"; emoji: string; text: string }
   | { type: "quote"; text: string; attr?: string }
   | { type: "cta"; text: string; href: string; label: string }
+  | { type: "image"; src: string; alt: string; caption?: string }
   | { type: "hr" };
 
 export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
@@ -831,6 +832,77 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Southport's cocktail scene is genuinely worth exploring if you approach it correctly: don't walk in expecting a London cocktail bar experience, but do expect proper drinks made by people who know what they're doing. The hotel bars deliver consistently. The independents have personality. Between them, a cocktail evening in Southport is a decent night out." },
     { type: "callout", emoji: "🍸", text: "The best cocktail I've had in Southport came from a bartender at The Vincent who didn't need to ask what was in it. That's the benchmark. If they have to check the recipe card, move on." },
     { type: "cta", text: "For a full picture of Southport's bar and pub scene — live music, cocktails, real ale, and sports bars — our guide covers the lot.", href: "/bars-nightlife", label: "Bars & Pubs in Southport →" },
+  ],
+
+  "southport-business-hub-launch": [
+    { type: "p", text: "I want to talk directly to small business owners in Southport. Not to PR people, not to big chains, not to anyone with a marketing budget and a team to manage it. If you run a business in this town, if you pay your way, and if you have quietly suspected that the online tools available to you are either too expensive or simply do not work, this is for you." },
+
+    { type: "h2", text: "Southport businesses deserve better" },
+    { type: "p", text: "I have spent 20 years in web and technical SEO. I have worked with businesses of every size. The pattern I see in Southport is the same every time: good businesses doing solid work, getting found largely by word of mouth or by accident, with no reliable way to know whether anything they do online is making any difference." },
+    { type: "p", text: "Some of you pay a compulsory levy to people who are supposed to promote your business and you are not sure what you have to show for it. Some of you have a listing on a directory that has not been updated since 2019. Some of you paid for Google ads and got a report that told you very little. We cannot fix all of that. But we can give you something you can actually see working." },
+
+    { type: "h2", text: "Results you can finally measure" },
+    { type: "p", text: "Let me be specific, because vague promises are worth nothing to a small business owner." },
+    { type: "p", text: "The SouthportGuide Business Hub is a free dashboard for Southport businesses. When someone searches for what you do and clicks through to your listing on SouthportGuide, you will see it. You will see how many people viewed your listing, when they viewed it, and where they came from. Every Monday morning you receive an email telling you exactly how your listing performed that week." },
+    { type: "p", text: "That is not a quarterly PDF. That is your data, readable in 30 seconds, on your phone, before 9am if you want it." },
+    { type: "p", text: "I know how much this matters because I built the Sefton Coast Wildlife site and watched the traffic data in real time. Knowing which pages performed and why allowed me to double organic visits in three months. That same thinking, built specifically for Southport businesses, is what the Business Hub delivers." },
+
+    { type: "h2", text: "What the Business Hub actually is" },
+    { type: "p", text: "SouthportGuide.co.uk is an independent visitor guide to Southport. No council funding. No official body budget. No committee sign-off required. Just a well-built site that ranks on Google and sends real visitors to the businesses it features." },
+    { type: "p", text: "The Business Hub is the dashboard behind your listing. Once you claim your business, you control everything: your address, opening hours, photos, description, and contact details. You do not need to email anyone or wait for someone to update it for you. You do it yourself, in real time, from your phone or laptop." },
+
+    { type: "image", src: "/images/blog/business-hub-dashboard.webp", alt: "The SouthportGuide Business Hub dashboard showing listing analytics, weekly traffic data and business profile management controls", caption: "The Business Hub dashboard. Analytics, weekly reporting, and full listing control in one place." },
+
+    { type: "h2", text: "Everything in the free tier, and there is plenty" },
+    { type: "p", text: "The free tier is not a limited version of something. It is the flagship package. Here is what it includes:" },
+    { type: "ul", items: [
+      "Your business listed on SouthportGuide, indexed by Google, found by visitors searching for what you do",
+      "Claim your listing and take full control of your details from day one",
+      "Live dashboard — update your information in real time without contacting anyone",
+      "Listing analytics — see exactly how many people viewed your listing and when",
+      "Weekly performance email every Monday morning with your listing stats",
+      "Opening hours management — update instantly for bank holidays and seasonal changes",
+      "Photo gallery — upload and manage your own listing images",
+      "Customer enquiry management — respond to leads directly from the dashboard",
+      "Mobile friendly — manage everything from your phone in under a minute",
+    ] },
+    { type: "p", text: "That is a fully featured business management suite. Free. Not a free trial with a catch on day thirty-one. Permanently free, because we want every Southport business on here. The more businesses listed, the more useful the site is, and the more Google sends visitors to it." },
+
+    { type: "callout", emoji: "💡", text: "A better directory for visitors means more traffic to every listing on it. That is why the free tier is genuinely free and genuinely good." },
+
+    { type: "h2", text: "Try the demo right now" },
+    { type: "p", text: "The Business Hub is in final testing. Claims are not open yet, but you can see exactly what you are signing up for before you commit to anything." },
+    { type: "callout", emoji: "💻", text: "Visit southportguide.co.uk/dashboard and log in with demo@southportguide.co.uk, password Demo1234. It is set up with a demo listing so you can see exactly how the dashboard works in practice. Have a proper look around." },
+    { type: "p", text: "If you want to submit a claim now, do it. We will approve listings in order as soon as testing completes. That is days away, not weeks." },
+
+    { type: "h2", text: "Want to be live immediately? Become a beta tester." },
+    { type: "p", text: "If you want to be up and running straight away rather than waiting in the queue, email us and say you want to be a beta tester. We will approve your listing the same day." },
+    { type: "p", text: "In return, we ask for one thing: honest feedback. What works, what does not, and what you wish the hub did that it currently does not. No form to fill in, no survey, no obligation. Just an occasional email or a conversation." },
+    { type: "callout", emoji: "⭐", text: "Beta testers get a featured listing on SouthportGuide — normally a paid tier — for free, for as long as they remain an active user. Email hello@southportguide.co.uk with the subject line Beta Tester and we will get you live the same day." },
+
+    { type: "h2", text: "What we can build if you need it" },
+    { type: "p", text: "The Business Hub is built by Churchtown Media, an elite technical SEO and web development agency based in Churchtown. We do not need a six-month project timeline to deliver things. We move fast, we build properly, and we are local." },
+    { type: "p", text: "If there is something a Southport business needs that is not in the free tier, ask and we will consider building it. Things on our list from early conversations include:" },
+    { type: "ul", items: [
+      "Online booking integration — let customers book directly from your listing without needing a third-party platform that takes a cut",
+      "Full menu or service display — show your menu, price list, or service catalogue on your profile page",
+      "WhatsApp click-to-chat — the single most effective tool for getting mobile enquiries from local customers, bar none",
+      "Events calendar — promote your own events on your listing and on the SouthportGuide events page at the same time",
+      "Google review integration — display and respond to your Google reviews from inside the dashboard",
+      "Seasonal promotions — post offers and deals to your listing that appear in search results when you need them most",
+    ] },
+    { type: "p", text: "These would cost thousands of pounds and months of development time through most agencies. We can move faster. If enough Southport businesses want something, it gets built. That is not a sales pitch. That is how we have always worked." },
+
+    { type: "h2", text: "Who we are and who we are not" },
+    { type: "p", text: "SouthportGuide is not affiliated with Visit Southport, Your Southport, the council, or any official trade body. It is not funded by any of them. It answers to no committee. The editorial is independent: a business paying for a featured listing gets better visibility in search results, not a better write-up." },
+    { type: "p", text: "I am Damian Roche. I live in Churchtown. I built SouthportGuide because I got tired of watching small Southport businesses struggle to be found online while paying for things they could not measure. The Business Hub is the next step: not just a listing, but tools to grow." },
+
+    { type: "hr" },
+
+    { type: "h2", text: "What to do next" },
+    { type: "p", text: "Try the demo. Have a proper look around. If you like what you see, email hello@southportguide.co.uk and tell us you want to claim your listing or become a beta tester. We get back to people the same day." },
+
+    { type: "cta", text: "Your listing on SouthportGuide is free. Claim it, own it, and start measuring results from day one.", href: "/claim-listing", label: "Claim your listing for free" },
   ],
 
 };

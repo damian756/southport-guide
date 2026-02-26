@@ -125,7 +125,7 @@ export default function AboutPage() {
           </section>
 
           {/* Who publishes it */}
-          <section className="mb-14">
+          <section id="damian" className="mb-14">
             <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-5">Who publishes it</h2>
             <div className="bg-white rounded-2xl border border-gray-100 p-8">
               <div className="flex flex-col sm:flex-row gap-6 items-start">
