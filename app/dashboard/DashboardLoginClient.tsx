@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, Eye, EyeOff, LayoutDashboard, AlertCircle, ArrowLeft } from "lucide-react";
 
@@ -32,7 +32,10 @@ export default function DashboardLoginClient() {
         );
         return;
       }
-      router.push("/dashboard/home");
+      // Route by role: admins go to /admin, business users go to /dashboard/home
+      const session = await getSession();
+      const role = (session?.user as { role?: string } | undefined)?.role;
+      router.push(role === "admin" ? "/admin" : "/dashboard/home");
     } catch {
       setAuthError("Something went wrong. Please try again.");
     } finally {
