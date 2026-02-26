@@ -24,8 +24,8 @@ export default function DashboardLoginClient() {
     setDemoFilled(true);
     setTimeout(() => setDemoFilled(false), 2000);
     // Track demo intent in Plausible
-    if (typeof window !== "undefined" && typeof (window as { plausible?: Function }).plausible === "function") {
-      (window as { plausible: Function }).plausible("Demo Autofill");
+    if (typeof window !== "undefined" && typeof (window as unknown as { plausible?: (...args: unknown[]) => void }).plausible === "function") {
+      (window as unknown as { plausible: (...args: unknown[]) => void }).plausible("Demo Autofill");
     }
   }
 
@@ -51,9 +51,9 @@ export default function DashboardLoginClient() {
       if (
         form.email.toLowerCase() === DEMO_EMAIL.toLowerCase() &&
         typeof window !== "undefined" &&
-        typeof (window as { plausible?: Function }).plausible === "function"
+        typeof (window as unknown as { plausible?: (...args: unknown[]) => void }).plausible === "function"
       ) {
-        (window as { plausible: Function }).plausible("Demo Login");
+        (window as unknown as { plausible: (...args: unknown[]) => void }).plausible("Demo Login");
       }
       // Route by role: admins go to /admin, business users go to /dashboard/home
       const session = await getSession();
