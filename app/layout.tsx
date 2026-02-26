@@ -6,6 +6,7 @@ import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { CookieProvider } from "./components/CookieProvider";
 import CookieBanner from "./components/CookieBanner";
+import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -105,9 +106,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
         <CookieProvider>
-          <Navigation />
+          <ConditionalNav><Navigation /></ConditionalNav>
           <main>{children}</main>
-          <Footer />
+          <ConditionalFooter><Footer /></ConditionalFooter>
           <CookieBanner />
         </CookieProvider>
         <Script id="crisp-chat" strategy="afterInteractive">{`
