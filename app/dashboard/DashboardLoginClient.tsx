@@ -2,15 +2,42 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, LayoutDashboard } from "lucide-react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { Mail, Lock, Eye, EyeOff, LayoutDashboard, AlertCircle } from "lucide-react";
 
 export default function DashboardLoginClient() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
+  const [authError, setAuthError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // not connected yet
+    setAuthError(null);
+    setLoading(true);
+    try {
+      const result = await signIn("credentials", {
+        email: form.email,
+        password: form.password,
+        redirect: false,
+      });
+      if (!result || !result.ok || result.error) {
+        setAuthError(
+          result?.error === "Configuration"
+            ? "Server configuration error — please contact support."
+            : "Incorrect email or password."
+        );
+        return;
+      }
+      router.push("/dashboard/home");
+    } catch {
+      setAuthError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -38,6 +65,12 @@ export default function DashboardLoginClient() {
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-5">
+            {authError && (
+              <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4">
+                <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                <p className="text-red-700 text-sm">{authError}</p>
+              </div>
+            )}
             <div>
               <label className="block text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider mb-1.5">
                 Email address
@@ -87,9 +120,20 @@ export default function DashboardLoginClient() {
 
             <button
               type="submit"
-              className="w-full bg-[#1B2E4B] hover:bg-[#2A4A73] text-white py-3.5 rounded-full font-bold text-sm transition-colors"
+              disabled={loading}
+              className="w-full bg-[#1B2E4B] hover:bg-[#2A4A73] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 rounded-full font-bold text-sm transition-colors flex items-center justify-center gap-2"
             >
-              Sign In
+              {loading ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                  </svg>
+                  Signing in…
+                </>
+              ) : (
+                "Sign In"
+              )}
             </button>
           </form>
 

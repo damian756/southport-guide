@@ -48,6 +48,10 @@ next-env.d.ts
 businesses.csv
 hygiene-progress.json
 enrich-progress.json
+email-scrape-progress.json
+email-scrape-results.csv
+email-results.txt
+email-results-clean.txt
 
 # Python
 __pycache__/
@@ -57,5 +61,5 @@ __pycache__/
 # Cursor AI
 .cursor/
 
-# Cursor AI
-.cursor/
+# Internal strategy and planning docs
+BUSINESS-HUB-PLAN.md

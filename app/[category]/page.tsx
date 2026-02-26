@@ -90,15 +90,27 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const theme = THEMES[category] || THEMES.restaurants;
   const isFoodCat = FOOD_CATS.has(category);
   let businesses: BrowserBusiness[] = [];
+  let boostedBusinessIds = new Set<string>();
 
   try {
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
     if (categoryRecord) {
       const catId = categoryRecord.id;
+      const now = new Date();
+      const activeBoosts = await prisma.listingBoost.findMany({
+        where: {
+          categoryId: catId,
+          status: "active",
+          startsAt: { lte: now },
+          endsAt: { gte: now },
+        },
+        select: { businessId: true, label: true },
+      });
+      boostedBusinessIds = new Set(activeBoosts.map((b) => b.businessId));
 
       if (sort === "alpha") {
         businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode,
+          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                  rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business"
           WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
@@ -106,7 +118,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else if (sort === "hygiene") {
         businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode,
+          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                  rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business"
           WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
@@ -116,7 +128,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else if (sort === "google") {
         businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode,
+          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                  rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business"
           WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
@@ -126,7 +138,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         `;
       } else {
         businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT slug, name, "shortDescription", description, "listingTier", address, postcode,
+          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                  rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng
           FROM "Business"
           WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
@@ -134,6 +146,13 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
             (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
         `;
+      }
+
+      if (boostedBusinessIds.size > 0 && sort !== "alpha" && sort !== "hygiene") {
+        businesses = [
+          ...businesses.filter((b) => boostedBusinessIds.has(b.id)),
+          ...businesses.filter((b) => !boostedBusinessIds.has(b.id)),
+        ];
       }
     }
   } catch { /* DB unavailable */ }
@@ -251,6 +270,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           areas={AREAS.map(({ key, label }) => ({ key, label }))}
           currentSort={sort}
           currentArea={area}
+          boostedBusinessIds={boostedBusinessIds}
         />
 
         {/* ── Bottom CTA ──────────────────────────────────────────────────── */}

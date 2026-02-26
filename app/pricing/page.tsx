@@ -1,112 +1,183 @@
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { Check, Minus, ChevronDown } from "lucide-react";
+import PricingFAQ from "./PricingFAQ";
 
 export const metadata = {
   title: "Pricing | List Your Business on SouthportGuide",
-  description: "Pricing for business listings on SouthportGuide.co.uk. Free, Standard, Featured and Premium tiers.",
+  description:
+    "Pricing for business listings on SouthportGuide.co.uk. Free and Pro plans, plus category boosts.",
   alternates: { canonical: "https://www.southportguide.co.uk/pricing" },
 };
 
-const tiers = [
-  {
-    name: "Free",
-    price: "£0",
-    desc: "Basic listing",
-    features: ["Name, address, website link", "Appears in category search", "Claim to update details"],
-    cta: "Claim your listing",
-    href: "/claim-listing",
-    highlighted: false,
-  },
-  {
-    name: "Standard",
-    price: "£29",
-    period: "/month",
-    desc: "Full profile",
-    features: ["Up to 10 photos", "Extended description (500 words)", "Opening hours & phone", "Social links", "Standard listing badge"],
-    cta: "Get Standard",
-    href: "/claim-listing?tier=standard",
-    highlighted: false,
-  },
-  {
-    name: "Featured",
-    price: "£59",
-    period: "/month",
-    desc: "Stand out",
-    features: ["Everything in Standard", "Featured badge", "Top of category placement", "Homepage carousel", "Monthly analytics"],
-    cta: "Get Featured",
-    href: "/claim-listing?tier=featured",
-    highlighted: true,
-  },
-  {
-    name: "Premium",
-    price: "£99",
-    period: "/month",
-    desc: "Maximum visibility",
-    features: ["Everything in Featured", "Booking integration", "Video embed", "Priority support", "Dedicated account manager"],
-    cta: "Get Premium",
-    href: "/claim-listing?tier=premium",
-    highlighted: false,
-  },
-];
+const FEATURES = [
+  { label: "Claim & manage listing", free: true, pro: true },
+  { label: "Analytics dashboard", free: true, pro: true },
+  { label: "Monday morning email", free: true, pro: true },
+  { label: "Visibility score", free: true, pro: true },
+  { label: "Google review alerts", free: true, pro: true },
+  { label: "Milestone notifications", free: true, pro: true },
+  { label: "Category benchmarks", free: false, pro: true },
+  { label: "Compare vs competitors", free: false, pro: true },
+  { label: "Event intelligence", free: false, pro: true },
+  { label: "Featured listing placement", free: false, pro: true },
+  { label: "1 boost credit per month", free: false, pro: true },
+] as const;
+
+const BOOSTS = [
+  { type: "Standard 7 days", price: "£15", pence: 1500 },
+  { type: "Weekend (Fri–Sun)", price: "£10", pence: 1000 },
+  { type: "Flower Show Weekend", price: "£49", pence: 4900 },
+  { type: "Air Show Weekend", price: "£49", pence: 4900 },
+  { type: "Bank Holiday Weekend", price: "£35", pence: 3500 },
+  { type: "Christmas Markets Month", price: "£99", pence: 9900 },
+  { type: "The Open 2026 Fortnight", price: "£149", pence: 14900 },
+] as const;
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-14">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Simple, transparent pricing</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join 500+ Southport businesses. Choose the tier that fits your goals.
+    <div className="min-h-screen bg-[#FAF8F5]">
+      {/* Hero */}
+      <div className="bg-[#1B2E4B] relative overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/8 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
+        </div>
+        <div className="relative container mx-auto px-4 max-w-5xl py-12">
+          <h1 className="font-display text-4xl font-bold text-white mb-2">
+            Simple, transparent pricing
+          </h1>
+          <p className="text-white/60 max-w-xl">
+            Join hundreds of Southport businesses. Choose Free or Pro, then add
+            boosts when you need extra visibility.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {tiers.map((t) => (
-            <div
-              key={t.name}
-              className={`rounded-xl shadow-lg p-6 bg-white ${
-                t.highlighted ? "ring-2 ring-blue-600 scale-105" : ""
-              }`}
-            >
-              {t.highlighted && (
-                <span className="inline-block bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded mb-4">
-                  POPULAR
-                </span>
-              )}
-              <h2 className="text-xl font-bold text-gray-900">{t.name}</h2>
-              <p className="text-gray-600 text-sm mt-1">{t.desc}</p>
-              <p className="mt-4">
-                <span className="text-3xl font-bold text-gray-900">{t.price}</span>
-                {t.period && <span className="text-gray-600">{t.period}</span>}
-              </p>
-              <ul className="mt-6 space-y-3">
-                {t.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-700">
-                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                    {f}
-                  </li>
+        <div className="relative h-6 overflow-hidden">
+          <svg
+            viewBox="0 0 1440 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute bottom-0 w-full"
+            preserveAspectRatio="none"
+          >
+            <path d="M0 24L720 8L1440 24V24H0Z" fill="#FAF8F5" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 max-w-5xl py-12 space-y-12">
+        {/* Free vs Pro table */}
+        <section>
+          <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">
+            Free vs Pro
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+              <thead>
+                <tr className="border-b border-gray-100">
+                  <th className="text-left py-5 px-6 text-gray-600 font-semibold">
+                    Feature
+                  </th>
+                  <th className="text-center py-5 px-6 text-gray-600 font-semibold">
+                    Free
+                  </th>
+                  <th className="text-center py-5 px-6 bg-[#C9A84C]/10 border-l border-[#C9A84C]/20 font-semibold text-[#1B2E4B]">
+                    Pro
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {FEATURES.map((f, i) => (
+                  <tr
+                    key={f.label}
+                    className={
+                      i % 2 === 1 ? "bg-gray-50/50" : ""
+                    }
+                  >
+                    <td className="py-4 px-6 text-gray-700">{f.label}</td>
+                    <td className="py-4 px-6 text-center">
+                      {f.free ? (
+                        <Check className="w-5 h-5 text-emerald-600 inline" />
+                      ) : (
+                        <Minus className="w-5 h-5 text-gray-300 inline" />
+                      )}
+                    </td>
+                    <td className="py-4 px-6 text-center bg-[#C9A84C]/5">
+                      {f.pro ? (
+                        <Check className="w-5 h-5 text-emerald-600 inline" />
+                      ) : (
+                        <Minus className="w-5 h-5 text-gray-300 inline" />
+                      )}
+                    </td>
+                  </tr>
                 ))}
-              </ul>
-              <Link
-                href={t.href}
-                className={`mt-6 block w-full text-center py-3 rounded-lg font-semibold transition ${
-                  t.highlighted
-                    ? "bg-blue-600 text-white hover:bg-blue-700"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                }`}
-              >
-                {t.cta}
-              </Link>
-            </div>
-          ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Annual banner */}
+        <div className="bg-[#C9A84C]/15 border border-[#C9A84C]/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 className="font-display font-bold text-[#1B2E4B] text-lg">
+              Pay annually and save 2 months
+            </h3>
+            <p className="text-gray-600 text-sm mt-0.5">
+              £390/year instead of £468
+            </p>
+          </div>
+          <Link
+            href="/dashboard"
+            className="bg-[#C9A84C] hover:bg-[#B8972A] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+          >
+            Go to Business Hub →
+          </Link>
         </div>
-        <div className="mt-12 text-center">
-          <p className="text-gray-600 mb-2">Special event packages</p>
-          <p className="text-sm text-gray-500">
-            <strong>The Open 2026</strong> featured listing: £199–499 one-off.{" "}
-            <strong>MLEC Partner</strong>: £299–599/year.{" "}
-            <Link href="/contact" className="text-blue-600 hover:underline">Contact us</Link> for details.
+
+        {/* Boosts section */}
+        <section>
+          <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">
+            Category boosts
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-2xl">
+            Appear at the top of your category for a set period. Pro subscribers
+            get one free credit per month.
           </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {BOOSTS.map((b) => (
+              <div
+                key={b.type}
+                className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm"
+              >
+                <p className="font-semibold text-[#1B2E4B]">{b.type}</p>
+                <p className="text-2xl font-bold text-[#C9A84C] mt-2">{b.price}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* The Open 2026 */}
+        <div className="bg-[#1B2E4B] rounded-2xl p-6 text-white">
+          <h3 className="font-display font-bold text-lg mb-2 flex items-center gap-2">
+            🏌️ The Open 2026 — Royal Birkdale
+          </h3>
+          <p className="text-white/80 text-sm">
+            Limited to one slot per category. 6 of 11 category slots available.
+          </p>
+          <Link
+            href="/dashboard"
+            className="inline-block mt-4 border border-[#C9A84C]/40 text-[#C9A84C] px-4 py-2 rounded-full font-bold text-sm hover:bg-[#C9A84C]/10 transition"
+          >
+            Book your boost →
+          </Link>
         </div>
+
+        {/* FAQ */}
+        <section>
+          <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">
+            FAQ
+          </h2>
+          <PricingFAQ />
+        </section>
       </div>
     </div>
   );

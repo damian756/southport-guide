@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass } from "lucide-react";
+import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass, LayoutDashboard } from "lucide-react";
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",      icon: Utensils,    color: "text-red-500" },
@@ -92,6 +92,13 @@ export default function NavMenu() {
         <div className="w-px h-5 bg-gray-200 mx-1" />
 
         <Link
+          href="/dashboard"
+          className="flex items-center gap-1.5 text-[#1B2E4B]/60 hover:text-[#1B2E4B] font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-[#FAF8F5]"
+        >
+          <LayoutDashboard className="w-3.5 h-3.5" />
+          Hub Login
+        </Link>
+        <Link
           href="/claim-listing"
           className="bg-[#C9A84C] hover:bg-[#B8972A] text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm shadow-[#C9A84C]/30"
         >
@@ -148,6 +155,13 @@ export default function NavMenu() {
             </Link>
             <Link href="/mlec" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-purple-50 text-purple-800 text-sm font-medium" onClick={() => setMobileOpen(false)}>
               🎭 <span>MLEC — Opening April 2027</span>
+            </Link>
+          </div>
+
+          <div className="border-t border-gray-100 pt-4 space-y-1 mb-4">
+            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">For Business</p>
+            <Link href="/dashboard" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-sm font-medium" onClick={() => setMobileOpen(false)}>
+              <LayoutDashboard className="w-4 h-4 text-[#C9A84C]" /> <span>Business Hub Login</span>
             </Link>
           </div>
 

@@ -1,3 +1,6 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
 import DashboardLoginClient from "./DashboardLoginClient";
 
 export const metadata = {
@@ -6,6 +9,8 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+  if (session) redirect("/dashboard/home");
   return <DashboardLoginClient />;
 }

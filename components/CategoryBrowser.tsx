@@ -17,6 +17,7 @@ const CategoryMap = dynamic(() => import("./CategoryMap"), {
 // ── Types ───────────────────────────────────────────────────────────────────
 
 export type BrowserBusiness = {
+  id: string;
   slug: string;
   name: string;
   shortDescription: string | null;
@@ -50,6 +51,7 @@ type Props = {
   areas: AreaDef[];
   currentSort: string | undefined;
   currentArea: string | undefined;
+  boostedBusinessIds?: Set<string>;
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -102,6 +104,7 @@ export default function CategoryBrowser({
   areas,
   currentSort,
   currentArea,
+  boostedBusinessIds = new Set(),
 }: Props) {
   const [search, setSearch] = useState("");
   const [view, setView] = useState<"list" | "map">("list");
@@ -286,6 +289,7 @@ export default function CategoryBrowser({
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((b) => {
             const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
+            const isBoosted = boostedBusinessIds.has(b.id);
             const areaLabel = getAreaLabel(b.address);
             const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
             const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
@@ -305,11 +309,18 @@ export default function CategoryBrowser({
                 <div className={`w-full bg-gradient-to-r ${themeGradient} ${isFeatured ? "h-2" : "h-1"}`} />
 
                 <div className="p-5 flex flex-col flex-1">
-                  {isFeatured && (
-                    <div className="mb-2.5">
-                      <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
-                        ✦ Featured
-                      </span>
+                  {(isFeatured || isBoosted) && (
+                    <div className="mb-2.5 flex flex-wrap gap-1.5">
+                      {isFeatured && (
+                        <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
+                          ✦ Featured
+                        </span>
+                      )}
+                      {isBoosted && (
+                        <span className="text-[10px] bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-2 py-0.5 rounded-full font-semibold">
+                          Featured This Week
+                        </span>
+                      )}
                     </div>
                   )}
 

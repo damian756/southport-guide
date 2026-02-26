@@ -42,6 +42,14 @@ model Business {
   stripeCustomerId      String?
   featured              Boolean         @default(false)
   clicks                BusinessClick[]
+  hubTier               String          @default("free") // "free" | "pro"
+  weeklyEmailEnabled    Boolean         @default(true)
+  googleReviewCachedAt  DateTime?
+  boostCredits          Int             @default(0)
+  boosts                ListingBoost[]
+  reviewSnapshots       ReviewSnapshot[]
+  emailLogs             WeeklyEmailLog[]
+  claimRequests         ClaimRequest[]
   createdAt             DateTime        @default(now())
   updatedAt             DateTime        @updatedAt
 
@@ -73,6 +81,7 @@ model Category {
   parent            Category?   @relation("CategoryToCategory", fields: [parentId], references: [id])
   children          Category[]  @relation("CategoryToCategory")
   businesses        Business[]
+  boosts           ListingBoost[]
   metaTitle         String?
   metaDescription   String?
   sortOrder         Int         @default(0)
@@ -132,10 +141,44 @@ model User {
   accounts      Account[]
   sessions      Session[]
   blogPosts     BlogPost[]
+  claimRequests ClaimRequest[]
+  inviteTokens  InviteToken[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 
   @@index([email])
+}
+
+model ClaimRequest {
+  id         String    @id @default(uuid())
+  businessId String
+  business   Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name       String
+  email      String
+  message    String?   @db.Text
+  status     String    @default("pending") // "pending" | "approved" | "rejected"
+  reviewedAt DateTime?
+  reviewedBy String?
+  createdAt  DateTime  @default(now())
+
+  @@index([businessId])
+  @@index([status])
+  @@index([email])
+}
+
+model InviteToken {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String    @unique @default(uuid())
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([token])
+  @@index([userId])
 }
 
 model Account {
@@ -214,4 +257,48 @@ model BlogPost {
   @@index([slug])
   @@index([published])
   @@index([authorId])
+}
+
+model ListingBoost {
+  id                    String    @id @default(uuid())
+  businessId            String
+  business              Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  categoryId            String
+  category              Category  @relation(fields: [categoryId], references: [id])
+  type                  String    // "standard"|"weekend"|"event"|"open2026"
+  label                 String?   // public label e.g. "Air Show Weekend"
+  startsAt              DateTime
+  endsAt                DateTime
+  pricePence            Int
+  stripePaymentIntentId String?   @unique
+  status                String    @default("active") // "active"|"expired"|"cancelled"
+  createdAt             DateTime  @default(now())
+
+  @@index([businessId])
+  @@index([categoryId])
+  @@index([startsAt, endsAt])
+  @@index([status])
+}
+
+model ReviewSnapshot {
+  id          String   @id @default(uuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  rating      Float
+  reviewCount Int
+  snapshotAt  DateTime @default(now())
+
+  @@index([businessId])
+  @@index([snapshotAt])
+}
+
+model WeeklyEmailLog {
+  id         String   @id @default(uuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  sentAt     DateTime @default(now())
+  weekStart  DateTime
+
+  @@index([businessId])
+  @@index([sentAt])
 }

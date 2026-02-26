@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const ALLOWED_TYPES = new Set(["website", "phone", "directions", "google_reviews"]);
+const ALLOWED_TYPES = new Set(["website", "phone", "directions", "google_reviews", "view"]);
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

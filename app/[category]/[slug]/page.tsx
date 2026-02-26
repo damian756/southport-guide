@@ -5,6 +5,7 @@ import { MapPin, Phone, Globe, Clock, Star, ChevronRight, ShieldCheck, ShieldAle
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
+import { ViewTracker } from "@/components/ViewTracker";
 
 type Props = { params: Promise<{ category: string; slug: string }> };
 
@@ -340,6 +341,7 @@ export default async function BusinessPage({ params }: Props) {
 
   return (
     <>
+      <ViewTracker businessId={business.id} />
       {/* JSON-LD structured data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
