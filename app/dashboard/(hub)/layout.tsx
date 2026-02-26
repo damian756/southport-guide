@@ -5,6 +5,7 @@ import { Building2 } from "lucide-react";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import HubShell from "./HubShell";
+import SignOutButton from "./SignOutButton";
 
 export default async function HubLayout({
   children,
@@ -52,6 +53,9 @@ export default async function HubLayout({
           >
             Contact us
           </a>
+        </div>
+        <div className="mt-10">
+          <SignOutButton />
         </div>
       </div>
     );
