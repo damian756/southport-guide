@@ -73,6 +73,7 @@ export default async function EventsPage() {
     dateStart: Date;
     dateEnd: Date | null;
     category: string | null;
+    featuredImage: string | null;
     impactEstimate: string | null;
     boostedCount: number;
   };
@@ -89,7 +90,7 @@ export default async function EventsPage() {
         ev.dateStart,
         ev.dateEnd ?? ev.dateStart
       );
-      return { ...ev, impactEstimate, boostedCount };
+      return { ...ev, featuredImage: ev.featuredImage ?? null, impactEstimate, boostedCount };
     })
   );
 
@@ -138,6 +139,15 @@ export default async function EventsPage() {
                     : "border-gray-100"
                 }`}
               >
+                {ev.featuredImage && (
+                  <div className="h-32 overflow-hidden">
+                    <img
+                      src={ev.featuredImage}
+                      alt={ev.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
                 <div className="p-5 flex flex-col sm:flex-row sm:items-start gap-4">
                   <div className="flex-1 space-y-1.5">
                     <div className="flex items-center gap-2 flex-wrap">

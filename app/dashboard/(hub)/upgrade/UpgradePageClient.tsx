@@ -54,7 +54,15 @@ export default function UpgradePageClient() {
 
   return (
     <div className="space-y-10">
-      <div className="bg-[#1B2E4B] -mx-6 md:-mx-8 -mt-6 md:-mt-8 px-6 md:px-8 py-12 md:py-16">
+      <div className="relative bg-[#1B2E4B] -mx-6 md:-mx-8 -mt-6 md:-mt-8 px-6 md:px-8 py-12 md:py-16 overflow-hidden">
+        {/* Hero image behind header */}
+        <img
+          src="/images/dashboard/upgrade-hero.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none select-none"
+          aria-hidden="true"
+        />
+        <div className="relative z-10">
         <h1 className="font-display text-3xl font-bold text-white mb-2">
           Upgrade to Pro
         </h1>
@@ -62,6 +70,7 @@ export default function UpgradePageClient() {
           Get featured placement, benchmarks, event intel, and one free boost
           credit every month.
         </p>
+        </div>
       </div>
 
       {/* Feature comparison */}

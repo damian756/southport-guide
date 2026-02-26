@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { CheckCircle2, Circle, Camera } from "lucide-react";
+import { useState, useCallback, useRef } from "react";
+import { CheckCircle2, Circle, Camera, Upload, Trash2, Loader2 } from "lucide-react";
 import type { Business } from "@prisma/client";
 
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
@@ -112,6 +112,10 @@ export default function ListingEditorClient({ business }: Props) {
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [images, setImages] = useState<string[]>(business.images ?? []);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const updateDay = useCallback((idx: number, patch: Partial<DayHours>) => {
     setHours((prev) => {
@@ -120,6 +124,43 @@ export default function ListingEditorClient({ business }: Props) {
       return next;
     });
   }, []);
+
+  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadError(null);
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/hub/upload-image", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Upload failed");
+      setImages(data.images);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
+  const handlePhotoDelete = async (url: string) => {
+    if (!confirm("Remove this photo?")) return;
+    setUploadError(null);
+    try {
+      const res = await fetch("/api/hub/upload-image", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Delete failed");
+      setImages(data.images);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Delete failed");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -154,7 +195,7 @@ export default function ListingEditorClient({ business }: Props) {
   const hasPhone = (business.phone ?? "").trim().length > 0;
   const hasWebsite = (business.website ?? "").trim().length > 0;
   const hasHours = business.openingHours != null;
-  const hasPhotos = business.images != null && business.images.length > 0;
+  const hasPhotos = images.length > 0;
   const ratingOk = business.rating != null && business.rating >= 4;
   const isPro = business.hubTier === "pro";
 
@@ -199,7 +240,7 @@ export default function ListingEditorClient({ business }: Props) {
                   value={shortDescription}
                   onChange={(e) => setShortDescription(e.target.value)}
                   placeholder="One line summary for search results"
-                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5] px-4 py-2.5"
+                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-white px-4 py-2.5"
                 />
                 <p className="text-xs text-gray-400 mt-1 text-right">{160 - shortDescription.length} characters remaining</p>
               </div>
@@ -211,7 +252,7 @@ export default function ListingEditorClient({ business }: Props) {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Tell visitors what makes your business special..."
-                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5] px-4 py-2.5"
+                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-white px-4 py-2.5"
                 />
                 <p className="text-xs text-gray-400 mt-1 text-right">{1000 - description.length} characters remaining</p>
               </div>
@@ -249,7 +290,7 @@ export default function ListingEditorClient({ business }: Props) {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="01704 000000"
-                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5] px-4 py-2.5"
+                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-white px-4 py-2.5"
                 />
               </div>
               <div>
@@ -259,18 +300,19 @@ export default function ListingEditorClient({ business }: Props) {
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
                   placeholder="https://"
-                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5] px-4 py-2.5"
+                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-white px-4 py-2.5"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email (customer-facing)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email (business enquiries)</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="info@yourbusiness.com"
-                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5] px-4 py-2.5"
+                  className="w-full border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-white px-4 py-2.5"
                 />
+                <p className="text-xs text-gray-400 mt-1">Shown on your public listing so customers can contact you directly.</p>
               </div>
             </div>
           </section>
@@ -291,7 +333,7 @@ export default function ListingEditorClient({ business }: Props) {
                       else if (v === "24h") updateDay(i, { open: true, allDay: true });
                       else updateDay(i, { open: true, allDay: false });
                     }}
-                    className="border border-gray-200 rounded-lg text-sm px-3 py-1.5 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40"
+                    className="border border-gray-200 rounded-lg text-sm px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40"
                   >
                     <option value="closed">Closed</option>
                     <option value="open">Open</option>
@@ -302,7 +344,7 @@ export default function ListingEditorClient({ business }: Props) {
                       <select
                         value={hours[i].from}
                         onChange={(e) => updateDay(i, { from: e.target.value })}
-                        className="border border-gray-200 rounded-lg text-sm px-3 py-1.5 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40"
+                        className="border border-gray-200 rounded-lg text-sm px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40"
                       >
                         {TIME_OPTIONS.map((o) => (
                           <option key={o.value} value={o.value}>{o.label}</option>
@@ -312,7 +354,7 @@ export default function ListingEditorClient({ business }: Props) {
                       <select
                         value={hours[i].to}
                         onChange={(e) => updateDay(i, { to: e.target.value })}
-                        className="border border-gray-200 rounded-lg text-sm px-3 py-1.5 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40"
+                        className="border border-gray-200 rounded-lg text-sm px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40"
                       >
                         {TIME_OPTIONS.map((o) => (
                           <option key={o.value} value={o.value}>{o.label}</option>
@@ -328,27 +370,63 @@ export default function ListingEditorClient({ business }: Props) {
           <hr className="border-gray-100" />
 
           <section id="section-photos">
-            <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">Photos</h2>
-            {business.images && business.images.length > 0 ? (
-              <div className="grid grid-cols-3 gap-2">
-                {business.images.map((url, i) => (
-                  <div key={i} className="aspect-square rounded-xl overflow-hidden bg-gray-100">
-                    <img src={url} alt="" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-3 gap-2">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="aspect-square rounded-xl bg-gray-100 flex items-center justify-center">
-                    <Camera className="w-8 h-8 text-gray-300" />
-                  </div>
-                ))}
+            <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-1">Photos</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Upload up to 6 photos. JPG, PNG or WebP, max 5MB each.
+            </p>
+
+            {uploadError && (
+              <div className="mb-3 bg-red-50 border border-red-200 text-red-700 px-4 py-2.5 rounded-xl text-sm">
+                {uploadError}
               </div>
             )}
-            <p className="text-sm text-gray-400 mt-3">
-              To add or change photos, email photos@southportguide.co.uk with your business name. Photo upload coming soon.
-            </p>
+
+            <div className="grid grid-cols-3 gap-3">
+              {images.map((url) => (
+                <div key={url} className="relative aspect-square rounded-xl overflow-hidden bg-gray-100 group">
+                  <img src={url} alt="" className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => handlePhotoDelete(url)}
+                    className="absolute top-1.5 right-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Remove photo"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ))}
+              {images.length < 6 && (
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                  className="aspect-square rounded-xl border-2 border-dashed border-gray-200 hover:border-[#C9A84C] hover:bg-[#C9A84C]/5 flex flex-col items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {uploading ? (
+                    <Loader2 className="w-7 h-7 text-[#C9A84C] animate-spin" />
+                  ) : (
+                    <>
+                      <Upload className="w-7 h-7 text-gray-300" />
+                      <span className="text-xs text-gray-400">Add photo</span>
+                    </>
+                  )}
+                </button>
+              )}
+              {/* Fill remaining slots with placeholder tiles */}
+              {Array.from({ length: Math.max(0, 2 - images.length) }).map((_, i) => (
+                <div key={`ph-${i}`} className="aspect-square rounded-xl bg-gray-50 border border-dashed border-gray-100 flex items-center justify-center">
+                  <Camera className="w-7 h-7 text-gray-200" />
+                </div>
+              ))}
+            </div>
+
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="hidden"
+              onChange={handlePhotoUpload}
+            />
           </section>
 
           <button
@@ -364,8 +442,8 @@ export default function ListingEditorClient({ business }: Props) {
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Your listing right now</p>
             <div className="aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-[#1B2E4B]/20 to-[#C9A84C]/20 mb-4">
-              {business.images?.[0] ? (
-                <img src={business.images[0]} alt="" className="w-full h-full object-cover" />
+              {images[0] ? (
+                <img src={images[0]} alt="" className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
                   <Camera className="w-12 h-12 text-gray-300" />

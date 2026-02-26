@@ -131,39 +131,156 @@ export default async function AnalyticsPage({ searchParams }: Props) {
         ))}
       </div>
 
-      {/* Daily chart */}
+      {/* Daily chart — SVG area chart */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-        <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-4">
+        <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-1">
           Daily Activity — last{" "}
           {period === "all" ? "365" : period} days
         </h2>
-        {maxDaily > 0 && dailyTrend.length > 0 ? (
-          <>
-            <div className="flex items-end gap-0.5 h-32 overflow-x-auto">
-              {dailyTrend.map((d, i) => (
-                <div
-                  key={d.date}
-                  className="flex-1 min-w-[4px] flex flex-col justify-end group"
-                  title={`${d.date}: ${d.count} clicks`}
-                >
-                  <div
-                    className="w-full rounded-t bg-[#1B2E4B]/30 hover:bg-[#1B2E4B]/50 transition-colors"
-                    style={{
-                      height: `${(d.count / maxDaily) * 100}%`,
-                      minHeight: d.count > 0 ? "4px" : "0",
-                    }}
-                  />
-                </div>
-              ))}
+        <p className="text-xs text-gray-400 mb-5">Total clicks and views per day</p>
+        {maxDaily > 0 && dailyTrend.length > 0 ? (() => {
+          const svgW = 700, svgH = 200;
+          const pad = { top: 16, right: 16, bottom: 36, left: 44 };
+          const cW = svgW - pad.left - pad.right;
+          const cH = svgH - pad.top - pad.bottom;
+          const n = dailyTrend.length;
+          const spikeThreshold = maxDaily * 0.65;
+          const recentCount = Math.min(7, n);
+
+          const toX = (i: number) =>
+            pad.left + (n > 1 ? (i / (n - 1)) * cW : cW / 2);
+          const toY = (v: number) =>
+            pad.top + cH - (v / maxDaily) * cH;
+
+          const firstX = toX(0);
+          const lastX = toX(n - 1);
+          const bottomY = pad.top + cH;
+
+          const linePoints = dailyTrend
+            .map((d, i) => `${toX(i)},${toY(d.count)}`)
+            .join(" ");
+
+          const areaPath =
+            `M${firstX},${toY(dailyTrend[0]?.count ?? 0)} ` +
+            dailyTrend.map((d, i) => `${toX(i)},${toY(d.count)}`).join(" ") +
+            ` L${lastX},${bottomY} L${firstX},${bottomY} Z`;
+
+          // Y-axis: 0, half, max
+          const yLabels = [0, Math.round(maxDaily / 2), maxDaily];
+
+          // X-axis: show ~5 date labels evenly spaced
+          const xLabelIndices = (() => {
+            if (n <= 8) return dailyTrend.map((_, i) => i);
+            const step = Math.floor(n / 4);
+            const indices = [0];
+            for (let i = step; i < n - step / 2; i += step) indices.push(i);
+            if (indices[indices.length - 1] !== n - 1) indices.push(n - 1);
+            return indices;
+          })();
+
+          return (
+            <div className="overflow-x-auto">
+              <svg
+                viewBox={`0 0 ${svgW} ${svgH}`}
+                className="w-full"
+                style={{ minWidth: 320, height: svgH }}
+              >
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#1B2E4B" stopOpacity="0.18" />
+                    <stop offset="100%" stopColor="#1B2E4B" stopOpacity="0.01" />
+                  </linearGradient>
+                </defs>
+
+                {/* Y-axis grid + labels */}
+                {yLabels.map((v) => (
+                  <g key={v}>
+                    <line
+                      x1={pad.left} x2={svgW - pad.right}
+                      y1={toY(v)} y2={toY(v)}
+                      stroke="#f0f0f0" strokeWidth="1"
+                    />
+                    <text
+                      x={pad.left - 6} y={toY(v) + 4}
+                      textAnchor="end" fontSize="10" fill="#9ca3af"
+                    >
+                      {v}
+                    </text>
+                  </g>
+                ))}
+
+                {/* Area fill */}
+                <path d={areaPath} fill="url(#areaGrad)" />
+
+                {/* Line */}
+                <polyline
+                  points={linePoints}
+                  fill="none"
+                  stroke="#1B2E4B"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  opacity="0.5"
+                />
+
+                {/* Dots — gold for spikes, green for recent 7 days, navy otherwise */}
+                {dailyTrend.map((d, i) => {
+                  const isSpike = d.count >= spikeThreshold;
+                  const isRecent = i >= n - recentCount;
+                  const fill = isSpike
+                    ? "#C9A84C"
+                    : isRecent
+                    ? "#10b981"
+                    : "#1B2E4B";
+                  const r = isSpike ? 5 : isRecent ? 4 : 3;
+                  return d.count > 0 ? (
+                    <circle
+                      key={d.date}
+                      cx={toX(i)} cy={toY(d.count)}
+                      r={r} fill={fill}
+                    >
+                      <title>{d.date}: {d.count} clicks</title>
+                    </circle>
+                  ) : null;
+                })}
+
+                {/* X-axis date labels */}
+                {xLabelIndices.map((i) => {
+                  const d = dailyTrend[i];
+                  if (!d) return null;
+                  const label = new Date(d.date).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                  });
+                  return (
+                    <text
+                      key={d.date}
+                      x={toX(i)} y={svgH - 6}
+                      textAnchor="middle"
+                      fontSize="10" fill="#9ca3af"
+                    >
+                      {label}
+                    </text>
+                  );
+                })}
+              </svg>
+              <div className="flex gap-5 mt-3 text-xs text-gray-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#1B2E4B]/50 flex-shrink-0" />
+                  Activity
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                  Last 7 days
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C9A84C] flex-shrink-0" />
+                  Event spike
+                </span>
+              </div>
             </div>
-            <div className="flex gap-2 mt-4 flex-wrap text-xs">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#1B2E4B]/30" />
-                Views
-              </span>
-            </div>
-          </>
-        ) : (
+          );
+        })() : (
           <div className="flex flex-col items-center justify-center py-12 text-gray-500">
             <BarChart2 className="w-12 h-12 text-gray-300 mb-3" />
             <p>No activity in this period</p>
