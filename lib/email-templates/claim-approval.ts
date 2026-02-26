@@ -1,4 +1,4 @@
-const FROM_EMAIL = "SouthportGuide <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
 const BASE_URL = process.env.NEXTAUTH_URL || "https://www.southportguide.co.uk";
 
 export function getClaimApprovalHtml(params: {

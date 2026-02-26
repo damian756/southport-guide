@@ -3,9 +3,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = "damian@churchtownmedia.co.uk";
-// Use onboarding@resend.dev until southportguide.co.uk is verified as a sending domain in Resend.
 // Once verified, change to: "SouthportGuide <contact@southportguide.co.uk>"
-const FROM_EMAIL = "SouthportGuide <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
 
 export async function POST(req: NextRequest) {
   try {
