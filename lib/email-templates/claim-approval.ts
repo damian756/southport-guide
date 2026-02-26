@@ -28,7 +28,7 @@ export function getClaimApprovalHtml(params: {
       </p>
       <p style="color: #1B2E4B; margin-top: 24px;">The SouthportGuide Team</p>
       <p style="color: #999; font-size: 12px; margin-top: 24px;">
-        Built by Churchtown Media, Southport
+        Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>, Southport
       </p>
     </div>
   `;
@@ -54,7 +54,7 @@ export function getClaimRejectionHtml(params: {
       </p>
       <p style="color: #1B2E4B; margin-top: 24px;">The SouthportGuide Team</p>
       <p style="color: #999; font-size: 12px; margin-top: 24px;">
-        Built by Churchtown Media, Southport
+        Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>, Southport
       </p>
     </div>
   `;

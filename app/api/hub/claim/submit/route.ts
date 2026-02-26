@@ -127,7 +127,7 @@ export async function POST(req: Request) {
           Once approved, you'll receive a link to set your password and access your Business Hub dashboard.
         </p>
         <p style="color: #999; font-size: 12px; margin-top: 32px;">
-          SouthportGuide.co.uk — Built by Churchtown Media
+          SouthportGuide.co.uk — Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
         </p>
       </div>
     `,
@@ -184,7 +184,7 @@ export async function POST(req: Request) {
         </p>
 
         <p style="color: #999; font-size: 12px; margin-top: 24px;">
-          SouthportGuide.co.uk — Built by Churchtown Media
+          SouthportGuide.co.uk — Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
         </p>
       </div>
     `,

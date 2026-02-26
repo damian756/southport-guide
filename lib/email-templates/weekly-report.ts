@@ -175,7 +175,7 @@ export function generateWeeklyEmail(
 
     <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
     <p style="font-size: 12px; color: #888; margin: 0;">
-      SouthportGuide.co.uk · Churchtown Media<br>
+      SouthportGuide.co.uk · <a href="https://churchtownmedia.co.uk" style="color: #888;">Churchtown Media</a><br>
       <a href="${unsubscribeUrl}" style="color: #888;">Unsubscribe from weekly emails</a>
     </p>
   </div>
