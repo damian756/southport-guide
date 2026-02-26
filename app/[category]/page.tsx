@@ -55,11 +55,9 @@ function matchesArea(address: string, postcode: string, areaKey: string): boolea
   return def.test(address, postcode);
 }
 
-// ── Static params + metadata ─────────────────────────────────────────────────
+// ── Dynamic rendering (DB-dependent, uses searchParams) ──────────────────────
 
-export async function generateStaticParams() {
-  return Object.keys(THEMES).map((category) => ({ category }));
-}
+export const dynamic = "force-dynamic";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 

@@ -1,14 +1,14 @@
 import { PrismaClient } from "@prisma/client"
-import { PrismaPg } from "@prisma/adapter-pg"
+import { PrismaNeon } from "@prisma/adapter-neon"
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-// Prisma 7 requires an adapter. Use placeholder URL when DATABASE_URL is unset (e.g. build).
 const connectionString =
   process.env.DATABASE_URL || "postgresql://localhost:5432/southport_guide?schema=public"
-const adapter = new PrismaPg({ connectionString })
+
+const adapter = new PrismaNeon({ connectionString })
 
 export const prisma =
   globalForPrisma.prisma ?? new PrismaClient({ adapter })
