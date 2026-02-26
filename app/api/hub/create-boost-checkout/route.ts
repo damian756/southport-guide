@@ -32,6 +32,9 @@ export async function POST(request: Request) {
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  if (session.user.email === "demo@southportguide.co.uk") {
+    return NextResponse.json({ error: "Stripe payments are disabled in the demo account." }, { status: 403 });
+  }
 
   if (!stripe) {
     return NextResponse.json(

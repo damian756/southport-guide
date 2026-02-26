@@ -284,6 +284,19 @@ export default function HubShell({ user, business, children }: HubShellProps) {
 
       {/* Main content */}
       <main className="flex-1 lg:pl-64 pt-14 lg:pt-0">
+        {user.email === "demo@southportguide.co.uk" && (
+          <div className="bg-[#C9A84C] text-[#1B2E4B] text-sm font-semibold px-6 py-3 flex items-center justify-between gap-4">
+            <span>
+              🎭 <span className="font-bold">Demo account</span> — you&apos;re viewing The Sandgrounder. Data is illustrative only. Stripe payments are disabled.
+            </span>
+            <a
+              href="/claim-listing"
+              className="whitespace-nowrap underline hover:no-underline text-[#1B2E4B] font-bold text-xs"
+            >
+              Claim your real listing →
+            </a>
+          </div>
+        )}
         <div className="p-6 md:p-8">{children}</div>
       </main>
     </div>
