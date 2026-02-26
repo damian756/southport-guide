@@ -65,7 +65,7 @@ export default async function EventsPage() {
     );
   }
 
-  const events = await getUpcomingEvents(90);
+  const events = await getUpcomingEvents(365);
 
   type EventWithIntel = {
     id: string;
