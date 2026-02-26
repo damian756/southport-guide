@@ -105,9 +105,9 @@ export default function DashboardLoginClient() {
                   <label className="block text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider">
                     Password
                   </label>
-                  <button type="button" className="text-xs text-[#C9A84C] hover:underline font-medium">
+                  <Link href="/dashboard/forgot-password" className="text-xs text-[#C9A84C] hover:underline font-medium">
                     Forgot password?
-                  </button>
+                  </Link>
                 </div>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />

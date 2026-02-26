@@ -302,3 +302,15 @@ model WeeklyEmailLog {
   @@index([businessId])
   @@index([sentAt])
 }
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  email     String
+  token     String    @unique @default(uuid())
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([token])
+  @@index([email])
+}

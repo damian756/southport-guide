@@ -12,8 +12,10 @@ type Business = {
   phone: string;
   email: string;
   website: string;
+  shortDescription: string;
   description: string;
   placeId: string;
+  listingTier: string;
   hubTier: string;
   boostCredits: number;
   featured: boolean;
@@ -30,8 +32,10 @@ export default function BusinessEditClient({ business }: { business: Business })
     phone: business.phone,
     email: business.email,
     website: business.website,
+    shortDescription: business.shortDescription,
     description: business.description,
     placeId: business.placeId,
+    listingTier: business.listingTier,
     hubTier: business.hubTier,
     boostCredits: business.boostCredits,
     featured: business.featured,
@@ -124,7 +128,17 @@ export default function BusinessEditClient({ business }: { business: Business })
         />
       </div>
       <div>
-        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Description</label>
+        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Short Description <span className="font-normal text-gray-400">(shown in listing cards)</span></label>
+        <input
+          type="text"
+          maxLength={160}
+          value={form.shortDescription}
+          onChange={(e) => setForm({ ...form, shortDescription: e.target.value })}
+          className={inputCls}
+        />
+      </div>
+      <div>
+        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Full Description</label>
         <textarea
           rows={4}
           value={form.description}
@@ -141,16 +155,31 @@ export default function BusinessEditClient({ business }: { business: Business })
           className={inputCls}
         />
       </div>
-      <div>
-        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Hub Tier</label>
-        <select
-          value={form.hubTier}
-          onChange={(e) => setForm({ ...form, hubTier: e.target.value })}
-          className={inputCls}
-        >
-          <option value="free">Free</option>
-          <option value="pro">Pro</option>
-        </select>
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1.5">Listing Tier <span className="font-normal text-gray-400">(public visibility)</span></label>
+          <select
+            value={form.listingTier}
+            onChange={(e) => setForm({ ...form, listingTier: e.target.value })}
+            className={inputCls}
+          >
+            <option value="free">Free</option>
+            <option value="standard">Standard</option>
+            <option value="featured">Featured</option>
+            <option value="premium">Premium</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1.5">Hub Tier <span className="font-normal text-gray-400">(dashboard access)</span></label>
+          <select
+            value={form.hubTier}
+            onChange={(e) => setForm({ ...form, hubTier: e.target.value })}
+            className={inputCls}
+          >
+            <option value="free">Free</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
       </div>
       <div>
         <label className="block text-xs font-semibold text-gray-600 mb-1.5">Boost Credits</label>
