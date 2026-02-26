@@ -30,10 +30,8 @@ export default async function SettingsPage() {
     },
   });
 
-  if (!business) redirect("/dashboard");
-
   let subscription = null;
-  if (business.stripeSubscriptionId) {
+  if (business?.stripeSubscriptionId) {
     const sub = await prisma.subscription.findUnique({
       where: { stripeSubscriptionId: business.stripeSubscriptionId },
       select: { currentPeriodEnd: true },
@@ -48,11 +46,11 @@ export default async function SettingsPage() {
   return (
     <SettingsClient
       user={{ name: user.name, email: user.email }}
-      business={{
+      business={business ? {
         weeklyEmailEnabled: business.weeklyEmailEnabled,
         hubTier: business.hubTier,
         stripeSubscriptionId: business.stripeSubscriptionId,
-      }}
+      } : null}
       subscription={subscription}
     />
   );

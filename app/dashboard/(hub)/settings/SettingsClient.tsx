@@ -9,7 +9,7 @@ interface Props {
     weeklyEmailEnabled: boolean;
     hubTier: string;
     stripeSubscriptionId: string | null;
-  };
+  } | null;
   subscription: {
     currentPeriodEnd: string | null;
   } | null;
@@ -46,7 +46,7 @@ export function SettingsClient({ user, business, subscription }: Props) {
   const [pwSaving, setPwSaving] = useState(false);
   const [pwMsg, setPwMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
-  const [weeklyEmail, setWeeklyEmail] = useState(business.weeklyEmailEnabled);
+  const [weeklyEmail, setWeeklyEmail] = useState(business?.weeklyEmailEnabled ?? true);
   const [notifSaving, setNotifSaving] = useState(false);
 
   const [cancelConfirm, setCancelConfirm] = useState(false);
@@ -281,7 +281,7 @@ export function SettingsClient({ user, business, subscription }: Props) {
       </Section>
 
       {/* Section 2 — Email Preferences */}
-      <Section title="Email preferences">
+      {business && <Section title="Email preferences">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-gray-700">
@@ -307,10 +307,10 @@ export function SettingsClient({ user, business, subscription }: Props) {
             />
           </button>
         </div>
-      </Section>
+      </Section>}
 
       {/* Section 3 — Plan & Billing */}
-      <Section title="Plan &amp; billing">
+      {business && <Section title="Plan &amp; billing">
         {business.hubTier === "pro" ? (
           <>
             <div className="flex items-center justify-between">
@@ -386,7 +386,7 @@ export function SettingsClient({ user, business, subscription }: Props) {
             </div>
           </>
         )}
-      </Section>
+      </Section>}
     </div>
   );
 }
