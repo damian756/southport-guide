@@ -140,9 +140,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     },
     publisher: {
       "@type": "Organization",
-      "@id": "https://www.churchtownmedia.co.uk/#organization",
-      name: "Churchtown Media",
-      url: "https://www.churchtownmedia.co.uk",
+      "@id": "https://www.southportguide.co.uk/#organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
     },
     mainEntityOfPage: {
       "@type": "WebPage",

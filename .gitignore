@@ -44,8 +44,9 @@ next-env.d.ts
 
 .vercel
 
-# Business data (generated locally)
+# Business data (generated locally — never commit)
 businesses.csv
+businesses-backup*.csv
 hygiene-progress.json
 enrich-progress.json
 email-scrape-progress.json

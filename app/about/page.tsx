@@ -27,12 +27,9 @@ const schemaData = [
       "Independent visitor guide to Southport — restaurants, hotels, events, things to do, and everything visitors need.",
     publisher: {
       "@type": "Organization",
-      "@id": "https://www.churchtownmedia.co.uk/#organization",
-      name: "Churchtown Media",
-      url: "https://www.churchtownmedia.co.uk",
-      sameAs: [
-        "https://find-and-update.company-information.service.gov.uk/company/16960442",
-      ],
+      "@id": "https://www.southportguide.co.uk/#organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
     },
   },
   {
