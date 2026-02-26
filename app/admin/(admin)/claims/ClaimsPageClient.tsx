@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { Check, X, RotateCcw } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
 type Claim = {
@@ -58,6 +58,23 @@ export default function ClaimsPageClient({ claims, tab }: Props) {
     router.refresh();
   }
 
+  async function revoke(id: string) {
+    if (!confirm("Revoke this claim? The business will be marked unclaimed and the user unlinked.")) return;
+    setLoadingId(id);
+    setError(null);
+    const res = await fetch(`/api/admin/claims/${id}/revoke`, {
+      method: "POST",
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.error || "Failed to revoke.");
+      setLoadingId(null);
+      return;
+    }
+    setLoadingId(null);
+    router.refresh();
+  }
+
   const tabs = [
     { value: "pending" as const, label: "Pending" },
     { value: "approved" as const, label: "Approved" },
@@ -104,7 +121,7 @@ export default function ClaimsPageClient({ claims, tab }: Props) {
                 <th className="text-left py-3 px-6 font-semibold text-gray-600">
                   Submitted
                 </th>
-                {tab === "pending" && (
+                {(tab === "pending" || tab === "approved") && (
                   <th className="text-right py-3 px-6 font-semibold text-gray-600">
                     Actions
                   </th>
@@ -163,6 +180,22 @@ export default function ClaimsPageClient({ claims, tab }: Props) {
                           &quot;{c.message}&quot;
                         </p>
                       )}
+                    </td>
+                  )}
+                  {tab === "approved" && (
+                    <td className="py-4 px-6 text-right">
+                      <button
+                        onClick={() => revoke(c.id)}
+                        disabled={loadingId !== null}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded-lg hover:bg-red-50 hover:text-red-600 border border-gray-200 hover:border-red-200 disabled:opacity-50 ml-auto"
+                      >
+                        {loadingId === c.id ? (
+                          <span className="w-3 h-3 border-2 border-gray-400/30 border-t-gray-400 rounded-full animate-spin" />
+                        ) : (
+                          <RotateCcw className="w-3.5 h-3.5" />
+                        )}
+                        Revoke
+                      </button>
                     </td>
                   )}
                 </tr>
