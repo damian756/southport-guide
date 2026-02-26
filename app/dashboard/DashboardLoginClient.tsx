@@ -23,6 +23,10 @@ export default function DashboardLoginClient() {
     setAuthError(null);
     setDemoFilled(true);
     setTimeout(() => setDemoFilled(false), 2000);
+    // Track demo intent in Plausible
+    if (typeof window !== "undefined" && typeof (window as { plausible?: Function }).plausible === "function") {
+      (window as { plausible: Function }).plausible("Demo Autofill");
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -42,6 +46,14 @@ export default function DashboardLoginClient() {
             : "Incorrect email or password."
         );
         return;
+      }
+      // Track successful demo login in Plausible
+      if (
+        form.email.toLowerCase() === DEMO_EMAIL.toLowerCase() &&
+        typeof window !== "undefined" &&
+        typeof (window as { plausible?: Function }).plausible === "function"
+      ) {
+        (window as { plausible: Function }).plausible("Demo Login");
       }
       // Route by role: admins go to /admin, business users go to /dashboard/home
       const session = await getSession();
