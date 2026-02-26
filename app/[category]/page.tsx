@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
-import type { MapPin as MapPinType } from "@/components/CategoryMap";
+import type { MapPin as MapPinType } from "@/components/CategoryMapTypes";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -80,9 +80,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function CategoryPage({ params, searchParams }: Props) {
-  console.log("[CategoryPage] start");
   const { category } = await params;
-  console.log("[CategoryPage] category:", category);
   const { sort, area } = await searchParams;
   if (!isValidCategory(category)) notFound();
 
@@ -93,7 +91,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   let boostedIds: string[] = [];
 
   try {
-    console.log("[CategoryPage] querying DB...");
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
     if (categoryRecord) {
       const catId = categoryRecord.id;
@@ -157,10 +154,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         ];
       }
     }
-    console.log("[CategoryPage] DB done, businesses:", businesses.length);
-  } catch (e) {
-    console.error("[CategoryPage] DB error:", e);
-  }
+  } catch { /* DB unavailable — page renders with empty listings */ }
 
   // Area filter applied server-side (before passing to client)
   const filteredBusinesses = area
@@ -184,7 +178,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ...(isFoodCat ? [{ key: "hygiene", label: "🛡️ Hygiene Rating" }] : []),
   ];
 
-  console.log("[CategoryPage] rendering", category, "with", filteredBusinesses.length, "businesses");
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
 

@@ -7,7 +7,7 @@ import {
   Star, ShieldCheck, ShieldAlert, ShieldX, Shield,
   MapPin, Search, X, LayoutGrid, Map, SlidersHorizontal,
 } from "lucide-react";
-import { MapSkeleton, type MapPin as MapPinType } from "./CategoryMap";
+import { MapSkeleton, type MapPin as MapPinType } from "./CategoryMapTypes";
 
 const CategoryMap = dynamic(() => import("./CategoryMap"), {
   ssr: false,
