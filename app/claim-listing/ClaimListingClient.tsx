@@ -187,15 +187,16 @@ export default function ClaimListingClient() {
               </div>
             </div>
 
-            <p className="text-sm text-gray-400 text-center">
-              Not listed yet?{" "}
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center">
+              <p className="text-sm font-semibold text-[#1B2E4B] mb-1">Can&apos;t find your business?</p>
+              <p className="text-xs text-gray-500 mb-3">If your business isn&apos;t listed yet, get in touch and we&apos;ll add it for you.</p>
               <Link
                 href="/contact"
-                className="text-[#C9A84C] font-semibold hover:underline"
+                className="inline-block bg-[#1B2E4B] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#2A4A73] transition"
               >
-                Contact us to get added →
+                Contact us →
               </Link>
-            </p>
+            </div>
           </div>
 
           {/* Main content */}
@@ -238,9 +239,19 @@ export default function ClaimListingClient() {
                     />
                   </div>
                   {searchError && (
-                    <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4">
-                      <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                      <p className="text-amber-800 text-sm">{searchError}</p>
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                      <div className="flex items-start gap-3 mb-3">
+                        <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                        <p className="text-amber-800 text-sm">{searchError}</p>
+                      </div>
+                      {results !== null && results.length === 0 && (
+                        <div className="border-t border-amber-200 pt-3 flex items-center justify-between gap-3">
+                          <p className="text-amber-700 text-xs">Can&apos;t find your business? We&apos;ll add it for you.</p>
+                          <Link href="/contact" className="flex-shrink-0 text-xs font-bold text-amber-700 underline hover:text-amber-900">
+                            Contact us →
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   )}
                   <button

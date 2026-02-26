@@ -845,7 +845,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Let me be specific, because vague promises are worth nothing to a small business owner." },
     { type: "p", text: "The SouthportGuide Business Hub is a free dashboard for Southport businesses. When someone searches for what you do and clicks through to your listing on SouthportGuide, you will see it. You will see how many people viewed your listing, when they viewed it, and where they came from. Every Monday morning you receive an email telling you exactly how your listing performed that week." },
     { type: "p", text: "That is not a quarterly PDF. That is your data, readable in 30 seconds, on your phone, before 9am if you want it." },
-    { type: "p", text: "I know how much this matters because I built the Sefton Coast Wildlife site and watched the traffic data in real time. Knowing which pages performed and why allowed me to double organic visits in three months. That same thinking, built specifically for Southport businesses, is what the Business Hub delivers." },
+    { type: "p", text: "I know how much this matters because I built the Sefton Coast Wildlife site and have been watching the traffic data in real time from launch. Knowing exactly which pages perform and why is what drives every decision. That same thinking, built specifically for Southport businesses, is what the Business Hub delivers." },
 
     { type: "h2", text: "What the Business Hub actually is" },
     { type: "p", text: "SouthportGuide.co.uk is an independent visitor guide to Southport. No council funding. No official body budget. No committee sign-off required. Just a well-built site that ranks on Google and sends real visitors to the businesses it features." },
@@ -876,9 +876,9 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "If you want to submit a claim now, do it. We will approve listings in order as soon as testing completes. That is days away, not weeks." },
 
     { type: "h2", text: "Want to be live immediately? Become a beta tester." },
-    { type: "p", text: "If you want to be up and running straight away rather than waiting in the queue, email us and say you want to be a beta tester. We will approve your listing the same day." },
+    { type: "p", text: "If you want to be up and running straight away rather than waiting in the queue, get in touch and say you want to be a beta tester. We will approve your listing the same day." },
     { type: "p", text: "In return, we ask for one thing: honest feedback. What works, what does not, and what you wish the hub did that it currently does not. No form to fill in, no survey, no obligation. Just an occasional email or a conversation." },
-    { type: "cta", text: "Beta testers get a featured listing on SouthportGuide — normally a paid tier — free for as long as you remain an active user. In exchange for honest feedback. We will get you live the same day.", href: "mailto:hello@southportguide.co.uk?subject=Beta%20Tester", label: "Email hello@southportguide.co.uk — Subject: Beta Tester" },
+    { type: "cta", text: "Beta testers get a featured listing on SouthportGuide — normally a paid tier — free for as long as you remain an active user. In exchange for honest feedback. We will get you live the same day.", href: "/contact", label: "Get in touch — mention Beta Tester →" },
 
     { type: "h2", text: "What we can build if you need it" },
     { type: "p", text: "The Business Hub is built by Churchtown Media, an elite technical SEO and web development agency based in Churchtown. We do not need a six-month project timeline to deliver things. We move fast, we build properly, and we are local." },
@@ -900,9 +900,10 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "hr" },
 
     { type: "h2", text: "What to do next" },
-    { type: "p", text: "Try the demo. Have a proper look around. If you like what you see, email hello@southportguide.co.uk and tell us you want to claim your listing or become a beta tester. We get back to people the same day." },
+    { type: "p", text: "Try the demo. Have a proper look around. If you like what you see, use the contact form to tell us you want to claim your listing or become a beta tester. We get back to people the same day." },
 
     { type: "cta", text: "Your listing on SouthportGuide is free. Claim it, own it, and start measuring results from day one.", href: "/claim-listing", label: "Claim your listing for free" },
+    { type: "cta", text: "Want to be a beta tester or have a question? Drop us a message and we'll come back to you the same day.", href: "/contact", label: "Contact us →" },
   ],
 
 };
