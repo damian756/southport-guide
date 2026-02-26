@@ -872,13 +872,13 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
     { type: "h2", text: "Try the demo right now" },
     { type: "p", text: "The Business Hub is in final testing. Claims are not open yet, but you can see exactly what you are signing up for before you commit to anything." },
-    { type: "callout", emoji: "💻", text: "Visit southportguide.co.uk/dashboard and log in with demo@southportguide.co.uk, password Demo1234. It is set up with a demo listing so you can see exactly how the dashboard works in practice. Have a proper look around." },
+    { type: "cta", text: "Log in with demo@southportguide.co.uk — password Demo1234. Set up with a demo listing so you can see exactly how the dashboard works. Have a proper look around.", href: "https://www.southportguide.co.uk/dashboard", label: "Open the demo dashboard →" },
     { type: "p", text: "If you want to submit a claim now, do it. We will approve listings in order as soon as testing completes. That is days away, not weeks." },
 
     { type: "h2", text: "Want to be live immediately? Become a beta tester." },
     { type: "p", text: "If you want to be up and running straight away rather than waiting in the queue, email us and say you want to be a beta tester. We will approve your listing the same day." },
     { type: "p", text: "In return, we ask for one thing: honest feedback. What works, what does not, and what you wish the hub did that it currently does not. No form to fill in, no survey, no obligation. Just an occasional email or a conversation." },
-    { type: "callout", emoji: "⭐", text: "Beta testers get a featured listing on SouthportGuide — normally a paid tier — for free, for as long as they remain an active user. Email hello@southportguide.co.uk with the subject line Beta Tester and we will get you live the same day." },
+    { type: "cta", text: "Beta testers get a featured listing on SouthportGuide — normally a paid tier — free for as long as you remain an active user. In exchange for honest feedback. We will get you live the same day.", href: "mailto:hello@southportguide.co.uk?subject=Beta%20Tester", label: "Email hello@southportguide.co.uk — Subject: Beta Tester" },
 
     { type: "h2", text: "What we can build if you need it" },
     { type: "p", text: "The Business Hub is built by Churchtown Media, an elite technical SEO and web development agency based in Churchtown. We do not need a six-month project timeline to deliver things. We move fast, we build properly, and we are local." },

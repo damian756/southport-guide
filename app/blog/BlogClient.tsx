@@ -37,7 +37,8 @@ export default function BlogClient({ posts, categories }: Props) {
   }
 
   const filtered = useMemo(() => {
-    let result = posts;
+    // Show newest first
+    let result = [...posts].reverse();
     if (activeCategory) {
       result = result.filter((p) => p.categorySlug === activeCategory);
     }
@@ -52,6 +53,12 @@ export default function BlogClient({ posts, categories }: Props) {
     }
     return result;
   }, [posts, activeCategory, query, getCategoryForPost]);
+
+  // When browsing all posts with no filter, promote the newest as a featured hero
+  const showFeatured = !activeCategory && !query && filtered.length > 0;
+  const featuredPost = showFeatured ? filtered[0] : null;
+  const gridPosts = showFeatured ? filtered.slice(1) : filtered;
+  const featuredCat = featuredPost ? getCategoryForPost(featuredPost) : null;
 
   const activeCat = categories.find((c) => c.slug === activeCategory);
 
@@ -142,6 +149,57 @@ export default function BlogClient({ posts, categories }: Props) {
         )}
       </div>
 
+      {/* ── Featured post hero ─────────────────────────────────────── */}
+      {featuredPost && (
+        <div className="max-w-6xl mx-auto px-4 mb-4">
+          <Link
+            href={`/blog/${featuredPost.slug}`}
+            className="group block rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-xl transition-all bg-white"
+          >
+            <div className="flex flex-col md:flex-row">
+              {/* Image */}
+              <div className="relative h-56 md:h-72 md:w-[45%] overflow-hidden flex-none">
+                <Image
+                  src={featuredPost.image}
+                  alt={featuredPost.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  quality={85}
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent md:bg-gradient-to-r md:from-transparent md:to-black/10" />
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span className="bg-[#1B2E4B] text-[#C9A84C] text-[11px] font-bold px-3 py-1.5 rounded-full shadow">
+                    Latest
+                  </span>
+                  {featuredCat && (
+                    <span
+                      className="text-white text-[11px] font-bold px-2.5 py-1.5 rounded-full shadow"
+                      style={{ backgroundColor: featuredCat.color }}
+                    >
+                      {featuredCat.label}
+                    </span>
+                  )}
+                </div>
+              </div>
+              {/* Text */}
+              <div className="flex flex-col justify-center p-7 md:p-10 flex-1">
+                <p className="text-gray-400 text-xs mb-3 uppercase tracking-wider">{featuredPost.date}</p>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] leading-snug mb-4 group-hover:text-[#C9A84C] transition-colors">
+                  {featuredPost.title}
+                </h2>
+                <p className="text-gray-500 text-[0.9375rem] leading-relaxed line-clamp-3 mb-6">
+                  {featuredPost.excerpt}
+                </p>
+                <span className="self-start inline-flex items-center gap-2 bg-[#1B2E4B] group-hover:bg-[#C9A84C] text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
+                  Read the full post →
+                </span>
+              </div>
+            </div>
+          </Link>
+        </div>
+      )}
+
       {/* ── Post grid ─────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 pb-12">
         {filtered.length === 0 ? (
@@ -162,7 +220,7 @@ export default function BlogClient({ posts, categories }: Props) {
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
-            {filtered.map((post) => {
+            {gridPosts.map((post) => {
               const cat = getCategoryForPost(post);
               return (
                 <Link

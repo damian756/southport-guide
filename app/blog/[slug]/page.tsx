@@ -53,12 +53,24 @@ function renderBlock(block: ContentBlock, i: number) {
     case "ul":
       return (
         <ul key={i} className="mb-6 space-y-2.5">
-          {block.items.map((item, j) => (
-            <li key={j} className="flex gap-3 text-gray-700 text-[1.0625rem]">
-              <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>
-              <span>{item}</span>
-            </li>
-          ))}
+          {block.items.map((item, j) => {
+            const dashIdx = item.indexOf(" — ");
+            const hasLead = dashIdx !== -1;
+            return (
+              <li key={j} className="flex gap-3 text-gray-700 text-[1.0625rem]">
+                <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>
+                <span>
+                  {hasLead ? (
+                    <>
+                      <strong className="text-[#1B2E4B]">{item.slice(0, dashIdx)}</strong>
+                      {" — "}
+                      {item.slice(dashIdx + 3)}
+                    </>
+                  ) : item}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       );
     case "ol":
@@ -200,7 +212,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           className="object-cover"
           style={{ objectPosition: "center 35%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/40 via-transparent to-[#1B2E4B]/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/50 via-[#1B2E4B]/20 to-[#1B2E4B]/95" />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-3xl mx-auto">
           <Link
             href="/blog"
@@ -216,7 +228,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {cat.label}
             </span>
           )}
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight">
+          <h1
+            className="font-display text-3xl md:text-4xl font-bold text-white leading-tight"
+            style={{ textShadow: "0 2px 12px rgba(0,0,0,0.75)" }}
+          >
             {post.title}
           </h1>
         </div>
@@ -290,7 +305,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <p className="font-bold text-[#1B2E4B] text-sm">{isDamian ? "Damian Roche" : "Terry"}</p>
                   <p className="text-gray-400 text-xs leading-snug mt-0.5">
                     {isDamian
-                      ? "Founder, Churchtown Media. Builder of SouthportGuide.co.uk. Based in Churchtown, Southport."
+                      ? "Founder, Churchtown Media. Builder of SouthportGuide.co.uk and SeftonCoastWildlife.co.uk. Based in Churchtown, Southport."
                       : <>Chief Editor, SouthportGuide.co.uk — Lives in Churchtown with his wife,<br className="hidden sm:block" /> four kids, and Frank the bulldog.</>
                     }
                   </p>

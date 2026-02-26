@@ -57,19 +57,17 @@ export default function BlogPage() {
         />
       </Suspense>
 
-      {/* ── Coming soon footer note ─────────────────────────────────── */}
+      {/* ── Footer CTA ──────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 pb-16 text-center border-t border-gray-100 pt-12">
-        <span className="text-3xl">✍️</span>
-        <h3 className="font-display text-xl font-bold text-[#1B2E4B] mt-3 mb-2">More posts coming soon</h3>
-        <p className="text-gray-500 text-sm max-w-sm mx-auto">
-          We&rsquo;re adding new local guides every week. From the best spots for families to seasonal guides and full Open 2026 coverage.
+        <p className="text-gray-400 text-sm max-w-sm mx-auto mb-5">
+          New guides added every week. Open 2026, local food, what&rsquo;s on, and everything in between.
         </p>
-        <div className="flex justify-center gap-4 mt-5">
+        <div className="flex justify-center gap-4">
           <a
             href="/events"
             className="text-sm font-semibold text-[#1B2E4B] border border-[#1B2E4B]/20 px-5 py-2.5 rounded-full hover:bg-[#1B2E4B] hover:text-white transition-all"
           >
-            View events calendar
+            Events calendar
           </a>
           <a
             href="/"
