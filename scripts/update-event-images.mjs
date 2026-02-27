@@ -6,8 +6,8 @@
 import pg from 'pg';
 
 const { Client } = pg;
-const DB = process.env.DATABASE_URL ||
-  '***REDACTED_DATABASE_URL***';
+if (!process.env.DATABASE_URL) { console.error('DATABASE_URL not set'); process.exit(1); }
+const DB = process.env.DATABASE_URL;
 
 const IMAGES = {
   'southport-spring-market-2026':  '/images/dashboard/event-market.jpg',

@@ -10,8 +10,8 @@ import pg from 'pg';
 import { randomUUID } from 'crypto';
 
 const { Client } = pg;
-const DB = process.env.DATABASE_URL ||
-  '***REDACTED_DATABASE_URL***';
+if (!process.env.DATABASE_URL) { console.error('DATABASE_URL not set'); process.exit(1); }
+const DB = process.env.DATABASE_URL;
 
 const client = new Client({ connectionString: DB });
 await client.connect();
