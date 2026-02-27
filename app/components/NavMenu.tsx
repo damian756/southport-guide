@@ -42,6 +42,9 @@ export default function NavMenu() {
             <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180" : ""}`} />
           </Link>
 
+          {/* Invisible bridge — keeps hover active when moving from trigger to dropdown */}
+          <div className="absolute top-full right-0 w-72 h-4 z-40" />
+
           {/* Mega dropdown */}
           <div className={`absolute top-full right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-72 z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
             <Link
