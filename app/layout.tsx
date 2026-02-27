@@ -97,14 +97,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <script async src="https://plausible.io/js/pa-WB01rp22nKJetu8JTi3AO.js" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
-          }}
-        />
-      </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
         <CookieProvider>
           <ConditionalNav><Navigation /></ConditionalNav>
