@@ -50,6 +50,12 @@ const nextConfig: NextConfig = {
         destination: "/attractions/another-place",
         permanent: true,
       },
+      // Guide pages moved to /guides/* (301 permanent)
+      { source: "/southport-beach",       destination: "/guides/southport-beach",       permanent: true },
+      { source: "/southport-pier",        destination: "/guides/southport-pier",        permanent: true },
+      { source: "/southport-flower-show", destination: "/guides/southport-flower-show", permanent: true },
+      { source: "/southport-air-show",    destination: "/guides/southport-air-show",    permanent: true },
+      { source: "/birkdale-village",      destination: "/guides/birkdale-village",      permanent: true },
     ];
   },
 };

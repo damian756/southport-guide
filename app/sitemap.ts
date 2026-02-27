@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { CATEGORIES } from "@/lib/config";
 import { BLOG_POSTS } from "@/lib/southport-data";
+import { GUIDES } from "@/lib/guides-config";
 
 const BASE = "https://www.southportguide.co.uk";
 
@@ -37,16 +38,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/mlec/accommodation`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7  },
     { url: `${BASE}/mlec/restaurants`,     lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7  },
     { url: `${BASE}/mlec/getting-there`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.6  },
-    { url: `${BASE}/southport-beach`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.92 },
-    { url: `${BASE}/southport-pier`,       lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
-    { url: `${BASE}/southport-flower-show`,lastModified: new Date(), changeFrequency: "weekly",  priority: 0.88 },
-    { url: `${BASE}/southport-air-show`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.88 },
-    { url: `${BASE}/birkdale-village`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/guides`,               lastModified: new Date(), changeFrequency: "weekly",  priority: 0.90 },
     { url: `${BASE}/about`,                lastModified: new Date(), changeFrequency: "monthly", priority: 0.5  },
     { url: `${BASE}/contact`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.5  },
     { url: `${BASE}/privacy`,              lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2  },
     { url: `${BASE}/terms`,                lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2  },
   ];
+
+  // ── Guide pages (generated from config) ─────────────────────
+  const guidePages: MetadataRoute.Sitemap = GUIDES.filter((g) => g.status === "published").map((g) => ({
+    url: `${BASE}/guides/${g.slug}`,
+    lastModified: new Date(g.dateUpdated),
+    changeFrequency: (g.tags.includes("events") ? "weekly" : "monthly") as "weekly" | "monthly",
+    priority: g.seoPriority,
+  }));
 
   // ── Category listing pages ───────────────────────────────────
   const categoryPages: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
@@ -86,5 +91,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB unavailable at build time
   }
 
-  return [...staticPages, ...categoryPages, ...blogPages, ...businessPages];
+  return [...staticPages, ...guidePages, ...categoryPages, ...blogPages, ...businessPages];
 }

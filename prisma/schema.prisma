@@ -24,6 +24,7 @@ model Business {
   description           String?         @db.Text
   shortDescription      String?
   images                String[]        // Array of image URLs
+  tags                  String[]        // Searchable tags e.g. ["beach","seafront","dog-friendly"]
   openingHours          Json?
   priceRange            String?         // £, ££, £££, ££££
   listingTier           String          @default("free") // free, standard, featured, premium
