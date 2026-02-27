@@ -64,3 +64,6 @@ __pycache__/
 
 # Internal strategy and planning docs
 BUSINESS-HUB-PLAN.md
+
+# Ad-hoc fix/debug scripts (root level)
+fix-*.mjs
