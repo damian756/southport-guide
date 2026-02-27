@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass, LayoutDashboard } from "lucide-react";
+import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass, LayoutDashboard, Flower2, Wind } from "lucide-react";
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",      icon: Utensils,    color: "text-red-500" },
@@ -55,6 +55,21 @@ export default function NavMenu() {
               <Compass className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
               <span className="font-semibold">Things to Do — Full Guide</span>
             </Link>
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2 px-2 mt-3">Featured guides</p>
+            <div className="grid grid-cols-1 gap-0.5 mb-2">
+              {[
+                { href: "/southport-beach", label: "Southport Beach", icon: Waves, color: "text-sky-500" },
+                { href: "/southport-pier", label: "Southport Pier", icon: MapPin, color: "text-blue-500" },
+                { href: "/southport-flower-show", label: "Flower Show 2026", icon: Flower2, color: "text-pink-500" },
+                { href: "/southport-air-show", label: "Air Show 2026", icon: Wind, color: "text-slate-500" },
+                { href: "/birkdale-village", label: "Birkdale Village", icon: ShoppingBag, color: "text-amber-600" },
+              ].map(({ href, label, icon: Icon, color }) => (
+                <Link key={href} href={href} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors group" onClick={() => setExploreOpen(false)}>
+                  <Icon className={`w-4 h-4 flex-shrink-0 ${color} group-hover:scale-110 transition-transform`} />
+                  <span className="font-medium group-hover:text-[#C9A84C] transition-colors">{label}</span>
+                </Link>
+              ))}
+            </div>
             <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2 px-2 mt-3">Browse by category</p>
             <div className="grid grid-cols-1 gap-0.5">
               {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
@@ -130,6 +145,21 @@ export default function NavMenu() {
             <Compass className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
             <span>Things to Do in Southport — Full Guide</span>
           </Link>
+          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Featured guides</p>
+          <div className="grid grid-cols-2 gap-1 mb-4">
+            {[
+              { href: "/southport-beach", label: "Southport Beach", icon: Waves, color: "text-sky-500" },
+              { href: "/southport-pier", label: "Southport Pier", icon: MapPin, color: "text-blue-500" },
+              { href: "/southport-flower-show", label: "Flower Show 2026", icon: Flower2, color: "text-pink-500" },
+              { href: "/southport-air-show", label: "Air Show 2026", icon: Wind, color: "text-slate-500" },
+              { href: "/birkdale-village", label: "Birkdale Village", icon: ShoppingBag, color: "text-amber-600" },
+            ].map(({ href, label, icon: Icon, color }) => (
+              <Link key={href} href={href} className="flex items-center gap-2.5 px-3 py-3 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors" onClick={() => setMobileOpen(false)}>
+                <Icon className={`w-4 h-4 flex-shrink-0 ${color}`} />
+                <span className="font-medium">{label}</span>
+              </Link>
+            ))}
+          </div>
           <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Browse by category</p>
           <div className="grid grid-cols-2 gap-1 mb-5">
             {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
