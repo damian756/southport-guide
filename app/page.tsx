@@ -5,6 +5,8 @@ import { prisma } from "@/lib/prisma";
 import { BLOG_POSTS, getBlogPostCategory, getUpcomingEvents } from "@/lib/southport-data";
 import type { Metadata } from "next";
 
+export const revalidate = 3600; // Regenerate at most once per hour so events stay current
+
 export const metadata: Metadata = {
   title: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk",
   description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here. Your complete guide to visiting Southport, Merseyside.",

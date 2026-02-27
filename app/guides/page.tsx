@@ -59,9 +59,6 @@ const BREADCRUMB_LD = {
   ],
 };
 
-const publishedCount = GUIDES.filter((g) => g.status === "published").length;
-const totalCount = GUIDES.length;
-
 export default function GuidesIndexPage() {
   return (
     <>
@@ -92,9 +89,8 @@ export default function GuidesIndexPage() {
               </div>
             </div>
             <p className="text-white/70 text-lg leading-relaxed max-w-2xl mb-6">
-              Everything worth knowing about Southport, organised by topic. 
-              {publishedCount} guides live now, {totalCount - publishedCount} more coming. 
-              Written by Terry — a Southport local of 40+ years.
+              The beach, the pier, the big events, where to park, where to eat — all of it,
+              properly written by people who live here. More added regularly.
             </p>
             <div className="flex flex-wrap gap-2">
               {CATEGORY_ORDER.map((cat) => (

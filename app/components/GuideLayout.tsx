@@ -126,8 +126,8 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                   href={`/${biz.category.slug}/${biz.slug}`}
                   className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all group overflow-hidden"
                 >
-                  {biz.images[0] && (
-                    <div className="relative h-36 overflow-hidden">
+                  <div className="relative h-36 overflow-hidden">
+                    {biz.images[0] ? (
                       <Image
                         src={biz.images[0]}
                         alt={biz.name}
@@ -135,12 +135,28 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#1B2E4B] to-[#2E4A6B] flex items-center justify-center">
+                        <span className="text-white/20 font-display font-bold text-4xl select-none">
+                          {biz.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute bottom-2 left-3">
+                      <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider">
+                        {biz.category.name}
+                      </p>
                     </div>
-                  )}
+                    {biz.listingTier === "featured" && (
+                      <div className="absolute top-2 right-2">
+                        <span className="bg-[#C9A84C] text-[#1B2E4B] text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          Featured
+                        </span>
+                      </div>
+                    )}
+                  </div>
                   <div className="p-5">
-                    <p className="text-[#C9A84C] text-[11px] font-bold uppercase tracking-wider mb-1">
-                      {biz.category.name}
-                    </p>
                     <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-1.5 group-hover:text-[#C9A84C] transition-colors">
                       {biz.name}
                     </h3>
@@ -151,7 +167,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                     )}
                     {biz.rating && (
                       <div className="mt-2 flex items-center gap-1">
-                        <span className="text-amber-500 text-xs">★</span>
+                        <span className="text-amber-500 text-sm">★</span>
                         <span className="text-xs font-semibold text-gray-700">{biz.rating.toFixed(1)}</span>
                       </div>
                     )}

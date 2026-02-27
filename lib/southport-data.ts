@@ -19,36 +19,6 @@ export interface SouthportEvent {
 
 export const EVENTS: SouthportEvent[] = [
   {
-    title: "Mark Watson: Live Comedy",
-    isoDate: "2026-02-20",
-    dayLabel: "Fri 20 Feb",
-    venue: "The Atkinson",
-    category: "Comedy",
-    emoji: "🎭",
-    free: false,
-    link: "https://theatkinson.co.uk/events/mark-watson/",
-  },
-  {
-    title: "Las Vegas Charity Night",
-    isoDate: "2026-02-21",
-    dayLabel: "Sat 21 Feb",
-    venue: "The Grand",
-    category: "Entertainment",
-    emoji: "🎉",
-    free: false,
-    link: "https://www.thegrand.co.uk/events/las-vegas-charity-night/",
-  },
-  {
-    title: "Comedy Pub Crawl",
-    isoDate: "2026-02-25",
-    dayLabel: "Wed 25 Feb",
-    venue: "Multiple Venues",
-    category: "Comedy",
-    emoji: "🎭",
-    free: false,
-    link: "https://theatkinson.co.uk/events/mark-watson/",
-  },
-  {
     title: "Chess The Musical",
     isoDate: "2026-02-25",
     endIsoDate: "2026-02-28",
@@ -777,7 +747,7 @@ export function getBlogPostCategory(post: BlogPost): BlogCategory | undefined {
 export function getUpcomingEvents(limit?: number): SouthportEvent[] {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const upcoming = EVENTS.filter((e) => new Date(e.isoDate) >= today).sort(
+  const upcoming = EVENTS.filter((e) => new Date(e.endIsoDate ?? e.isoDate) >= today).sort(
     (a, b) => new Date(a.isoDate).getTime() - new Date(b.isoDate).getTime()
   );
   return limit ? upcoming.slice(0, limit) : upcoming;

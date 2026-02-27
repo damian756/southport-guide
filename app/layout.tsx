@@ -7,6 +7,7 @@ import NavMenu from "./components/NavMenu";
 import { CookieProvider } from "./components/CookieProvider";
 import CookieBanner from "./components/CookieBanner";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
+import { Analytics } from "@vercel/analytics/next";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <ConditionalFooter><Footer /></ConditionalFooter>
           <CookieBanner />
         </CookieProvider>
+        <Analytics />
         <Script id="crisp-chat" strategy="afterInteractive">{`
           window.$crisp=[];
           window.CRISP_WEBSITE_ID="919e43aa-c79a-4c34-8144-45ed2ba27b0d";

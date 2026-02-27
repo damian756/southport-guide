@@ -8,6 +8,23 @@ import { Search, X } from "lucide-react";
 import type { BlogPost, BlogCategory } from "@/lib/southport-data";
 import { getBlogPostCategory } from "@/lib/southport-data";
 
+function PostImage({ src, alt, sizes, quality, className }: {
+  src: string; alt: string; sizes?: string; quality?: number; className?: string;
+}) {
+  const [imgSrc, setImgSrc] = useState(src);
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill
+      sizes={sizes}
+      quality={quality}
+      className={className}
+      onError={() => setImgSrc("/images/blog-hero.jpg")}
+    />
+  );
+}
+
 interface Props {
   posts: BlogPost[];
   categories: BlogCategory[];
@@ -159,10 +176,9 @@ export default function BlogClient({ posts, categories }: Props) {
             <div className="flex flex-col md:flex-row">
               {/* Image */}
               <div className="relative h-56 md:h-72 md:w-[45%] overflow-hidden flex-none">
-                <Image
+                <PostImage
                   src={featuredPost.image}
                   alt={featuredPost.title}
-                  fill
                   sizes="(max-width: 768px) 100vw, 45vw"
                   quality={85}
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -230,10 +246,9 @@ export default function BlogClient({ posts, categories }: Props) {
                 >
                   {/* Thumbnail */}
                   <div className="relative h-48 overflow-hidden bg-[#1B2E4B] flex-none">
-                    <Image
+                    <PostImage
                       src={post.image}
                       alt={post.title}
-                      fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       quality={70}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
