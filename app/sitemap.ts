@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { CATEGORIES } from "@/lib/config";
 import { BLOG_POSTS } from "@/lib/southport-data";
 import { GUIDES } from "@/lib/guides-config";
+import { COLLECTIONS } from "@/lib/collections-config";
 
 const BASE = "https://www.southportguide.co.uk";
 
@@ -91,5 +92,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB unavailable at build time
   }
 
-  return [...staticPages, ...guidePages, ...categoryPages, ...blogPages, ...businessPages];
+  // ── Collection pages ─────────────────────────────────────────
+  const collectionIndexPage: MetadataRoute.Sitemap = [
+    { url: `${BASE}/collections`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+  ];
+  const collectionPages: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
+    url: `${BASE}/collections/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: c.priority,
+  }));
+
+  return [...staticPages, ...guidePages, ...categoryPages, ...blogPages, ...businessPages, ...collectionIndexPage, ...collectionPages];
 }
