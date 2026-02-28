@@ -39,9 +39,12 @@ export const metadata: Metadata = {
   creator: "Churchtown Media",
   publisher: "SouthportGuide.co.uk",
 
-  // Canonical
+  // Canonical & feeds
   alternates: {
     canonical: BASE_URL,
+    types: {
+      "application/rss+xml": `${BASE_URL}/feed`,
+    },
   },
 
   // Open Graph
