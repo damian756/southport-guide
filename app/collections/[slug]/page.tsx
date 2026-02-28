@@ -52,9 +52,8 @@ type CollectionBusiness = {
   rating: number | null;
   reviewCount: number | null;
   priceRange: string | null;
-  placeId: string | null;
   images: string[];
-  photoUrl: string | null; // resolved at render time
+  photoUrl: string | null;
 };
 
 const AREAS = ["Birkdale", "Ainsdale", "Churchtown", "Crossens", "Marshside", "Banks", "Halsall"];
@@ -78,7 +77,6 @@ export default async function CollectionPage({ params }: Props) {
   if (!collection) notFound();
 
   let businesses: CollectionBusiness[] = [];
-  const mapsKey = process.env.GOOGLE_PLACES_API_KEY;
 
   try {
     const rawResults = await prisma.business.findMany({
@@ -98,7 +96,6 @@ export default async function CollectionPage({ params }: Props) {
         rating: true,
         reviewCount: true,
         priceRange: true,
-        placeId: true,
         images: true,
         category: { select: { slug: true } },
       },
@@ -106,7 +103,7 @@ export default async function CollectionPage({ params }: Props) {
 
     const tierOrder: Record<string, number> = { premium: 1, featured: 2, standard: 3 };
 
-    const sorted = rawResults
+    businesses = rawResults
       .map((b) => ({
         id: b.id,
         slug: b.slug,
@@ -120,9 +117,8 @@ export default async function CollectionPage({ params }: Props) {
         rating: b.rating,
         reviewCount: b.reviewCount,
         priceRange: b.priceRange,
-        placeId: b.placeId,
         images: b.images ?? [],
-        photoUrl: null as string | null,
+        photoUrl: b.images?.[0] ?? null,
       }))
       .sort((a, b) => {
         const ta = tierOrder[a.listingTier] ?? 4;
@@ -133,36 +129,6 @@ export default async function CollectionPage({ params }: Props) {
         if (scoreB !== scoreA) return scoreB - scoreA;
         return a.name.localeCompare(b.name);
       });
-
-    // Batch-resolve Google Places photos for businesses that need one
-    if (mapsKey) {
-      await Promise.all(
-        sorted.map(async (b) => {
-          if (b.images[0]) {
-            b.photoUrl = b.images[0];
-            return;
-          }
-          if (!b.placeId) return;
-          try {
-            const res = await fetch(
-              `https://maps.googleapis.com/maps/api/place/details/json?place_id=${b.placeId}&fields=photos&key=${mapsKey}`,
-              { next: { revalidate: 86400 } }
-            );
-            if (res.ok) {
-              const data = await res.json() as { result?: { photos?: Array<{ photo_reference: string }> } };
-              const ref = data.result?.photos?.[0]?.photo_reference;
-              if (ref) {
-                b.photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photo_reference=${ref}&key=${mapsKey}`;
-              }
-            }
-          } catch {
-            // silently skip — no photo
-          }
-        })
-      );
-    }
-
-    businesses = sorted;
   } catch (e) {
     console.error("Collection query failed:", e);
   }
@@ -336,9 +302,6 @@ function BusinessCard({ business: b }: { business: CollectionBusiness }) {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            {!b.images[0] && (
-              <span className="absolute bottom-1.5 right-2 text-white/40 text-[9px]">Photo © Google</span>
-            )}
           </>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
