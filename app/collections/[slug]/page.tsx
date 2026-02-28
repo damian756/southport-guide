@@ -52,7 +52,23 @@ type CollectionBusiness = {
   rating: number | null;
   reviewCount: number | null;
   priceRange: string | null;
+  placeId: string | null;
+  images: string[];
+  photoUrl: string | null; // resolved at render time
 };
+
+const AREAS = ["Birkdale", "Ainsdale", "Churchtown", "Crossens", "Marshside", "Banks", "Halsall"];
+
+function extractArea(address: string): string {
+  for (const area of AREAS) {
+    if (address.includes(area)) return area;
+  }
+  return "Southport";
+}
+
+function formatReviewCount(n: number): string {
+  return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
+}
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
@@ -62,6 +78,7 @@ export default async function CollectionPage({ params }: Props) {
   if (!collection) notFound();
 
   let businesses: CollectionBusiness[] = [];
+  const mapsKey = process.env.GOOGLE_PLACES_API_KEY;
 
   try {
     const rawResults = await prisma.business.findMany({
@@ -81,13 +98,15 @@ export default async function CollectionPage({ params }: Props) {
         rating: true,
         reviewCount: true,
         priceRange: true,
+        placeId: true,
+        images: true,
         category: { select: { slug: true } },
       },
     });
 
     const tierOrder: Record<string, number> = { premium: 1, featured: 2, standard: 3 };
 
-    businesses = rawResults
+    const sorted = rawResults
       .map((b) => ({
         id: b.id,
         slug: b.slug,
@@ -101,6 +120,9 @@ export default async function CollectionPage({ params }: Props) {
         rating: b.rating,
         reviewCount: b.reviewCount,
         priceRange: b.priceRange,
+        placeId: b.placeId,
+        images: b.images ?? [],
+        photoUrl: null as string | null,
       }))
       .sort((a, b) => {
         const ta = tierOrder[a.listingTier] ?? 4;
@@ -111,6 +133,36 @@ export default async function CollectionPage({ params }: Props) {
         if (scoreB !== scoreA) return scoreB - scoreA;
         return a.name.localeCompare(b.name);
       });
+
+    // Batch-resolve Google Places photos for businesses that need one
+    if (mapsKey) {
+      await Promise.all(
+        sorted.map(async (b) => {
+          if (b.images[0]) {
+            b.photoUrl = b.images[0];
+            return;
+          }
+          if (!b.placeId) return;
+          try {
+            const res = await fetch(
+              `https://maps.googleapis.com/maps/api/place/details/json?place_id=${b.placeId}&fields=photos&key=${mapsKey}`,
+              { next: { revalidate: 86400 } }
+            );
+            if (res.ok) {
+              const data = await res.json() as { result?: { photos?: Array<{ photo_reference: string }> } };
+              const ref = data.result?.photos?.[0]?.photo_reference;
+              if (ref) {
+                b.photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photo_reference=${ref}&key=${mapsKey}`;
+              }
+            }
+          } catch {
+            // silently skip — no photo
+          }
+        })
+      );
+    }
+
+    businesses = sorted;
   } catch (e) {
     console.error("Collection query failed:", e);
   }
@@ -265,46 +317,82 @@ export default async function CollectionPage({ params }: Props) {
 
 function BusinessCard({ business: b }: { business: CollectionBusiness }) {
   const snippet = b.shortDescription || b.description?.slice(0, 120) || null;
+  const area = extractArea(b.address);
+  const areaLabel = area === "Southport" ? "Southport" : `${area}, Southport`;
 
   return (
     <Link
       href={`/${b.categorySlug}/${b.slug}`}
-      className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col gap-3"
+      className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col"
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex-1 min-w-0">
-          {b.listingTier === "premium" && (
-            <span className="inline-block text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2 py-0.5 rounded-full uppercase tracking-wider mb-1.5">
-              Featured
-            </span>
-          )}
-          <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
-            {b.name}
-          </h2>
-        </div>
-        {b.priceRange && (
-          <span className="text-xs text-gray-400 font-semibold flex-none mt-0.5">{b.priceRange}</span>
+      {/* Photo / placeholder */}
+      <div className="relative w-full h-44 bg-gradient-to-br from-[#1B2E4B] to-[#2A4A73] flex-none overflow-hidden">
+        {b.photoUrl ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={b.photoUrl}
+              alt={b.name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            {!b.images[0] && (
+              <span className="absolute bottom-1.5 right-2 text-white/40 text-[9px]">Photo © Google</span>
+            )}
+          </>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute top-3 right-3 w-20 h-20 bg-[#C9A84C]/10 rounded-full blur-2xl" />
+            <span className="text-5xl opacity-30 select-none">📍</span>
+          </div>
+        )}
+
+        {/* Featured badge overlaid on image */}
+        {b.listingTier === "premium" && (
+          <span className="absolute top-3 left-3 text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
+            ✦ Featured
+          </span>
         )}
       </div>
 
-      {snippet && (
-        <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">{snippet}</p>
-      )}
+      {/* Card body */}
+      <div className="p-4 flex flex-col flex-1 gap-2">
+        <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+          {b.name}
+        </h2>
 
-      <div className="flex items-center justify-between mt-auto pt-2 border-t border-gray-50">
-        <div className="flex items-center gap-1.5 text-xs text-gray-400">
-          <MapPin className="w-3.5 h-3.5 flex-none" />
-          <span className="truncate">{b.address}</span>
-        </div>
-        {b.rating != null && (
-          <div className="flex items-center gap-1 text-xs font-semibold text-amber-500 flex-none">
-            <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
-            {b.rating.toFixed(1)}
-            {b.reviewCount != null && (
-              <span className="text-gray-400 font-normal">({b.reviewCount})</span>
-            )}
-          </div>
+        <p className="flex items-center gap-1 text-gray-400 text-xs">
+          <MapPin className="w-3 h-3 flex-shrink-0" />
+          <span className="truncate">{areaLabel}</span>
+        </p>
+
+        {snippet ? (
+          <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 flex-1">{snippet}</p>
+        ) : (
+          <div className="flex-1" />
         )}
+
+        <div className="flex items-center justify-between mt-2 pt-3 border-t border-gray-50">
+          {b.rating != null ? (
+            <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              {b.rating.toFixed(1)}
+              {b.reviewCount != null && (
+                <span className="font-normal text-amber-500 ml-0.5">({formatReviewCount(b.reviewCount)})</span>
+              )}
+            </span>
+          ) : (
+            <span />
+          )}
+          <div className="flex items-center gap-2">
+            {b.priceRange && (
+              <span className="text-gray-400 text-xs font-semibold">{b.priceRange}</span>
+            )}
+            <span className="text-xs font-bold text-[#C9A84C] group-hover:translate-x-0.5 transition-transform">
+              View →
+            </span>
+          </div>
+        </div>
       </div>
     </Link>
   );
