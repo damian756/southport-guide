@@ -4,6 +4,9 @@ import { ArrowRight } from "lucide-react";
 import { COLLECTIONS, MIN_LISTINGS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
 
+// Revalidate every hour so tag counts stay fresh
+export const revalidate = 3600;
+
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {

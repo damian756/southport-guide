@@ -5,6 +5,9 @@ import { ChevronRight, Star, MapPin, ArrowRight } from "lucide-react";
 import { getCollection, COLLECTIONS, MIN_LISTINGS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
 
+// Revalidate every hour so new tags appear without a code push
+export const revalidate = 3600;
+
 const BASE_URL = "https://www.southportguide.co.uk";
 
 type Props = { params: Promise<{ slug: string }> };
