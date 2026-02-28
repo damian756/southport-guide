@@ -361,7 +361,7 @@ export default async function BusinessPage({ params }: Props) {
           <div className="grid lg:grid-cols-3 gap-6">
 
             {/* ── Main column ─────────────────────────────── */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-6 min-w-0">
 
               {/* Hero card */}
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
