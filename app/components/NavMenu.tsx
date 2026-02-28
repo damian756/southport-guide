@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass, LayoutDashboard, Flower2, Wind, BookOpen } from "lucide-react";
+import { Menu, X, ChevronDown, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag, Waves, Dumbbell, Car, Sparkles, CalendarDays, Newspaper, Compass, LayoutDashboard, BookOpen, ListFilter, Flower2, Wind } from "lucide-react";
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",      icon: Utensils,    color: "text-red-500" },
@@ -44,49 +44,59 @@ export default function NavMenu() {
           </Link>
 
           {/* Invisible bridge — keeps hover active when moving from trigger to dropdown */}
-          <div className="absolute top-full right-0 w-72 h-4 z-40" />
+          <div className="absolute top-full right-0 w-80 h-4 z-40" />
 
           {/* Mega dropdown */}
-          <div className={`absolute top-full right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-72 z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+          <div className={`absolute top-full right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-80 z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
             <Link
               href="/things-to-do"
-              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm mb-2 hover:bg-[#2A4A73] transition-colors"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm mb-3 hover:bg-[#2A4A73] transition-colors"
               onClick={() => setExploreOpen(false)}
             >
               <Compass className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
               <span className="font-semibold">Things to Do — Full Guide</span>
             </Link>
-            <div className="flex items-center justify-between mb-2 px-2 mt-3">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Featured guides</p>
-              <Link href="/guides" className="text-[#C9A84C] text-[10px] font-bold hover:text-[#1B2E4B] transition-colors" onClick={() => setExploreOpen(false)}>All guides →</Link>
-            </div>
-            <div className="grid grid-cols-1 gap-0.5 mb-2">
-              {[
-                { href: "/guides/southport-beach",       label: "Southport Beach",    icon: Waves,       color: "text-sky-500" },
-                { href: "/guides/southport-pier",        label: "Southport Pier",     icon: MapPin,      color: "text-blue-500" },
-                { href: "/guides/southport-flower-show", label: "Flower Show 2026",   icon: Flower2,     color: "text-pink-500" },
-                { href: "/guides/southport-air-show",    label: "Air Show 2026",      icon: Wind,        color: "text-slate-500" },
-                { href: "/guides/birkdale-village",      label: "Birkdale Village",   icon: ShoppingBag, color: "text-amber-600" },
-              ].map(({ href, label, icon: Icon, color }) => (
-                <Link key={href} href={href} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors group" onClick={() => setExploreOpen(false)}>
-                  <Icon className={`w-4 h-4 flex-shrink-0 ${color} group-hover:scale-110 transition-transform`} />
-                  <span className="font-medium group-hover:text-[#C9A84C] transition-colors">{label}</span>
-                </Link>
-              ))}
-            </div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2 px-2 mt-3">Browse by category</p>
-            <div className="grid grid-cols-1 gap-0.5">
+
+            {/* Categories — 2-column grid */}
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1.5 px-2">Browse by category</p>
+            <div className="grid grid-cols-2 gap-0.5">
               {CATEGORIES.map(({ slug, label, icon: Icon, color }) => (
                 <Link
                   key={slug}
                   href={`/${slug}`}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors group"
+                  className="flex items-center gap-2 px-2.5 py-2 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors group"
                   onClick={() => setExploreOpen(false)}
                 >
-                  <Icon className={`w-4 h-4 flex-shrink-0 ${color} group-hover:scale-110 transition-transform`} />
-                  <span className="font-medium group-hover:text-[#C9A84C] transition-colors">{label}</span>
+                  <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${color}`} />
+                  <span className="font-medium group-hover:text-[#C9A84C] transition-colors truncate">{label}</span>
                 </Link>
               ))}
+            </div>
+
+            {/* Collections */}
+            <div className="border-t border-gray-100 mt-3 pt-3">
+              <div className="flex items-center justify-between mb-1.5 px-2">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Curated Lists</p>
+                <Link href="/collections" className="text-[#C9A84C] text-[10px] font-bold hover:text-[#1B2E4B] transition-colors" onClick={() => setExploreOpen(false)}>All →</Link>
+              </div>
+              <div className="grid grid-cols-2 gap-0.5">
+                {[
+                  { href: "/collections/dog-friendly-restaurants-southport", label: "Dog-friendly",     emoji: "🐾" },
+                  { href: "/collections/lord-street-restaurants-southport",  label: "Lord Street",      emoji: "🍽️" },
+                  { href: "/collections/hotels-near-royal-birkdale",         label: "Near Birkdale",    emoji: "⛳" },
+                  { href: "/collections/birkdale-village-restaurants",       label: "Birkdale dining",  emoji: "🍷" },
+                ].map(({ href, label, emoji }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="flex items-center gap-2 px-2.5 py-2 rounded-xl hover:bg-[#FAF8F5] text-[#1B2E4B] text-sm transition-colors group"
+                    onClick={() => setExploreOpen(false)}
+                  >
+                    <span className="text-base leading-none flex-shrink-0">{emoji}</span>
+                    <span className="font-medium group-hover:text-[#C9A84C] transition-colors truncate">{label}</span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -94,6 +104,10 @@ export default function NavMenu() {
         <Link href="/guides" className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-[#FAF8F5]">
           <BookOpen className="w-3.5 h-3.5" />
           Guides
+        </Link>
+        <Link href="/collections" className="flex items-center gap-1.5 text-[#1B2E4B] hover:text-[#C9A84C] font-medium px-3 py-2 rounded-lg text-sm transition-colors hover:bg-[#FAF8F5]">
+          <ListFilter className="w-3.5 h-3.5" />
+          Collections
         </Link>
 
         <div className="w-px h-5 bg-gray-200 mx-1" />
@@ -191,6 +205,9 @@ export default function NavMenu() {
             <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">Explore</p>
             <Link href="/guides" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-sm font-medium" onClick={() => setMobileOpen(false)}>
               <BookOpen className="w-4 h-4 text-[#C9A84C]" /> <span>All Guides</span>
+            </Link>
+            <Link href="/collections" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-sm font-medium" onClick={() => setMobileOpen(false)}>
+              <ListFilter className="w-4 h-4 text-[#C9A84C]" /> <span>Collections — Curated Lists</span>
             </Link>
             <Link href="/events" className="flex items-center gap-2.5 px-3 py-3 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-sm font-medium" onClick={() => setMobileOpen(false)}>
               <CalendarDays className="w-4 h-4 text-[#C9A84C]" /> <span>Events Calendar</span>
