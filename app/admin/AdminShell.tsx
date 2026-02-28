@@ -10,6 +10,7 @@ import {
   Building2,
   CalendarDays,
   Mail,
+  BarChart2,
   LogOut,
   Menu,
   X,
@@ -20,6 +21,7 @@ const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
   { href: "/admin/claims", label: "Claims", icon: FileCheck },
   { href: "/admin/businesses", label: "Businesses", icon: Building2 },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart2 },
   { href: "/admin/events", label: "Events", icon: CalendarDays },
   { href: "/admin/email-logs", label: "Email logs", icon: Mail },
 ];
