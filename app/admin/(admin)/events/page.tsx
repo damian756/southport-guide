@@ -26,6 +26,8 @@ export default async function AdminEventsPage() {
           description: e.description ?? "",
           category: e.category ?? "",
           featured: e.featured,
+          source: e.source,
+          status: e.status,
         }))}
       />
     </div>

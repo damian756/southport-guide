@@ -46,6 +46,29 @@ export async function PUT(
   return NextResponse.json({ ok: true });
 }
 
+export async function PATCH(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id || session.user.role !== "admin") {
+    return NextResponse.json({ error: "Unauthorised" }, { status: 401 });
+  }
+
+  const { id } = await params;
+  const body = await req.json();
+  const status = body.status;
+  if (status !== "approved" && status !== "hidden") {
+    return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+  }
+
+  await prisma.event.update({
+    where: { id },
+    data: { status },
+  });
+  return NextResponse.json({ ok: true });
+}
+
 export async function DELETE(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }

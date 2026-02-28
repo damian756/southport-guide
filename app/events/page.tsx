@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, ArrowLeft, ExternalLink } from "lucide-react";
-import { getEventsByMonth, getUpcomingEvents, EVENTS } from "@/lib/southport-data";
+import { getEventsByMonth } from "@/lib/southport-data";
+import { prisma } from "@/lib/prisma";
 import { Suspense } from "react";
 import MonthFilter from "./MonthFilter";
+
+export const revalidate = 3600; // Refresh hourly so Eventbrite sync appears
 
 export const metadata = {
   title: "What's On in Southport 2026 | Events Calendar | Southport Guide",
@@ -41,28 +44,92 @@ function eventDayLabel(event: { isoDate: string; dayLabel: string }) {
   return event.isoDate === getTodayISO() ? "Today" : event.dayLabel;
 }
 
+function formatDayLabel(dateStart: Date, dateEnd: Date | null): string {
+  const start = dateStart;
+  const end = dateEnd ?? dateStart;
+  const sameDay = start.toDateString() === end.toDateString();
+  if (sameDay) {
+    return start.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  }
+  return `${start.getDate()}–${end.getDate()} ${start.toLocaleDateString("en-GB", { month: "short" })}`;
+}
+
+async function getMergedEventsByMonth(): Promise<
+  Record<string, Array<{ title: string; isoDate: string; endIsoDate?: string; dayLabel: string; venue: string; category: string; emoji: string; free: boolean; link: string; source?: "eventbrite" }>>
+> {
+  const staticByMonth = getEventsByMonth();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const dbEvents = await prisma.event.findMany({
+    where: {
+      status: "approved",
+      OR: [{ dateEnd: { gte: today } }, { dateEnd: null, dateStart: { gte: today } }],
+    },
+    orderBy: { dateStart: "asc" },
+  });
+
+  const merged = { ...staticByMonth } as Record<
+    string,
+    Array<{ title: string; isoDate: string; endIsoDate?: string; dayLabel: string; venue: string; category: string; emoji: string; free: boolean; link: string; source?: "eventbrite" }>
+  >;
+
+  for (const ev of dbEvents) {
+    const d = new Date(ev.dateStart);
+    const label = d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+    if (!merged[label]) merged[label] = [];
+    merged[label].push({
+      title: ev.name,
+      isoDate: ev.dateStart.toISOString().slice(0, 10),
+      endIsoDate: ev.dateEnd ? ev.dateEnd.toISOString().slice(0, 10) : undefined,
+      dayLabel: formatDayLabel(ev.dateStart, ev.dateEnd),
+      venue: ev.venueName ?? "TBC",
+      category: ev.category ?? "Community",
+      emoji: "📅",
+      free: ev.isFree,
+      link: ev.link ?? "#",
+      source: "eventbrite",
+    });
+  }
+
+  for (const month of Object.keys(merged)) {
+    merged[month].sort((a, b) => a.isoDate.localeCompare(b.isoDate));
+  }
+
+  return merged;
+}
+
 export default async function EventsPage({
   searchParams,
 }: {
   searchParams: Promise<{ month?: string }>;
 }) {
   const { month: activeMonth } = await searchParams;
-  const eventsByMonth = getEventsByMonth();
-  const allMonths = Object.keys(eventsByMonth);
-  const upcomingCount = getUpcomingEvents().length;
+  const eventsByMonth = await getMergedEventsByMonth();
+  const allMonths = Object.keys(eventsByMonth).sort((a, b) => {
+    const firstDate = (month: string) => {
+      const ev = eventsByMonth[month]?.[0];
+      return ev ? new Date(ev.isoDate).getTime() : 0;
+    };
+    return firstDate(a) - firstDate(b);
+  });
+  const upcomingCount = Object.values(eventsByMonth).flat().filter(
+    (e) => new Date(e.endIsoDate ?? e.isoDate) >= new Date(new Date().setHours(0, 0, 0, 0))
+  ).length;
 
   const filteredMonths = activeMonth
     ? allMonths.filter((m) => m === activeMonth)
     : allMonths;
 
+  const allMergedEvents = Object.values(eventsByMonth).flat();
   const eventsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Southport Events 2026",
     description: "The complete guide to events in Southport in 2026 — from The Open Championship to the Flower Show, Comedy Festival and more.",
     url: "https://www.southportguide.co.uk/events",
-    numberOfItems: EVENTS.length,
-    itemListElement: EVENTS.map((event, i) => ({
+    numberOfItems: allMergedEvents.length,
+    itemListElement: allMergedEvents.map((event, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
@@ -83,9 +150,7 @@ export default async function EventsPage({
           },
         },
         isAccessibleForFree: event.free,
-        url: event.link.startsWith("http")
-          ? event.link
-          : `https://www.southportguide.co.uk${event.link}`,
+        url: event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
         organizer: {
           "@type": "Organization",
           name: "SouthportGuide.co.uk",
@@ -181,6 +246,7 @@ export default async function EventsPage({
                       const extraProps = isExternal
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {};
+                      const isCommunity = "source" in event && event.source === "eventbrite";
 
                       return (
                         <Tag
@@ -195,15 +261,22 @@ export default async function EventsPage({
                         >
                           <div className="flex items-start justify-between mb-3">
                             <span className="text-2xl">{event.emoji}</span>
-                            {event.free ? (
-                              <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                                Free
-                              </span>
-                            ) : (
-                              <span className="text-xs font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2.5 py-1 rounded-full">
-                                Tickets
-                              </span>
-                            )}
+                            <div className="flex items-center gap-1.5">
+                              {isCommunity && (
+                                <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">
+                                  Community
+                                </span>
+                              )}
+                              {event.free ? (
+                                <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
+                                  Free
+                                </span>
+                              ) : (
+                                <span className="text-xs font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2.5 py-1 rounded-full">
+                                  Tickets
+                                </span>
+                              )}
+                            </div>
                           </div>
 
                           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">

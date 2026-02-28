@@ -117,17 +117,25 @@ model Event {
   dateStart       DateTime
   dateEnd         DateTime?
   venueId         String?
+  venueName       String?
   featuredImage   String?
   category        String?
   featured        Boolean   @default(false)
   metaTitle       String?
   metaDescription String?
+  source          String    @default("editorial") // editorial | eventbrite | submission
+  externalId      String?   @unique // Eventbrite event ID — prevents duplicates
+  status          String    @default("approved") // approved | hidden
+  link            String?
+  isFree          Boolean   @default(false)
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
   @@index([slug])
   @@index([dateStart])
   @@index([featured])
+  @@index([status])
+  @@index([externalId])
 }
 
 model User {
