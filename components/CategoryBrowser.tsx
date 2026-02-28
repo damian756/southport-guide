@@ -32,6 +32,7 @@ export type BrowserBusiness = {
   hygieneRatingShow: boolean;
   lat: number | null;
   lng: number | null;
+  firstImage: string | null;
 };
 
 type SortOption = { key: string; label: string };
@@ -299,44 +300,62 @@ export default function CategoryBrowser({
               <Link
                 key={b.slug}
                 href={`/${category}/${b.slug}`}
-                className={`group flex flex-col bg-white rounded-2xl overflow-hidden card-hover border transition-all ${
+                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border transition-all hover:-translate-y-0.5 ${
                   isFeatured
-                    ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md"
-                    : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
+                    ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md hover:shadow-lg"
+                    : "border-gray-100 hover:border-gray-200 hover:shadow-md shadow-sm"
                 }`}
               >
-                {/* Colour accent strip */}
-                <div className={`w-full bg-gradient-to-r ${themeGradient} ${isFeatured ? "h-2" : "h-1"}`} />
+                {/* Image / placeholder header */}
+                <div className={`relative w-full h-44 flex-none overflow-hidden bg-gradient-to-br ${themeGradient}`}>
+                  {b.firstImage ? (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={b.firstImage}
+                        alt={b.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute top-3 right-3 w-20 h-20 bg-white/5 rounded-full blur-2xl" />
+                      <span className="text-5xl opacity-30 select-none">{emoji}</span>
+                    </div>
+                  )}
 
-                <div className="p-5 flex flex-col flex-1">
+                  {/* Featured / boosted badge on image */}
                   {(isFeatured || isBoosted) && (
-                    <div className="mb-2.5 flex flex-wrap gap-1.5">
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                       {isFeatured && (
-                        <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C9A84C]/20">
+                        <span className="text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
                           ✦ Featured
                         </span>
                       )}
-                      {isBoosted && (
-                        <span className="text-[10px] bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-2 py-0.5 rounded-full font-semibold">
+                      {isBoosted && !isFeatured && (
+                        <span className="text-[10px] font-semibold bg-white/90 text-[#1B2E4B] px-2.5 py-1 rounded-full shadow-sm">
                           Featured This Week
                         </span>
                       )}
                     </div>
                   )}
+                </div>
 
-                  <h2 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
+                <div className="p-4 flex flex-col flex-1">
+                  <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
                     {b.name}
                   </h2>
 
-                  <p className="flex items-center gap-1 text-gray-400 text-xs mb-3">
+                  <p className="flex items-center gap-1 text-gray-400 text-xs mb-2">
                     <MapPin className="w-3 h-3 flex-shrink-0" />
                     {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
                   </p>
 
                   {snippet ? (
-                    <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-4 leading-relaxed">{snippet}</p>
+                    <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-3 leading-relaxed">{snippet}</p>
                   ) : (
-                    <div className="flex-1 mb-4" />
+                    <div className="flex-1 mb-3" />
                   )}
 
                   <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-50">
