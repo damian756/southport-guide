@@ -57,9 +57,9 @@ export default function NavMenu() {
             <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${exploreOpen ? "rotate-180" : ""}`} />
           </Link>
 
-          <div className="absolute top-full right-0 w-4 h-4 z-40" />
+          <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
-          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 w-[380px] z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 w-[380px] z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
 
             {/* Key pages */}
             <div className="grid grid-cols-3 gap-1.5 mb-4">
@@ -126,9 +126,9 @@ export default function NavMenu() {
             <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${guidesOpen ? "rotate-180" : ""}`} />
           </button>
 
-          <div className="absolute top-full right-0 w-4 h-4 z-40" />
+          <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
-          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 w-56 z-50 transition-all duration-200 ${guidesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 w-56 z-50 transition-all duration-200 ${guidesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
             {publishedGuides.map((g) => (
               <Link key={g.slug} href={`/guides/${g.slug}`}
                 onClick={() => setGuidesOpen(false)}

@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// ── Business type returned from raw query ─────────────────────────────────────
+// ── Business shape for collection cards ───────────────────────────────────────
 
 type CollectionBusiness = {
   id: string;
@@ -64,52 +64,55 @@ export default async function CollectionPage({ params }: Props) {
   let businesses: CollectionBusiness[] = [];
 
   try {
-    // Resolve category IDs for the collection's slugs
-    const categories = await prisma.category.findMany({
-      where: { slug: { in: collection.categorySlugs } },
-      select: { id: true, slug: true },
+    const rawResults = await prisma.business.findMany({
+      where: {
+        category: { slug: { in: collection.categorySlugs } },
+        tags: { hasEvery: collection.tags },
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        shortDescription: true,
+        description: true,
+        listingTier: true,
+        address: true,
+        postcode: true,
+        rating: true,
+        reviewCount: true,
+        priceRange: true,
+        category: { select: { slug: true } },
+      },
     });
-    const catIds = categories.map((c) => c.id);
-    const catSlugById = Object.fromEntries(categories.map((c) => [c.id, c.slug]));
 
-    if (catIds.length > 0 && collection.tags.length > 0) {
-      // Query: must be in one of the categories AND have ALL the required tags
-      const rawResults = await prisma.$queryRaw<(CollectionBusiness & { categoryId: string })[]>`
-        SELECT
-          b.id,
-          b.slug,
-          b.name,
-          b."categoryId",
-          b."shortDescription",
-          b.description,
-          b."listingTier",
-          b.address,
-          b.postcode,
-          b.rating,
-          b."reviewCount",
-          b."priceRange"
-        FROM "Business" b
-        WHERE
-          (b."categoryId" = ANY(${catIds}::uuid[] ) OR b."categoryId" = ANY(${catIds}::uuid[]))
-          AND b.tags @> ${collection.tags}::text[]
-        ORDER BY
-          CASE b."listingTier"
-            WHEN 'premium'  THEN 1
-            WHEN 'featured' THEN 2
-            WHEN 'standard' THEN 3
-            ELSE 4
-          END ASC,
-          (COALESCE(b.rating, 0) * LOG(COALESCE(b."reviewCount", 0) + 1)) DESC,
-          b.name ASC
-      `;
+    const tierOrder: Record<string, number> = { premium: 1, featured: 2, standard: 3 };
 
-      businesses = rawResults.map((b) => ({
-        ...b,
-        categorySlug: catSlugById[b.categoryId] ?? collection.categorySlugs[0],
-      }));
-    }
-  } catch {
-    // DB unavailable — render with empty list
+    businesses = rawResults
+      .map((b) => ({
+        id: b.id,
+        slug: b.slug,
+        name: b.name,
+        categorySlug: b.category.slug,
+        shortDescription: b.shortDescription,
+        description: b.description,
+        listingTier: b.listingTier,
+        address: b.address,
+        postcode: b.postcode,
+        rating: b.rating,
+        reviewCount: b.reviewCount,
+        priceRange: b.priceRange,
+      }))
+      .sort((a, b) => {
+        const ta = tierOrder[a.listingTier] ?? 4;
+        const tb = tierOrder[b.listingTier] ?? 4;
+        if (ta !== tb) return ta - tb;
+        const scoreA = (a.rating ?? 0) * Math.log((a.reviewCount ?? 0) + 1);
+        const scoreB = (b.rating ?? 0) * Math.log((b.reviewCount ?? 0) + 1);
+        if (scoreB !== scoreA) return scoreB - scoreA;
+        return a.name.localeCompare(b.name);
+      });
+  } catch (e) {
+    console.error("Collection query failed:", e);
   }
 
   const count = businesses.length;
