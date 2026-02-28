@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import { COLLECTIONS } from "@/lib/collections-config";
+import { COLLECTIONS, MIN_LISTINGS } from "@/lib/collections-config";
+import { prisma } from "@/lib/prisma";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 
@@ -28,7 +29,33 @@ const COLLECTION_LD = {
   publisher: { "@type": "Organization", name: "SouthportGuide.co.uk", url: BASE_URL },
 };
 
-export default function CollectionsIndexPage() {
+async function getCollectionCounts(): Promise<Record<string, number>> {
+  try {
+    const rows = await prisma.$queryRaw<{ tag: string; count: number }[]>`
+      SELECT tag, COUNT(*)::int AS count
+      FROM "Business", unnest(tags) AS tag
+      GROUP BY tag
+    `;
+    return Object.fromEntries(rows.map((r) => [r.tag, r.count]));
+  } catch {
+    return {};
+  }
+}
+
+export default async function CollectionsIndexPage() {
+  const tagCounts = await getCollectionCounts();
+
+  // A collection is "live" if at least one of its required tags has enough matches
+  // considering its category scope (approximate — exact count is on the individual page)
+  const liveCollections = COLLECTIONS.filter((c) => {
+    const count = c.tags.reduce((sum, tag) => sum + (tagCounts[tag] ?? 0), 0);
+    return count >= MIN_LISTINGS;
+  });
+
+  const comingSoon = COLLECTIONS.filter((c) => {
+    const count = c.tags.reduce((sum, tag) => sum + (tagCounts[tag] ?? 0), 0);
+    return count < MIN_LISTINGS;
+  });
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(COLLECTION_LD) }} />
@@ -61,8 +88,9 @@ export default function CollectionsIndexPage() {
 
         {/* ── Grid ──────────────────────────────────────────────────────── */}
         <div className="container mx-auto px-4 max-w-6xl py-12">
+          {/* Live collections */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {COLLECTIONS.map((c) => (
+            {liveCollections.map((c) => (
               <Link
                 key={c.slug}
                 href={`/collections/${c.slug}`}
@@ -81,6 +109,24 @@ export default function CollectionsIndexPage() {
               </Link>
             ))}
           </div>
+
+          {/* Coming soon — collapsed, not linked */}
+          {comingSoon.length > 0 && (
+            <div className="mt-10">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Coming soon</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {comingSoon.map((c) => (
+                  <div
+                    key={c.slug}
+                    className="bg-white/60 rounded-xl border border-gray-100 border-dashed p-4 opacity-60"
+                  >
+                    <span className="text-2xl mb-2 block">{c.emoji}</span>
+                    <p className="font-semibold text-[#1B2E4B] text-sm leading-snug">{c.title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-14 bg-[#1B2E4B] rounded-2xl p-8 text-center">
             <h2 className="font-display text-xl font-bold text-white mb-2">
