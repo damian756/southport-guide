@@ -18,7 +18,10 @@ function websiteHref(website: string): string {
 }
 
 // Map category slugs to Schema.org @type
-const SCHEMA_TYPES: Record<string, string> = {
+// TouristAttraction and Park are not in Google's supported types for Review Snippets.
+// Using arrays so the entity is also a LocalBusiness (which IS supported), preserving
+// aggregateRating eligibility while retaining semantic accuracy.
+const SCHEMA_TYPES: Record<string, string | string[]> = {
   restaurants:      "Restaurant",
   hotels:           "LodgingBusiness",
   "bars-nightlife": "BarOrPub",
@@ -26,8 +29,8 @@ const SCHEMA_TYPES: Record<string, string> = {
   golf:             "SportsClub",
   shopping:         "Store",
   wellness:         "BeautySalon",
-  attractions:      "TouristAttraction",
-  "beaches-parks":  "Park",
+  attractions:      ["LocalBusiness", "TouristAttraction"],
+  "beaches-parks":  ["LocalBusiness", "Park"],
   activities:       "LocalBusiness",
   transport:        "LocalBusiness",
 };

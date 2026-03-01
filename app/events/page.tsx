@@ -132,31 +132,38 @@ export default async function EventsPage({
     itemListElement: allMergedEvents.map((event, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      item: {
-        "@type": "Event",
-        name: event.title,
-        startDate: event.isoDate,
-        endDate: event.endIsoDate ?? event.isoDate,
-        eventStatus: "https://schema.org/EventScheduled",
-        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        location: {
-          "@type": "Place",
-          name: event.venue,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Southport",
-            addressRegion: "Merseyside",
-            addressCountry: "GB",
+        item: {
+          "@type": "Event",
+          name: event.title,
+          description: `${event.title} at ${event.venue}, Southport.`,
+          startDate: event.isoDate,
+          endDate: event.endIsoDate ?? event.isoDate,
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          location: {
+            "@type": "Place",
+            name: event.venue,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Southport",
+              addressRegion: "Merseyside",
+              addressCountry: "GB",
+            },
+          },
+          isAccessibleForFree: event.free,
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            ...(event.free ? { price: "0", priceCurrency: "GBP" } : {}),
+            url: event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
+          },
+          url: event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
+          organizer: {
+            "@type": "Organization",
+            name: "SouthportGuide.co.uk",
+            url: "https://www.southportguide.co.uk",
           },
         },
-        isAccessibleForFree: event.free,
-        url: event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
-        organizer: {
-          "@type": "Organization",
-          name: "SouthportGuide.co.uk",
-          url: "https://www.southportguide.co.uk",
-        },
-      },
     })),
   };
 
