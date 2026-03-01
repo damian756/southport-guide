@@ -35,6 +35,63 @@ const CAT_ORDER = [
   "wellness", "activities", "transport",
 ];
 
+const CATEGORY_CONTENT: Record<string, string[]> = {
+  "restaurants": [
+    "Lord Street is the obvious starting point for eating out in Southport — it runs through the town centre and has a good mix of options at most price points. Bistrot Verite in Birkdale is the one that gets mentioned most when people want a proper meal, and it's worth booking ahead. Bistro Bar Med and The Vincent are solid choices if you want something central.",
+    "The town has more independent restaurants than you'd expect — particularly on and around Lord Street and Chapel Street. If you're after Indian or Asian food, you've got a decent range and most places are very reasonably priced.",
+    "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
+  ],
+  "hotels": [
+    "Southport has a good range of places to stay — from The Bold Hotel on Lord Street (the nicest in town by most accounts) to seafront B&Bs and a clutch of chain hotels near the retail park. The Scarisbrick Hotel is the historic option on Lord Street if you want somewhere with character.",
+    "If you're here for The Open 2026 at Royal Birkdale, accommodation books out fast — months in advance for tournament week. Get in early. Birkdale village (walking distance from the course) is the most practical base, but the whole town fills up.",
+    "For a quieter stay, Churchtown is worth considering — it's the old village end of Southport, much calmer than the seafront, and still only about 10 minutes from the town centre.",
+  ],
+  "bars-nightlife": [
+    "Southport's nightlife is mostly concentrated around Neville Street and the town centre — it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
+    "Lord Street has a good run of bars and restaurants that work well for a lower-key evening — cocktails and food rather than clubs. If you want to keep going later, the town centre has options.",
+    "Worth knowing: weekend nights in Southport get properly busy in summer. If you're visiting in peak season and want somewhere specific, arrive early or book where you can.",
+  ],
+  "cafes": [
+    "Southport does good coffee. There are independent cafes along Lord Street and in the side streets around it — worth exploring if you're spending a day in town. Cibo on Lord Street comes up regularly as a local favourite.",
+    "Over at the seafront end, there are plenty of spots to grab a coffee with a sea view — quality varies but the setting makes up for a lot.",
+    "For tea rooms and a slower pace, Churchtown village is worth the short drive — it's got that quieter, more village feel that can be hard to find in the town centre on a busy day.",
+  ],
+  "attractions": [
+    "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier is one of the longest in England — worth a walk, especially if the weather's decent.",
+    "Pleasureland is the obvious family draw — fairground rides, open seasonally. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
+    "The Atkinson on Lord Street is the arts centre and local museum — free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
+  ],
+  "beaches-parks": [
+    "Southport Beach is broad, sandy, and free — you can drive onto part of it, which is very useful if you've got kids and a lot of kit. The sea goes out a long way at low tide; it's not always swimmable, but as a beach for walking and messing about on, it's brilliant.",
+    "Victoria Park hosts the big events — Southport Flower Show, air shows, the food festival. If one of those is on when you're visiting, the park is worth seeing at its best.",
+    "The Marine Lake is a calmer alternative to the open beach — separated from the sea by the promenade, much flatter water. Good for paddleboarding and kayaking; the Watersports Centre is based there.",
+  ],
+  "golf": [
+    "Southport is one of the best places to play golf in England — no exaggeration. Royal Birkdale is the headline act, one of the Open Championship venues and hosting The Open again in summer 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
+    "Formby Golf Club is about 15 minutes south and considered one of the finest heathland links courses in the country — slightly more straightforward to book as a visitor than Royal Birkdale. Southport Old Links, Hillside Golf Club, and Southport & Ainsdale are all nearby and all serious courses.",
+    "If you're a golfer visiting the area, this stretch of the Sefton Coast is genuinely exceptional and underrated by most people outside the golfing community. Plan a few days and work your way around them.",
+  ],
+  "shopping": [
+    "Lord Street is the main shopping strip — a long Victorian boulevard with covered arcades, a mix of independents and some chains. It's one of the nicest high streets in the north west, worth a stroll even if you're not buying anything.",
+    "The Wayfarers Arcade is the best of the covered arcades — independent shops, antiques, a bit eclectic. Worth a browse on a rainy afternoon. The Market is useful for fresh food and local produce.",
+    "Cambridge Walks and the side streets off Lord Street are where you'll find most of the boutiques and independents. Hirshmans on Chapel Street has been going for years and is reliable for pharmacy and travel essentials.",
+  ],
+  "wellness": [
+    "Southport has a decent number of salons, spas and wellness places, mostly dotted around the town centre and Birkdale. If you're staying for a few days, booking a treatment is straightforward. The bigger hotels — The Bold, The Vincent — have spa facilities if you'd rather keep it all in one place.",
+    "Day spas and independent beauty salons are scattered throughout town. This directory lists what's available across all areas so you can find what you need based on where you're staying.",
+  ],
+  "activities": [
+    "Things to do in Southport range from the obvious (beach, Pleasureland, the pier) to the less expected. The Marine Lake Watersports Centre does paddleboarding, kayaking and sailing — good fun for adults and kids, no experience needed for most sessions.",
+    "Southport is well set up for cycling — the coastal path runs along the seafront and bikes are available to hire locally. It's a flat, easy ride with proper sea views.",
+    "For families, Pleasureland is the main draw alongside the beach. The Botanic Gardens in Churchtown have a small zoo and play areas — free entry and much less busy than the seafront on peak days.",
+  ],
+  "transport": [
+    "Southport has a direct train link to Liverpool — about 45 minutes on the Merseyrail Northern line. It runs frequently and is the easiest way in if you're coming from Liverpool or Formby.",
+    "By road, the A565 is the main route from Liverpool and Formby. Parking in the town centre is mostly paid — there are car parks off Lord Street and near the seafront. The beach itself has paid parking with reasonable rates for a full day.",
+    "Getting around within Southport is straightforward on foot if you're based on Lord Street — the beach, Pleasureland and most of the town centre are walkable. For Churchtown and the golf courses, you'll want a car.",
+  ],
+};
+
 const FOOD_CATS = new Set(["restaurants", "cafes", "bars-nightlife", "hotels", "activities"]);
 
 // ── Area definitions ─────────────────────────────────────────────────────────
@@ -257,6 +314,17 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             })}
           </div>
         </div>
+
+        {/* ── Editorial intro ─────────────────────────────────────────────── */}
+        {CATEGORY_CONTENT[category] && (
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-6 py-5 mb-5">
+            <div className="max-w-3xl space-y-3">
+              {CATEGORY_CONTENT[category].map((para, i) => (
+                <p key={i} className="text-gray-600 text-[15px] leading-relaxed">{para}</p>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── CategoryBrowser: search + area + sort + list/map ────────────── */}
         <CategoryBrowser
