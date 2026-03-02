@@ -180,6 +180,22 @@ const FAMILY = [
 
 const NATURE = [
   {
+    name: "RSPB Marshside",
+    org: "Royal Society for the Protection of Birds",
+    vol: "Free entry · 80,000+ Pink-footed Geese · PR9 9PH",
+    story:
+      "On the northern edge of Southport — five minutes from Churchtown — and almost completely unknown to visitors. Free entry to one of the best birdwatching sites in the North West. In winter, 80,000+ Pink-footed Geese roost on the Ribble Estuary and flight overhead at dusk; the noise arrives before the birds do. Nel's Hide looks over the managed scrapes with breeding Avocets in spring. The coastal saltmarsh path on the other side of the sea wall adds a completely different walk — flat, exposed, tidal pools, big sky. Dogs on leads throughout.",
+    tips: [
+      "Car park on Redshank Road — £1.50 up to 2 hrs, £3 over 2 hrs. RSPB members free.",
+      "Car park hours: 8:30am–4pm (Nov–Mar), 8:30am–5pm (Mar–Oct). Locked at closing.",
+      "Nel's Hide open 8:30am–4pm. Guide dogs only inside. Bring a flask — no café on site.",
+      "Pink-footed Geese: October–March at dusk on the sea wall viewpoints.",
+      "Dogs allowed on leads on paths and coastal saltmarsh. Keep off the saltmarsh itself.",
+    ],
+    color: "blue",
+    emoji: "🦆",
+  },
+  {
     name: "Formby Red Squirrel Reserve",
     org: "National Trust",
     vol: "One of twelve red squirrel refuges in Britain",
@@ -670,7 +686,7 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Beyond the Beach</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Nature &amp; Wildlife</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                Two of the best wildlife experiences in the North West — both within 10 miles of Southport, both almost entirely
+                Three of the best wildlife experiences in the North West — all within 10 miles of Southport, all almost entirely
                 overlooked by visitors who come for the beach.
               </p>
             </div>

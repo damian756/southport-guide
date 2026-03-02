@@ -46,7 +46,7 @@ const FAQS = [
   },
   {
     q: "Where can I walk my dog near Southport?",
-    a: "Best options: Southport Beach (northern end, year-round), Ainsdale Beach and Dunes (great off-lead space), Hesketh Park in Churchtown (well-maintained park, popular with dog walkers), and the Marine Drive Promenade (the full length is dog-friendly and gives excellent sea views).",
+    a: "Best options: Southport Beach (northern end, year-round), Ainsdale Beach and Dunes (great off-lead space), Hesketh Park in Churchtown (well-maintained park, popular with dog walkers), the Marine Drive Promenade (the full length is dog-friendly and gives excellent sea views), and the RSPB Marshside coastal saltmarsh path on Redshank Road — flat, exposed, tidal pools, dogs on leads, five minutes from Churchtown.",
   },
 ];
 
@@ -179,6 +179,22 @@ export default function DogFriendlySouthportGuidePage() {
         {/* Best walks */}
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Best Dog Walks Near Southport</h2>
+
+          {/* Marshside photo callout */}
+          <div className="rounded-2xl overflow-hidden mb-6 relative">
+            <Image
+              src="/images/marshside/rspb-marshside-dogs.jpg"
+              alt="Dog running through a tidal pool on the Marshside coastal path — Ribble Estuary saltmarsh and blue sky behind"
+              width={900}
+              height={450}
+              className="w-full h-52 sm:h-64 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <p className="text-white font-semibold text-sm">RSPB Marshside coastal saltmarsh walk — dogs on leads, Ribble Estuary Special Protection Area</p>
+            </div>
+          </div>
+
           <div className="space-y-4">
             {[
               {
@@ -195,6 +211,11 @@ export default function DogFriendlySouthportGuidePage() {
                 name: "Ainsdale Beach and Dunes",
                 postcode: "PR8 2PZ",
                 notes: "NNR — dogs under control near dunes. Excellent open beach for off-lead running.",
+              },
+              {
+                name: "RSPB Marshside — coastal saltmarsh walk",
+                postcode: "SD 353204",
+                notes: "The coastal path on the Redshank Road side of the sea wall. Flat, exposed, tidal pools and a big estuary sky. Dogs on leads throughout. Part of the Ribble Estuary Special Protection Area. Car park £1.50/£3, RSPB members free. Five minutes from Churchtown.",
               },
               {
                 name: "Hesketh Park, Churchtown",
