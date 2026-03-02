@@ -15,35 +15,45 @@ function parsePostDate(dateStr: string): Date {
   const [day, mon, year] = dateStr.split(" ");
   const iso = `${year}-${MONTHS[mon] ?? "01"}-${day.padStart(2, "0")}`;
   const d = new Date(iso);
-  return isNaN(d.getTime()) ? new Date() : d;
+  return isNaN(d.getTime()) ? new Date("2026-02-01") : d;
 }
+
+// Stable reference dates — update these when the relevant pages change meaningfully
+const D = {
+  today:    new Date("2026-03-02"), // last deploy / significant update
+  feb26:    new Date("2026-02-26"),
+  feb20:    new Date("2026-02-20"),
+  feb15:    new Date("2026-02-15"),
+  feb01:    new Date("2026-02-01"),
+  jan01:    new Date("2026-01-01"),
+};
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Static / editorial pages ────────────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
-    { url: BASE,                           lastModified: new Date(), changeFrequency: "daily",   priority: 1.0 },
-    { url: `${BASE}/events`,               lastModified: new Date(), changeFrequency: "daily",   priority: 0.9  },
-    { url: `${BASE}/blog`,                 lastModified: new Date(), changeFrequency: "daily",   priority: 0.9  },
-    { url: `${BASE}/things-to-do`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.95 },
-    { url: `${BASE}/attractions/another-place-crosby`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE}/the-open-2026`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.95 },
-    { url: `${BASE}/mlec`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9  },
-    { url: `${BASE}/claim-listing`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8  },
-    { url: `${BASE}/advertise`,            lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-    { url: `${BASE}/pricing`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-    { url: `${BASE}/the-open-2026/accommodation`, lastModified: new Date(), changeFrequency: "weekly",  priority: 0.95 },
-    { url: `${BASE}/the-open-2026/restaurants`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.85 },
-    { url: `${BASE}/the-open-2026/getting-there`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8  },
-    { url: `${BASE}/the-open-2026/pubs`,          lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8  },
-    { url: `${BASE}/the-open-2026/things-to-do`,  lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8  },
-    { url: `${BASE}/mlec/accommodation`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7  },
-    { url: `${BASE}/mlec/restaurants`,     lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7  },
-    { url: `${BASE}/mlec/getting-there`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.6  },
-    { url: `${BASE}/guides`,               lastModified: new Date(), changeFrequency: "weekly",  priority: 0.90 },
-    { url: `${BASE}/about`,                lastModified: new Date(), changeFrequency: "monthly", priority: 0.5  },
-    { url: `${BASE}/contact`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.5  },
-    { url: `${BASE}/privacy`,              lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2  },
-    { url: `${BASE}/terms`,                lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2  },
+    { url: BASE,                           lastModified: D.today,  changeFrequency: "weekly",   priority: 1.0 },
+    { url: `${BASE}/events`,               lastModified: D.today,  changeFrequency: "daily",    priority: 0.9 },
+    { url: `${BASE}/blog`,                 lastModified: D.today,  changeFrequency: "weekly",   priority: 0.9 },
+    { url: `${BASE}/things-to-do`,         lastModified: D.today,  changeFrequency: "monthly",  priority: 0.95 },
+    { url: `${BASE}/attractions/another-place-crosby`, lastModified: D.feb01, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/the-open-2026`,        lastModified: D.feb20,  changeFrequency: "weekly",   priority: 0.95 },
+    { url: `${BASE}/mlec`,                 lastModified: D.feb20,  changeFrequency: "weekly",   priority: 0.9  },
+    { url: `${BASE}/claim-listing`,        lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.8  },
+    { url: `${BASE}/advertise`,            lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.75 },
+    { url: `${BASE}/pricing`,              lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.75 },
+    { url: `${BASE}/the-open-2026/accommodation`, lastModified: D.feb20, changeFrequency: "weekly",  priority: 0.95 },
+    { url: `${BASE}/the-open-2026/restaurants`,   lastModified: D.feb20, changeFrequency: "weekly",  priority: 0.85 },
+    { url: `${BASE}/the-open-2026/getting-there`, lastModified: D.feb15, changeFrequency: "monthly", priority: 0.8  },
+    { url: `${BASE}/the-open-2026/pubs`,          lastModified: D.feb20, changeFrequency: "weekly",  priority: 0.8  },
+    { url: `${BASE}/the-open-2026/things-to-do`,  lastModified: D.feb20, changeFrequency: "weekly",  priority: 0.8  },
+    { url: `${BASE}/mlec/accommodation`,   lastModified: D.feb15,  changeFrequency: "monthly",  priority: 0.7  },
+    { url: `${BASE}/mlec/restaurants`,     lastModified: D.feb15,  changeFrequency: "monthly",  priority: 0.7  },
+    { url: `${BASE}/mlec/getting-there`,   lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.6  },
+    { url: `${BASE}/guides`,               lastModified: D.feb15,  changeFrequency: "monthly",  priority: 0.90 },
+    { url: `${BASE}/about`,                lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.5  },
+    { url: `${BASE}/contact`,              lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.5  },
+    { url: `${BASE}/privacy`,              lastModified: D.jan01,  changeFrequency: "yearly",   priority: 0.2  },
+    { url: `${BASE}/terms`,                lastModified: D.jan01,  changeFrequency: "yearly",   priority: 0.2  },
   ];
 
   // ── Guide pages (generated from config) ─────────────────────
@@ -57,8 +67,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Category listing pages ───────────────────────────────────
   const categoryPages: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
     url: `${BASE}/${c.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "daily" as const,
+    lastModified: D.feb15,
+    changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
 
@@ -94,12 +104,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // ── Collection pages ─────────────────────────────────────────
   const collectionIndexPage: MetadataRoute.Sitemap = [
-    { url: `${BASE}/collections`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE}/collections`, lastModified: D.feb15, changeFrequency: "weekly" as const, priority: 0.8 },
   ];
   const collectionPages: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
     url: `${BASE}/collections/${c.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    lastModified: D.feb15,
+    changeFrequency: "monthly" as const,
     priority: c.priority,
   }));
 
