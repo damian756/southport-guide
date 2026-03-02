@@ -906,4 +906,25 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "cta", text: "Want to be a beta tester or have a question? Drop us a message and we'll come back to you the same day.", href: "/contact", label: "Contact us →" },
   ],
 
+  "churchtown-botanic-gardens-crocuses": [
+    { type: "p", text: "These photos were taken this morning. 2nd of March 2026. Walked through the Botanic Gardens on the way back from dropping the kids at school and the slope under the trees was covered in crocuses — purple and white, hundreds of them, pushing up through the dead leaves. It genuinely stopped me in my tracks. So: if you're in Southport this week, go." },
+    { type: "image", src: "/images/blog/churchtown-botanic-crocuses-carpet.jpg", alt: "Carpet of purple and white crocuses on the hillside at Churchtown Botanic Gardens, trees behind, soft morning light", caption: "The slope under the trees at Churchtown Botanic Gardens — this morning, 2 March 2026." },
+    { type: "h2", text: "Where it is and how to get there" },
+    { type: "p", text: "Churchtown Botanic Gardens is on Bankfield Lane, PR9 7NY. It's a proper Victorian public park — free to enter, open every day. About five minutes' drive from Southport town centre, or a 25-minute walk if you're coming through Churchtown village." },
+    { type: "p", text: "The crocus display is on the sloped area near the main entrance — you'll see it as soon as you're through the gate. You can't miss it." },
+    { type: "callout", emoji: "🌸", text: "Free entry. Open daily. Parking on Bankfield Lane or Botanic Road. PR9 7NY." },
+    { type: "h2", text: "How long is the window?" },
+    { type: "p", text: "Crocuses at this latitude typically peak for about two to three weeks in late February and early March. They go over quickly once the weather turns warmer or wet, so the window is now. Come this week. Come at the weekend if you can't do a weekday. But come soon." },
+    { type: "p", text: "The display is better in morning light — the sun hits the slope from the east and the purple really pops against the brown leaf litter. I was there at about 8:30am and the light was good." },
+    { type: "image", src: "/images/blog/churchtown-botanic-purple-crocus.jpg", alt: "Single purple crocus close-up at Churchtown Botanic Gardens — dead leaves on the ground, blue sky behind", caption: "Single purple crocus pushing through dead leaves — the timing is perfect right now." },
+    { type: "h2", text: "What else is there?" },
+    { type: "p", text: "The Botanic Gardens are bigger than most people expect. Beyond the crocus slope there's a walled garden, a boating lake, glasshouses, and a decent amount of open space. Good for kids. Dogs on leads are welcome." },
+    { type: "p", text: "There's a café in the gardens — not open every day in winter, so worth checking before you plan your lunch around it. If you want a proper pub lunch afterwards, The Hesketh Arms on Botanic Road is two minutes' walk and does food all day." },
+    { type: "image", src: "/images/blog/churchtown-botanic-white-crocuses.jpg", alt: "White crocuses with orange stamens at Churchtown Botanic Gardens, purple crocus visible behind", caption: "White and purple crocuses growing together — both varieties are out at the same time." },
+    { type: "h2", text: "Worth the detour if you're visiting Southport" },
+    { type: "p", text: "Most Southport visitors never get to Churchtown. They come for Lord Street, the beach, maybe the pier. But Churchtown is the oldest part of the town — the original village, with the mediaeval church, the Hesketh Arms, the botanical gardens, the duck pond. It's the bit of Southport that surprises people." },
+    { type: "p", text: "Add the crocuses to the list of reasons to go right now." },
+    { type: "cta", text: "Read more about things to do in Southport — including Churchtown, the botanic gardens and what's on this spring.", href: "/things-to-do", label: "Things to do in Southport →" },
+  ],
+
 };

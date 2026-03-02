@@ -716,6 +716,17 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/categories/bars-nightlife.webp",
     date: "19 Feb 2026",
   },
+  // Local Guides
+  {
+    slug: "churchtown-botanic-gardens-crocuses",
+    title: "The Crocus Display at Churchtown Botanic Gardens Is On Right Now",
+    excerpt:
+      "Every year around late February the slope under the trees at Churchtown Botanic Gardens fills with purple and white crocuses. This year it's brilliant. Free to visit, ten minutes from town.",
+    categorySlug: "local-guides",
+    image: "/images/blog/churchtown-botanic-crocuses-carpet.jpg",
+    date: "02 Mar 2026",
+    author: "damian",
+  },
   // For Business
   {
     slug: "southport-business-hub-launch",
