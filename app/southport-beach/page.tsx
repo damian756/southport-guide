@@ -697,27 +697,49 @@ export default function SouthportBeachPage() {
                   Southport Beach is the starting point. These are the other beaches within easy reach — each one very different.
                 </p>
               </div>
-              <div className="grid sm:grid-cols-3 gap-5">
+              {/* Ainsdale — full-width featured card */}
+              <Link
+                href="/blog/beachcombing-ainsdale-winter"
+                className="group relative h-64 sm:h-80 rounded-2xl overflow-hidden block mb-5"
+              >
+                <Image
+                  src="/images/blog/ainsdale/ainsdale-beach-dunes-sea-view.webp"
+                  alt="Ainsdale Beach — dune grass in the foreground, Irish Sea behind"
+                  fill
+                  className="object-cover object-[center_55%] transition-transform duration-700 group-hover:scale-105"
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <span className="text-xs font-bold bg-[#C9A84C] text-[#1B2E4B] px-2 py-0.5 rounded-full">Best for swimming · Blue Flag</span>
+                  <h3 className="font-display font-bold text-white text-2xl mt-3 mb-1">Ainsdale Beach</h3>
+                  <p className="text-white/75 text-sm leading-relaxed max-w-lg">
+                    2 miles south. Backed by SSSI dunes — natterjack toads, sand lizards, mermaid&apos;s purses on the tideline. Better for swimming than Southport Beach.
+                  </p>
+                  <p className="text-[#C9A84C] text-xs font-bold mt-3 group-hover:underline">
+                    A winter beachcombing guide to Ainsdale →
+                  </p>
+                </div>
+              </Link>
+
+              <div className="grid sm:grid-cols-2 gap-5">
                 {[
-                  {
-                    name: "Ainsdale Beach",
-                    detail: "2 miles south. Blue Flag. Backed by SSSI dunes — natterjack toads, sand lizards. Better for swimming than Southport Beach.",
-                    tag: "Best for swimming",
-                  },
                   {
                     name: "Formby Beach",
                     detail: "7 miles south. National Trust. Native red squirrels in the pinewoods above the beach. One of the extraordinary days out in the region.",
                     tag: "Red squirrels · NT",
+                    href: "https://www.formbyguide.co.uk/formby-beach",
                   },
                   {
                     name: "Crosby Beach",
                     detail: "14 miles south. Antony Gormley&apos;s Another Place — 100 iron figures facing out to sea. One of England&apos;s most powerful pieces of public art.",
                     tag: "Antony Gormley",
+                    href: "/attractions/another-place-crosby",
                   },
                 ].map((beach) => (
                   <Link
                     key={beach.name}
-                    href="/beaches-parks"
+                    href={beach.href}
                     className="bg-[#FAF8F5] rounded-xl p-5 hover:shadow-sm hover:bg-white transition-all group"
                   >
                     <span className="text-xs font-bold bg-[#C9A84C]/20 text-[#1B2E4B] px-2 py-0.5 rounded-full">{beach.tag}</span>

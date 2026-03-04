@@ -109,6 +109,30 @@ function renderBlock(block: ContentBlock, i: number) {
         </div>
       );
     case "image":
+      if (block.portrait) {
+        return (
+          <figure key={i} className="my-8 flex justify-center">
+            <div className="rounded-2xl overflow-hidden border border-gray-100 w-full max-w-sm">
+              <div className="relative w-full aspect-[3/4] bg-gray-100">
+                <Image
+                  src={block.src}
+                  alt={block.alt}
+                  fill
+                  sizes="(max-width: 480px) 100vw, 384px"
+                  quality={85}
+                  className="object-cover"
+                  style={{ objectPosition: block.objectPosition ?? "center" }}
+                />
+              </div>
+              {block.caption && (
+                <figcaption className="bg-gray-50 px-5 py-3 text-sm text-gray-500 text-center leading-relaxed">
+                  {block.caption}
+                </figcaption>
+              )}
+            </div>
+          </figure>
+        );
+      }
       return (
         <figure key={i} className="my-8 rounded-2xl overflow-hidden border border-gray-100">
           <div className="relative w-full aspect-[16/9] bg-gray-100">
@@ -119,7 +143,30 @@ function renderBlock(block: ContentBlock, i: number) {
               sizes="(max-width: 768px) 100vw, 720px"
               quality={85}
               className="object-cover"
+              style={{ objectPosition: block.objectPosition ?? "center 40%" }}
             />
+          </div>
+          {block.caption && (
+            <figcaption className="bg-gray-50 px-5 py-3 text-sm text-gray-500 text-center leading-relaxed">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    case "video":
+      return (
+        <figure key={i} className="my-8 rounded-2xl overflow-hidden border border-gray-100">
+          <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={block.poster}
+              className="w-full h-full object-cover"
+            >
+              <source src={block.src} type="video/mp4" />
+            </video>
           </div>
           {block.caption && (
             <figcaption className="bg-gray-50 px-5 py-3 text-sm text-gray-500 text-center leading-relaxed">

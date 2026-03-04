@@ -11,10 +11,54 @@ export type ContentBlock =
   | { type: "callout"; emoji: string; text: string }
   | { type: "quote"; text: string; attr?: string }
   | { type: "cta"; text: string; href: string; label: string }
-  | { type: "image"; src: string; alt: string; caption?: string }
+  | { type: "image"; src: string; alt: string; caption?: string; portrait?: boolean; objectPosition?: string }
+  | { type: "video"; src: string; poster: string; caption?: string }
   | { type: "hr" };
 
 export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
+
+  "beachcombing-ainsdale-winter": [
+    { type: "p", text: "I went out to Ainsdale beach this morning with the dog and no particular plan. Cold, clear blue sky, low tide. Took a flask. Wasn't expecting anything unusual — I do this walk fairly regularly and sometimes it's just driftwood and an old crisp packet." },
+    { type: "p", text: "Not today. In about an hour on the sand, we found a mermaid's purse, two species of jellyfish, a whelk egg mass, a razor clam shell, and enough interesting stuff that I came home and immediately started googling. Here's what it all was." },
+    { type: "callout", emoji: "📍", text: "Ainsdale Beach, Southport · PR8 2QD · Free to walk · Dogs welcome year-round · Car park reopens April — park on Shore Road until then." },
+    { type: "video", src: "/videos/ainsdale-beach-panorama.mp4", poster: "/images/blog/ainsdale/ainsdale-dunes-pinewoods-panorama.webp", caption: "Ainsdale Beach in early March — wide, flat, and almost completely empty." },
+    { type: "image", src: "/images/blog/ainsdale/ainsdale-beach-dunes-sea-view.webp", alt: "Ainsdale beach — dune grass in the foreground with the Irish Sea behind, person walking in the distance", caption: "Ainsdale at low tide on a clear winter morning. Almost nobody here on a Tuesday in March.", objectPosition: "center 55%" },
+    { type: "h2", text: "The Mermaid's Purse" },
+    { type: "p", text: "This was the find of the morning. A black, leathery, roughly rectangular pouch about the size of your palm, with curly tendrils at each corner. It was on the tideline, partially buried in seaweed." },
+    { type: "p", text: "It's a shark egg case — specifically from a small-spotted catshark, which most people know as a dogfish. Not a scary shark; it's about the size of a large sausage and lives on the seabed. The leathery case protects a single pup for around nine to twelve months while it develops, anchored to kelp by those tendrils. Once the juvenile shark hatches, the empty case detaches and washes ashore." },
+    { type: "image", src: "/images/blog/ainsdale/mermaids-purse-held-hand-ainsdale.webp", alt: "A mermaid's purse — small-spotted catshark egg case — held in a hand on Ainsdale Beach", caption: "A mermaid's purse: the egg case of a small-spotted catshark. The curly tendrils once anchored it to kelp on the seabed.", portrait: true },
+    { type: "p", text: "Pick it up. It's completely harmless. Hold it up to the light and you can sometimes see the hollow embryo chamber inside. If you find one in good condition, log it on the Shark Trust's Great Eggcase Hunt — it takes two minutes and the data genuinely contributes to shark population research in UK waters." },
+    { type: "cta", text: "Full guide to mermaid's purses and what else washes up on the Sefton Coast:", href: "https://www.seftoncoastwildlife.co.uk/blog/what-is-a-mermaids-purse", label: "What is a Mermaid's Purse? — Sefton Coast Wildlife →" },
+    { type: "h2", text: "The Jellyfish (Two Kinds)" },
+    { type: "p", text: "There were at least a dozen jellyfish scattered across the beach. I didn't realise until I looked at my photos properly that they were actually two different species." },
+    { type: "p", text: "The big flat ones — dark brown with a purple iridescent sheen, the size of a dinner plate, completely flat against the sand — are barrel jellyfish (Rhizostoma pulmo). The UK's largest species. They can reach 90cm across in the water. The sting is so weak it barely registers on humans. Completely harmless to touch." },
+    { type: "image", src: "/images/blog/ainsdale/barrel-jellyfish-dog-ainsdale-beach.webp", alt: "A large barrel jellyfish stranded on Ainsdale Beach, dog walking in the background", caption: "Barrel jellyfish — UK's largest species. Completely harmless sting-wise, but still don't let the dog eat one.", objectPosition: "center 35%" },
+    { type: "p", text: "The other ones have brown V-shaped markings radiating from the centre, like compass points. These are compass jellyfish (Chrysaora hysoscella). These do have a sting — not dangerous, but it's real and uncomfortable. If you or the dog makes contact, rinse with seawater (not fresh water), don't rub." },
+    { type: "image", src: "/images/blog/ainsdale/compass-jellyfish-closeup-ainsdale.webp", alt: "Compass jellyfish on Ainsdale Beach, showing distinctive brown V-shaped markings", caption: "Compass jellyfish — identifiable by the brown V-shaped patterning. Mild sting, worth knowing about if you have kids or a curious dog.", objectPosition: "center 50%" },
+    { type: "p", text: "Winter strandings like this are completely normal on the Sefton coast. Storms and tidal surges push them in. It's not a sign anything unusual is happening — if anything, a jellyfish bloom signals a healthy, plankton-rich sea." },
+    { type: "cta", text: "Full species guide — what types of jellyfish appear on the Sefton Coast, when, and whether they sting:", href: "https://www.seftoncoastwildlife.co.uk/blog/jellyfish-sefton-coast", label: "Jellyfish on the Sefton Coast — Sefton Coast Wildlife →" },
+    { type: "h2", text: "The Whelk Egg Mass" },
+    { type: "p", text: "This one stumped me completely until I got home. A white, spongy, irregular clump about the size of a large orange, tangled up in dark seaweed near the water's edge. It looked slightly alien. The dog was interested in it in that way that usually means you should keep it away from the dog." },
+    { type: "image", src: "/images/blog/ainsdale/whelk-egg-mass-ainsdale-beach.webp", alt: "Whelk egg mass — sea wash ball — found on Ainsdale Beach with seaweed, Irish Sea in the background", caption: "A whelk egg mass, also called a sea wash ball or mermaid's necklace. Each tiny capsule held multiple whelk eggs.", objectPosition: "center 60%" },
+    { type: "p", text: "It's a common whelk egg mass — Buccinum undatum. Each of those little capsules held multiple whelk eggs. Once the juveniles hatch, the mass breaks loose from the seabed and washes ashore. Also called a sea wash ball or — best name in nature — a mermaid's necklace. Completely harmless. Slightly rubbery. Squeezes back into shape." },
+    { type: "h2", text: "The Razor Clam" },
+    { type: "image", src: "/images/blog/ainsdale/razor-clam-ainsdale-beach.webp", alt: "Razor clam shell on wet sand at Ainsdale Beach, with sun reflection on the water", caption: "A perfect razor clam shell on the tideline. They live buried in the sand and burrow fast — you almost never catch them alive.", objectPosition: "center 55%" },
+    { type: "p", text: "Not rare, but always satisfying to find a good one. The long, narrow shell — like a cut-throat razor — half-buried in the wet sand near the waterline. Razor clams live just below the surface and burrow at surprising speed when disturbed. After a big tide, perfect empty shells wash up with both halves still hinged. This one was intact and clean." },
+    { type: "h2", text: "What to Bring" },
+    { type: "ul", items: [
+      "A bag — not just for litter, but for shells and finds. A zip-lock works perfectly.",
+      "A flask — non-negotiable in March. Cold air, flat sand, no other people, and a hot drink is one of the better things in life.",
+      "Boots — the sand is wet at low tide even on a clear sunny day.",
+      "Tide times — check before you leave. Met Office or Magic Seaweed have Southport predictions. Go within an hour either side of low water.",
+      "Early morning after a high tide overnight — the tide deposits things while you sleep and you arrive first.",
+    ]},
+    { type: "image", src: "/images/blog/ainsdale/flask-driftwood-shells-ainsdale.webp", alt: "Flask and cup on driftwood on Ainsdale Beach, with shells and the sea in the background", caption: "A flask changes a cold morning completely. The driftwood doubles as a table. The shells are a bonus.", objectPosition: "center 40%" },
+    { type: "h2", text: "When to Go" },
+    { type: "p", text: "Winter is underrated. In summer, Ainsdale is busy and the tideline gets picked over. In winter, you'll often have the place entirely to yourself. The light on a clear cold morning is extraordinary — hard low sun, long shadows across the sand, dunes lit up gold." },
+    { type: "p", text: "Today was early March. Blue sky, maybe five degrees, nobody else on this stretch at all. The dog was in heaven. About 90 minutes at an easy pace, maybe two miles of tideline. If you've got a child with any interest in nature, bring them here in winter on a low tide. Let them find a mermaid's purse." },
+    { type: "callout", emoji: "⚠️", text: "Car park note: Ainsdale beach car park is closed for winter and reopens in April. Pedestrian access is unaffected — park on Shore Road and walk down." },
+    { type: "cta", text: "Want species guides for everything you might find along the Sefton coast — birds, marine life, dune plants?", href: "https://www.seftoncoastwildlife.co.uk", label: "Visit Sefton Coast Wildlife →" },
+  ],
 
   "best-restaurants-southport-2026": [
     { type: "p", text: "I've lived in Southport my whole life. Forty-one years. I've eaten in most of the restaurants in this town — some of them multiple times a week when the kids were small and we were too tired to cook. So when I say this is the honest guide, I mean it. No paid placements, no favours. Just the places I'd send my parents to if they were visiting." },

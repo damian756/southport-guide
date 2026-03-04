@@ -459,6 +459,15 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/categories/beaches-parks.webp",
     date: "1 Feb 2026",
   },
+  {
+    slug: "beachcombing-ainsdale-winter",
+    title: "Beachcombing at Ainsdale — What We Found on a Winter Morning",
+    excerpt:
+      "Mermaid's purses, two species of jellyfish, a whelk egg mass, and a razor clam. One winter morning at Ainsdale beach. Here's what it all was.",
+    categorySlug: "outdoors",
+    image: "/images/blog/ainsdale/ainsdale-beach-dunes-sea-view.webp",
+    date: "4 Mar 2026",
+  },
   // Golf
   {
     slug: "pubs-near-royal-birkdale-open-2026",

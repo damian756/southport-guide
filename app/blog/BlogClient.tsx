@@ -54,8 +54,10 @@ export default function BlogClient({ posts, categories }: Props) {
   }
 
   const filtered = useMemo(() => {
-    // Show newest first
-    let result = [...posts].reverse();
+    // Sort newest first by actual date value
+    let result = [...posts].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
     if (activeCategory) {
       result = result.filter((p) => p.categorySlug === activeCategory);
     }
