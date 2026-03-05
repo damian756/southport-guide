@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { CookieProvider } from "./components/CookieProvider";
 import CookieBanner from "./components/CookieBanner";
@@ -100,6 +99,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
         <CookieProvider>
           <ConditionalNav><Navigation /></ConditionalNav>
@@ -108,16 +111,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <CookieBanner />
         </CookieProvider>
         <Analytics />
-        <Script id="crisp-chat" strategy="afterInteractive">{`
-          window.$crisp=[];
-          window.CRISP_WEBSITE_ID="919e43aa-c79a-4c34-8144-45ed2ba27b0d";
-          (function(){
-            var d=document,s=d.createElement("script");
-            s.src="https://client.crisp.chat/l.js";
-            s.async=1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-          })();
-        `}</Script>
       </body>
     </html>
   );
