@@ -3,8 +3,6 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavMenu from "./components/NavMenu";
-import { CookieProvider } from "./components/CookieProvider";
-import CookieBanner from "./components/CookieBanner";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -104,12 +102,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
-        <CookieProvider>
-          <ConditionalNav><Navigation /></ConditionalNav>
-          <main className="overflow-x-hidden">{children}</main>
-          <ConditionalFooter><Footer /></ConditionalFooter>
-          <CookieBanner />
-        </CookieProvider>
+        <ConditionalNav><Navigation /></ConditionalNav>
+        <main className="overflow-x-hidden">{children}</main>
+        <ConditionalFooter><Footer /></ConditionalFooter>
         <Analytics />
       </body>
     </html>

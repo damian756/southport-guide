@@ -197,7 +197,7 @@ export default function PrivacyPage() {
           <section id="cookies">
             <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">8. Cookies</h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              We use cookies and similar tracking technologies to operate the site and, with your consent, to improve your experience and support affiliate revenue. You can manage your cookie preferences at any time using the banner shown on your first visit, or by clearing your browser&apos;s local storage.
+              We use cookies and similar tracking technologies to operate the site and support affiliate revenue when you click through to partner booking sites. Plausible Analytics is cookieless by design and does not require consent.
             </p>
             <div className="overflow-x-auto rounded-xl border border-gray-100">
               <table className="w-full text-sm">
@@ -210,7 +210,7 @@ export default function PrivacyPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {[
-                    ["Necessary", "Session management, security, and storing your cookie preference (sg_cookie_consent in localStorage).", "No — always active"],
+                    ["Necessary", "Session management and security.", "No — always active"],
                     ["Analytics", "Plausible Analytics — aggregated page views, traffic sources, device types. Privacy-friendly and cookieless.", "No — does not require consent"],
                     ["Marketing / Affiliate", "Booking.com and other affiliate partner tracking cookies. Set when you click through to a partner booking site.", "Yes — optional"],
                   ].map(([cat, purpose, req]) => (
@@ -224,7 +224,7 @@ export default function PrivacyPage() {
               </table>
             </div>
             <p className="text-gray-500 text-xs mt-3">
-              Your preference is stored in your browser&apos;s local storage and expires when you clear your browser data. You can withdraw consent at any time by clearing the <code className="bg-gray-100 px-1 rounded">sg_cookie_consent</code> entry from your browser&apos;s local storage.
+              Affiliate cookies are set by partner sites (e.g. Booking.com) when you click through from our links. You can control cookies via your browser settings.
             </p>
           </section>
 
