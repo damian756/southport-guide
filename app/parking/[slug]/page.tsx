@@ -178,6 +178,35 @@ function isCoordinateName(name: string): boolean {
   return /\(\s*-?\d+\.\d+/.test(name);
 }
 
+/**
+ * Generic single-word area names (e.g. a listing literally named "Southport",
+ * "Birkdale", "Ainsdale") add no meaningful signal on their own in a title.
+ */
+function isGenericAreaName(name: string): boolean {
+  const generic = ["southport", "birkdale", "ainsdale", "formby", "churchtown",
+                   "ormskirk", "burscough", "crossens", "marshside"];
+  return generic.includes(name.trim().toLowerCase());
+}
+
+/** Normalise common non-ASCII typography that renders as mojibake in SERP snippets. */
+function sanitizeMeta(str: string): string {
+  return str
+    .replace(/[àáâãäå]/gi, (c) => c === c.toUpperCase() ? "A" : "a")
+    .replace(/[èéêë]/gi,   (c) => c === c.toUpperCase() ? "E" : "e")
+    .replace(/[ìíîï]/gi,   (c) => c === c.toUpperCase() ? "I" : "i")
+    .replace(/[òóôõö]/gi,  (c) => c === c.toUpperCase() ? "O" : "o")
+    .replace(/[ùúûü]/gi,   (c) => c === c.toUpperCase() ? "U" : "u")
+    .replace(/[ýÿ]/gi,     (c) => c === c.toUpperCase() ? "Y" : "y")
+    .replace(/[ñ]/gi,      (c) => c === c.toUpperCase() ? "N" : "n")
+    .replace(/[ç]/gi,      (c) => c === c.toUpperCase() ? "C" : "c")
+    .replace(/[ß]/g, "ss")
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+    .replace(/[\u2013\u2014]/g, "-")
+    .replace(/[\u2022\u2023\u2219\u25E6\u2043]/g, "-")
+    .replace(/[^\x00-\x7E]/g, "");
+}
+
 function buildParkingTitle(
   name: string,
   postcode: string,
@@ -185,31 +214,49 @@ function buildParkingTitle(
   tags: string[],
   priceRange: string | null,
 ): string {
-  const area   = extractAreaMeta(address);
-  const loc    = area === "Southport" ? "Southport" : `${area}, Southport`;
-  const pc     = postcode || "";
-  const free   = isFree(tags, priceRange);
-  const prefix = free ? "Free Car Park" : "Car Park";
+  const cleanName = sanitizeMeta(name);
+  const area      = extractAreaMeta(address);
+  const loc       = area === "Southport" ? "Southport" : `${area}, Southport`;
+  const pc        = postcode || "";
+  const free      = isFree(tags, priceRange);
+  const prefix    = free ? "Free Car Park" : "Car Park";
 
-  if (isCoordinateName(name)) {
-    // Replace ugly coordinate name with area + postcode
+  // Coordinate-named listings — swap for a descriptive title
+  if (isCoordinateName(cleanName)) {
     return pc
-      ? `${prefix}, ${loc} — ${pc} | SouthportGuide`
-      : `${prefix}, ${loc} | SouthportGuide`;
+      ? `${prefix}, ${loc} — ${pc} | SouthportGuide.co.uk`
+      : `${prefix}, ${loc} | SouthportGuide.co.uk`;
   }
 
-  // Named car park — postcode is high-value keyword for local parking queries
+  // Generic area-only names (e.g. listing literally named "Southport") — prefix with Car Park
+  if (isGenericAreaName(cleanName)) {
+    return pc
+      ? `${prefix} — ${loc}, ${pc} | SouthportGuide.co.uk`
+      : `${prefix} — ${loc} | SouthportGuide.co.uk`;
+  }
+
+  // Named car park. Avoid "X — Parking in Southport" when name already contains area.
+  // If the name already mentions the location, drop the redundant "in ${loc}" part.
+  const nameContainsLoc = cleanName.toLowerCase().includes(area.toLowerCase()) ||
+                          cleanName.toLowerCase().includes("southport");
+
+  if (nameContainsLoc) {
+    // Name has location baked in — just add parking signal and postcode
+    const withPc  = pc ? `${cleanName} — ${pc} | SouthportGuide.co.uk` : `${cleanName} — Parking | SouthportGuide.co.uk`;
+    if (withPc.length <= 70) return withPc;
+    return `${cleanName} | SouthportGuide.co.uk`;
+  }
+
+  // Standard: Name — Parking in Location, Postcode
   const withPc  = pc
-    ? `${name} — Parking in ${loc}, ${pc} | SouthportGuide`
-    : `${name} — Parking in ${loc} | SouthportGuide`;
+    ? `${cleanName} — Parking in ${loc}, ${pc} | SouthportGuide.co.uk`
+    : `${cleanName} — Parking in ${loc} | SouthportGuide.co.uk`;
   if (withPc.length <= 70) return withPc;
 
-  // Slightly over budget — drop postcode
-  const shorter = `${name} — Parking, ${loc} | SouthportGuide`;
+  const shorter = `${cleanName} — Parking, ${loc} | SouthportGuide.co.uk`;
   if (shorter.length <= 70) return shorter;
 
-  // Last resort fallback
-  return `${name} — ${loc} Parking | SouthportGuide`;
+  return `${cleanName} — ${loc} Parking | SouthportGuide.co.uk`;
 }
 
 function buildParkingMetaDesc(
@@ -222,31 +269,40 @@ function buildParkingMetaDesc(
   rating: number | null,
   reviewCount: number | null,
 ): string {
-  const free   = isFree(tags, priceRange);
-  const paid   = isPaid(tags, priceRange);
-  const hasEv  = tags.includes("ev-charging");
-  const area   = extractAreaMeta(address);
+  const free     = isFree(tags, priceRange);
+  const paid     = isPaid(tags, priceRange);
+  const hasEv    = tags.includes("ev-charging");
+  const area     = extractAreaMeta(address);
+  const locLabel = area === "Southport" ? "Southport" : `${area}, Southport`;
 
-  const priceSignal = free ? "Free parking." : paid ? "Pay-and-display." : "Parking.";
+  // "Free parking" / "Pay-and-display" / "Car park" — avoid "Parking." which
+  // creates the "Parking. ... Parking in" double-up in the fallback.
+  const priceSignal = free ? "Free parking." : paid ? "Pay-and-display." : "Car park.";
   const pcPart      = postcode ? ` ${postcode}.` : "";
   const evPart      = hasEv ? " EV charging on site." : "";
   const ratingPart  = rating && reviewCount
     ? ` Rated ${rating.toFixed(1)}/5 (${reviewCount >= 1000 ? `${(reviewCount / 1000).toFixed(1)}k` : reviewCount} reviews).`
     : "";
-  const locLabel    = area === "Southport" ? "Southport" : `${area}, Southport`;
 
-  // Prefer the first sentence of the existing description if it's punchy enough
+  // Prefer the first sentence of the existing description if it's punchy enough.
+  // Sanitize to remove curly quotes / em-dashes that render as mojibake in SERPs.
   if (description) {
-    const first = description.split(/(?<=[.!?])\s+/)[0] ?? "";
+    const stripped = sanitizeMeta(description.replace(/\n+/g, " ").trim());
+    // Split only at real sentence boundaries (punctuation followed by uppercase)
+    const sentences = stripped.split(/(?<=[.!?]) +(?=[A-Z])/);
+    const first = sentences[0] ?? "";
     if (first.length >= 40 && first.length <= 130) {
       const suffix = postcode && !first.includes(postcode) ? ` ${postcode}.` : "";
-      const candidate = `${first}${suffix}${ratingPart}`.trim();
+      const evSuffix = hasEv && !first.toLowerCase().includes("ev") && !first.toLowerCase().includes("electric") ? evPart : "";
+      const candidate = `${first}${suffix}${evSuffix}${ratingPart}`.trim();
       return candidate.length <= 160 ? candidate : candidate.slice(0, 157) + "…";
     }
   }
 
-  // Synthetic fallback — lead with the most-searched signals
-  const base = `${priceSignal}${pcPart}${evPart}${ratingPart} Parking in ${locLabel} — get directions and see busy times on SouthportGuide.co.uk.`;
+  // Synthetic fallback — no "Parking in" repetition, leads with actionable signals.
+  const cleanName = sanitizeMeta(name);
+  const nameLabel = isGenericAreaName(cleanName) ? `Car park in ${locLabel}` : cleanName;
+  const base = `${priceSignal}${pcPart}${evPart}${ratingPart} ${nameLabel} — get directions and see busy times on SouthportGuide.co.uk.`;
   return base.length <= 160 ? base : base.slice(0, 157) + "…";
 }
 
@@ -268,11 +324,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
     if (!b) return { title: "Parking" };
 
-    const tags = (b.tags ?? []) as string[];
+    const tags      = (b.tags ?? []) as string[];
+    const cleanName = sanitizeMeta(b.name);
 
-    const title = buildParkingTitle(b.name, b.postcode, b.address, tags, b.priceRange);
+    const title = buildParkingTitle(cleanName, b.postcode, b.address, tags, b.priceRange);
     const desc  = buildParkingMetaDesc(
-      b.name, b.address, b.postcode,
+      cleanName, b.address, b.postcode,
       tags, b.priceRange,
       b.description, b.rating, b.reviewCount,
     );
@@ -289,7 +346,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         type: "website",
         siteName: "SouthportGuide.co.uk",
         locale: "en_GB",
-        ...(b.images?.[0] ? { images: [{ url: b.images[0], width: 1200, height: 630, alt: b.name }] } : {}),
+        ...(b.images?.[0] ? { images: [{ url: b.images[0], width: 1200, height: 630, alt: cleanName }] } : {}),
       },
       twitter: {
         card: "summary_large_image",
