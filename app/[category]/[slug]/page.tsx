@@ -17,6 +17,29 @@ function websiteHref(website: string): string {
   return website.startsWith("http") ? website : `https://${website}`;
 }
 
+// Normalise non-ASCII typography for safe SERP output.
+// Order: transliterate common Latin accented chars → normalise typographic punctuation → strip remainder.
+function sanitize(str: string): string {
+  return str
+    // Latin accented characters → ASCII equivalents
+    .replace(/[àáâãäå]/gi, (c) => c === c.toUpperCase() ? "A" : "a")
+    .replace(/[èéêë]/gi,   (c) => c === c.toUpperCase() ? "E" : "e")
+    .replace(/[ìíîï]/gi,   (c) => c === c.toUpperCase() ? "I" : "i")
+    .replace(/[òóôõö]/gi,  (c) => c === c.toUpperCase() ? "O" : "o")
+    .replace(/[ùúûü]/gi,   (c) => c === c.toUpperCase() ? "U" : "u")
+    .replace(/[ýÿ]/gi,     (c) => c === c.toUpperCase() ? "Y" : "y")
+    .replace(/[ñ]/gi,      (c) => c === c.toUpperCase() ? "N" : "n")
+    .replace(/[ç]/gi,      (c) => c === c.toUpperCase() ? "C" : "c")
+    .replace(/[ß]/g, "ss")
+    // Typographic punctuation
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+    .replace(/[\u2013\u2014]/g, "-")
+    .replace(/[\u2022\u2023\u2219\u25E6\u2043]/g, "-")
+    // Strip any remaining high-byte characters
+    .replace(/[^\x00-\x7E]/g, "");
+}
+
 // Map category slugs to Schema.org @type
 // TouristAttraction and Park are not in Google's supported types for Review Snippets.
 // Using arrays so the entity is also a LocalBusiness (which IS supported), preserving
@@ -64,18 +87,33 @@ const SHORT_CAT: Record<string, string> = {
   "beaches-parks":  "Park",
   golf:             "Golf",
   shopping:         "Shop",
-  wellness:         "Spa & Wellness",
+  wellness:         "Wellness",
   activities:       "Activity",
   transport:        "Transport",
   parking:          "Car Park",
 };
 
+// Budget: local part ≤47 chars so full <title> stays ≤70 with " | SouthportGuide.co.uk" (23 chars).
+// Three-tier fallback: Name — Cat, Location → Name — Cat → Name — Location → truncated Name.
+// For beaches-parks, detect "beach" in the name to label it correctly.
 function buildTitle(name: string, catSlug: string, area: string): string {
-  const cat = SHORT_CAT[catSlug] ?? catSlug;
-  const location = area === "Southport" ? "Southport" : `${area}, Southport`;
-  // Target ≤ 60 chars total (template adds "| SouthportGuide.co.uk" = 22 chars → local part ≤ 38)
-  const full = `${name} — ${cat}, ${location}`;
-  return full.length <= 60 ? full : `${name} — ${location}`;
+  const cleanName = sanitize(name);
+  const isBeach   = cleanName.toLowerCase().includes("beach");
+  const catLabel  = catSlug === "beaches-parks"
+    ? (isBeach ? "Beach" : "Park")
+    : (SHORT_CAT[catSlug] ?? catSlug);
+  const location  = area === "Southport" ? "Southport" : `${area}, Southport`;
+
+  const withBoth = `${cleanName} — ${catLabel}, ${location}`;
+  if (withBoth.length <= 47) return withBoth;
+
+  const catOnly = `${cleanName} — ${catLabel}`;
+  if (catOnly.length <= 47) return catOnly;
+
+  const locOnly = `${cleanName} — ${location}`;
+  if (locOnly.length <= 47) return locOnly;
+
+  return cleanName.length <= 44 ? cleanName : cleanName.slice(0, 44) + "…";
 }
 
 function buildMetaDescription(
@@ -83,14 +121,42 @@ function buildMetaDescription(
   description: string | null, shortDescription: string | null,
   rating: number | null, reviewCount: number | null
 ): string {
+  const cleanName = sanitize(name);
+  const locLabel  = area === "Southport" ? "Southport" : `${area}, Southport`;
+
   if (description) {
-    const stripped = description.replace(/\n/g, " ").trim();
-    return stripped.length > 155 ? stripped.slice(0, 152) + "…" : stripped;
+    const stripped = sanitize(description.replace(/\n+/g, " ").trim());
+    // Split on sentence boundaries only where punctuation is followed by a space and uppercase letter.
+    // This avoids false splits on decimals (4.6), abbreviations (U.S.), etc.
+    const sentences = stripped.split(/(?<=[.!?]) +(?=[A-Z])/);
+    let result = "";
+    for (const sentence of sentences) {
+      const candidate = result ? `${result} ${sentence}` : sentence;
+      if (candidate.length <= 155) { result = candidate; } else break;
+    }
+    // Fallback: slice at word boundary if no sentence fitted
+    if (!result) {
+      const cut = stripped.lastIndexOf(" ", 152);
+      result = (cut > 100 ? stripped.slice(0, cut) : stripped.slice(0, 152)) + "…";
+    }
+    // Inject a location signal if neither the area name nor "Southport" appear in the snippet.
+    if (!result.includes(area) && !result.includes("Southport")) {
+      const suffix = ` ${locLabel}.`;
+      if ((result + suffix).length <= 160) result += suffix;
+    }
+    return result.slice(0, 160);
   }
+
   if (shortDescription) {
-    return `${name} – ${shortDescription} ${rating ? `Rated ${rating}/5` : ""} ${area !== "Southport" ? `in ${area}, Southport` : "in Southport"}. Find address, opening hours & more on SouthportGuide.co.uk`.slice(0, 160);
+    const ratingPart = rating ? ` Rated ${rating}/5.` : "";
+    const locPart    = area !== "Southport" ? ` In ${area}, Southport.` : " In Southport.";
+    return `${cleanName} - ${sanitize(shortDescription)}${ratingPart}${locPart} Find address, opening hours & more on SouthportGuide.co.uk`.slice(0, 160);
   }
-  return `${name} – ${catName} in ${area !== "Southport" ? `${area}, ` : ""}Southport. ${rating && reviewCount ? `Rated ${rating.toFixed(1)}/5 by ${reviewCount.toLocaleString()} Google reviewers. ` : ""}Find opening hours, directions and contact details on SouthportGuide.co.uk`.slice(0, 160);
+
+  const ratingStr = rating && reviewCount
+    ? `Rated ${rating.toFixed(1)}/5 by ${reviewCount.toLocaleString()} reviewers. `
+    : "";
+  return `${cleanName} - ${catName} in ${locLabel}. ${ratingStr}Find opening hours, directions and contact details on SouthportGuide.co.uk`.slice(0, 160);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -108,10 +174,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
     if (!b) return { title: slug };
 
-    const area = extractArea(b.address, b.postcode);
-    const title = buildTitle(b.name, category, area);
-    const desc = buildMetaDescription(b.name, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
-    const imageUrl = b.images?.[0] || null;
+    const area      = extractArea(b.address, b.postcode);
+    const cleanName = sanitize(b.name);
+    const title     = buildTitle(cleanName, category, area);
+    const desc      = buildMetaDescription(cleanName, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
+    const imageUrl  = b.images?.[0] || null;
 
     const canonicalUrl = `https://www.southportguide.co.uk/${category}/${slug}`;
 
@@ -126,7 +193,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         type: "website",
         siteName: "SouthportGuide.co.uk",
         locale: "en_GB",
-        ...(imageUrl ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: b.name }] } : {}),
+        ...(imageUrl ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: cleanName }] } : {}),
       },
       twitter: {
         card: "summary_large_image",
