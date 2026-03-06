@@ -47,11 +47,6 @@ next-env.d.ts
 # Business data (generated locally — never commit)
 businesses.csv
 businesses-backup*.csv
-
-# Parking scraper output (contains API keys in URLs — never commit)
-parking-google.csv
-parking-osm.csv
-parking-google-progress.json
 hygiene-progress.json
 enrich-progress.json
 email-scrape-progress.json

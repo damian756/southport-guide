@@ -46,7 +46,7 @@ const FAQS = [
   },
   {
     q: "Is there EV charging in Southport?",
-    a: "There are EV charging points in several Southport car parks, including some on Marine Drive and in the town centre car parks. Provision is improving but coverage isn't universal — check Zap-Map before travelling if EV charging is essential for your visit.",
+    a: "Yes, but provision is patchy. Confirmed EV charging points exist at the NCP on London Street, the Morrisons on Meols Cop Road, and at several hotel car parks. Coverage is improving but it is not universal — check Zap-Map or our parking directory (filter by EV charging) before you travel if it is essential.",
   },
   {
     q: "Can I park free on the street in Southport?",
@@ -223,6 +223,54 @@ export default function ParkingSouthportGuidePage() {
           </p>
           <p className="text-gray-700 leading-relaxed">
             Weekday mornings in term time are the easiest time to park. Saturday mornings in summer are the hardest.
+          </p>
+        </section>
+
+        {/* EV Charging */}
+        <section className="mb-14">
+          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">EV Charging in Southport Car Parks</h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            EV provision in Southport is improving but still patchy. If charging is essential for your visit, plan ahead rather than assuming there will be a point available when you arrive.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Confirmed EV charging locations include:
+          </p>
+          <div className="overflow-x-auto rounded-2xl border border-gray-100 mb-6">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-[#1B2E4B] text-white">
+                  <th className="text-left px-5 py-3.5 font-semibold">Location</th>
+                  <th className="text-left px-5 py-3.5 font-semibold">Postcode</th>
+                  <th className="text-left px-5 py-3.5 font-semibold hidden md:table-cell">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 bg-white">
+                {[
+                  { name: "NCP London Street", postcode: "PR8 1QU", notes: "Multi-storey town centre. Most reliable for EV in the centre." },
+                  { name: "Morrisons, Meols Cop Road", postcode: "PR8 6AF", notes: "Supermarket car park. Free to use while shopping." },
+                  { name: "Southport Holiday Inn", postcode: "PR8 1RE", notes: "Hotel car park. Check availability if not a guest." },
+                  { name: "Pontins Southport", postcode: "PR8 3JS", notes: "Holiday park. Primarily for guests but publicly accessible chargers." },
+                ].map((row) => (
+                  <tr key={row.name} className="hover:bg-[#FAF8F5] transition-colors">
+                    <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">{row.name}</td>
+                    <td className="px-5 py-3.5 text-gray-600 font-mono text-xs">{row.postcode}</td>
+                    <td className="px-5 py-3.5 text-gray-500 text-xs hidden md:table-cell">{row.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 mb-4">
+            <p className="text-[#1B2E4B] font-medium leading-relaxed text-sm">
+              Coverage changes. Before travelling, check{" "}
+              <a href="https://www.zap-map.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] font-semibold hover:underline">Zap-Map</a>
+              {" "}for real-time charger availability or use the EV filter in our{" "}
+              <Link href="/parking" className="text-[#C9A84C] font-semibold hover:underline">parking directory</Link>
+              {" "}to see all confirmed EV locations.
+            </p>
+          </div>
+          <p className="text-gray-700 leading-relaxed text-sm">
+            The Marine Drive beach car park and most of the smaller town centre surface car parks do not currently have EV points. If you need a charge during a beach day, the NCP on London Street is your most reliable option and is a 15-minute walk from the seafront.
           </p>
         </section>
 

@@ -545,6 +545,16 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/categories/beaches-parks.webp",
     date: "9 Feb 2026",
   },
+  // Parking
+  {
+    slug: "southport-parking-directory-2026",
+    title: "We've Just Mapped 289 Car Parks Across Southport and the Sefton Coast",
+    excerpt:
+      "Every car park we could find within 12km of Southport town centre — official, unofficial, free, paid, and a few that surprised us. Here's what we found.",
+    categorySlug: "getting-around",
+    image: "/images/categories/parking.webp",
+    date: "5 Mar 2026",
+  },
   // Getting Around
   {
     slug: "parking-guide-southport",

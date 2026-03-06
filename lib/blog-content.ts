@@ -950,6 +950,58 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "cta", text: "Want to be a beta tester or have a question? Drop us a message and we'll come back to you the same day.", href: "/contact", label: "Contact us →" },
   ],
 
+  "southport-parking-directory-2026": [
+    { type: "p", text: "I have lived in Southport my whole life and I thought I knew roughly where to park. I was wrong. When we started building the parking directory for SouthportGuide, we ran a full scrape of every car park we could find within 12km of the town centre. The result is 289 listings. I will be honest: that number surprised me." },
+    { type: "p", text: "This is what we did, what we found, and why I think it is genuinely useful for visitors and locals alike." },
+    { type: "callout", emoji: "🅿️", text: "Browse the full directory: southportguide.co.uk/parking. Postcodes, directions, prices, busy times, and EV charging information for every listing." },
+
+    { type: "h2", text: "Why we built it" },
+    { type: "p", text: "The honest answer is that parking is one of the most-searched topics for any town and the existing information is terrible. The council website lists a handful of official car parks. Google Maps shows some but not all, and the information is often wrong or out of date. Nobody had put the whole picture in one place." },
+    { type: "p", text: "Every time someone asks where to park near Southport Beach, or where to find free parking near Lord Street, or whether there is anywhere to park for the Air Show, the answers are scattered across forums, outdated articles, and word of mouth. We decided to fix that properly." },
+    { type: "p", text: "We pulled data from OpenStreetMap, cross-referenced it with Google Maps, added manual entries for known informal spots, and wrote descriptions for every listing. Then we geocoded the whole lot so every car park has a postcode you can drop straight into your satnav." },
+
+    { type: "h2", text: "What the 289 includes" },
+    { type: "p", text: "The directory covers more than the obvious NCP multi-storeys and the Marine Drive beach car park. It includes:" },
+    { type: "ul", items: [
+      "All major paid car parks in the town centre and on the seafront",
+      "Free on-street areas that locals know about but visitors often miss",
+      "Private car parks with ticket machines at supermarkets, retail parks, and leisure venues",
+      "Informal spots that people commonly use for beach and pinewood access",
+      "Car parks across the wider area including Birkdale, Ainsdale, Churchtown, Formby, and Crossens",
+      "Disability bays and blue badge accessible parking",
+      "Locations with EV charging points",
+    ]},
+    { type: "p", text: "Some of the informal spots surprised me. There are areas near the pinewoods and Ainsdale beach that locals have been using for years that never appear in any official guide. We have included them with the relevant caveats." },
+
+    { type: "h2", text: "The things that stood out" },
+    { type: "p", text: "A few things came out of this that I did not expect." },
+    { type: "p", text: "First: how many genuinely free options exist outside the town centre. Most visitors head straight for the paid beach and town centre car parks, but there is a ring of free residential parking around the centre that is walkable to most destinations. It takes local knowledge to find it. The directory maps it properly for the first time." },
+    { type: "p", text: "Second: the EV situation is more patchy than I expected. Provision is improving, but if EV charging is essential for your visit, you need to plan ahead. We have flagged every listing that has confirmed EV points so you can filter for it." },
+    { type: "p", text: "Third: the busiest car parks fill much earlier than most people realise. Marine Drive on a summer Saturday is effectively full by 10am. If you arrive at midday expecting a space close to the beach, you will be disappointed. Several of the listings now include busy-time guidance so you can plan around it." },
+
+    { type: "h2", text: "The informal spots (and a word of warning)" },
+    { type: "p", text: "We have included known informal parking areas, including some that are technically on private land but have historically been tolerated for visitor use. These come with a caveat in their listing: informal means no guaranteed availability, no infrastructure, and no comeback if things change." },
+    { type: "p", text: "Use the postcode and the listing information as a starting point, not a guarantee. If a gate is locked or a field looks like it has been shut off, respect that and use the official alternatives. We update listings as things change, but informal arrangements can shift without notice." },
+
+    { type: "h2", text: "How the listings work" },
+    { type: "p", text: "Each car park listing has a postcode for satnav, a one-tap link to Google Maps directions, pricing information where we have it, busy-time guidance, and tags for features like EV charging, disabled bays, toilets nearby, and dogs welcome. Some have a full description. All have been geocoded so they appear on the map on the category page." },
+    { type: "p", text: "We will keep updating these. If you know of a car park we have missed, or if something in a listing is wrong, use the contact form or email us directly. We would rather fix it than leave bad information up." },
+
+    { type: "callout", emoji: "📍", text: "Full directory at southportguide.co.uk/parking. Use the area filter to find car parks near where you're going, or the map view to see everything at once." },
+
+    { type: "h2", text: "Free parking in Southport" },
+    { type: "p", text: "This is the question we get most often, so a quick answer here before the full guide goes up." },
+    { type: "p", text: "Cambridge Road in Churchtown is free and has decent capacity. On-street parking off Roe Lane and Scarisbrick Avenue is often free on weekdays. The streets north of Lord Street between the railway line and the main road have free bays that most visitors drive straight past. None of these are secret exactly, but they are not well signposted either." },
+    { type: "p", text: "A full free parking guide is now up on SouthportGuide, with a complete table of every free or low-cost option we found. Worth bookmarking if you visit regularly." },
+    { type: "cta", text: "Find every free or cheap parking option in Southport, with postcodes and walking times to the main destinations.", href: "/guides/free-parking-southport", label: "Free Parking in Southport guide" },
+
+    { type: "h2", text: "What is next" },
+    { type: "p", text: "We are working on adding user-contributed busy time data over time. At the moment the guidance is based on local knowledge and patterns. If we can gather enough real data from visitors checking in, we can make the busy-time sections much more accurate." },
+    { type: "p", text: "We are also adding more photography. Many of the car parks currently show a street view image. We will be replacing those with proper photos as we work through the list." },
+    { type: "p", text: "And for businesses near any of these car parks, there is a relevant commercial angle here too. If you run a restaurant, shop, or attraction near a major car park, you can add your listing to SouthportGuide and it will appear in the nearby places section on adjacent car park listings." },
+    { type: "cta", text: "Browse all 289 car parks across Southport and the Sefton Coast, with postcodes, directions, and busy-time guidance.", href: "/parking", label: "Browse the parking directory" },
+  ],
+
   "churchtown-botanic-gardens-crocuses": [
     { type: "p", text: "These photos were taken this morning. 2nd of March 2026. Walked through the Botanic Gardens on the way back from dropping the kids at school and the slope under the trees was covered in crocuses — purple and white, hundreds of them, pushing up through the dead leaves. It genuinely stopped me in my tracks. So: if you're in Southport this week, go." },
     { type: "image", src: "/images/blog/churchtown-botanic-crocuses-carpet.jpg", alt: "Carpet of purple and white crocuses on the hillside at Churchtown Botanic Gardens, trees behind, soft morning light", caption: "The slope under the trees at Churchtown Botanic Gardens — this morning, 2 March 2026." },
