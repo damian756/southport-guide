@@ -320,13 +320,19 @@ export default function SouthportBeachGuidePage() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {[
-                    { location: "Marine Drive bays", cost: "Free", distance: "On the seafront", notes: "Street parking along the Promenade — fills fast on summer weekends" },
-                    { location: "Esplanade car park", cost: "Pay & display", distance: "50m from beach", notes: "Pay-and-display, near Adventure Coast and Splash World" },
+                    { location: "Marine Drive bays", cost: "Free", distance: "On the seafront", notes: "Street parking along the Promenade — fills fast on summer weekends", href: "/parking/parking-southport-marine-drive-car-park" },
+                    { location: "Esplanade car park", cost: "Pay & display", distance: "50m from beach", notes: "Pay-and-display, near Adventure Coast and Splash World", href: "/parking/parking-esplanade-parking" },
                     { location: "Ocean Plaza", cost: "Free (shoppers)", distance: "5 min walk", notes: "Free with retail — Asda, cinema, and other stores nearby" },
-                    { location: "Town centre NCP", cost: "Pay & display", distance: "10–12 min walk", notes: "Multiple town centre car parks available, well-signed" },
+                    { location: "Town centre NCP", cost: "Pay & display", distance: "10–12 min walk", notes: "Multiple town centre car parks available, well-signed", href: "/parking/parking-ncp-southport-london-street" },
                   ].map((row) => (
                     <tr key={row.location} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">{row.location}</td>
+                      <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">
+                        {"href" in row && row.href ? (
+                          <Link href={row.href} className="hover:text-[#C9A84C] underline underline-offset-2 decoration-[#C9A84C]/40 transition-colors">
+                            {row.location}
+                          </Link>
+                        ) : row.location}
+                      </td>
                       <td className="px-5 py-3.5 text-gray-600">{row.cost}</td>
                       <td className="px-5 py-3.5 text-gray-600">{row.distance}</td>
                       <td className="px-5 py-3.5 text-gray-500 text-xs">{row.notes}</td>

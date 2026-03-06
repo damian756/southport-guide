@@ -238,10 +238,17 @@ export default function LordStreetGuidePage() {
                   { name: "Tulketh Street", code: "PR8 1DP", walk: "2 min" },
                   { name: "Eastbank Street", code: "PR8 1DG", walk: "3 min" },
                   { name: "Market Street", code: "PR8 1HH", walk: "4 min" },
-                  { name: "Promenade (Marine Drive)", code: "PR8 1RQ", walk: "10 min" },
+                  { name: "NCP London Street", code: "PR8 1QU", walk: "3 min", href: "/parking/parking-ncp-southport-london-street" },
+                  { name: "Marine Drive (Beach)", code: "PR8 1RQ", walk: "10 min", href: "/parking/parking-southport-marine-drive-car-park" },
                 ].map((row) => (
                   <tr key={row.name} className="hover:bg-[#FAF8F5] transition-colors">
-                    <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">{row.name}</td>
+                    <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">
+                      {"href" in row && row.href ? (
+                        <Link href={row.href} className="hover:text-[#C9A84C] underline underline-offset-2 decoration-[#C9A84C]/40 transition-colors">
+                          {row.name}
+                        </Link>
+                      ) : row.name}
+                    </td>
                     <td className="px-5 py-3.5 text-gray-600 font-mono text-xs">{row.code}</td>
                     <td className="px-5 py-3.5 text-gray-600">{row.walk}</td>
                   </tr>
@@ -250,7 +257,8 @@ export default function LordStreetGuidePage() {
             </table>
           </div>
           <p className="text-gray-500 text-sm mt-3">
-            Free on-street parking is usually available on residential side streets north of Lord Street on weekdays. Summer Saturdays are busier — arrive before 11am.
+            Free on-street parking is usually available on residential side streets north of Lord Street on weekdays. Summer Saturdays are busier — arrive before 11am.{" "}
+            <Link href="/parking" className="text-[#C9A84C] font-semibold hover:underline">Browse all Southport car parks →</Link>
           </p>
         </section>
 

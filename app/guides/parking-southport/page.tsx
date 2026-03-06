@@ -55,11 +55,12 @@ const FAQS = [
 ];
 
 const CAR_PARKS = [
-  { name: "Marine Drive (Beach)", postcode: "PR8 1RQ", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays — arrive early." },
+  { name: "Marine Drive (Beach)", postcode: "PR8 1RQ", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays — arrive early.", href: "/parking/parking-southport-marine-drive-car-park" },
+  { name: "Esplanade", postcode: "PR8 1RX", best: "Beach, seafront", notes: "Pay-and-display on the Esplanade, steps from the sand.", href: "/parking/parking-esplanade-parking" },
+  { name: "NCP London Street", postcode: "PR8 1QU", best: "Town centre, Lord Street", notes: "Multi-storey. Covered — good in wet weather. Central for Lord Street.", href: "/parking/parking-ncp-southport-london-street" },
   { name: "Tulketh Street", postcode: "PR8 1DP", best: "Lord Street (north)", notes: "Convenient for The Atkinson and northern Lord Street." },
   { name: "Eastbank Street", postcode: "PR8 1DG", best: "Lord Street (central)", notes: "Multi-storey. Central for Lord Street shopping." },
   { name: "Market Street", postcode: "PR8 1HH", best: "Town centre, Market", notes: "Good for the market hall and southern Lord Street." },
-  { name: "Promenade", postcode: "PR8 1RQ", best: "Seafront, Pleasure Beach", notes: "Handy for the Pleasure Beach end of the seafront." },
   { name: "Cambridge Road", postcode: "PR9 9NB", best: "Hesketh Park, Churchtown", notes: "Free. Good base for Churchtown and Hesketh Park." },
 ];
 
@@ -168,7 +169,13 @@ export default function ParkingSouthportGuidePage() {
               <tbody className="divide-y divide-gray-100 bg-white">
                 {CAR_PARKS.map((row) => (
                   <tr key={row.name} className="hover:bg-[#FAF8F5] transition-colors">
-                    <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">{row.name}</td>
+                    <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">
+                      {"href" in row && row.href ? (
+                        <Link href={row.href} className="hover:text-[#C9A84C] underline underline-offset-2 decoration-[#C9A84C]/40 transition-colors">
+                          {row.name}
+                        </Link>
+                      ) : row.name}
+                    </td>
                     <td className="px-5 py-3.5 text-gray-600 font-mono text-xs">{row.postcode}</td>
                     <td className="px-5 py-3.5 text-gray-600">{row.best}</td>
                     <td className="px-5 py-3.5 text-gray-500 text-xs hidden md:table-cell">{row.notes}</td>
@@ -177,6 +184,12 @@ export default function ParkingSouthportGuidePage() {
               </tbody>
             </table>
           </div>
+          <p className="mt-3 text-sm text-gray-500">
+            See the full directory of{" "}
+            <Link href="/parking" className="text-[#C9A84C] font-semibold hover:underline">
+              289 car parks across Southport and the Sefton Coast →
+            </Link>
+          </p>
         </section>
 
         {/* Beach parking */}
