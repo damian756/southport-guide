@@ -22,6 +22,7 @@ const CATEGORIES = [
   { slug: "wellness",       label: "Wellness",        icon: Sparkles,    color: "text-violet-500" },
   { slug: "activities",     label: "Activities",      icon: Dumbbell,    color: "text-orange-500" },
   { slug: "transport",      label: "Transport",       icon: Car,         color: "text-slate-500" },
+  { slug: "parking",        label: "Parking",         icon: Car,         color: "text-blue-700" },
 ];
 
 const FEATURED_COLLECTIONS = [

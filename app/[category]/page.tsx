@@ -27,12 +27,13 @@ const THEMES: Record<string, { gradient: string; accent: string; emoji: string; 
   wellness:         { gradient: "from-[#4A2060] to-[#7B3FAA]", accent: "#6B4C8B", emoji: "💆", tagline: "Spas, salons and wellness in Southport", heroPos: "center" },
   activities:       { gradient: "from-[#0D6E6E] to-[#0F9B8E]", accent: "#0D6E6E", emoji: "🏄", tagline: "Sport, leisure and outdoor activities", heroPos: "center" },
   transport:        { gradient: "from-[#2A3F5C] to-[#3A5070]", accent: "#3A4F6B", emoji: "🚌", tagline: "Getting around Southport", heroPos: "center" },
+  parking:          { gradient: "from-[#1C3148] to-[#2E4A6A]", accent: "#2E4A6A", emoji: "🅿️", tagline: "Car parks and parking across Southport and the Sefton Coast", heroPos: "center" },
 };
 
 const CAT_ORDER = [
   "restaurants", "hotels", "bars-nightlife", "cafes",
   "attractions", "golf", "shopping", "beaches-parks",
-  "wellness", "activities", "transport",
+  "wellness", "activities", "transport", "parking",
 ];
 
 const CATEGORY_CONTENT: Record<string, string[]> = {
@@ -89,6 +90,11 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Southport has a direct train link to Liverpool — about 45 minutes on the Merseyrail Northern line. It runs frequently and is the easiest way in if you're coming from Liverpool or Formby.",
     "By road, the A565 is the main route from Liverpool and Formby. Parking in the town centre is mostly paid — there are car parks off Lord Street and near the seafront. The beach itself has paid parking with reasonable rates for a full day.",
     "Getting around within Southport is straightforward on foot if you're based on Lord Street — the beach, Pleasureland and most of the town centre are walkable. For Churchtown and the golf courses, you'll want a car.",
+  ],
+  "parking": [
+    "Parking in Southport is mostly paid and can get busy in summer — especially on the seafront and near Pleasureland. The Esplanade car park (Sefton Council) on the seafront is the main one. The NCP on London Street is useful for the town centre. There's also on-street parking off Lord Street if you're lucky with timing.",
+    "For the beach, the Marine Drive car parks are the most practical. They fill up early on hot Saturdays — arrive before 10am if you want a spot close to the sand. The Southport Marine Drive Car Park has pay-and-display all day.",
+    "Over in Formby, the National Trust car parks at Victoria Road (L37 1YH) and Lifeboat Road (L37 2EB) are the main options for the pinewoods and beach. Book via the NT app — the signal in the car park is patchy and there's no paper ticket option. Formby Station Park & Ride on Duke Street is a good alternative if the NT car parks are full.",
   ],
 };
 

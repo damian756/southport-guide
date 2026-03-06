@@ -10,6 +10,7 @@ export const CATEGORIES = [
   { slug: "activities", name: "Activities", description: "Tours, rentals and activities" },
   { slug: "wellness", name: "Wellness", description: "Spas and salons in Southport" },
   { slug: "transport", name: "Transport", description: "Taxis, parking and bike hire" },
+  { slug: "parking", name: "Parking", description: "Car parks and parking in Southport" },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];

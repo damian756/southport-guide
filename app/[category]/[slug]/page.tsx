@@ -33,6 +33,7 @@ const SCHEMA_TYPES: Record<string, string | string[]> = {
   "beaches-parks":  ["LocalBusiness", "Park"],
   activities:       "LocalBusiness",
   transport:        "LocalBusiness",
+  parking:          ["LocalBusiness", "ParkingFacility"],
 };
 
 // Categories that might have food hygiene ratings
@@ -66,6 +67,7 @@ const SHORT_CAT: Record<string, string> = {
   wellness:         "Spa & Wellness",
   activities:       "Activity",
   transport:        "Transport",
+  parking:          "Car Park",
 };
 
 function buildTitle(name: string, catSlug: string, area: string): string {
@@ -520,6 +522,23 @@ export default async function BusinessPage({ params }: Props) {
                         <p className="text-white/70 text-sm leading-relaxed mb-4">Southport is links golf country. See our full Open 2026 guide for tickets, accommodation, transport, and everything else you need.</p>
                         <a href="/the-open-2026" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
                           Open 2026 hub →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {category === "parking" && (
+                <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
+                  <div className="px-6 py-5">
+                    <div className="flex items-start gap-4">
+                      <span className="text-3xl flex-none">⛳</span>
+                      <div>
+                        <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
+                        <p className="text-white font-semibold mb-1">Parking near Royal Birkdale</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Attending The Open at Royal Birkdale in July 2026? Parking fills up fast on tournament days. Our guide covers the official park &amp; ride, nearby car parks, and practical transport alternatives.</p>
+                        <a href="/the-open-2026/getting-there" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+                          Getting to The Open →
                         </a>
                       </div>
                     </div>
