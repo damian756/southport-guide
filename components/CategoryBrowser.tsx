@@ -164,8 +164,8 @@ export default function CategoryBrowser({
         )}
       </div>
 
-      {/* ── Area filter ────────────────────────────────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3 mb-4">
+      {/* ── Area filter — hidden on desktop (sidebar handles it) ──────────── */}
+      <div className="lg:hidden bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3 mb-4">
         <div className="flex items-center gap-2 flex-wrap">
           <span className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wide shrink-0 mr-1">
             <MapPin className="w-3 h-3" /> Area

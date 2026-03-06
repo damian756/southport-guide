@@ -258,11 +258,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             style={{ objectPosition: theme.heroPos }}
             priority
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-40`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-50`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none" />
         </div>
 
-        <div className="relative container mx-auto px-4 max-w-6xl py-12 md:py-16">
+        <div className="relative container mx-auto px-4 max-w-7xl py-14 md:py-20 lg:py-28">
           <nav className="flex items-center gap-1.5 text-white/50 text-sm mb-6">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -272,15 +272,15 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           <div className="flex items-end justify-between gap-6">
             <div>
               <div className="text-5xl mb-4 drop-shadow-md">{theme.emoji}</div>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-                {cat.name}
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+                <strong>{cat.name}</strong>
                 <span className="text-white/50 font-normal"> in Southport</span>
               </h1>
-              <p className="text-white/90 text-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">{theme.tagline}</p>
+              <p className="text-white/80 text-lg lg:text-xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)] max-w-xl">{theme.tagline}</p>
             </div>
-            <div className="hidden md:block text-right">
-              <div className="font-display text-5xl font-bold text-white/20">{filteredBusinesses.length}</div>
-              <div className="text-white/40 text-sm uppercase tracking-widest">listings</div>
+            <div className="hidden md:flex flex-col items-end gap-1 flex-shrink-0">
+              <div className="font-display text-6xl font-bold text-white/20 leading-none">{filteredBusinesses.length}</div>
+              <div className="text-white/35 text-xs uppercase tracking-widest">listings</div>
             </div>
           </div>
         </div>
@@ -292,11 +292,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 max-w-6xl py-6">
-
-        {/* ── Category strip ──────────────────────────────────────────────── */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3 mb-5">
-          <div className="flex flex-wrap gap-2 justify-center">
+      {/* ── Mobile category strip (hidden on desktop) ─────────────────────── */}
+      <div className="lg:hidden container mx-auto px-4 max-w-7xl pt-4">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-3 py-2.5 mb-4 overflow-x-auto">
+          <div className="flex gap-2 min-w-max">
             {CAT_ORDER.map((slug) => {
               const t = THEMES[slug];
               const c = getCategoryBySlug(slug);
@@ -306,10 +305,8 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 <Link
                   key={slug}
                   href={`/${slug}`}
-                  className={`flex items-center gap-1.5 whitespace-nowrap px-3.5 py-1.5 rounded-full text-sm font-semibold transition-all border ${
-                    isActive
-                      ? "text-white border-transparent shadow-sm"
-                      : "text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-800 hover:bg-gray-50"
+                  className={`flex items-center gap-1.5 whitespace-nowrap px-3.5 py-1.5 rounded-full text-sm font-semibold transition-all border flex-shrink-0 ${
+                    isActive ? "text-white border-transparent shadow-sm" : "text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-800 hover:bg-gray-50"
                   }`}
                   style={isActive ? { backgroundColor: theme.accent, borderColor: theme.accent } : {}}
                 >
@@ -320,48 +317,132 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             })}
           </div>
         </div>
-
-        {/* ── Editorial intro ─────────────────────────────────────────────── */}
+        {/* Mobile editorial */}
         {CATEGORY_CONTENT[category] && (
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-6 py-5 mb-5">
-            <div className="max-w-3xl space-y-3">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 mb-4">
+            <div className="space-y-2.5">
               {CATEGORY_CONTENT[category].map((para, i) => (
-                <p key={i} className="text-gray-600 text-[15px] leading-relaxed">{para}</p>
+                <p key={i} className="text-gray-600 text-[14px] leading-relaxed">{para}</p>
               ))}
             </div>
           </div>
         )}
+      </div>
 
-        {/* ── CategoryBrowser: search + area + sort + list/map ────────────── */}
-        <CategoryBrowser
-          businesses={filteredBusinesses}
-          mapPins={mapPins}
-          accentColor={theme.accent}
-          themeGradient={theme.gradient}
-          emoji={theme.emoji}
-          category={category}
-          isFoodCat={isFoodCat}
-          activeArea={area}
-          activeSort={activeSort}
-          sortOptions={sortOptions}
-          areas={AREAS.map(({ key, label }) => ({ key, label }))}
-          currentSort={sort}
-          currentArea={area}
-          boostedBusinessIds={boostedIds}
-        />
+      {/* ── Main layout ───────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 max-w-7xl py-4 lg:py-6">
+        <div className="flex gap-6 items-start">
 
-        {/* ── Bottom CTA ──────────────────────────────────────────────────── */}
-        <div className="mt-14 rounded-2xl overflow-hidden">
-          <div className={`bg-gradient-to-br ${theme.gradient} p-8 md:p-10 text-center`}>
-            <div className="text-4xl mb-3">{theme.emoji}</div>
-            <h3 className="font-display text-2xl font-bold text-white mb-2">Own a business in this category?</h3>
-            <p className="text-white/70 text-sm mb-6 max-w-sm mx-auto">
-              List for free and get discovered by thousands of visitors planning their Southport trip.
-            </p>
-            <Link href="/claim-listing" className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-white px-7 py-3 rounded-full font-bold text-sm transition-all hover:shadow-lg">
-              Add Your Business →
-            </Link>
+          {/* ── Desktop sidebar ───────────────────────────────────────────── */}
+          <aside className="hidden lg:block w-60 xl:w-64 flex-shrink-0">
+            <div className="sticky top-20 space-y-3">
+
+              {/* Category nav */}
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-3">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2 mb-2">Browse</p>
+                <nav className="space-y-0.5">
+                  {CAT_ORDER.map((slug) => {
+                    const t = THEMES[slug];
+                    const c = getCategoryBySlug(slug);
+                    if (!t || !c) return null;
+                    const isActive = slug === category;
+                    return (
+                      <Link
+                        key={slug}
+                        href={`/${slug}`}
+                        className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm transition-all font-medium ${
+                          isActive ? "text-white shadow-sm" : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                        }`}
+                        style={isActive ? { backgroundColor: theme.accent } : {}}
+                      >
+                        <span className="text-base leading-none w-5 text-center flex-shrink-0">{t.emoji}</span>
+                        {c.name}
+                      </Link>
+                    );
+                  })}
+                </nav>
+              </div>
+
+              {/* Area filter */}
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                  <ChevronRight className="w-3 h-3 -rotate-90 opacity-50" /> Area
+                </p>
+                <div className="space-y-1">
+                  <Link
+                    href={`/${category}${sort ? `?sort=${sort}` : ""}`}
+                    className={`flex items-center justify-between w-full px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                      !area ? "text-white" : "text-gray-600 hover:bg-gray-50"
+                    }`}
+                    style={!area ? { backgroundColor: theme.accent } : {}}
+                  >
+                    All areas
+                    {!area && <span className="text-white/70 text-xs">{filteredBusinesses.length}</span>}
+                  </Link>
+                  {AREAS.map(({ key, label }) => {
+                    const count = businesses.filter((b) => matchesArea(b.address ?? "", b.postcode ?? "", key)).length;
+                    return (
+                      <Link
+                        key={key}
+                        href={`/${category}?area=${key}${sort ? `&sort=${sort}` : ""}`}
+                        className={`flex items-center justify-between w-full px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                          area === key ? "text-white" : "text-gray-600 hover:bg-gray-50"
+                        }`}
+                        style={area === key ? { backgroundColor: theme.accent } : {}}
+                      >
+                        {label}
+                        <span className={`text-xs ${area === key ? "text-white/70" : "text-gray-400"}`}>{count}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Editorial snippet */}
+              {CATEGORY_CONTENT[category] && (
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+                  <p className="text-[13px] text-gray-500 leading-relaxed">
+                    {CATEGORY_CONTENT[category][0]}
+                  </p>
+                </div>
+              )}
+            </div>
+          </aside>
+
+          {/* ── Main content ──────────────────────────────────────────────── */}
+          <div className="flex-1 min-w-0">
+            <CategoryBrowser
+              businesses={filteredBusinesses}
+              mapPins={mapPins}
+              accentColor={theme.accent}
+              themeGradient={theme.gradient}
+              emoji={theme.emoji}
+              category={category}
+              isFoodCat={isFoodCat}
+              activeArea={area}
+              activeSort={activeSort}
+              sortOptions={sortOptions}
+              areas={AREAS.map(({ key, label }) => ({ key, label }))}
+              currentSort={sort}
+              currentArea={area}
+              boostedBusinessIds={boostedIds}
+            />
+
+            {/* ── Bottom CTA ──────────────────────────────────────────────── */}
+            <div className="mt-10 rounded-2xl overflow-hidden">
+              <div className={`bg-gradient-to-br ${theme.gradient} p-8 md:p-10 text-center`}>
+                <div className="text-4xl mb-3">{theme.emoji}</div>
+                <h3 className="font-display text-2xl font-bold text-white mb-2">Own a business in this category?</h3>
+                <p className="text-white/70 text-sm mb-6 max-w-sm mx-auto">
+                  List for free and get discovered by thousands of visitors planning their Southport trip.
+                </p>
+                <Link href="/claim-listing" className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-white px-7 py-3 rounded-full font-bold text-sm transition-all hover:shadow-lg">
+                  Add Your Business →
+                </Link>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
