@@ -52,10 +52,15 @@ async function fetchRelatedListings(guide: Guide): Promise<BusinessCard[]> {
 
     if (paid.length >= 3) return paid as BusinessCard[];
 
-    // Not enough paid listings — top up with best-rated standard listings
+    // Not enough paid listings — top up with best-rated free/standard listings
     const paidIds = paid.map((b) => b.id);
     const standard = await prisma.business.findMany({
-      where: { ...whereCondition, listingTier: "standard", id: { notIn: paidIds } },
+      where: {
+        ...whereCondition,
+        listingTier: { notIn: ["featured", "premium"] },
+        id: { notIn: paidIds },
+        rating: { not: null },
+      },
       select: {
         id: true, slug: true, name: true, shortDescription: true,
         category: { select: { slug: true, name: true } },
