@@ -20,7 +20,7 @@ const THEMES: Record<string, { gradient: string; accent: string; emoji: string; 
   hotels:           { gradient: "from-[#1B2E4B] to-[#2A4A73]", accent: "#1B2E4B", emoji: "🏨", tagline: "Where to stay in Southport", heroPos: "center" },
   "bars-nightlife": { gradient: "from-[#3D1A5C] to-[#6B3AA0]", accent: "#5B2D8A", emoji: "🍺", tagline: "Pubs, bars and nightlife in Southport", heroPos: "center 5%" },
   cafes:            { gradient: "from-[#6B3A1F] to-[#A06040]", accent: "#8B5E3C", emoji: "☕", tagline: "Great coffee, cafes and tea rooms", heroPos: "center 35%" },
-  attractions:      { gradient: "from-[#1A5C5B] to-[#2E8B7A]", accent: "#2E7D6E", emoji: "🎡", tagline: "Things to see and do in Southport", heroPos: "center 20%" },
+  attractions:      { gradient: "from-[#1A5C5B] to-[#2E8B7A]", accent: "#2E7D6E", emoji: "🎡", tagline: "Southport's attractions, venues and visitor experiences", heroPos: "center 20%" },
   "beaches-parks":  { gradient: "from-[#1A5C7A] to-[#1E8AB0]", accent: "#1A6B8A", emoji: "🏖️", tagline: "Beautiful beaches and open spaces", heroPos: "center 15%" },
   golf:             { gradient: "from-[#1A4020] to-[#2E6830]", accent: "#2C5F2E", emoji: "⛳", tagline: "World-class golf courses near Southport", heroPos: "center 20%" },
   shopping:         { gradient: "from-[#8B2847] to-[#C45C6A]", accent: "#C45C6A", emoji: "🛍️", tagline: "Shops, boutiques and markets", heroPos: "center" },
@@ -59,8 +59,8 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
   ],
   "attractions": [
     "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier is one of the longest in England — worth a walk, especially if the weather's decent.",
-    "Pleasureland is the obvious family draw — fairground rides, open seasonally. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
-    "The Atkinson on Lord Street is the arts centre and local museum — free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
+    "Adventure Coast Southport (formerly Pleasureland) is the obvious family draw — fairground rides, free entry with pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
+    "The Atkinson on Lord Street is the arts centre and local museum — free entry, good exhibitions, and a decent café. Worth an hour if the weather turns. For a full overview of everything Southport has to offer, see our things to do in Southport guide.",
   ],
   "beaches-parks": [
     "Southport Beach is broad, sandy, and free — you can drive onto part of it, which is very useful if you've got kids and a lot of kit. The sea goes out a long way at low tide; it's not always swimmable, but as a beach for walking and messing about on, it's brilliant.",
@@ -127,6 +127,8 @@ const BASE_URL = "https://www.southportguide.co.uk";
 // Per-category meta description overrides — more specific than the generic template
 const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
   parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days — all on SouthportGuide.",
+  attractions: "Browse Southport's attractions — The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
+  activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

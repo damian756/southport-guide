@@ -433,6 +433,53 @@ export default async function Home() {
       })()}
 
       {/* ══════════════════════════════════════════════════════
+          SOUTHPORT BEACH FEATURE STRIP
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-12 bg-[#1A5C7A]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1 text-white">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">One of England&apos;s widest</p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-3">
+                <Link href="/guides/southport-beach" className="hover:text-[#C9A84C] transition-colors">
+                  Southport Beach
+                </Link>
+              </h2>
+              <p className="text-white/70 leading-relaxed mb-5 max-w-lg">
+                Postcode PR8 1RX. Free entry. Dogs welcome year-round. At low tide the sea retreats over a kilometre
+                — it&apos;s a coastal landscape like nothing else in the North West.
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm mb-5">
+                <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Free to visit</span>
+                <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Dogs welcome</span>
+                <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Stunning sunsets</span>
+                <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">22 miles of coast</span>
+              </div>
+              <Link
+                href="/guides/southport-beach"
+                className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm transition-all"
+              >
+                Southport Beach Guide <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="flex-none md:w-64 lg:w-80 grid grid-cols-2 gap-2">
+              {[
+                { label: "Postcode", value: "PR8 1RX" },
+                { label: "Parking", value: "Free" },
+                { label: "Entry", value: "Free" },
+                { label: "Dogs", value: "Welcome" },
+              ].map(({ label, value }) => (
+                <div key={label} className="bg-white/10 rounded-xl p-4 text-center">
+                  <p className="text-white/50 text-[10px] uppercase tracking-wider font-semibold">{label}</p>
+                  <p className="text-white font-bold text-sm mt-0.5">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
           BIG EVENTS
       ══════════════════════════════════════════════════════ */}
       <section className="py-16 bg-[#FAF8F5]">

@@ -314,6 +314,25 @@ export const GUIDES: Guide[] = [
     },
   },
   {
+    slug: "southport-eateries",
+    title: "Southport Eateries",
+    description: "Where to eat in Southport — every option from a quick lunch to a proper occasion, by area and cuisine.",
+    excerpt:
+      "Southport eateries guide — where to eat by area, by occasion, and by budget. Lord Street, Birkdale Village, Churchtown, and the seafront. Named places, honest opinions.",
+    category: "food-drink",
+    heroImage: "/images/categories/restaurants.webp",
+    seoPriority: 0.90,
+    datePublished: "2026-03-05",
+    dateUpdated: "2026-03-05",
+    tags: ["restaurants", "food", "dining", "eateries"],
+    status: "published",
+    metaTitle: "Southport Eateries | Where to Eat in Southport | Complete Local Guide",
+    metaDescription: "The complete guide to Southport eateries — where to eat by area, occasion, and budget. Lord Street, Birkdale Village, Churchtown, and the seafront. Written by a local.",
+    listingFilter: {
+      categorySlugs: ["restaurants", "cafes", "bars-nightlife"],
+    },
+  },
+  {
     slug: "best-cafes-southport",
     title: "Best Cafés in Southport",
     description: "Independent coffee shops and proper tea rooms — where locals actually go.",

@@ -211,6 +211,40 @@ export default function SouthportBeachGuidePage() {
         </div>
       </div>
 
+      {/* ── Weather Widget ── */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4 max-w-7xl py-8">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Planning a visit?</p>
+              <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-1">Southport Weather</h2>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Southport is on the exposed Sefton Coast — it can feel colder and windier than the inland forecast suggests.
+                A 16°C sunny day in a stiff westerly off the Irish Sea is a jumper day. Check before you leave.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-500">
+                <span className="bg-gray-50 border border-gray-200 rounded-full px-3 py-1">Best months: May, June, September</span>
+                <span className="bg-gray-50 border border-gray-200 rounded-full px-3 py-1">Wettest: October to January</span>
+                <span className="bg-gray-50 border border-gray-200 rounded-full px-3 py-1">Windiest: October to March</span>
+              </div>
+            </div>
+            <div className="flex-none">
+              <iframe
+                src="https://wttr.in/Southport,England?format=4&lang=en"
+                title="Current weather in Southport"
+                className="rounded-xl border border-gray-100 bg-gray-50"
+                style={{ width: "340px", height: "80px", border: "none" }}
+                loading="lazy"
+              />
+              <p className="text-[10px] text-gray-400 mt-1 text-right">
+                Live forecast via{" "}
+                <a href="https://wttr.in" target="_blank" rel="noopener noreferrer" className="hover:underline">wttr.in</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-16 max-w-7xl space-y-20">
 
         {/* ── Terry's Take ── */}

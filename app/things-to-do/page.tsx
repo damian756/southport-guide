@@ -75,15 +75,15 @@ const BEACHES = [
     description:
       "Southport Beach is enormous — one of the widest in England. At low tide the sea can be a kilometre away, making it a landscape to walk through rather than a swim spot (though the tide does come in). The best time to visit is at sunset, when the light across the flats is genuinely spectacular. The beach sits alongside Marine Lake, Adventure Coast, and King's Gardens — you can easily make a full day of it without touching the sea at all.",
     practical: [
-      "Access via Marine Drive / the Promenade — free parking along Marine Drive.",
+      "Access via Marine Drive / the Promenade — postcode PR8 1RX.",
+      "Free parking along Marine Drive bays.",
       "Best at low to mid-tide for walking; check tide times before you go.",
-      "Adjacent to Marine Lake, King's Gardens, and Adventure Coast Southport.",
       "Dog-friendly year-round on most sections.",
       "10-minute walk from Southport town centre and train station.",
     ],
     gradient: "from-[#1A5C7A] to-[#1E8AB0]",
     emoji: "🏖️",
-    href: "/beaches-parks",
+    href: "/guides/southport-beach",
   },
   {
     name: "Ainsdale Beach",
@@ -259,7 +259,7 @@ const CULTURE = [
     tag: "England's second longest · 1,108 metres",
     detail:
       "The second longest pier in England (Southend takes the title, but requires a train). Victorian, restored, and worth the walk. From the end you get a proper sense of the scale of this coastline — the estuary, the dunes, the wide sky over the Irish Sea. On a clear day you can see Wales. Allow 40 minutes for a relaxed return walk.",
-    href: "/attractions",
+    href: "/guides/southport-pier",
     emoji: "🌊",
   },
   {
@@ -624,7 +624,7 @@ export default function ThingsToDoPage() {
                       href={beach.href}
                       className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:text-[#1B2E4B] transition-colors"
                     >
-                      Explore Beaches &amp; Parks <ArrowRight className="w-4 h-4" />
+                      {beach.name === "Southport Beach" ? "Full Beach Guide" : beach.name === "Formby Beach" ? "Formby Guide" : "Explore Beaches & Parks"} <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>

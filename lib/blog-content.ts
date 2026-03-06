@@ -418,6 +418,8 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "📱", text: "The RingGo app works across most Southport car parks and saves you carrying coins. Worth setting up before you visit. Some car parks also accept contactless payment directly at the machine now." },
     { type: "h2", text: "The honest picture" },
     { type: "p", text: "Southport is not a city. Parking is manageable with a bit of planning. The issues tend to arise on sunny summer weekends and during major events — both of which are predictable. Plan for them, and you'll be fine." },
+    { type: "p", text: "If free parking is a priority, we've put together a full dedicated guide covering every genuinely free option in Southport with postcodes, walking times, and which ones fill up first." },
+    { type: "cta", text: "Every free and low-cost parking option in Southport with postcodes, walking times, and honest capacity notes.", href: "/guides/free-parking-southport", label: "Free Parking in Southport" },
   ],
 
   "perfect-weekend-southport": [
