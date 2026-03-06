@@ -251,7 +251,27 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ...(isFoodCat ? [{ key: "hygiene", label: "🛡️ Hygiene Rating" }] : []),
   ];
 
+  // ItemList schema — top 15 listings, parking category only
+  const itemListLd = category === "parking" ? {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Car Parks in Southport and the Sefton Coast",
+    description: "Directory of car parks across Southport, Formby and the Sefton Coast with postcodes, directions, and parking information.",
+    url: `${BASE_URL}/${category}`,
+    numberOfItems: filteredBusinesses.length,
+    itemListElement: filteredBusinesses.slice(0, 15).map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${BASE_URL}/parking/${b.slug}`,
+      name: b.name,
+    })),
+  } : null;
+
   return (
+    <>
+      {itemListLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+      )}
     <div className="min-h-screen bg-[#FAF8F5]">
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
@@ -452,5 +472,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -418,15 +418,53 @@ export default async function ParkingSlugPage({ params }: Props) {
         : null
     : null;
 
-  // Schema.org
-  const jsonLd = {
+  // Schema.org — ParkingFacility entity
+  const schemaFree  = isFree(tags, business.priceRange);
+  const schemaPaid  = isPaid(tags, business.priceRange);
+  const schemaArea  = extractAreaMeta(business.address);
+  const schemaLocality = schemaArea === "Southport" ? "Southport" : schemaArea;
+
+  // Build openingHoursSpecification from stored data (same logic as general listing page)
+  let openingHoursSpec: unknown[] = [];
+  if (business.openingHours && typeof business.openingHours === "object") {
+    const oh = business.openingHours as { weekdayText?: string[] };
+    if (oh.weekdayText?.length) {
+      openingHoursSpec = oh.weekdayText.map((line: string) => {
+        const [day, times] = line.split(": ");
+        if (!times || times === "Closed") return null;
+        if (times === "Open 24 hours") {
+          return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${day}`, opens: "00:00", closes: "23:59" };
+        }
+        const [open, close] = times.split(" – ").map((t: string) => {
+          const [time, ampm] = t.split(" ");
+          const [h, m] = time.split(":").map(Number);
+          const h24 = ampm === "PM" && h !== 12 ? h + 12 : (ampm === "AM" && h === 12 ? 0 : h);
+          return `${String(h24).padStart(2, "0")}:${String(m || 0).padStart(2, "0")}`;
+        });
+        return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${day}`, opens: open, closes: close };
+      }).filter(Boolean);
+    }
+  }
+
+  // amenityFeature — EV charging
+  const amenityFeatures = [];
+  if (tags.includes("ev-charging")) {
+    amenityFeatures.push({
+      "@type": "LocationFeatureSpecification",
+      name: "Electric vehicle charging station",
+      value: true,
+    });
+  }
+
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "ParkingFacility"],
     name: business.name,
+    url: `${BASE_URL}/parking/${slug}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: business.address.replace(/,?\s*(United Kingdom|UK)$/i, "").split(",")[0].trim(),
-      addressLocality: "Southport",
+      addressLocality: schemaLocality,
       addressRegion: "Merseyside",
       postalCode: business.postcode,
       addressCountry: "GB",
@@ -444,6 +482,10 @@ export default async function ParkingSlugPage({ params }: Props) {
     } : {}),
     ...(business.description ? { description: business.description } : {}),
     ...(heroImage ? { image: heroImage } : {}),
+    // ParkingFacility-specific
+    ...(schemaFree || schemaPaid ? { isAccessibleForFree: schemaFree } : {}),
+    ...(openingHoursSpec.length ? { openingHoursSpecification: openingHoursSpec } : {}),
+    ...(amenityFeatures.length ? { amenityFeature: amenityFeatures } : {}),
   };
 
   const breadcrumbLd = {
