@@ -46,8 +46,21 @@ GRID_SPACING_KM = 1.5      # 1.5km spacing ensures heavy overlap — nothing mis
 # ── Place types to search ────────────────────────────────────────────────────
 PARKING_TYPES = [
     'parking',
-    'parking_garage',
-    'transit_station',   # Station car parks
+    # transit_station excluded — grid search returns thousands of bus stops
+    # Station car parks added manually via STATION_CAR_PARKS below
+]
+
+# ── Station car parks — searched by text query ───────────────────────────────
+# Google Places type=transit_station returns bus stops across the whole area.
+# Instead we search specifically for the Merseyrail stations with car parks.
+STATION_SEARCHES = [
+    "Southport Railway Station car park",
+    "Birkdale Railway Station",
+    "Ainsdale Railway Station",
+    "Formby Railway Station",
+    "Hillside Railway Station",
+    "Freshfield Railway Station",
+    "Meols Cop Railway Station",
 ]
 
 # ── Street View config ───────────────────────────────────────────────────────
@@ -171,14 +184,30 @@ def streetview_url(lat, lng):
     )
 
 
+def text_search(query):
+    """Search for a specific place by text query. Returns list of results."""
+    url = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
+    params = {
+        'query': query,
+        'location': f'{CENTER_LAT},{CENTER_LNG}',
+        'radius': COVERAGE_RADIUS_KM * 1000,
+        'key': API_KEY,
+    }
+    try:
+        r = requests.get(url, params=params, timeout=15)
+        data = r.json()
+        if data.get('status') in ('OK', 'ZERO_RESULTS'):
+            return data.get('results', [])
+    except Exception as e:
+        print(f"    [ERROR] Text search '{query}': {e}")
+    return []
+
+
 def is_parking_relevant(types):
-    """Filter out transit_station results that have no parking association."""
+    """Keep parking-type results only. Transit stations handled separately."""
     if not types:
         return False
-    parking_signals = {
-        'parking', 'parking_garage', 'transit_station',
-        'subway_station', 'train_station',
-    }
+    parking_signals = {'parking', 'parking_garage'}
     return bool(set(types) & parking_signals)
 
 
@@ -243,6 +272,28 @@ def main():
         if is_parking_relevant(stub['types'].split(','))
     }
     print(f"\nAfter relevance filter: {len(all_stubs)} locations")
+
+    # ── Phase 1b: Add specific station car parks via text search ─────────────
+    print("\nPHASE 1b — Station car parks (text search)")
+    for query in STATION_SEARCHES:
+        results = text_search(query)
+        time.sleep(DELAY)
+        added = 0
+        for r in results[:3]:  # Take top 3 results per query max
+            pid = r.get('place_id')
+            if pid and pid not in all_stubs:
+                all_stubs[pid] = {
+                    'place_id': pid,
+                    'name': r.get('name', ''),
+                    'lat': r.get('geometry', {}).get('location', {}).get('lat', ''),
+                    'lng': r.get('geometry', {}).get('location', {}).get('lng', ''),
+                    'address': r.get('formatted_address', r.get('vicinity', '')),
+                    'types': ','.join(r.get('types', [])),
+                }
+                added += 1
+        if added:
+            print(f"  +{added} from: {query}")
+    print(f"  Total after stations: {len(all_stubs)}")
 
     # ── Phase 2: Enrich each place_id with full details ───────────────────────
     print("\nPHASE 2 — Place Details enrichment")

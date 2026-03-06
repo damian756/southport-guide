@@ -37,7 +37,12 @@ CENTER_LAT = 53.6476
 CENTER_LNG = -3.0052
 MAX_RADIUS_KM = 12
 
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_URLS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.openstreetmap.fr/api/interpreter",
+    "https://overpass.openstreetmap.ru/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+]
 OUTPUT_FILE = "parking-osm.csv"
 DELAY = 1.5  # Be a good OSM citizen
 
@@ -84,25 +89,30 @@ def haversine_km(lat1, lng1, lat2, lng2):
 
 
 def fetch_osm():
-    """Fetch all parking data from Overpass API."""
+    """Fetch all parking data from Overpass API with fallback servers."""
     print("Querying OpenStreetMap Overpass API...")
     print(f"Bounding box: {BBOX}")
 
-    try:
-        r = requests.post(
-            OVERPASS_URL,
-            data={'data': OVERPASS_QUERY},
-            timeout=120,
-            headers={'User-Agent': 'SouthportGuide-ParkingScraper/1.0 (southportguide.co.uk)'}
-        )
-        r.raise_for_status()
-        return r.json()
-    except requests.exceptions.Timeout:
-        print("ERROR: Overpass API timed out. Try again in a few minutes.")
-        exit(1)
-    except Exception as e:
-        print(f"ERROR: Overpass API request failed: {e}")
-        exit(1)
+    for url in OVERPASS_URLS:
+        print(f"  Trying: {url}")
+        try:
+            r = requests.post(
+                url,
+                data={'data': OVERPASS_QUERY},
+                timeout=90,
+                headers={'User-Agent': 'SouthportGuide-ParkingScraper/1.0 (southportguide.co.uk)'}
+            )
+            r.raise_for_status()
+            print(f"  Success from: {url}")
+            return r.json()
+        except requests.exceptions.Timeout:
+            print(f"  Timeout on {url}, trying next...")
+        except Exception as e:
+            print(f"  Failed ({url}): {e}, trying next...")
+        time.sleep(3)
+
+    print("ERROR: All Overpass API servers failed. Try again in a few minutes.")
+    exit(1)
 
 
 def get_center(element):

@@ -328,7 +328,7 @@ def insert_parking(conn, rec, category_id, existing_slugs, existing_place_ids):
     except ValueError:
         lat = lng = None
 
-    address = rec.get('address', '').strip() or None
+    address = rec.get('address', '').strip() or ''
     real_postcode = (rec.get('postcode') or '').strip().upper() or ''
 
     rating = rec.get('rating', '')
@@ -447,21 +447,29 @@ def main():
     for idx, rec in enumerate(merged, 1):
         try:
             ok, result = insert_parking(conn, rec, category_id, existing_slugs, existing_place_ids)
-            if ok:
-                inserted += 1
+        except Exception as e:
+            errors += 1
+            try:
+                print(f"  [{idx:3d}] ERROR: {rec.get('name', '?')} - {str(e)[:80]}")
+            except Exception:
+                print(f"  [{idx:3d}] ERROR (unprintable)")
+            conn.rollback()
+            continue
+
+        if ok:
+            inserted += 1
+            try:
                 name = rec.get('name', '')[:40]
                 postcode = rec.get('postcode', '') or 'no postcode'
                 src = rec.get('sources', rec.get('source', '?'))
                 if idx % 20 == 0 or idx <= 5:
-                    print(f"  [{idx:3d}] ✓ {name:<40s} {postcode:<10s} [{src}]")
-            elif result == 'closed':
-                skipped_closed += 1
-            elif result == 'duplicate_placeid':
-                skipped_dup += 1
-        except Exception as e:
-            errors += 1
-            print(f"  [{idx:3d}] ERROR: {rec.get('name', '?')} — {e}")
-            conn.rollback()
+                    print(f"  [{idx:3d}] OK {name:<40s} {postcode:<10s} [{src}]")
+            except Exception:
+                pass
+        elif result == 'closed':
+            skipped_closed += 1
+        elif result == 'duplicate_placeid':
+            skipped_dup += 1
 
     print(f"\n{'=' * 60}")
     print(f"IMPORT COMPLETE")
