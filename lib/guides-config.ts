@@ -125,7 +125,6 @@ export const GUIDES: Guide[] = [
     status: "published",
     listingFilter: {
       categorySlugs: ["hotels", "restaurants"],
-      tags: ["flower-show"],
     },
     metaTitle: "Southport Flower Show 2026 | Tickets, Dates, Parking & What to Expect",
     metaDescription:
@@ -146,7 +145,6 @@ export const GUIDES: Guide[] = [
     status: "published",
     listingFilter: {
       categorySlugs: ["hotels", "restaurants", "cafes"],
-      tags: ["air-show", "seafront"],
     },
     metaTitle: "Southport Air Show 2026 | Free Event, Dates, Best Viewing Spots & Guide",
     metaDescription:
@@ -230,6 +228,9 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-03-05",
     tags: ["parking", "practical", "car"],
     status: "published",
+    listingFilter: {
+      categorySlugs: ["parking"],
+    },
     metaTitle: "Parking in Southport | Car Parks, Prices & Tips | SouthportGuide",
     metaDescription: "Where to park in Southport — car parks near the beach, Lord Street, and the town centre. Prices, postcode, blue badge bays, and which ones fill first on a summer Saturday.",
   },
@@ -246,6 +247,10 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-03-05",
     tags: ["parking", "practical", "free", "car"],
     status: "published",
+    listingFilter: {
+      categorySlugs: ["parking"],
+      tags: ["free-parking"],
+    },
     metaTitle: "Free Parking in Southport | Every Free Option With Postcodes | SouthportGuide",
     metaDescription: "Free parking in Southport: every free car park, free on-street area, and low-cost option across the town. Postcodes, walking times, and honest tips from a local.",
   },
@@ -266,7 +271,6 @@ export const GUIDES: Guide[] = [
     metaDescription: "What to do in Southport when it rains — Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth knowing for a wet day.",
     listingFilter: {
       categorySlugs: ["attractions", "cafes", "activities"],
-      tags: ["indoor", "all-weather"],
     },
   },
   {
@@ -286,7 +290,6 @@ export const GUIDES: Guide[] = [
     metaDescription: "Southport is genuinely dog-friendly. Beach access rules, best off-lead walks, dog-welcoming pubs and cafés — the complete guide for dogs and their people.",
     listingFilter: {
       categorySlugs: ["bars-nightlife", "cafes", "restaurants"],
-      tags: ["dog-friendly"],
     },
   },
 

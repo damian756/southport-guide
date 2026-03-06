@@ -26,32 +26,46 @@ async function fetchRelatedListings(guide: Guide): Promise<BusinessCard[]> {
     const { prisma } = await import("@/lib/prisma");
     const { categorySlugs, tags } = guide.listingFilter;
 
-    const businesses = await prisma.business.findMany({
-      where: {
-        OR: [
-          categorySlugs && categorySlugs.length > 0
-            ? { category: { slug: { in: categorySlugs } } }
-            : undefined,
-          tags && tags.length > 0
-            ? { tags: { hasSome: tags } }
-            : undefined,
-        ].filter(Boolean) as object[],
-        listingTier: { in: ["featured", "premium"] },
-      },
+    const whereCondition = {
+      OR: [
+        categorySlugs && categorySlugs.length > 0
+          ? { category: { slug: { in: categorySlugs } } }
+          : undefined,
+        tags && tags.length > 0
+          ? { tags: { hasSome: tags } }
+          : undefined,
+      ].filter(Boolean) as object[],
+    };
+
+    // Prefer paid tiers first; fall back to top-rated standard listings so the
+    // section is never empty just because no business has paid for a tier upgrade.
+    const paid = await prisma.business.findMany({
+      where: { ...whereCondition, listingTier: { in: ["featured", "premium"] } },
       select: {
-        id: true,
-        slug: true,
-        name: true,
-        shortDescription: true,
+        id: true, slug: true, name: true, shortDescription: true,
         category: { select: { slug: true, name: true } },
-        images: true,
-        listingTier: true,
-        rating: true,
+        images: true, listingTier: true, rating: true,
       },
       orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
       take: 6,
     });
-    return businesses as BusinessCard[];
+
+    if (paid.length >= 3) return paid as BusinessCard[];
+
+    // Not enough paid listings — top up with best-rated standard listings
+    const paidIds = paid.map((b) => b.id);
+    const standard = await prisma.business.findMany({
+      where: { ...whereCondition, listingTier: "standard", id: { notIn: paidIds } },
+      select: {
+        id: true, slug: true, name: true, shortDescription: true,
+        category: { select: { slug: true, name: true } },
+        images: true, listingTier: true, rating: true,
+      },
+      orderBy: [{ rating: "desc" }],
+      take: 6 - paid.length,
+    });
+
+    return [...paid, ...standard] as BusinessCard[];
   } catch {
     return [];
   }
