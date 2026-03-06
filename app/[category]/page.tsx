@@ -124,13 +124,19 @@ export const dynamic = "force-dynamic";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 
+// Per-category meta description overrides — more specific than the generic template
+const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
+  parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days — all on SouthportGuide.",
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
   const cat = getCategoryBySlug(category);
   if (!cat) return { title: "Category" };
   const theme = THEMES[category];
   const title = `${cat.name} in Southport`;
-  const description = `${theme?.tagline || cat.description} — browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
+  const description = CAT_META_DESCRIPTIONS[category]
+    ?? `${theme?.tagline || cat.description} — browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
   const url = `${BASE_URL}/${category}`;
   return {
     title, description,

@@ -159,6 +159,97 @@ const CAT_EMOJI: Record<string, string> = {
   activities:       "🏄",
 };
 
+// ── Meta helpers ─────────────────────────────────────────────────────────────
+
+const AREA_ORDER = [
+  "Birkdale", "Ainsdale", "Churchtown", "Crossens", "Marshside",
+  "Formby", "Ormskirk", "Scarisbrick", "Banks", "Halsall", "Burscough",
+];
+
+function extractAreaMeta(address: string): string {
+  for (const area of AREA_ORDER) {
+    if (address.includes(area)) return area;
+  }
+  return "Southport";
+}
+
+/** Detects auto-generated coordinate-based names like "Car Park (53.64, -3.00)" */
+function isCoordinateName(name: string): boolean {
+  return /\(\s*-?\d+\.\d+/.test(name);
+}
+
+function buildParkingTitle(
+  name: string,
+  postcode: string,
+  address: string,
+  tags: string[],
+  priceRange: string | null,
+): string {
+  const area   = extractAreaMeta(address);
+  const loc    = area === "Southport" ? "Southport" : `${area}, Southport`;
+  const pc     = postcode || "";
+  const free   = isFree(tags, priceRange);
+  const prefix = free ? "Free Car Park" : "Car Park";
+
+  if (isCoordinateName(name)) {
+    // Replace ugly coordinate name with area + postcode
+    return pc
+      ? `${prefix}, ${loc} — ${pc} | SouthportGuide`
+      : `${prefix}, ${loc} | SouthportGuide`;
+  }
+
+  // Named car park — postcode is high-value keyword for local parking queries
+  const withPc  = pc
+    ? `${name} — Parking in ${loc}, ${pc} | SouthportGuide`
+    : `${name} — Parking in ${loc} | SouthportGuide`;
+  if (withPc.length <= 70) return withPc;
+
+  // Slightly over budget — drop postcode
+  const shorter = `${name} — Parking, ${loc} | SouthportGuide`;
+  if (shorter.length <= 70) return shorter;
+
+  // Last resort fallback
+  return `${name} — ${loc} Parking | SouthportGuide`;
+}
+
+function buildParkingMetaDesc(
+  name: string,
+  address: string,
+  postcode: string,
+  tags: string[],
+  priceRange: string | null,
+  description: string | null,
+  rating: number | null,
+  reviewCount: number | null,
+): string {
+  const free   = isFree(tags, priceRange);
+  const paid   = isPaid(tags, priceRange);
+  const hasEv  = tags.includes("ev-charging");
+  const area   = extractAreaMeta(address);
+
+  const priceSignal = free ? "Free parking." : paid ? "Pay-and-display." : "Parking.";
+  const pcPart      = postcode ? ` ${postcode}.` : "";
+  const evPart      = hasEv ? " EV charging on site." : "";
+  const ratingPart  = rating && reviewCount
+    ? ` Rated ${rating.toFixed(1)}/5 (${reviewCount >= 1000 ? `${(reviewCount / 1000).toFixed(1)}k` : reviewCount} reviews).`
+    : "";
+  const locLabel    = area === "Southport" ? "Southport" : `${area}, Southport`;
+
+  // Prefer the first sentence of the existing description if it's punchy enough
+  if (description) {
+    const first = description.split(/(?<=[.!?])\s+/)[0] ?? "";
+    if (first.length >= 40 && first.length <= 130) {
+      const suffix = postcode && !first.includes(postcode) ? ` ${postcode}.` : "";
+      const candidate = `${first}${suffix}${ratingPart}`.trim();
+      return candidate.length <= 160 ? candidate : candidate.slice(0, 157) + "…";
+    }
+  }
+
+  // Synthetic fallback — lead with the most-searched signals
+  const base = `${priceSignal}${pcPart}${evPart}${ratingPart} Parking in ${locLabel} — get directions and see busy times on SouthportGuide.co.uk.`;
+  return base.length <= 160 ? base : base.slice(0, 157) + "…";
+}
+
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -168,27 +259,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!catRecord) return { title: "Parking" };
     const b = await prisma.business.findFirst({
       where: { slug, categoryId: catRecord.id },
-      select: { name: true, postcode: true, description: true, images: true },
+      select: {
+        name: true, address: true, postcode: true,
+        description: true, images: true,
+        tags: true, priceRange: true,
+        rating: true, reviewCount: true,
+      },
     });
     if (!b) return { title: "Parking" };
 
-    const title = b.postcode
-      ? `${b.name} — Car Park, ${b.postcode} | SouthportGuide`
-      : `${b.name} — Parking | SouthportGuide`;
-    const desc = b.description
-      ? b.description.slice(0, 155) + (b.description.length > 155 ? "…" : "")
-      : `${b.name} — parking in Southport and the Sefton Coast. Postcode, directions and practical info on SouthportGuide.co.uk.`;
+    const tags = (b.tags ?? []) as string[];
+
+    const title = buildParkingTitle(b.name, b.postcode, b.address, tags, b.priceRange);
+    const desc  = buildParkingMetaDesc(
+      b.name, b.address, b.postcode,
+      tags, b.priceRange,
+      b.description, b.rating, b.reviewCount,
+    );
+
+    const canonicalUrl = `${BASE_URL}/parking/${slug}`;
 
     return {
       title,
       description: desc,
-      alternates: { canonical: `${BASE_URL}/parking/${slug}` },
+      alternates: { canonical: canonicalUrl },
       openGraph: {
         title, description: desc,
-        url: `${BASE_URL}/parking/${slug}`,
+        url: canonicalUrl,
         type: "website",
         siteName: "SouthportGuide.co.uk",
+        locale: "en_GB",
         ...(b.images?.[0] ? { images: [{ url: b.images[0], width: 1200, height: 630, alt: b.name }] } : {}),
+      },
+      twitter: {
+        card: "summary_large_image",
+        title, description: desc,
+        ...(b.images?.[0] ? { images: [b.images[0]] } : {}),
       },
     };
   } catch {
