@@ -455,12 +455,20 @@ export default async function Home() {
                 <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Stunning sunsets</span>
                 <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">22 miles of coast</span>
               </div>
-              <Link
-                href="/guides/southport-beach"
-                className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm transition-all"
-              >
-                Southport Beach Guide <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/guides/southport-beach"
+                  className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm transition-all"
+                >
+                  Southport Beach Guide <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/guides/southport-pier"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all border border-white/20"
+                >
+                  Southport Pier Guide <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
             <div className="flex-none md:w-64 lg:w-80 grid grid-cols-2 gap-2">
               {[

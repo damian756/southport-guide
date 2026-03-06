@@ -281,6 +281,7 @@ export default function BestRestaurantsSouthportGuidePage() {
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">More food &amp; drink guides</p>
           <div className="flex flex-wrap gap-3">
             {[
+              { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
               { href: "/guides/best-cafes-southport", label: "Best Cafés" },
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
               { href: "/guides/lord-street", label: "Lord Street" },

@@ -377,6 +377,25 @@ export default function BirkdaleVillageGuidePage() {
           </div>
         </section>
 
+        {/* ── Open 2026 callout ── */}
+        <section>
+          <div className="bg-[#1B2E4B] rounded-2xl p-8 md:p-10 text-white flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">The Open 2026 · July 12–19</p>
+              <h2 className="font-display text-2xl font-bold mb-3">Birkdale Village During Open Week</h2>
+              <p className="text-white/70 text-sm leading-relaxed max-w-xl">
+                Royal Birkdale Golf Club is a 10-minute walk from the village. During Open week, Birkdale Village is where players, caddies, and spectators eat, drink, and unwind. Restaurants fill up fast — book well in advance.
+              </p>
+            </div>
+            <Link
+              href="/the-open-2026"
+              className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm transition-colors whitespace-nowrap flex-shrink-0"
+            >
+              Open 2026 visitor guide →
+            </Link>
+          </div>
+        </section>
+
         {/* ── FAQ ── */}
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">

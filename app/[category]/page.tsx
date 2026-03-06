@@ -36,6 +36,48 @@ const CAT_ORDER = [
   "wellness", "activities", "transport", "parking",
 ];
 
+const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
+  "restaurants": [
+    { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
+    { href: "/guides/best-restaurants-southport", label: "Best Restaurants Guide" },
+    { href: "/guides/birkdale-village", label: "Birkdale Village" },
+  ],
+  "cafes": [
+    { href: "/guides/best-cafes-southport", label: "Best Cafés Guide" },
+    { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
+    { href: "/guides/lord-street", label: "Lord Street" },
+  ],
+  "beaches-parks": [
+    { href: "/guides/southport-beach", label: "Southport Beach Guide" },
+    { href: "/guides/southport-pier", label: "Southport Pier Guide" },
+  ],
+  "attractions": [
+    { href: "/things-to-do", label: "Things to Do in Southport" },
+    { href: "/guides/southport-pier", label: "Southport Pier Guide" },
+    { href: "/guides/southport-beach", label: "Southport Beach Guide" },
+  ],
+  "golf": [
+    { href: "/the-open-2026", label: "The Open 2026 Visitor Guide" },
+    { href: "/guides/birkdale-village", label: "Birkdale Village" },
+  ],
+  "hotels": [
+    { href: "/the-open-2026/accommodation", label: "Open 2026 Accommodation Guide" },
+    { href: "/guides/birkdale-village", label: "Birkdale Village" },
+  ],
+  "parking": [
+    { href: "/guides/parking-southport", label: "Southport Parking Guide" },
+    { href: "/guides/free-parking-southport", label: "Free Parking in Southport" },
+  ],
+  "activities": [
+    { href: "/things-to-do", label: "Things to Do in Southport" },
+    { href: "/guides/southport-beach", label: "Southport Beach Guide" },
+  ],
+  "shopping": [
+    { href: "/guides/lord-street", label: "Lord Street Guide" },
+    { href: "/guides/birkdale-village", label: "Birkdale Village Guide" },
+  ],
+};
+
 const CATEGORY_CONTENT: Record<string, string[]> = {
   "restaurants": [
     "Lord Street is the obvious starting point for eating out in Southport — it runs through the town centre and has a good mix of options at most price points. Bistrot Verite in Birkdale is the one that gets mentioned most when people want a proper meal, and it's worth booking ahead. Bistro Bar Med and The Vincent are solid choices if you want something central.",
@@ -455,6 +497,24 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               currentArea={area}
               boostedBusinessIds={boostedIds}
             />
+
+            {/* ── Related Guides ──────────────────────────────────────────── */}
+            {CATEGORY_GUIDES[category] && (
+              <div className="mt-8 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-4">Related Guides</p>
+                <div className="flex flex-wrap gap-3">
+                  {CATEGORY_GUIDES[category].map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="inline-flex items-center gap-1.5 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors border border-gray-100 hover:border-[#1B2E4B]"
+                    >
+                      {label} →
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* ── Bottom CTA ──────────────────────────────────────────────── */}
             <div className="mt-10 rounded-2xl overflow-hidden">

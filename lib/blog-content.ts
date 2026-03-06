@@ -90,10 +90,10 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Treats at the bar — a bonus, not a requirement"
     ]},
     { type: "h2", text: "The Hesketh Arms, Churchtown" },
-    { type: "p", text: "This is Frank's local. It's a proper traditional pub — low ceilings, real ale, a roaring fire in winter. Dogs are welcomed warmly, there's a water bowl by the bar, and the beer garden is large and flat enough for Frank to lumber around without incident." },
+    { type: "p", text: "This is Frank's local. It's a proper traditional pub in [Churchtown](/guides/churchtown) — low ceilings, real ale, a roaring fire in winter. Dogs are welcomed warmly, there's a water bowl by the bar, and the beer garden is large and flat enough for Frank to lumber around without incident." },
     { type: "p", text: "The Hesketh is also just a genuinely good pub. Food is solid pub grub, service is friendly, and it fills up with regulars at weekends. If you're staying in Southport and want to experience a real local, this is it." },
     { type: "h2", text: "Birkdale and Ainsdale options" },
-    { type: "p", text: "The Bold Hotel in Birkdale has a bar area that welcomes dogs. It's a more upmarket setting — the kind of place you bring Frank when you want to look like you have your life together. Staff are unfailingly polite to both of us." },
+    { type: "p", text: "The Bold Hotel in [Birkdale village](/guides/birkdale-village) has a bar area that welcomes dogs. It's a more upmarket setting — the kind of place you bring Frank when you want to look like you have your life together. Staff are unfailingly polite to both of us." },
     { type: "p", text: "Further out toward Ainsdale, there are a couple of pubs along the coast road that are happy to accommodate dogs. Worth calling ahead to confirm, especially at weekends when it gets busy." },
     { type: "h2", text: "Town centre options" },
     { type: "p", text: "Town centre pubs are more hit and miss. The Ship and Anchor is reliably dog-friendly and has the rock pub atmosphere to prove it. The Windmill on the edge of town is another good option — bigger beer garden, slightly less chaotic on weekends." },
@@ -149,7 +149,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   "things-to-do-rainy-day-southport": [
     { type: "p", text: "It rains in Southport. I know, shocking for a seaside town in the north of England. The good news is that after 41 years here, I've got the rainy day plan locked in. The bad news is that 'it's raining, let's go to the beach anyway' is genuinely not the worst option — the beach in the rain has its own bleak charm. But if you'd rather stay dry, read on." },
     { type: "h2", text: "The Atkinson" },
-    { type: "p", text: "The Atkinson on Lord Street is Southport's arts and culture centre — gallery, theatre, café, and museum all under one roof. It's genuinely excellent for a rainy afternoon. The current exhibitions rotate throughout the year, the café is a solid stop for lunch, and the building itself is worth looking at." },
+    { type: "p", text: "The Atkinson on [Lord Street](/guides/lord-street) is Southport's arts and culture centre — gallery, theatre, café, and museum all under one roof. It's genuinely excellent for a rainy afternoon. The current exhibitions rotate throughout the year, the café is a solid stop for lunch, and the building itself is worth looking at." },
     { type: "p", text: "They have regular events, screenings, comedy nights, and family activities. It's the kind of place that makes you proud to live somewhere. Check what's on before you visit — the programme changes and there's usually something worth seeing." },
     { type: "h2", text: "Silcock's Funland and the amusements" },
     { type: "p", text: "This is the old-school option and it absolutely delivers. Silcock's is a proper seaside amusement arcade — not the polished, sanitised kind, the real thing. Penny falls, grabber machines, kids losing their minds over 2p coins. If you've got children, budget £10 in coins and you'll buy yourself an hour of chaos that everyone secretly enjoys." },
@@ -168,7 +168,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   "southport-with-kids-full-guide": [
     { type: "p", text: "I have four children aged between eight and fifteen. I have been taking them to Southport's attractions since before they could walk. I know which toilets are clean, which car parks are close, which cafés have high chairs, and which 'family attractions' are actually just miserable. Here is the honest guide." },
     { type: "h2", text: "The beach — and what to actually bring" },
-    { type: "p", text: "Southport beach is enormous. At low tide it stretches for miles. This is exciting for about twenty minutes and then you realise you've walked further than intended and the kids are tired and the tide is actually coming in. The trick is to stay closer to the pier end, which has more activity, easier parking, and less of the epic featureless flatness that starts to feel existential after a while." },
+    { type: "p", text: "[Southport beach](/guides/southport-beach) is enormous. At low tide it stretches for miles. This is exciting for about twenty minutes and then you realise you've walked further than intended and the kids are tired and the tide is actually coming in. The trick is to stay closer to the [pier end](/guides/southport-pier), which has more activity, easier parking, and less of the epic featureless flatness that starts to feel existential after a while." },
     { type: "ul", items: [
       "Bring proper shoes — the sand is wet, the ground is uneven near the dunes",
       "Check the tide times (genuinely — the tide goes out very far at Southport)",
@@ -186,16 +186,17 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Crosby Beach and the Anthony Gormley iron men ('Another Place') is a different kind of experience — more conceptual, a bit haunting, strangely beautiful. Good for older kids who can appreciate it. My thirteen-year-old was genuinely moved by it, which I did not expect." },
     { type: "callout", emoji: "🎡", text: "Summer school holidays are the busiest period for Southport's attractions. If you can visit mid-week, or in May/June before the main rush, you'll have a significantly better experience." },
     { type: "cta", text: "Formby, Crosby, Marine Lake, Adventure Coast — our full guide covers every family option in and around Southport, with practical details on prices, parking, and opening times.", href: "/things-to-do", label: "Things to Do in Southport — Complete Family Guide →" },
+    { type: "cta", text: "Where to eat with kids in Southport? Our eateries guide flags the family-friendly options by area.", href: "/guides/southport-eateries", label: "Family-friendly places to eat in Southport →" },
   ],
 
   "southport-hidden-gems": [
     { type: "p", text: "It takes about a decade to properly know a town. After four decades in Southport, I'm still finding things I'd missed. These are the places that don't make it onto the tourist maps — the spots that locals mention in the kind of hushed tone that says 'don't tell everyone about this.'" },
     { type: "h2", text: "Churchtown — the village within the town" },
-    { type: "p", text: "I live in Churchtown. I'm biased. But Churchtown is genuinely Southport's most underrated neighbourhood — a proper village feel, the Botanic Gardens, the Hesketh Arms, and the Swan restaurant. Most visitors never make it here. It's five minutes from the town centre by car. Go." },
+    { type: "p", text: "I live in [Churchtown](/guides/churchtown). I'm biased. But Churchtown is genuinely Southport's most underrated neighbourhood — a proper village feel, the Botanic Gardens, the Hesketh Arms, and the Swan restaurant. Most visitors never make it here. It's five minutes from the town centre by car. Go." },
     { type: "h2", text: "The Botanic Gardens" },
-    { type: "p", text: "Free, beautiful, and almost always quiet. The Botanic Gardens in Churchtown have a lake, walking paths, a café, and glasshouses. On a weekday morning, you might almost have them to yourself. They're the kind of place that restores something in you when you've been staring at screens too long." },
+    { type: "p", text: "Free, beautiful, and almost always quiet. The Botanic Gardens in [Churchtown](/guides/churchtown) have a lake, walking paths, a café, and glasshouses. On a weekday morning, you might almost have them to yourself. They're the kind of place that restores something in you when you've been staring at screens too long." },
     { type: "h2", text: "The backstreets of Birkdale village" },
-    { type: "p", text: "Birkdale village is known for its proximity to Royal Birkdale golf course, but the village itself rewards a wander. There are independent shops, good cafés, and a residential character that feels distinct from the town centre. Less touristy, more genuinely local." },
+    { type: "p", text: "[Birkdale village](/guides/birkdale-village) is known for its proximity to Royal Birkdale golf course, but the village itself rewards a wander. There are independent shops, good cafés, and a residential character that feels distinct from the town centre. Less touristy, more genuinely local." },
     { type: "h2", text: "Marine Lake at dusk" },
     { type: "p", text: "Everyone goes to Marine Lake in the daytime. Fewer people go at dusk, when the light goes gold and the water reflects the sky and the whole thing looks like somewhere you'd use as a screensaver. Walking around the lake at that time of day is one of those small pleasures that Southport does genuinely well." },
     { type: "h2", text: "The covered Victorian market arcade" },
@@ -204,13 +205,15 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Crossens is at the northern edge of Southport, heading toward the RSPB reserve at Marshside. It's not a tourist destination. It's a quiet residential area with a marshland backdrop that's genuinely striking in autumn. If you want to understand the landscape around Southport — the flatness, the big skies, the coastal marshes — a walk out toward Crossens does it better than anything else." },
     { type: "callout", emoji: "🗺️", text: "None of these places are secret in the grand scheme of things. They're just not on the main tourist trail. Which is exactly why they're worth finding." },
     { type: "cta", text: "Hidden gems are part of a bigger picture. Here's our full guide to everything worth doing in and around Southport — beaches, nature, culture, golf, and more.", href: "/things-to-do", label: "Things to Do in Southport — The Complete Guide →" },
+    { type: "cta", text: "Eating in Churchtown or Birkdale? Our eateries guide covers both neighbourhoods in detail.", href: "/guides/southport-eateries", label: "Where to eat in Southport →" },
   ],
 
   "best-beaches-near-southport": [
     { type: "p", text: "Southport beach is famous. It's also one of the flattest, sandiest beaches in England — which is either a feature or a bug depending on what you're looking for. I'll give you the honest picture on Southport's beach and the alternatives nearby, so you can make your own call." },
     { type: "h2", text: "Southport main beach — the honest review" },
     { type: "p", text: "The beach at Southport stretches for miles and the sand is genuinely good. The catch is that the sea is far out — very far out at low tide. On a summer day, you might walk ten minutes to reach the water. On a spring tide, you might walk twenty. This surprises a lot of first-time visitors." },
-    { type: "p", text: "That said, the beach is great for families with children who just want to run about, build sandcastles, and watch dogs terrorise seagulls. The pier area gives you the best of it — attractions, cafés, and enough activity to keep everyone interested." },
+    { type: "p", text: "That said, [Southport Beach](/guides/southport-beach) is great for families with children who just want to run about, build sandcastles, and watch dogs terrorise seagulls. The [pier area](/guides/southport-pier) gives you the best of it — attractions, cafés, and enough activity to keep everyone interested." },
+    { type: "cta", text: "Full local guide to Southport Beach — postcode, parking, dogs, tides, and the best time to visit.", href: "/guides/southport-beach", label: "Southport Beach guide →" },
     { type: "h2", text: "Ainsdale — where locals actually go" },
     { type: "p", text: "Ainsdale beach is 10 minutes south of Southport by car. It's a bit wilder, a bit more natural, and a bit less developed. The dunes at Ainsdale are part of a nature reserve. The parking is easier. On a sunny weekend, this is where you'll find locals who know better than to compete with the tourist crowds at Southport's main beach." },
     { type: "h2", text: "Formby — squirrels, dunes, and the National Trust" },
@@ -245,7 +248,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Binoculars — the grandstands are good but binoculars help",
     ]},
     { type: "h2", text: "Where to eat and drink near the course" },
-    { type: "p", text: "There's a substantial hospitality village on site during Open week. Outside the course, Birkdale village is your best bet for food and drink. The Bold Hotel does Open week packages. Book everything well in advance — this is not a normal week in Southport." },
+    { type: "p", text: "There's a substantial hospitality village on site during Open week. Outside the course, [Birkdale village](/guides/birkdale-village) is your best bet for food and drink. The Bold Hotel does Open week packages. Book everything well in advance — this is not a normal week in Southport." },
     { type: "callout", emoji: "⛳", text: "The Open at Royal Birkdale is, in my experience, one of those events that's better than you expect even if you're not a golf fan. The atmosphere, the proximity to world-class sport, the Southport setting. It's a special week." },
     { type: "cta", text: "Still need somewhere to stay? We've ranked hotels by walking distance to the course.", href: "/the-open-2026/accommodation", label: "See the Open 2026 accommodation guide →" },
     { type: "cta", text: "Sorted your transport to Royal Birkdale? Here's the full guide on getting there without a car.", href: "/the-open-2026/getting-there", label: "Getting to Royal Birkdale →" },
@@ -425,11 +428,12 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   "perfect-weekend-southport": [
     { type: "p", text: "People ask me what to do in Southport all the time. I live here. I've thought about it. Here's the definitive plan for a weekend that makes the most of what this town actually does well — no padding, no tourist board nonsense. Two days, done properly." },
     { type: "h2", text: "Friday evening" },
-    { type: "p", text: "Arrive, drop your bags, and go straight to dinner. Don't faff about. If you've booked well, The Swan in Churchtown or Volare on Lord Street will do it. If you're more spontaneous, walk down Lord Street and see what's on. Get a proper meal, have a drink, and get your bearings. Southport's best first impression is on foot on Lord Street on a Friday evening." },
+    { type: "p", text: "Arrive, drop your bags, and go straight to dinner. Don't faff about. If you've booked well, The Swan in [Churchtown](/guides/churchtown) or Volare on [Lord Street](/guides/lord-street) will do it. If you're more spontaneous, walk down Lord Street and see what's on. Get a proper meal, have a drink, and get your bearings. Southport's best first impression is on foot on Lord Street on a Friday evening." },
+    { type: "cta", text: "Not sure where to eat? We've picked the best spots by area, occasion, and budget.", href: "/guides/southport-eateries", label: "Where to eat in Southport — the local guide →" },
     { type: "h2", text: "Saturday morning" },
-    { type: "p", text: "Coffee first. There are good independent cafés on and around Lord Street and in Birkdale village. After coffee, go to Churchtown. Walk around the Botanic Gardens — it's free, it takes about an hour at a comfortable pace, and it's one of the loveliest places in Southport. Have a look at Churchtown village itself while you're there. The Hesketh Arms does a solid lunch if you're staying in the area." },
+    { type: "p", text: "Coffee first. There are good independent cafés on and around Lord Street and in [Birkdale village](/guides/birkdale-village). After coffee, go to [Churchtown](/guides/churchtown). Walk around the Botanic Gardens — it's free, it takes about an hour at a comfortable pace, and it's one of the loveliest places in Southport. Have a look at Churchtown village itself while you're there. The Hesketh Arms does a solid lunch if you're staying in the area." },
     { type: "h2", text: "Saturday afternoon" },
-    { type: "p", text: "Beach. Specifically the pier area. Walk out on Southport Pier — it's the second longest in England and the views back toward the town from the end of it are genuinely good. Check the tide times before you go if you want to walk on the sand. The Marine Lake area is good for an afternoon wander if the weather's decent." },
+    { type: "p", text: "Beach. Specifically [the pier area](/guides/southport-beach). Walk out on [Southport Pier](/guides/southport-pier) — it's the second longest in England and the views back toward the town from the end of it are genuinely good. Check the tide times before you go if you want to walk on the sand. The Marine Lake area is good for an afternoon wander if the weather's decent." },
     { type: "p", text: "If you have kids with you, the amusements and Adventure Golf will absorb the afternoon perfectly. If you don't, the beach, the pier, and a wander through Wayfarers Arcade covers it beautifully." },
     { type: "h2", text: "Saturday evening" },
     { type: "p", text: "Dinner, then a proper pub or bar. Coopers Bar on a Saturday has live music that's consistently good. The Hesketh Arms has a warm, local atmosphere. End the night however feels right — Southport rewards people who settle in rather than rushing." },
@@ -452,9 +456,9 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Big Top Festival — May 2–3" },
     { type: "p", text: "Contemporary circus comes to Southport — world-class companies including Circa and Gandini Juggling performing across outdoor stages. Free to attend. Workshops, acrobatics, live music. A proper festival atmosphere that's accessible for all ages." },
     { type: "h2", text: "Food & Drink Festival — May 29–31" },
-    { type: "p", text: "The Food and Drink Festival is a Southport institution. Street food, local producers, artisan cheeses, live music, and three days of eating and drinking well. One of the better food festivals in the North West. Free to enter." },
+    { type: "p", text: "The Food and Drink Festival is a Southport institution. Street food, local producers, artisan cheeses, live music, and three days of eating and drinking well. One of the better food festivals in the North West. Free to enter. Good excuse to also explore [Southport's restaurant scene](/guides/southport-eateries) while you're in town." },
     { type: "h2", text: "Southport Air Show — August 29–30" },
-    { type: "p", text: "The Air Show is back. Always a highlight of the summer — the Red Arrows, display teams, aerobatics over the beach. It draws enormous crowds for good reason. Free to attend from the beach, with paid grandstand options." },
+    { type: "p", text: "The [Southport Air Show](/guides/southport-air-show) is back. Always a highlight of the summer — the Red Arrows, display teams, aerobatics over the beach. It draws enormous crowds for good reason. Free to attend from the beach, with paid grandstand options." },
     { type: "h2", text: "Comedy Festival — October 2–18" },
     { type: "p", text: "The Southport Comedy Festival runs for almost three weeks every October and has become one of the best in the country. 2026 features Henning Wehn, Gary Delaney, and more to be announced. Tickets sell fast for the headliners. The heated marquee in Victoria Park is a brilliant setting." },
     { type: "callout", emoji: "📅", text: "For the full 2026 events calendar with dates, venues, and ticket links, visit southportguide.co.uk/events. We update it regularly as new events are confirmed." },
@@ -637,9 +641,9 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "The covered walkways along Lord Street have a handful of independent café options that are worth knowing. The Atkinson arts centre has its own café — solid coffee, good light, and the option of browsing the gallery before or after. It's the kind of place you can spend two hours in without feeling rushed." },
     { type: "p", text: "Further along Lord Street, there are independent coffee shops with proper espresso machines and the kind of menu that changes with the seasons. Worth hunting out rather than defaulting to the chains that are easier to find." },
     { type: "h2", text: "Birkdale village" },
-    { type: "p", text: "Birkdale village has a small but quality café offering. The pace is slower here than the town centre, the seating is often easier to find, and the regulars are the kind of people who've been coming for years and know what they want. A good morning coffee in Birkdale village, before heading wherever you're going, is a better start than anywhere on the tourist trail." },
+    { type: "p", text: "[Birkdale village](/guides/birkdale-village) has a small but quality café offering. The pace is slower here than the town centre, the seating is often easier to find, and the regulars are the kind of people who've been coming for years and know what they want. A good morning coffee in Birkdale village, before heading wherever you're going, is a better start than anywhere on the tourist trail." },
     { type: "h2", text: "Churchtown" },
-    { type: "p", text: "I live in Churchtown. Bias acknowledged. But the café options here genuinely hold up. There are a couple of independent places that do excellent coffee alongside a proper food menu. It's the kind of neighbourhood café that serves the same regulars every morning and actually knows their order. That's a standard I think matters." },
+    { type: "p", text: "I live in [Churchtown](/guides/churchtown). Bias acknowledged. But the café options here genuinely hold up. There are a couple of independent places that do excellent coffee alongside a proper food menu. It's the kind of neighbourhood café that serves the same regulars every morning and actually knows their order. That's a standard I think matters." },
     { type: "h2", text: "Southport Market" },
     { type: "p", text: "Southport Market has a coffee offering as part of its broader food market setup. It's particularly good on weekend mornings when there are more traders and more activity. Not a quiet solo coffee morning destination, but excellent for a coffee as part of a market browse." },
     { type: "ul", items: [
@@ -649,6 +653,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Best neighbourhood feel: Birkdale village and Churchtown",
     ]},
     { type: "callout", emoji: "☕", text: "The best Southport cafés are the ones that don't have a queue out the door. Explore a bit — some of the best coffee in town is in places that don't market themselves at all." },
+    { type: "cta", text: "Looking for where to eat more broadly? Our eateries guide covers every neighbourhood and every type of meal.", href: "/guides/southport-eateries", label: "Where to eat in Southport →" },
   ],
 
   "best-brunch-southport": [
@@ -658,7 +663,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Southport Market — the flexible option" },
     { type: "p", text: "Southport Market on a Saturday or Sunday morning is the best brunch environment in the town. Multiple stalls, different options, everyone gets what they want. My eldest gets eggs benedict, my youngest gets a crêpe, I get a flat white and something with chorizo. Nobody argues. It's the most logistically sensible brunch option for groups and families." },
     { type: "h2", text: "Independent cafés with proper brunch menus" },
-    { type: "p", text: "The town centre and Birkdale village both have independent cafés that do a serious brunch menu on weekends. The signs of a good brunch spot: the menu changes seasonally, they have a poached egg that doesn't arrive in a pool of water, and the bread comes from somewhere that takes bread seriously. These places exist in Southport. You have to look for them." },
+    { type: "p", text: "The town centre and [Birkdale village](/guides/birkdale-village) both have independent cafés that do a serious brunch menu on weekends. The signs of a good brunch spot: the menu changes seasonally, they have a poached egg that doesn't arrive in a pool of water, and the bread comes from somewhere that takes bread seriously. These places exist in Southport. You have to look for them." },
     { type: "h2", text: "Hotel brunches" },
     { type: "p", text: "The Grand on Lord Street does a weekend brunch that's worth knowing about if you want the full occasion version. Proper setting, good food, the feeling that someone else is dealing with everything. Not a casual Saturday option on price, but for a birthday or a treat, it delivers." },
     { type: "h2", text: "The Atkinson café" },
@@ -666,6 +671,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "🍳", text: "Timing matters for Southport brunch. Get there before 10:30am or after 12:30pm. The 11am–12:30pm window is when every brunch spot in the town is simultaneously slammed. Either be early or embrace a late brunch that bleeds into lunch." },
     { type: "h2", text: "The honest view" },
     { type: "p", text: "Southport's brunch scene is solid rather than spectacular. There's no single destination brunch restaurant that people travel specifically for — yet. The best brunch experiences here tend to be in independent cafés that do everything competently rather than one thing brilliantly. For most weekends, that's exactly what I want." },
+    { type: "cta", text: "Want the full picture on where to eat and drink in Southport? Our eateries guide covers every area, every budget, and every type of meal.", href: "/guides/southport-eateries", label: "Where to eat in Southport →" },
   ],
 
   "best-hotels-southport-2026": [
@@ -691,6 +697,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "southport-pier-guide": [
     { type: "p", text: "Southport Pier is the second longest pier in England at 1,108 metres. That is a long pier. Long enough that they run a miniature railway to the end of it, which tells you something about the commitment required. I've walked it hundreds of times. Here's everything worth knowing." },
+    { type: "cta", text: "Postcodes, entry info, tramway details, and what to do when you get there — our dedicated pier guide covers it all.", href: "/guides/southport-pier", label: "Full Southport Pier guide →" },
     { type: "h2", text: "What's actually on the pier" },
     { type: "p", text: "At the landward end: the pier entrance, a café, and the Victorian shelter buildings that are worth a look for the architecture alone. The pier stretches out across the sands and shallow water, with benches at intervals and a handful of heritage interpretation panels along the way. At the seaward end: the pier pavilion, which hosts events and has café facilities, and the views back toward Southport's seafront that are genuinely impressive on a clear day." },
     { type: "h2", text: "The miniature railway" },
@@ -704,6 +711,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "🌊", text: "Always check tide times before walking on the beach at the base of the pier. The tide comes back in faster than it goes out, and the flat beach gives a false sense of security. Especially important with children." },
     { type: "h2", text: "History" },
     { type: "p", text: "Southport Pier opened in 1860 and has been through fires, storms, and several major restoration projects. The current pier is largely a 20th-century structure, though the heritage character has been preserved throughout the restorations. It's a listed building, part of Southport's identity in a way that residents sometimes forget to appreciate until someone threatens to close it." },
+    { type: "cta", text: "While you're at the seafront, Southport Beach is right alongside the pier. One of the widest beaches in England — here's what to know before you go.", href: "/guides/southport-beach", label: "Southport Beach — the full guide →" },
   ],
 
   "day-trips-from-southport": [
@@ -711,7 +719,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Liverpool — 45 minutes by train" },
     { type: "p", text: "The obvious one, and also the best one. Liverpool is a brilliant day out from Southport — Merseyrail from Southport station to Liverpool Central takes about 45 minutes and runs frequently. The Albert Dock, the museums (Maritime Museum, Tate Liverpool, Museum of Liverpool — all free), the cathedral, the independent shops on Bold Street, and an evening meal before the train back. That's a full, excellent day. Book the return train for the evening rather than assuming you'll get one easily." },
     { type: "h2", text: "Formby and the Squirrel Reserve — 20 minutes" },
-    { type: "p", text: "Formby is the closest proper day trip and the one I take my kids to most often. The National Trust manages the site — vast sand dunes, pine woods, and the Formby Squirrel Reserve where you can see red squirrels in the wild. My youngest thinks this is the best place in England. She's not entirely wrong. Parking fills up fast in summer — get there before 10am." },
+    { type: "p", text: "Formby is the closest proper day trip and the one I take my kids to most often. The National Trust manages the site — vast sand dunes, pine woods, and the [Formby Squirrel Reserve](https://www.formbyguide.co.uk/red-squirrels-formby) where you can see red squirrels in the wild. My youngest thinks this is the best place in England. She's not entirely wrong. Parking fills up fast in summer — get there before 10am." },
     { type: "h2", text: "Chester — 1 hour by car / 1h30 by train" },
     { type: "p", text: "Chester is a proper full-day destination. The city walls (you can walk the entire perimeter), the Roman amphitheatre, the black-and-white Victorian-era rows (covered shopping galleries on two levels), and a very good independent food scene. It's more of a commitment than Liverpool, but for a genuinely different day out it's excellent." },
     { type: "h2", text: "Lytham St Annes — 30 minutes" },
@@ -749,6 +757,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "🌺", text: "The Flower Show's last day (Sunday) is when prices drop in the plant sales — exhibitors don't want to transport everything back. If you're after plants rather than the show experience, Sunday afternoon is the smart move. If you want the full show at its best, go Thursday or Friday morning." },
     { type: "h2", text: "Is it worth it?" },
     { type: "p", text: "Yes. Not because you need to be a gardener — I'm not particularly — but because it's genuinely good at what it is. The show gardens are beautiful, the scale of the event is impressive, and there's enough going on that non-horticultural family members (mine include a teenager who considers gardens irrelevant) can find something of interest. It's an event Southport should be prouder of than it sometimes is." },
+    { type: "cta", text: "Dates, tickets, parking, and what to expect — everything you need to plan your visit.", href: "/guides/southport-flower-show", label: "Southport Flower Show guide →" },
   ],
 
   "southport-vs-blackpool": [
@@ -756,13 +765,13 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "The fundamental difference" },
     { type: "p", text: "Blackpool is a traditional British seaside resort — maximalist, unapologetic, built for a certain kind of fun. Rollercoasters, illuminations, the Pleasure Beach, hen parties, stag dos, fish and chips at 11pm. It delivers this with complete commitment and it's genuinely excellent at what it does. Southport is a Victorian spa town that happens to be by the sea — broader shopping, better restaurants, quieter beaches, a more relaxed pace. Neither is trying to be the other." },
     { type: "h2", text: "Beach" },
-    { type: "p", text: "Southport has the better beach for families — vast, flat sand, safe for children, less crowded. The catch is that the sea is far out at low tide (sometimes a mile away). Blackpool's beach is more immediately accessible and has more seafront activity. For actually paddling and swimming: Blackpool. For space, sand, and relative peace: Southport." },
+    { type: "p", text: "[Southport Beach](/guides/southport-beach) is better for families — vast, flat sand, safe for children, less crowded. The catch is that the sea is far out at low tide (sometimes a mile away). Blackpool's beach is more immediately accessible and has more seafront activity. For actually paddling and swimming: Blackpool. For space, sand, and relative peace: Southport." },
     { type: "h2", text: "Food and restaurants" },
-    { type: "p", text: "Southport, by some margin. The independent restaurant scene on and around Lord Street is significantly better than what's available in central Blackpool. This isn't anti-Blackpool sentiment — it's just that Southport has developed a genuine food culture that Blackpool's tourist-volume model doesn't prioritise in the same way. For a proper sit-down meal at the end of a day, Southport wins clearly." },
+    { type: "p", text: "Southport, by some margin. The independent restaurant scene on and around [Lord Street](/guides/lord-street) is significantly better than what's available in central Blackpool. This isn't anti-Blackpool sentiment — it's just that Southport has developed a genuine food culture that Blackpool's tourist-volume model doesn't prioritise in the same way. For a proper sit-down meal at the end of a day, Southport wins clearly." },
     { type: "h2", text: "Attractions for families" },
     { type: "p", text: "Blackpool wins on volume — the Pleasure Beach alone is an all-day destination. The Blackpool Tower, the Illuminations, the Sea Life Centre. For a pure family thrill-seeking day, Blackpool offers more concentrated options. Southport's family offer (Pleasureland, Silcock's, Marine Lake, Adventure Golf) is solid but smaller in scale. If you've got children who want rides and more rides: Blackpool. If you want a more varied family day with some peace included: Southport." },
     { type: "h2", text: "Shopping" },
-    { type: "p", text: "Southport. Lord Street is genuinely one of the finest shopping streets in the North of England — independent boutiques, covered Victorian walkways, Wayfarers Arcade, a proper mix of local and national brands. Blackpool's shopping is primarily tourist-focused. Not a contest." },
+    { type: "p", text: "Southport. [Lord Street](/guides/lord-street) is genuinely one of the finest shopping streets in the North of England — independent boutiques, covered Victorian walkways, Wayfarers Arcade, a proper mix of local and national brands. Blackpool's shopping is primarily tourist-focused. Not a contest." },
     { type: "h2", text: "Accommodation" },
     { type: "p", text: "Different quality profiles. Blackpool has enormous accommodation volume — tens of thousands of rooms at various price points. Southport has better quality at the top end (The Grand, The Bold, The Vincent) but less volume. For budget accommodation: Blackpool. For quality stays: Southport." },
     { type: "h2", text: "Events" },
@@ -794,7 +803,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "🍛", text: "The best Indian restaurants in Southport are the ones where the menu hasn't changed much in ten years — not because nothing has improved, but because they've already found what they're good at. Consistent is underrated." },
     { type: "h2", text: "What the locals order" },
     { type: "p", text: "If you want to eat like someone who knows the town: lamb rogan josh or a slow-cooked karahi, fresh naan, a side of daal. Keep it simple. The kitchens that can execute the classics well are the ones worth returning to. The complicated house special with twelve ingredients is usually covering for something." },
-    { type: "cta", text: "Looking for more places to eat in Southport? Our restaurant directory covers every category — from Indian and Italian to fine dining and seafood.", href: "/restaurants", label: "Browse all Southport restaurants →" },
+    { type: "cta", text: "Looking for more places to eat in Southport? Our full eateries guide covers every area, every occasion, and every budget.", href: "/guides/southport-eateries", label: "Where to eat in Southport — the local guide →" },
   ],
 
   "best-italian-restaurants-southport": [
@@ -818,7 +827,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "When to visit" },
     { type: "p", text: "Tuesday and Wednesday evenings are the best value for Italian in Southport — quieter, more attentive service, and often a prix fixe or early evening menu. Weekend evenings are busier and more expensive, but the atmosphere is better if you want the full experience." },
     { type: "callout", emoji: "🍝", text: "My test for any Italian restaurant: order the cacio e pepe or a simple aglio e olio. They're technically demanding dishes with nowhere to hide. If those are good, the kitchen knows what it's doing." },
-    { type: "cta", text: "Looking for more places to eat in Southport? Our restaurant guide covers every category — Italian, Indian, fine dining, and everything in between.", href: "/restaurants", label: "Browse all Southport restaurants →" },
+    { type: "cta", text: "Looking for more places to eat in Southport? Our full eateries guide covers Italian, Indian, fine dining, and everything in between — by area and occasion.", href: "/guides/southport-eateries", label: "Where to eat in Southport — the local guide →" },
   ],
 
   "watersports-southport": [

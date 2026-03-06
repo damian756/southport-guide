@@ -254,7 +254,8 @@ export default function BestCafesSouthportGuidePage() {
         <section className="bg-[#FAF8F5] rounded-2xl p-6">
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">More food &amp; drink guides</p>
           <div className="flex flex-wrap gap-3">
-            {[
+            [
+              { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
               { href: "/guides/best-restaurants-southport", label: "Best Restaurants" },
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
               { href: "/guides/dog-friendly-southport", label: "Dog-Friendly Guide" },

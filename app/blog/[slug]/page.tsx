@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, User } from "lucide-react";
@@ -30,6 +31,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+/** Parse [text](href) markdown links in a string, returning mixed text/link JSX nodes. */
+function parseInlineLinks(text: string): React.ReactNode {
+  const parts: React.ReactNode[] = [];
+  const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = linkPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const [, linkText, href] = match;
+    const isExternal = href.startsWith("http");
+    parts.push(
+      <a
+        key={match.index}
+        href={href}
+        className="text-[#1B2E4B] underline underline-offset-2 decoration-[#C9A84C]/60 hover:decoration-[#C9A84C] transition-colors font-medium"
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        {linkText}
+      </a>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts.length === 1 ? parts[0] : parts;
+}
+
 function renderBlock(block: ContentBlock, i: number) {
   switch (block.type) {
     case "h2":
@@ -47,7 +78,7 @@ function renderBlock(block: ContentBlock, i: number) {
     case "p":
       return (
         <p key={i} className="text-gray-700 leading-relaxed mb-5 text-[1.0625rem]">
-          {block.text}
+          {parseInlineLinks(block.text)}
         </p>
       );
     case "ul":
