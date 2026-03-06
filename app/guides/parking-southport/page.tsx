@@ -187,7 +187,7 @@ export default function ParkingSouthportGuidePage() {
           <p className="mt-3 text-sm text-gray-500">
             See the full directory of{" "}
             <Link href="/parking" className="text-[#C9A84C] font-semibold hover:underline">
-              289 car parks across Southport and the Sefton Coast →
+              106 car parks across Southport and the Sefton Coast →
             </Link>
           </p>
         </section>

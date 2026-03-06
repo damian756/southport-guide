@@ -357,13 +357,13 @@ export default function FreeParkingSouthportPage() {
             <p className="font-display font-bold text-lg">Full Parking Directory</p>
           </div>
           <p className="text-white/70 text-sm leading-relaxed mb-5">
-            We have mapped 289 car parks across Southport and the Sefton Coast, including every free option on this page. Use the map view, filter by area, or filter for EV charging.
+            We have mapped 106 verified car parks across Southport and the Sefton Coast, including every free option on this page. Use the map view, filter by area, or filter for EV charging.
           </p>
           <Link
             href="/parking"
             className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm transition-all"
           >
-            Browse all 289 car parks <ArrowRight className="w-4 h-4" />
+            Browse all 106 car parks <ArrowRight className="w-4 h-4" />
           </Link>
         </section>
 

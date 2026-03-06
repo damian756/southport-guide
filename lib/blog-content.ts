@@ -962,7 +962,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   ],
 
   "southport-parking-directory-2026": [
-    { type: "p", text: "I have lived in Southport my whole life and I thought I knew roughly where to park. I was wrong. When we started building the parking directory for SouthportGuide, we ran a full scrape of every car park we could find within 12km of the town centre. The result is 289 listings. I will be honest: that number surprised me." },
+    { type: "p", text: "I have lived in Southport my whole life and I thought I knew roughly where to park. I was wrong. When we started building the parking directory for SouthportGuide, we ran a full scrape of every car park we could find within 12km of the town centre, audited the results, removed the junk, and ended up with 106 verified listings. Quality over quantity — every one of them a place you can actually use." },
     { type: "p", text: "This is what we did, what we found, and why I think it is genuinely useful for visitors and locals alike." },
     { type: "callout", emoji: "🅿️", text: "Browse the full directory: southportguide.co.uk/parking. Postcodes, directions, prices, busy times, and EV charging information for every listing." },
 
@@ -971,7 +971,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Every time someone asks where to park near Southport Beach, or where to find free parking near Lord Street, or whether there is anywhere to park for the Air Show, the answers are scattered across forums, outdated articles, and word of mouth. We decided to fix that properly." },
     { type: "p", text: "We pulled data from OpenStreetMap, cross-referenced it with Google Maps, added manual entries for known informal spots, and wrote descriptions for every listing. Then we geocoded the whole lot so every car park has a postcode you can drop straight into your satnav." },
 
-    { type: "h2", text: "What the 289 includes" },
+    { type: "h2", text: "What the 106 listings include" },
     { type: "p", text: "The directory covers more than the obvious NCP multi-storeys and the Marine Drive beach car park. It includes:" },
     { type: "ul", items: [
       "All major paid car parks in the town centre and on the seafront",
@@ -1010,7 +1010,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "We are working on adding user-contributed busy time data over time. At the moment the guidance is based on local knowledge and patterns. If we can gather enough real data from visitors checking in, we can make the busy-time sections much more accurate." },
     { type: "p", text: "We are also adding more photography. Many of the car parks currently show a street view image. We will be replacing those with proper photos as we work through the list." },
     { type: "p", text: "And for businesses near any of these car parks, there is a relevant commercial angle here too. If you run a restaurant, shop, or attraction near a major car park, you can add your listing to SouthportGuide and it will appear in the nearby places section on adjacent car park listings." },
-    { type: "cta", text: "Browse all 289 car parks across Southport and the Sefton Coast, with postcodes, directions, and busy-time guidance.", href: "/parking", label: "Browse the parking directory" },
+    { type: "cta", text: "Browse all 106 verified car parks across Southport and the Sefton Coast, with postcodes, directions, and busy-time guidance.", href: "/parking", label: "Browse the parking directory" },
   ],
 
   "churchtown-botanic-gardens-crocuses": [
