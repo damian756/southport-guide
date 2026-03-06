@@ -100,6 +100,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* TravelPayouts affiliate tracking */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NTA1MDIx.js?t=505021";document.head.appendChild(s);})();` }} />
       </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
         <ConditionalNav><Navigation /></ConditionalNav>
