@@ -170,11 +170,19 @@ export default async function BusinessPage({ params }: Props) {
     fhrsId: string | null;
     updatedAt: Date;
     secondaryCategoryIds: string[];
+    tags: string[];
     _count?: { clicks: number };
+  };
+
+  type NearbyPlace = {
+    slug: string; name: string; address: string;
+    categorySlug: string; categoryName: string;
+    distance_m: number;
   };
 
   let business: Business | null = null;
   let related: { slug: string; name: string; rating: number | null; reviewCount: number | null; address: string; priceRange: string | null }[] = [];
+  let nearbyPlaces: NearbyPlace[] = [];
 
   try {
     const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
@@ -193,7 +201,7 @@ export default async function BusinessPage({ params }: Props) {
           listingTier: true, priceRange: true, openingHours: true, images: true,
           claimed: true, rating: true, reviewCount: true, placeId: true,
           hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
-          updatedAt: true, secondaryCategoryIds: true,
+          updatedAt: true, secondaryCategoryIds: true, tags: true,
           _count: { select: { clicks: true } },
         },
       }) as Business | null;
@@ -207,6 +215,30 @@ export default async function BusinessPage({ params }: Props) {
           ORDER BY (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC
           LIMIT 4
         `;
+
+        // Parking: fetch nearby places within 800m across useful categories
+        if (category === "parking" && business.lat && business.lng) {
+          nearbyPlaces = await prisma.$queryRaw<NearbyPlace[]>`
+            SELECT sub.slug, sub.name, sub.address, sub."categorySlug", sub."categoryName",
+                   ROUND(sub.distance_m::numeric) AS distance_m
+            FROM (
+              SELECT b.slug, b.name, b.address,
+                     c.slug AS "categorySlug", c.name AS "categoryName",
+                     (6371000 * acos(LEAST(1.0,
+                       cos(radians(${business.lat})) * cos(radians(b.lat)) *
+                       cos(radians(b.lng) - radians(${business.lng})) +
+                       sin(radians(${business.lat})) * sin(radians(b.lat))
+                     ))) AS distance_m
+              FROM "Business" b
+              JOIN "Category" c ON b."categoryId" = c.id
+              WHERE c.slug IN ('restaurants','cafes','bars-nightlife','attractions','beaches-parks','shopping','activities')
+                AND b.lat IS NOT NULL AND b.lng IS NOT NULL
+            ) sub
+            WHERE sub.distance_m < 800
+            ORDER BY sub.distance_m
+            LIMIT 8
+          `;
+        }
       }
     }
   } catch {
@@ -471,6 +503,77 @@ export default async function BusinessPage({ params }: Props) {
                 </div>
               )}
 
+              {/* ── Parking-specific sections ────────────────────────── */}
+              {category === "parking" && (() => {
+                const busyGuide = getParkingBusyGuide(
+                  business.name,
+                  business.tags ?? [],
+                  business.postcode
+                );
+                return (
+                  <>
+                    {/* How busy does it get? */}
+                    {busyGuide && (
+                      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                          <span className="text-lg">🚦</span> How busy does it get?
+                        </h2>
+                        <div className="flex flex-wrap gap-3 mb-4">
+                          {busyGuide.periods.map((p) => {
+                            const cfg = BUSY_COLOURS[p.level];
+                            return (
+                              <div key={p.label} className={`flex items-center gap-2 px-3 py-2 rounded-lg ${cfg.bg}`}>
+                                <div className={`w-2 h-2 rounded-full ${cfg.bar}`} />
+                                <span className="text-xs font-semibold text-gray-700">{p.label}</span>
+                                <span className={`text-xs font-bold ${cfg.text}`}>{cfg.label}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <p className="text-sm text-gray-600 leading-relaxed">{busyGuide.note}</p>
+                      </div>
+                    )}
+
+                    {/* Nearby places */}
+                    {nearbyPlaces.length > 0 && (
+                      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                          <span className="text-lg">📍</span> What&apos;s nearby
+                        </h2>
+                        <div className="grid sm:grid-cols-2 gap-2">
+                          {nearbyPlaces.map((place) => {
+                            const distM = Number(place.distance_m);
+                            const distLabel = distM < 100 ? "under 100m" :
+                              distM < 1000 ? `${Math.round(distM / 10) * 10}m walk` :
+                              `${(distM / 1000).toFixed(1)}km`;
+                            const emoji = CAT_EMOJI[place.categorySlug] ?? "📍";
+                            return (
+                              <Link
+                                key={place.slug}
+                                href={`/${place.categorySlug}/${place.slug}`}
+                                className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition group border border-gray-100"
+                              >
+                                <span className="text-base leading-none mt-0.5">{emoji}</span>
+                                <div className="flex-1 min-w-0">
+                                  <p className="font-medium text-gray-900 group-hover:text-blue-600 transition text-sm truncate">{place.name}</p>
+                                  <p className="text-xs text-gray-500 mt-0.5">{place.categoryName}</p>
+                                </div>
+                                <span className="flex-shrink-0 text-xs text-gray-400 font-medium">{distLabel}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                        {business.postcode && (
+                          <p className="text-xs text-gray-400 mt-3">
+                            Distances are approximate walking distances from {business.postcode || "this car park"}.
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
+
               {/* Open 2026 contextual callouts */}
               {category === "hotels" && (
                 <div className="rounded-2xl overflow-hidden border border-[#C9A84C]/30 bg-[#1B2E4B]">
@@ -702,6 +805,41 @@ export default async function BusinessPage({ params }: Props) {
                     <span className="text-gray-800 text-sm">{business.priceRange}</span>
                   </InfoRow>
                 )}
+
+                {/* Parking-specific sidebar info */}
+                {category === "parking" && (() => {
+                  const tags = business.tags ?? [];
+                  const isFree = tags.includes("free-parking");
+                  const isPaid = tags.includes("pay-and-display") || tags.includes("paid-parking");
+                  const hasEV  = tags.some((t) => t.includes("ev"));
+                  const type   = tags.find((t) => ["car-park","surface","multi-storey","layby","informal","cycle-parking"].includes(t));
+                  const typeLabels: Record<string, string> = {
+                    "car-park": "Car park", "surface": "Surface car park",
+                    "multi-storey": "Multi-storey", "layby": "Layby",
+                    "informal": "Informal / roadside", "cycle-parking": "Cycle parking",
+                  };
+                  return (
+                    <>
+                      {type && (
+                        <InfoRow icon={<span className="text-blue-500 text-base leading-none">🅿️</span>} label="Type">
+                          <span className="text-gray-800 text-sm">{typeLabels[type] ?? type}</span>
+                        </InfoRow>
+                      )}
+                      {(isFree || isPaid || business.priceRange) && (
+                        <InfoRow icon={<span className="w-4 h-4 text-blue-500 text-sm font-bold leading-none mt-0.5">£</span>} label="Cost">
+                          <span className="text-gray-800 text-sm">
+                            {business.priceRange || (isFree ? "Free" : "Paid — check signs")}
+                          </span>
+                        </InfoRow>
+                      )}
+                      {hasEV && (
+                        <InfoRow icon={<span className="text-green-600 text-sm leading-none">⚡</span>} label="EV charging">
+                          <span className="text-gray-800 text-sm">Available on site</span>
+                        </InfoRow>
+                      )}
+                    </>
+                  );
+                })()}
 
                 {business.rating && (
                   <InfoRow icon={<Star className="w-4 h-4 text-amber-400 fill-amber-400" />} label="Google rating">
@@ -1007,3 +1145,112 @@ function OpeningHours({ data }: { data: unknown }) {
 
   return <p className="text-sm text-gray-400">Hours not available</p>;
 }
+
+// ─── Parking busy guide ───────────────────────────────────────────────────
+
+type BusyLevel = "high" | "medium" | "low";
+type BusyPeriod = { label: string; level: BusyLevel };
+
+function getParkingBusyGuide(name: string, tags: string[], postcode: string): {
+  periods: BusyPeriod[];
+  note: string;
+} | null {
+  const n = name.toLowerCase();
+  const pc = postcode.toUpperCase();
+
+  // National Trust Formby — always in demand on weekends
+  if (n.includes('national trust') || n.includes('lifeboat road') || n.includes('victoria road woodland')) {
+    return {
+      periods: [
+        { label: "Summer weekend", level: "high" },
+        { label: "Summer weekday", level: "medium" },
+        { label: "Winter weekend", level: "low" },
+      ],
+      note: "Fills early on sunny weekends — often full by 10am in July and August. Book via the NT app in advance. Victoria Road car park is a good overflow if Lifeboat Road is full.",
+    };
+  }
+
+  // Seafront / beach car parks
+  if (n.includes('marine drive') || n.includes('esplanade') || n.includes('promenade') || n.includes('seafront')) {
+    return {
+      periods: [
+        { label: "Summer weekend", level: "high" },
+        { label: "Summer weekday", level: "medium" },
+        { label: "Winter", level: "low" },
+      ],
+      note: "Can fill up fast on warm summer days, especially if there's an event on at Pleasureland or the Flower Show. Arrive before 10am on sunny Saturdays to be safe.",
+    };
+  }
+
+  // Ainsdale Beach
+  if (n.includes('ainsdale beach')) {
+    return {
+      periods: [
+        { label: "Summer weekend", level: "high" },
+        { label: "Summer weekday", level: "medium" },
+        { label: "Winter", level: "low" },
+      ],
+      note: "Quieter than Southport seafront but still gets busy on good summer days. Informal overflow parking available on the approach road.",
+    };
+  }
+
+  // Town centre multi-storey / NCP
+  if (n.includes('ncp') || n.includes('multi storey') || n.includes('multi-storey') || n.includes('tulketh')) {
+    return {
+      periods: [
+        { label: "Saturday daytime", level: "high" },
+        { label: "Weekday daytime", level: "medium" },
+        { label: "Evening / Sunday", level: "low" },
+      ],
+      note: "Busiest on Saturday mornings during peak shopping hours. Generally quieter in the evenings and on Sundays. Covered, so a reliable option regardless of weather.",
+    };
+  }
+
+  // Town centre general (PR8 1, PR9 0)
+  if (pc.startsWith('PR8 1') || pc.startsWith('PR9 0')) {
+    return {
+      periods: [
+        { label: "Weekend / events", level: "medium" },
+        { label: "Weekday daytime", level: "medium" },
+        { label: "Evening", level: "low" },
+      ],
+      note: "Town centre parking can be competitive during events at Southport Theatre or the Flower Show. Worth checking for events before you visit in summer.",
+    };
+  }
+
+  // Station car parks
+  if (n.includes('station') || n.includes('park & ride') || n.includes('park and ride')) {
+    return {
+      periods: [
+        { label: "Weekday commute", level: "medium" },
+        { label: "Weekend", level: "low" },
+        { label: "Off-peak", level: "low" },
+      ],
+      note: "Mainly used by commuters on weekday mornings. Usually plenty of space at weekends.",
+    };
+  }
+
+  // RSPB / nature reserves
+  if (n.includes('rspb') || n.includes('marshside') || n.includes('botanic')) {
+    return {
+      periods: [
+        { label: "Weekend morning", level: "medium" },
+        { label: "Weekday", level: "low" },
+      ],
+      note: "Rarely gets fully packed but can be busy during birdwatching events or organised walks. Free and usually straightforward to find a space.",
+    };
+  }
+
+  return null;
+}
+
+const BUSY_COLOURS: Record<BusyLevel, { bg: string; text: string; bar: string; label: string }> = {
+  high:   { bg: "bg-red-50",    text: "text-red-700",    bar: "bg-red-400",    label: "Busy" },
+  medium: { bg: "bg-amber-50",  text: "text-amber-700",  bar: "bg-amber-400",  label: "Moderate" },
+  low:    { bg: "bg-green-50",  text: "text-green-700",  bar: "bg-green-400",  label: "Usually quiet" },
+};
+
+const CAT_EMOJI: Record<string, string> = {
+  restaurants: "🍽️", cafes: "☕", "bars-nightlife": "🍺",
+  attractions: "🎡", "beaches-parks": "🏖️", shopping: "🛍️", activities: "🏄",
+};
