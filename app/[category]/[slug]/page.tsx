@@ -6,8 +6,12 @@ import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
 import { ViewTracker } from "@/components/ViewTracker";
+import ReviewSection from "@/components/ReviewSection";
 
-type Props = { params: Promise<{ category: string; slug: string }> };
+type Props = {
+  params: Promise<{ category: string; slug: string }>;
+  searchParams: Promise<{ review?: string }>;
+};
 
 function trackUrl(businessId: string, type: string, dest: string): string {
   return `/api/out?id=${businessId}&type=${type}&url=${encodeURIComponent(dest)}`;
@@ -221,8 +225,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function BusinessPage({ params }: Props) {
+export default async function BusinessPage({ params, searchParams }: Props) {
   const { category, slug } = await params;
+  const { review: reviewParam } = await searchParams;
   if (!isValidCategory(category)) notFound();
   const cat = getCategoryBySlug(category)!;
 
@@ -985,6 +990,15 @@ export default async function BusinessPage({ params }: Props) {
               </div>
             </div>
           </div>
+
+          {/* ── Reviews ───────────────────────────────────── */}
+          <ReviewSection
+            businessId={business.id}
+            businessName={business.name}
+            slug={slug}
+            categorySlug={category}
+            reviewVerifiedParam={reviewParam ?? null}
+          />
         </div>
       </div>
     </>

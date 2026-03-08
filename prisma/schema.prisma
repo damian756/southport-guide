@@ -51,6 +51,7 @@ model Business {
   reviewSnapshots       ReviewSnapshot[]
   emailLogs             WeeklyEmailLog[]
   claimRequests         ClaimRequest[]
+  reviews               Review[]
   createdAt             DateTime        @default(now())
   updatedAt             DateTime        @updatedAt
 
@@ -58,6 +59,73 @@ model Business {
   @@index([slug])
   @@index([listingTier])
   @@index([claimed])
+}
+
+model Review {
+  id              String    @id @default(uuid())
+  businessId      String
+  business        Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  firstName       String
+  lastName        String
+  displayName     String?
+  email           String
+  emailVerifiedAt DateTime?
+  emailToken      String?   @unique
+  emailTokenExp   DateTime?
+
+  starRating      Int
+  title           String?
+  body            String    @db.Text
+
+  status          String    @default("unverified") // unverified | pending | approved | rejected
+  verifiedType    String    @default("none")        // none | email | purchase
+  removalNote     String?
+  rejectionReason String?
+
+  receiptImageUrl String?
+
+  ipAddress       String?
+  ipHashed        Boolean   @default(false)
+
+  flaggedAt       DateTime?
+  flagReason      String?
+  flagStatus      String?   // pending | reviewed
+
+  images          ReviewImage[]
+  response        ReviewResponse?
+
+  createdAt       DateTime  @default(now())
+  approvedAt      DateTime?
+
+  @@index([businessId])
+  @@index([status])
+  @@index([email])
+  @@index([emailToken])
+  @@index([ipAddress])
+}
+
+model ReviewImage {
+  id        String   @id @default(uuid())
+  reviewId  String
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  imageUrl  String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([reviewId])
+}
+
+model ReviewResponse {
+  id         String   @id @default(uuid())
+  reviewId   String   @unique
+  review     Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  businessId String
+  body       String   @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([businessId])
 }
 
 model BusinessClick {
