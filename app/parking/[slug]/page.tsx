@@ -737,6 +737,31 @@ export default async function ParkingSlugPage({ params }: Props) {
                 </div>
               )}
 
+              {/* FormbyGuide callout — shown only on Formby car park pages */}
+              {extractAreaMeta(business.address) === "Formby" && (
+                <div className="bg-[#F0F7F2] rounded-xl border border-[#B8D9C4] p-5">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#2D6A4F] mb-1">Visiting Formby?</p>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                    FormbyGuide has the complete local guide — the National Trust pinewoods, red squirrel trail, and Formby beach.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { href: "https://formbyguide.co.uk/red-squirrels-formby", label: "Red Squirrel Trail" },
+                      { href: "https://formbyguide.co.uk/formby-beach", label: "Formby Beach Guide" },
+                      { href: "https://formbyguide.co.uk/formby-pinewoods", label: "Formby Pinewoods" },
+                    ].map(({ href, label }) => (
+                      <a
+                        key={href}
+                        href={href}
+                        className="inline-flex items-center gap-1 bg-white border border-[#B8D9C4] text-[#2D6A4F] hover:bg-[#2D6A4F] hover:text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-colors"
+                      >
+                        {label} →
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Map embed — mobile only (desktop in sidebar) */}
               {mapSrc && (
                 <div className="lg:hidden bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
