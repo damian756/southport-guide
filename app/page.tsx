@@ -309,7 +309,13 @@ export default async function Home() {
           LATEST FROM THE BLOG
       ══════════════════════════════════════════════════════ */}
       {(() => {
-        const latestPosts = [...BLOG_POSTS].reverse().slice(0, 3);
+        const featured = BLOG_POSTS.filter((p) => p.featured);
+        const latestPosts = (() => {
+          if (featured.length >= 3) return featured.slice(0, 3);
+          const usedSlugs = new Set(featured.map((p) => p.slug));
+          const rest = [...BLOG_POSTS].reverse().filter((p) => !usedSlugs.has(p.slug));
+          return [...featured, ...rest].slice(0, 3);
+        })();
         const featPost = latestPosts[0];
         const featCat = featPost ? getBlogPostCategory(featPost) : null;
         return (

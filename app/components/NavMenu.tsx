@@ -8,7 +8,7 @@ import {
   Waves, Dumbbell, Car, Sparkles, LayoutDashboard,
   Flower2, Wind, BookOpen, ListFilter,
 } from "lucide-react";
-import { GUIDES } from "@/lib/guides-config";
+import { GUIDES, GUIDE_CATEGORIES, type GuideCategory } from "@/lib/guides-config";
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",     icon: Utensils,    color: "text-red-500" },
@@ -122,25 +122,39 @@ export default function NavMenu() {
           onMouseEnter={() => setGuidesOpen(true)}
           onMouseLeave={() => setGuidesOpen(false)}
         >
-          <button className={NAV_LINK}>
+          <Link href="/guides" className={NAV_LINK}>
             Guides
             <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${guidesOpen ? "rotate-180" : ""}`} />
-          </button>
+          </Link>
 
           <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
-          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 w-56 z-50 transition-all duration-200 ${guidesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-            {publishedGuides.map((g) => (
-              <Link key={g.slug} href={`/guides/${g.slug}`}
-                onClick={() => setGuidesOpen(false)}
-                className="flex items-center gap-2.5 px-4 py-2 text-sm text-[#1B2E4B] hover:bg-[#FAF8F5] hover:text-[#C9A84C] transition-colors">
-                {g.title}
-              </Link>
-            ))}
-            <div className="border-t border-gray-100 mt-1 pt-1">
+          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 w-72 z-50 transition-all duration-200 ${guidesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+            {(["beaches-coast", "areas", "events", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
+              const catGuides = publishedGuides
+                .filter((g) => g.category === cat)
+                .sort((a, b) => b.seoPriority - a.seoPriority);
+              if (catGuides.length === 0) return null;
+              const { label, emoji } = GUIDE_CATEGORIES[cat];
+              return (
+                <div key={cat} className="px-2 mb-1">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400 px-2 pt-1 pb-0.5">
+                    {emoji} {label}
+                  </p>
+                  {catGuides.map((g) => (
+                    <Link key={g.slug} href={`/guides/${g.slug}`}
+                      onClick={() => setGuidesOpen(false)}
+                      className="flex items-center px-2 py-1.5 rounded-lg text-sm text-[#1B2E4B] hover:bg-[#FAF8F5] hover:text-[#C9A84C] transition-colors truncate">
+                      {g.shortTitle ?? g.title}
+                    </Link>
+                  ))}
+                </div>
+              );
+            })}
+            <div className="border-t border-gray-100 mt-1 pt-1 px-2">
               <Link href="/guides"
                 onClick={() => setGuidesOpen(false)}
-                className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
+                className="flex items-center gap-2 px-2 py-2 rounded-lg text-xs font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
                 <BookOpen className="w-3.5 h-3.5" /> All guides →
               </Link>
             </div>
@@ -223,19 +237,33 @@ export default function NavMenu() {
 
           {/* Guides */}
           <div className="border-t border-gray-100 pt-4">
-            <div className="flex items-center justify-between mb-2 px-1">
+            <div className="flex items-center justify-between mb-3 px-1">
               <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400">Guides</p>
               <Link href="/guides" onClick={() => setMobileOpen(false)}
                 className="text-[#C9A84C] text-[10px] font-bold">All guides →</Link>
             </div>
-            <div className="grid grid-cols-2 gap-1">
-              {publishedGuides.map((g) => (
-                <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium">
-                  {g.title}
-                </Link>
-              ))}
-            </div>
+            {(["beaches-coast", "areas", "events", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
+              const catGuides = publishedGuides
+                .filter((g) => g.category === cat)
+                .sort((a, b) => b.seoPriority - a.seoPriority);
+              if (catGuides.length === 0) return null;
+              const { label, emoji } = GUIDE_CATEGORIES[cat];
+              return (
+                <div key={cat} className="mb-3">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400 px-1 mb-1">
+                    {emoji} {label}
+                  </p>
+                  <div className="grid grid-cols-2 gap-1">
+                    {catGuides.map((g) => (
+                      <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setMobileOpen(false)}
+                        className="flex items-center px-3 py-2.5 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium truncate">
+                        {g.shortTitle ?? g.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Collections */}

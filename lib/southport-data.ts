@@ -380,6 +380,8 @@ export interface BlogPost {
   date: string;
   /** Omit for default Terry author. Set to "damian" for posts written by Damian Roche. */
   author?: "terry" | "damian";
+  /** Pin this post to the homepage blog section. Up to 3 featured posts are shown; extras are ignored. */
+  featured?: boolean;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -554,6 +556,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "getting-around",
     image: "/images/categories/parking.webp",
     date: "5 Mar 2026",
+    featured: true,
   },
   // Getting Around
   {
@@ -574,6 +577,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/southport-pier.webp",
     date: "14 Feb 2026",
+    featured: true,
   },
   // Events
   {
@@ -613,6 +617,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-spectator-guide.webp",
     date: "19 Feb 2026",
+    featured: true,
   },
   {
     slug: "restaurants-open-week-southport-2026",

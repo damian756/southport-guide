@@ -15,6 +15,8 @@ export type GuideStatus = "published" | "coming-soon";
 export interface Guide {
   slug: string;
   title: string;
+  /** Shorter label used in nav dropdowns where space is tight */
+  shortTitle?: string;
   /** One-liner shown on index cards */
   description: string;
   /** Longer excerpt used in SEO meta description */
@@ -41,26 +43,31 @@ export interface Guide {
   metaDescription?: string;
 }
 
-export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; description: string }> = {
+export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; description: string; emoji: string }> = {
   "beaches-coast": {
     label: "Beaches & Coast",
     description: "The 22-mile Sefton Coast — from Southport Beach to Crosby.",
+    emoji: "🏖️",
   },
   events: {
     label: "Events",
     description: "Major annual events — The Open, Air Show, Flower Show, and more.",
+    emoji: "📅",
   },
   areas: {
     label: "Areas",
     description: "The neighbourhoods and districts that make up Southport.",
+    emoji: "📍",
   },
   practical: {
     label: "Practical",
     description: "Parking, transport, rainy days, and dog-friendly — the useful stuff.",
+    emoji: "🔧",
   },
   "food-drink": {
     label: "Food & Drink",
     description: "Where to eat, drink, and brunch in Southport.",
+    emoji: "🍽️",
   },
 };
 
@@ -113,6 +120,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "southport-fa-trophy-semi-final",
     title: "Southport FC v Southend United — FA Trophy Semi-Final",
+    shortTitle: "FA Trophy Semi-Final",
     description: "Saturday 28 March 2026. Haig Avenue. First semi-final in 28 years. Parking, pubs, getting there, and making a day of it.",
     excerpt:
       "Southport FC host Southend United in the FA Trophy semi-final on Saturday 28 March 2026 — the biggest home game in 28 years. Parking, pubs, how to get to Haig Avenue, and what else to do in Southport if you're making a day of it.",
@@ -133,6 +141,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "southport-fc-matchday",
     title: "Visiting Haig Avenue — Southport FC Matchday Guide",
+    shortTitle: "Matchday at Haig Avenue",
     description: "Everything an away fan needs. Parking, pubs, getting there, the ground itself, and making a day of Southport.",
     excerpt:
       "The complete visitor's guide to Haig Avenue and Southport FC. Postcode, parking, pubs near the ground, how to arrive by train, what the away end is like, and what Southport has to offer before and after the match.",
