@@ -199,6 +199,38 @@ function isGenericAreaName(name: string): boolean {
   return generic.includes(name.trim().toLowerCase());
 }
 
+/**
+ * Generic type-only names (e.g. "Car Park", "Car Park, Southport", "Parking")
+ * that give zero location signal and produce near-identical titles across
+ * multiple listings — use street name + postcode instead.
+ */
+function isGenericTypeName(name: string): boolean {
+  // Strip trailing area qualifier ("Car Park, Southport" → "car park")
+  const core = name.trim().toLowerCase().replace(/,\s*(southport|birkdale|ainsdale|formby|churchtown|ormskirk|crossens|marshside)\s*$/i, "").trim();
+  const generic = [
+    "car park", "car parks", "parking", "parking area", "parking spaces",
+    "parking space", "pay and display", "pay & display", "pay-and-display",
+    "public car park", "public parking",
+  ];
+  return generic.includes(core);
+}
+
+/**
+ * Extract the first meaningful street segment from an address string.
+ * Returns null if the address starts with a generic or uninformative token.
+ */
+function extractStreetName(address: string): string | null {
+  const first = address.split(",")[0]?.trim() ?? "";
+  if (!first || first.length < 3) return null;
+  // Skip if the first segment is just a town name or a number on its own
+  const lc = first.toLowerCase();
+  const skip = ["southport", "birkdale", "ainsdale", "formby", "churchtown",
+                "ormskirk", "crossens", "marshside", "uk", "united kingdom"];
+  if (skip.includes(lc)) return null;
+  if (/^\d+$/.test(lc)) return null;
+  return first;
+}
+
 /** Normalise common non-ASCII typography that renders as mojibake in SERP snippets. */
 function sanitizeMeta(str: string): string {
   return str
@@ -244,6 +276,16 @@ function buildParkingTitle(
     return pc
       ? `${prefix} — ${loc}, ${pc} | SouthportGuide.co.uk`
       : `${prefix} — ${loc} | SouthportGuide.co.uk`;
+  }
+
+  // Generic type-only names ("Car Park", "Parking", "Pay and Display" etc.)
+  // — meaningless as a title; use street name + postcode to differentiate.
+  if (isGenericTypeName(cleanName)) {
+    const street = extractStreetName(address);
+    if (street && pc) return `${prefix}, ${street} — ${pc} | SouthportGuide.co.uk`;
+    if (street)       return `${prefix}, ${street}, ${loc} | SouthportGuide.co.uk`;
+    if (pc)           return `${prefix} — ${loc}, ${pc} | SouthportGuide.co.uk`;
+    return `${prefix} — ${loc} | SouthportGuide.co.uk`;
   }
 
   // Named car park. Avoid "X — Parking in Southport" when name already contains area.
@@ -312,7 +354,13 @@ function buildParkingMetaDesc(
 
   // Synthetic fallback — no "Parking in" repetition, leads with actionable signals.
   const cleanName = sanitizeMeta(name);
-  const nameLabel = isGenericAreaName(cleanName) ? `Car park in ${locLabel}` : cleanName;
+  let nameLabel: string;
+  if (isGenericAreaName(cleanName) || isGenericTypeName(cleanName)) {
+    const street = extractStreetName(address);
+    nameLabel = street ? `car park on ${street}, ${locLabel}` : `car park in ${locLabel}`;
+  } else {
+    nameLabel = cleanName;
+  }
   const base = `${priceSignal}${pcPart}${evPart}${ratingPart} ${nameLabel} — get directions and see busy times on SouthportGuide.co.uk.`;
   return base.length <= 160 ? base : base.slice(0, 157) + "…";
 }
