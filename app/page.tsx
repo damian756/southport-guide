@@ -175,7 +175,7 @@ export default async function Home() {
             </h1>
 
             <p className="text-white/60 text-sm md:text-base mb-7 leading-relaxed max-w-sm">
-              Events, restaurants, things to do — updated regularly by people who live here.
+              Events, restaurants, <Link href="/things-to-do" className="text-white/80 hover:text-[#C9A84C] underline underline-offset-2 transition-colors">things to do</Link> — updated regularly by people who live here.
             </p>
 
             {/* Open countdown card */}
@@ -582,6 +582,15 @@ export default async function Home() {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/things-to-do"
+              className="inline-flex items-center gap-2 bg-[#1B2E4B] hover:bg-[#2A4A73] text-white px-7 py-3 rounded-full font-semibold text-sm transition-all"
+            >
+              Things to Do in Southport <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

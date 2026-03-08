@@ -62,6 +62,7 @@ const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
   ],
   "hotels": [
     { href: "/the-open-2026/accommodation", label: "Open 2026 Accommodation Guide" },
+    { href: "/things-to-do", label: "Things to Do in Southport" },
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
   ],
   "parking": [
@@ -102,7 +103,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
   "attractions": [
     "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier is one of the longest in England — worth a walk, especially if the weather's decent.",
     "Adventure Coast Southport (formerly Pleasureland) is the obvious family draw — fairground rides, free entry with pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
-    "The Atkinson on Lord Street is the arts centre and local museum — free entry, good exhibitions, and a decent café. Worth an hour if the weather turns. For a full overview of everything Southport has to offer, see our things to do in Southport guide.",
+    "The Atkinson on Lord Street is the arts centre and local museum — free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
   ],
   "beaches-parks": [
     "Southport Beach is broad, sandy, and free — you can drive onto part of it, which is very useful if you've got kids and a lot of kit. The sea goes out a long way at low tide; it's not always swimmable, but as a beach for walking and messing about on, it's brilliant.",
@@ -171,6 +172,8 @@ const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
   parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days — all on SouthportGuide.",
   attractions: "Browse Southport's attractions — The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
   activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
+  hotels: "Hotels in Southport — from The Vincent and The Bold Hotel on Lord Street to B&Bs in Birkdale and budget chains. Find every hotel with Google ratings, walking times from the beach, and availability. Booking early is essential for The Open 2026.",
+  restaurants: "Restaurants in Southport — Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -77,6 +77,18 @@ function formatAddress(address: string, postcode: string): string {
   return addr;
 }
 
+// Per-slug meta overrides for high-value listings with poor SERP CTR
+const LISTING_META_OVERRIDES: Record<string, { title?: string; description?: string }> = {
+  "restaurants/roberto-s-italian": {
+    title: "Roberto's Italian, Southport — Restaurant on Lord Street | SouthportGuide",
+    description: "Roberto's Italian is one of Southport's most visited restaurants — classic Italian food, good portions, relaxed atmosphere. Opening hours, contact details and directions on SouthportGuide.",
+  },
+  "restaurants/limoncello": {
+    title: "Limoncello, Birkdale — Italian Restaurant in Southport | SouthportGuide",
+    description: "Limoncello is a popular Italian restaurant in Birkdale Village, Southport. See Google rating, opening hours, contact details and directions — all in one place on SouthportGuide.",
+  },
+};
+
 // Short category labels for concise page titles (template appends " | SouthportGuide.co.uk")
 const SHORT_CAT: Record<string, string> = {
   restaurants:      "Restaurant",
@@ -176,8 +188,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const area      = extractArea(b.address, b.postcode);
     const cleanName = sanitize(b.name);
-    const title     = buildTitle(cleanName, category, area);
-    const desc      = buildMetaDescription(cleanName, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
+    const overrideKey = `${category}/${slug}`;
+    const override  = LISTING_META_OVERRIDES[overrideKey];
+    const title     = override?.title ?? buildTitle(cleanName, category, area);
+    const desc      = override?.description ?? buildMetaDescription(cleanName, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
     const imageUrl  = b.images?.[0] || null;
 
     const canonicalUrl = `https://www.southportguide.co.uk/${category}/${slug}`;

@@ -83,9 +83,9 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes", "activities", "attractions"],
       tags: ["beach", "seafront"],
     },
-    metaTitle: "Southport Beach | Postcode, Parking, Dogs & What to Expect | SouthportGuide",
+    metaTitle: "Southport Beach Guide | Postcode PR8 1RX, Parking, Dogs & Tips",
     metaDescription:
-      "Southport Beach guide — postcode PR8 1RX, parking on Marine Drive, dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
+      "Southport Beach — postcode PR8 1RX, free parking on Marine Drive, dogs welcome year-round, tide times, facilities and honest local advice. One of England's widest beaches.",
   },
   {
     slug: "southport-pier",
@@ -231,8 +231,8 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["parking"],
     },
-    metaTitle: "Parking in Southport | Car Parks, Prices & Tips | SouthportGuide",
-    metaDescription: "Where to park in Southport — car parks near the beach, Lord Street, and the town centre. Prices, postcode, blue badge bays, and which ones fill first on a summer Saturday.",
+    metaTitle: "Parking in Southport | Car Parks, Prices, Free Options & Postcodes",
+    metaDescription: "Where to park in Southport — car parks near the beach, Lord Street, and town centre. Prices, postcodes, free options, blue badge bays, and which ones fill up first on a summer Saturday.",
   },
   {
     slug: "free-parking-southport",

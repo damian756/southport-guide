@@ -5,13 +5,13 @@ import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hotels Near Royal Birkdale | The Open 2026 Accommodation Guide | Southport Guide",
+  title: "Hotels Near Royal Birkdale Golf Club | The Open 2026 | SouthportGuide",
   description:
-    "Find the closest hotels to Royal Birkdale for The Open Championship 2026. Every Southport hotel ranked by distance from the course, with walking times, prices and live availability.",
+    "Hotels near Royal Birkdale for The Open 2026 — every Southport hotel ranked by walking distance from the course. Birkdale B&Bs book out first. Compare options before they go.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/accommodation" },
   openGraph: {
-    title: "Hotels Near Royal Birkdale | The Open 2026 Accommodation Guide",
-    description: "Every Southport hotel ranked by distance from Royal Birkdale golf course — walking times, prices and live availability for The Open Championship 2026.",
+    title: "Hotels Near Royal Birkdale Golf Club | The Open 2026 | SouthportGuide",
+    description: "Every Southport hotel ranked by distance from Royal Birkdale — walking times, prices and availability for The Open Championship 2026. Birkdale books out first.",
     images: [{ url: "/images/categories/hotels.webp" }],
   },
 };
