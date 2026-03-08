@@ -8,7 +8,7 @@ export function SiteTracker() {
 
   useEffect(() => {
     if (pathname?.startsWith("/admin") || pathname?.startsWith("/dashboard")) return;
-    fetch("/api/track", {
+    fetch("/api/p", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
