@@ -16,6 +16,7 @@ import {
   X,
   ExternalLink,
   Star,
+  Activity,
 } from "lucide-react";
 
 const NAV = [
@@ -24,6 +25,7 @@ const NAV = [
   { href: "/admin/reviews", label: "Reviews", icon: Star },
   { href: "/admin/businesses", label: "Businesses", icon: Building2 },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart2 },
+  { href: "/admin/site-analytics", label: "Site Analytics", icon: Activity },
   { href: "/admin/events", label: "Events", icon: CalendarDays },
   { href: "/admin/email-logs", label: "Email logs", icon: Mail },
 ];
