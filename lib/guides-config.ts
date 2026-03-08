@@ -111,6 +111,46 @@ export const GUIDES: Guide[] = [
 
   // ── Events ───────────────────────────────────────────────────────────────
   {
+    slug: "southport-fa-trophy-semi-final",
+    title: "Southport FC v Southend United — FA Trophy Semi-Final",
+    description: "Saturday 28 March 2026. Haig Avenue. First semi-final in 28 years. Parking, pubs, getting there, and making a day of it.",
+    excerpt:
+      "Southport FC host Southend United in the FA Trophy semi-final on Saturday 28 March 2026 — the biggest home game in 28 years. Parking, pubs, how to get to Haig Avenue, and what else to do in Southport if you're making a day of it.",
+    category: "events",
+    heroImage: "/images/southport-fc-haig-avenue.webp",
+    seoPriority: 0.92,
+    datePublished: "2026-03-08",
+    dateUpdated: "2026-03-08",
+    tags: ["football", "events", "fa-trophy", "southport-fc", "matchday"],
+    status: "published",
+    listingFilter: {
+      categorySlugs: ["bars-nightlife", "restaurants", "parking", "hotels"],
+    },
+    metaTitle: "Southport FC v Southend FA Trophy Semi-Final | Matchday Guide | SouthportGuide",
+    metaDescription:
+      "Visiting Haig Avenue for the FA Trophy semi-final on 28 March 2026? Parking, pubs near the ground, how to get there by train, and what Southport has to offer if you're making a day of it.",
+  },
+  {
+    slug: "southport-fc-matchday",
+    title: "Visiting Haig Avenue — Southport FC Matchday Guide",
+    description: "Everything an away fan needs. Parking, pubs, getting there, the ground itself, and making a day of Southport.",
+    excerpt:
+      "The complete visitor's guide to Haig Avenue and Southport FC. Postcode, parking, pubs near the ground, how to arrive by train, what the away end is like, and what Southport has to offer before and after the match.",
+    category: "events",
+    heroImage: "/images/southport-fc-haig-avenue.webp",
+    seoPriority: 0.88,
+    datePublished: "2026-03-08",
+    dateUpdated: "2026-03-08",
+    tags: ["football", "events", "southport-fc", "matchday", "haig-avenue"],
+    status: "published",
+    listingFilter: {
+      categorySlugs: ["bars-nightlife", "restaurants", "parking"],
+    },
+    metaTitle: "Southport FC Matchday Guide | Haig Avenue Parking, Pubs & Getting There",
+    metaDescription:
+      "Visiting Haig Avenue for a Southport FC match? Postcode PR8 6JZ, street parking tips, pubs near the ground, the nearest train station, what the away end is like, and what to do in Southport on a matchday.",
+  },
+  {
     slug: "southport-flower-show",
     title: "Southport Flower Show 2026",
     description: "One of England's most prestigious flower shows. Victoria Park, August 2026.",
