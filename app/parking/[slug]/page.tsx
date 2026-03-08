@@ -159,6 +159,17 @@ const CAT_EMOJI: Record<string, string> = {
   activities:       "🏄",
 };
 
+const FORMBY_CAT_EMOJI: Record<string, string> = {
+  restaurants:    "🍽️",
+  cafes:          "☕",
+  pubs:           "🍺",
+  activities:     "🏄",
+  accommodation:  "🛏️",
+  shopping:       "🛍️",
+  "nature-walks": "🌲",
+  beaches:        "🏖️",
+};
+
 // ── Meta helpers ─────────────────────────────────────────────────────────────
 
 const AREA_ORDER = [
@@ -384,9 +395,15 @@ export default async function ParkingSlugPage({ params }: Props) {
     distance_m: number; priceRange: string | null;
   };
 
+  type FormbyNearbyPlace = {
+    slug: string; name: string; address: string;
+    categorySlug: string; categoryName: string; distance_m: number;
+  };
+
   let business: ParkingBusiness | null = null;
   let nearbyPlaces: NearbyPlace[] = [];
   let nearbyParking: NearbyParking[] = [];
+  let nearbyFormbyPlaces: FormbyNearbyPlace[] = [];
 
   try {
     const catRecord = await prisma.category.findFirst({ where: { slug: "parking" } });
@@ -451,6 +468,17 @@ export default async function ParkingSlugPage({ params }: Props) {
     }
   } catch {
     /* DB unavailable */
+  }
+
+  // Fetch nearby FormbyGuide listings for Formby car parks
+  if (business?.lat && business?.lng && extractAreaMeta(business.address) === "Formby") {
+    try {
+      const fgUrl = `https://www.formbyguide.co.uk/api/nearby?lat=${business.lat}&lng=${business.lng}&radius=1500`;
+      const res = await fetch(fgUrl, { next: { revalidate: 3600 } });
+      if (res.ok) nearbyFormbyPlaces = (await res.json()) as FormbyNearbyPlace[];
+    } catch {
+      /* FormbyGuide unavailable */
+    }
   }
 
   if (!business) notFound();
@@ -737,22 +765,80 @@ export default async function ParkingSlugPage({ params }: Props) {
                 </div>
               )}
 
-              {/* FormbyGuide callout — shown only on Formby car park pages */}
-              {extractAreaMeta(business.address) === "Formby" && (
+              {/* Nearby FormbyGuide listings — shown on Formby car park pages */}
+              {nearbyFormbyPlaces.length > 0 && (
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-semibold text-gray-900 text-[15px]">
+                      📍 What&apos;s nearby
+                    </h2>
+                    <a
+                      href="https://www.formbyguide.co.uk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-[#2D6A4F] hover:underline"
+                    >
+                      FormbyGuide →
+                    </a>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    {nearbyFormbyPlaces.map((place) => {
+                      const distM = Number(place.distance_m);
+                      const distLabel = distM < 100  ? "under 100m"
+                        : distM < 1000 ? `${Math.round(distM / 50) * 50}m`
+                        : `${(distM / 1000).toFixed(1)}km`;
+                      const emoji = FORMBY_CAT_EMOJI[place.categorySlug] ?? "📍";
+                      return (
+                        <a
+                          key={`${place.categorySlug}-${place.slug}`}
+                          href={`https://www.formbyguide.co.uk/${place.categorySlug}/${place.slug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition group border border-gray-100"
+                        >
+                          <span className="text-base leading-none flex-shrink-0">{emoji}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-gray-900 group-hover:text-blue-600 transition text-sm truncate">
+                              {place.name}
+                            </p>
+                            <p className="text-xs text-gray-400 mt-0.5">{place.categoryName}</p>
+                          </div>
+                          <span className="flex-shrink-0 text-xs text-gray-400 font-medium tabular-nums">
+                            {distLabel}
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  <a
+                    href="https://www.formbyguide.co.uk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center text-[#2D6A4F] text-xs font-bold mt-3 hover:underline"
+                  >
+                    Explore Formby on FormbyGuide →
+                  </a>
+                </div>
+              )}
+
+              {/* Fallback editorial callout when no nearby results — Formby pages only */}
+              {nearbyFormbyPlaces.length === 0 && extractAreaMeta(business.address) === "Formby" && (
                 <div className="bg-[#F0F7F2] rounded-xl border border-[#B8D9C4] p-5">
                   <p className="text-xs font-bold uppercase tracking-widest text-[#2D6A4F] mb-1">Visiting Formby?</p>
                   <p className="text-sm text-gray-700 leading-relaxed mb-4">
-                    FormbyGuide has the complete local guide — the National Trust pinewoods, red squirrel trail, and Formby beach.
+                    FormbyGuide has the full local guide — the National Trust pinewoods, red squirrel trail, and Formby beach.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {[
-                      { href: "https://formbyguide.co.uk/red-squirrels-formby", label: "Red Squirrel Trail" },
-                      { href: "https://formbyguide.co.uk/formby-beach", label: "Formby Beach Guide" },
-                      { href: "https://formbyguide.co.uk/formby-pinewoods", label: "Formby Pinewoods" },
+                      { href: "https://www.formbyguide.co.uk/red-squirrels-formby", label: "Red Squirrel Trail" },
+                      { href: "https://www.formbyguide.co.uk/formby-beach", label: "Formby Beach" },
+                      { href: "https://www.formbyguide.co.uk/formby-pinewoods", label: "Formby Pinewoods" },
                     ].map(({ href, label }) => (
                       <a
                         key={href}
                         href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 bg-white border border-[#B8D9C4] text-[#2D6A4F] hover:bg-[#2D6A4F] hover:text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-colors"
                       >
                         {label} →
