@@ -8,6 +8,7 @@ import {
   Eye,
   Zap,
   BarChart2,
+  AlertTriangle,
 } from "lucide-react";
 
 type Pulse = {
@@ -88,7 +89,13 @@ type Props = {
 };
 
 function PctChange({ current, prior }: { current: number; prior: number }) {
-  if (prior === 0) return current > 0 ? <span className="text-emerald-600 text-xs font-semibold">+100%</span> : null;
+  if (prior === 0) {
+    return current > 0 ? (
+      <span className="text-emerald-600 text-xs font-semibold flex items-center gap-0.5">
+        <TrendingUp className="w-3 h-3" /> +100%
+      </span>
+    ) : null;
+  }
   const pct = ((current - prior) / prior) * 100;
   if (pct > 0)
     return (
@@ -98,11 +105,60 @@ function PctChange({ current, prior }: { current: number; prior: number }) {
     );
   if (pct < 0)
     return (
-      <span className="text-red-600 text-xs font-semibold flex items-center gap-0.5">
+      <span className="text-red-500 text-xs font-semibold flex items-center gap-0.5">
         <TrendingDown className="w-3 h-3" /> {pct.toFixed(0)}%
       </span>
     );
   return null;
+}
+
+function StatCard({
+  label,
+  value,
+  current,
+  prior,
+  alert,
+}: {
+  label: string;
+  value: string | number;
+  current?: number;
+  prior?: number;
+  alert?: boolean;
+}) {
+  return (
+    <div className={`bg-white rounded-2xl border shadow-sm p-5 flex flex-col justify-between min-h-[100px] ${alert ? "border-amber-300 bg-amber-50" : "border-gray-100"}`}>
+      <p className="text-xs text-gray-400 uppercase tracking-wide leading-tight">{label}</p>
+      <div>
+        <p className={`font-display text-2xl font-bold mt-1 ${alert ? "text-amber-700" : "text-[#1B2E4B]"}`}>
+          {value}
+        </p>
+        <div className="h-4 mt-1">
+          {current !== undefined && prior !== undefined ? (
+            <PctChange current={current} prior={prior} />
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FunnelBar({ label, count, total, color = "bg-[#1B2E4B]" }: { label: string; count: number; total: number; color?: string }) {
+  const pct = total > 0 ? (count / total) * 100 : 0;
+  return (
+    <div className="flex items-center gap-3">
+      <span className="text-sm text-gray-600 w-32 shrink-0 text-right">{label}</span>
+      <div className="flex-1 bg-gray-100 rounded-full h-2.5 overflow-hidden">
+        <div
+          className={`${color} h-2.5 rounded-full transition-all`}
+          style={{ width: `${Math.max(pct, count > 0 ? 1 : 0)}%` }}
+        />
+      </div>
+      <span className="font-bold text-sm text-[#1B2E4B] w-10 text-right">{count.toLocaleString()}</span>
+      {total > 0 && count !== total && (
+        <span className="text-xs text-gray-400 w-10">{pct.toFixed(0)}%</span>
+      )}
+    </div>
+  );
 }
 
 export default function SiteAnalyticsClient({
@@ -159,14 +215,16 @@ export default function SiteAnalyticsClient({
       ? reviews
           .filter((r) => r.approvedAt)
           .reduce((s, r) => {
-            const approved = new Date(r.approvedAt as string | Date).getTime();
+            const approvedTime = new Date(r.approvedAt as string | Date).getTime();
             const created = new Date(r.createdAt as string | Date).getTime();
-            return s + (approved - created) / 86400000;
+            return s + (approvedTime - created) / 86400000;
           }, 0) / reviews.filter((r) => r.approvedAt).length
       : 0;
 
   return (
     <div className="max-w-7xl space-y-8">
+
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-bold text-[#1B2E4B]">Site Analytics</h1>
@@ -188,72 +246,65 @@ export default function SiteAnalyticsClient({
       </div>
 
       {/* Section 1 — Site Pulse */}
-      <div className="grid grid-cols-2 lg:grid-cols-7 gap-4">
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Total interactions (24h)</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.totalLast24h.toLocaleString()}</p>
-          <PctChange current={pulse.totalLast24h} prior={pulse.totalPrior24h} />
+      <div className="space-y-3">
+        {/* Row 1: Traffic metrics (with % change) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <StatCard label="Total interactions (24h)" value={pulse.totalLast24h.toLocaleString()} current={pulse.totalLast24h} prior={pulse.totalPrior24h} />
+          <StatCard label="Listing views (24h)" value={pulse.viewsLast24h.toLocaleString()} current={pulse.viewsLast24h} prior={pulse.viewsPrior24h} />
+          <StatCard label="Conversions (24h)" value={pulse.conversionsLast24h.toLocaleString()} current={pulse.conversionsLast24h} prior={pulse.conversionsPrior24h} />
+          <StatCard label="Page views (24h)" value={pulse.pageViewsLast24h.toLocaleString()} current={pulse.pageViewsLast24h} prior={pulse.pageViewsPrior24h} />
         </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Listing views (24h)</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.viewsLast24h.toLocaleString()}</p>
-          <PctChange current={pulse.viewsLast24h} prior={pulse.viewsPrior24h} />
-        </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Conversions (24h)</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.conversionsLast24h.toLocaleString()}</p>
-          <PctChange current={pulse.conversionsLast24h} prior={pulse.conversionsPrior24h} />
-        </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Page views (24h)</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.pageViewsLast24h.toLocaleString()}</p>
-          <PctChange current={pulse.pageViewsLast24h} prior={pulse.pageViewsPrior24h} />
-        </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Pending reviews</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.pendingReviews}</p>
-        </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Pending claims</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.pendingClaims}</p>
-        </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Active boosts</p>
-          <p className="font-display text-2xl font-bold text-[#1B2E4B]">{pulse.activeBoosts}</p>
+        {/* Row 2: Status metrics (no % change, alert if non-zero) */}
+        <div className="grid grid-cols-3 gap-3">
+          <StatCard label="Pending reviews" value={pulse.pendingReviews} alert={pulse.pendingReviews > 0} />
+          <StatCard label="Pending claims" value={pulse.pendingClaims} alert={pulse.pendingClaims > 0} />
+          <StatCard label="Active boosts" value={pulse.activeBoosts} />
         </div>
       </div>
 
       {/* Section 2 — Traffic Trend */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
         <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-5">Traffic trend</h2>
-        <div className="flex gap-0.5 items-end h-32">
-          {allDates.map((d) => {
-            const bc = bcByDate.get(d) ?? 0;
-            const pv = pvByDate.get(d) ?? 0;
-            const total = bc + pv;
-            const pct = (total / maxDaily) * 100;
-            return (
-              <div key={d} className="flex-1 flex flex-col justify-end gap-0.5" title={`${d}: ${bc} listing, ${pv} page`}>
+        <div className="relative">
+          {/* Y-axis labels */}
+          <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-gray-300 pr-2 select-none pointer-events-none" style={{ width: 32 }}>
+            <span>{maxDaily}</span>
+            <span>{Math.round(maxDaily / 2)}</span>
+            <span>0</span>
+          </div>
+          <div className="ml-8 flex gap-0.5 items-end h-32">
+            {allDates.map((d) => {
+              const bc = bcByDate.get(d) ?? 0;
+              const pv = pvByDate.get(d) ?? 0;
+              const total = bc + pv;
+              const pct = (total / maxDaily) * 100;
+              return (
                 <div
-                  className="w-full bg-[#1B2E4B] rounded-t min-h-[2px]"
-                  style={{ height: `${Math.max(2, (bc / maxDaily) * 100)}%` }}
-                />
-                <div
-                  className="w-full bg-[#C9A84C]/60 rounded-t min-h-[2px]"
-                  style={{ height: `${Math.max(2, (pv / maxDaily) * 100)}%` }}
-                />
-              </div>
-            );
-          })}
+                  key={d}
+                  className="flex-1 flex flex-col justify-end gap-0.5 group"
+                  title={`${d}: ${bc} listing views, ${pv} page views`}
+                >
+                  <div
+                    className="w-full bg-[#1B2E4B] rounded-t min-h-[2px] group-hover:bg-[#2a4270] transition-colors"
+                    style={{ height: `${Math.max(2, (bc / maxDaily) * 100)}%` }}
+                  />
+                  <div
+                    className="w-full bg-[#C9A84C]/60 rounded-t min-h-[2px] group-hover:bg-[#C9A84C]/80 transition-colors"
+                    style={{ height: `${Math.max(2, (pv / maxDaily) * 100)}%` }}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex gap-4 mt-2 text-xs text-gray-500">
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded bg-[#1B2E4B]" /> Listing views</span>
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded bg-[#C9A84C]/60" /> Page views</span>
+        <div className="flex gap-4 mt-3 text-xs text-gray-500">
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-[#1B2E4B]" /> Listing views</span>
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-[#C9A84C]/60" /> Page views</span>
         </div>
         {trend.eventsInPeriod.length > 0 && (
           <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap gap-2">
             {trend.eventsInPeriod.map((e) => (
-              <span key={e.isoDate} className="text-xs bg-amber-50 text-amber-800 px-2 py-1 rounded border border-amber-200">
+              <span key={e.isoDate} className="text-xs bg-amber-50 text-amber-800 px-2 py-1 rounded-lg border border-amber-200">
                 {e.emoji} {e.title} ({e.dayLabel})
               </span>
             ))}
@@ -263,54 +314,66 @@ export default function SiteAnalyticsClient({
 
       {/* Section 3 — Category Matrix */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-        <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-5">Category performance</h2>
-        <div className="flex gap-2 mb-4">
-          <button
-            onClick={() => setCategorySort("views")}
-            className={`px-3 py-1 rounded-lg text-xs font-semibold ${categorySort === "views" ? "bg-[#1B2E4B] text-white" : "bg-gray-100 text-gray-600"}`}
-          >
-            By views
-          </button>
-          <button
-            onClick={() => setCategorySort("engagement")}
-            className={`px-3 py-1 rounded-lg text-xs font-semibold ${categorySort === "engagement" ? "bg-[#1B2E4B] text-white" : "bg-gray-100 text-gray-600"}`}
-          >
-            By engagement
-          </button>
-          <button
-            onClick={() => setCategorySort("dead")}
-            className={`px-3 py-1 rounded-lg text-xs font-semibold ${categorySort === "dead" ? "bg-[#1B2E4B] text-white" : "bg-gray-100 text-gray-600"}`}
-          >
-            By dead listings
-          </button>
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="font-display text-lg font-bold text-[#1B2E4B]">Category performance</h2>
+          <div className="flex gap-2">
+            {(["views", "engagement", "dead"] as const).map((s) => (
+              <button
+                key={s}
+                onClick={() => setCategorySort(s)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${categorySort === s ? "bg-[#1B2E4B] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+              >
+                {s === "views" ? "By views" : s === "engagement" ? "By engagement" : "By dead listings"}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-100">
-                <th className="text-left py-2 font-semibold text-gray-600">Category</th>
-                <th className="text-right py-2 font-semibold text-gray-600">Views</th>
-                <th className="text-right py-2 font-semibold text-gray-600">vs prior</th>
-                <th className="text-right py-2 font-semibold text-gray-600">Engagement %</th>
-                <th className="text-right py-2 font-semibold text-gray-600">Claimed %</th>
-                <th className="text-right py-2 font-semibold text-gray-600">Dead</th>
-                <th className="text-left py-2 font-semibold text-gray-600">Top performer</th>
+              <tr className="border-b-2 border-gray-100">
+                <th className="text-left pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Category</th>
+                <th className="text-right pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Views</th>
+                <th className="text-right pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">vs prior</th>
+                <th className="text-right pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Engagement</th>
+                <th className="text-right pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Claimed</th>
+                <th className="text-right pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Dead</th>
+                <th className="text-left pb-3 font-semibold text-gray-500 text-xs uppercase tracking-wide pl-4">Top performer</th>
               </tr>
             </thead>
             <tbody>
-              {sortedCategories.map((row) => (
-                <tr key={row.category.slug} className="border-b border-gray-50">
-                  <td className="py-3 font-medium text-[#1B2E4B]">{row.category.name}</td>
-                  <td className="py-3 text-right">{row.viewsCurrent.toLocaleString()}</td>
-                  <td className="py-3 text-right">
-                    {row.viewsPrior > 0 ? `${((row.viewsCurrent - row.viewsPrior) / row.viewsPrior * 100).toFixed(0)}%` : "—"}
-                  </td>
-                  <td className="py-3 text-right">{row.engagementRate.toFixed(1)}%</td>
-                  <td className="py-3 text-right">{row.claimedPct.toFixed(0)}%</td>
-                  <td className="py-3 text-right">{row.deadCount}</td>
-                  <td className="py-3 text-gray-600">{row.topPerformer}</td>
-                </tr>
-              ))}
+              {sortedCategories.map((row, i) => {
+                const pct = row.viewsPrior > 0
+                  ? ((row.viewsCurrent - row.viewsPrior) / row.viewsPrior) * 100
+                  : null;
+                return (
+                  <tr key={row.category.slug} className={i % 2 === 0 ? "bg-gray-50/50" : "bg-white"}>
+                    <td className="py-2.5 px-2 font-medium text-[#1B2E4B] rounded-l">{row.category.name}</td>
+                    <td className="py-2.5 px-2 text-right tabular-nums">{row.viewsCurrent.toLocaleString()}</td>
+                    <td className="py-2.5 px-2 text-right tabular-nums">
+                      {pct === null ? (
+                        <span className="text-gray-300">—</span>
+                      ) : pct > 0 ? (
+                        <span className="text-emerald-600 font-semibold">+{pct.toFixed(0)}%</span>
+                      ) : pct < 0 ? (
+                        <span className="text-red-500 font-semibold">{pct.toFixed(0)}%</span>
+                      ) : (
+                        <span className="text-gray-400">0%</span>
+                      )}
+                    </td>
+                    <td className="py-2.5 px-2 text-right tabular-nums text-gray-600">{row.engagementRate.toFixed(1)}%</td>
+                    <td className="py-2.5 px-2 text-right tabular-nums text-gray-600">{row.claimedPct.toFixed(0)}%</td>
+                    <td className="py-2.5 px-2 text-right tabular-nums">
+                      {row.deadCount > 0 ? (
+                        <span className="text-amber-600 font-semibold">{row.deadCount}</span>
+                      ) : (
+                        <span className="text-gray-300">0</span>
+                      )}
+                    </td>
+                    <td className="py-2.5 px-2 pl-4 text-gray-500 rounded-r">{row.topPerformer}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -318,80 +381,68 @@ export default function SiteAnalyticsClient({
 
       {/* Section 4 — Funnel + Revenue */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-        <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-5">Business funnel</h2>
-        <div className="space-y-2 mb-6">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm text-gray-500 w-8">1</span>
-            <span className="font-semibold">Total listings</span>
-            <span className="text-[#1B2E4B] font-bold">{funnel.total}</span>
+        <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-6">Business funnel</h2>
+
+        {/* Visual funnel bars */}
+        <div className="space-y-3 mb-8">
+          <FunnelBar label="Total listings" count={funnel.total} total={funnel.total} color="bg-[#1B2E4B]" />
+          <FunnelBar label="With activity" count={funnel.withActivity} total={funnel.total} color="bg-[#2a4270]" />
+          <FunnelBar label="Claimed" count={funnel.claimed} total={funnel.total} color="bg-[#C9A84C]" />
+          <FunnelBar label="Pro hub" count={funnel.pro} total={funnel.total} color="bg-[#C9A84C]/70" />
+          <FunnelBar label="Paid tier" count={funnel.paidTier} total={funnel.total} color="bg-emerald-500" />
+          <FunnelBar label="Active boost" count={funnel.activeBoost} total={funnel.total} color="bg-emerald-400" />
+        </div>
+
+        {/* Revenue */}
+        <div className="grid grid-cols-3 gap-4 mb-8 pt-5 border-t border-gray-100">
+          <div className="bg-gray-50 rounded-xl p-4">
+            <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Est. MRR</p>
+            <p className="font-display text-2xl font-bold text-[#1B2E4B]">£{mrr.toLocaleString()}</p>
+            <p className="text-xs text-gray-400 mt-1">{activeSubscriptions} active subs</p>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm text-gray-500 w-8">2</span>
-            <span className="font-semibold">With activity</span>
-            <span className="text-[#1B2E4B] font-bold">{funnel.withActivity}</span>
-            <span className="text-gray-400 text-xs">({funnel.total > 0 ? ((funnel.withActivity / funnel.total) * 100).toFixed(0) : 0}%)</span>
+          <div className="bg-gray-50 rounded-xl p-4">
+            <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Boost revenue</p>
+            <p className="font-display text-2xl font-bold text-[#1B2E4B]">£{boostRevenuePounds.toFixed(0)}</p>
+            <p className="text-xs text-gray-400 mt-1">This period</p>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm text-gray-500 w-8">3</span>
-            <span className="font-semibold">Claimed</span>
-            <span className="text-[#1B2E4B] font-bold">{funnel.claimed}</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm text-gray-500 w-8">4</span>
-            <span className="font-semibold">Pro hub</span>
-            <span className="text-[#1B2E4B] font-bold">{funnel.pro}</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm text-gray-500 w-8">5</span>
-            <span className="font-semibold">Paid tier</span>
-            <span className="text-[#1B2E4B] font-bold">{funnel.paidTier}</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm text-gray-500 w-8">6</span>
-            <span className="font-semibold">Active boost</span>
-            <span className="text-[#1B2E4B] font-bold">{funnel.activeBoost}</span>
+          <div className="bg-gray-50 rounded-xl p-4">
+            <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Unclaimed (high traffic)</p>
+            <p className="font-display text-2xl font-bold text-amber-600">{highTrafficUnclaimed.length}</p>
+            <p className="text-xs text-gray-400 mt-1">Revenue opportunity</p>
           </div>
         </div>
-        <div className="flex gap-6 mb-6">
-          <div>
-            <p className="text-xs text-gray-400 uppercase">Est. MRR</p>
-            <p className="font-display text-xl font-bold text-[#1B2E4B]">£{mrr}</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400 uppercase">Boost revenue (period)</p>
-            <p className="font-display text-xl font-bold text-[#1B2E4B]">£{boostRevenuePounds.toFixed(0)}</p>
-          </div>
-        </div>
+
+        {/* Sub-lists */}
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="font-semibold text-[#1B2E4B] mb-3">High-traffic unclaimed</h3>
+            <h3 className="font-semibold text-[#1B2E4B] mb-3 text-sm">High-traffic unclaimed</h3>
             {highTrafficUnclaimed.length === 0 ? (
               <p className="text-gray-400 text-sm">None</p>
             ) : (
               <ul className="space-y-2">
                 {highTrafficUnclaimed.map(({ business, views }) => (
-                  <li key={business.id} className="flex items-center justify-between text-sm">
-                    <Link href={`/admin/businesses/${business.id}`} className="font-medium text-[#1B2E4B] hover:text-[#C9A84C]">
+                  <li key={business.id} className="flex items-center justify-between text-sm py-1.5 border-b border-gray-50">
+                    <Link href={`/admin/businesses/${business.id}`} className="font-medium text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
                       {business.name}
                     </Link>
-                    <span className="text-gray-500">{views} views</span>
+                    <span className="text-gray-400 tabular-nums">{views} views</span>
                   </li>
                 ))}
               </ul>
             )}
           </div>
           <div>
-            <h3 className="font-semibold text-[#1B2E4B] mb-3">Claimed, low engagement</h3>
+            <h3 className="font-semibold text-[#1B2E4B] mb-3 text-sm">Claimed, low engagement</h3>
             {claimedLowEngagement.length === 0 ? (
               <p className="text-gray-400 text-sm">None</p>
             ) : (
               <ul className="space-y-2">
                 {claimedLowEngagement.map(({ business, views, rate }) => (
-                  <li key={business.id} className="flex items-center justify-between text-sm">
-                    <Link href={`/admin/businesses/${business.id}`} className="font-medium text-[#1B2E4B] hover:text-[#C9A84C]">
+                  <li key={business.id} className="flex items-center justify-between text-sm py-1.5 border-b border-gray-50">
+                    <Link href={`/admin/businesses/${business.id}`} className="font-medium text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
                       {business.name}
                     </Link>
-                    <span className="text-gray-500">{views} views, {rate.toFixed(1)}% conv</span>
+                    <span className="text-gray-400 tabular-nums">{views} views · {rate.toFixed(1)}%</span>
                   </li>
                 ))}
               </ul>
@@ -401,22 +452,23 @@ export default function SiteAnalyticsClient({
       </div>
 
       {/* Section 5 — Engagement Intel */}
-      <div className="grid lg:grid-cols-3 gap-6">
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <h3 className="font-display font-bold text-[#1B2E4B] mb-3 flex items-center gap-2">
-            <Eye className="w-4 h-4" /> Getting views, not converting
+      <div className="grid lg:grid-cols-3 gap-4">
+        {/* Not converting — amber accent (most actionable) */}
+        <div className="bg-amber-50 rounded-2xl border border-amber-200 shadow-sm p-6">
+          <h3 className="font-display font-bold text-amber-900 mb-3 flex items-center gap-2 text-sm">
+            <AlertTriangle className="w-4 h-4 text-amber-500" /> Getting views, not converting
           </h3>
           {notConvertingWithVisibility.length === 0 ? (
-            <p className="text-gray-400 text-sm">None</p>
+            <p className="text-amber-700/50 text-sm">None</p>
           ) : (
             <ul className="space-y-3">
-              {notConvertingWithVisibility.slice(0, 5).map(({ business, clicks, visibility }) => (
+              {notConvertingWithVisibility.slice(0, 5).map(({ business, visibility }) => (
                 <li key={business.id}>
-                  <Link href={`/admin/businesses/${business.id}`} className="font-medium text-sm text-[#1B2E4B] hover:text-[#C9A84C]">
+                  <Link href={`/admin/businesses/${business.id}`} className="font-medium text-sm text-amber-900 hover:text-[#C9A84C] transition-colors">
                     {business.name}
                   </Link>
-                  <p className="text-xs text-gray-500 mt-0.5">Score: {visibility.score}/100</p>
-                  <p className="text-xs text-amber-600 mt-0.5">
+                  <p className="text-xs text-amber-700/70 mt-0.5">Score: {visibility.score}/100</p>
+                  <p className="text-xs text-amber-700 mt-0.5">
                     Missing: {visibility.items.filter((i) => !i.earned).map((i) => i.label).join(", ") || "—"}
                   </p>
                 </li>
@@ -424,39 +476,43 @@ export default function SiteAnalyticsClient({
             </ul>
           )}
         </div>
+
+        {/* Hot right now */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <h3 className="font-display font-bold text-[#1B2E4B] mb-3 flex items-center gap-2">
-            <Zap className="w-4 h-4" /> Hot right now
+          <h3 className="font-display font-bold text-[#1B2E4B] mb-3 flex items-center gap-2 text-sm">
+            <Zap className="w-4 h-4 text-[#C9A84C]" /> Hot right now
           </h3>
           {hotRightNow.length === 0 ? (
             <p className="text-gray-400 text-sm">None</p>
           ) : (
             <ul className="space-y-2">
               {hotRightNow.map(({ business, currViews, delta }) => (
-                <li key={business.id} className="flex items-center justify-between text-sm">
-                  <Link href={`/admin/businesses/${business.id}`} className="font-medium text-[#1B2E4B] hover:text-[#C9A84C]">
+                <li key={business.id} className="flex items-center justify-between text-sm py-1 border-b border-gray-50">
+                  <Link href={`/admin/businesses/${business.id}`} className="font-medium text-[#1B2E4B] hover:text-[#C9A84C] transition-colors truncate mr-2">
                     {business.name}
                   </Link>
-                  <span className="text-emerald-600 font-semibold">+{delta}</span>
+                  <span className="text-emerald-600 font-semibold shrink-0 tabular-nums">+{delta}</span>
                 </li>
               ))}
             </ul>
           )}
         </div>
+
+        {/* Consistently strong */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <h3 className="font-display font-bold text-[#1B2E4B] mb-3 flex items-center gap-2">
-            <BarChart2 className="w-4 h-4" /> Consistently strong
+          <h3 className="font-display font-bold text-[#1B2E4B] mb-3 flex items-center gap-2 text-sm">
+            <BarChart2 className="w-4 h-4 text-[#1B2E4B]" /> Consistently strong
           </h3>
           {consistentlyStrong.length === 0 ? (
             <p className="text-gray-400 text-sm">None</p>
           ) : (
             <ul className="space-y-2">
               {consistentlyStrong.map((b) => (
-                <li key={b.id} className="flex items-center justify-between text-sm">
-                  <Link href={`/${b.category.slug}/${b.slug}`} target="_blank" rel="noopener noreferrer" className="font-medium text-[#1B2E4B] hover:text-[#C9A84C]">
+                <li key={b.id} className="flex items-center justify-between text-sm py-1 border-b border-gray-50">
+                  <Link href={`/${b.category.slug}/${b.slug}`} target="_blank" rel="noopener noreferrer" className="font-medium text-[#1B2E4B] hover:text-[#C9A84C] transition-colors truncate mr-2">
                     {b.name}
                   </Link>
-                  <span className="text-gray-500 text-xs">{b.weeksInTop20}w</span>
+                  <span className="text-gray-400 text-xs shrink-0">{b.weeksInTop20}w</span>
                 </li>
               ))}
             </ul>
@@ -468,47 +524,40 @@ export default function SiteAnalyticsClient({
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
         <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-5">Review system health</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div>
-            <p className="text-xs text-gray-400">Submitted</p>
-            <p className="font-display text-xl font-bold">{totalSubmitted}</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400">Email verified</p>
-            <p className="font-display text-xl font-bold">{totalSubmitted > 0 ? ((emailVerified / totalSubmitted) * 100).toFixed(0) : 0}%</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400">Approval rate</p>
-            <p className="font-display text-xl font-bold">{totalSubmitted > 0 ? ((approved / totalSubmitted) * 100).toFixed(0) : 0}%</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400">Verified Purchase</p>
-            <p className="font-display text-xl font-bold">{approved > 0 ? approved : 0} approved, {verifiedPurchase} with receipt</p>
-          </div>
+          {[
+            { label: "Submitted", value: totalSubmitted },
+            { label: "Email verified", value: `${totalSubmitted > 0 ? ((emailVerified / totalSubmitted) * 100).toFixed(0) : 0}%` },
+            { label: "Approval rate", value: `${totalSubmitted > 0 ? ((approved / totalSubmitted) * 100).toFixed(0) : 0}%` },
+            { label: "With receipt", value: verifiedPurchase },
+          ].map(({ label, value }) => (
+            <div key={label} className="bg-gray-50 rounded-xl p-4">
+              <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">{label}</p>
+              <p className="font-display text-2xl font-bold text-[#1B2E4B]">{value}</p>
+            </div>
+          ))}
         </div>
-        <div className="flex gap-6 mb-4">
-          <div>
-            <p className="text-xs text-gray-400">IP flag rate</p>
-            <p className="font-semibold">{totalSubmitted > 0 ? ((flagged / totalSubmitted) * 100).toFixed(1) : 0}%</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400">Avg days to approval</p>
-            <p className="font-semibold">{avgApprovalDays.toFixed(1)}</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400">Pending avg age</p>
-            <p className={`font-semibold ${avgPendingReviewAge > 3 ? "text-amber-600" : ""}`}>{avgPendingReviewAge.toFixed(1)} days</p>
-          </div>
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          {[
+            { label: "IP flag rate", value: `${totalSubmitted > 0 ? ((flagged / totalSubmitted) * 100).toFixed(1) : 0}%`, warn: flagged > 0 },
+            { label: "Avg days to approval", value: avgApprovalDays.toFixed(1) },
+            { label: "Pending avg age", value: `${avgPendingReviewAge.toFixed(1)} days`, warn: avgPendingReviewAge > 3 },
+          ].map(({ label, value, warn }) => (
+            <div key={label} className={`rounded-xl p-4 ${warn ? "bg-amber-50 border border-amber-200" : "bg-gray-50"}`}>
+              <p className={`text-xs uppercase tracking-wide mb-1 ${warn ? "text-amber-600" : "text-gray-400"}`}>{label}</p>
+              <p className={`font-display text-xl font-bold ${warn ? "text-amber-700" : "text-[#1B2E4B]"}`}>{value}</p>
+            </div>
+          ))}
         </div>
         {topReviewedBusinesses.length > 0 && (
-          <div>
-            <p className="text-xs text-gray-400 mb-2">Top reviewed businesses</p>
-            <ul className="space-y-1">
+          <div className="pt-5 border-t border-gray-100">
+            <p className="text-xs text-gray-400 uppercase tracking-wide mb-3">Top reviewed businesses</p>
+            <ul className="space-y-2">
               {topReviewedBusinesses.map((b) => (
-                <li key={b.id}>
-                  <Link href={`/${b.category.slug}/${b.slug}`} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-[#1B2E4B] hover:text-[#C9A84C]">
+                <li key={b.id} className="flex items-center justify-between text-sm py-1 border-b border-gray-50">
+                  <Link href={`/${b.category.slug}/${b.slug}`} target="_blank" rel="noopener noreferrer" className="font-medium text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
                     {b.name}
                   </Link>
-                  <span className="text-gray-500 text-xs ml-2">{topReviewedCounts[b.id] ?? 0} reviews</span>
+                  <span className="text-gray-400 tabular-nums">{topReviewedCounts[b.id] ?? 0} reviews</span>
                 </li>
               ))}
             </ul>
@@ -522,37 +571,37 @@ export default function SiteAnalyticsClient({
           <h2 className="font-display text-lg font-bold text-white mb-5">Open 2026 command centre</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold text-[#C9A84C] mb-3">Active boosts in Open window</h3>
+              <h3 className="font-semibold text-[#C9A84C] mb-3 text-sm">Active boosts in Open window</h3>
               {openBoosts.length === 0 ? (
-                <p className="text-white/60 text-sm">None</p>
+                <p className="text-white/40 text-sm">None yet</p>
               ) : (
                 <ul className="space-y-2">
                   {openBoosts.map((b, i) => (
-                    <li key={i} className="text-sm">
+                    <li key={i} className="text-sm py-1.5 border-b border-white/10">
                       <span className="font-medium">{b.business.name}</span>
-                      <span className="text-white/60 ml-2">{b.category.name} · {b.type}</span>
+                      <span className="text-white/50 ml-2">{b.category.name} · {b.type}</span>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
             <div>
-              <h3 className="font-semibold text-[#C9A84C] mb-3">Unclaimed high-traffic (Open categories)</h3>
+              <h3 className="font-semibold text-[#C9A84C] mb-3 text-sm">Unclaimed high-traffic (Open categories)</h3>
               {openUnclaimed.length === 0 ? (
-                <p className="text-white/60 text-sm">None</p>
+                <p className="text-white/40 text-sm">None</p>
               ) : (
                 <ul className="space-y-2">
                   {openUnclaimed.map((u) => (
-                    <li key={u.businessId} className="flex items-center justify-between text-sm">
+                    <li key={u.businessId} className="flex items-center justify-between text-sm py-1.5 border-b border-white/10">
                       <Link
                         href={u.business ? `/${u.business.category.slug}/${u.business.slug}` : "#"}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-medium text-white hover:text-[#C9A84C]"
+                        className="font-medium text-white hover:text-[#C9A84C] transition-colors"
                       >
                         {u.business?.name ?? u.businessId}
                       </Link>
-                      <span className="text-white/60">{u.views} views</span>
+                      <span className="text-white/50 tabular-nums">{u.views} views</span>
                     </li>
                   ))}
                 </ul>
