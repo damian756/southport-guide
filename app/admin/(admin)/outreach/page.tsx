@@ -89,14 +89,14 @@ export default async function OutreachPage() {
   const viewByBizPrior = new Map(clickCountsPrior.map((c) => [c.businessId, c._count.businessId]));
 
   const claimCandidates = unclaimedBusinesses
+    .filter((b) => b.email)
     .map((b) => ({
       business: b,
       views: viewByBizCurrent.get(b.id) ?? 0,
       lastSentAt: lastClaimByBiz.get(b.id) ?? null,
     }))
-    .filter((x) => x.views > 0)
     .sort((a, b) => b.views - a.views)
-    .slice(0, 50);
+    .slice(0, 500);
 
   const upgradeCandidates = claimedFreeBusinesses
     .map((b) => ({
