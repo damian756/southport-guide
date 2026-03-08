@@ -117,7 +117,7 @@ export const GUIDES: Guide[] = [
     excerpt:
       "Southport FC host Southend United in the FA Trophy semi-final on Saturday 28 March 2026 — the biggest home game in 28 years. Parking, pubs, how to get to Haig Avenue, and what else to do in Southport if you're making a day of it.",
     category: "events",
-    heroImage: "/images/southport-fc-haig-avenue.webp",
+    heroImage: "/images/southport-fa-trophy-semifinal-hero.webp",
     seoPriority: 0.92,
     datePublished: "2026-03-08",
     dateUpdated: "2026-03-08",
@@ -137,7 +137,7 @@ export const GUIDES: Guide[] = [
     excerpt:
       "The complete visitor's guide to Haig Avenue and Southport FC. Postcode, parking, pubs near the ground, how to arrive by train, what the away end is like, and what Southport has to offer before and after the match.",
     category: "events",
-    heroImage: "/images/southport-fc-haig-avenue.webp",
+    heroImage: "/images/southport-fc-matchday-hero.webp",
     seoPriority: 0.88,
     datePublished: "2026-03-08",
     dateUpdated: "2026-03-08",

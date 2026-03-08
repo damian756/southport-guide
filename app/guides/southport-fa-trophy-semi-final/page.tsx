@@ -116,15 +116,19 @@ export default function FATrophySemiFinalGuidePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
       {/* ── Hero ── */}
-      <div className="relative min-h-[75vh] flex items-end bg-[#1B2E4B] text-white overflow-hidden">
+      <div className="relative min-h-[75vh] flex items-end bg-[#0A1B3D] text-white overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A1B3D] via-[#1B2E4B] to-[#0A1B3D]" />
-          <div className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: "repeating-linear-gradient(45deg, #C9A84C 0, #C9A84C 1px, transparent 0, transparent 50%)",
-              backgroundSize: "20px 20px",
-            }}
+          <Image
+            src="/images/southport-fa-trophy-semifinal-hero.webp"
+            alt="The FA Trophy — Southport FC reach the semi-final for the first time in 28 years"
+            fill
+            sizes="100vw"
+            quality={85}
+            className="object-cover"
+            style={{ objectPosition: "center 40%" }}
+            priority
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B3D] via-[#0A1B3D]/65 to-[#0A1B3D]/20" />
         </div>
         <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
           <div className="max-w-3xl">
