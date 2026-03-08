@@ -42,10 +42,10 @@ export default async function ReviewSection({
   const emailCount = reviews.filter((r) => r.verifiedType === "email").length;
 
   return (
-    <section id="reviews" className="mt-8 space-y-6">
+    <section id="reviews" className="space-y-4">
       {/* Rating summary */}
       {reviews.length > 0 && (
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center gap-6 flex-wrap">
             <div className="text-center">
               <p className="font-display text-5xl font-bold text-[#1B2E4B]">

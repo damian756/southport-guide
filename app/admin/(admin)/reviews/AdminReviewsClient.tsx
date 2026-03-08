@@ -32,6 +32,7 @@ type Review = {
   status: string;
   verifiedType: string;
   receiptImageUrl: string | null;
+  emailVerifiedAt: string | null;
   ipAddress: string | null;
   flaggedAt: string | null;
   flagReason: string | null;
@@ -67,6 +68,15 @@ function FraudBadge({ review }: { review: Review }) {
     );
   }
   return null;
+}
+
+function EmailBadge({ review }: { review: Review }) {
+  if (review.emailVerifiedAt) return null;
+  return (
+    <span className="inline-flex items-center gap-1 bg-orange-50 text-orange-700 text-xs px-2 py-0.5 rounded-full font-medium border border-orange-200">
+      Email unconfirmed
+    </span>
+  );
 }
 
 function ReviewCard({
@@ -151,6 +161,7 @@ function ReviewCard({
               <ExternalLink className="w-3 h-3" />
             </Link>
             <Stars n={review.starRating} />
+            <EmailBadge review={review} />
             <FraudBadge review={review} />
           </div>
           <p className="text-xs text-gray-500">

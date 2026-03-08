@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(new URL("/?review=invalid", req.url));
   }
 
-  if (review.status !== "unverified") {
+  if (review.emailVerifiedAt) {
     // Already verified — redirect back to listing
     const url = `/${review.business.category.slug}/${review.business.slug}?review=already-verified`;
     return NextResponse.redirect(new URL(url, req.url));
@@ -35,7 +35,6 @@ export async function GET(req: NextRequest) {
   await prisma.review.update({
     where: { id: review.id },
     data: {
-      status: "pending",
       emailVerifiedAt: new Date(),
       emailToken: null,
       emailTokenExp: null,

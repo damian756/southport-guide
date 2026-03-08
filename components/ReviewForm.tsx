@@ -28,6 +28,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
   const [receipt, setReceipt] = useState<File | null>(null);
   const [receiptUploading, setReceiptUploading] = useState(false);
   const [receiptDone, setReceiptDone] = useState(false);
+  const [receiptError, setReceiptError] = useState<string | null>(null);
 
   const photoInputRef = useRef<HTMLInputElement>(null);
   const receiptInputRef = useRef<HTMLInputElement>(null);
@@ -87,17 +88,27 @@ export default function ReviewForm({ businessId, businessName }: Props) {
   async function handleReceiptUpload(file: File) {
     if (!submittedReviewId) return;
     setReceiptUploading(true);
-    const form = new FormData();
-    form.append("reviewId", submittedReviewId);
-    form.append("file", file);
-    await fetch("/api/reviews/receipt", { method: "POST", body: form });
+    setReceiptError(null);
+    try {
+      const form = new FormData();
+      form.append("reviewId", submittedReviewId);
+      form.append("file", file);
+      const res = await fetch("/api/reviews/receipt", { method: "POST", body: form });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setReceiptError(data.error || "Upload failed. Please try again.");
+      } else {
+        setReceiptDone(true);
+      }
+    } catch {
+      setReceiptError("Upload failed. Please check your connection and try again.");
+    }
     setReceiptUploading(false);
-    setReceiptDone(true);
   }
 
   if (step === "done") {
     return (
-      <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center">
+      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center">
         <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
           <Star className="w-6 h-6 text-emerald-600 fill-emerald-400" />
         </div>
@@ -109,7 +120,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
 
   if (step === "receipt") {
     return (
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-4">
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-emerald-800">
           <strong>Review submitted.</strong> Check your email for a verification link.
         </div>
@@ -121,20 +132,8 @@ export default function ReviewForm({ businessId, businessName }: Props) {
 
           {receiptDone ? (
             <p className="text-sm font-semibold text-emerald-700">Receipt uploaded. Thanks!</p>
-          ) : receipt ? (
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-sm text-gray-700">{receipt.name}</span>
-              {receiptUploading ? (
-                <span className="text-xs text-gray-500">Uploading...</span>
-              ) : (
-                <button
-                  onClick={() => handleReceiptUpload(receipt)}
-                  className="bg-[#C9A84C] text-white text-sm font-semibold px-4 py-1.5 rounded-lg hover:bg-[#B8972A] transition"
-                >
-                  Upload
-                </button>
-              )}
-            </div>
+          ) : receiptUploading ? (
+            <p className="text-sm text-gray-500">Uploading...</p>
           ) : (
             <>
               <input
@@ -144,15 +143,25 @@ export default function ReviewForm({ businessId, businessName }: Props) {
                 className="hidden"
                 onChange={(e) => {
                   const f = e.target.files?.[0];
-                  if (f) setReceipt(f);
+                  if (f) {
+                    setReceipt(f);
+                    handleReceiptUpload(f);
+                  }
                 }}
               />
-              <button
-                onClick={() => receiptInputRef.current?.click()}
-                className="inline-flex items-center gap-2 border border-[#C9A84C] text-[#C9A84C] text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#C9A84C]/10 transition"
-              >
-                <Upload className="w-4 h-4" /> Choose receipt
-              </button>
+              {receipt && !receiptError ? (
+                <p className="text-sm text-gray-500">{receipt.name}</p>
+              ) : (
+                <button
+                  onClick={() => receiptInputRef.current?.click()}
+                  className="inline-flex items-center gap-2 border border-[#C9A84C] text-[#C9A84C] text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#C9A84C]/10 transition"
+                >
+                  <Upload className="w-4 h-4" /> Choose receipt
+                </button>
+              )}
+              {receiptError && (
+                <p className="text-sm text-red-600 mt-1">{receiptError} <button onClick={() => receiptInputRef.current?.click()} className="underline">Try again</button></p>
+              )}
             </>
           )}
         </div>
@@ -168,7 +177,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
       <h3 className="font-display text-lg font-bold text-[#1B2E4B] mb-5">
         Leave a review for {businessName}
       </h3>

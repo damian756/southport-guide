@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowLeft, Clock, MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
+import OpenListingCard from "@/components/OpenListingCard";
 
 export const metadata: Metadata = {
   title: "Restaurants Near Royal Birkdale | Where to Eat During The Open 2026 | Southport Guide",
@@ -70,10 +71,33 @@ const OPEN_DINING_TIPS = [
   "Some Southport restaurants add an Open week supplement — check when booking",
 ];
 
+type ListingItem = {
+  slug: string;
+  name: string;
+  shortDescription: string | null;
+  address: string;
+  rating: number | null;
+  reviewCount: number | null;
+  priceRange: string | null;
+  listingTier: string;
+  images: string[];
+};
+
 export default async function OpenRestaurantsPage() {
-  // Schema injected in JSX below
-  let restaurants: { slug: string; name: string; shortDescription: string | null }[] = [];
-  let bars: { slug: string; name: string; shortDescription: string | null }[] = [];
+  let restaurants: ListingItem[] = [];
+  let bars: ListingItem[] = [];
+
+  const SELECT = {
+    slug: true,
+    name: true,
+    shortDescription: true,
+    address: true,
+    rating: true,
+    reviewCount: true,
+    priceRange: true,
+    listingTier: true,
+    images: true,
+  } as const;
 
   try {
     const [rCat, bCat] = await Promise.all([
@@ -84,14 +108,16 @@ export default async function OpenRestaurantsPage() {
       restaurants = await prisma.business.findMany({
         where: { categoryId: rCat.id },
         take: 9,
-        select: { slug: true, name: true, shortDescription: true },
+        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        select: SELECT,
       });
     }
     if (bCat) {
       bars = await prisma.business.findMany({
         where: { categoryId: bCat.id },
         take: 6,
-        select: { slug: true, name: true, shortDescription: true },
+        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        select: SELECT,
       });
     }
   } catch {
@@ -186,11 +212,14 @@ export default async function OpenRestaurantsPage() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {restaurants.map((r) => (
-                <Link key={r.slug} href={`/restaurants/${r.slug}`} className="group bg-white rounded-2xl border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all p-5">
-                  <h3 className="font-bold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors">{r.name}</h3>
-                  {r.shortDescription && <p className="text-gray-500 text-sm mt-1">{r.shortDescription}</p>}
-                  <span className="text-[#C9A84C] text-sm font-semibold mt-3 inline-block">View →</span>
-                </Link>
+                <OpenListingCard
+                  key={r.slug}
+                  {...r}
+                  firstImage={r.images[0] ?? null}
+                  categorySlug="restaurants"
+                  themeGradient="from-orange-900 to-red-800"
+                  emoji="🍽️"
+                />
               ))}
             </div>
           </div>
@@ -205,11 +234,14 @@ export default async function OpenRestaurantsPage() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {bars.map((b) => (
-                <Link key={b.slug} href={`/bars-nightlife/${b.slug}`} className="group bg-white rounded-2xl border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all p-5">
-                  <h3 className="font-bold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors">{b.name}</h3>
-                  {b.shortDescription && <p className="text-gray-500 text-sm mt-1">{b.shortDescription}</p>}
-                  <span className="text-[#C9A84C] text-sm font-semibold mt-3 inline-block">View →</span>
-                </Link>
+                <OpenListingCard
+                  key={b.slug}
+                  {...b}
+                  firstImage={b.images[0] ?? null}
+                  categorySlug="bars-nightlife"
+                  themeGradient="from-purple-900 to-indigo-800"
+                  emoji="🍺"
+                />
               ))}
             </div>
           </div>

@@ -589,6 +589,15 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                 </div>
               )}
 
+              {/* ── Reviews ─────────────────────────────────────────────── */}
+              <ReviewSection
+                businessId={business.id}
+                businessName={business.name}
+                slug={slug}
+                categorySlug={category}
+                reviewVerifiedParam={reviewParam ?? null}
+              />
+
               {/* ── Parking-specific sections ────────────────────────── */}
               {category === "parking" && (() => {
                 const busyGuide = getParkingBusyGuide(
@@ -991,14 +1000,6 @@ export default async function BusinessPage({ params, searchParams }: Props) {
             </div>
           </div>
 
-          {/* ── Reviews ───────────────────────────────────── */}
-          <ReviewSection
-            businessId={business.id}
-            businessName={business.name}
-            slug={slug}
-            categorySlug={category}
-            reviewVerifiedParam={reviewParam ?? null}
-          />
         </div>
       </div>
     </>

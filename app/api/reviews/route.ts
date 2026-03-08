@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
         starRating: rating,
         title: title?.trim() || null,
         body: body.trim(),
-        status: "unverified",
+        status: "pending",
         emailToken: token,
         emailTokenExp: tokenExp,
         ipAddress: ip,

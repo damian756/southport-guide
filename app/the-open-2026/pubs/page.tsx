@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowLeft, MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
+import OpenListingCard from "@/components/OpenListingCard";
 
 export const metadata: Metadata = {
   title: "Pubs Near Royal Birkdale | Where to Drink During The Open 2026 | Southport Guide",
@@ -88,16 +89,38 @@ const faqLd = {
   })),
 };
 
+type ListingItem = {
+  slug: string;
+  name: string;
+  shortDescription: string | null;
+  address: string;
+  rating: number | null;
+  reviewCount: number | null;
+  priceRange: string | null;
+  listingTier: string;
+  images: string[];
+};
+
 export default async function OpenPubsPage() {
-  let bars: { slug: string; name: string; shortDescription: string | null; address: string; rating: number | null }[] = [];
+  let bars: ListingItem[] = [];
   try {
     const cat = await prisma.category.findFirst({ where: { slug: "bars-nightlife" } });
     if (cat) {
       bars = await prisma.business.findMany({
         where: { categoryId: cat.id },
         take: 9,
-        orderBy: [{ rating: "desc" }],
-        select: { slug: true, name: true, shortDescription: true, address: true, rating: true },
+        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        select: {
+          slug: true,
+          name: true,
+          shortDescription: true,
+          address: true,
+          rating: true,
+          reviewCount: true,
+          priceRange: true,
+          listingTier: true,
+          images: true,
+        },
       });
     }
   } catch {
@@ -195,16 +218,14 @@ export default async function OpenPubsPage() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {bars.map((b) => (
-                  <Link
+                  <OpenListingCard
                     key={b.slug}
-                    href={`/bars-nightlife/${b.slug}`}
-                    className="group bg-white rounded-2xl border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all p-5"
-                  >
-                    <h3 className="font-bold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors text-sm">{b.name}</h3>
-                    {b.shortDescription && <p className="text-gray-500 text-xs mt-1 line-clamp-2">{b.shortDescription}</p>}
-                    {b.rating && <p className="text-amber-500 text-xs font-semibold mt-2">★ {b.rating.toFixed(1)}</p>}
-                    <span className="text-[#C9A84C] text-sm font-semibold mt-3 inline-block">View listing →</span>
-                  </Link>
+                    {...b}
+                    firstImage={b.images[0] ?? null}
+                    categorySlug="bars-nightlife"
+                    themeGradient="from-purple-900 to-indigo-800"
+                    emoji="🍺"
+                  />
                 ))}
               </div>
             </div>

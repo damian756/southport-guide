@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowLeft, AlertTriangle, MapPin, CheckCircle, ExternalLink } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
+import OpenListingCard from "@/components/OpenListingCard";
 
 export const metadata: Metadata = {
   title: "Hotels Near Royal Birkdale Golf Club | The Open 2026 | SouthportGuide",
@@ -139,8 +140,20 @@ const itemListLd = {
   })),
 };
 
+type ListingItem = {
+  slug: string;
+  name: string;
+  shortDescription: string | null;
+  address: string;
+  rating: number | null;
+  reviewCount: number | null;
+  priceRange: string | null;
+  listingTier: string;
+  images: string[];
+};
+
 export default async function OpenAccommodationPage() {
-  let featuredHotels: { slug: string; name: string; shortDescription: string | null; address: string; rating: number | null }[] = [];
+  let featuredHotels: ListingItem[] = [];
   try {
     const cat = await prisma.category.findFirst({ where: { slug: "hotels" } });
     if (cat) {
@@ -148,7 +161,17 @@ export default async function OpenAccommodationPage() {
         where: { categoryId: cat.id },
         take: 6,
         orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
-        select: { slug: true, name: true, shortDescription: true, address: true, rating: true },
+        select: {
+          slug: true,
+          name: true,
+          shortDescription: true,
+          address: true,
+          rating: true,
+          reviewCount: true,
+          priceRange: true,
+          listingTier: true,
+          images: true,
+        },
       });
     }
   } catch {
@@ -297,16 +320,14 @@ export default async function OpenAccommodationPage() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {featuredHotels.map((h) => (
-                  <Link
+                  <OpenListingCard
                     key={h.slug}
-                    href={`/hotels/${h.slug}`}
-                    className="group bg-white rounded-2xl border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all p-5"
-                  >
-                    <h3 className="font-bold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors text-sm">{h.name}</h3>
-                    <p className="text-gray-500 text-xs mt-1 line-clamp-2">{h.shortDescription || h.address}</p>
-                    {h.rating && <p className="text-amber-500 text-xs font-semibold mt-2">★ {h.rating.toFixed(1)}</p>}
-                    <span className="text-[#C9A84C] text-sm font-semibold mt-3 inline-block">View listing →</span>
-                  </Link>
+                    {...h}
+                    firstImage={h.images[0] ?? null}
+                    categorySlug="hotels"
+                    themeGradient="from-blue-900 to-slate-800"
+                    emoji="🏨"
+                  />
                 ))}
               </div>
             </div>
