@@ -22,11 +22,16 @@ function getReferrerDomain(referer: string | null): string | null {
 export function middleware(req: NextRequest, event: NextFetchEvent) {
   const { pathname } = req.nextUrl;
 
-  // Only track genuine page requests:
-  // - Initial load: Accept header contains text/html
-  // - App Router client navigation: Next-Router-State-Tree header present
+  // Only track genuine browser top-level navigations.
+  // Sec-Fetch-Mode: navigate + Sec-Fetch-Dest: document are ONLY sent by browsers
+  // on real user-initiated page loads, never by internal/background requests.
   const accept = req.headers.get("accept") ?? "";
-  const isPageRequest = accept.includes("text/html");
+  const secFetchMode = req.headers.get("sec-fetch-mode");
+  const secFetchDest = req.headers.get("sec-fetch-dest");
+  const isPageRequest =
+    accept.includes("text/html") &&
+    secFetchMode === "navigate" &&
+    secFetchDest === "document";
   if (!isPageRequest) return NextResponse.next();
 
   if (
