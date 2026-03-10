@@ -27,16 +27,6 @@ export async function GET(req: NextRequest) {
     include: {
       category: { select: { slug: true, name: true } },
     },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      phone: true,
-      website: true,
-      address: true,
-      slug: true,
-      category: true,
-    },
     orderBy: { createdAt: "asc" },
   });
 
