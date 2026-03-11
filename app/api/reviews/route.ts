@@ -131,25 +131,29 @@ export async function POST(req: NextRequest) {
 
     // Upload review photos
     if (photoFiles.length > 0) {
-      const uploads = photoFiles.slice(0, 3).map(async (file, i) => {
-        if (!ALLOWED_TYPES.includes(file.type) || file.size > MAX_PHOTO_SIZE) return null;
-        const ext = file.type.split("/")[1] ?? "jpg";
-        const blob = await put(`reviews/${review.id}/${i}.${ext}`, file, {
-          access: "public",
-          contentType: file.type,
+      try {
+        const uploads = photoFiles.slice(0, 3).map(async (file, i) => {
+          if (!ALLOWED_TYPES.includes(file.type) || file.size > MAX_PHOTO_SIZE) return null;
+          const ext = file.type.split("/")[1] ?? "jpg";
+          const blob = await put(`reviews/${review.id}/${i}.${ext}`, file, {
+            access: "public",
+            contentType: file.type,
+          });
+          return blob.url;
         });
-        return blob.url;
-      });
 
-      const urls = (await Promise.all(uploads)).filter(Boolean) as string[];
-      if (urls.length > 0) {
-        await prisma.reviewImage.createMany({
-          data: urls.map((url, i) => ({
-            reviewId: review.id,
-            imageUrl: url,
-            sortOrder: i,
-          })),
-        });
+        const urls = (await Promise.all(uploads)).filter(Boolean) as string[];
+        if (urls.length > 0) {
+          await prisma.reviewImage.createMany({
+            data: urls.map((url, i) => ({
+              reviewId: review.id,
+              imageUrl: url,
+              sortOrder: i,
+            })),
+          });
+        }
+      } catch (uploadErr) {
+        console.error("[reviews POST] photo upload failed:", uploadErr);
       }
     }
 
