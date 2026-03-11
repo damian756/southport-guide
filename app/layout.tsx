@@ -4,7 +4,6 @@ import "./globals.css";
 import Link from "next/link";
 import NavMenu from "./components/NavMenu";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
-import { Analytics } from "@vercel/analytics/next";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -104,7 +103,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ConditionalNav><Navigation /></ConditionalNav>
         <main className="overflow-x-hidden">{children}</main>
         <ConditionalFooter><Footer /></ConditionalFooter>
-        <Analytics />
       </body>
     </html>
   );
