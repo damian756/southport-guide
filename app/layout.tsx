@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -99,12 +98,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="8CKtfDqAgEQ+hozV1m/IzQ" async></script>
       </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
         <ConditionalNav><Navigation /></ConditionalNav>
         <main className="overflow-x-hidden">{children}</main>
         <ConditionalFooter><Footer /></ConditionalFooter>
-        <Script src="https://analytics.ahrefs.com/analytics.js" data-key="8CKtfDqAgEQ+hozV1m/IzQ" strategy="afterInteractive" />
       </body>
     </html>
   );
