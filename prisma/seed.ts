@@ -20,10 +20,50 @@ const CATEGORIES = [
   { slug: "transport", name: "Transport", description: "Taxis, parking and bike hire", sortOrder: 11 },
 ];
 
-const BUSINESSES = [
+const BUSINESSES: Array<{
+  slug: string;
+  name: string;
+  categorySlug: string;
+  address: string;
+  postcode: string;
+  phone?: string;
+  website?: string;
+  shortDescription?: string;
+  description?: string;
+  priceRange?: string;
+  tags?: string[];
+  lat?: number;
+  lng?: number;
+}> = [
   { slug: "the-waterfront-southport", name: "The Waterfront", categorySlug: "restaurants", address: "Promenade, Southport", postcode: "PR8 1QX", phone: "01704 123456", website: "https://example.com", shortDescription: "Seaside dining with views over the Marine Lake.", priceRange: "££" },
   { slug: "bistro-pierre-southport", name: "Bistro Pierre", categorySlug: "restaurants", address: "Unit 5, Southport Market, Eastbank Street", postcode: "PR8 1EJ", phone: "01704 234567", shortDescription: "French-inspired bistro in Southport Market.", priceRange: "££" },
   { slug: "the-athenaeum-southport", name: "The Athenaeum", categorySlug: "restaurants", address: "Lord Street, Southport", postcode: "PR8 1DB", shortDescription: "Brasserie and bar on Lord Street.", priceRange: "£££" },
+  {
+    slug: "roberto-s-italian",
+    name: "Roberto's Italian",
+    categorySlug: "restaurants",
+    address: "47 Lord Street, Southport",
+    postcode: "PR8 1DA",
+    shortDescription: "Classic Italian restaurant on Lord Street — good portions, relaxed atmosphere, reliable food.",
+    description: "Roberto's is one of those Southport restaurants that's been here a while and consistently delivers. Lord Street location, classic Italian menu — pasta, risotto, grilled meat and fish. The portions are proper and the prices are reasonable for the quality. Relaxed atmosphere that works for families, couples and groups alike.\n\nIf you want straightforward Italian food done well, without any fuss, this is a solid choice. Popular enough that booking at weekends is sensible. Accessible from the main Lord Street car parks on foot.",
+    priceRange: "££",
+    tags: ["lord-street", "italian", "family-friendly", "book-ahead-weekends"],
+    lat: 53.6455,
+    lng: -3.0063,
+  },
+  {
+    slug: "limoncello",
+    name: "Limoncello",
+    categorySlug: "restaurants",
+    address: "Liverpool Road, Birkdale, Southport",
+    postcode: "PR8 4AT",
+    shortDescription: "Popular Italian restaurant in Birkdale Village — consistently good food, worth booking at weekends.",
+    description: "Limoncello is in Birkdale Village, which already tells you something. This is the southern end of Southport that most visitors don't find unless they know to look. The restaurant has built a strong local following for good reason — the food is consistently good, the atmosphere is relaxed without being casual, and the menu balances Italian classics with seasonal specials.\n\nIf you're eating in Birkdale, this is the obvious choice. Pasta done properly, decent wine list, friendly service. The kind of place locals book for a regular treat rather than a special occasion — which usually means the quality holds up reliably.\n\nBook ahead at weekends. It fills up. Parking on Liverpool Road or the surrounding streets. Ten minutes from Southport town centre by car.",
+    priceRange: "£££",
+    tags: ["birkdale", "birkdale-village", "italian", "book-ahead-weekends", "local-favourite"],
+    lat: 53.6283,
+    lng: -3.0152,
+  },
   { slug: "prince-of-wales-hotel", name: "Prince of Wales Hotel", categorySlug: "hotels", address: "Lord Street, Southport", postcode: "PR8 1JS", phone: "01704 536688", website: "https://www.princeofwales-southport.co.uk", shortDescription: "Historic hotel on Lord Street with spa and restaurant.", priceRange: "£££" },
   { slug: "the-bold-hotel", name: "The Bold Hotel", categorySlug: "hotels", address: "601 Lord Street, Southport", postcode: "PR9 0AQ", phone: "01704 533521", shortDescription: "Family-run hotel with bar and restaurant.", priceRange: "££" },
   { slug: "scarisbrick-hotel", name: "Scarisbrick Hotel", categorySlug: "hotels", address: "Lord Street, Southport", postcode: "PR8 1NJ", phone: "01704 534771", shortDescription: "Victorian hotel in the heart of Southport.", priceRange: "£££" },
@@ -52,7 +92,19 @@ async function main() {
     await prisma.business.upsert({
       where: { slug: b.slug },
       create: { ...rest, categoryId, images: [] },
-      update: { name: rest.name, address: rest.address, postcode: rest.postcode, phone: rest.phone ?? undefined, website: rest.website ?? undefined, shortDescription: rest.shortDescription ?? undefined, priceRange: rest.priceRange ?? undefined },
+      update: {
+        name: rest.name,
+        address: rest.address,
+        postcode: rest.postcode,
+        phone: rest.phone ?? undefined,
+        website: rest.website ?? undefined,
+        shortDescription: rest.shortDescription ?? undefined,
+        description: rest.description ?? undefined,
+        priceRange: rest.priceRange ?? undefined,
+        tags: rest.tags ?? undefined,
+        lat: rest.lat ?? undefined,
+        lng: rest.lng ?? undefined,
+      },
     });
   }
   console.log("Seeded businesses:", BUSINESSES.length);
