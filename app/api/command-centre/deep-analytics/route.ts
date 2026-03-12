@@ -38,13 +38,10 @@ export async function GET(req: NextRequest) {
   const [
     pulseClicksLast24h,
     pulseClicksPrior24h,
-    pulsePageViewsLast24h,
-    pulsePageViewsPrior24h,
     pendingReviews,
     pendingClaims,
     activeBoosts,
     businessClickDaily,
-    pageViewDaily,
     businessesWithClicks,
     allBusinesses,
     categories,
@@ -58,8 +55,6 @@ export async function GET(req: NextRequest) {
   ] = await Promise.all([
     prisma.businessClick.count({ where: { createdAt: { gte: last24h } } }),
     prisma.businessClick.count({ where: { createdAt: { gte: prior24h, lt: last24h } } }),
-    prisma.pageView.count({ where: { createdAt: { gte: last24h } } }),
-    prisma.pageView.count({ where: { createdAt: { gte: prior24h, lt: last24h } } }),
     prisma.review.count({ where: { status: "pending" } }),
     prisma.claimRequest.count({ where: { status: "pending" } }),
     prisma.listingBoost.count({
@@ -68,13 +63,6 @@ export async function GET(req: NextRequest) {
     prisma.$queryRaw<DailyRow[]>`
       SELECT DATE("createdAt")::text AS date, COUNT(*)::int AS count
       FROM "BusinessClick"
-      WHERE "createdAt" >= ${from}
-      GROUP BY DATE("createdAt")
-      ORDER BY date ASC
-    `,
-    prisma.$queryRaw<DailyRow[]>`
-      SELECT DATE("createdAt")::text AS date, COUNT(*)::int AS count
-      FROM "PageView"
       WHERE "createdAt" >= ${from}
       GROUP BY DATE("createdAt")
       ORDER BY date ASC
@@ -439,15 +427,12 @@ export async function GET(req: NextRequest) {
       viewsPrior24h,
       conversionsLast24h,
       conversionsPrior24h,
-      pageViewsLast24h: pulsePageViewsLast24h,
-      pageViewsPrior24h: pulsePageViewsPrior24h,
       pendingReviews,
       pendingClaims,
       activeBoosts,
     },
     trend: {
       businessClickDaily,
-      pageViewDaily,
       eventsInPeriod,
     },
     categoryMatrix,

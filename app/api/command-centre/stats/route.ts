@@ -21,20 +21,10 @@ export async function GET(req: NextRequest) {
   if (authError) return authError;
 
   const now = new Date();
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
   const weekStart = new Date(now);
   weekStart.setDate(weekStart.getDate() - 7);
-  const monthStart = new Date(now);
-  monthStart.setDate(monthStart.getDate() - 30);
-  monthStart.setHours(0, 0, 0, 0);
 
   const [
-    pageviewsToday,
-    pageviewsThisWeek,
-    pageviewsThisMonth,
-    topPagesRaw,
-    topReferrersRaw,
     totalBusinesses,
     claimedCount,
     blogPostsCount,
@@ -44,22 +34,6 @@ export async function GET(req: NextRequest) {
     boostRevenue,
     featuredCount,
   ] = await Promise.all([
-    prisma.pageView.count({ where: { createdAt: { gte: todayStart } } }),
-    prisma.pageView.count({ where: { createdAt: { gte: weekStart } } }),
-    prisma.pageView.count({ where: { createdAt: { gte: monthStart } } }),
-    prisma.pageView.groupBy({
-      by: ["path"],
-      where: { createdAt: { gte: weekStart } },
-      _count: { path: true },
-    }),
-    prisma.pageView.groupBy({
-      by: ["referrer"],
-      where: {
-        createdAt: { gte: weekStart },
-        referrer: { not: null },
-      },
-      _count: { referrer: true },
-    }),
     prisma.business.count(),
     prisma.business.count({ where: { claimed: true } }),
     prisma.blogPost.count({ where: { published: true } }),
@@ -99,21 +73,6 @@ export async function GET(req: NextRequest) {
     site: "southportguide",
     network: "sefton",
     period: now.toISOString().slice(0, 10),
-    analytics: {
-      pageviewsToday,
-      pageviewsThisWeek,
-      pageviewsThisMonth,
-      uniqueVisitorsThisWeek: pageviewsThisWeek,
-      topPages: topPagesRaw
-        .map((r) => ({ path: r.path, count: r._count.path }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 10),
-      topReferrers: topReferrersRaw
-        .filter((r) => r.referrer)
-        .map((r) => ({ referrer: r.referrer!, count: r._count.referrer }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 10),
-    },
     content: {
       totalListings: totalBusinesses,
       claimedListings: claimedCount,
@@ -137,11 +96,3 @@ export async function GET(req: NextRequest) {
   });
 }
 
-export async function DELETE(req: NextRequest) {
-  const key = req.headers.get("x-api-key");
-  if (!key || key !== process.env.COMMAND_CENTRE_API_KEY) {
-    return NextResponse.json({ error: "Unauthorised" }, { status: 401 });
-  }
-  await prisma.pageView.deleteMany();
-  return NextResponse.json({ ok: true, deleted: true });
-}

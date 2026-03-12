@@ -392,14 +392,4 @@ model PasswordResetToken {
   @@index([email])
 }
 
-model PageView {
-  id        String   @id @default(uuid())
-  path      String
-  referrer  String?
-  device    String?
-  createdAt DateTime @default(now())
-
-  @@index([path])
-  @@index([createdAt])
-}
 
