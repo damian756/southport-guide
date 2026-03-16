@@ -780,15 +780,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "15 Mar 2026",
   },
   {
-    slug: "sunday-lunch-southport",
-    title: "Best Sunday Lunch in Southport",
-    excerpt:
-      "The Hesketh Arms, The Bold, The Swan, and where not to leave it to chance. Terry's guide to Sunday roast in Southport — with honest booking advice.",
-    categorySlug: "food-drink",
-    image: "/images/blog/sunday-lunch-southport.webp",
-    date: "15 Mar 2026",
-  },
-  {
     slug: "marine-lake-events-centre-southport",
     title: "The Marine Lake Events Centre (MLEC): What Southport is Building",
     excerpt:
