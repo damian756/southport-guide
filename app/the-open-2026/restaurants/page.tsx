@@ -6,10 +6,17 @@ import type { Metadata } from "next";
 import OpenListingCard from "@/components/OpenListingCard";
 
 export const metadata: Metadata = {
-  title: "Restaurants Near Royal Birkdale | Where to Eat During The Open 2026 | Southport Guide",
+  title: "Restaurants Near Royal Birkdale | The Open 2026",
   description:
     "The best restaurants and dining in Southport and Birkdale for The Open Championship 2026. Book ahead — venues near Royal Birkdale fill up weeks in advance during Open week.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/restaurants" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Restaurants Near Royal Birkdale | The Open 2026",
+    description: "The best restaurants in Southport and Birkdale for The Open 2026. Book ahead — venues fill weeks in advance.",
+    url: "https://www.southportguide.co.uk/the-open-2026/restaurants",
+  },
 };
 
 const breadcrumbLd = {

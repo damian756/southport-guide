@@ -396,7 +396,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const canonicalUrl = `${BASE_URL}/parking/${slug}`;
 
     return {
-      title,
+      title: { absolute: title },
       description: desc,
       alternates: { canonical: canonicalUrl },
       openGraph: {

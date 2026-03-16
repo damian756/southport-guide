@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -230,10 +231,13 @@ export default function DashboardLoginClient() {
 
       {/* Right — hero image panel, hidden on mobile */}
       <div className="hidden lg:block lg:w-[52%] xl:w-[55%] relative overflow-hidden flex-shrink-0">
-        <img
+        <Image
           src="/images/dashboard/login-hero.jpg"
           alt="Lord Street, Southport"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          sizes="(max-width: 1024px) 0px, 55vw"
+          className="object-cover"
+          quality={75}
         />
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B]/80 via-[#1B2E4B]/20 to-transparent" />

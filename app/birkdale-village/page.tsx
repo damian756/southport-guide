@@ -16,18 +16,21 @@ import type { Metadata } from "next";
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Birkdale Village | Shops, Restaurants, Cafés & Guide | SouthportGuide",
+  title: "Birkdale Village | Shops, Restaurants & Cafés Guide",
   description:
     "Birkdale Village — Southport&apos;s independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
   keywords:
     "Birkdale village, Birkdale village shops, Birkdale village restaurants, Birkdale village Southport, Liverpool Road Birkdale, Birkdale cafes",
   alternates: { canonical: `${BASE_URL}/birkdale-village` },
   openGraph: {
-    title: "Birkdale Village | Southport's Independent Quarter | SouthportGuide",
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
+    title: "Birkdale Village | Southport's Independent Quarter",
     description:
       "Independent boutiques, excellent restaurants, and proper coffee. Birkdale Village is where Southport locals actually shop and eat.",
     url: `${BASE_URL}/birkdale-village`,
-    images: [{ url: `${BASE_URL}/images/birkdale-village.webp` }],
+    images: [{ url: `${BASE_URL}/images/birkdale-village.webp`, width: 1200, height: 630, alt: "Birkdale Village Southport" }],
   },
 };
 

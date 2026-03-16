@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-  title: "About SouthportGuide | Your Independent Visitor Guide to Southport",
+  title: "About SouthportGuide",
   description:
     "SouthportGuide.co.uk is an independent visitor guide to Southport, published by Churchtown Media. Find out who writes it, how it works, and why we built it.",
   alternates: { canonical: "https://www.southportguide.co.uk/about" },
@@ -41,7 +41,10 @@ const schemaData = [
     description:
       "Editorial voice of SouthportGuide.co.uk — written from the perspective of a Southport local of over 40 years covering restaurants, hotels, events and everything visitors need to know.",
     worksFor: {
-      "@id": "https://www.southportguide.co.uk/#website",
+      "@type": "Organization",
+      "@id": "https://www.southportguide.co.uk/#organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
     },
     url: "https://www.southportguide.co.uk/about",
   },

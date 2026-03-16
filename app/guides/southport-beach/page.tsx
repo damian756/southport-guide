@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     description:
       "Postcode, parking, dogs, tides, and what to actually expect. Southport Beach is one of the widest in England — here's how to make the most of it.",
     url: `${BASE_URL}/guides/southport-beach`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/southport-beach.webp` }],
   },
 };
@@ -88,6 +90,8 @@ const PAGE_LD = {
   description:
     "Southport Beach — one of the widest beaches in England, on the Lancashire coast. Adjacent to Marine Lake and King's Gardens. Dogs welcome year-round.",
   url: `${BASE_URL}/guides/southport-beach`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
   geo: { "@type": "GeoCoordinates", latitude: 53.6435, longitude: -3.009 },
   address: {
     "@type": "PostalAddress",

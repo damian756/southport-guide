@@ -106,7 +106,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const collectionIndexPage: MetadataRoute.Sitemap = [
     { url: `${BASE}/collections`, lastModified: D.feb15, changeFrequency: "weekly" as const, priority: 0.8 },
   ];
-  const collectionPages: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
+  const collectionPages: MetadataRoute.Sitemap = COLLECTIONS.filter((c) => !c.sitemapExclude).map((c) => ({
     url: `${BASE}/collections/${c.slug}`,
     lastModified: D.feb15,
     changeFrequency: "monthly" as const,

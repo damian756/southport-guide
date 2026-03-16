@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     description:
       "The best restaurants in Southport — Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
     url: `${BASE_URL}/guides/best-restaurants-southport`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/restaurants.webp` }],
   },
 };

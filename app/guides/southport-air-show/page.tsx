@@ -24,9 +24,11 @@ export const metadata: Metadata = {
     "Southport Air Show 2026, Southport Air Show dates, Southport Air Show free, Southport Air Show viewing, Southport airshow parking",
   alternates: { canonical: `${BASE_URL}/guides/southport-air-show` },
   openGraph: {
-    title: "Southport Air Show 2026 | Free · 100,000 Visitors | SouthportGuide",
+    title: "Southport Air Show 2026 | Free · 100,000 Visitors",
     description: "One of the UK's best free air shows. Southport Beach. Dates, viewing spots, parking, and everything you need to know.",
     url: `${BASE_URL}/guides/southport-air-show`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/southport-air-show.webp` }],
   },
 };
@@ -48,6 +50,8 @@ const PAGE_LD = {
   name: "Southport Air Show 2026",
   description: "One of the UK's largest free air shows, held on Southport Beach and Promenade each summer.",
   url: `${BASE_URL}/guides/southport-air-show`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
   isAccessibleForFree: true,
   location: {
     "@type": "Place",

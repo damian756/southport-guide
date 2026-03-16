@@ -24,10 +24,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
+  const url = `https://www.southportguide.co.uk/blog/${slug}`;
   return {
-    title: `${post.title} | Southport Guide`,
+    title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `https://www.southportguide.co.uk/blog/${slug}` },
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      siteName: "SouthportGuide.co.uk",
+      locale: "en_GB",
+      title: post.title,
+      description: post.excerpt,
+      url,
+    },
   };
 }
 
@@ -254,7 +263,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           url: "https://www.southportguide.co.uk/about",
           worksFor: {
             "@type": "Organization",
-            "@id": "https://www.southportguide.co.uk/#website",
+            "@id": "https://www.southportguide.co.uk/#organization",
             name: "SouthportGuide.co.uk",
             url: "https://www.southportguide.co.uk",
           },

@@ -7,6 +7,13 @@ export const metadata = {
   description:
     "Pricing for business listings on SouthportGuide.co.uk. Free and Pro plans, plus category boosts.",
   alternates: { canonical: "https://www.southportguide.co.uk/pricing" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Pricing | List Your Business on SouthportGuide",
+    description: "Pricing for business listings on SouthportGuide.co.uk. Free and Pro plans, plus category boosts.",
+    url: "https://www.southportguide.co.uk/pricing",
+  },
 };
 
 const FEATURES = [

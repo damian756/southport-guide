@@ -24,9 +24,11 @@ export const metadata: Metadata = {
     "Southport Pier, Southport pier length, how long is Southport pier, visit Southport pier, Southport pier history, England second longest pier",
   alternates: { canonical: `${BASE_URL}/guides/southport-pier` },
   openGraph: {
-    title: "Southport Pier | England's Second Longest | SouthportGuide",
+    title: "Southport Pier | England's Second Longest",
     description: "1,108 metres of Victorian engineering over the Irish Sea. Free to walk. Views to Wales on a clear day.",
     url: `${BASE_URL}/guides/southport-pier`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/southport-pier.webp` }],
   },
 };
@@ -48,6 +50,8 @@ const PAGE_LD = {
   name: "Southport Pier",
   description: "Southport Pier — 1,108 metres long, England's second longest pier. Victorian, restored, free to walk. Views over the Irish Sea estuary from the pierhead.",
   url: `${BASE_URL}/guides/southport-pier`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
   geo: { "@type": "GeoCoordinates", latitude: 53.6475, longitude: -3.0155 },
   address: {
     "@type": "PostalAddress",

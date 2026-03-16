@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `${BASE_URL}/collections/${slug}`;
   return {
-    title: `${collection.title} | SouthportGuide.co.uk`,
+    title: collection.title,
     description: collection.metaDescription,
     alternates: { canonical: url },
     openGraph: {

@@ -751,6 +751,53 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "02 Mar 2026",
     author: "damian",
   },
+  // March 2026 — keyword gap closers
+  {
+    slug: "afternoon-tea-southport",
+    title: "The Best Afternoon Tea in Southport",
+    excerpt:
+      "The Grand, The Vincent, and a few others worth knowing about. Terry's guide to afternoon tea in Southport — what's actually good, what to book ahead for, and what to expect.",
+    categorySlug: "food-drink",
+    image: "/images/blog/afternoon-tea-southport.webp",
+    date: "14 Mar 2026",
+  },
+  {
+    slug: "splash-world-southport",
+    title: "Splash World Southport: What to Expect",
+    excerpt:
+      "Indoor waterpark, wave machine, flumes, and a toddler pool — Splash World is Southport's all-weather family option. What's actually there, prices, and when to go.",
+    categorySlug: "things-to-do",
+    image: "/images/blog/splash-world-southport.webp",
+    date: "14 Mar 2026",
+  },
+  {
+    slug: "atkinson-southport",
+    title: "The Atkinson Southport: Gallery, Theatre and What to Expect",
+    excerpt:
+      "Free gallery and museum on Lord Street, a proper theatre programme, and a decent café. If you've walked past the Atkinson without going in, here's why you should.",
+    categorySlug: "things-to-do",
+    image: "/images/blog/atkinson-southport.webp",
+    date: "15 Mar 2026",
+  },
+  {
+    slug: "sunday-lunch-southport",
+    title: "Best Sunday Lunch in Southport",
+    excerpt:
+      "The Hesketh Arms, The Bold, The Swan, and where not to leave it to chance. Terry's guide to Sunday roast in Southport — with honest booking advice.",
+    categorySlug: "food-drink",
+    image: "/images/blog/sunday-lunch-southport.webp",
+    date: "15 Mar 2026",
+  },
+  {
+    slug: "marine-lake-events-centre-southport",
+    title: "The Marine Lake Events Centre (MLEC): What Southport is Building",
+    excerpt:
+      "A 4,000-capacity waterfront arena opening in 2027. 515,000 extra visitors projected. Here's what MLEC is, when it opens, and what it means for the town.",
+    categorySlug: "local-guides",
+    image: "/images/blog/mlec-southport.webp",
+    date: "16 Mar 2026",
+    featured: true,
+  },
   // For Business
   {
     slug: "southport-business-hub-launch",

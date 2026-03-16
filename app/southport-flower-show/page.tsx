@@ -23,11 +23,14 @@ export const metadata: Metadata = {
     "Southport Flower Show 2026, Southport Flower Show tickets, Southport Flower Show dates, Southport Flower Show parking, Victoria Park Southport",
   alternates: { canonical: `${BASE_URL}/southport-flower-show` },
   openGraph: {
-    title: "Southport Flower Show 2026 | Complete Guide | SouthportGuide",
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
+    title: "Southport Flower Show 2026 | Complete Guide",
     description:
       "One of England's most prestigious flower shows. Tickets, parking, what to wear, what to see — everything you need before you go.",
     url: `${BASE_URL}/southport-flower-show`,
-    images: [{ url: `${BASE_URL}/images/southport-flower-show.webp` }],
+    images: [{ url: `${BASE_URL}/images/southport-flower-show.webp`, width: 1200, height: 630, alt: "Southport Flower Show" }],
   },
 };
 

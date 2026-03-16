@@ -4,10 +4,17 @@ import { ArrowLeft, Train, Car, Bus, MapPin, AlertTriangle, Clock } from "lucide
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Getting to Royal Birkdale | Transport Guide for The Open 2026 | Southport Guide",
+  title: "Getting to Royal Birkdale | Transport Guide for The Open 2026",
   description:
     "How to get to Royal Birkdale for The Open Championship 2026. Merseyrail trains, park and ride, taxis, road closures and walking routes — everything you need for Open week in Southport.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/getting-there" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Getting to Royal Birkdale | The Open 2026 Transport Guide",
+    description: "Trains, park and ride, road closures and walking routes to Royal Birkdale for The Open 2026.",
+    url: "https://www.southportguide.co.uk/the-open-2026/getting-there",
+  },
 };
 
 const breadcrumbLd = {

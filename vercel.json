@@ -1,5 +1,13 @@
 {
   "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "southportguide.co.uk" }],
+      "destination": "https://www.southportguide.co.uk/:path*",
+      "permanent": true
+    }
+  ],
   "crons": [
     { "path": "/api/cron/weekly-email", "schedule": "0 8 * * 1" },
     { "path": "/api/cron/review-check", "schedule": "0 9 * * *" },

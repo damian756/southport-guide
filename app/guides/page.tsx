@@ -7,12 +7,12 @@ import GuidesClient from "./GuidesClient";
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Southport Guides | The Complete Local Guide Collection | SouthportGuide",
+  title: "Southport Guides | The Complete Local Guide Collection",
   description:
     "All of SouthportGuide's editorial guides in one place — beaches, events, areas, practical info, and food & drink. Written by locals. Updated regularly.",
   alternates: { canonical: `${BASE_URL}/guides` },
   openGraph: {
-    title: "Southport Guides | SouthportGuide.co.uk",
+    title: "Southport Guides",
     description:
       "The complete collection of Southport local guides — beaches, events, neighbourhoods, parking, and where to eat. Written by someone who lives here.",
     url: `${BASE_URL}/guides`,
@@ -45,6 +45,8 @@ const COLLECTION_LD = {
     "@type": "Article",
     name: g.title,
     url: `${BASE_URL}/guides/${g.slug}`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     description: g.description,
     image: `${BASE_URL}${g.heroImage}`,
   })),

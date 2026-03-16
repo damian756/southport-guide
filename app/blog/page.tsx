@@ -1,14 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
 import { Newspaper } from "lucide-react";
 import { BLOG_POSTS, BLOG_CATEGORIES } from "@/lib/southport-data";
 import BlogClient from "./BlogClient";
 
 export const metadata = {
-  title: "Blog | Southport Guide | SouthportGuide.co.uk",
+  title: "Blog",
   description:
     "Local guides, tips and Southport stories — written by people who actually live here.",
   alternates: { canonical: "https://www.southportguide.co.uk/blog" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
+    title: "Southport Guide Blog",
+    description: "Local guides, tips and Southport stories — written by people who actually live here.",
+    url: "https://www.southportguide.co.uk/blog",
+    images: [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630, alt: "SouthportGuide Blog" }],
+  },
 };
 
 export default function BlogPage() {
@@ -44,6 +54,17 @@ export default function BlogPage() {
           </p>
         </div>
       </section>
+
+      {/* Server-rendered post index — invisible to users, crawlable by search engines */}
+      <nav aria-hidden="true" className="sr-only">
+        <ul>
+          {BLOG_POSTS.map((post) => (
+            <li key={post.slug}>
+              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* ── Interactive content (search + tabs + grid) ─────────────── */}
       <Suspense fallback={

@@ -2,9 +2,15 @@ import Link from "next/link";
 import { ArrowLeft, FileText } from "lucide-react";
 
 export const metadata = {
-  title: "Terms & Conditions | SouthportGuide.co.uk",
+  title: "Terms & Conditions",
   description: "Terms and Conditions for use of SouthportGuide.co.uk, including business listing terms and subscription conditions.",
   alternates: { canonical: "https://www.southportguide.co.uk/terms" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Terms & Conditions",
+    url: "https://www.southportguide.co.uk/terms",
+  },
 };
 
 export default function TermsPage() {

@@ -25,9 +25,11 @@ export const metadata: Metadata = {
     "Birkdale village, Birkdale village shops, Birkdale village restaurants, Birkdale village Southport, Liverpool Road Birkdale, Birkdale cafes",
   alternates: { canonical: `${BASE_URL}/guides/birkdale-village` },
   openGraph: {
-    title: "Birkdale Village | Southport's Independent Quarter | SouthportGuide",
+    title: "Birkdale Village | Southport's Independent Quarter",
     description: "Independent boutiques, excellent restaurants, and proper coffee. Birkdale Village is where Southport locals actually shop and eat.",
     url: `${BASE_URL}/guides/birkdale-village`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/birkdale-village.webp` }],
   },
 };

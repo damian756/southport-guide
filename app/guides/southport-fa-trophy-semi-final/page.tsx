@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     title: "Southport FC v Southend — FA Trophy Semi-Final Matchday Guide",
     description: "Parking, pubs, getting to Haig Avenue, and what Southport has to offer. The complete visitor guide for 28 March 2026.",
     url: `${BASE_URL}/guides/southport-fa-trophy-semi-final`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/southport-fc-haig-avenue.webp` }],
   },
 };
@@ -74,6 +76,8 @@ const PAGE_LD = {
   name: "Southport FC v Southend United — FA Trophy Semi-Final",
   description: "FA Trophy 2025/26 semi-final at Haig Avenue, Southport. First FA Trophy semi-final for the club in 28 years.",
   url: `${BASE_URL}/guides/southport-fa-trophy-semi-final`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
   startDate: "2026-03-28",
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",

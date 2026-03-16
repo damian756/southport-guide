@@ -15,10 +15,12 @@ export const metadata: Metadata = {
     "Churchtown Southport, Botanic Gardens Southport, Churchtown village, St Cuthbert's Church Southport, Hesketh Park Southport, things to do Churchtown",
   alternates: { canonical: `${BASE_URL}/guides/churchtown` },
   openGraph: {
-    title: "Churchtown Southport | Botanic Gardens & Village Guide | SouthportGuide",
+    title: "Churchtown Southport | Botanic Gardens & Village Guide",
     description:
       "Churchtown is Southport's oldest district — Botanic Gardens, St Cuthbert's Church, Hesketh Park, and the independent shops most visitors never find.",
     url: `${BASE_URL}/guides/churchtown`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/attractions.webp` }],
   },
 };
@@ -57,6 +59,8 @@ const PAGE_LD = {
   description:
     "Churchtown is the oldest part of Southport — a medieval village with Botanic Gardens, St Cuthbert's Church, Hesketh Park, and independent local shops.",
   url: `${BASE_URL}/guides/churchtown`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
   geo: { "@type": "GeoCoordinates", latitude: 53.6686, longitude: -2.9952 },
   address: {
     "@type": "PostalAddress",

@@ -22,11 +22,14 @@ export const metadata: Metadata = {
     "Southport Air Show 2026, Southport Air Show dates, Southport Air Show free, Southport Air Show viewing, Southport airshow parking",
   alternates: { canonical: `${BASE_URL}/southport-air-show` },
   openGraph: {
-    title: "Southport Air Show 2026 | Free · 100,000 Visitors | SouthportGuide",
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
+    title: "Southport Air Show 2026 | Free · 100,000 Visitors",
     description:
       "One of the UK's best free air shows. Southport Beach. Dates, viewing spots, parking, and everything you need to know.",
     url: `${BASE_URL}/southport-air-show`,
-    images: [{ url: `${BASE_URL}/images/southport-air-show.webp` }],
+    images: [{ url: `${BASE_URL}/images/southport-air-show.webp`, width: 1200, height: 630, alt: "Southport Air Show" }],
   },
 };
 

@@ -134,7 +134,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["bars-nightlife", "restaurants", "parking", "hotels"],
     },
-    metaTitle: "Southport FC v Southend FA Trophy Semi-Final | Matchday Guide | SouthportGuide",
+    metaTitle: "Southport FC v Southend FA Trophy Semi-Final | Matchday Guide",
     metaDescription:
       "Visiting Haig Avenue for the FA Trophy semi-final on 28 March 2026? Parking, pubs near the ground, how to get there by train, and what Southport has to offer if you're making a day of it.",
   },
@@ -218,7 +218,7 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["restaurants", "cafes", "shopping", "bars-nightlife"],
       tags: ["birkdale"],
     },
-    metaTitle: "Birkdale Village | Shops, Restaurants, Cafés & Guide | SouthportGuide",
+    metaTitle: "Birkdale Village | Shops, Restaurants, Cafés & Guide",
     metaDescription:
       "Birkdale Village — Southport's independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
   },
@@ -235,7 +235,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-02-27",
     tags: ["lord-street", "shopping", "restaurants", "heritage", "victorian"],
     status: "published",
-    metaTitle: "Lord Street Southport | Shops, Restaurants & Guide | SouthportGuide",
+    metaTitle: "Lord Street Southport | Shops, Restaurants & Guide",
     metaDescription: "Lord Street is Southport's mile-long Victorian boulevard — glass canopies, independent boutiques, restaurants, and a Napoleon III connection. Your complete guide.",
     listingFilter: {
       categorySlugs: ["restaurants", "shopping", "cafes", "bars-nightlife"],
@@ -255,7 +255,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-02-27",
     tags: ["churchtown", "heritage", "gardens", "shopping"],
     status: "published",
-    metaTitle: "Churchtown Southport | Botanic Gardens, St Cuthbert's & Guide | SouthportGuide",
+    metaTitle: "Churchtown Southport | Botanic Gardens, St Cuthbert's & Guide",
     metaDescription: "Churchtown is Southport's oldest village — Botanic Gardens (free entry), St Cuthbert's Church, Hesketh Park, and the independent shops most visitors never find.",
     listingFilter: {
       categorySlugs: ["restaurants", "cafes", "shopping"],
@@ -300,7 +300,7 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["parking"],
       tags: ["free-parking"],
     },
-    metaTitle: "Free Parking in Southport | Every Free Option With Postcodes | SouthportGuide",
+    metaTitle: "Free Parking in Southport | Every Free Option With Postcodes",
     metaDescription: "Free parking in Southport: every free car park, free on-street area, and low-cost option across the town. Postcodes, walking times, and honest tips from a local.",
   },
   {
@@ -316,7 +316,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-02-27",
     tags: ["indoor", "rainy-day", "practical", "families"],
     status: "published",
-    metaTitle: "Rainy Day Southport | Indoor Things to Do | SouthportGuide",
+    metaTitle: "Rainy Day Southport | Indoor Things to Do",
     metaDescription: "What to do in Southport when it rains — Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth knowing for a wet day.",
     listingFilter: {
       categorySlugs: ["attractions", "cafes", "activities"],
@@ -335,7 +335,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-02-27",
     tags: ["dog-friendly", "practical", "beach", "pubs", "walks"],
     status: "published",
-    metaTitle: "Dog-Friendly Southport | Beach Rules, Walks, Pubs & Cafés | SouthportGuide",
+    metaTitle: "Dog-Friendly Southport | Beach Rules, Walks, Pubs & Cafés",
     metaDescription: "Southport is genuinely dog-friendly. Beach access rules, best off-lead walks, dog-welcoming pubs and cafés — the complete guide for dogs and their people.",
     listingFilter: {
       categorySlugs: ["bars-nightlife", "cafes", "restaurants"],
@@ -356,7 +356,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-02-27",
     tags: ["restaurants", "food", "dining"],
     status: "published",
-    metaTitle: "Best Restaurants in Southport 2026 | Honest Local Guide | SouthportGuide",
+    metaTitle: "Best Restaurants in Southport 2026 | Honest Local Guide",
     metaDescription: "The best restaurants in Southport — Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
     listingFilter: {
       categorySlugs: ["restaurants"],
@@ -394,7 +394,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-02-27",
     tags: ["cafes", "coffee", "food"],
     status: "published",
-    metaTitle: "Best Cafés in Southport 2026 | Independent Coffee Shops | SouthportGuide",
+    metaTitle: "Best Cafés in Southport 2026 | Independent Coffee Shops",
     metaDescription: "The best cafés and coffee shops in Southport — independent places with proper espresso machines and food worth ordering. Terry's unfiltered local guide.",
     listingFilter: {
       categorySlugs: ["cafes"],

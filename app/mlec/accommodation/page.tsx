@@ -3,12 +3,19 @@ import Image from "next/image";
 import { Hotel, MapPin, Clock, Star, ChevronRight, ArrowRight, Waves, CheckCircle } from "lucide-react";
 
 export const metadata = {
-  title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs | SouthportGuide",
+  title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs",
   description:
     "Find the best hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips for events at the Marine Lake Events Centre.",
   keywords:
     "accommodation near MLEC, hotels near Marine Lake Events Centre, Southport hotels 2027, where to stay MLEC, Marine Lake accommodation",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec/accommodation" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs",
+    description: "Find the best hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips.",
+    url: "https://www.southportguide.co.uk/mlec/accommodation",
+  },
 };
 
 const BREADCRUMB_LD = {

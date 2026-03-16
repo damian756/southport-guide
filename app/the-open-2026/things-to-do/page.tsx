@@ -5,10 +5,17 @@ import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Things to Do in Southport During The Open 2026 | Activities & Attractions | Southport Guide",
+  title: "Things to Do in Southport During The Open 2026",
   description:
     "Not attending every day? Discover what to do in Southport during Open week 2026 — beaches, attractions, golf courses, and family activities near Royal Birkdale.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/things-to-do" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Things to Do in Southport During The Open 2026",
+    description: "Beaches, attractions, golf and family activities in Southport during Open week 2026.",
+    url: "https://www.southportguide.co.uk/the-open-2026/things-to-do",
+  },
 };
 
 const THINGS = [

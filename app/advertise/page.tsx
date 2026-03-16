@@ -2,9 +2,16 @@ import Link from "next/link";
 import { BarChart2, Star, Calendar, TrendingUp } from "lucide-react";
 
 export const metadata = {
-  title: "Advertise With Us | SouthportGuide",
+  title: "Advertise With Us",
   description: "List your business on SouthportGuide. Free and premium listing options for Southport businesses.",
   alternates: { canonical: "https://www.southportguide.co.uk/advertise" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Advertise With SouthportGuide",
+    description: "List your business on SouthportGuide. Free and premium listing options for Southport businesses.",
+    url: "https://www.southportguide.co.uk/advertise",
+  },
 };
 
 export default function AdvertisePage() {

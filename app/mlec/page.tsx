@@ -27,11 +27,14 @@ export const metadata = {
     "Marine Lake Events Centre, MLEC Southport, MLEC 2027, Light Fantastic Southport, Marine Lake, Southport events venue, Southport Town Deal",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec" },
   openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
     title: "Marine Lake Events Centre (MLEC) | Southport's New £73m Landmark",
     description:
       "Your complete guide to MLEC — 1,500-seat theatre, 2,400-capacity exhibition hall, The Light Fantastic water show, and more. Opening April 2027.",
     url: "https://www.southportguide.co.uk/mlec",
-    images: [{ url: "/images/mlec.webp" }],
+    images: [{ url: "/images/mlec.webp", width: 1200, height: 630, alt: "Marine Lake Events Centre Southport" }],
   },
 };
 

@@ -15,10 +15,12 @@ export const metadata: Metadata = {
     "Lord Street Southport, Lord Street shops, Lord Street restaurants, Lord Street parking, Victorian boulevard Southport, shopping Southport town centre",
   alternates: { canonical: `${BASE_URL}/guides/lord-street` },
   openGraph: {
-    title: "Lord Street Southport | The Complete Guide | SouthportGuide",
+    title: "Lord Street Southport | The Complete Guide",
     description:
       "Lord Street is a mile-long Victorian boulevard — glass canopies, independent boutiques, restaurants, and one of England's finest streets. Your complete guide.",
     url: `${BASE_URL}/guides/lord-street`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/shopping.webp` }],
   },
 };

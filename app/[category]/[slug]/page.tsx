@@ -84,11 +84,11 @@ function formatAddress(address: string, postcode: string): string {
 // Per-slug meta overrides for high-value listings with poor SERP CTR
 const LISTING_META_OVERRIDES: Record<string, { title?: string; description?: string }> = {
   "restaurants/roberto-s-italian": {
-    title: "Roberto's Italian, Southport — Restaurant on Lord Street | SouthportGuide",
+    title: "Roberto's Italian, Southport — Restaurant on Lord Street",
     description: "Roberto's Italian is one of Southport's most visited restaurants — classic Italian food, good portions, relaxed atmosphere. Opening hours, contact details and directions on SouthportGuide.",
   },
   "restaurants/limoncello": {
-    title: "Limoncello, Birkdale — Italian Restaurant in Southport | SouthportGuide",
+    title: "Limoncello, Birkdale — Italian Restaurant in Southport",
     description: "Limoncello is a popular Italian restaurant in Birkdale Village, Southport. See Google rating, opening hours, contact details and directions — all in one place on SouthportGuide.",
   },
 };

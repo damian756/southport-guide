@@ -23,18 +23,21 @@ import type { Metadata } from "next";
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Things to Do in Southport | The Complete Local Guide | SouthportGuide.co.uk",
+  title: "Things to Do in Southport | The Complete Local Guide",
   description:
     "The definitive guide to things to do in Southport — 22 miles of coastline, England's Golf Coast, red squirrels at Formby, Antony Gormley's Another Place, family attractions, culture, and the UK's biggest events calendar. Written by locals.",
   keywords:
     "things to do in Southport, things to do Southport, Southport attractions, Southport beaches, Southport with kids, free things to do Southport, things to do in Southport Merseyside",
   alternates: { canonical: `${BASE_URL}/things-to-do` },
   openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
     title: "Things to Do in Southport | The Complete Local Guide",
     description:
       "From Formby's red squirrels to Royal Birkdale, Antony Gormley's iron men to England's second-longest pier — the guide the tourism boards don't write.",
     url: `${BASE_URL}/things-to-do`,
-    images: [{ url: `${BASE_URL}/southport-pier.webp` }],
+    images: [{ url: `${BASE_URL}/southport-pier.webp`, width: 1200, height: 630, alt: "Things to Do in Southport" }],
   },
 };
 

@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     description:
       "The best independent cafés in Southport — proper coffee, food worth ordering, and the places locals actually use. Terry's guide.",
     url: `${BASE_URL}/guides/best-cafes-southport`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/cafes.webp` }],
   },
 };

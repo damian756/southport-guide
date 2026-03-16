@@ -10,7 +10,7 @@ export const revalidate = 3600;
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Collections | Curated Lists of Southport Businesses | SouthportGuide",
+  title: "Collections | Curated Lists of Southport Businesses",
   description:
     "Curated collections of Southport businesses — dog-friendly restaurants, hotels with parking, live music bars, and more. Filtered, local, and honest.",
   alternates: { canonical: `${BASE_URL}/collections` },

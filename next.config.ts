@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2560],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     remotePatterns: [
       // Legacy Google Places photo URLs still used by non-parking listings
       { protocol: 'https', hostname: 'maps.googleapis.com' },

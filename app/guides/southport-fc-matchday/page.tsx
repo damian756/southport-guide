@@ -25,9 +25,11 @@ export const metadata: Metadata = {
     "Haig Avenue parking, pubs near Haig Avenue Southport, visiting Southport FC, Southport FC away guide, Haig Avenue postcode, Meols Cop station Haig Avenue",
   alternates: { canonical: `${BASE_URL}/guides/southport-fc-matchday` },
   openGraph: {
-    title: "Southport FC Matchday Guide | Haig Avenue | SouthportGuide",
+    title: "Southport FC Matchday Guide | Haig Avenue",
     description: "Everything an away fan needs to visit Haig Avenue. Parking, pubs, travel, the ground, and making a day of Southport.",
     url: `${BASE_URL}/guides/southport-fc-matchday`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/southport-fc-haig-avenue.webp` }],
   },
 };

@@ -13,6 +13,8 @@ export interface Collection {
   metaDescription: string;
   /** Short Clare-voice intro — 60–100 words, shown above the listings */
   intro: string;
+  /** Exclude from sitemap (e.g. pages that render noindex due to thin content) */
+  sitemapExclude?: boolean;
   /** Tags to match (business must have ALL of these) */
   tags: string[];
   /** Category slugs to filter by (business must be in ONE of these) */
@@ -164,6 +166,7 @@ export const COLLECTIONS: Collection[] = [
     categorySlugs: ["restaurants", "bars-nightlife"],
     emoji: "🥂",
     priority: 0.72,
+    sitemapExclude: true,
   },
 
   // ── Hotels ───────────────────────────────────────────────────────────────

@@ -8,14 +8,17 @@ import type { Metadata } from "next";
 export const revalidate = 3600; // Regenerate at most once per hour so events stay current
 
 export const metadata: Metadata = {
-  title: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk",
+  title: { absolute: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk" },
   description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here. Your complete guide to visiting Southport, Merseyside.",
   alternates: { canonical: "https://www.southportguide.co.uk" },
   openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
     title: "Southport Visitor Guide | SouthportGuide.co.uk",
     description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
     url: "https://www.southportguide.co.uk",
-    images: [{ url: "https://www.southportguide.co.uk/southport-pier.webp" }],
+    images: [{ url: "https://www.southportguide.co.uk/southport-pier.webp", width: 1200, height: 630, alt: "SouthportGuide.co.uk" }],
   },
 };
 
@@ -103,7 +106,11 @@ export default async function Home() {
         inLanguage: "en-GB",
         potentialAction: {
           "@type": "SearchAction",
-          target: "https://www.southportguide.co.uk/restaurants",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: "https://www.southportguide.co.uk/restaurants?q={search_term_string}",
+          },
+          "query-input": "required name=search_term_string",
         },
       },
       {

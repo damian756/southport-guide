@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
 import { ChevronRight } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
@@ -161,9 +162,27 @@ function matchesArea(address: string, postcode: string, areaKey: string): boolea
   return def.test(address, postcode);
 }
 
-// ── Dynamic rendering (DB-dependent, uses searchParams) ──────────────────────
+// ── Caching helpers ───────────────────────────────────────────────────────────
 
-export const dynamic = "force-dynamic";
+// Category record is immutable — cache indefinitely (revalidated on redeploy)
+const getCategoryRecord = unstable_cache(
+  async (slug: string) => prisma.category.findFirst({ where: { slug } }),
+  ["category-record"],
+  { revalidate: 3600 }
+);
+
+// Active boosts change infrequently — cache for 5 minutes
+const getActiveBoosts = unstable_cache(
+  async (catId: string) => {
+    const now = new Date();
+    return prisma.listingBoost.findMany({
+      where: { categoryId: catId, status: "active", startsAt: { lte: now }, endsAt: { gte: now } },
+      select: { businessId: true, label: true },
+    });
+  },
+  ["active-boosts"],
+  { revalidate: 300 }
+);
 
 const BASE_URL = "https://www.southportguide.co.uk";
 
@@ -207,64 +226,51 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   let boostedIds: string[] = [];
 
   try {
-    const categoryRecord = await prisma.category.findFirst({ where: { slug: category } });
+    const categoryRecord = await getCategoryRecord(category);
     if (categoryRecord) {
       const catId = categoryRecord.id;
-      const now = new Date();
-      const activeBoosts = await prisma.listingBoost.findMany({
-        where: {
-          categoryId: catId,
-          status: "active",
-          startsAt: { lte: now },
-          endsAt: { gte: now },
-        },
-        select: { businessId: true, label: true },
-      });
+      const [activeBoosts, rawBusinesses] = await Promise.all([
+        getActiveBoosts(catId),
+        sort === "alpha"
+          ? prisma.$queryRaw<BrowserBusiness[]>`
+              SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
+                     rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
+                     images[1] AS "firstImage"
+              FROM "Business"
+              WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
+              ORDER BY name ASC`
+          : sort === "hygiene"
+          ? prisma.$queryRaw<BrowserBusiness[]>`
+              SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
+                     rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
+                     images[1] AS "firstImage"
+              FROM "Business"
+              WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
+              ORDER BY
+                CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
+                (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC`
+          : sort === "google"
+          ? prisma.$queryRaw<BrowserBusiness[]>`
+              SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
+                     rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
+                     images[1] AS "firstImage"
+              FROM "Business"
+              WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
+              ORDER BY
+                CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
+                COALESCE(rating, 0) DESC, COALESCE("reviewCount", 0) DESC, name ASC`
+          : prisma.$queryRaw<BrowserBusiness[]>`
+              SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
+                     rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
+                     images[1] AS "firstImage"
+              FROM "Business"
+              WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
+              ORDER BY
+                CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
+                (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC`,
+      ]);
+      businesses = rawBusinesses;
       boostedIds = activeBoosts.map((b) => b.businessId);
-
-      if (sort === "alpha") {
-        businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
-                 rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                 images[1] AS "firstImage"
-          FROM "Business"
-          WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
-          ORDER BY name ASC
-        `;
-      } else if (sort === "hygiene") {
-        businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
-                 rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                 images[1] AS "firstImage"
-          FROM "Business"
-          WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
-          ORDER BY
-            CASE WHEN "hygieneRating" ~ '^[0-9]+$' THEN CAST("hygieneRating" AS INTEGER) ELSE -1 END DESC,
-            (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
-        `;
-      } else if (sort === "google") {
-        businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
-                 rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                 images[1] AS "firstImage"
-          FROM "Business"
-          WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
-          ORDER BY
-            CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
-            COALESCE(rating, 0) DESC, COALESCE("reviewCount", 0) DESC, name ASC
-        `;
-      } else {
-        businesses = await prisma.$queryRaw<BrowserBusiness[]>`
-          SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
-                 rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                 images[1] AS "firstImage"
-          FROM "Business"
-          WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
-          ORDER BY
-            CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
-            (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC
-        `;
-      }
 
       const boostedSet = new Set(boostedIds);
       if (boostedSet.size > 0 && sort !== "alpha" && sort !== "hygiene") {

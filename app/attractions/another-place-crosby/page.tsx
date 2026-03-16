@@ -5,18 +5,21 @@ import type { Metadata } from "next";
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Another Place by Antony Gormley | Crosby Beach Guide | SouthportGuide.co.uk",
+  title: "Another Place by Antony Gormley | Crosby Beach Guide",
   description:
     "One hundred cast-iron figures on Crosby Beach — Antony Gormley's Another Place is one of the most powerful works of public art in England. Everything you need to visit: tide times, parking, photography, and how to get there.",
   keywords:
     "Another Place Crosby, Antony Gormley Crosby Beach, Crosby Beach iron men, Another Place art installation, Antony Gormley iron men, Crosby Beach Southport",
   alternates: { canonical: `${BASE_URL}/attractions/another-place-crosby` },
   openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
     title: "Another Place by Antony Gormley | Crosby Beach",
     description:
       "100 cast-iron figures, each a cast of Gormley's own body, spread across 3km of tidal beach. One of England's most powerful works of public art — and completely free to visit.",
     url: `${BASE_URL}/attractions/another-place-crosby`,
-    images: [{ url: `${BASE_URL}/southport-pier.webp` }],
+    images: [{ url: `${BASE_URL}/southport-pier.webp`, width: 1200, height: 630, alt: "Another Place by Antony Gormley, Crosby Beach" }],
   },
 };
 

@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     description:
       "Free parking in Southport: every free car park, free on-street area, and low-cost option in the town. Postcodes and honest walking times from a local.",
     url: `${BASE_URL}/guides/free-parking-southport`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/parking.webp` }],
   },
 };

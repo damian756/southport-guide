@@ -15,10 +15,12 @@ export const metadata: Metadata = {
     "parking Southport, Southport car parks, parking near Southport beach, Marine Drive parking, Lord Street parking, Southport town centre parking, free parking Southport",
   alternates: { canonical: `${BASE_URL}/guides/parking-southport` },
   openGraph: {
-    title: "Parking in Southport | Car Parks, Prices & Tips | SouthportGuide",
+    title: "Parking in Southport | Car Parks, Prices & Tips",
     description:
       "Where to park in Southport — car parks near the beach, Lord Street, and the town centre. Prices, postcodes, and which ones fill first on a summer Saturday.",
     url: `${BASE_URL}/guides/parking-southport`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/transport.webp` }],
   },
 };

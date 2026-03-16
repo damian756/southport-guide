@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     description:
       "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade — everything worth doing in Southport when it rains.",
     url: `${BASE_URL}/guides/rainy-day-southport`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/categories/activities.webp` }],
   },
 };

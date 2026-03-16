@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     description:
       "Southport is genuinely dog-friendly — beach access, off-lead walks, dog-welcoming pubs and cafés. The complete guide for dogs and their people.",
     url: `${BASE_URL}/guides/dog-friendly-southport`,
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/images/southport-beach.webp` }],
   },
 };

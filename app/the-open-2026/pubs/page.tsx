@@ -6,10 +6,17 @@ import type { Metadata } from "next";
 import OpenListingCard from "@/components/OpenListingCard";
 
 export const metadata: Metadata = {
-  title: "Pubs Near Royal Birkdale | Where to Drink During The Open 2026 | Southport Guide",
+  title: "Pubs Near Royal Birkdale | The Open 2026",
   description:
     "The best pubs within walking distance of Royal Birkdale for The Open Championship 2026. Birkdale village pubs, Southport bars, and tips for Open week drinking in Southport.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/pubs" },
+  openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    title: "Pubs Near Royal Birkdale | The Open 2026",
+    description: "The best pubs within walking distance of Royal Birkdale for The Open 2026. Birkdale village pubs, Southport bars, and Open week tips.",
+    url: "https://www.southportguide.co.uk/the-open-2026/pubs",
+  },
 };
 
 const PUBS_BY_AREA = [

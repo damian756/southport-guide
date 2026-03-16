@@ -10,10 +10,13 @@ export const metadata = {
   keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026" },
   openGraph: {
+    type: "website",
+    siteName: "SouthportGuide.co.uk",
+    locale: "en_GB",
     title: "The Open 2026 at Royal Birkdale | Hotels, Tickets & Visitor Guide",
     description: "Hotels near Royal Birkdale, getting there, spectator tips and restaurants for The Open Championship 2026, Southport — 12–19 July 2026.",
     url: "https://www.southportguide.co.uk/the-open-2026",
-    images: [{ url: "/images/open-2026.webp" }],
+    images: [{ url: "/images/open-2026.webp", width: 1200, height: 630, alt: "The Open 2026 at Royal Birkdale" }],
   },
 };
 
