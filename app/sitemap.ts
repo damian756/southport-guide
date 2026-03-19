@@ -20,7 +20,7 @@ function parsePostDate(dateStr: string): Date {
 
 // Stable reference dates — update these when the relevant pages change meaningfully
 const D = {
-  today:    new Date("2026-03-02"), // last deploy / significant update
+  today:    new Date("2026-03-19"), // last deploy / significant update
   feb26:    new Date("2026-02-26"),
   feb20:    new Date("2026-02-20"),
   feb15:    new Date("2026-02-15"),
@@ -113,5 +113,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: c.priority,
   }));
 
-  return [...staticPages, ...guidePages, ...categoryPages, ...blogPages, ...businessPages, ...collectionIndexPage, ...collectionPages];
+  // ── Property pages ───────────────────────────────────────────
+  let propertyPages: MetadataRoute.Sitemap = [];
+  try {
+    const { prisma } = await import("@/lib/prisma");
+    const { sectorToSlug, postcodeToSlug } = await import("@/lib/property-config");
+    const sectors = await prisma.postcodeSector.findMany({
+      where: { published: true },
+      select: { sector: true, updatedAt: true },
+    });
+    const units = await prisma.postcodeUnit.findMany({
+      where: { published: true },
+      select: { postcode: true, updatedAt: true },
+    });
+    propertyPages = [
+      { url: `${BASE}/property`, lastModified: D.today, changeFrequency: "weekly" as const, priority: 0.85 },
+      ...sectors.map((s) => ({
+        url: `${BASE}/property/${sectorToSlug(s.sector)}`,
+        lastModified: s.updatedAt,
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      })),
+      ...units.map((u) => ({
+        url: `${BASE}/property/${postcodeToSlug(u.postcode)}`,
+        lastModified: u.updatedAt,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ];
+  } catch {
+    // DB unavailable at build time
+  }
+
+  return [...staticPages, ...guidePages, ...categoryPages, ...blogPages, ...businessPages, ...collectionIndexPage, ...collectionPages, ...propertyPages];
 }

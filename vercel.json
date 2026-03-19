@@ -13,6 +13,7 @@
     { "path": "/api/cron/review-check", "schedule": "0 9 * * *" },
     { "path": "/api/cron/monthly-credits", "schedule": "0 9 1 * *" },
     { "path": "/api/cron/eventbrite-sync", "schedule": "0 6 * * *" },
-    { "path": "/api/cron/hash-review-ips", "schedule": "0 3 * * *" }
+    { "path": "/api/cron/hash-review-ips", "schedule": "0 3 * * *" },
+    { "path": "/api/cron/crime-sync", "schedule": "0 4 1 * *" }
   ]
 }

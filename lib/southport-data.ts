@@ -547,6 +547,17 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/categories/beaches-parks.webp",
     date: "9 Feb 2026",
   },
+  // Property
+  {
+    slug: "southport-house-prices-by-postcode",
+    title: "Southport House Prices by Postcode: What's Actually Selling and What It Costs",
+    excerpt:
+      "We've mapped every Land Registry sale in PR8 and PR9 over the last three years — 10 postcode sectors, hundreds of transactions, real prices. Here's what Southport property actually looks like.",
+    categorySlug: "local-guides",
+    image: "/images/blog/southport-house-prices.webp",
+    date: "19 Mar 2026",
+    featured: true,
+  },
   // Parking
   {
     slug: "southport-parking-directory-2026",

@@ -10,7 +10,18 @@
     "db:seed": "npx prisma db seed",
     "db:push": "npx prisma db push",
     "postinstall": "prisma generate",
-    "import-businesses": "tsx scripts/import-businesses.ts"
+    "import-businesses": "tsx scripts/import-businesses.ts",
+    "property:import-lr": "tsx scripts/property/import-land-registry.ts",
+    "property:geocode": "tsx scripts/property/geocode-postcodes.ts",
+    "property:aggregate": "tsx scripts/property/aggregate-postcodes.ts",
+    "property:import-schools": "tsx scripts/property/import-schools.ts",
+    "property:import-epc": "tsx scripts/property/import-epc.ts",
+    "property:import-broadband": "tsx scripts/property/import-broadband.ts",
+    "property:import-tenure": "tsx scripts/property/import-tenure.ts",
+    "property:import-flood": "tsx scripts/property/import-flood-zones.ts",
+    "property:fetch-crime": "tsx scripts/property/fetch-crime.ts",
+    "property:publish": "tsx scripts/property/publish-postcodes.ts",
+    "property:sonnet-prompts": "tsx scripts/property/generate-sonnet-prompts.ts"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
@@ -39,6 +50,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.1",
     "react-leaflet": "^5.0.0",
+    "recharts": "^3.8.0",
     "resend": "^6.9.2",
     "stripe": "^20.3.1",
     "tailwind-merge": "^3.4.1",

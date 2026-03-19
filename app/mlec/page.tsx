@@ -732,6 +732,31 @@ export default function MLECPage() {
           </div>
         </section>
 
+        {/* ── Property callout ── */}
+        <section className="bg-[#FAF8F5] rounded-2xl border border-gray-200 p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-1">Property Data</p>
+            <h3 className="font-bold text-slate-900 text-lg mb-2">Town Centre Property — What MLEC Means for PR9 0 &amp; PR8 1</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              The Marine Lake Events Centre sits on the PR9 0 / PR8 1 boundary. 515,000 additional visitors per year is a material change to the local economy. If you&apos;re considering a town centre purchase, the full data on sold prices, schools, crime, and flood risk is on our postcode guides.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 flex-shrink-0">
+            <Link
+              href="/property/pr9-0"
+              className="bg-slate-900 hover:bg-slate-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap text-center"
+            >
+              PR9 0 house prices →
+            </Link>
+            <Link
+              href="/property/pr8-1"
+              className="bg-white border border-slate-200 hover:border-slate-400 text-slate-900 px-5 py-2.5 rounded-full font-semibold text-sm transition-colors whitespace-nowrap text-center"
+            >
+              PR8 1 house prices →
+            </Link>
+          </div>
+        </section>
+
         {/* ── Partner CTA ── */}
         <section className="bg-gradient-to-r from-slate-900 to-blue-950 rounded-2xl text-white p-8 md:p-12 text-center">
           <p className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Be Ready for 2027</p>

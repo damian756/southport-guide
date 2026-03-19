@@ -63,22 +63,26 @@ export default function NavMenu() {
           <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 w-[380px] z-50 transition-all duration-200 ${exploreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
 
             {/* Key pages */}
-            <div className="grid grid-cols-3 gap-1.5 mb-4">
+            <div className="grid grid-cols-2 gap-1.5 mb-4">
               <Link href="/things-to-do" onClick={() => setExploreOpen(false)}
-                className="col-span-3 flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm hover:bg-[#2A4A73] transition-colors">
+                className="col-span-2 flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm hover:bg-[#2A4A73] transition-colors">
                 <span className="font-semibold">Things to Do — Full Guide</span>
               </Link>
               <Link href="/events" onClick={() => setExploreOpen(false)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold hover:bg-gray-100 transition-colors">
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
                 📅 Events
               </Link>
               <Link href="/mlec" onClick={() => setExploreOpen(false)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-purple-50 text-purple-800 text-xs font-semibold hover:bg-purple-100 transition-colors">
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-purple-50 text-purple-800 text-xs font-semibold hover:bg-purple-100 transition-colors whitespace-nowrap">
                 🎭 MLEC
               </Link>
               <Link href="/blog" onClick={() => setExploreOpen(false)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold hover:bg-gray-100 transition-colors">
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
                 ✍️ Blog
+              </Link>
+              <Link href="/property" onClick={() => setExploreOpen(false)}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
+                🏠 House Prices
               </Link>
             </div>
 
@@ -201,7 +205,7 @@ export default function NavMenu() {
               className="flex items-center gap-2.5 px-4 py-3.5 rounded-xl bg-[#1B2E4B] text-white text-sm font-semibold">
               Things to Do in Southport
             </Link>
-            <div className="grid grid-cols-3 gap-1.5">
+            <div className="grid grid-cols-2 gap-1.5">
               <Link href="/events" onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center gap-1 px-3 py-2.5 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold">
                 📅 Events
@@ -213,6 +217,10 @@ export default function NavMenu() {
               <Link href="/blog" onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center gap-1 px-3 py-2.5 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold">
                 ✍️ Blog
+              </Link>
+              <Link href="/property" onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-1 px-3 py-2.5 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold">
+                🏠 House Prices
               </Link>
             </div>
             <Link href="/the-open-2026" onClick={() => setMobileOpen(false)}

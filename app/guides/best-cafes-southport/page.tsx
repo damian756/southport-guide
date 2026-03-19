@@ -4,6 +4,7 @@ import { MapPin, ChevronRight, ArrowRight, Coffee, Clock, Star } from "lucide-re
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import { getBusinessLinks, bizHref } from "@/lib/guide-business-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("best-cafes-southport");
@@ -106,7 +107,8 @@ const FAQ_LD = {
   })),
 };
 
-export default function BestCafesSouthportGuidePage() {
+export default async function BestCafesSouthportGuidePage() {
+  const bizLinks = await getBusinessLinks(CAFES.map((c) => c.name));
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -174,13 +176,21 @@ export default function BestCafesSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Cafés Worth Knowing</h2>
           <div className="space-y-4">
-            {CAFES.map((c, i) => (
+            {CAFES.map((c, i) => {
+              const biz = bizLinks[c.name];
+              return (
               <div key={c.name} className="bg-white rounded-2xl border border-gray-100 p-6">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-[#C9A84C] font-black text-sm">#{i + 1}</span>
-                      <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{c.name}</h3>
+                      {biz ? (
+                        <Link href={bizHref(biz)} className="font-display font-bold text-[#1B2E4B] text-lg hover:text-[#C9A84C] transition-colors underline underline-offset-2 decoration-[#C9A84C]/40">
+                          {c.name}
+                        </Link>
+                      ) : (
+                        <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{c.name}</h3>
+                      )}
                     </div>
                     <div className="flex items-center gap-3 mt-1 text-xs text-gray-500 flex-wrap">
                       <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {c.area}</span>
@@ -190,7 +200,7 @@ export default function BestCafesSouthportGuidePage() {
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.notes}</p>
               </div>
-            ))}
+            );})}
           </div>
         </section>
 

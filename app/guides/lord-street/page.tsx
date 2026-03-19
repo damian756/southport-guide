@@ -302,6 +302,7 @@ export default function LordStreetGuidePage() {
               { href: "/guides/churchtown", label: "Churchtown" },
               { href: "/guides/parking-southport", label: "Parking Guide" },
               { href: "/guides/best-restaurants-southport", label: "Best Restaurants" },
+              { href: "/property", label: "Southport House Prices" },
             ].map(({ href, label }) => (
               <Link
                 key={href}

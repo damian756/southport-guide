@@ -552,6 +552,23 @@ export default function TheOpen2026Page() {
           </section>
         )}
 
+        {/* ── Property callout ── */}
+        <section className="bg-[#FAF8F5] rounded-2xl border border-gray-200 p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-1">Property Data</p>
+            <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Living Near Royal Birkdale — PR8 4 House Prices</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Birkdale (PR8 4) is Southport&apos;s highest-priced postcode sector, and Royal Birkdale Golf Club is part of the reason why. If you&apos;re thinking of buying in the area, the full picture — sold prices, schools, crime, flood risk, broadband — is on our postcode guide.
+            </p>
+          </div>
+          <Link
+            href="/property/pr8-4"
+            className="bg-[#1B2E4B] hover:bg-[#2A4A73] text-white px-5 py-3 rounded-full font-bold text-sm transition-colors whitespace-nowrap flex-shrink-0"
+          >
+            PR8 4 house prices →
+          </Link>
+        </section>
+
         {/* ── Partner / advertise CTA ──────────────────────────────── */}
         <section className="bg-white rounded-2xl border border-[#C9A84C]/20 p-8 md:p-12 text-center">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">For Businesses</p>

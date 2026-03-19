@@ -795,6 +795,33 @@ export default function SouthportBeachGuidePage() {
           </div>
         </section>
 
+        {/* ── Coastal property callout ── */}
+        <section>
+          <div className="bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-1">Property Data</p>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Living Near the Beach — Coastal Postcode Prices</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                PR8 2 (Ainsdale-on-Sea) and PR9 0 (Marine Drive promenade) offer some of the best coastal proximity value in the North West. Sold prices, flood zone data, school ratings, and broadband speeds for every coastal postcode in Southport.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 flex-shrink-0">
+              <Link
+                href="/property/pr8-2"
+                className="bg-[#1B2E4B] hover:bg-[#2A4A73] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap text-center"
+              >
+                PR8 2 — Ainsdale →
+              </Link>
+              <Link
+                href="/property/pr9-0"
+                className="bg-white border border-gray-200 hover:border-[#1B2E4B] text-[#1B2E4B] px-5 py-2.5 rounded-full font-semibold text-sm transition-colors whitespace-nowrap text-center"
+              >
+                PR9 0 — Promenade →
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </div>
     </GuideLayout>
   );

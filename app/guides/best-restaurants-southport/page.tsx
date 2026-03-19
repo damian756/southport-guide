@@ -4,6 +4,7 @@ import { MapPin, ChevronRight, ArrowRight, Utensils, Star, Clock } from "lucide-
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import { getBusinessLinks, bizHref } from "@/lib/guide-business-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("best-restaurants-southport");
@@ -122,7 +123,8 @@ const FAQ_LD = {
   })),
 };
 
-export default function BestRestaurantsSouthportGuidePage() {
+export default async function BestRestaurantsSouthportGuidePage() {
+  const bizLinks = await getBusinessLinks(RESTAURANTS.map((r) => r.name));
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -190,13 +192,21 @@ export default function BestRestaurantsSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Restaurants Worth Knowing</h2>
           <div className="space-y-4">
-            {RESTAURANTS.map((r, i) => (
+            {RESTAURANTS.map((r, i) => {
+              const biz = bizLinks[r.name];
+              return (
               <div key={r.name} className="bg-white rounded-2xl border border-gray-100 p-6">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-[#C9A84C] font-black text-sm">#{i + 1}</span>
-                      <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{r.name}</h3>
+                      {biz ? (
+                        <Link href={bizHref(biz)} className="font-display font-bold text-[#1B2E4B] text-lg hover:text-[#C9A84C] transition-colors underline underline-offset-2 decoration-[#C9A84C]/40">
+                          {r.name}
+                        </Link>
+                      ) : (
+                        <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{r.name}</h3>
+                      )}
                     </div>
                     <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
                       <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {r.area}</span>
@@ -208,7 +218,7 @@ export default function BestRestaurantsSouthportGuidePage() {
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">{r.notes}</p>
               </div>
-            ))}
+            );})}
           </div>
         </section>
 

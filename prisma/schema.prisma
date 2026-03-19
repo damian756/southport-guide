@@ -392,4 +392,142 @@ model PasswordResetToken {
   @@index([email])
 }
 
+// ── Property Pages ─────────────────────────────────────────────────────────
+
+model PropertySale {
+  id              String    @id @default(uuid())
+  transactionId   String    @unique // Land Registry unique ref
+  price           Int       // Price paid in pence
+  dateOfTransfer  DateTime
+  postcode        String
+  propertyType    String    // D=Detached, S=Semi, T=Terraced, F=Flat
+  newBuild        Boolean
+  tenure          String    // F=Freehold, L=Leasehold
+  paon            String?   // Primary addressable object name (house number)
+  saon            String?   // Secondary (flat number)
+  street          String?
+  locality        String?
+  town            String?
+  district        String?
+  county          String?
+  recordStatus    String    // A=Addition, C=Change, D=Delete
+  createdAt       DateTime  @default(now())
+
+  @@index([postcode])
+  @@index([dateOfTransfer])
+  @@index([propertyType])
+}
+
+model PostcodeUnit {
+  id               String    @id @default(uuid())
+  postcode         String    @unique // PR8 3NU format
+  sector           String    // PR8 3 format
+  lat              Float
+  lng              Float
+  lsoa             String?   // For census data join
+  ward             String?
+  floodZone        String?   // "1" | "2" | "3"
+  avgBroadband     Float?    // Mbps
+  maxBroadband     Float?
+  fttpAvailable    Boolean?
+  avgEpcRating     String?   // A-G
+  avgFloorArea     Float?    // sq metres
+  commonCouncilTax String?   // Most frequent band
+  tenureOwned      Float?    // % owner-occupied (from LSOA)
+  tenureRented     Float?    // % private rented
+  tenureSocial     Float?    // % social rented
+  salesCount3yr    Int       @default(0) // Aggregated: sales in last 3 years
+  avgPrice3yr      Int?      // Aggregated: avg price last 3 years (pence)
+  medianPrice3yr   Int?
+  published        Boolean   @default(false) // Only true if salesCount3yr >= 3
+  editorialContent String?   @db.Text // Terry's neighbourhood summary — filled by Sonnet pass
+  metaTitle        String?   // Override for Sonnet pass
+  metaDescription  String?   @db.Text // Override for Sonnet pass
+  faqJson          Json?     // FAQ questions/answers for Sonnet pass
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([sector])
+  @@index([published])
+  @@index([lat, lng])
+}
+
+model PostcodeSector {
+  id               String    @id @default(uuid())
+  sector           String    @unique // PR8 3 format
+  lat              Float     // Centroid
+  lng              Float
+  unitCount        Int       @default(0)
+  salesCount3yr    Int       @default(0)
+  avgPrice3yr      Int?      // pence
+  medianPrice3yr   Int?
+  editorialContent String?   @db.Text // Terry's area summary — filled by Sonnet pass
+  metaTitle        String?   // Override for Sonnet pass
+  metaDescription  String?   @db.Text // Override for Sonnet pass
+  faqJson          Json?     // FAQ questions/answers for Sonnet pass
+  published        Boolean   @default(true)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([published])
+}
+
+model School {
+  id            String    @id @default(uuid())
+  urn           String    @unique // DfE unique reference
+  name          String
+  phase         String    // Primary, Secondary, 16 plus, All-through
+  schoolType    String    // Community, Academy, Foundation, Free, etc.
+  religiousChar String?   // None, Church of England, Roman Catholic, etc.
+  gender        String?   // Mixed, Boys, Girls
+  isSelective   Boolean   @default(false) // Grammar / selective entry
+  address       String?
+  postcode      String
+  lat           Float
+  lng           Float
+  ofstedRating  Int?      // 1=Outstanding, 2=Good, 3=RI, 4=Inadequate
+  ofstedDate    DateTime?
+  pupils        Int?      // Number on roll
+  ageRangeLow   Int?
+  ageRangeHigh  Int?
+  website       String?
+  status        String    @default("Open") // Open, Closed
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([postcode])
+  @@index([lat, lng])
+  @@index([phase])
+  @@index([ofstedRating])
+}
+
+model CrimeSnapshot {
+  id        String   @id @default(uuid())
+  sector    String   // PR8 3 format
+  month     String   // YYYY-MM
+  category  String   // e.g. burglary, anti-social-behaviour
+  count     Int
+  createdAt DateTime @default(now())
+
+  @@unique([sector, month, category], name: "sector_month_category")
+  @@index([sector])
+  @@index([month])
+}
+
+model EPCRecord {
+  id               String    @id @default(uuid())
+  lmkKey           String    @unique // EPC unique key
+  address          String
+  postcode         String
+  currentRating    String    // A-G
+  potentialRating  String?
+  floorArea        Float?    // sq metres
+  propertyType     String?
+  builtForm        String?   // Detached, Semi, Terraced, etc.
+  constructionAge  String?   // e.g. "1900-1929"
+  lodgementDate    DateTime?
+  createdAt        DateTime  @default(now())
+
+  @@index([postcode])
+}
 

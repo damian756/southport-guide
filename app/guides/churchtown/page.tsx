@@ -278,6 +278,7 @@ export default function ChurchtownGuidePage() {
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
               { href: "/guides/dog-friendly-southport", label: "Dog-Friendly Guide" },
               { href: "/guides/rainy-day-southport", label: "Rainy Day Guide" },
+              { href: "/property/pr9-9", label: "PR9 9 House Prices" },
             ].map(({ href, label }) => (
               <Link
                 key={href}

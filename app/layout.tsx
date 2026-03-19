@@ -181,6 +181,7 @@ function Footer() {
             <ul className="space-y-2.5 text-sm">
               {[
                 ["Things to Do", "/things-to-do"],
+                ["House Prices", "/property"],
                 ["Restaurants", "/restaurants"],
                 ["Hotels", "/hotels"],
                 ["Bars & Pubs", "/bars-nightlife"],

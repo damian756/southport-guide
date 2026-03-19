@@ -4,6 +4,7 @@ import { MapPin, ChevronRight, ArrowRight, Utensils, Star, Clock, PoundSterling 
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import { getBusinessLinks, bizHref, type BusinessLinkData } from "@/lib/guide-business-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-eateries");
@@ -259,7 +260,27 @@ const FAQ_LD = {
   })),
 };
 
-export default function SouthportEateriesGuidePage() {
+function BizName({ name, links }: { name: string; links: Record<string, BusinessLinkData> }) {
+  const data = links[name];
+  if (data) {
+    return (
+      <Link href={bizHref(data)} className="text-[#C9A84C] hover:text-[#1B2E4B] underline underline-offset-2 decoration-[#C9A84C]/50 transition-colors font-semibold">
+        {name}
+      </Link>
+    );
+  }
+  return <span>{name}</span>;
+}
+
+export default async function SouthportEateriesGuidePage() {
+  const ALL_NAMES = [
+    ...LORD_STREET_PICKS.map((r) => r.name),
+    ...BIRKDALE_PICKS.map((r) => r.name),
+    ...CHURCHTOWN_PICKS.map((r) => r.name),
+    ...SEAFRONT_PICKS.map((r) => r.name),
+  ];
+  const bizLinks = await getBusinessLinks(ALL_NAMES);
+
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -401,7 +422,7 @@ export default function SouthportEateriesGuidePage() {
               <div key={r.name} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
-                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{r.name}</h3>
+                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg"><BizName name={r.name} links={bizLinks} /></h3>
                     <p className="text-[#C9A84C] text-xs font-semibold mt-0.5">{r.style}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">
@@ -442,7 +463,7 @@ export default function SouthportEateriesGuidePage() {
               <div key={r.name} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
-                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{r.name}</h3>
+                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg"><BizName name={r.name} links={bizLinks} /></h3>
                     <p className="text-[#C9A84C] text-xs font-semibold mt-0.5">{r.style}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">
@@ -484,7 +505,7 @@ export default function SouthportEateriesGuidePage() {
               <div key={r.name} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
-                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{r.name}</h3>
+                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg"><BizName name={r.name} links={bizLinks} /></h3>
                     <p className="text-[#C9A84C] text-xs font-semibold mt-0.5">{r.style}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">
@@ -525,7 +546,7 @@ export default function SouthportEateriesGuidePage() {
               <div key={r.name} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
-                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg">{r.name}</h3>
+                    <h3 className="font-display font-bold text-[#1B2E4B] text-lg"><BizName name={r.name} links={bizLinks} /></h3>
                     <p className="text-[#C9A84C] text-xs font-semibold mt-0.5">{r.style}</p>
                   </div>
                   <span className="text-sm font-bold text-gray-600 flex-shrink-0">{r.price}</span>

@@ -4,6 +4,7 @@ import { MapPin, ChevronRight, ArrowRight, Umbrella, Clock, Users } from "lucide
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import { getBusinessLinks, bizHref } from "@/lib/guide-business-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("rainy-day-southport");
@@ -122,7 +123,8 @@ const FAQ_LD = {
   })),
 };
 
-export default function RainyDaySouthportGuidePage() {
+export default async function RainyDaySouthportGuidePage() {
+  const bizLinks = await getBusinessLinks(INDOOR_OPTIONS.map((r) => r.name));
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -200,17 +202,23 @@ export default function RainyDaySouthportGuidePage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 bg-white">
-                {INDOOR_OPTIONS.map((row) => (
+                {INDOOR_OPTIONS.map((row) => {
+                  const biz = bizLinks[row.name];
+                  return (
                   <tr key={row.name} className="hover:bg-[#FAF8F5] transition-colors">
                     <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">
-                      <div>{row.name}</div>
+                      {biz ? (
+                        <Link href={bizHref(biz)} className="hover:text-[#C9A84C] underline underline-offset-2 decoration-[#C9A84C]/40 transition-colors">{row.name}</Link>
+                      ) : (
+                        <span>{row.name}</span>
+                      )}
                       <div className="text-xs text-gray-400 font-mono mt-0.5">{row.postcode}</div>
                     </td>
                     <td className="px-5 py-3.5 text-gray-500 hidden md:table-cell">{row.type}</td>
                     <td className="px-5 py-3.5 text-gray-600">{row.cost}</td>
                     <td className="px-5 py-3.5 text-gray-500 text-xs hidden lg:table-cell">{row.notes}</td>
                   </tr>
-                ))}
+                );})}
               </tbody>
             </table>
           </div>

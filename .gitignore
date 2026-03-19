@@ -67,3 +67,6 @@ BUSINESS-HUB-PLAN.md
 
 # Ad-hoc fix/debug scripts (root level)
 fix-*.mjs
+
+# Property pages data (CSVs, prompts)
+data/

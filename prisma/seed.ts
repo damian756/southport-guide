@@ -18,6 +18,8 @@ const CATEGORIES = [
   { slug: "activities", name: "Activities", description: "Tours, rentals and activities", sortOrder: 9 },
   { slug: "wellness", name: "Wellness", description: "Spas and salons in Southport", sortOrder: 10 },
   { slug: "transport", name: "Transport", description: "Taxis, parking and bike hire", sortOrder: 11 },
+  { slug: "parking", name: "Parking", description: "Car parks and parking in Southport", sortOrder: 12 },
+  { slug: "property-services", name: "Property Services", description: "Estate agents, solicitors and mortgage brokers in Southport", sortOrder: 13 },
 ];
 
 const BUSINESSES: Array<{

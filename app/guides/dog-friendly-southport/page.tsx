@@ -4,6 +4,7 @@ import { MapPin, Car, ChevronRight, ArrowRight, PawPrint, Clock, AlertCircle } f
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import { getBusinessLinks, bizHref } from "@/lib/guide-business-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("dog-friendly-southport");
@@ -71,7 +72,8 @@ const FAQ_LD = {
   })),
 };
 
-export default function DogFriendlySouthportGuidePage() {
+export default async function DogFriendlySouthportGuidePage() {
+  const bizLinks = await getBusinessLinks(["The Hesketh Arms", "The Bold Arms"]);
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -272,13 +274,19 @@ export default function DogFriendlySouthportGuidePage() {
                 location: "Liverpool Road, Birkdale",
                 notes: "The more independent pubs in Birkdale Village generally welcome dogs. The village has a more relaxed attitude than the town centre.",
               },
-            ].map(({ name, location, notes }) => (
+            ].map(({ name, location, notes }) => {
+              const biz = bizLinks[name];
+              return (
               <div key={name} className="bg-white rounded-2xl border border-gray-100 p-5">
-                <h3 className="font-semibold text-[#1B2E4B] mb-0.5">{name}</h3>
+                {biz ? (
+                  <Link href={bizHref(biz)} className="font-semibold text-[#1B2E4B] hover:text-[#C9A84C] underline underline-offset-2 decoration-[#C9A84C]/40 transition-colors block mb-0.5">{name}</Link>
+                ) : (
+                  <h3 className="font-semibold text-[#1B2E4B] mb-0.5">{name}</h3>
+                )}
                 <p className="text-[#C9A84C] text-xs font-semibold mb-2">{location}</p>
                 <p className="text-gray-600 text-sm leading-relaxed">{notes}</p>
               </div>
-            ))}
+            );})}
           </div>
           <p className="text-gray-500 text-sm mt-4">
             Always phone ahead for evening visits — policies and capacity change. A quick call saves a difficult conversation on the doorstep.
