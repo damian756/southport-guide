@@ -487,7 +487,7 @@ async function SectorPage({
             {sector.editorialContent && (
               <div className="flex gap-4 rounded-2xl border border-teal-200 bg-teal-50 p-5">
                 <div className="mt-0.5 shrink-0 text-2xl">📍</div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-widest text-[var(--teal)] mb-2">
                     Terry&apos;s view
                   </p>
