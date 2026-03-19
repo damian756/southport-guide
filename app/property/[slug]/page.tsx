@@ -481,7 +481,7 @@ async function SectorPage({
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <div className="grid gap-8 lg:grid-cols-3">
           {/* ── Main column ── */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 min-w-0 overflow-hidden">
 
             {/* Terry's editorial callout — first thing below the header */}
             {sector.editorialContent && (
@@ -745,7 +745,7 @@ async function UnitPage({
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <div className="grid gap-8 lg:grid-cols-3">
           {/* ── Main column ── */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 min-w-0 overflow-hidden">
 
             {/* Area context note */}
             {unit.editorialContent && (
