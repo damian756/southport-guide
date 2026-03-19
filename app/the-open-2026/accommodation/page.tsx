@@ -350,6 +350,23 @@ export default async function OpenAccommodationPage() {
             </div>
           </div>
 
+          {/* Property callout */}
+          <div className="bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            <span className="text-3xl flex-none">🏠</span>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-[#1B2E4B] mb-1">Thinking of buying near Royal Birkdale?</p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                The Open brings attention — and buyers. See what houses in PR8 4 (Birkdale) are actually selling for, including schools, crime and flood risk data.
+              </p>
+            </div>
+            <Link
+              href="/property/pr8-4"
+              className="flex-none inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+            >
+              PR8 4 prices →
+            </Link>
+          </div>
+
           {/* Footer links */}
           <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
             <Link href="/the-open-2026" className="text-sm font-semibold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">

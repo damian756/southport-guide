@@ -257,6 +257,25 @@ export default async function CollectionPage({ params }: Props) {
             </div>
           )}
 
+          {/* ── Property callout for Birkdale collections ─────────── */}
+          {(slug === "hotels-near-royal-birkdale" || slug === "birkdale-village-restaurants") && (
+            <div className="mt-8 bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <span className="text-3xl flex-none">🏠</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-[#1B2E4B] mb-1">House prices in Birkdale (PR8 4)</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  One of Southport&apos;s most sought-after areas — walking distance from Royal Birkdale Golf Club. See average sold prices, schools, crime and flood risk data.
+                </p>
+              </div>
+              <Link
+                href="/property/pr8-4"
+                className="flex-none inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+              >
+                PR8 4 prices →
+              </Link>
+            </div>
+          )}
+
           {/* ── CTA ──────────────────────────────────────────────────── */}
           <div className="mt-14 bg-[#1B2E4B] rounded-2xl p-8 text-center">
             <h3 className="font-display text-xl font-bold text-white mb-2">

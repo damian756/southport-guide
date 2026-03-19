@@ -130,6 +130,14 @@ function renderBlock(block: ContentBlock, i: number) {
             <span className="mr-2">{block.emoji}</span>
             {block.text}
           </p>
+          {block.href && (
+            <Link
+              href={block.href}
+              className="inline-flex items-center mt-3 text-sm font-semibold text-[#C9A84C] hover:underline"
+            >
+              {block.label ?? "Read more →"}
+            </Link>
+          )}
         </div>
       );
     case "quote":

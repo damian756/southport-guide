@@ -7,6 +7,7 @@ import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
 import { ViewTracker } from "@/components/ViewTracker";
 import ReviewSection from "@/components/ReviewSection";
+import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
 
 type Props = {
   params: Promise<{ category: string; slug: string }>;
@@ -65,6 +66,20 @@ const SCHEMA_TYPES: Record<string, string | string[]> = {
 
 // Categories that might have food hygiene ratings
 const FOOD_CATS = new Set(["restaurants", "cafes", "bars-nightlife", "hotels", "activities"]);
+
+// Derive a property sector slug from a postcode, returns null if not in PR8/PR9
+function propertyLinkForPostcode(postcode: string): { sector: string; slug: string; label: string } | null {
+  if (!postcode) return null;
+  const cleaned = postcode.trim().toUpperCase().replace(/\s+/g, " ");
+  const parts = cleaned.split(" ");
+  if (parts.length !== 2) return null;
+  const [outward, inward] = parts;
+  if (!/^PR[89]$/.test(outward)) return null;
+  const sector = `${outward} ${inward.charAt(0)}`;
+  const label = SECTOR_AREA_LABELS[sector];
+  if (!label) return null;
+  return { sector, slug: sectorToSlug(sector), label };
+}
 
 function extractArea(address: string, _postcode: string): string {
   const areas = ["Birkdale", "Ainsdale", "Churchtown", "Crossens", "Marshside",
@@ -336,6 +351,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
   const isFeatured = business.listingTier === "featured" || business.listingTier === "premium";
   const isPremium = business.listingTier === "premium";
   const area = extractArea(business.address, business.postcode);
+  const propertyLink = propertyLinkForPostcode(business.postcode);
   const formattedAddress = formatAddress(business.address, business.postcode);
   const mapsKey = process.env.GOOGLE_PLACES_API_KEY;
   const isFoodCategory = FOOD_CATS.has(category);
@@ -988,6 +1004,22 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       Claim Free Listing →
                     </Link>
                   </div>
+                </div>
+              )}
+
+              {/* House prices nearby */}
+              {propertyLink && category !== "parking" && category !== "transport" && (
+                <div className="bg-[#FAF8F5] border border-gray-200 rounded-2xl p-5">
+                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-2">🏠 House prices nearby</p>
+                  <p className="text-gray-700 text-sm mb-3 leading-relaxed">
+                    See average sold prices, schools, crime and flood risk for <span className="font-semibold">{propertyLink.sector}</span> ({propertyLink.label}).
+                  </p>
+                  <Link
+                    href={`/property/${propertyLink.slug}`}
+                    className="block text-center bg-[#1B2E4B] text-white px-4 py-2.5 rounded-full font-bold text-sm hover:bg-[#C9A84C] transition"
+                  >
+                    {propertyLink.sector} house prices →
+                  </Link>
                 </div>
               )}
 

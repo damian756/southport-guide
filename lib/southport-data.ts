@@ -800,6 +800,43 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "16 Mar 2026",
     featured: true,
   },
+  // Property sector guides
+  {
+    slug: "living-in-birkdale-southport",
+    title: "Living in Birkdale, Southport: What PR8 4 Is Actually Like",
+    excerpt:
+      "House prices, schools, commute times, what to eat and where to drink — a genuinely honest look at what it's like to live in Birkdale. One of Southport's most sought-after postcodes, and for good reason.",
+    categorySlug: "local-guides",
+    image: "/images/neighbourhoods/birkdale.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "living-in-churchtown-southport",
+    title: "Living in Churchtown, Southport: An Honest Guide to PR9 9",
+    excerpt:
+      "Churchtown is the old village at the north end of Southport — and it's the bit most people don't know about. Quiet streets, Botanic Gardens, a handful of good pubs, and house prices that still feel reasonable. Here's what it's actually like.",
+    categorySlug: "local-guides",
+    image: "/images/neighbourhoods/churchtown.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "living-in-ainsdale-southport",
+    title: "Living in Ainsdale, Southport: What You Need to Know About PR8 3",
+    excerpt:
+      "Ainsdale sits between Southport and Formby — its own village feel, a decent beach, National Trust land, and a commuter-friendly train line. House prices and everything else you'd want to know before you move.",
+    categorySlug: "local-guides",
+    image: "/images/neighbourhoods/ainsdale.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "should-i-buy-in-southport-2026",
+    title: "Should I Buy in Southport in 2026? An Honest Assessment",
+    excerpt:
+      "The Open is coming. MLEC opens in 2027. House prices are moving. Here's a straightforward, data-backed look at whether buying in Southport right now makes sense — and which postcodes are worth watching.",
+    categorySlug: "local-guides",
+    image: "/images/blog/southport-house-prices.webp",
+    date: "19 Mar 2026",
+  },
   // For Business
   {
     slug: "southport-business-hub-launch",

@@ -636,6 +636,29 @@ async function SectorPage({
               </div>
             </div>
 
+            {/* Explore area */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Explore {areaLabel}</p>
+              <div className="space-y-2">
+                {[
+                  { href: "/restaurants", label: "🍽️ Restaurants" },
+                  { href: "/cafes", label: "☕ Cafés" },
+                  { href: "/bars-nightlife", label: "🍺 Bars & Pubs" },
+                  { href: "/hotels", label: "🏨 Hotels" },
+                  { href: "/activities", label: "🏄 Activities" },
+                ].map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-colors"
+                  >
+                    <span>{label}</span>
+                    <span className="text-xs opacity-60">→</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -820,6 +843,29 @@ async function UnitPage({
                 <div className="border-t border-white/10 pt-5">
                   <MortgageEstimate defaultPrice={unit.avgPrice3yr ?? 250000} dark />
                 </div>
+              </div>
+            </div>
+
+            {/* Explore area */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Explore {areaLabel}</p>
+              <div className="space-y-2">
+                {[
+                  { href: "/restaurants", label: "🍽️ Restaurants" },
+                  { href: "/cafes", label: "☕ Cafés" },
+                  { href: "/bars-nightlife", label: "🍺 Bars & Pubs" },
+                  { href: "/hotels", label: "🏨 Hotels" },
+                  { href: "/activities", label: "🏄 Activities" },
+                ].map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-colors"
+                  >
+                    <span>{label}</span>
+                    <span className="text-xs opacity-60">→</span>
+                  </Link>
+                ))}
               </div>
             </div>
 

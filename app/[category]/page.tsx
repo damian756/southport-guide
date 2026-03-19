@@ -525,6 +525,25 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               </div>
             )}
 
+            {/* ── Living in Southport callout ───────────────────────────── */}
+            {category !== "parking" && category !== "transport" && (
+              <div className="mt-8 bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                <span className="text-3xl flex-none">🏠</span>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-[#1B2E4B] mb-1">Thinking of living in Southport?</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    We&apos;ve mapped sold prices, schools, crime and flood risk for every postcode in PR8 and PR9 — using Land Registry and public data, not estate agent spin.
+                  </p>
+                </div>
+                <Link
+                  href="/property"
+                  className="flex-none inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+                >
+                  House prices →
+                </Link>
+              </div>
+            )}
+
             {/* ── Bottom CTA ──────────────────────────────────────────────── */}
             <div className="mt-10 rounded-2xl overflow-hidden">
               <div className={`bg-gradient-to-br ${theme.gradient} p-8 md:p-10 text-center`}>

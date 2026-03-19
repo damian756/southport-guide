@@ -197,12 +197,33 @@ export default function AboutPage() {
                 { label: "Events", desc: "What's on calendar — from the Flower Show to the Airshow to The Open Championship." },
                 { label: "The Open 2026", desc: "The complete visitor hub for The Open Championship at Royal Birkdale, July 2026." },
                 { label: "MLEC Guide", desc: "The Marine Lake Events Centre — what it is, what's on, and what it means for Southport." },
+                { label: "House Prices by Postcode", desc: "Land Registry sold prices for every PR8 and PR9 postcode — with schools (Ofsted), crime, flood risk and broadband data. No estate agent spin." },
               ].map(({ label, desc }) => (
                 <div key={label} className="bg-white rounded-xl border border-gray-100 p-5">
                   <p className="font-semibold text-[#1B2E4B] mb-1">{label}</p>
                   <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Property data callout */}
+          <section className="mb-14">
+            <div className="bg-[#1B2E4B] rounded-2xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <span className="text-5xl flex-none">🏠</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">New feature</p>
+                <h3 className="font-display text-xl font-bold text-white mb-2">Southport house prices by postcode</h3>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  We&apos;ve mapped every Land Registry sale in PR8 and PR9 over the last three years — enriched with Ofsted school ratings, police.uk crime data, Environment Agency flood zones, and Ofcom broadband speeds. No estate agent framing. Just the data.
+                </p>
+              </div>
+              <Link
+                href="/property"
+                className="flex-none inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+              >
+                Explore house prices →
+              </Link>
             </div>
           </section>
 
