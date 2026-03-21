@@ -396,25 +396,6 @@ async function SectorPage({
         })),
       }
     : null;
-  const offerLd = sector.avgPrice3yr
-    ? {
-        "@context": "https://schema.org",
-        "@type": "RealEstateListing",
-        name: `Property in ${sector.sector}, Southport`,
-        areaServed: {
-          "@type": "PostalAddress",
-          postalCode: sector.sector,
-          addressLocality: "Southport",
-          addressCountry: "GB",
-        },
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "GBP",
-          price: Math.round(sector.avgPrice3yr),
-          offerCount: sector.salesCount3yr,
-        },
-      }
-    : null;
   const mapPoints = schoolsWithDistance.slice(0, 5).map((s) => ({
     id: s.id,
     name: s.name,
@@ -436,7 +417,6 @@ async function SectorPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
-      {offerLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerLd) }} />}
 
       {/* ── Hero header ── */}
       <header className="bg-[var(--navy)]">

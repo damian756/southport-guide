@@ -925,15 +925,13 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
     { type: "callout", emoji: "💡", text: "A better directory for visitors means more traffic to every listing on it. That is why the free tier is genuinely free and genuinely good." },
 
-    { type: "h2", text: "Try the demo right now" },
-    { type: "p", text: "The Business Hub is in final testing. Claims are not open yet, but you can see exactly what you are signing up for before you commit to anything." },
-    { type: "cta", text: "Log in with demo@southportguide.co.uk — password Demo1234. Set up with a demo listing so you can see exactly how the dashboard works. Have a proper look around.", href: "https://www.southportguide.co.uk/dashboard", label: "Open the demo dashboard →" },
-    { type: "p", text: "If you want to submit a claim now, do it. We will approve listings in order as soon as testing completes. That is days away, not weeks." },
+    { type: "h2", text: "Claim your listing now" },
+    { type: "p", text: "The Business Hub is live. Claim your listing, take control of your details, and start seeing how many people find you on SouthportGuide. It takes about five minutes." },
+    { type: "cta", text: "Claim your free listing on SouthportGuide — take control of your details, opening hours and photos, and start tracking your weekly traffic.", href: "/claim-listing", label: "Claim your free listing →" },
 
-    { type: "h2", text: "Want to be live immediately? Become a beta tester." },
-    { type: "p", text: "If you want to be up and running straight away rather than waiting in the queue, get in touch and say you want to be a beta tester. We will approve your listing the same day." },
-    { type: "p", text: "In return, we ask for one thing: honest feedback. What works, what does not, and what you wish the hub did that it currently does not. No form to fill in, no survey, no obligation. Just an occasional email or a conversation." },
-    { type: "cta", text: "Beta testers get a featured listing on SouthportGuide — normally a paid tier — free for as long as you remain an active user. In exchange for honest feedback. We will get you live the same day.", href: "/contact", label: "Get in touch — mention Beta Tester →" },
+    { type: "h2", text: "Already listed? Log in to your dashboard." },
+    { type: "p", text: "If you have already claimed your listing, log in to your Business Hub to check your stats, update your details, or upgrade your plan." },
+    { type: "cta", text: "Manage your listing stats, opening hours, photos and contact details from the Business Hub dashboard.", href: "/dashboard", label: "Business Hub login →" },
 
     { type: "h2", text: "What we can build if you need it" },
     { type: "p", text: "The Business Hub is built by Churchtown Media, an elite technical SEO and web development agency based in Churchtown. We do not need a six-month project timeline to deliver things. We move fast, we build properly, and we are local." },
@@ -955,10 +953,10 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "hr" },
 
     { type: "h2", text: "What to do next" },
-    { type: "p", text: "Try the demo. Have a proper look around. If you like what you see, claim your listing or get in touch below. We get back to people the same day." },
+    { type: "p", text: "Claim your listing. Have a proper look around the dashboard. If you have questions or want something the hub does not currently do, get in touch — we get back to people the same day." },
 
     { type: "cta", text: "Your listing on SouthportGuide is free. Claim it, own it, and start measuring results from day one.", href: "/claim-listing", label: "Claim your listing for free" },
-    { type: "cta", text: "Want to be a beta tester or have a question? Drop us a message and we'll come back to you the same day.", href: "/contact", label: "Contact us →" },
+    { type: "cta", text: "Have a question? Drop us a message and we'll come back to you the same day.", href: "/contact", label: "Contact us →" },
   ],
 
   "southport-parking-directory-2026": [

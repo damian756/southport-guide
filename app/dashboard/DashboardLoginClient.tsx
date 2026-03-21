@@ -5,30 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Mail, Lock, Eye, EyeOff, LayoutDashboard, AlertCircle, ArrowLeft, FlaskConical, ClipboardCopy, Check } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, LayoutDashboard, AlertCircle, ArrowLeft } from "lucide-react";
 
 export default function DashboardLoginClient() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
   const [authError, setAuthError] = useState<string | null>(null);
-
   const [loading, setLoading] = useState(false);
-  const [demoFilled, setDemoFilled] = useState(false);
-
-  const DEMO_EMAIL = "demo@southportguide.co.uk";
-  const DEMO_PASSWORD = "Demo1234";
-
-  function fillDemo() {
-    setForm({ email: DEMO_EMAIL, password: DEMO_PASSWORD });
-    setAuthError(null);
-    setDemoFilled(true);
-    setTimeout(() => setDemoFilled(false), 2000);
-    // Track demo intent in Plausible
-    if (typeof window !== "undefined" && typeof (window as unknown as { plausible?: (...args: unknown[]) => void }).plausible === "function") {
-      (window as unknown as { plausible: (...args: unknown[]) => void }).plausible("Demo Autofill");
-    }
-  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -47,14 +31,6 @@ export default function DashboardLoginClient() {
             : "Incorrect email or password."
         );
         return;
-      }
-      // Track successful demo login in Plausible
-      if (
-        form.email.toLowerCase() === DEMO_EMAIL.toLowerCase() &&
-        typeof window !== "undefined" &&
-        typeof (window as unknown as { plausible?: (...args: unknown[]) => void }).plausible === "function"
-      ) {
-        (window as unknown as { plausible: (...args: unknown[]) => void }).plausible("Demo Login");
       }
       // Route by role: admins go to /admin, business users go to /dashboard/home
       const session = await getSession();
@@ -92,58 +68,12 @@ export default function DashboardLoginClient() {
           </div>
         </div>
 
-        {/* Launch notice banner */}
-        <div className="bg-[#C9A84C]/10 border-b border-[#C9A84C]/30 px-6 py-3 flex items-start gap-3">
-          <FlaskConical className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-[#1B2E4B] leading-snug">
-            <span className="font-bold">Final testing in progress.</span>{" "}
-            The Business Hub launches in a few days. Right now, only the demo account is active — real business claims will be approved at launch.
-          </p>
-        </div>
-
         {/* Login card */}
         <div className="flex-1 flex items-center justify-center px-6 py-12">
           <div className="w-full max-w-md">
             <div className="mb-8">
-              <h1 className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">Sign in</h1>
+              <h1 className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">Business login</h1>
               <p className="text-gray-500 text-sm">Manage your listing, view stats, and upgrade your plan.</p>
-            </div>
-
-            {/* Demo credentials card */}
-            <div className="bg-[#1B2E4B] rounded-2xl px-5 py-4 mb-5">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <FlaskConical className="w-4 h-4 text-[#C9A84C]" />
-                  <span className="text-white font-bold text-sm">Try the demo</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={fillDemo}
-                  className="flex items-center gap-1.5 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-xs px-3 py-1.5 rounded-lg transition-colors"
-                >
-                  {demoFilled ? (
-                    <>
-                      <Check className="w-3.5 h-3.5" />
-                      Filled
-                    </>
-                  ) : (
-                    <>
-                      <ClipboardCopy className="w-3.5 h-3.5" />
-                      Fill credentials
-                    </>
-                  )}
-                </button>
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="bg-white/10 rounded-lg px-3 py-2">
-                  <p className="text-white/50 uppercase tracking-wider text-[10px] font-semibold mb-0.5">Email</p>
-                  <p className="text-white font-mono truncate">{DEMO_EMAIL}</p>
-                </div>
-                <div className="bg-white/10 rounded-lg px-3 py-2">
-                  <p className="text-white/50 uppercase tracking-wider text-[10px] font-semibold mb-0.5">Password</p>
-                  <p className="text-white font-mono">{DEMO_PASSWORD}</p>
-                </div>
-              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-5">
@@ -219,12 +149,19 @@ export default function DashboardLoginClient() {
               </button>
             </form>
 
-            <p className="text-center text-sm text-gray-500 mt-6">
-              Don&apos;t have an account?{" "}
-              <Link href="/claim-listing" className="text-[#C9A84C] font-semibold hover:underline">
-                Claim your free listing →
+            {/* Claim listing card */}
+            <div className="mt-6 bg-[#FAF8F5] border border-gray-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-[#1B2E4B] text-sm mb-0.5">Not listed yet?</p>
+                <p className="text-gray-500 text-xs leading-relaxed">Claim your free listing in minutes — take control of your details, hours, and photos.</p>
+              </div>
+              <Link
+                href="/claim-listing"
+                className="flex-none w-full sm:w-auto text-center bg-[#C9A84C] hover:bg-[#B8972A] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+              >
+                Claim your listing →
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </div>

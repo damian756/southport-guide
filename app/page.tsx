@@ -219,6 +219,21 @@ export default async function Home() {
           "https://churchtownmedia.co.uk",
         ],
       },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.southportguide.co.uk/#webpage",
+        url: "https://www.southportguide.co.uk",
+        name: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk",
+        description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here.",
+        isPartOf: { "@id": "https://www.southportguide.co.uk/#website" },
+        about: {
+          "@type": "City",
+          name: "Southport",
+          sameAs: "https://en.wikipedia.org/wiki/Southport",
+        },
+        inLanguage: "en-GB",
+        dateModified: new Date().toISOString().slice(0, 10),
+      },
     ],
   };
 

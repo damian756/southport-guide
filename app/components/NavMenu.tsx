@@ -173,10 +173,11 @@ export default function NavMenu() {
         </Link>
         <div className="w-px h-4 bg-gray-200 mx-2" />
 
-        {/* Hub — icon only */}
-        <Link href="/dashboard" title="Business Hub Login"
-          className="p-2 text-[#1B2E4B]/35 hover:text-[#1B2E4B] transition-colors">
-          <LayoutDashboard className="w-4 h-4" />
+        {/* Business Login */}
+        <Link href="/dashboard"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-full text-[11px] font-bold tracking-wide uppercase text-[#1B2E4B]/70 hover:text-[#1B2E4B] hover:bg-gray-100 transition-colors">
+          <LayoutDashboard className="w-3.5 h-3.5" />
+          Business Login
         </Link>
 
         {/* CTA */}
