@@ -109,18 +109,28 @@ function ReviewCard({
   const [dateValue, setDateValue] = useState(initialDate);
   const [dateSaving, setDateSaving] = useState(false);
   const [dateSaved, setDateSaved] = useState(false);
+  const [dateError, setDateError] = useState(false);
 
   async function saveDate() {
     setDateSaving(true);
     setDateSaved(false);
-    await fetch(`/api/admin/reviews/${review.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "updateDate", newDate: new Date(dateValue).toISOString() }),
-    });
+    setDateError(false);
+    try {
+      const res = await fetch(`/api/admin/reviews/${review.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "updateDate", newDate: new Date(dateValue).toISOString() }),
+      });
+      if (res.ok) {
+        setDateSaved(true);
+        onAction();
+      } else {
+        setDateError(true);
+      }
+    } catch {
+      setDateError(true);
+    }
     setDateSaving(false);
-    setDateSaved(true);
-    onAction();
   }
 
   async function approve() {
@@ -252,6 +262,7 @@ function ReviewCard({
               {dateSaving ? "Saving…" : "Save date"}
             </button>
             {dateSaved && <span className="text-xs text-emerald-600 font-medium">Saved</span>}
+            {dateError && <span className="text-xs text-red-600 font-medium">Failed — try again</span>}
           </div>
 
           {/* Review photos */}

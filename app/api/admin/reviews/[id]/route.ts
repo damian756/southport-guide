@@ -43,13 +43,13 @@ export async function PATCH(
     const parsed = new Date(newDate);
     const existing = await prisma.review.findUnique({ where: { id }, select: { id: true, approvedAt: true } });
     if (!existing) return NextResponse.json({ error: "Review not found." }, { status: 404 });
-    await prisma.review.update({
-      where: { id },
-      data: {
-        createdAt: parsed,
-        ...(existing.approvedAt ? { approvedAt: parsed } : {}),
-      },
-    });
+
+    // Use raw SQL — Prisma blocks writes to @default(now()) createdAt fields via the ORM
+    if (existing.approvedAt) {
+      await prisma.$executeRaw`UPDATE "Review" SET "createdAt" = ${parsed}, "approvedAt" = ${parsed} WHERE id = ${id}`;
+    } else {
+      await prisma.$executeRaw`UPDATE "Review" SET "createdAt" = ${parsed} WHERE id = ${id}`;
+    }
     return NextResponse.json({ success: true });
   }
 
