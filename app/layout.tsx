@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
 const playfair = Playfair_Display({
@@ -101,6 +102,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="8CKtfDqAgEQ+hozV1m/IzQ" async></script>
       </head>
+      {/* Google Analytics 4 */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-FY0P030KNH"
+        strategy="afterInteractive"
+      />
+      <Script id="ga4-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FY0P030KNH');
+        `}
+      </Script>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F5]`}>
         <ConditionalNav><Navigation /></ConditionalNav>
         <main className="overflow-x-hidden">{children}</main>
