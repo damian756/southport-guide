@@ -14,6 +14,7 @@ import {
   ChevronUp,
   Image as ImageIcon,
   Receipt,
+  Calendar,
 } from "lucide-react";
 
 type ReviewImage = { id: string; imageUrl: string; sortOrder: number };
@@ -97,6 +98,30 @@ function ReviewCard({
   const [verifiedType, setVerifiedType] = useState<"email" | "purchase">(
     review.receiptImageUrl ? "purchase" : "email"
   );
+
+  // Date editor — use approvedAt if set, else createdAt; format for datetime-local input
+  function toDatetimeLocal(iso: string) {
+    const d = new Date(iso);
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+  const initialDate = toDatetimeLocal(review.approvedAt ?? review.createdAt);
+  const [dateValue, setDateValue] = useState(initialDate);
+  const [dateSaving, setDateSaving] = useState(false);
+  const [dateSaved, setDateSaved] = useState(false);
+
+  async function saveDate() {
+    setDateSaving(true);
+    setDateSaved(false);
+    await fetch(`/api/admin/reviews/${review.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "updateDate", newDate: new Date(dateValue).toISOString() }),
+    });
+    setDateSaving(false);
+    setDateSaved(true);
+    onAction();
+  }
 
   async function approve() {
     setLoading(true);
@@ -208,6 +233,26 @@ function ReviewCard({
               )}
             </div>
           )}
+
+          {/* Date editor */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">
+            <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
+            <label className="text-xs font-semibold text-gray-600 shrink-0">Published date</label>
+            <input
+              type="datetime-local"
+              value={dateValue}
+              onChange={(e) => { setDateValue(e.target.value); setDateSaved(false); }}
+              className="text-sm border border-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] bg-white"
+            />
+            <button
+              onClick={saveDate}
+              disabled={dateSaving}
+              className="text-sm bg-[#C9A84C] text-white font-semibold px-4 py-1.5 rounded-lg hover:bg-[#B8972A] disabled:opacity-50 transition"
+            >
+              {dateSaving ? "Saving…" : "Save date"}
+            </button>
+            {dateSaved && <span className="text-xs text-emerald-600 font-medium">Saved</span>}
+          </div>
 
           {/* Review photos */}
           {review.images.length > 0 && (

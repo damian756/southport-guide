@@ -30,10 +30,27 @@ export async function PATCH(
 
   const { id } = await params;
   const body = await req.json();
-  const { action, rejectionReason, removalNote, verifiedType } = body;
+  const { action, rejectionReason, removalNote, verifiedType, newDate } = body;
 
-  if (!["approve", "reject"].includes(action)) {
+  if (!["approve", "reject", "updateDate"].includes(action)) {
     return NextResponse.json({ error: "Invalid action." }, { status: 400 });
+  }
+
+  if (action === "updateDate") {
+    if (!newDate || isNaN(Date.parse(newDate))) {
+      return NextResponse.json({ error: "Invalid date." }, { status: 400 });
+    }
+    const parsed = new Date(newDate);
+    const existing = await prisma.review.findUnique({ where: { id }, select: { id: true, approvedAt: true } });
+    if (!existing) return NextResponse.json({ error: "Review not found." }, { status: 404 });
+    await prisma.review.update({
+      where: { id },
+      data: {
+        createdAt: parsed,
+        ...(existing.approvedAt ? { approvedAt: parsed } : {}),
+      },
+    });
+    return NextResponse.json({ success: true });
   }
 
   const review = await prisma.review.findUnique({
