@@ -3,6 +3,54 @@
 import { useState, useRef } from "react";
 import { Star, Upload, X, Receipt } from "lucide-react";
 
+const MAX_DIMENSION = 1920;
+const TARGET_SIZE_BYTES = 1.2 * 1024 * 1024; // 1.2 MB per photo
+
+async function compressImage(file: File): Promise<File> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      let { width, height } = img;
+
+      // Scale down if either dimension exceeds max
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        const ratio = Math.min(MAX_DIMENSION / width, MAX_DIMENSION / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d")!;
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Iteratively reduce quality until under target size
+      let quality = 0.85;
+      const tryExport = () => {
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) { resolve(file); return; }
+            if (blob.size <= TARGET_SIZE_BYTES || quality <= 0.4) {
+              resolve(new File([blob], file.name.replace(/\.\w+$/, ".jpg"), { type: "image/jpeg" }));
+            } else {
+              quality = Math.max(quality - 0.1, 0.4);
+              tryExport();
+            }
+          },
+          "image/jpeg",
+          quality
+        );
+      };
+      tryExport();
+    };
+    img.onerror = () => { URL.revokeObjectURL(objectUrl); resolve(file); };
+    img.src = objectUrl;
+  });
+}
+
 type Props = {
   businessId: string;
   businessName: string;
@@ -58,6 +106,9 @@ export default function ReviewForm({ businessId, businessName }: Props) {
 
     setSubmitting(true);
 
+    // Compress photos client-side before upload to avoid Vercel body size limits
+    const compressedPhotos = await Promise.all(photos.map(compressImage));
+
     const form = new FormData();
     form.append("businessId", businessId);
     form.append("firstName", firstName.trim());
@@ -67,7 +118,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
     form.append("starRating", String(starRating));
     form.append("title", title.trim());
     form.append("body", body.trim());
-    photos.forEach((p) => form.append("photos", p));
+    compressedPhotos.forEach((p) => form.append("photos", p));
 
     try {
       const res = await fetch("/api/reviews", { method: "POST", body: form });
