@@ -95,9 +95,33 @@ function ReviewCard({
   const [removalNote, setRemovalNote] = useState("");
   const [showReject, setShowReject] = useState(false);
   const [showRemove, setShowRemove] = useState(false);
-  const [verifiedType, setVerifiedType] = useState<"email" | "purchase">(
+  // For pending approval decision — defaults based on receipt
+  const [verifiedType, setVerifiedType] = useState<"none" | "email" | "purchase">(
     review.receiptImageUrl ? "purchase" : "email"
   );
+  // For editing the verified type of an existing review
+  const [existingVerifiedType, setExistingVerifiedType] = useState<"none" | "email" | "purchase">(
+    (review.verifiedType as "none" | "email" | "purchase") ?? "none"
+  );
+  const [vtSaving, setVtSaving] = useState(false);
+  const [vtSaved, setVtSaved] = useState(false);
+  const [vtError, setVtError] = useState(false);
+
+  async function saveVerifiedType() {
+    setVtSaving(true);
+    setVtSaved(false);
+    setVtError(false);
+    try {
+      const res = await fetch(`/api/admin/reviews/${review.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "updateVerifiedType", verifiedType: existingVerifiedType }),
+      });
+      if (res.ok) { setVtSaved(true); onAction(); }
+      else setVtError(true);
+    } catch { setVtError(true); }
+    setVtSaving(false);
+  }
 
   // Date editor — use approvedAt if set, else createdAt; format for datetime-local input
   function toDatetimeLocal(iso: string) {
@@ -263,6 +287,31 @@ function ReviewCard({
             </button>
             {dateSaved && <span className="text-xs text-emerald-600 font-medium">Saved</span>}
             {dateError && <span className="text-xs text-red-600 font-medium">Failed — try again</span>}
+          </div>
+
+          {/* Verified type editor (all reviews) */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">
+            <span className="text-xs font-semibold text-gray-600 shrink-0">Review tier</span>
+            {(["none", "email", "purchase"] as const).map((opt) => (
+              <label key={opt} className="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input
+                  type="radio"
+                  name={`existing-vt-${review.id}`}
+                  checked={existingVerifiedType === opt}
+                  onChange={() => { setExistingVerifiedType(opt); setVtSaved(false); }}
+                />
+                {opt === "none" ? "None" : opt === "email" ? "Email Verified" : "Verified Purchase"}
+              </label>
+            ))}
+            <button
+              onClick={saveVerifiedType}
+              disabled={vtSaving}
+              className="text-sm bg-[#C9A84C] text-white font-semibold px-4 py-1.5 rounded-lg hover:bg-[#B8972A] disabled:opacity-50 transition"
+            >
+              {vtSaving ? "Saving…" : "Save tier"}
+            </button>
+            {vtSaved && <span className="text-xs text-emerald-600 font-medium">Saved</span>}
+            {vtError && <span className="text-xs text-red-600 font-medium">Failed — try again</span>}
           </div>
 
           {/* Review photos */}

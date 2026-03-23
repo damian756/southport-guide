@@ -32,7 +32,7 @@ export async function PATCH(
   const body = await req.json();
   const { action, rejectionReason, removalNote, verifiedType, newDate } = body;
 
-  if (!["approve", "reject", "updateDate"].includes(action)) {
+  if (!["approve", "reject", "updateDate", "updateVerifiedType"].includes(action)) {
     return NextResponse.json({ error: "Invalid action." }, { status: 400 });
   }
 
@@ -50,6 +50,15 @@ export async function PATCH(
     } else {
       await prisma.$executeRaw`UPDATE "Review" SET "createdAt" = ${parsed} WHERE id = ${id}`;
     }
+    return NextResponse.json({ success: true });
+  }
+
+  if (action === "updateVerifiedType") {
+    const allowed = ["none", "email", "purchase"];
+    if (!verifiedType || !allowed.includes(verifiedType)) {
+      return NextResponse.json({ error: "Invalid verifiedType." }, { status: 400 });
+    }
+    await prisma.review.update({ where: { id }, data: { verifiedType } });
     return NextResponse.json({ success: true });
   }
 
@@ -120,6 +129,17 @@ export async function PATCH(
         });
       } catch { /* non-fatal */ }
     }
+
+    // Always notify admin
+    try {
+      const listingUrl = `${BASE_URL}/${review.business.category.slug}/${review.business.slug}`;
+      await resend.emails.send({
+        from: "SouthportGuide <hello@southportguide.co.uk>",
+        to: "damian@churchtownmedia.co.uk",
+        subject: `Review approved — ${review.business.name} (${review.starRating}★)`,
+        html: `<p><strong>${displayName(review)}</strong> left a ${review.starRating}★ review for <strong>${review.business.name}</strong>.</p><p>${review.body}</p><p><a href="${listingUrl}">View listing</a></p>`,
+      });
+    } catch { /* non-fatal */ }
 
     return NextResponse.json({ success: true, status: "approved" });
   }
