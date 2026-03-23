@@ -865,6 +865,33 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "26 Feb 2026",
     author: "damian",
   },
+  {
+    slug: "southport-market-guide",
+    title: "Southport Market: The Honest Guide to Market Street",
+    excerpt:
+      "Southport Market on Market Street is genuinely one of the better things in this town — street food, independent traders, a decent coffee, and a proper atmosphere. Here's what it is, how it works, and when to go.",
+    categorySlug: "local-guides",
+    image: "/images/blog/southport-market-guide.jpg",
+    date: "17 Mar 2026",
+  },
+  {
+    slug: "easter-things-to-do-southport-2026",
+    title: "Easter in Southport 2026 — What's Worth Your Time",
+    excerpt:
+      "Easter weekend in Southport means the season is starting. The beach is back, the pier is busy, the Botanic Gardens have the crocuses out, and the town actually feels alive again. Here's what to do with the bank holiday.",
+    categorySlug: "events",
+    image: "/images/blog/easter-southport.jpg",
+    date: "18 Mar 2026",
+  },
+  {
+    slug: "best-sunday-lunch-southport",
+    title: "Best Sunday Lunch in Southport — Where to Actually Go",
+    excerpt:
+      "Sunday lunch in Southport is worth doing properly. The town has a handful of pubs and restaurants that take it seriously — proper roasts, decent gravy, no microwave involved. I've eaten at most of them. Here's the honest breakdown.",
+    categorySlug: "food-drink",
+    image: "/images/blog/sunday-lunch-southport.jpg",
+    date: "19 Mar 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
