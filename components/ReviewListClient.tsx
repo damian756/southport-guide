@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 type ReviewImage = { id: string; imageUrl: string };
 type ReviewResponse = { id: string; body: string };
@@ -60,7 +62,69 @@ function Stars({ n }: { n: number }) {
   );
 }
 
-function ReviewCard({ review }: { review: Review }) {
+// ── Customer Photo Gallery ─────────────────────────────────────────────────
+
+function CustomerPhotoGallery({
+  allImages,
+  onOpenLightbox,
+}: {
+  allImages: { src: string }[];
+  onOpenLightbox: (index: number) => void;
+}) {
+  if (allImages.length === 0) return null;
+  const preview = allImages.slice(0, 12);
+  const remaining = allImages.length - preview.length;
+
+  return (
+    <div className="bg-white rounded-xl border border-gray-100 p-5">
+      <div className="flex items-center gap-2 mb-3">
+        <Camera className="w-4 h-4 text-gray-400" />
+        <h3 className="font-semibold text-sm text-gray-700">
+          Customer Photos <span className="text-gray-400 font-normal">({allImages.length})</span>
+        </h3>
+      </div>
+      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+        {preview.map((img, i) => (
+          <button
+            key={i}
+            onClick={() => onOpenLightbox(i)}
+            className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border border-gray-200 hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-[#C9A84C]"
+            aria-label={`View photo ${i + 1}`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img.src}
+              alt={`Customer photo ${i + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+        {remaining > 0 && (
+          <button
+            onClick={() => onOpenLightbox(preview.length)}
+            className="flex-shrink-0 w-20 h-20 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition flex flex-col items-center justify-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]"
+            aria-label={`View ${remaining} more photos`}
+          >
+            <span className="text-sm font-bold text-gray-600">+{remaining}</span>
+            <span className="text-xs text-gray-400">more</span>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Review Card ────────────────────────────────────────────────────────────
+
+function ReviewCard({
+  review,
+  imageOffset,
+  onOpenLightbox,
+}: {
+  review: Review;
+  imageOffset: number;
+  onOpenLightbox: (index: number) => void;
+}) {
   const [expanded, setExpanded] = useState(false);
   const isLong = review.body.length > 220;
   const bodyText = !isLong || expanded ? review.body : review.body.slice(0, 220) + "…";
@@ -106,17 +170,22 @@ function ReviewCard({ review }: { review: Review }) {
 
       {review.images.length > 0 && (
         <div className="flex gap-2 flex-wrap">
-          {review.images.map((img) => (
-            <a key={img.id} href={img.imageUrl} target="_blank" rel="noopener noreferrer">
+          {review.images.map((img, localIdx) => (
+            <button
+              key={img.id}
+              onClick={() => onOpenLightbox(imageOffset + localIdx)}
+              className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border border-gray-200 hover:opacity-80 transition focus:outline-none focus:ring-2 focus:ring-[#C9A84C]"
+              aria-label="View photo"
+            >
               <Image
                 src={img.imageUrl}
                 alt="Review photo"
                 width={80}
                 height={80}
-                className="w-20 h-20 object-cover rounded-lg border border-gray-200 hover:opacity-80 transition"
+                className="w-full h-full object-cover"
                 unoptimized
               />
-            </a>
+            </button>
           ))}
         </div>
       )}
@@ -131,6 +200,83 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
+// ── Pagination ─────────────────────────────────────────────────────────────
+
+const PAGE_SIZE = 10;
+
+function Pagination({
+  total,
+  page,
+  onChange,
+}: {
+  total: number;
+  page: number;
+  onChange: (p: number) => void;
+}) {
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  if (totalPages <= 1) return null;
+
+  return (
+    <div className="flex items-center justify-center gap-1 pt-2">
+      <button
+        onClick={() => onChange(page - 1)}
+        disabled={page === 1}
+        className="p-2 rounded-lg hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition"
+        aria-label="Previous page"
+      >
+        <ChevronLeft className="w-4 h-4 text-gray-600" />
+      </button>
+
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
+        // Always show first, last, current, and adjacent pages; collapse rest
+        const show =
+          p === 1 ||
+          p === totalPages ||
+          Math.abs(p - page) <= 1;
+
+        if (!show) {
+          // Show ellipsis only once per gap
+          const prevShow =
+            p - 1 === 1 ||
+            p - 1 === totalPages ||
+            Math.abs(p - 1 - page) <= 1;
+          if (prevShow) {
+            return (
+              <span key={`ellipsis-${p}`} className="px-1 text-gray-400 text-sm">…</span>
+            );
+          }
+          return null;
+        }
+
+        return (
+          <button
+            key={p}
+            onClick={() => onChange(p)}
+            className={`w-8 h-8 rounded-lg text-sm font-medium transition ${
+              p === page
+                ? "bg-[#1B2E4B] text-white"
+                : "hover:bg-gray-100 text-gray-600"
+            }`}
+          >
+            {p}
+          </button>
+        );
+      })}
+
+      <button
+        onClick={() => onChange(page + 1)}
+        disabled={page === Math.ceil(total / PAGE_SIZE)}
+        className="p-2 rounded-lg hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition"
+        aria-label="Next page"
+      >
+        <ChevronRight className="w-4 h-4 text-gray-600" />
+      </button>
+    </div>
+  );
+}
+
+// ── Main export ────────────────────────────────────────────────────────────
+
 type SortOption = "newest" | "highest" | "lowest" | "verified";
 
 export default function ReviewListClient({
@@ -141,6 +287,19 @@ export default function ReviewListClient({
   rejected: RejectedNote[];
 }) {
   const [sort, setSort] = useState<SortOption>("newest");
+  const [page, setPage] = useState(1);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Flatten all images for the gallery strip and lightbox
+  const allImages = reviews.flatMap((r) =>
+    r.images.map((img) => ({ src: img.imageUrl }))
+  );
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, []);
 
   const sorted = [...reviews].sort((a, b) => {
     if (sort === "highest") return b.starRating - a.starRating;
@@ -153,34 +312,81 @@ export default function ReviewListClient({
     return new Date(b.approvedAt || 0).getTime() - new Date(a.approvedAt || 0).getTime();
   });
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <h3 className="font-display font-bold text-[#1B2E4B] text-lg">
-          What visitors say
-        </h3>
-        <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value as SortOption)}
-          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] bg-white"
-        >
-          <option value="newest">Newest first</option>
-          <option value="highest">Highest rated</option>
-          <option value="lowest">Lowest rated</option>
-          <option value="verified">Verified first</option>
-        </select>
-      </div>
+  const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
+  const paginated = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-      <div className="space-y-3">
-        {sorted.map((r) => (
-          <ReviewCard key={r.id} review={r} />
-        ))}
-        {rejected.map((r) => (
-          <div key={r.id} className="bg-gray-50 rounded-xl border border-gray-100 px-5 py-4 text-sm text-gray-400 italic">
-            One review removed — {r.removalNote}
-          </div>
-        ))}
+  // Build a map: review.id → start index in allImages[]
+  const imageOffsets: Record<string, number> = {};
+  let offset = 0;
+  for (const r of reviews) {
+    imageOffsets[r.id] = offset;
+    offset += r.images.length;
+  }
+
+  function handleSortChange(newSort: SortOption) {
+    setSort(newSort);
+    setPage(1);
+  }
+
+  return (
+    <>
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        index={lightboxIndex}
+        slides={allImages}
+      />
+
+      <div className="space-y-4">
+        {/* Customer photo gallery strip */}
+        {allImages.length > 0 && (
+          <CustomerPhotoGallery
+            allImages={allImages}
+            onOpenLightbox={openLightbox}
+          />
+        )}
+
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h3 className="font-display font-bold text-[#1B2E4B] text-lg">
+            What visitors say
+          </h3>
+          <select
+            value={sort}
+            onChange={(e) => handleSortChange(e.target.value as SortOption)}
+            className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] bg-white"
+          >
+            <option value="newest">Newest first</option>
+            <option value="highest">Highest rated</option>
+            <option value="lowest">Lowest rated</option>
+            <option value="verified">Verified first</option>
+          </select>
+        </div>
+
+        <div className="space-y-3">
+          {paginated.map((r) => (
+            <ReviewCard
+              key={r.id}
+              review={r}
+              imageOffset={imageOffsets[r.id] ?? 0}
+              onOpenLightbox={openLightbox}
+            />
+          ))}
+          {/* Removed notes only show on page 1 */}
+          {page === 1 && rejected.map((r) => (
+            <div key={r.id} className="bg-gray-50 rounded-xl border border-gray-100 px-5 py-4 text-sm text-gray-400 italic">
+              One review removed — {r.removalNote}
+            </div>
+          ))}
+        </div>
+
+        {totalPages > 1 && (
+          <Pagination
+            total={sorted.length}
+            page={page}
+            onChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          />
+        )}
       </div>
-    </div>
+    </>
   );
 }
