@@ -30,9 +30,9 @@ export async function PATCH(
 
   const { id } = await params;
   const body = await req.json();
-  const { action, rejectionReason, removalNote, verifiedType, newDate } = body;
+  const { action, rejectionReason, removalNote, verifiedType, newDate, reviewTitle, reviewBody } = body;
 
-  if (!["approve", "reject", "updateDate", "updateVerifiedType"].includes(action)) {
+  if (!["approve", "reject", "updateDate", "updateVerifiedType", "updateContent"].includes(action)) {
     return NextResponse.json({ error: "Invalid action." }, { status: 400 });
   }
 
@@ -50,6 +50,20 @@ export async function PATCH(
     } else {
       await prisma.$executeRaw`UPDATE "Review" SET "createdAt" = ${parsed} WHERE id = ${id}`;
     }
+    return NextResponse.json({ success: true });
+  }
+
+  if (action === "updateContent") {
+    if (!reviewBody || typeof reviewBody !== "string" || reviewBody.trim().length < 5) {
+      return NextResponse.json({ error: "Review body too short." }, { status: 400 });
+    }
+    await prisma.review.update({
+      where: { id },
+      data: {
+        title: reviewTitle?.trim() || null,
+        body: reviewBody.trim(),
+      },
+    });
     return NextResponse.json({ success: true });
   }
 

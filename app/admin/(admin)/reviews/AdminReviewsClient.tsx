@@ -123,6 +123,29 @@ function ReviewCard({
     setVtSaving(false);
   }
 
+  // Content editor
+  const [contentTitle, setContentTitle] = useState(review.title ?? "");
+  const [contentBody, setContentBody] = useState(review.body);
+  const [contentSaving, setContentSaving] = useState(false);
+  const [contentSaved, setContentSaved] = useState(false);
+  const [contentError, setContentError] = useState(false);
+
+  async function saveContent() {
+    setContentSaving(true);
+    setContentSaved(false);
+    setContentError(false);
+    try {
+      const res = await fetch(`/api/admin/reviews/${review.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "updateContent", reviewTitle: contentTitle, reviewBody: contentBody }),
+      });
+      if (res.ok) { setContentSaved(true); onAction(); }
+      else setContentError(true);
+    } catch { setContentError(true); }
+    setContentSaving(false);
+  }
+
   // Date editor — use approvedAt if set, else createdAt; format for datetime-local input
   function toDatetimeLocal(iso: string) {
     const d = new Date(iso);
@@ -267,6 +290,35 @@ function ReviewCard({
               )}
             </div>
           )}
+
+          {/* Content editor */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 space-y-2">
+            <p className="text-xs font-semibold text-gray-600">Edit review content</p>
+            <input
+              type="text"
+              value={contentTitle}
+              onChange={(e) => { setContentTitle(e.target.value); setContentSaved(false); }}
+              placeholder="Title (optional)"
+              className="w-full text-sm border border-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] bg-white"
+            />
+            <textarea
+              value={contentBody}
+              onChange={(e) => { setContentBody(e.target.value); setContentSaved(false); }}
+              rows={4}
+              className="w-full text-sm border border-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] bg-white resize-y"
+            />
+            <div className="flex items-center gap-3">
+              <button
+                onClick={saveContent}
+                disabled={contentSaving || contentBody.trim().length < 5}
+                className="text-sm bg-[#C9A84C] text-white font-semibold px-4 py-1.5 rounded-lg hover:bg-[#B8972A] disabled:opacity-50 transition"
+              >
+                {contentSaving ? "Saving…" : "Save content"}
+              </button>
+              {contentSaved && <span className="text-xs text-emerald-600 font-medium">Saved</span>}
+              {contentError && <span className="text-xs text-red-600 font-medium">Failed — try again</span>}
+            </div>
+          </div>
 
           {/* Date editor */}
           <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">

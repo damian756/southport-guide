@@ -367,6 +367,13 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     emoji: "📊",
     description: "The SouthportGuide Business Hub — tools, news, and updates for Southport businesses.",
   },
+  {
+    slug: "history",
+    label: "History",
+    color: "#5C3A1A",
+    emoji: "🏛️",
+    description: "The history of Southport and its villages — from Viking settlements and medieval churches to Victorian seaside ambition.",
+  },
 ];
 
 // ── Blog posts ─────────────────────────────────────────────────────────────
@@ -835,6 +842,16 @@ export const BLOG_POSTS: BlogPost[] = [
       "The Open is coming. MLEC opens in 2027. House prices are moving. Here's a straightforward, data-backed look at whether buying in Southport right now makes sense — and which postcodes are worth watching.",
     categorySlug: "local-guides",
     image: "/images/blog/southport-house-prices.webp",
+    date: "19 Mar 2026",
+  },
+  // History
+  {
+    slug: "history-of-churchtown-southport",
+    title: "The History of Churchtown: Southport's Ancient Village",
+    excerpt:
+      "Vikings settled here in 940 AD. Monks brought St Cuthbert's bones to escape Norse raiders. A local innkeeper left Churchtown and founded an entire town. And someone buried here spent 16 years as a captive in North Africa. This is Churchtown's story.",
+    categorySlug: "history",
+    image: "/images/blog/churchtown-st-cuthberts-history.jpg",
     date: "19 Mar 2026",
   },
   // For Business
