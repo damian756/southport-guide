@@ -211,6 +211,7 @@ export default async function Home() {
           height: 630,
         },
         sameAs: [
+          "https://www.instagram.com/southportguide/",
           "https://www.formbyguide.co.uk",
           "https://www.seftonlinks.com",
           "https://seftoncoastwildlife.co.uk",

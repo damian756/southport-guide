@@ -30,6 +30,7 @@ const schemaData = [
       "@id": "https://www.southportguide.co.uk/#organization",
       name: "SouthportGuide.co.uk",
       url: "https://www.southportguide.co.uk",
+      sameAs: ["https://www.instagram.com/southportguide/"],
     },
   },
   {

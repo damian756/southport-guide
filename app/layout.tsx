@@ -5,6 +5,7 @@ import Link from "next/link";
 import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
+import { InstagramCta } from "@/components/InstagramCta";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -159,7 +160,8 @@ function Footer() {
             <p className="text-sm leading-relaxed text-white/60 mb-4 max-w-xs">
               Your definitive guide to eating, staying, and exploring Southport — home of The Open Championship 2026.
             </p>
-            <div className="flex gap-3">
+            <InstagramCta variant="footer" />
+            <div className="flex gap-3 mt-5">
               <a href="https://churchtownmedia.co.uk" className="text-xs text-[#C9A84C] hover:text-[#E8C87A] transition">
                 Built by Churchtown Media ↗
               </a>
@@ -271,7 +273,9 @@ function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
           <p>&copy; 2026 SouthportGuide.co.uk — All rights reserved.</p>
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+            <InstagramCta variant="compact" />
+            <span className="hidden sm:inline text-white/20" aria-hidden>|</span>
             <Link href="/privacy" className="hover:text-white/70 transition">Privacy</Link>
             <Link href="/terms" className="hover:text-white/70 transition">Terms</Link>
             <Link href="/contact" className="hover:text-white/70 transition">Contact</Link>

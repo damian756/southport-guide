@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  Menu, X, ChevronDown,
+  Menu, X, ChevronDown, Instagram,
   Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag,
   Waves, Dumbbell, Car, Sparkles, LayoutDashboard,
   Flower2, Wind, BookOpen, ListFilter,
 } from "lucide-react";
+import { INSTAGRAM_URL } from "@/components/InstagramCta";
 import { GUIDES, GUIDE_CATEGORIES, type GuideCategory } from "@/lib/guides-config";
 
 const CATEGORIES = [
@@ -180,6 +181,16 @@ export default function NavMenu() {
           Business Login
         </Link>
 
+        <a
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="SouthportGuide on Instagram (@southportguide)"
+          className="ml-2 flex h-9 w-9 items-center justify-center rounded-full border border-[#1B2E4B]/10 bg-[#FAF8F5] text-[#1B2E4B] transition hover:border-[#C9A84C]/40 hover:bg-[#C9A84C]/10 hover:text-[#B8972A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C]"
+        >
+          <Instagram className="h-[18px] w-[18px]" strokeWidth={2.25} aria-hidden />
+        </a>
+
         {/* CTA */}
         <Link href="/claim-listing"
           className="ml-1 bg-[#C9A84C] hover:bg-[#B8972A] text-white px-4 py-2 rounded-full text-[11px] font-bold tracking-wide uppercase transition-colors shadow-sm shadow-[#C9A84C]/30">
@@ -303,6 +314,18 @@ export default function NavMenu() {
               className="block w-full text-center bg-[#C9A84C] text-white px-4 py-3.5 rounded-xl font-bold text-sm hover:bg-[#B8972A] transition-colors tracking-wide">
               List Your Business →
             </Link>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 text-[#1B2E4B] text-sm font-semibold hover:border-[#C9A84C]/40 hover:bg-[#FAF8F5] transition-colors"
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]">
+                <Instagram className="h-4 w-4 text-white" strokeWidth={2.5} aria-hidden />
+              </span>
+              Follow @southportguide
+            </a>
           </div>
 
         </div>

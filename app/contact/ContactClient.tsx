@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle, AlertCircle, MapPin, Clock } from "lucide-react";
+import { InstagramCta } from "@/components/InstagramCta";
 
 const SUBJECTS = [
   "Claim my listing",
@@ -87,6 +88,8 @@ export default function ContactClient() {
                 </div>
               </div>
             </div>
+
+            <InstagramCta variant="contact" />
 
             <div className="bg-[#1B2E4B] rounded-2xl p-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/10 rounded-full -translate-y-8 translate-x-8 blur-2xl" />
