@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
-  Search,
   CheckCircle,
   AlertCircle,
   Building2,
   Mail,
   MessageSquare,
+  Loader2,
 } from "lucide-react";
 
 type SearchResult = {
@@ -21,54 +22,91 @@ type SearchResult = {
 };
 
 export default function ClaimListingClient() {
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [searchName, setSearchName] = useState("");
-  const [searchPostcode, setSearchPostcode] = useState("");
-  const [searching, setSearching] = useState(false);
-  const [results, setResults] = useState<SearchResult[] | null>(null);
-  const [searchError, setSearchError] = useState("");
+  const searchParams = useSearchParams();
 
-  const [selected, setSelected] = useState<SearchResult | null>(null);
+  // If arriving from a listing page (?id=...&name=...) skip straight to step 2
+  const preselectedId = searchParams.get("id");
+  const preselectedName = searchParams.get("name");
+  const preselectedAddress = searchParams.get("address") ?? "";
+  const preselectedPostcode = searchParams.get("postcode") ?? "";
+  const preselectedCategory = searchParams.get("category") ?? "";
+
+  const preselected: SearchResult | null =
+    preselectedId && preselectedName
+      ? {
+          id: preselectedId,
+          name: preselectedName,
+          address: preselectedAddress,
+          postcode: preselectedPostcode,
+          category: preselectedCategory,
+          claimed: false,
+        }
+      : null;
+
+  const [step, setStep] = useState<1 | 2 | 3>(preselected ? 2 : 1);
+  const [searchName, setSearchName] = useState("");
+  const [searching, setSearching] = useState(false);
+  const [suggestions, setSuggestions] = useState<SearchResult[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [noResults, setNoResults] = useState(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const [selected, setSelected] = useState<SearchResult | null>(preselected);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  async function handleSearch(e: React.FormEvent) {
-    e.preventDefault();
+  // Close dropdown on outside click
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const fetchSuggestions = useCallback(async (query: string) => {
+    if (query.trim().length < 2) {
+      setSuggestions([]);
+      setShowDropdown(false);
+      setNoResults(false);
+      return;
+    }
     setSearching(true);
-    setSearchError("");
-    setResults(null);
     try {
       const res = await fetch("/api/hub/claim/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: searchName.trim(),
-          postcode: searchPostcode.trim(),
-        }),
+        body: JSON.stringify({ name: query.trim() }),
       });
       const data = await res.json();
-      if (!res.ok) {
-        setSearchError(data.error?.message || "Search failed. Please try again.");
-        setSearching(false);
-        return;
-      }
-      setResults(data);
-      if (Array.isArray(data) && data.length === 0) {
-        setSearchError("No matches found. Try a different name or postcode.");
-      } else {
-        setSearchError("");
+      if (res.ok && Array.isArray(data)) {
+        setSuggestions(data);
+        setNoResults(data.length === 0);
+        setShowDropdown(true);
       }
     } catch {
-      setSearchError("Network error. Please check your connection and try again.");
+      // silently ignore network errors in typeahead
     } finally {
       setSearching(false);
     }
+  }, []);
+
+  function onSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    setSearchName(val);
+    setNoResults(false);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => fetchSuggestions(val), 300);
   }
 
   function selectBusiness(b: SearchResult) {
     if (b.claimed) return;
     setSelected(b);
+    setShowDropdown(false);
     setStep(2);
   }
 
@@ -104,7 +142,8 @@ export default function ClaimListingClient() {
 
   const inputCls =
     "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5]";
-  const labelCls = "block text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider mb-1.5";
+  const labelCls =
+    "block text-xs font-semibold text-[#1B2E4B] uppercase tracking-wider mb-1.5";
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -188,8 +227,13 @@ export default function ClaimListingClient() {
             </div>
 
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center">
-              <p className="text-sm font-semibold text-[#1B2E4B] mb-1">Can&apos;t find your business?</p>
-              <p className="text-xs text-gray-500 mb-3">If your business isn&apos;t listed yet, get in touch and we&apos;ll add it for you.</p>
+              <p className="text-sm font-semibold text-[#1B2E4B] mb-1">
+                Can&apos;t find your business?
+              </p>
+              <p className="text-xs text-gray-500 mb-3">
+                If your business isn&apos;t listed yet, get in touch and we&apos;ll add
+                it for you.
+              </p>
               <Link
                 href="/contact"
                 className="inline-block bg-[#1B2E4B] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#2A4A73] transition"
@@ -201,115 +245,69 @@ export default function ClaimListingClient() {
 
           {/* Main content */}
           <div className="md:col-span-3">
+            {/* Step 1 — Find your business */}
             {step === 1 && (
               <div className="bg-white rounded-2xl border border-gray-100 p-7">
-                <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">
+                <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-1">
                   Find your business
                 </h2>
-                <form onSubmit={handleSearch} className="space-y-4">
-                  <div>
-                    <label className={labelCls}>
-                      <span className="inline-flex items-center gap-1.5">
-                        <Building2 className="w-3.5 h-3.5 text-[#C9A84C]" />{" "}
-                        Business name <span className="text-[#C9A84C]">*</span>
-                      </span>
-                    </label>
+                <p className="text-sm text-gray-400 mb-5">
+                  Start typing and select your listing from the suggestions.
+                </p>
+
+                <div ref={wrapperRef} className="relative">
+                  <label className={labelCls}>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Building2 className="w-3.5 h-3.5 text-[#C9A84C]" />
+                      Business name
+                    </span>
+                  </label>
+                  <div className="relative">
                     <input
                       type="text"
-                      required
-                      minLength={2}
+                      autoComplete="off"
                       value={searchName}
-                      onChange={(e) => setSearchName(e.target.value)}
+                      onChange={onSearchInput}
+                      onFocus={() => suggestions.length > 0 && setShowDropdown(true)}
                       placeholder="e.g. The Grand Hotel"
                       className={inputCls}
                     />
-                  </div>
-                  <div>
-                    <label className={labelCls}>Postcode *</label>
-                    <input
-                      type="text"
-                      required
-                      minLength={3}
-                      value={searchPostcode}
-                      onChange={(e) =>
-                        setSearchPostcode(e.target.value.toUpperCase())
-                      }
-                      placeholder="e.g. PR8 1"
-                      className={inputCls}
-                    />
-                  </div>
-                  {searchError && (
-                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                      <div className="flex items-start gap-3 mb-3">
-                        <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                        <p className="text-amber-800 text-sm">{searchError}</p>
-                      </div>
-                      {results !== null && results.length === 0 && (
-                        <div className="border-t border-amber-200 pt-3 flex items-center justify-between gap-3">
-                          <p className="text-amber-700 text-xs">Can&apos;t find your business? We&apos;ll add it for you.</p>
-                          <Link href="/contact" className="flex-shrink-0 text-xs font-bold text-amber-700 underline hover:text-amber-900">
-                            Contact us →
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={searching}
-                    className="w-full flex items-center justify-center gap-2 bg-[#1B2E4B] hover:bg-[#2A4A73] disabled:opacity-60 text-white py-3.5 rounded-full font-bold text-sm transition-colors"
-                  >
-                    {searching ? (
-                      <>
-                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Searching…
-                      </>
-                    ) : (
-                      <>
-                        <Search className="w-4 h-4" />
-                        Search
-                      </>
+                    {searching && (
+                      <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 animate-spin" />
                     )}
-                  </button>
-                </form>
+                  </div>
 
-                {results && results.length > 0 && (
-                  <div className="mt-6 pt-6 border-t border-gray-100">
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                      Select your business
-                    </p>
-                    <ul className="space-y-2">
-                      {results.map((b) => (
+                  {/* Dropdown */}
+                  {showDropdown && suggestions.length > 0 && (
+                    <ul className="absolute z-50 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                      {suggestions.map((b) => (
                         <li key={b.id}>
                           <button
                             type="button"
                             onClick={() => selectBusiness(b)}
                             disabled={b.claimed}
-                            className={`w-full text-left p-4 rounded-xl border transition ${
+                            className={`w-full text-left px-4 py-3 transition border-b border-gray-50 last:border-0 ${
                               b.claimed
-                                ? "bg-gray-50 border-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-white border-gray-200 hover:border-[#C9A84C]/40 hover:bg-[#C9A84C]/5"
+                                ? "bg-gray-50 text-gray-400 cursor-not-allowed"
+                                : "hover:bg-[#C9A84C]/5 hover:text-[#1B2E4B]"
                             }`}
                           >
-                            <div className="flex justify-between items-start">
+                            <div className="flex justify-between items-start gap-2">
                               <div>
-                                <p className="font-semibold text-[#1B2E4B]">
+                                <p className="font-semibold text-sm text-[#1B2E4B]">
                                   {b.name}
                                 </p>
-                                <p className="text-sm text-gray-500">
-                                  {b.address}, {b.postcode}
-                                </p>
-                                <p className="text-xs text-gray-400 mt-1">
-                                  {b.category}
+                                <p className="text-xs text-gray-400">
+                                  {b.address}, {b.postcode} · {b.category}
                                 </p>
                               </div>
                               {b.claimed ? (
-                                <span className="text-xs font-medium text-gray-400 bg-gray-200 px-2 py-0.5 rounded">
-                                  Already claimed
+                                <span className="flex-shrink-0 text-[10px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded mt-0.5">
+                                  Claimed
                                 </span>
                               ) : (
-                                <span className="text-xs font-semibold text-[#C9A84C]">
-                                  This is my business →
+                                <span className="flex-shrink-0 text-xs font-semibold text-[#C9A84C] mt-0.5">
+                                  Select →
                                 </span>
                               )}
                             </div>
@@ -317,11 +315,31 @@ export default function ClaimListingClient() {
                         </li>
                       ))}
                     </ul>
+                  )}
+                </div>
+
+                {/* No results hint */}
+                {noResults && searchName.trim().length >= 2 && !searching && (
+                  <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center justify-between gap-3">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                      <p className="text-amber-800 text-sm">
+                        No listings found for &ldquo;{searchName}&rdquo;. Can&apos;t find your
+                        business?
+                      </p>
+                    </div>
+                    <Link
+                      href="/contact"
+                      className="flex-shrink-0 text-xs font-bold text-amber-700 underline hover:text-amber-900"
+                    >
+                      Contact us →
+                    </Link>
                   </div>
                 )}
               </div>
             )}
 
+            {/* Step 2 — Contact details */}
             {step === 2 && selected && (
               <div className="bg-white rounded-2xl border border-gray-100 p-7">
                 <button
@@ -331,6 +349,8 @@ export default function ClaimListingClient() {
                     setSelected(null);
                     setForm({ name: "", email: "", message: "" });
                     setSubmitError("");
+                    setSearchName("");
+                    setSuggestions([]);
                   }}
                   className="text-sm text-gray-500 hover:text-[#C9A84C] mb-4"
                 >
@@ -341,6 +361,12 @@ export default function ClaimListingClient() {
                 </h2>
                 <p className="text-sm text-gray-500 mb-6">
                   Claiming <strong>{selected.name}</strong>
+                  {selected.address && (
+                    <span className="text-gray-400">
+                      {" "}· {selected.address}
+                      {selected.postcode ? `, ${selected.postcode}` : ""}
+                    </span>
+                  )}
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -359,9 +385,7 @@ export default function ClaimListingClient() {
                       type="text"
                       required
                       value={form.name}
-                      onChange={(e) =>
-                        setForm({ ...form, name: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="John Smith"
                       className={inputCls}
                     />
@@ -378,9 +402,7 @@ export default function ClaimListingClient() {
                       type="email"
                       required
                       value={form.email}
-                      onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="you@business.com"
                       className={inputCls}
                     />
@@ -389,7 +411,7 @@ export default function ClaimListingClient() {
                   <div>
                     <label className={labelCls}>
                       <span className="inline-flex items-center gap-1.5">
-                        <MessageSquare className="w-3.5 h-3.5 text-[#C9A84C]" />{" "}
+                        <MessageSquare className="w-3.5 h-3.5 text-[#C9A84C]" />
                         Message to reviewer{" "}
                         <span className="text-gray-400 font-normal normal-case">
                           (optional)
@@ -430,6 +452,7 @@ export default function ClaimListingClient() {
               </div>
             )}
 
+            {/* Step 3 — Submitted */}
             {step === 3 && (
               <div className="bg-white rounded-2xl border border-green-100 p-10 text-center">
                 <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -440,9 +463,8 @@ export default function ClaimListingClient() {
                 </h2>
                 <p className="text-gray-500 mb-6">
                   We&apos;ll review your claim within 24 hours and email you at{" "}
-                  <strong>{form.email}</strong> once it&apos;s approved. You&apos;ll
-                  then receive a link to set your password and access your
-                  dashboard.
+                  <strong>{form.email}</strong> once it&apos;s approved. You&apos;ll then
+                  receive a link to set your password and access your dashboard.
                 </p>
                 <Link
                   href="/"

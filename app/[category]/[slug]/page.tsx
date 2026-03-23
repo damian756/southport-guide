@@ -861,6 +861,9 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                   claimed={business.claimed}
                   show={business.hygieneRatingShow}
                   fhrsId={business.fhrsId}
+                  businessId={business.id}
+                  businessAddress={business.address ?? undefined}
+                  businessPostcode={business.postcode ?? undefined}
                 />
               )}
 
@@ -1006,6 +1009,10 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                   claimed={business.claimed}
                   show={business.hygieneRatingShow}
                   fhrsId={business.fhrsId}
+                  businessId={business.id}
+                  businessName={business.name}
+                  businessAddress={business.address ?? undefined}
+                  businessPostcode={business.postcode ?? undefined}
                 />
               )}
 
@@ -1017,7 +1024,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                     <p className="font-display font-bold text-white mb-1">Is this your business?</p>
                     <p className="text-white/60 text-sm mb-4">Claim your free listing to update details, manage your food hygiene display, and attract more customers.</p>
                     <Link
-                      href="/claim-listing"
+                      href={`/claim-listing?id=${business.id}&name=${encodeURIComponent(business.name)}&address=${encodeURIComponent(business.address ?? "")}&postcode=${encodeURIComponent(business.postcode ?? "")}`}
                       className="block text-center bg-[#C9A84C] text-white px-4 py-2.5 rounded-full font-bold text-sm hover:bg-[#E8C87A] transition"
                     >
                       Claim Free Listing →
@@ -1109,8 +1116,9 @@ function HygieneBadgeInline({ rating, date: _date, claimed: _claimed, show, fhrs
   );
 }
 
-function HygieneCard({ name, rating, date, claimed, show, fhrsId }: {
+function HygieneCard({ name, rating, date, claimed, show, fhrsId, businessId, businessAddress, businessPostcode }: {
   name: string; rating: string | null; date: Date | null; claimed: boolean; show: boolean; fhrsId: string | null;
+  businessId?: string; businessAddress?: string; businessPostcode?: string;
 }) {
   if (claimed && !show) return null;
   if (!rating) return null;
@@ -1175,7 +1183,10 @@ function HygieneCard({ name, rating, date, claimed, show, fhrsId }: {
       {!claimed && (
         <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
           <p className="text-gray-400 text-xs">Own <strong className="text-gray-600">{name}</strong>? Claim your listing to manage how this rating is displayed.</p>
-          <Link href="/claim-listing" className="flex-shrink-0 ml-4 text-blue-600 text-xs font-semibold hover:underline">
+          <Link
+            href={businessId ? `/claim-listing?id=${businessId}&name=${encodeURIComponent(name)}&address=${encodeURIComponent(businessAddress ?? "")}&postcode=${encodeURIComponent(businessPostcode ?? "")}` : "/claim-listing"}
+            className="flex-shrink-0 ml-4 text-blue-600 text-xs font-semibold hover:underline"
+          >
             Claim →
           </Link>
         </div>
@@ -1184,8 +1195,9 @@ function HygieneCard({ name, rating, date, claimed, show, fhrsId }: {
   );
 }
 
-function HygieneSidebar({ rating, date, claimed, show, fhrsId }: {
+function HygieneSidebar({ rating, date, claimed, show, fhrsId, businessId, businessName, businessAddress, businessPostcode }: {
   rating: string | null; date: Date | null; claimed: boolean; show: boolean; fhrsId: string | null;
+  businessId?: string; businessName?: string; businessAddress?: string; businessPostcode?: string;
 }) {
   if (claimed && !show) return null;
   if (!rating) return null;
@@ -1229,11 +1241,14 @@ function HygieneSidebar({ rating, date, claimed, show, fhrsId }: {
         </div>
       )}
       {!claimed && (
-        <Link href="/claim-listing" className={cn("block text-center text-xs font-semibold px-3 py-1.5 rounded-lg mt-3 transition",
-          numRating >= 4 ? "bg-green-600 text-white hover:bg-green-700"
-          : numRating === 3 ? "bg-yellow-500 text-white hover:bg-yellow-600"
-          : "bg-red-600 text-white hover:bg-red-700"
-        )}>
+        <Link
+          href={businessId ? `/claim-listing?id=${businessId}&name=${encodeURIComponent(businessName ?? "")}&address=${encodeURIComponent(businessAddress ?? "")}&postcode=${encodeURIComponent(businessPostcode ?? "")}` : "/claim-listing"}
+          className={cn("block text-center text-xs font-semibold px-3 py-1.5 rounded-lg mt-3 transition",
+            numRating >= 4 ? "bg-green-600 text-white hover:bg-green-700"
+            : numRating === 3 ? "bg-yellow-500 text-white hover:bg-yellow-600"
+            : "bg-red-600 text-white hover:bg-red-700"
+          )}
+        >
           Claim to manage →
         </Link>
       )}
