@@ -348,6 +348,25 @@ export default async function BusinessPage({ params, searchParams }: Props) {
 
   if (!business) notFound();
 
+  // Fetch on-site review aggregate for AggregateRating schema.
+  // Google's guidelines require the rating to reflect reviews collected by the site,
+  // not third-party data. We only emit aggregateRating when real on-site reviews exist.
+  let siteReviewAvg: number | null = null;
+  let siteReviewCount: number = 0;
+  try {
+    const stats = await prisma.$queryRaw<{ avg_rating: number; review_count: number }[]>`
+      SELECT
+        ROUND(AVG("starRating")::numeric, 1)::float AS avg_rating,
+        COUNT(*)::int AS review_count
+      FROM "Review"
+      WHERE "businessId" = ${business.id} AND status = 'approved'
+    `;
+    if (stats[0] && stats[0].review_count > 0) {
+      siteReviewAvg = Number(stats[0].avg_rating);
+      siteReviewCount = Number(stats[0].review_count);
+    }
+  } catch { /* non-fatal — schema emits without aggregateRating */ }
+
   const isFeatured = business.listingTier === "featured" || business.listingTier === "premium";
   const isPremium = business.listingTier === "premium";
   const area = extractArea(business.address, business.postcode);
@@ -402,11 +421,11 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     ...(business.lat && business.lng ? {
       geo: { "@type": "GeoCoordinates", latitude: business.lat, longitude: business.lng },
     } : {}),
-    ...(business.rating && business.reviewCount ? {
+    ...(siteReviewCount > 0 ? {
       aggregateRating: {
         "@type": "AggregateRating",
-        ratingValue: business.rating.toFixed(1),
-        reviewCount: business.reviewCount,
+        ratingValue: siteReviewAvg!.toFixed(1),
+        reviewCount: siteReviewCount,
         bestRating: "5",
         worstRating: "1",
       },
