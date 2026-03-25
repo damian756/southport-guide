@@ -295,21 +295,103 @@ export default function CategoryBrowser({
             const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
             const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
             const snippet = getSnippet(b);
-            // First featured card spans full width for maximum visibility
-            const isFirstFeatured = isFeatured && filtered.findIndex(x => x.listingTier === "featured" || x.listingTier === "premium") === idx;
+            const firstFeaturedIdx = filtered.findIndex(x => x.listingTier === "featured" || x.listingTier === "premium");
+            // Hero = first featured card; Standard = subsequent featured cards
+            const isHeroFeatured = isFeatured && firstFeaturedIdx === idx;
+            const isStandardFeatured = isFeatured && !isHeroFeatured;
 
+            // ── Hero featured card — full-width horizontal layout ──────────────
+            if (isHeroFeatured) {
+              return (
+                <Link
+                  key={b.slug}
+                  href={`/${category}/${b.slug}`}
+                  className="group sm:col-span-2 lg:col-span-3 flex flex-col sm:flex-row rounded-2xl overflow-hidden border-t-4 border-t-[#C9A84C] border-[#C9A84C]/30 bg-[#FDFBF6] shadow-lg hover:shadow-xl ring-1 ring-[#C9A84C]/20 transition-all hover:-translate-y-0.5"
+                >
+                  {/* Image — left half on desktop */}
+                  <div className={`relative w-full sm:w-2/5 flex-none overflow-hidden bg-gradient-to-br ${themeGradient} h-56 sm:h-auto`}>
+                    {b.firstImage ? (
+                      <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={b.firstImage}
+                          alt={b.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent sm:bg-gradient-to-r" />
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-6xl opacity-20 select-none">{emoji}</span>
+                      </div>
+                    )}
+                    <div className="absolute top-3 left-3">
+                      <span className="text-xs font-black bg-[#C9A84C] text-[#1B2E4B] px-3 py-1.5 rounded-full uppercase tracking-wider shadow">
+                        ✦ Featured
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content — right half */}
+                  <div className="flex flex-col flex-1 p-6 justify-between">
+                    <div>
+                      <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">
+                        Editor&apos;s Pick · {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
+                      </p>
+                      <h2 className="font-display font-bold text-[#1B2E4B] text-xl leading-snug group-hover:text-[#C9A84C] transition-colors mb-3 line-clamp-2">
+                        {b.name}
+                      </h2>
+                      {snippet && (
+                        <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">{snippet}</p>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-3 flex-wrap pt-4 border-t border-[#C9A84C]/20">
+                      {b.rating ? (
+                        <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                          <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                          {b.rating.toFixed(1)}
+                          {b.reviewCount && (
+                            <span className="font-normal text-amber-500">
+                              ({b.reviewCount >= 1000 ? `${(b.reviewCount / 1000).toFixed(1)}k` : b.reviewCount})
+                            </span>
+                          )}
+                        </span>
+                      ) : null}
+                      {showHygiene && hStyle && b.hygieneRating && (
+                        <span className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full border ${hStyle.bg} ${hStyle.text} ${hStyle.border}`}>
+                          <HygieneIcon r={b.hygieneRating} />
+                          FSA {b.hygieneRating}★
+                        </span>
+                      )}
+                      {b.priceRange && (
+                        <span className="text-gray-400 text-xs font-semibold">{b.priceRange}</span>
+                      )}
+                      <span
+                        className="ml-auto text-sm font-bold group-hover:translate-x-0.5 transition-transform"
+                        style={{ color: accentColor }}
+                      >
+                        View listing →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            }
+
+            // ── Standard featured card — gold border, normal size ──────────────
+            // ── Free / boosted card ────────────────────────────────────────────
             return (
               <Link
                 key={b.slug}
                 href={`/${category}/${b.slug}`}
                 className={`group flex flex-col rounded-2xl overflow-hidden border-t-4 border transition-all hover:-translate-y-0.5 ${
-                  isFeatured
-                    ? "border-t-[#C9A84C] border-[#C9A84C]/30 bg-[#FDFBF6] shadow-lg hover:shadow-xl ring-1 ring-[#C9A84C]/20"
+                  isStandardFeatured
+                    ? "border-t-[#C9A84C] border-[#C9A84C]/25 bg-[#FDFBF6] shadow-md hover:shadow-lg"
                     : "border-t-transparent border-gray-100 bg-white hover:border-gray-200 hover:shadow-md shadow-sm"
-                } ${isFirstFeatured ? "sm:col-span-2 lg:col-span-3" : ""}`}
+                }`}
               >
-                {/* Image / placeholder header */}
-                <div className={`relative w-full flex-none overflow-hidden bg-gradient-to-br ${themeGradient} ${isFeatured ? "h-56" : "h-44"}`}>
+                <div className={`relative w-full h-44 flex-none overflow-hidden bg-gradient-to-br ${themeGradient}`}>
                   {b.firstImage ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -318,7 +400,7 @@ export default function CategoryBrowser({
                         alt={b.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -326,16 +408,14 @@ export default function CategoryBrowser({
                       <span className="text-5xl opacity-30 select-none">{emoji}</span>
                     </div>
                   )}
-
-                  {/* Featured / boosted badge on image */}
-                  {(isFeatured || isBoosted) && (
+                  {(isStandardFeatured || isBoosted) && (
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                      {isFeatured && (
-                        <span className="text-xs font-black bg-[#C9A84C] text-[#1B2E4B] px-3 py-1.5 rounded-full uppercase tracking-wider shadow">
+                      {isStandardFeatured && (
+                        <span className="text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
                           ✦ Featured
                         </span>
                       )}
-                      {isBoosted && !isFeatured && (
+                      {isBoosted && !isStandardFeatured && (
                         <span className="text-[10px] font-semibold bg-white/90 text-[#1B2E4B] px-2.5 py-1 rounded-full shadow-sm">
                           Featured This Week
                         </span>
@@ -345,22 +425,19 @@ export default function CategoryBrowser({
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-                  <h2 className={`font-display font-bold text-[#1B2E4B] leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2 ${isFeatured ? "text-lg" : "text-base"}`}>
+                  <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
                     {b.name}
                   </h2>
-
                   <p className="flex items-center gap-1 text-gray-400 text-xs mb-2">
                     <MapPin className="w-3 h-3 flex-shrink-0" />
                     {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
                   </p>
-
                   {snippet ? (
-                    <p className={`text-gray-500 text-sm flex-1 mb-3 leading-relaxed ${isFeatured ? "line-clamp-3" : "line-clamp-2"}`}>{snippet}</p>
+                    <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-3 leading-relaxed">{snippet}</p>
                   ) : (
                     <div className="flex-1 mb-3" />
                   )}
-
-                  <div className={`flex items-center gap-2 flex-wrap mt-auto pt-3 ${isFeatured ? "border-t border-[#C9A84C]/20" : "border-t border-gray-50"}`}>
+                  <div className={`flex items-center gap-2 flex-wrap mt-auto pt-3 ${isStandardFeatured ? "border-t border-[#C9A84C]/20" : "border-t border-gray-50"}`}>
                     {b.rating ? (
                       <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
                         <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
@@ -372,14 +449,12 @@ export default function CategoryBrowser({
                         )}
                       </span>
                     ) : null}
-
                     {showHygiene && hStyle && b.hygieneRating && (
                       <span className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full border ${hStyle.bg} ${hStyle.text} ${hStyle.border}`}>
                         <HygieneIcon r={b.hygieneRating} />
                         FSA {b.hygieneRating}★
                       </span>
                     )}
-
                     <div className="ml-auto flex items-center gap-2">
                       {b.priceRange && (
                         <span className="text-gray-400 text-xs font-semibold">{b.priceRange}</span>
