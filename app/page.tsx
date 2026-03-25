@@ -133,7 +133,7 @@ export default async function Home() {
           AND b.rating IS NOT NULL
           AND b."reviewCount" > 100
         ORDER BY (b.rating * LOG(b."reviewCount" + 1)) DESC
-        LIMIT 7
+        LIMIT 9
       `,
       prisma.$queryRaw<{ avg_price: number; total_sales: number }[]>`
         SELECT AVG(price)::int AS avg_price, COUNT(*)::int AS total_sales
@@ -1015,8 +1015,8 @@ export default async function Home() {
                 })}
               </div>
 
-              {/* Bottom row — 4 more */}
-              {featured.slice(3, 7).map((b, i) => {
+              {/* Bottom row — 6 more */}
+              {featured.slice(3, 9).map((b, i) => {
                 const theme = catMeta[b.category.slug];
                 const area = getArea(b.address);
                 return (
