@@ -129,7 +129,7 @@ export default async function Home() {
         FROM "Business" b
         JOIN "Category" c ON c.id = b."categoryId"
         WHERE c.slug NOT IN ('transport')
-          AND b.slug NOT IN ('another-place-crosby')
+          AND b.slug NOT IN ('another-place', 'ainsdale-beach')
           AND b.rating IS NOT NULL
           AND b."reviewCount" > 100
         ORDER BY (b.rating * LOG(b."reviewCount" + 1)) DESC
