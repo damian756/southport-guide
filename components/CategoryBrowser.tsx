@@ -288,26 +288,28 @@ export default function CategoryBrowser({
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filtered.map((b) => {
+          {filtered.map((b, idx) => {
             const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
             const isBoosted = boostedBusinessIds.includes(b.id);
             const areaLabel = getAreaLabel(b.address);
             const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
             const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
             const snippet = getSnippet(b);
+            // First featured card spans full width for maximum visibility
+            const isFirstFeatured = isFeatured && filtered.findIndex(x => x.listingTier === "featured" || x.listingTier === "premium") === idx;
 
             return (
               <Link
                 key={b.slug}
                 href={`/${category}/${b.slug}`}
-                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border transition-all hover:-translate-y-0.5 ${
+                className={`group flex flex-col rounded-2xl overflow-hidden border-t-4 border transition-all hover:-translate-y-0.5 ${
                   isFeatured
-                    ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md hover:shadow-lg"
-                    : "border-gray-100 hover:border-gray-200 hover:shadow-md shadow-sm"
-                }`}
+                    ? "border-t-[#C9A84C] border-[#C9A84C]/30 bg-[#FDFBF6] shadow-lg hover:shadow-xl ring-1 ring-[#C9A84C]/20"
+                    : "border-t-transparent border-gray-100 bg-white hover:border-gray-200 hover:shadow-md shadow-sm"
+                } ${isFirstFeatured ? "sm:col-span-2 lg:col-span-3" : ""}`}
               >
                 {/* Image / placeholder header */}
-                <div className={`relative w-full h-44 flex-none overflow-hidden bg-gradient-to-br ${themeGradient}`}>
+                <div className={`relative w-full flex-none overflow-hidden bg-gradient-to-br ${themeGradient} ${isFeatured ? "h-56" : "h-44"}`}>
                   {b.firstImage ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -316,7 +318,7 @@ export default function CategoryBrowser({
                         alt={b.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     </>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -329,7 +331,7 @@ export default function CategoryBrowser({
                   {(isFeatured || isBoosted) && (
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                       {isFeatured && (
-                        <span className="text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                        <span className="text-xs font-black bg-[#C9A84C] text-[#1B2E4B] px-3 py-1.5 rounded-full uppercase tracking-wider shadow">
                           ✦ Featured
                         </span>
                       )}
@@ -343,7 +345,7 @@ export default function CategoryBrowser({
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-                  <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
+                  <h2 className={`font-display font-bold text-[#1B2E4B] leading-snug group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2 ${isFeatured ? "text-lg" : "text-base"}`}>
                     {b.name}
                   </h2>
 
@@ -353,12 +355,12 @@ export default function CategoryBrowser({
                   </p>
 
                   {snippet ? (
-                    <p className="text-gray-500 text-sm line-clamp-2 flex-1 mb-3 leading-relaxed">{snippet}</p>
+                    <p className={`text-gray-500 text-sm flex-1 mb-3 leading-relaxed ${isFeatured ? "line-clamp-3" : "line-clamp-2"}`}>{snippet}</p>
                   ) : (
                     <div className="flex-1 mb-3" />
                   )}
 
-                  <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-50">
+                  <div className={`flex items-center gap-2 flex-wrap mt-auto pt-3 ${isFeatured ? "border-t border-[#C9A84C]/20" : "border-t border-gray-50"}`}>
                     {b.rating ? (
                       <span className="flex items-center gap-1 bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
                         <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
