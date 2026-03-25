@@ -298,7 +298,8 @@ export default function CategoryBrowser({
             const firstFeaturedIdx = filtered.findIndex(x => x.listingTier === "featured" || x.listingTier === "premium");
             // Hero = first featured card; Standard = subsequent featured cards
             const isHeroFeatured = isFeatured && firstFeaturedIdx === idx;
-            const isStandardFeatured = isFeatured && !isHeroFeatured;
+            // Only one hero per page — all other featured render as normal free cards
+            const isStandardFeatured = false;
 
             // ── Hero featured card — full-width horizontal layout ──────────────
             if (isHeroFeatured) {
