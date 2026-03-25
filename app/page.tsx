@@ -129,6 +129,7 @@ export default async function Home() {
         FROM "Business" b
         JOIN "Category" c ON c.id = b."categoryId"
         WHERE c.slug NOT IN ('transport')
+          AND b.slug NOT IN ('another-place-crosby')
           AND b.rating IS NOT NULL
           AND b."reviewCount" > 100
         ORDER BY (b.rating * LOG(b."reviewCount" + 1)) DESC
@@ -446,15 +447,16 @@ export default async function Home() {
       {(() => {
         const featuredPosts = BLOG_POSTS.filter((p) => p.featured);
         const latestPosts = (() => {
-          if (featuredPosts.length >= 6) return featuredPosts.slice(0, 6);
+          if (featuredPosts.length >= 9) return featuredPosts.slice(0, 9);
           const usedSlugs = new Set(featuredPosts.map((p) => p.slug));
           const rest = [...BLOG_POSTS].reverse().filter((p) => !usedSlugs.has(p.slug));
-          return [...featuredPosts, ...rest].slice(0, 6);
+          return [...featuredPosts, ...rest].slice(0, 9);
         })();
         const featPost = latestPosts[0];
         const featCat = featPost ? getBlogPostCategory(featPost) : null;
         const row1Side = latestPosts.slice(1, 3);
         const row2Posts = latestPosts.slice(3, 6);
+        const row3Posts = latestPosts.slice(6, 9);
         return (
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4 max-w-6xl">
@@ -565,6 +567,51 @@ export default async function Home() {
               {row2Posts.length > 0 && (
                 <div className="grid md:grid-cols-3 gap-5 mt-5">
                   {row2Posts.map((post) => {
+                    const cat = getBlogPostCategory(post);
+                    return (
+                      <Link
+                        key={post.slug}
+                        href={`/blog/${post.slug}`}
+                        className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all flex flex-col"
+                      >
+                        <div className="relative h-40 overflow-hidden flex-none">
+                          <Image
+                            src={post.image}
+                            alt={post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={75}
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          {cat && (
+                            <span
+                              className="absolute bottom-2 left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded-full"
+                              style={{ backgroundColor: cat.color }}
+                            >
+                              {cat.label}
+                            </span>
+                          )}
+                        </div>
+                        <div className="p-4 flex flex-col flex-1">
+                          <h3 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <div className="flex items-center justify-between text-xs text-gray-400 mt-auto">
+                            <span>{formatPostDate(post.date)}</span>
+                            <span className="text-[#C9A84C] font-semibold">Read →</span>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Row 3 — 3 equal cards */}
+              {row3Posts.length > 0 && (
+                <div className="grid md:grid-cols-3 gap-5 mt-5">
+                  {row3Posts.map((post) => {
                     const cat = getBlogPostCategory(post);
                     return (
                       <Link
