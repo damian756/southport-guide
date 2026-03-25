@@ -8,8 +8,16 @@ import {
   Waves, Dumbbell, Car, Sparkles, LayoutDashboard,
   Flower2, Wind, BookOpen, ListFilter,
 } from "lucide-react";
-import { INSTAGRAM_URL } from "@/components/InstagramCta";
+import { INSTAGRAM_URL, FACEBOOK_URL } from "@/components/InstagramCta";
 import { GUIDES, GUIDE_CATEGORIES, type GuideCategory } from "@/lib/guides-config";
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+    </svg>
+  );
+}
 
 const CATEGORIES = [
   { slug: "restaurants",    label: "Restaurants",     icon: Utensils,    color: "text-red-500" },
@@ -181,15 +189,26 @@ export default function NavMenu() {
           Business Login
         </Link>
 
-        <a
-          href={INSTAGRAM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="SouthportGuide on Instagram (@southportguide)"
-          className="ml-2 flex h-9 w-9 items-center justify-center rounded-full border border-[#1B2E4B]/10 bg-[#FAF8F5] text-[#1B2E4B] transition hover:border-[#C9A84C]/40 hover:bg-[#C9A84C]/10 hover:text-[#B8972A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C]"
-        >
-          <Instagram className="h-[18px] w-[18px]" strokeWidth={2.25} aria-hidden />
-        </a>
+        <div className="ml-2 flex items-center gap-1.5">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="SouthportGuide on Instagram (@southportguide)"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#1B2E4B]/10 bg-[#FAF8F5] text-[#1B2E4B] transition hover:border-[#C9A84C]/40 hover:bg-[#C9A84C]/10 hover:text-[#B8972A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C]"
+          >
+            <Instagram className="h-[18px] w-[18px]" strokeWidth={2.25} aria-hidden />
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="SouthportGuide on Facebook"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#1B2E4B]/10 bg-[#FAF8F5] text-[#1B2E4B] transition hover:border-[#1877F2]/40 hover:bg-[#1877F2]/10 hover:text-[#1877F2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877F2]"
+          >
+            <FacebookIcon className="h-[18px] w-[18px]" />
+          </a>
+        </div>
 
         {/* CTA */}
         <Link href="/claim-listing"
@@ -314,18 +333,32 @@ export default function NavMenu() {
               className="block w-full text-center bg-[#C9A84C] text-white px-4 py-3.5 rounded-xl font-bold text-sm hover:bg-[#B8972A] transition-colors tracking-wide">
               List Your Business →
             </Link>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 text-[#1B2E4B] text-sm font-semibold hover:border-[#C9A84C]/40 hover:bg-[#FAF8F5] transition-colors"
-            >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]">
-                <Instagram className="h-4 w-4 text-white" strokeWidth={2.5} aria-hidden />
-              </span>
-              Follow @southportguide
-            </a>
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-gray-200 text-[#1B2E4B] text-sm font-semibold hover:border-[#C9A84C]/40 hover:bg-[#FAF8F5] transition-colors"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]">
+                  <Instagram className="h-4 w-4 text-white" strokeWidth={2.5} aria-hidden />
+                </span>
+                Instagram
+              </a>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-gray-200 text-[#1B2E4B] text-sm font-semibold hover:border-[#1877F2]/30 hover:bg-[#1877F2]/5 transition-colors"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#1877F2]">
+                  <FacebookIcon className="h-4 w-4 text-white" />
+                </span>
+                Facebook
+              </a>
+            </div>
           </div>
 
         </div>

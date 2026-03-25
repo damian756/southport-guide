@@ -212,6 +212,7 @@ export default async function Home() {
         },
         sameAs: [
           "https://www.instagram.com/southportguide/",
+          "https://www.facebook.com/southportguide/",
           "https://www.formbyguide.co.uk",
           "https://www.seftonlinks.com",
           "https://seftoncoastwildlife.co.uk",
