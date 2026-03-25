@@ -446,13 +446,15 @@ export default async function Home() {
       {(() => {
         const featuredPosts = BLOG_POSTS.filter((p) => p.featured);
         const latestPosts = (() => {
-          if (featuredPosts.length >= 3) return featuredPosts.slice(0, 3);
+          if (featuredPosts.length >= 6) return featuredPosts.slice(0, 6);
           const usedSlugs = new Set(featuredPosts.map((p) => p.slug));
           const rest = [...BLOG_POSTS].reverse().filter((p) => !usedSlugs.has(p.slug));
-          return [...featuredPosts, ...rest].slice(0, 3);
+          return [...featuredPosts, ...rest].slice(0, 6);
         })();
         const featPost = latestPosts[0];
         const featCat = featPost ? getBlogPostCategory(featPost) : null;
+        const row1Side = latestPosts.slice(1, 3);
+        const row2Posts = latestPosts.slice(3, 6);
         return (
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4 max-w-6xl">
@@ -470,6 +472,7 @@ export default async function Home() {
                 </Link>
               </div>
 
+              {/* Row 1 — hero + 2 small cards */}
               <div className="grid md:grid-cols-3 gap-5">
                 {featPost && (
                   <Link
@@ -516,7 +519,7 @@ export default async function Home() {
                 )}
 
                 <div className="flex flex-col gap-5">
-                  {latestPosts.slice(1).map((post) => {
+                  {row1Side.map((post) => {
                     const cat = getBlogPostCategory(post);
                     return (
                       <Link
@@ -558,12 +561,57 @@ export default async function Home() {
                 </div>
               </div>
 
-              <div className="mt-6 text-center">
+              {/* Row 2 — 3 equal cards */}
+              {row2Posts.length > 0 && (
+                <div className="grid md:grid-cols-3 gap-5 mt-5">
+                  {row2Posts.map((post) => {
+                    const cat = getBlogPostCategory(post);
+                    return (
+                      <Link
+                        key={post.slug}
+                        href={`/blog/${post.slug}`}
+                        className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all flex flex-col"
+                      >
+                        <div className="relative h-40 overflow-hidden flex-none">
+                          <Image
+                            src={post.image}
+                            alt={post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={75}
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          {cat && (
+                            <span
+                              className="absolute bottom-2 left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded-full"
+                              style={{ backgroundColor: cat.color }}
+                            >
+                              {cat.label}
+                            </span>
+                          )}
+                        </div>
+                        <div className="p-4 flex flex-col flex-1">
+                          <h3 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <div className="flex items-center justify-between text-xs text-gray-400 mt-auto">
+                            <span>{formatPostDate(post.date)}</span>
+                            <span className="text-[#C9A84C] font-semibold">Read →</span>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
+              <div className="mt-8 text-center">
                 <Link
                   href="/blog"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#1B2E4B] border border-[#1B2E4B]/20 px-6 py-2.5 rounded-full hover:bg-[#1B2E4B] hover:text-white transition-all sm:hidden"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#1B2E4B] border border-[#1B2E4B]/20 px-6 py-2.5 rounded-full hover:bg-[#1B2E4B] hover:text-white transition-all"
                 >
-                  All blog posts →
+                  All {totalBlogPosts}+ posts →
                 </Link>
               </div>
             </div>

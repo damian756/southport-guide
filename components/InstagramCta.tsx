@@ -57,14 +57,14 @@ export function SocialLinks({ variant }: { variant: Variant }) {
 
   if (variant === "contact") {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="flex flex-col gap-3">
         {/* Instagram */}
         <a
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="SouthportGuide on Instagram — opens in a new tab"
-          className="group flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-[#C9A84C]/35 hover:shadow-md"
+          className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:border-[#C9A84C]/35 hover:shadow-md"
         >
           <span
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] shadow-inner"
@@ -89,7 +89,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="SouthportGuide on Facebook — opens in a new tab"
-          className="group flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-[#1877F2]/30 hover:shadow-md"
+          className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:border-[#1877F2]/30 hover:shadow-md"
         >
           <span
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#1877F2] shadow-inner"
