@@ -70,7 +70,7 @@ function areaContext(area: string): string {
   const contexts: Record<string, string> = {
     "Birkdale":  "Birkdale Village, one of Southport's most sought-after neighbourhoods",
     "Ainsdale":  "Ainsdale, a coastal village on Southport's southern edge",
-    "Churchtown": "Churchtown, Southport's charming historic village",
+    "Churchtown": "Churchtown, Southport's historic village",
     "Crossens":  "Crossens, a quiet residential area to the north of Southport",
     "Formby":    "Formby, a short drive south of Southport town centre",
     "Ormskirk":  "Ormskirk, a market town a short drive inland from Southport",
@@ -184,7 +184,7 @@ function generateHotel(b: Business, rng: () => number): string {
   const closers = [
     `Southport's accommodation gets booked up well in advance around major events, so it's worth reserving early. ${b.website ? `Visit the website for the latest availability and rates.` : b.phone ? `Call ${b.phone} to check availability.` : ""}`,
     `${b.name} is popular with both first-time visitors and returning guests — a reliable choice in ${area}. ${b.website ? "Book directly through the website for the best rates." : ""}`,
-    `For anyone visiting Southport, ${b.name} is ${area !== "Southport" ? `a short journey from the town centre and` : ``} ideally placed to make the most of what this popular Lancashire seaside town has to offer.`,
+    `For anyone visiting Southport, ${b.name} is ${area !== "Southport" ? `a short journey from the town centre and` : ``} ideally placed to make the most of what this Merseyside seaside town has to offer.`,
   ];
 
   const parts = [
@@ -419,7 +419,7 @@ function generateAttraction(b: Business, rng: () => number): string {
   const openers = [
     `${b.name} is one of the things that makes Southport worth visiting — a genuine attraction that appeals to a wide range of visitors.`,
     `For families, couples and solo travellers exploring Southport, ${b.name} is a name that comes up regularly when locals are asked for recommendations.`,
-    `${b.name} adds to Southport's growing reputation as a day-trip and short-break destination on the Lancashire coast.`,
+    `${b.name} adds to Southport's growing reputation as a day-trip and short-break destination on the Sefton coast.`,
     `Southport has more to offer visitors than most people expect, and ${b.name} is a good example of why the town rewards proper exploration.`,
   ];
 
@@ -460,7 +460,7 @@ function generateBeach(b: Business, rng: () => number): string {
   const seedDesc = b.shortDescription ? b.shortDescription.replace(/\.$/, "") : "";
 
   const openers = [
-    `${b.name} is one of the natural highlights of the Southport coastline — a place where the scale of the Lancashire coast really hits home.`,
+    `${b.name} is one of the natural highlights of the Southport coastline — a place where the scale of the Sefton coast really hits home.`,
     `Southport's coastline is one of its greatest assets, and ${b.name} is one of the best places to experience it properly.`,
     `Few things sum up Southport better than a walk on ${b.name}, where wide beaches meet open sky in a way that's genuinely hard to find closer to the big cities.`,
   ];
@@ -473,7 +473,7 @@ function generateBeach(b: Business, rng: () => number): string {
 
   const middles = [
     `The beaches around Southport are among the finest in the north-west of England — wide, clean, and backed by sand dunes that stretch for miles in either direction. ${b.name} is one of the most popular and accessible stretches along this coast.`,
-    `Southport's position on the Lancashire coast gives it a particular quality of light and space that urban visitors find immediately restorative. ${b.name} is one of the best places to experience that.`,
+    `Southport's position on the Sefton coast gives it a particular quality of light and space that urban visitors find immediately restorative. ${b.name} is one of the best places to experience that.`,
     `The dunes and coastal habitats around Southport are designated nature reserves, supporting rare species and providing some of the finest coastal walks in the region. ${b.name} sits at the heart of this protected landscape.`,
   ];
 
@@ -512,7 +512,7 @@ function generateActivities(b: Business, rng: () => number): string {
 
   const middles = [
     `The Southport area — with its coastline, dunes, rural hinterland and inland waterways — lends itself naturally to outdoor activity. ${b.name} makes the most of that geography.`,
-    `Whether you're travelling as a couple, a family or a group, ${b.name} offers activities that give a different perspective on this part of the Lancashire coast.`,
+    `Whether you're travelling as a couple, a family or a group, ${b.name} offers activities that give a different perspective on this stretch of the Merseyside coast.`,
     `Southport is easy to reach from Manchester, Liverpool and Preston, making it a popular destination for day trips and short breaks. ${b.name} gives visitors another compelling reason to make the journey.`,
   ];
 
