@@ -48,6 +48,7 @@ export default function NavMenu() {
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const [guidesOpen,  setGuidesOpen]  = useState(false);
+  const [eventsOpen,  setEventsOpen]  = useState(false);
 
   const publishedGuides = GUIDES.filter((g) => g.status === "published");
 
@@ -174,12 +175,49 @@ export default function NavMenu() {
           </div>
         </div>
 
-        {/* THE OPEN 2026 — single prominent link */}
+        {/* 2026 EVENTS dropdown */}
         <div className="w-px h-4 bg-gray-200 mx-2" />
-        <Link href="/the-open-2026"
-          className="text-[11px] font-bold tracking-[0.12em] uppercase px-3 py-2 text-[#C9A84C] hover:text-[#B8972A] transition-colors">
-          🏌️ The Open 2026
-        </Link>
+        <div
+          className="relative"
+          onMouseEnter={() => setEventsOpen(true)}
+          onMouseLeave={() => setEventsOpen(false)}
+        >
+          <button className="text-[11px] font-bold tracking-[0.12em] uppercase px-3 py-2 text-[#C9A84C] hover:text-[#B8972A] transition-colors flex items-center gap-1">
+            2026 Events
+            <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${eventsOpen ? "rotate-180" : ""}`} />
+          </button>
+
+          <div className="absolute top-full left-0 right-0 h-3 z-40" />
+
+          <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[400px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+            <Link href="/the-open-2026" onClick={() => setEventsOpen(false)}
+              className="group flex items-center gap-4 p-4 rounded-xl bg-amber-50 border border-amber-100 hover:bg-amber-100 transition-all mb-3">
+              <span className="text-2xl flex-none">🏌️</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-[#B8972A] text-[10px] font-bold uppercase tracking-widest mb-0.5">12–19 July 2026 · Royal Birkdale</p>
+                <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#B8972A] transition-colors">The Open Championship</p>
+                <p className="text-gray-500 text-xs mt-0.5">The 154th Open. Southport&apos;s biggest sporting event.</p>
+              </div>
+              <span className="text-[#B8972A] text-sm opacity-0 group-hover:opacity-100 transition-opacity flex-none">→</span>
+            </Link>
+            <div className="grid grid-cols-2 gap-2">
+              <Link href="/guides/southport-flower-show" onClick={() => setEventsOpen(false)}
+                className="group p-4 rounded-xl bg-green-50 border border-green-100 hover:bg-green-100 transition-all">
+                <span className="text-xl">🌸</span>
+                <p className="text-green-700 text-[10px] font-bold uppercase tracking-widest mt-2.5 mb-1">20–23 August 2026</p>
+                <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-green-700 transition-colors">Flower Show</p>
+                <p className="text-gray-500 text-[11px] mt-1">Victoria Park · From £23</p>
+              </Link>
+              <Link href="/guides/southport-air-show" onClick={() => setEventsOpen(false)}
+                className="group p-4 rounded-xl bg-sky-50 border border-sky-100 hover:bg-sky-100 transition-all">
+                <span className="text-xl">✈️</span>
+                <p className="text-sky-700 text-[10px] font-bold uppercase tracking-widest mt-2.5 mb-1">29–30 August 2026</p>
+                <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-sky-700 transition-colors">Air Show</p>
+                <p className="text-gray-500 text-[11px] mt-1">Southport Beach · Free</p>
+              </Link>
+            </div>
+          </div>
+        </div>
         <div className="w-px h-4 bg-gray-200 mx-2" />
 
         {/* Business Login */}
@@ -256,8 +294,22 @@ export default function NavMenu() {
             </div>
             <Link href="/the-open-2026" onClick={() => setMobileOpen(false)}
               className="flex items-center gap-2 px-4 py-3 rounded-xl bg-amber-50 text-[#B8972A] text-sm font-bold">
-              🏌️ The Open Championship 2026 — Royal Birkdale
+              🏌️ The Open Championship — 12–19 July · Royal Birkdale
             </Link>
+            <div className="grid grid-cols-2 gap-1.5">
+              <Link href="/guides/southport-flower-show" onClick={() => setMobileOpen(false)}
+                className="flex flex-col px-3 py-3 rounded-xl bg-green-50 border border-green-100">
+                <span className="text-lg mb-1.5">🌸</span>
+                <span className="text-xs font-bold text-green-800">Flower Show</span>
+                <span className="text-[10px] text-green-600 mt-0.5">20–23 Aug · From £23</span>
+              </Link>
+              <Link href="/guides/southport-air-show" onClick={() => setMobileOpen(false)}
+                className="flex flex-col px-3 py-3 rounded-xl bg-sky-50 border border-sky-100">
+                <span className="text-lg mb-1.5">✈️</span>
+                <span className="text-xs font-bold text-sky-800">Air Show</span>
+                <span className="text-[10px] text-sky-600 mt-0.5">29–30 Aug · Free</span>
+              </Link>
+            </div>
           </div>
 
           {/* Categories */}

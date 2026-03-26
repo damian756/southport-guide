@@ -162,42 +162,42 @@ export const GUIDES: Guide[] = [
   {
     slug: "southport-flower-show",
     title: "Southport Flower Show 2026",
-    description: "One of England's most prestigious flower shows. Victoria Park, August 2026.",
+    description: "One of England's most prestigious flower shows. 20–23 August 2026 at Victoria Park.",
     excerpt:
-      "Southport Flower Show 2026 — Victoria Park, August 2026. Tickets, what to see, parking, and advice on which day to go from someone who's been too many times to count.",
+      "Southport Flower Show 2026 — 20–23 August, Victoria Park. Tickets from £23, celebrity schedule, what to see, parking, and honest advice on which day to go from someone who's been too many times to count.",
     category: "events",
     heroImage: "/images/southport-flower-show.webp",
-    seoPriority: 0.88,
+    seoPriority: 0.92,
     datePublished: "2026-02-27",
-    dateUpdated: "2026-02-27",
+    dateUpdated: "2026-03-19",
     tags: ["flower-show", "events", "august", "tickets", "victoria-park"],
     status: "published",
     listingFilter: {
-      categorySlugs: ["hotels", "restaurants"],
+      categorySlugs: ["hotels", "restaurants", "parking"],
     },
-    metaTitle: "Southport Flower Show 2026 | Tickets, Dates, Parking & What to Expect",
+    metaTitle: "Southport Flower Show 2026 | 20–23 August · Tickets, Dates & Complete Guide",
     metaDescription:
-      "Southport Flower Show 2026 — Victoria Park, August 2026. Tickets, what to see, parking, getting there, and advice from someone who has been more times than he'd like to admit.",
+      "Southport Flower Show 2026 — 20–23 August at Victoria Park. Tickets from £23 early bird, celebrity schedule, parking, and everything you need. Written by a Southport local.",
   },
   {
     slug: "southport-air-show",
     title: "Southport Air Show 2026",
-    description: "Free. 100,000+ visitors. Southport Beach. One of the UK's best air shows.",
+    description: "Free. 100,000+ visitors. 29–30 August 2026. Southport Beach.",
     excerpt:
-      "Southport Air Show 2026 — free event on Southport Beach. Dates, best viewing spots, parking advice (come by train), and how to make the most of one of the UK's best free air shows.",
+      "Southport Air Show 2026 — 29–30 August, Bank Holiday weekend. Free event on Southport Beach. Expected aircraft, best viewing spots, parking table, and day-by-day timeline.",
     category: "events",
     heroImage: "/images/southport-air-show.webp",
-    seoPriority: 0.88,
+    seoPriority: 0.92,
     datePublished: "2026-02-27",
-    dateUpdated: "2026-02-27",
+    dateUpdated: "2026-03-19",
     tags: ["air-show", "events", "free", "beach", "summer"],
     status: "published",
     listingFilter: {
-      categorySlugs: ["hotels", "restaurants", "cafes"],
+      categorySlugs: ["hotels", "restaurants", "cafes", "parking"],
     },
-    metaTitle: "Southport Air Show 2026 | Free Event, Dates, Best Viewing Spots & Guide",
+    metaTitle: "Southport Air Show 2026 | 29–30 August · Free Event, Aircraft & Guide",
     metaDescription:
-      "Southport Air Show 2026 — free event on Southport Beach. Dates, best viewing spots, parking, and how to make the most of one of the UK's best air shows. Over 100,000 visitors.",
+      "Southport Air Show 2026 — 29–30 August, Bank Holiday weekend. Free on Southport Beach. Expected aircraft, best viewing spots, parking table, and a timeline of the day.",
   },
 
   // ── Areas ────────────────────────────────────────────────────────────────
