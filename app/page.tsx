@@ -445,11 +445,16 @@ export default async function Home() {
           LATEST FROM THE BLOG
       ══════════════════════════════════════════════════════ */}
       {(() => {
-        const featuredPosts = BLOG_POSTS.filter((p) => p.featured);
+        const parseDate = (d: string) => new Date(d.split(" ").reverse().join("-")).getTime();
+        const featuredPosts = BLOG_POSTS
+          .filter((p) => p.featured)
+          .sort((a, b) => parseDate(b.date) - parseDate(a.date));
         const latestPosts = (() => {
           if (featuredPosts.length >= 9) return featuredPosts.slice(0, 9);
           const usedSlugs = new Set(featuredPosts.map((p) => p.slug));
-          const rest = [...BLOG_POSTS].reverse().filter((p) => !usedSlugs.has(p.slug));
+          const rest = [...BLOG_POSTS]
+            .sort((a, b) => parseDate(b.date) - parseDate(a.date))
+            .filter((p) => !usedSlugs.has(p.slug));
           return [...featuredPosts, ...rest].slice(0, 9);
         })();
         const featPost = latestPosts[0];
@@ -1249,10 +1254,14 @@ export default async function Home() {
           {/* Additional events row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
             {[
-              { emoji: "🌸", label: "Flower Show", date: "Aug 2026", href: "/events" },
-              { emoji: "✈️", label: "Air Show", date: "Sep 2026", href: "/events" },
-              { emoji: "⚽", label: "Southport FC", date: "Season ongoing", href: "/events" },
-              { emoji: "🎆", label: "Illuminations", date: "Autumn 2026", href: "/events" },
+              { emoji: "🌭", label: "Sausage & Cider Festival", date: "18 Apr 2026", href: "/guides/southport-sausage-cider-festival" },
+              { emoji: "🎪", label: "Cristal Palace", date: "3–4 Apr 2026", href: "/guides/southport-year-of-culture-2026" },
+              { emoji: "🎖️", label: "Armed Forces Festival", date: "27–28 Jun 2026", href: "/guides/southport-armed-forces-festival" },
+              { emoji: "🌸", label: "Flower Show", date: "20–23 Aug 2026", href: "/guides/southport-flower-show" },
+              { emoji: "✈️", label: "Air Show", date: "29–30 Aug 2026", href: "/guides/southport-air-show" },
+              { emoji: "🎆", label: "Fireworks Championship", date: "26–27 Sep 2026", href: "/guides/southport-fireworks-championship" },
+              { emoji: "🎤", label: "Comedy Festival", date: "2–18 Oct 2026", href: "/guides/southport-comedy-festival" },
+              { emoji: "📅", label: "All 2026 Events", date: "Full calendar", href: "/events" },
             ].map(({ emoji, label, date, href }) => (
               <Link
                 key={label}

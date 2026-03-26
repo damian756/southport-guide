@@ -903,7 +903,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Most people don't realise the Southport fireworks is a competition. Teams are judged. Every burst is choreographed. Once you understand the format, you watch it completely differently.",
     categorySlug: "events",
     image: "/images/southport-fireworks-championship.webp",
-    date: "19 Mar 2026",
+    date: "26 Mar 2026",
   },
   {
     slug: "southport-september-2026-events",
@@ -912,7 +912,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "September is quieter than summer but it has the best event of the year: the British Musical Fireworks Championship. Here's the full picture of what's happening in Southport this September.",
     categorySlug: "events",
     image: "/images/blog/blog-southport-september-2026.webp",
-    date: "19 Mar 2026",
+    date: "25 Mar 2026",
   },
 
   // Comedy Festival
@@ -922,8 +922,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "15th year. 17 nights. A luxury heated marquee in Victoria Park. In 2025, nine shows sold out. Here's who's confirmed for 2026 and how to get tickets before the good nights are gone.",
     categorySlug: "events",
-    image: "/images/southport-comedy-festival.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-comedy-lineup.webp",
+    date: "26 Mar 2026",
   },
   {
     slug: "victoria-park-southport-events-2026",
@@ -932,7 +932,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Flower Show, Fireworks Championship, Comedy Festival, Sausage & Cider Festival. More major events happen in Victoria Park than most people realise. Here's the full 2026 calendar.",
     categorySlug: "events",
     image: "/images/blog/blog-victoria-park-events.webp",
-    date: "19 Mar 2026",
+    date: "25 Mar 2026",
   },
 
   // Armed Forces Festival
@@ -942,8 +942,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "27–28 June. Free. Town-wide. Parade on the Promenade, Drumhead Service, fly-overs, vehicle displays at Princes Park. Everything you need to plan your day.",
     categorySlug: "events",
-    image: "/images/southport-armed-forces-festival.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-armed-forces-day.webp",
+    date: "26 Mar 2026",
   },
   {
     slug: "southport-june-2026-guide",
@@ -952,7 +952,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "June 2026 is a big month in Southport. The Armed Forces Festival on 27–28 June is the headline act, but the whole month has plenty going on. Here's how to make the most of it.",
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-june-2026.webp",
-    date: "19 Mar 2026",
+    date: "25 Mar 2026",
   },
 
   // Sausage & Cider Festival
@@ -962,8 +962,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "The festival runs in two sessions on 18 April. The afternoon is better for food and families. The evening is livelier. I'll tell you which one to book and what to expect from each.",
     categorySlug: "events",
-    image: "/images/southport-sausage-cider-festival.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-sausage-cider-fun.webp",
+    date: "26 Mar 2026",
     featured: true,
   },
   {
@@ -973,7 +973,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Spring 2026 is unexpectedly packed. Cristal Palace on Lord Street in April. Big Top Festival in May. Sausage & Cider Festival. Easter. Here's how the season shapes up.",
     categorySlug: "events",
     image: "/images/blog/blog-southport-spring-april.webp",
-    date: "19 Mar 2026",
+    date: "26 Mar 2026",
     featured: true,
   },
 
@@ -984,8 +984,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "A 15-metre flying chandelier. Lord Street as an open-air ballroom. Aerial performers, live music, thousands watching from the pavement. This is Cristal Palace by Transe Express — 3–4 April 2026.",
     categorySlug: "events",
-    image: "/images/southport-year-of-culture-2026.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-cristal-palace.webp",
+    date: "26 Mar 2026",
     featured: true,
   },
   {
@@ -994,8 +994,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "The biggest year of culture in Southport's recent history. Four brand-new events backed by the Liverpool City Region. Here's what's happening, when, and why it matters for the town's future.",
     categorySlug: "events",
-    image: "/images/southport-year-of-culture-2026.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-southport-culture.webp",
+    date: "25 Mar 2026",
   },
 
   // Open Championship
@@ -1005,8 +1005,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "If you're visiting Southport during Open week, you need a plan. The town is genuinely transformed. Here's how to make the most of every day from Tuesday 14 to Sunday 19 July.",
     categorySlug: "golf",
-    image: "/images/open-2026.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-open-week-southport.webp",
+    date: "25 Mar 2026",
   },
   {
     slug: "open-2026-southport-without-tickets",
@@ -1015,7 +1015,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Tickets are scarce and the town fills up anyway. Here's what you can actually do in Southport during Open week without setting foot inside Royal Birkdale.",
     categorySlug: "golf",
     image: "/images/blog/blog-open-2026-no-tickets.webp",
-    date: "19 Mar 2026",
+    date: "25 Mar 2026",
   },
 
   // Flower Show
@@ -1025,8 +1025,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Never been to Southport Flower Show before? Here's exactly what to expect: which gate to use, what order to do it in, how to avoid the queues, and what's actually worth your time.",
     categorySlug: "events",
-    image: "/images/southport-flower-show.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-flower-show-guide.webp",
+    date: "26 Mar 2026",
   },
   {
     slug: "southport-august-2026-guide",
@@ -1034,8 +1034,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Flower Show 20–23 August. Air Show 29–30 August. They're 9 days apart. I've lived here 41 years and 2026 is going to be the busiest August in Southport's recent memory. Here's how to plan it.",
     categorySlug: "events",
-    image: "/images/southport-flower-show.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-august-southport.webp",
+    date: "25 Mar 2026",
   },
 
   // Air Show
@@ -1045,8 +1045,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "100,000+ people turn up for the Southport Air Show. Some will stand in the wrong place and see half the display. Here's where the locals go — including the spots most visitors miss.",
     categorySlug: "events",
-    image: "/images/southport-air-show.webp",
-    date: "19 Mar 2026",
+    image: "/images/blog/blog-airshow-crowds.webp",
+    date: "26 Mar 2026",
   },
   {
     slug: "southport-august-bank-holiday-2026",
@@ -1055,7 +1055,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "The August Bank Holiday this year is Air Show weekend. If you haven't planned ahead, parking will be a nightmare and the seafront will be rammed. Here's how to do it without the stress.",
     categorySlug: "events",
     image: "/images/blog/blog-august-bank-holiday-southport.webp",
-    date: "19 Mar 2026",
+    date: "25 Mar 2026",
   },
 ];
 

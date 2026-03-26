@@ -143,35 +143,45 @@ export default function NavMenu() {
 
           <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
-          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 w-72 z-50 transition-all duration-200 ${guidesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-            {(["beaches-coast", "areas", "events", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
+          <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 w-[340px] z-50 transition-all duration-200 ${guidesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+            {/* Hero */}
+            <Link href="/guides" onClick={() => setGuidesOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm hover:bg-[#2A4A73] transition-colors mb-3">
+              <BookOpen className="w-4 h-4 flex-none text-[#C9A84C]" />
+              <span className="font-semibold">All Guides — Full Index</span>
+            </Link>
+            {/* Top 2 per category */}
+            {(["events", "beaches-coast", "areas", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
               const catGuides = publishedGuides
                 .filter((g) => g.category === cat)
                 .sort((a, b) => b.seoPriority - a.seoPriority);
               if (catGuides.length === 0) return null;
               const { label, emoji } = GUIDE_CATEGORIES[cat];
+              const top = catGuides.slice(0, 2);
+              const rest = catGuides.length - 2;
               return (
-                <div key={cat} className="px-2 mb-1">
-                  <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400 px-2 pt-1 pb-0.5">
-                    {emoji} {label}
-                  </p>
-                  {catGuides.map((g) => (
-                    <Link key={g.slug} href={`/guides/${g.slug}`}
-                      onClick={() => setGuidesOpen(false)}
-                      className="flex items-center px-2 py-1.5 rounded-lg text-sm text-[#1B2E4B] hover:bg-[#FAF8F5] hover:text-[#C9A84C] transition-colors truncate">
-                      {g.shortTitle ?? g.title}
-                    </Link>
-                  ))}
+                <div key={cat} className="mb-2">
+                  <div className="flex items-center justify-between px-1 mb-0.5">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400">{emoji} {label}</p>
+                    {rest > 0 && (
+                      <Link href="/guides" onClick={() => setGuidesOpen(false)}
+                        className="text-[9px] font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
+                        +{rest} more →
+                      </Link>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-2 gap-1">
+                    {top.map((g) => (
+                      <Link key={g.slug} href={`/guides/${g.slug}`}
+                        onClick={() => setGuidesOpen(false)}
+                        className="flex items-center px-2.5 py-1.5 rounded-lg text-xs text-[#1B2E4B] font-medium hover:bg-[#FAF8F5] hover:text-[#C9A84C] transition-colors truncate">
+                        {g.shortTitle ?? g.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               );
             })}
-            <div className="border-t border-gray-100 mt-1 pt-1 px-2">
-              <Link href="/guides"
-                onClick={() => setGuidesOpen(false)}
-                className="flex items-center gap-2 px-2 py-2 rounded-lg text-xs font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
-                <BookOpen className="w-3.5 h-3.5" /> All guides →
-              </Link>
-            </div>
           </div>
         </div>
 
@@ -189,7 +199,7 @@ export default function NavMenu() {
 
           <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
-          <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[400px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+          <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[520px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
             <Link href="/the-open-2026" onClick={() => setEventsOpen(false)}
               className="group flex items-center gap-4 p-4 rounded-xl bg-amber-50 border border-amber-100 hover:bg-amber-100 transition-all mb-3">
               <span className="text-2xl flex-none">🏌️</span>
@@ -200,20 +210,31 @@ export default function NavMenu() {
               </div>
               <span className="text-[#B8972A] text-sm opacity-0 group-hover:opacity-100 transition-opacity flex-none">→</span>
             </Link>
-            <div className="grid grid-cols-2 gap-2">
-              <Link href="/guides/southport-flower-show" onClick={() => setEventsOpen(false)}
-                className="group p-4 rounded-xl bg-green-50 border border-green-100 hover:bg-green-100 transition-all">
-                <span className="text-xl">🌸</span>
-                <p className="text-green-700 text-[10px] font-bold uppercase tracking-widest mt-2.5 mb-1">20–23 August 2026</p>
-                <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-green-700 transition-colors">Flower Show</p>
-                <p className="text-gray-500 text-[11px] mt-1">Victoria Park · From £23</p>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { href: "/guides/southport-sausage-cider-festival", emoji: "🌭", date: "18 Apr", label: "Sausage & Cider", color: "orange" },
+                { href: "/guides/southport-armed-forces-festival", emoji: "🎖️", date: "27–28 Jun", label: "Armed Forces Festival", color: "red" },
+                { href: "/guides/southport-flower-show", emoji: "🌸", date: "20–23 Aug", label: "Flower Show", color: "green" },
+                { href: "/guides/southport-air-show", emoji: "✈️", date: "29–30 Aug", label: "Air Show", color: "sky" },
+                { href: "/guides/southport-fireworks-championship", emoji: "🎆", date: "26–27 Sep", label: "Fireworks Championship", color: "purple" },
+                { href: "/guides/southport-comedy-festival", emoji: "🎤", date: "2–18 Oct", label: "Comedy Festival", color: "pink" },
+              ].map(({ href, emoji, date, label }) => (
+                <Link key={href} href={href} onClick={() => setEventsOpen(false)}
+                  className="group p-3 rounded-xl bg-[#FAF8F5] border border-gray-100 hover:border-[#C9A84C]/40 hover:bg-amber-50 transition-all">
+                  <span className="text-xl">{emoji}</span>
+                  <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-2 mb-0.5">{date}</p>
+                  <p className="font-bold text-[#1B2E4B] text-xs group-hover:text-[#C9A84C] transition-colors leading-tight">{label}</p>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-2 pt-2 border-t border-gray-100 flex justify-between items-center">
+              <Link href="/guides/southport-year-of-culture-2026" onClick={() => setEventsOpen(false)}
+                className="text-[10px] font-bold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
+                🎪 Southport 2026: Elegantly Eccentric →
               </Link>
-              <Link href="/guides/southport-air-show" onClick={() => setEventsOpen(false)}
-                className="group p-4 rounded-xl bg-sky-50 border border-sky-100 hover:bg-sky-100 transition-all">
-                <span className="text-xl">✈️</span>
-                <p className="text-sky-700 text-[10px] font-bold uppercase tracking-widest mt-2.5 mb-1">29–30 August 2026</p>
-                <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-sky-700 transition-colors">Air Show</p>
-                <p className="text-gray-500 text-[11px] mt-1">Southport Beach · Free</p>
+              <Link href="/events" onClick={() => setEventsOpen(false)}
+                className="text-[10px] font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
+                All 2026 events →
               </Link>
             </div>
           </div>
@@ -297,19 +318,26 @@ export default function NavMenu() {
               🏌️ The Open Championship — 12–19 July · Royal Birkdale
             </Link>
             <div className="grid grid-cols-2 gap-1.5">
-              <Link href="/guides/southport-flower-show" onClick={() => setMobileOpen(false)}
-                className="flex flex-col px-3 py-3 rounded-xl bg-green-50 border border-green-100">
-                <span className="text-lg mb-1.5">🌸</span>
-                <span className="text-xs font-bold text-green-800">Flower Show</span>
-                <span className="text-[10px] text-green-600 mt-0.5">20–23 Aug · From £23</span>
-              </Link>
-              <Link href="/guides/southport-air-show" onClick={() => setMobileOpen(false)}
-                className="flex flex-col px-3 py-3 rounded-xl bg-sky-50 border border-sky-100">
-                <span className="text-lg mb-1.5">✈️</span>
-                <span className="text-xs font-bold text-sky-800">Air Show</span>
-                <span className="text-[10px] text-sky-600 mt-0.5">29–30 Aug · Free</span>
-              </Link>
+              {[
+                { href: "/guides/southport-sausage-cider-festival", emoji: "🌭", label: "Sausage & Cider", sub: "18 Apr" },
+                { href: "/guides/southport-armed-forces-festival", emoji: "🎖️", label: "Armed Forces Festival", sub: "27–28 Jun · Free" },
+                { href: "/guides/southport-flower-show", emoji: "🌸", label: "Flower Show", sub: "20–23 Aug · From £23" },
+                { href: "/guides/southport-air-show", emoji: "✈️", label: "Air Show", sub: "29–30 Aug · Free" },
+                { href: "/guides/southport-fireworks-championship", emoji: "🎆", label: "Fireworks Championship", sub: "26–27 Sep" },
+                { href: "/guides/southport-comedy-festival", emoji: "🎤", label: "Comedy Festival", sub: "2–18 Oct" },
+              ].map(({ href, emoji, label, sub }) => (
+                <Link key={href} href={href} onClick={() => setMobileOpen(false)}
+                  className="flex flex-col px-3 py-3 rounded-xl bg-[#FAF8F5] border border-gray-100">
+                  <span className="text-lg mb-1.5">{emoji}</span>
+                  <span className="text-xs font-bold text-[#1B2E4B]">{label}</span>
+                  <span className="text-[10px] text-gray-500 mt-0.5">{sub}</span>
+                </Link>
+              ))}
             </div>
+            <Link href="/guides/southport-year-of-culture-2026" onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2 px-4 py-3 rounded-xl bg-purple-50 text-purple-800 text-sm font-bold">
+              🎪 Southport 2026: Elegantly Eccentric
+            </Link>
           </div>
 
           {/* Categories */}
@@ -333,19 +361,25 @@ export default function NavMenu() {
               <Link href="/guides" onClick={() => setMobileOpen(false)}
                 className="text-[#C9A84C] text-[10px] font-bold">All guides →</Link>
             </div>
-            {(["beaches-coast", "areas", "events", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
+            {(["events", "beaches-coast", "areas", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
               const catGuides = publishedGuides
                 .filter((g) => g.category === cat)
                 .sort((a, b) => b.seoPriority - a.seoPriority);
               if (catGuides.length === 0) return null;
               const { label, emoji } = GUIDE_CATEGORIES[cat];
+              const top = catGuides.slice(0, 2);
+              const rest = catGuides.length - 2;
               return (
                 <div key={cat} className="mb-3">
-                  <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400 px-1 mb-1">
-                    {emoji} {label}
-                  </p>
+                  <div className="flex items-center justify-between px-1 mb-1">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400">{emoji} {label}</p>
+                    {rest > 0 && (
+                      <Link href="/guides" onClick={() => setMobileOpen(false)}
+                        className="text-[9px] font-bold text-[#C9A84C]">+{rest} more →</Link>
+                    )}
+                  </div>
                   <div className="grid grid-cols-2 gap-1">
-                    {catGuides.map((g) => (
+                    {top.map((g) => (
                       <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setMobileOpen(false)}
                         className="flex items-center px-3 py-2.5 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium truncate">
                         {g.shortTitle ?? g.title}
