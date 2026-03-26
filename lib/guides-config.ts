@@ -200,6 +200,102 @@ export const GUIDES: Guide[] = [
       "Southport Air Show 2026 — 29–30 August, Bank Holiday weekend. Free on Southport Beach. Expected aircraft, best viewing spots, parking table, and a timeline of the day.",
   },
 
+  {
+    slug: "southport-fireworks-championship",
+    title: "British Musical Fireworks Championship 2026",
+    shortTitle: "Fireworks Championship",
+    description: "Pyrotechnics choreographed to music. Two nights at Victoria Park. 26–27 September 2026.",
+    excerpt:
+      "The British Musical Fireworks Championship 2026 — 26–27 September, Victoria Park. Pyrotechnics synchronized to music, a drone show, street food, and bars. Tickets £12. No gate sales.",
+    category: "events",
+    heroImage: "/images/southport-fireworks-championship.webp",
+    seoPriority: 0.88,
+    datePublished: "2026-03-19",
+    dateUpdated: "2026-03-19",
+    tags: ["fireworks", "events", "september", "victoria-park", "tickets"],
+    status: "published",
+    listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
+    metaTitle: "British Musical Fireworks Championship Southport 2026 | Tickets, Dates & Guide",
+    metaDescription:
+      "British Musical Fireworks Championship 2026 — 26–27 September, Victoria Park, Southport. Tickets from £12. Pyrotechnics synchronized to music, drone show, and full practical guide.",
+  },
+  {
+    slug: "southport-comedy-festival",
+    title: "Southport Comedy Festival 2026",
+    shortTitle: "Comedy Festival",
+    description: "15th annual comedy festival. 17 nights in a luxury heated marquee at Victoria Park. 2–18 October.",
+    excerpt:
+      "Southport Comedy Festival 2026 — 2 to 18 October, 15th annual festival. Luxury heated marquee at Victoria Park. Confirmed acts include Henning Wehn, Gary Delaney and more. 6,000+ attend each year.",
+    category: "events",
+    heroImage: "/images/southport-comedy-festival.webp",
+    seoPriority: 0.88,
+    datePublished: "2026-03-19",
+    dateUpdated: "2026-03-19",
+    tags: ["comedy", "events", "october", "victoria-park", "tickets", "entertainment"],
+    status: "published",
+    listingFilter: { categorySlugs: ["hotels", "restaurants", "bars-nightlife"] },
+    metaTitle: "Southport Comedy Festival 2026 | 2–18 October · Lineup, Tickets & Guide",
+    metaDescription:
+      "Southport Comedy Festival 2026 — 2 to 18 October in a luxury heated marquee at Victoria Park. 15th annual festival. Henning Wehn, Gary Delaney, and more confirmed. Tickets via southportcomedyfestival.com.",
+  },
+  {
+    slug: "southport-armed-forces-festival",
+    title: "Southport Armed Forces Festival 2026",
+    shortTitle: "Armed Forces Festival",
+    description: "Town-wide military celebration. 27–28 June 2026. Parades, fly-overs, vehicles. Free to attend.",
+    excerpt:
+      "Southport Armed Forces Festival 2026 — 27–28 June. Free town-wide event across the Promenade, King's Gardens, and The Atkinson. Military parades, fly-overs, Drumhead Service, and live entertainment.",
+    category: "events",
+    heroImage: "/images/southport-armed-forces-festival.webp",
+    seoPriority: 0.85,
+    datePublished: "2026-03-19",
+    dateUpdated: "2026-03-19",
+    tags: ["armed-forces", "events", "june", "free", "military", "promenade"],
+    status: "published",
+    listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
+    metaTitle: "Southport Armed Forces Festival 2026 | 27–28 June · Free Event Guide",
+    metaDescription:
+      "Southport Armed Forces Festival 2026 — 27–28 June. Free town-wide event. Military parades, fly-overs, vehicles on display, Drumhead Service. Across the Promenade, King's Gardens, and town centre.",
+  },
+  {
+    slug: "southport-sausage-cider-festival",
+    title: "Sausage & Cider Festival Southport 2026",
+    shortTitle: "Sausage & Cider Festival",
+    description: "Bavarian-style food and drink festival. Victoria Park, 18 April 2026. Bratwurst, cider, oompah bands.",
+    excerpt:
+      "Sausage & Cider Festival Southport 2026 — Saturday 18 April at Victoria Park. Afternoon and evening sessions. Bratwurst, artisan ciders, live oompah bands, and folk dancers.",
+    category: "events",
+    heroImage: "/images/southport-sausage-cider-festival.webp",
+    seoPriority: 0.82,
+    datePublished: "2026-03-19",
+    dateUpdated: "2026-03-19",
+    tags: ["food-festival", "events", "april", "victoria-park", "tickets", "food-drink"],
+    status: "published",
+    listingFilter: { categorySlugs: ["restaurants", "bars-nightlife", "parking"] },
+    metaTitle: "Sausage & Cider Festival Southport 2026 | 18 April · Tickets & Guide",
+    metaDescription:
+      "Sausage & Cider Festival Southport 2026 — Saturday 18 April at Victoria Park. Two sessions (afternoon and evening). Bratwurst, artisan ciders, live oompah bands. Tickets required.",
+  },
+  {
+    slug: "southport-year-of-culture-2026",
+    title: "Southport 2026: Elegantly Eccentric",
+    shortTitle: "Year of Culture 2026",
+    description: "Southport's year-round cultural programme — Cristal Palace, Big Top Festival, Books Alive! and more.",
+    excerpt:
+      "Southport 2026: Elegantly Eccentric — a year-round cultural programme backed by Sefton Council and the Liverpool City Region. Cristal Palace on Lord Street (April), Big Top Festival (May), Summer Solstice (June), Books Alive! (October).",
+    category: "events",
+    heroImage: "/images/southport-year-of-culture-2026.webp",
+    seoPriority: 0.90,
+    datePublished: "2026-03-19",
+    dateUpdated: "2026-03-19",
+    tags: ["culture", "events", "2026", "lord-street", "street-theatre", "circus", "free"],
+    status: "published",
+    listingFilter: { categorySlugs: ["hotels", "restaurants", "attractions"] },
+    metaTitle: "Southport 2026: Elegantly Eccentric | Year of Culture Events Guide",
+    metaDescription:
+      "Southport's year of culture 2026 — Cristal Palace street theatre on Lord Street (April), Big Top circus festival (May), Summer Solstice (June), Books Alive! (October). Free events across the town.",
+  },
+
   // ── Areas ────────────────────────────────────────────────────────────────
   {
     slug: "birkdale-village",

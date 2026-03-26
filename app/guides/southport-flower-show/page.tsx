@@ -121,6 +121,12 @@ const PAGE_LD = {
     },
   },
   organizer: { "@type": "Organization", name: "Southport Flower Show" },
+  offers: [
+    { "@type": "Offer", name: "Adult Day Ticket", price: "23.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://www.southportflowershow.co.uk" },
+    { "@type": "Offer", name: "Senior Day Ticket (65+)", price: "20.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://www.southportflowershow.co.uk" },
+    { "@type": "Offer", name: "Child (under 16)", price: "0.00", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "4-Day Season Pass", price: "78.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://www.southportflowershow.co.uk" },
+  ],
 };
 
 const FAQ_LD = {
