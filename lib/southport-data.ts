@@ -892,6 +892,171 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/sunday-lunch-southport.jpg",
     date: "19 Mar 2026",
   },
+
+  // ── 2026 Events cluster ──────────────────────────────────────────────────
+
+  // Fireworks Championship
+  {
+    slug: "southport-fireworks-championship-explained",
+    title: "How the British Musical Fireworks Championship Works — It's Not Just a Display",
+    excerpt:
+      "Most people don't realise the Southport fireworks is a competition. Teams are judged. Every burst is choreographed. Once you understand the format, you watch it completely differently.",
+    categorySlug: "events",
+    image: "/images/southport-fireworks-championship.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "southport-september-2026-events",
+    title: "Southport in September 2026 — What's On and What to Book Now",
+    excerpt:
+      "September is quieter than summer but it has the best event of the year: the British Musical Fireworks Championship. Here's the full picture of what's happening in Southport this September.",
+    categorySlug: "events",
+    image: "/images/blog/blog-southport-september-2026.webp",
+    date: "19 Mar 2026",
+  },
+
+  // Comedy Festival
+  {
+    slug: "southport-comedy-festival-2026-lineup",
+    title: "Southport Comedy Festival 2026 — Lineup, Why It Sells Out, and How to Book",
+    excerpt:
+      "15th year. 17 nights. A luxury heated marquee in Victoria Park. In 2025, nine shows sold out. Here's who's confirmed for 2026 and how to get tickets before the good nights are gone.",
+    categorySlug: "events",
+    image: "/images/southport-comedy-festival.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "victoria-park-southport-events-2026",
+    title: "Victoria Park Southport — Every Major Event Happening There in 2026",
+    excerpt:
+      "Flower Show, Fireworks Championship, Comedy Festival, Sausage & Cider Festival. More major events happen in Victoria Park than most people realise. Here's the full 2026 calendar.",
+    categorySlug: "events",
+    image: "/images/blog/blog-victoria-park-events.webp",
+    date: "19 Mar 2026",
+  },
+
+  // Armed Forces Festival
+  {
+    slug: "southport-armed-forces-festival-2026-guide",
+    title: "Southport Armed Forces Festival 2026 — What to See and Where to Be",
+    excerpt:
+      "27–28 June. Free. Town-wide. Parade on the Promenade, Drumhead Service, fly-overs, vehicle displays at Princes Park. Everything you need to plan your day.",
+    categorySlug: "events",
+    image: "/images/southport-armed-forces-festival.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "southport-june-2026-guide",
+    title: "Southport in June 2026 — Armed Forces Weekend and Everything Else",
+    excerpt:
+      "June 2026 is a big month in Southport. The Armed Forces Festival on 27–28 June is the headline act, but the whole month has plenty going on. Here's how to make the most of it.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-southport-june-2026.webp",
+    date: "19 Mar 2026",
+  },
+
+  // Sausage & Cider Festival
+  {
+    slug: "southport-sausage-cider-festival-which-session",
+    title: "Southport Sausage & Cider Festival 2026 — Afternoon or Evening Session?",
+    excerpt:
+      "The festival runs in two sessions on 18 April. The afternoon is better for food and families. The evening is livelier. I'll tell you which one to book and what to expect from each.",
+    categorySlug: "events",
+    image: "/images/southport-sausage-cider-festival.webp",
+    date: "19 Mar 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-spring-events-2026",
+    title: "Things to Do in Southport in Spring 2026 — April and May Events",
+    excerpt:
+      "Spring 2026 is unexpectedly packed. Cristal Palace on Lord Street in April. Big Top Festival in May. Sausage & Cider Festival. Easter. Here's how the season shapes up.",
+    categorySlug: "events",
+    image: "/images/blog/blog-southport-spring-april.webp",
+    date: "19 Mar 2026",
+    featured: true,
+  },
+
+  // Year of Culture
+  {
+    slug: "cristal-palace-lord-street-southport-2026",
+    title: "Cristal Palace on Lord Street — What to Expect from Southport's Most Spectacular Event",
+    excerpt:
+      "A 15-metre flying chandelier. Lord Street as an open-air ballroom. Aerial performers, live music, thousands watching from the pavement. This is Cristal Palace by Transe Express — 3–4 April 2026.",
+    categorySlug: "events",
+    image: "/images/southport-year-of-culture-2026.webp",
+    date: "19 Mar 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-2026-elegantly-eccentric-explained",
+    title: "Southport 2026: Elegantly Eccentric — What Is It and Why Does It Matter?",
+    excerpt:
+      "The biggest year of culture in Southport's recent history. Four brand-new events backed by the Liverpool City Region. Here's what's happening, when, and why it matters for the town's future.",
+    categorySlug: "events",
+    image: "/images/southport-year-of-culture-2026.webp",
+    date: "19 Mar 2026",
+  },
+
+  // Open Championship
+  {
+    slug: "open-2026-southport-day-by-day",
+    title: "Open Week in Southport 2026 — A Day-by-Day Visitor Guide",
+    excerpt:
+      "If you're visiting Southport during Open week, you need a plan. The town is genuinely transformed. Here's how to make the most of every day from Tuesday 14 to Sunday 19 July.",
+    categorySlug: "golf",
+    image: "/images/open-2026.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "open-2026-southport-without-tickets",
+    title: "The Open 2026 in Southport — What to Do If You Don't Have Tickets",
+    excerpt:
+      "Tickets are scarce and the town fills up anyway. Here's what you can actually do in Southport during Open week without setting foot inside Royal Birkdale.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-2026-no-tickets.webp",
+    date: "19 Mar 2026",
+  },
+
+  // Flower Show
+  {
+    slug: "southport-flower-show-first-timers-guide-2026",
+    title: "Southport Flower Show 2026 — First Timer's Complete Guide",
+    excerpt:
+      "Never been to Southport Flower Show before? Here's exactly what to expect: which gate to use, what order to do it in, how to avoid the queues, and what's actually worth your time.",
+    categorySlug: "events",
+    image: "/images/southport-flower-show.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "southport-august-2026-guide",
+    title: "August in Southport 2026 — Flower Show, Air Show and the Most Events in a Single Month",
+    excerpt:
+      "Flower Show 20–23 August. Air Show 29–30 August. They're 9 days apart. I've lived here 41 years and 2026 is going to be the busiest August in Southport's recent memory. Here's how to plan it.",
+    categorySlug: "events",
+    image: "/images/southport-flower-show.webp",
+    date: "19 Mar 2026",
+  },
+
+  // Air Show
+  {
+    slug: "southport-air-show-best-viewing-spots-2026",
+    title: "Best Viewing Spots for Southport Air Show 2026 — Where to Actually Stand",
+    excerpt:
+      "100,000+ people turn up for the Southport Air Show. Some will stand in the wrong place and see half the display. Here's where the locals go — including the spots most visitors miss.",
+    categorySlug: "events",
+    image: "/images/southport-air-show.webp",
+    date: "19 Mar 2026",
+  },
+  {
+    slug: "southport-august-bank-holiday-2026",
+    title: "Southport Bank Holiday Weekend August 2026 — How to Do It Properly",
+    excerpt:
+      "The August Bank Holiday this year is Air Show weekend. If you haven't planned ahead, parking will be a nightmare and the seafront will be rammed. Here's how to do it without the stress.",
+    categorySlug: "events",
+    image: "/images/blog/blog-august-bank-holiday-southport.webp",
+    date: "19 Mar 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
