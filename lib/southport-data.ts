@@ -19,37 +19,6 @@ export interface SouthportEvent {
 
 export const EVENTS: SouthportEvent[] = [
   {
-    title: "Chess The Musical",
-    isoDate: "2026-02-25",
-    endIsoDate: "2026-02-28",
-    dayLabel: "25–28 Feb",
-    venue: "Little Theatre",
-    category: "Theatre",
-    emoji: "🎶",
-    free: false,
-    link: "https://littletheatresouthport.co.uk/",
-  },
-  {
-    title: "International Women's Day",
-    isoDate: "2026-03-06",
-    dayLabel: "Fri 6 Mar",
-    venue: "The Grand",
-    category: "Community",
-    emoji: "🌸",
-    free: false,
-    link: "https://www.queenscourt.org.uk/",
-  },
-  {
-    title: "St Patrick's Day Beer Festival",
-    isoDate: "2026-03-21",
-    dayLabel: "Sat 21 Mar",
-    venue: "Victoria Park",
-    category: "Festival",
-    emoji: "🍺",
-    free: false,
-    link: "https://www.southportoktoberfest.com/",
-  },
-  {
     title: "Cristal Palace — Street Theatre",
     isoDate: "2026-04-03",
     endIsoDate: "2026-04-04",
@@ -111,7 +80,7 @@ export const EVENTS: SouthportEvent[] = [
     category: "Food & Drink",
     emoji: "🍺",
     free: true,
-    link: "https://www.yoursouthport.com/",
+    link: "https://www.yoursouthport.com/beer-week",
   },
   {
     title: "Food & Drink Festival",

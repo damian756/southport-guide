@@ -395,7 +395,10 @@ export default function SouthportBeerWeekGuidePage() {
                   </a>{" "}
                   across the town centre. Eighteen pubs and bars sign up, each putting on a curated selection of beers
                   you would not normally find on their standard menu: breweries from across the North West and beyond,
-                  alongside some of the better-known national craft producers.
+                  alongside some of the better-known national craft producers.{" "}
+                  <a href="https://www.yoursouthport.com/blog/southport-beer-week-returns-for-2026" target="_blank" rel="noopener noreferrer" className="text-amber-700 hover:text-amber-800 font-medium underline">
+                    Full details at Your Southport.
+                  </a>
                 </p>
                 <p>
                   The mechanic is simple. Pick up a trail booklet from any participating venue, collect a stamp at each
@@ -435,12 +438,12 @@ export default function SouthportBeerWeekGuidePage() {
                   ))}
                 </div>
                 <a
-                  href="https://southportbid.com"
+                  href="https://www.yoursouthport.com/beer-week"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-[#1C0D00] font-bold py-2.5 rounded-lg transition-colors text-sm w-full"
                 >
-                  Official info at southportbid.com <ArrowRight className="w-4 h-4" />
+                  Official Beer Week info <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -513,8 +516,8 @@ export default function SouthportBeerWeekGuidePage() {
                 <p className="text-amber-800 text-sm">
                   The full list of 18 venues will be published by Southport BID ahead of the event. The 8 above are
                   confirmed for 2026. Check{" "}
-                  <a href="https://southportbid.com" target="_blank" rel="noopener noreferrer" className="underline font-medium">
-                    southportbid.com
+                  <a href="https://www.yoursouthport.com/beer-week" target="_blank" rel="noopener noreferrer" className="underline font-medium">
+                    yoursouthport.com/beer-week
                   </a>{" "}
                   for the complete venue list and trail booklet when available.
                 </p>
