@@ -47,11 +47,11 @@ const FAQS = [
   },
   {
     q: "Is there parking at Haig Avenue?",
-    a: "There is no dedicated car park at Haig Avenue — and for this match, Haig Avenue itself will be closed to traffic from 12:30pm. Street parking near the ground will be near-impossible after that time. Arrive early and use the Meols Cop Road area or Kew area side streets off Scarisbrick New Road (both within 10–15 minutes' walk), or park in Southport town centre and take the number 44 bus or walk the mile and a half to the ground.",
+    a: "The club operates matchday parking at Meols Cop school — check southportfc.net for details. Note that for this match, Haig Avenue itself will be closed to traffic from 12:30pm, making street parking near the ground near-impossible after that time. Arrive early, use Meols Cop school parking, or park in Southport town centre and take the number 44 bus or walk the mile and a half to the ground.",
   },
   {
     q: "Which pubs near Haig Avenue allow away fans?",
-    a: "The Thatch and Thistle at the junction of Norwood Road and Haig Avenue is the most convenient option near the ground — it has Sky Sports and food. The Richmond on Scarisbrick New Road is a short walk away and tends to be slightly more relaxed. Both are fine for away fans. The Grandstand Bar at the ground itself serves real ale and is worth checking, but gets crowded and may restrict entry close to kick-off.",
+    a: "The Thatch and Thistle at the junction of Norwood Road and Haig Avenue is the most convenient option near the ground — it has Sky Sports and food. The Richmond on Scarisbrick New Road is a short walk away and tends to be slightly more relaxed. Both are fine for away fans. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission or away supporters.",
   },
   {
     q: "What is the away end like at Haig Avenue?",
@@ -182,7 +182,7 @@ export default function FATrophySemiFinalGuidePage() {
             {[
               { icon: CalendarDays, value: "28 March", label: "Date", sub: "Saturday, 2026" },
               { icon: MapPin, value: "PR8 6JZ", label: "Ground", sub: "Haig Avenue, Southport" },
-              { icon: Trophy, value: "FA Trophy", label: "Competition", sub: "Semi-Final — one game" },
+              { icon: Trophy, value: "~5,400", label: "Capacity", sub: "Practical sell-out level" },
               { icon: Ticket, value: "~£13–£15", label: "Tickets", sub: "Check southportfc.net" },
             ].map((s) => (
               <div key={s.label} className="text-center px-4 py-4">
@@ -348,10 +348,16 @@ export default function FATrophySemiFinalGuidePage() {
           <div className="grid sm:grid-cols-3 gap-5">
             {[
               {
+                option: "Meols Cop School (club parking)",
+                timing: "Check southportfc.net",
+                color: "bg-green-600",
+                detail: "The club operates matchday parking at Meols Cop school near the ground. Check southportfc.net for availability, pricing, and access details before travelling.",
+              },
+              {
                 option: "Street Parking — Haig Avenue",
                 timing: "Must arrive before 12:30pm",
                 color: "bg-red-600",
-                detail: "Haig Avenue is closed to traffic from 12:30pm — parking near the ground is near-impossible after that. Your best options are the Meols Cop Road area or Kew area side streets off Scarisbrick New Road, both within 10–15 minutes' walk. These will also fill fast. Be parked by noon.",
+                detail: "Haig Avenue is closed to traffic from 12:30pm — street parking near the ground is near-impossible after that. Meols Cop Road area or Kew area side streets off Scarisbrick New Road are within 10–15 minutes' walk but will also fill fast. Be parked by noon.",
               },
               {
                 option: "Town Centre Car Parks",
@@ -403,10 +409,10 @@ export default function FATrophySemiFinalGuidePage() {
                 name: "The Grandstand Bar",
                 location: "At the ground",
                 type: "Ground bar",
-                badge: "At the ground",
-                badgeColor: "bg-[#1B2E4B] text-white",
-                detail: "The bar inside Haig Avenue behind the main stand. Serves real ale. Gets crowded before a big game and may restrict away fan entry close to kick-off. Worth trying if you arrive early, but have a backup plan.",
-                tip: "Go early — it fills up.",
+                badge: "Hospitality only",
+                badgeColor: "bg-slate-500 text-white",
+                detail: "The Grandstand Bar is for hospitality guests only — not accessible to general admission or away supporters. Do not rely on this as a pre-match option.",
+                tip: "Not available to away fans.",
               },
               {
                 name: "Thatch and Thistle",
@@ -502,10 +508,10 @@ export default function FATrophySemiFinalGuidePage() {
               {
                 icon: MapPin,
                 title: "Ground Details",
-                highlight: "Capacity: 6,008",
+                highlight: "Capacity: ~5,400",
                 items: [
-                  "Total capacity: 6,008 (1,537 seated, 4,471 standing).",
-                  "The Jack Carr Stand (west) is the main home terrace. The Grandstand (east) has the seating and the bar.",
+                  "Practical sell-out capacity of around 5,400. The registered figure is 6,008 but restricted-view seats and hospitality use reduce the available total.",
+                  "The Jack Carr Stand (west) is the main home terrace. The Grandstand (east) has the seating and hospitality.",
                   "Haig Avenue was built in 1905. It is a traditional lower-league football ground — not modern but with genuine character.",
                   "Hospitality packages are available via the club — the club pushes this and it is decent value for the level. Check southportfc.net.",
                 ],

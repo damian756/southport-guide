@@ -45,11 +45,11 @@ const FAQS = [
   },
   {
     q: "Is there a car park at Haig Avenue?",
-    a: "There is no dedicated car park at the stadium. Street parking on Haig Avenue and surrounding residential streets is the main option. For popular fixtures this fills up well before kick-off — arrive early or park in the town centre and bus/walk.",
+    a: "The club operates matchday parking at Meols Cop school near the ground — check southportfc.net for availability and pricing on the day. Street parking on Haig Avenue and surrounding residential streets fills early for popular fixtures. Town centre car parks are a lower-stress alternative with a 25–30 minute walk or the number 44 bus.",
   },
   {
     q: "Which pubs near Haig Avenue are good for away fans?",
-    a: "The Thatch and Thistle at the bottom of Haig Avenue (at the Norwood Road junction) is the closest option — straightforward pub with Sky Sports. The Richmond on Scarisbrick New Road is a short walk and slightly more relaxed. The Grandstand Bar at the ground itself is worth trying early on. If you have more time, Southport town centre has significantly better options — a mile and a half away, worth it if you arrive 2+ hours early.",
+    a: "The Thatch and Thistle at the bottom of Haig Avenue (at the Norwood Road junction) is the closest option — straightforward pub with Sky Sports. The Richmond on Scarisbrick New Road is a short walk and slightly more relaxed. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission supporters. If you have more time, Southport town centre has significantly better options — a mile and a half away, worth it if you arrive 2+ hours early.",
   },
   {
     q: "What is the away end like at Haig Avenue?",
@@ -164,7 +164,7 @@ export default function SouthportFCMatchdayGuidePage() {
             {[
               { icon: MapPin, value: "PR8 6JZ", label: "Postcode", sub: "Haig Avenue, Southport" },
               { icon: Train, value: "Meols Cop", label: "Nearest Station", sub: "10-min walk" },
-              { icon: Users, value: "6,008", label: "Capacity", sub: "1,537 seated" },
+              { icon: Users, value: "~5,400", label: "Capacity", sub: "Practical sell-out level" },
               { icon: Ticket, value: "~£13–£15", label: "Standing", sub: "Check southportfc.net" },
             ].map((s) => (
               <div key={s.label} className="text-center px-4 py-4">
@@ -286,6 +286,7 @@ export default function SouthportFCMatchdayGuidePage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {[
+                  { option: "Meols Cop School (club parking)", distance: "Near the ground", note: "Club-operated matchday parking — check southportfc.net for availability" },
                   { option: "Haig Avenue (street)", distance: "At the ground", note: "Fills early — arrive 90+ mins before KO for popular games" },
                   { option: "Surrounding residential streets", distance: "2–5 min walk", note: "Norwood Road, Scarisbrick New Road — check for residents-only signs" },
                   { option: "Town centre car parks", distance: "25–30 min walk or bus", note: "Lower stress on a matchday; bus 44 from Eastbank Street" },
@@ -327,7 +328,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 {
                   name: "Grandstand Bar",
                   location: "At the stadium",
-                  detail: "The bar inside Haig Avenue behind the main stand. Real ale on tap. Gets crowded before big games and may limit away fan entry close to kick-off. Go early if you want to use it.",
+                  detail: "The Grandstand Bar is for hospitality guests only — it is not accessible to general admission or away supporters. Do not count on it as a pre-match option.",
                 },
                 {
                   name: "Thatch and Thistle",
@@ -394,7 +395,7 @@ export default function SouthportFCMatchdayGuidePage() {
               {
                 emoji: "🏟️",
                 title: "Capacity",
-                detail: "6,008 total. 1,537 seated in the main Grandstand. 4,471 standing across the three terraced ends.",
+                detail: "Practical sell-out capacity of around 5,400. The registered figure is 6,008 but a number of seats are unavailable due to restricted views and hospitality use.",
               },
               {
                 emoji: "🎽",
@@ -404,7 +405,7 @@ export default function SouthportFCMatchdayGuidePage() {
               {
                 emoji: "🍺",
                 title: "Refreshments",
-                detail: "The Grandstand Bar serves real ale and is behind the main stand. A cheeseburger and a pint on a matchday at this level is part of the appeal.",
+                detail: "Matchday refreshments are available from concession kiosks. The Grandstand Bar is reserved for hospitality guests only and is not accessible to general admission supporters.",
               },
               {
                 emoji: "📅",
