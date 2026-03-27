@@ -11,6 +11,7 @@ import {
   Ticket,
   Trophy,
   Wind,
+  AlertTriangle,
 } from "lucide-react";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
@@ -46,7 +47,7 @@ const FAQS = [
   },
   {
     q: "Is there parking at Haig Avenue?",
-    a: "There is no dedicated car park at Haig Avenue. Supporters park on Haig Avenue itself and the surrounding residential streets. For a game of this size, those streets will fill up well before kick-off. Arriving early is essential. Alternatively, park in the town centre and take the number 44 bus or walk the mile and a half to the ground.",
+    a: "There is no dedicated car park at Haig Avenue — and for this match, Haig Avenue itself will be closed to traffic from 12:30pm. Street parking near the ground will be near-impossible after that time. Arrive early and use the Meols Cop Road area or Kew area side streets off Scarisbrick New Road (both within 10–15 minutes' walk), or park in Southport town centre and take the number 44 bus or walk the mile and a half to the ground.",
   },
   {
     q: "Which pubs near Haig Avenue allow away fans?",
@@ -195,6 +196,21 @@ export default function FATrophySemiFinalGuidePage() {
         </div>
       </div>
 
+      {/* ── ROAD CLOSURE ALERT ── */}
+      <div className="bg-red-600 text-white">
+        <div className="container mx-auto px-4 max-w-7xl py-4">
+          <div className="flex gap-3 items-start">
+            <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-bold text-sm">Road closure: Haig Avenue closed to traffic from 12:30pm</p>
+              <p className="text-white/85 text-sm mt-0.5">
+                Street parking near the ground will be near-impossible after 12:30pm. Arrive early or plan to park further away and walk. See parking alternatives below.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-16 max-w-7xl space-y-20">
 
         {/* ── Terry's Take ── */}
@@ -289,10 +305,10 @@ export default function FATrophySemiFinalGuidePage() {
                 title: "By Car",
                 color: "text-amber-600",
                 items: [
-                  "Satnav postcode: PR8 6JZ. This takes you directly to Haig Avenue.",
-                  "There is no car park at the stadium. Street parking on Haig Avenue and surrounding residential streets fills well before kick-off for a game this size.",
-                  "If you arrive early (2+ hours before kick-off), you have more options. Arriving 30–60 minutes before will mean searching.",
-                  "Consider parking in Southport town centre and taking the number 44 bus, or walking the mile and a half to the ground in around 25–30 minutes.",
+                  "⚠️ Road closure: Haig Avenue is closed to traffic from 12:30pm. If driving, plan to be parked by noon at the latest.",
+                  "Satnav postcode: PR8 6JZ — but do not rely on parking directly on Haig Avenue after 12:30pm.",
+                  "Best alternatives before the closure: Meols Cop Road area streets or Kew area side streets off Scarisbrick New Road — both within 10–15 minutes' walk of the ground.",
+                  "Town centre car parks are another option — park up, then take the number 44 bus or walk the mile and a half to the ground in 25–30 minutes.",
                 ],
               },
             ].map((item) => (
@@ -333,9 +349,9 @@ export default function FATrophySemiFinalGuidePage() {
             {[
               {
                 option: "Street Parking — Haig Avenue",
-                timing: "Arrive 2+ hours early",
-                color: "bg-green-600",
-                detail: "The road itself and the immediate surrounding streets are the main option. For a game this size, arrive at least two hours before kick-off to have a reasonable chance. Residential streets around the ground — Scarisbrick New Road, Norwood Road — fill fast.",
+                timing: "Must arrive before 12:30pm",
+                color: "bg-red-600",
+                detail: "Haig Avenue is closed to traffic from 12:30pm — parking near the ground is near-impossible after that. Your best options are the Meols Cop Road area or Kew area side streets off Scarisbrick New Road, both within 10–15 minutes' walk. These will also fill fast. Be parked by noon.",
               },
               {
                 option: "Town Centre Car Parks",
