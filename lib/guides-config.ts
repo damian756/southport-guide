@@ -277,6 +277,25 @@ export const GUIDES: Guide[] = [
       "Sausage & Cider Festival Southport 2026 — Saturday 18 April at Victoria Park. Two sessions (afternoon and evening). Bratwurst, artisan ciders, live oompah bands. Tickets required.",
   },
   {
+    slug: "southport-beer-week-2026",
+    title: "Southport Beer Week 2026",
+    shortTitle: "Beer Week 2026",
+    description: "18 pubs, 90+ beers, one bank holiday weekend. 20–25 May 2026. The complete visitor guide.",
+    excerpt:
+      "Southport Beer Week 2026 runs 20–25 May across 18 town-centre pubs and bars. Free to join. 90+ beers. Stamp-card ale trail, Big Top Festival in the same weekend. Here's everything you need to plan the trip.",
+    category: "events",
+    heroImage: "/images/beer-week.webp",
+    seoPriority: 0.9,
+    datePublished: "2026-03-26",
+    dateUpdated: "2026-03-26",
+    tags: ["beer-week", "events", "may", "bars-nightlife", "free", "ale-trail", "bank-holiday"],
+    status: "published",
+    listingFilter: { categorySlugs: ["bars-nightlife", "restaurants", "hotels", "parking"] },
+    metaTitle: "Southport Beer Week 2026 | 20–25 May · Ale Trail, Venues & Complete Guide",
+    metaDescription:
+      "Southport Beer Week 2026 — 20 to 25 May across 18 pubs and bars. Free ale trail, 90+ beers, Big Top Festival on the same weekend. Getting here from Liverpool, Manchester, Wigan. Parking, hotels, and practical guide.",
+  },
+  {
     slug: "southport-year-of-culture-2026",
     title: "Southport 2026: Elegantly Eccentric",
     shortTitle: "Year of Culture 2026",
