@@ -171,13 +171,13 @@ export default function AboutPage() {
             {/* Right: photo */}
             <div className="relative hidden lg:block min-h-[500px]">
               <Image
-                src="/images/about/damian-marshside.png"
-                alt="Damian Roche at RSPB Marshside with his dog"
+                src="/southport-pier.webp"
+                alt="Southport Pier at sunset"
                 fill
                 className="object-cover object-center"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/50 to-transparent" />
             </div>
 
           </div>

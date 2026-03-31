@@ -234,10 +234,10 @@ export default function SouthportBeachGuidePage() {
             </div>
             <div className="flex-none">
               <iframe
-                src="https://wttr.in/Southport,England?format=4&lang=en"
+                src="https://wttr.in/Southport,England?format=v2"
                 title="Current weather in Southport"
                 className="rounded-xl border border-gray-100 bg-gray-50"
-                style={{ width: "340px", height: "80px", border: "none" }}
+                style={{ width: "340px", height: "120px", border: "none" }}
                 loading="lazy"
               />
               <p className="text-[10px] text-gray-400 mt-1 text-right">
