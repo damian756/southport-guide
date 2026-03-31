@@ -41,6 +41,42 @@ const FEATURED_COLLECTIONS = [
   { href: "/collections/free-things-to-do-southport",        label: "Free to do",      emoji: "🎟️" },
 ];
 
+const GUIDE_EMOJIS: Record<string, string> = {
+  "southport-flower-show": "🌸",
+  "southport-air-show": "✈️",
+  "southport-fireworks-championship": "🎆",
+  "southport-comedy-festival": "🎤",
+  "southport-armed-forces-festival": "🎖️",
+  "southport-sausage-cider-festival": "🌭",
+  "southport-beer-week-2026": "🍺",
+  "southport-year-of-culture-2026": "🎪",
+  "cristal-palace-southport-2026": "🎪",
+  "easter-in-southport-2026": "🐣",
+  "southport-artisan-market": "🎨",
+  "kc-artisan-party-in-the-park-southport-2026": "🎵",
+  "comedy-pub-crawl-southport-2026": "😂",
+  "whistle-down-the-wind-southport-2026": "🎭",
+  "39-steps-southport-2026": "🕵️",
+  "the-atkinson-southport": "🎭",
+  "southport-bijou-cinema": "🎬",
+  "live-music-southport": "🎵",
+  "big-top-festival-southport-2026": "🎡",
+  "southport-food-drink-festival-2026": "🍴",
+  "summer-solstice-southport-2026": "☀️",
+  "sefton-open-2026": "🖼️",
+  "books-alive-southport-2026": "📚",
+};
+
+function guideShortDate(guide: { eventDate?: string; description: string }): string {
+  if (guide.eventDate) {
+    const d = new Date(guide.eventDate);
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  }
+  // Extract first date-like fragment from description (e.g. "20–23 Aug" or "18 Apr 2026")
+  const m = guide.description.match(/\d{1,2}[–\-]\d{1,2}\s+\w+|\d{1,2}\s+\w{3,9}\s+\d{4}|\d{1,2}\s+\w{3,9}/);
+  return m ? m[0].replace(/\s+\d{4}$/, "") : "";
+}
+
 // Shared nav link style — uppercase editorial feel
 const NAV_LINK = "text-[11px] font-bold tracking-[0.12em] uppercase text-[#1B2E4B] hover:text-[#C9A84C] px-3 py-2 transition-colors flex items-center gap-1";
 
@@ -199,45 +235,55 @@ export default function NavMenu() {
 
           <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
-          <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[520px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-            <Link href="/the-open-2026" onClick={() => setEventsOpen(false)}
-              className="group flex items-center gap-4 p-4 rounded-xl bg-amber-50 border border-amber-100 hover:bg-amber-100 transition-all mb-3">
-              <span className="text-2xl flex-none">🏌️</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-[#B8972A] text-[10px] font-bold uppercase tracking-widest mb-0.5">12–19 July 2026 · Royal Birkdale</p>
-                <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#B8972A] transition-colors">The Open Championship</p>
-                <p className="text-gray-500 text-xs mt-0.5">The 154th Open. Southport&apos;s biggest sporting event.</p>
-              </div>
-              <span className="text-[#B8972A] text-sm opacity-0 group-hover:opacity-100 transition-opacity flex-none">→</span>
-            </Link>
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { href: "/guides/southport-sausage-cider-festival", emoji: "🌭", date: "18 Apr", label: "Sausage & Cider", color: "orange" },
-                { href: "/guides/southport-armed-forces-festival", emoji: "🎖️", date: "27–28 Jun", label: "Armed Forces Festival", color: "red" },
-                { href: "/guides/southport-flower-show", emoji: "🌸", date: "20–23 Aug", label: "Flower Show", color: "green" },
-                { href: "/guides/southport-air-show", emoji: "✈️", date: "29–30 Aug", label: "Air Show", color: "sky" },
-                { href: "/guides/southport-fireworks-championship", emoji: "🎆", date: "26–27 Sep", label: "Fireworks Championship", color: "purple" },
-                { href: "/guides/southport-comedy-festival", emoji: "🎤", date: "2–18 Oct", label: "Comedy Festival", color: "pink" },
-              ].map(({ href, emoji, date, label }) => (
-                <Link key={href} href={href} onClick={() => setEventsOpen(false)}
-                  className="group p-3 rounded-xl bg-[#FAF8F5] border border-gray-100 hover:border-[#C9A84C]/40 hover:bg-amber-50 transition-all">
-                  <span className="text-xl">{emoji}</span>
-                  <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-2 mb-0.5">{date}</p>
-                  <p className="font-bold text-[#1B2E4B] text-xs group-hover:text-[#C9A84C] transition-colors leading-tight">{label}</p>
+          {(() => {
+            const today = new Date().toISOString().slice(0, 10);
+            const eventGuides = publishedGuides
+              .filter((g) => g.category === "events" && g.slug !== "southport-year-of-culture-2026")
+              .sort((a, b) => {
+                const aDate = a.eventDate ?? "9999-12-31";
+                const bDate = b.eventDate ?? "9999-12-31";
+                const aUpcoming = aDate >= today;
+                const bUpcoming = bDate >= today;
+                if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+                if (aDate !== bDate) return aDate.localeCompare(bDate);
+                return b.seoPriority - a.seoPriority;
+              })
+              .slice(0, 9);
+            return (
+              <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[520px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+                <Link href="/the-open-2026" onClick={() => setEventsOpen(false)}
+                  className="group flex items-center gap-4 p-4 rounded-xl bg-amber-50 border border-amber-100 hover:bg-amber-100 transition-all mb-3">
+                  <span className="text-2xl flex-none">🏌️</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[#B8972A] text-[10px] font-bold uppercase tracking-widest mb-0.5">12–19 July 2026 · Royal Birkdale</p>
+                    <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#B8972A] transition-colors">The Open Championship</p>
+                    <p className="text-gray-500 text-xs mt-0.5">The 154th Open. Southport&apos;s biggest sporting event.</p>
+                  </div>
+                  <span className="text-[#B8972A] text-sm opacity-0 group-hover:opacity-100 transition-opacity flex-none">→</span>
                 </Link>
-              ))}
-            </div>
-            <div className="mt-2 pt-2 border-t border-gray-100 flex justify-between items-center">
-              <Link href="/guides/southport-year-of-culture-2026" onClick={() => setEventsOpen(false)}
-                className="text-[10px] font-bold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
-                🎪 Southport 2026: Elegantly Eccentric →
-              </Link>
-              <Link href="/events" onClick={() => setEventsOpen(false)}
-                className="text-[10px] font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
-                All 2026 events →
-              </Link>
-            </div>
-          </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {eventGuides.map((g) => (
+                    <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setEventsOpen(false)}
+                      className="group p-3 rounded-xl bg-[#FAF8F5] border border-gray-100 hover:border-[#C9A84C]/40 hover:bg-amber-50 transition-all">
+                      <span className="text-xl">{GUIDE_EMOJIS[g.slug] ?? "📅"}</span>
+                      <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-2 mb-0.5">{guideShortDate(g)}</p>
+                      <p className="font-bold text-[#1B2E4B] text-xs group-hover:text-[#C9A84C] transition-colors leading-tight">{g.shortTitle ?? g.title}</p>
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-2 pt-2 border-t border-gray-100 flex justify-between items-center">
+                  <Link href="/guides/southport-year-of-culture-2026" onClick={() => setEventsOpen(false)}
+                    className="text-[10px] font-bold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
+                    🎪 Southport 2026: Elegantly Eccentric →
+                  </Link>
+                  <Link href="/events" onClick={() => setEventsOpen(false)}
+                    className="text-[10px] font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
+                    All 2026 events →
+                  </Link>
+                </div>
+              </div>
+            );
+          })()}
         </div>
         <div className="w-px h-4 bg-gray-200 mx-2" />
 
@@ -318,21 +364,29 @@ export default function NavMenu() {
               🏌️ The Open Championship — 12–19 July · Royal Birkdale
             </Link>
             <div className="grid grid-cols-2 gap-1.5">
-              {[
-                { href: "/guides/southport-sausage-cider-festival", emoji: "🌭", label: "Sausage & Cider", sub: "18 Apr" },
-                { href: "/guides/southport-armed-forces-festival", emoji: "🎖️", label: "Armed Forces Festival", sub: "27–28 Jun · Free" },
-                { href: "/guides/southport-flower-show", emoji: "🌸", label: "Flower Show", sub: "20–23 Aug · From £23" },
-                { href: "/guides/southport-air-show", emoji: "✈️", label: "Air Show", sub: "29–30 Aug · Free" },
-                { href: "/guides/southport-fireworks-championship", emoji: "🎆", label: "Fireworks Championship", sub: "26–27 Sep" },
-                { href: "/guides/southport-comedy-festival", emoji: "🎤", label: "Comedy Festival", sub: "2–18 Oct" },
-              ].map(({ href, emoji, label, sub }) => (
-                <Link key={href} href={href} onClick={() => setMobileOpen(false)}
-                  className="flex flex-col px-3 py-3 rounded-xl bg-[#FAF8F5] border border-gray-100">
-                  <span className="text-lg mb-1.5">{emoji}</span>
-                  <span className="text-xs font-bold text-[#1B2E4B]">{label}</span>
-                  <span className="text-[10px] text-gray-500 mt-0.5">{sub}</span>
-                </Link>
-              ))}
+              {(() => {
+                const today = new Date().toISOString().slice(0, 10);
+                return publishedGuides
+                  .filter((g) => g.category === "events" && g.slug !== "southport-year-of-culture-2026")
+                  .sort((a, b) => {
+                    const aDate = a.eventDate ?? "9999-12-31";
+                    const bDate = b.eventDate ?? "9999-12-31";
+                    const aUpcoming = aDate >= today;
+                    const bUpcoming = bDate >= today;
+                    if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+                    if (aDate !== bDate) return aDate.localeCompare(bDate);
+                    return b.seoPriority - a.seoPriority;
+                  })
+                  .slice(0, 6)
+                  .map((g) => (
+                    <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setMobileOpen(false)}
+                      className="flex flex-col px-3 py-3 rounded-xl bg-[#FAF8F5] border border-gray-100">
+                      <span className="text-lg mb-1.5">{GUIDE_EMOJIS[g.slug] ?? "📅"}</span>
+                      <span className="text-xs font-bold text-[#1B2E4B]">{g.shortTitle ?? g.title}</span>
+                      <span className="text-[10px] text-gray-500 mt-0.5">{guideShortDate(g)}</span>
+                    </Link>
+                  ));
+              })()}
             </div>
             <Link href="/guides/southport-year-of-culture-2026" onClick={() => setMobileOpen(false)}
               className="flex items-center gap-2 px-4 py-3 rounded-xl bg-purple-50 text-purple-800 text-sm font-bold">

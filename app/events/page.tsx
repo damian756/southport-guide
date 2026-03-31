@@ -63,9 +63,23 @@ function formatDayLabel(dateStart: Date, dateEnd: Date | null): string {
   return `${start.getDate()}–${end.getDate()} ${start.toLocaleDateString("en-GB", { month: "short" })}`;
 }
 
-async function getMergedEventsByMonth(): Promise<
-  Record<string, Array<{ title: string; isoDate: string; endIsoDate?: string; dayLabel: string; venue: string; category: string; emoji: string; free: boolean; link: string; source?: "eventbrite" }>>
-> {
+type MergedEvent = {
+  title: string;
+  isoDate: string;
+  endIsoDate?: string;
+  dayLabel: string;
+  venue: string;
+  category: string;
+  emoji: string;
+  free: boolean;
+  link: string;
+  guideSlug?: string;
+  description?: string;
+  time?: string;
+  source?: "eventbrite";
+};
+
+async function getMergedEventsByMonth(): Promise<Record<string, MergedEvent[]>> {
   const staticByMonth = getEventsByMonth();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -78,10 +92,7 @@ async function getMergedEventsByMonth(): Promise<
     orderBy: { dateStart: "asc" },
   });
 
-  const merged = { ...staticByMonth } as Record<
-    string,
-    Array<{ title: string; isoDate: string; endIsoDate?: string; dayLabel: string; venue: string; category: string; emoji: string; free: boolean; link: string; source?: "eventbrite" }>
-  >;
+  const merged = { ...staticByMonth } as Record<string, MergedEvent[]>;
 
   for (const ev of dbEvents) {
     const d = new Date(ev.dateStart);
@@ -111,9 +122,9 @@ async function getMergedEventsByMonth(): Promise<
 export default async function EventsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ month?: string }>;
+  searchParams: Promise<{ month?: string; category?: string; when?: string }>;
 }) {
-  const { month: activeMonth } = await searchParams;
+  const { month: activeMonth, category: activeCategory, when: activeWhen } = await searchParams;
   const eventsByMonth = await getMergedEventsByMonth();
   const allMonths = Object.keys(eventsByMonth).sort((a, b) => {
     const firstDate = (month: string) => {
@@ -126,9 +137,50 @@ export default async function EventsPage({
     (e) => new Date(e.endIsoDate ?? e.isoDate) >= new Date(new Date().setHours(0, 0, 0, 0))
   ).length;
 
-  const filteredMonths = activeMonth
+  // Compute "when" date range
+  const todayD = new Date();
+  todayD.setHours(0, 0, 0, 0);
+  const todayISO = todayD.toISOString().slice(0, 10);
+  let whenFrom: string | null = null;
+  let whenTo: string | null = null;
+  if (activeWhen === "today") {
+    whenFrom = todayISO;
+    whenTo = todayISO;
+  } else if (activeWhen === "this-week") {
+    whenFrom = todayISO;
+    const nextWeek = new Date(todayD);
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    whenTo = nextWeek.toISOString().slice(0, 10);
+  } else if (activeWhen === "this-weekend") {
+    const day = todayD.getDay();
+    const daysToSat = day === 6 ? 0 : (6 - day);
+    const sat = new Date(todayD);
+    sat.setDate(sat.getDate() + daysToSat);
+    const sun = new Date(sat);
+    sun.setDate(sun.getDate() + 1);
+    whenFrom = sat.toISOString().slice(0, 10);
+    whenTo = sun.toISOString().slice(0, 10);
+  }
+
+  function applyFilters(events: MergedEvent[]): MergedEvent[] {
+    return events.filter((e) => {
+      if (activeCategory && e.category !== activeCategory) return false;
+      if (whenFrom && whenTo) {
+        const eEnd = e.endIsoDate ?? e.isoDate;
+        if (e.isoDate > whenTo || eEnd < whenFrom) return false;
+      }
+      return true;
+    });
+  }
+
+  const allCategories = [...new Set(
+    Object.values(eventsByMonth).flat().map((e) => e.category).filter(Boolean)
+  )].sort();
+
+  const filteredMonths = (activeMonth
     ? allMonths.filter((m) => m === activeMonth)
-    : allMonths;
+    : allMonths
+  ).filter((m) => applyFilters(eventsByMonth[m] ?? []).length > 0);
 
   const allMergedEvents = Object.values(eventsByMonth).flat();
   const eventsJsonLd = {
@@ -164,9 +216,13 @@ export default async function EventsPage({
             "@type": "Offer",
             availability: "https://schema.org/InStock",
             ...(event.free ? { price: "0", priceCurrency: "GBP" } : {}),
-            url: event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
+            url: event.guideSlug
+              ? `https://www.southportguide.co.uk/guides/${event.guideSlug}`
+              : event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
           },
-          url: event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
+          url: event.guideSlug
+            ? `https://www.southportguide.co.uk/guides/${event.guideSlug}`
+            : event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
           organizer: {
             "@type": "Organization",
             name: "SouthportGuide.co.uk",
@@ -215,9 +271,9 @@ export default async function EventsPage({
         </div>
       </section>
 
-      {/* Month filter tabs — client component */}
-      <Suspense fallback={<div className="h-12 bg-white border-b border-gray-100" />}>
-        <MonthFilter months={allMonths} />
+      {/* Month + category + quick filter tabs — client component */}
+      <Suspense fallback={<div className="h-16 bg-white border-b border-gray-100" />}>
+        <MonthFilter months={allMonths} categories={allCategories} />
       </Suspense>
 
       {/* Events by month */}
@@ -232,7 +288,7 @@ export default async function EventsPage({
         ) : (
           <div className="space-y-12">
             {filteredMonths.map((month) => {
-              const events = eventsByMonth[month];
+              const events = applyFilters(eventsByMonth[month] ?? []);
               const today = new Date();
               today.setHours(0, 0, 0, 0);
               const isPast = events.every((e) => new Date(e.isoDate) < today);
@@ -257,7 +313,8 @@ export default async function EventsPage({
 
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {events.map((event, i) => {
-                      const isExternal = event.link.startsWith("http");
+                      const href = event.guideSlug ? `/guides/${event.guideSlug}` : event.link;
+                      const isExternal = !event.guideSlug && event.link.startsWith("http");
                       const Tag = isExternal ? "a" : Link;
                       const extraProps = isExternal
                         ? { target: "_blank", rel: "noopener noreferrer" }
@@ -267,7 +324,7 @@ export default async function EventsPage({
                       return (
                         <Tag
                           key={i}
-                          href={event.link}
+                          href={href}
                           {...extraProps}
                           className={`group bg-white rounded-2xl p-5 border transition-all ${
                             isPast

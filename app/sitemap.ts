@@ -20,7 +20,7 @@ function parsePostDate(dateStr: string): Date {
 
 // Stable reference dates — update these when the relevant pages change meaningfully
 const D = {
-  today:    new Date("2026-03-19"), // last deploy / significant update
+  today:    new Date("2026-03-31"), // last deploy / significant update
   feb26:    new Date("2026-02-26"),
   feb20:    new Date("2026-02-20"),
   feb15:    new Date("2026-02-15"),

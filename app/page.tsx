@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { BLOG_POSTS, getBlogPostCategory, getUpcomingEvents } from "@/lib/southport-data";
+import { GUIDES } from "@/lib/guides-config";
 import type { Metadata } from "next";
 
 export const revalidate = 3600;
@@ -308,12 +309,15 @@ export default async function Home() {
             <div className="mb-6 w-full max-w-xs">
               <p className="text-white/35 text-[10px] uppercase tracking-widest mb-2">Coming up</p>
               <div className="space-y-2">
-                {upcomingEvents.slice(0, 2).map((event, i) => (
+                {upcomingEvents.slice(0, 2).map((event, i) => {
+                  const eventHref = event.guideSlug ? `/guides/${event.guideSlug}` : event.link;
+                  const eventExternal = !event.guideSlug && event.link.startsWith("http");
+                  return (
                   <a
                     key={i}
-                    href={event.link}
-                    target={event.link.startsWith("http") ? "_blank" : undefined}
-                    rel={event.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                    href={eventHref}
+                    target={eventExternal ? "_blank" : undefined}
+                    rel={eventExternal ? "noopener noreferrer" : undefined}
                     className="flex items-center gap-3 bg-white/5 hover:bg-white/10 rounded-xl px-3 py-2.5 transition-colors group"
                   >
                     <span className="text-lg flex-none">{event.emoji}</span>
@@ -323,7 +327,8 @@ export default async function Home() {
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-white/25 group-hover:text-[#C9A84C] flex-none transition-colors" />
                   </a>
-                ))}
+                  );
+                })}
               </div>
               <Link href="/events" className="text-xs text-white/35 hover:text-[#C9A84C] transition-colors mt-2 inline-block">
                 View full 2026 calendar →
@@ -402,12 +407,15 @@ export default async function Home() {
             </div>
 
             <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
-              {upcomingEvents.map((event, i) => (
+              {upcomingEvents.map((event, i) => {
+                const evHref = event.guideSlug ? `/guides/${event.guideSlug}` : event.link;
+                const evExternal = !event.guideSlug && event.link.startsWith("http");
+                return (
                 <a
                   key={i}
-                  href={event.link}
-                  target={event.link.startsWith("http") ? "_blank" : undefined}
-                  rel={event.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                  href={evHref}
+                  target={evExternal ? "_blank" : undefined}
+                  rel={evExternal ? "noopener noreferrer" : undefined}
                   className="flex-none w-44 snap-start bg-white rounded-2xl p-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all group cursor-pointer"
                 >
                   <div className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest mb-2">{formatEventLabel(event)}</div>
@@ -422,7 +430,8 @@ export default async function Home() {
                     }
                   </div>
                 </a>
-              ))}
+                );
+              })}
 
               <Link
                 href="/events"
@@ -1251,31 +1260,85 @@ export default async function Home() {
             </Link>
           </div>
 
-          {/* Additional events row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-            {[
-              { emoji: "🌭", label: "Sausage & Cider Festival", date: "18 Apr 2026", href: "/guides/southport-sausage-cider-festival" },
-              { emoji: "🎪", label: "Cristal Palace", date: "3–4 Apr 2026", href: "/guides/southport-year-of-culture-2026" },
-              { emoji: "🎖️", label: "Armed Forces Festival", date: "27–28 Jun 2026", href: "/guides/southport-armed-forces-festival" },
-              { emoji: "🌸", label: "Flower Show", date: "20–23 Aug 2026", href: "/guides/southport-flower-show" },
-              { emoji: "✈️", label: "Air Show", date: "29–30 Aug 2026", href: "/guides/southport-air-show" },
-              { emoji: "🎆", label: "Fireworks Championship", date: "26–27 Sep 2026", href: "/guides/southport-fireworks-championship" },
-              { emoji: "🎤", label: "Comedy Festival", date: "2–18 Oct 2026", href: "/guides/southport-comedy-festival" },
-              { emoji: "📅", label: "All 2026 Events", date: "Full calendar", href: "/events" },
-            ].map(({ emoji, label, date, href }) => (
-              <Link
-                key={label}
-                href={href}
-                className="group bg-white rounded-2xl px-4 py-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all flex items-center gap-3"
-              >
-                <span className="text-2xl flex-none">{emoji}</span>
-                <div>
-                  <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#C9A84C] transition-colors">{label}</p>
-                  <p className="text-gray-400 text-xs">{date}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {/* Additional events row — dynamic from guides config */}
+          {(() => {
+            const HOMEPAGE_GUIDE_EMOJIS: Record<string, string> = {
+              "southport-flower-show": "🌸",
+              "southport-air-show": "✈️",
+              "southport-fireworks-championship": "🎆",
+              "southport-comedy-festival": "🎤",
+              "southport-armed-forces-festival": "🎖️",
+              "southport-sausage-cider-festival": "🌭",
+              "southport-beer-week-2026": "🍺",
+              "southport-year-of-culture-2026": "🎪",
+              "cristal-palace-southport-2026": "🎪",
+              "easter-in-southport-2026": "🐣",
+              "southport-artisan-market": "🎨",
+              "kc-artisan-party-in-the-park-southport-2026": "🎵",
+              "comedy-pub-crawl-southport-2026": "😂",
+              "whistle-down-the-wind-southport-2026": "🎭",
+              "39-steps-southport-2026": "🕵️",
+              "the-atkinson-southport": "🎭",
+              "southport-bijou-cinema": "🎬",
+              "live-music-southport": "🎵",
+              "big-top-festival-southport-2026": "🎡",
+              "southport-food-drink-festival-2026": "🍴",
+              "summer-solstice-southport-2026": "☀️",
+              "sefton-open-2026": "🖼️",
+              "books-alive-southport-2026": "📚",
+            };
+            const todayStr = new Date().toISOString().slice(0, 10);
+            const eventGuides = GUIDES
+              .filter((g) => g.status === "published" && g.category === "events" && g.slug !== "southport-year-of-culture-2026")
+              .sort((a, b) => {
+                const aDate = a.eventDate ?? "9999-12-31";
+                const bDate = b.eventDate ?? "9999-12-31";
+                const aUpcoming = aDate >= todayStr;
+                const bUpcoming = bDate >= todayStr;
+                if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+                if (aDate !== bDate) return aDate.localeCompare(bDate);
+                return b.seoPriority - a.seoPriority;
+              })
+              .slice(0, 7);
+            return (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                {eventGuides.map((g) => {
+                  // Extract short date from eventDate or description
+                  let dateLabel = "";
+                  if (g.eventDate) {
+                    const d = new Date(g.eventDate);
+                    dateLabel = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+                  } else {
+                    const m = g.description.match(/\d{1,2}[–\-]\d{1,2}\s+\w+\s+\d{4}|\d{1,2}\s+\w{3,9}\s+\d{4}/);
+                    dateLabel = m ? m[0] : "";
+                  }
+                  return (
+                    <Link
+                      key={g.slug}
+                      href={`/guides/${g.slug}`}
+                      className="group bg-white rounded-2xl px-4 py-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all flex items-center gap-3"
+                    >
+                      <span className="text-2xl flex-none">{HOMEPAGE_GUIDE_EMOJIS[g.slug] ?? "📅"}</span>
+                      <div>
+                        <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#C9A84C] transition-colors">{g.shortTitle ?? g.title}</p>
+                        <p className="text-gray-400 text-xs">{dateLabel}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+                <Link
+                  href="/events"
+                  className="group bg-white rounded-2xl px-4 py-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all flex items-center gap-3"
+                >
+                  <span className="text-2xl flex-none">📅</span>
+                  <div>
+                    <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#C9A84C] transition-colors">All 2026 Events</p>
+                    <p className="text-gray-400 text-xs">Full calendar</p>
+                  </div>
+                </Link>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
