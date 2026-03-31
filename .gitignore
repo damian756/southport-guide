@@ -55,6 +55,13 @@ email-scrape-results.csv
 email-results.txt
 email-results-clean.txt
 
+# Parking data (may contain API keys in URLs — never commit)
+parking-google.csv
+parking-osm.csv
+parking-google-progress.json
+parking-osm-progress.json
+scripts/parking-manual.csv
+
 # Python
 __pycache__/
 *.py[cod]
