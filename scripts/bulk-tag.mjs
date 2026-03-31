@@ -231,12 +231,12 @@ const RULES = [
       const name = (b.name ?? "").toLowerCase();
       // Explicitly sensory-aware
       if (/sensory[- ]friendly/i.test(h) || /autism[- ]friendly/i.test(h) || /neurodivergent/i.test(h) || /autism\s+hour/i.test(h) || /quiet\s+hour/i.test(h)) return true;
-      // Known calm outdoor venues by name
-      if (/botanic\s+garden/i.test(name) || /hesketh\s+park/i.test(name) || /king.?s\s+garden/i.test(name) || /marine\s+lake/i.test(name) || /marshside/i.test(name)) return true;
-      // Galleries, museums, libraries by description
-      if ((/\bgallery\b/i.test(h) || /\bmuseum\b/i.test(h) || /\blibrary\b/i.test(h)) && !/nightclub/i.test(h) && !/bar/i.test(h)) return true;
-      // Botanical / nature reserves
-      if (/botanical/i.test(h) || /nature\s+reserve/i.test(h) || /wildlife\s+reserve/i.test(h)) return true;
+      // Known calm outdoor venues by name (exact venue names only — not florists or beauty shops)
+      if (/botanic\s+gardens?/i.test(name) || /hesketh\s+park/i.test(name) || /king.?s\s+garden/i.test(name) || /marine\s+lake/i.test(name) || /\bmarshside\b/i.test(name) || /north\s+meols/i.test(name)) return true;
+      // RSPB / nature reserves
+      if (/\brspb\b/i.test(h) || /nature\s+reserve/i.test(h) || /national\s+nature\s+reserve/i.test(h) || /\bnnr\b/i.test(h)) return true;
+      // Galleries, museums, libraries by description — exclude wellness/florists/beauty
+      if ((/\bgallery\b/i.test(h) || /\bmuseum\b/i.test(h) || /\blibrary\b/i.test(h)) && !/nightclub/i.test(h) && !/\bbar\b/i.test(h) && !/beauty/i.test(h) && !/florist/i.test(h) && !/wellness/i.test(h) && !/wedding/i.test(h)) return true;
       return false;
     },
   },
@@ -245,6 +245,43 @@ const RULES = [
     test: (b) => {
       const h = haystack(b);
       return /\bgolf\b/i.test(h) || /royal\s+birkdale/i.test(h);
+    },
+  },
+
+  // ── Targeted content groupings ───────────────────────────────────────────
+  {
+    tag: "gallery",
+    test: (b) => {
+      const h = haystack(b);
+      return /\bgallery\b/i.test(h) && !/nightclub/i.test(h) && !/bar/i.test(h);
+    },
+  },
+  {
+    tag: "nature-reserve",
+    test: (b) => {
+      const h = haystack(b);
+      return (
+        /nature\s+reserve/i.test(h) ||
+        /\bnnr\b/i.test(h) ||
+        /\brspb\b/i.test(h) ||
+        /wildlife\s+reserve/i.test(h) ||
+        /national\s+nature\s+reserve/i.test(h)
+      );
+    },
+  },
+  {
+    tag: "botanic-gardens",
+    test: (b) => {
+      const name = (b.name ?? "").toLowerCase();
+      return /botanic\s+garden/i.test(name);
+    },
+  },
+  {
+    tag: "marine-lake",
+    test: (b) => {
+      const name = (b.name ?? "").toLowerCase();
+      const h = haystack(b);
+      return /marine\s+lake/i.test(name) || (/marine\s+lake/i.test(h) && /marine\s+lake/i.test(b.address ?? ""));
     },
   },
 ];

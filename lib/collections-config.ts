@@ -221,6 +221,62 @@ export const COLLECTIONS: Collection[] = [
     priority: 0.8,
   },
 
+  // ── Art galleries ─────────────────────────────────────────────────────────
+  {
+    slug: "art-galleries-southport",
+    title: "Art Galleries in Southport",
+    metaDescription:
+      "Art galleries in Southport — independent galleries and exhibition spaces across the town. From Lord Street to Wayfarers Arcade and beyond.",
+    intro:
+      "Southport has a genuine cluster of independent galleries that most visitors walk straight past. Wayfarers Arcade alone has three. The Atkinson on Lord Street is the anchor of the whole thing — one of the best free gallery spaces in the North West, regularly rotating exhibitions. The independents on Lord Street and in Ainsdale are smaller but worth the stop. These are places to browse without pressure or a booking fee.",
+    tags: ["gallery"],
+    categorySlugs: ["attractions", "shopping"],
+    emoji: "🖼️",
+    priority: 0.78,
+  },
+
+  // ── Nature reserves ───────────────────────────────────────────────────────
+  {
+    slug: "nature-reserves-southport",
+    title: "Nature Reserves Near Southport",
+    metaDescription:
+      "Nature reserves near Southport — coastal dunes, wetland reserves, and wildlife sites on the Sefton Coast. RSPB Marshside, Ainsdale Dunes, and more.",
+    intro:
+      "The Sefton Coast has one of the most significant stretches of coastal dune habitat in England. Ainsdale Sand Dunes National Nature Reserve, the Ainsdale and Birkdale Sandhills, Banks Marsh, Freshfield Dune Heath, and RSPB Marshside are all within easy reach of Southport. Most are free to enter. Most are quiet on weekday mornings. The RSPB Marshside reserve north of the town is particularly good in winter — wide skies, waders, and almost no one else there.",
+    tags: ["nature-reserve"],
+    categorySlugs: ["beaches-parks", "activities", "attractions"],
+    emoji: "🌿",
+    priority: 0.8,
+  },
+
+  // ── Botanic Gardens ───────────────────────────────────────────────────────
+  {
+    slug: "botanic-gardens-southport",
+    title: "Botanic Gardens Southport",
+    metaDescription:
+      "Botanic Gardens Southport — the Victorian walled garden in Churchtown. Fernery, aviaries, cafe, and free entry. A Southport institution since 1874.",
+    intro:
+      "Botanic Gardens in Churchtown is one of those Southport places that locals take completely for granted and visitors discover by accident. It opened in 1874, has a proper heated fernery, an aviary, formal gardens, and a cafe. Entry is free. It is calm in a way that most visitor attractions are not, because it was designed for that purpose. The surrounding Churchtown village is worth an extra half hour — it is the historic heart of Southport, older than the town itself.",
+    tags: ["botanic-gardens"],
+    categorySlugs: ["attractions", "cafes", "activities"],
+    emoji: "🌱",
+    priority: 0.8,
+  },
+
+  // ── Marine Lake ───────────────────────────────────────────────────────────
+  {
+    slug: "marine-lake-southport",
+    title: "Marine Lake Southport",
+    metaDescription:
+      "Marine Lake Southport — boating, cafes, and open water on the Southport seafront. Everything at and around the Marine Lake, including boat hire and the adjacent King's Gardens.",
+    intro:
+      "Marine Lake is 140 acres of flat, calm water right on the Southport seafront — one of the largest enclosed tidal lakes in England. You can hire pedalos, take a boat trip, walk the perimeter path, or sit at the cafe and watch the water. King's Gardens runs alongside it. The combination of flat water, open space, and easy access from the car parks on Marine Drive makes it one of the most visited parts of the town. Free to access. Good for families.",
+    tags: ["marine-lake"],
+    categorySlugs: ["attractions", "activities", "cafes", "beaches-parks"],
+    emoji: "⛵",
+    priority: 0.82,
+  },
+
   // ── Free / budget-friendly ────────────────────────────────────────────────
   {
     slug: "free-things-to-do-southport",
