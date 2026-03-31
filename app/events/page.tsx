@@ -79,6 +79,29 @@ type MergedEvent = {
   source?: "eventbrite";
 };
 
+// Map raw DB category strings to standardised display values
+const DB_CATEGORY_MAP: Record<string, string> = {
+  "bank-holiday": "Community",
+  "festival": "Entertainment",
+  "show": "Entertainment",
+  "sport": "Sport",
+  "entertainment": "Entertainment",
+  "music": "Live Music",
+  "comedy": "Comedy",
+  "theatre": "Theatre",
+  "cinema": "Cinema",
+  "arts": "Arts & Culture",
+  "kids": "Kids & Family",
+  "family": "Kids & Family",
+  "food": "Food & Drink",
+  "golf": "Golf",
+};
+
+function normaliseCategory(raw: string | null): string {
+  if (!raw) return "Community";
+  return DB_CATEGORY_MAP[raw.toLowerCase()] ?? raw;
+}
+
 async function getMergedEventsByMonth(): Promise<Record<string, MergedEvent[]>> {
   const staticByMonth = getEventsByMonth();
   const today = new Date();
@@ -94,7 +117,19 @@ async function getMergedEventsByMonth(): Promise<Record<string, MergedEvent[]>> 
 
   const merged = { ...staticByMonth } as Record<string, MergedEvent[]>;
 
+  // Build a dedup set from all static events: normalised title + isoDate
+  const staticTitles = new Set(
+    Object.values(staticByMonth).flat().map((e) => e.title.toLowerCase().trim())
+  );
+
   for (const ev of dbEvents) {
+    // Skip events with no link — they go nowhere and clutter the calendar
+    if (!ev.link) continue;
+
+    // Skip DB events that duplicate a static entry by title
+    const normTitle = ev.name.toLowerCase().trim();
+    if (staticTitles.has(normTitle)) continue;
+
     const d = new Date(ev.dateStart);
     const label = d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
     if (!merged[label]) merged[label] = [];
@@ -104,10 +139,10 @@ async function getMergedEventsByMonth(): Promise<Record<string, MergedEvent[]>> 
       endIsoDate: ev.dateEnd ? ev.dateEnd.toISOString().slice(0, 10) : undefined,
       dayLabel: formatDayLabel(ev.dateStart, ev.dateEnd),
       venue: ev.venueName ?? "TBC",
-      category: ev.category ?? "Community",
+      category: normaliseCategory(ev.category),
       emoji: "📅",
       free: ev.isFree,
-      link: ev.link ?? "#",
+      link: ev.link,
       source: "eventbrite",
     });
   }
@@ -317,7 +352,7 @@ export default async function EventsPage({
                       const isExternal = !event.guideSlug && event.link.startsWith("http");
                       const Tag = isExternal ? "a" : Link;
                       const extraProps = isExternal
-                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        ? { target: "_blank", rel: "nofollow noopener noreferrer" }
                         : {};
                       const isCommunity = "source" in event && event.source === "eventbrite";
 

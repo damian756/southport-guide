@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { GUIDES, GUIDE_CATEGORIES, type GuideCategory } from "@/lib/guides-config";
@@ -70,43 +71,58 @@ export default function GuidesIndexPage() {
       <div className="min-h-screen bg-[#FAF8F5]">
 
         {/* ── Hero ── */}
-        <div className="bg-[#1B2E4B] text-white py-16 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <nav aria-label="Breadcrumb" className="mb-6">
-              <ol className="flex items-center gap-1.5 text-xs text-white/40">
-                <li><Link href="/" className="hover:text-[#C9A84C] transition-colors">Home</Link></li>
-                <li className="text-white/30">›</li>
-                <li className="text-white/70 font-semibold">Guides</li>
-              </ol>
-            </nav>
-            <div className="flex items-center gap-4 mb-5">
-              <BookOpen className="w-8 h-8 text-[#C9A84C] flex-shrink-0" />
-              <div>
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">
-                  SouthportGuide.co.uk
-                </p>
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
-                  The Guides
-                </h1>
+        <section className="relative bg-[#1B2E4B] text-white overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/southport-beach.webp"
+              alt="Southport Beach"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover object-center opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/50 via-[#1B2E4B]/40 to-[#1B2E4B]/80" />
+          </div>
+          <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent relative z-10" />
+          <div className="relative z-10 py-20 px-4">
+            <div className="container mx-auto max-w-4xl">
+              <nav aria-label="Breadcrumb" className="mb-6">
+                <ol className="flex items-center gap-1.5 text-xs text-white/40">
+                  <li><Link href="/" className="hover:text-[#C9A84C] transition-colors">Home</Link></li>
+                  <li className="text-white/30">›</li>
+                  <li className="text-white/70 font-semibold">Guides</li>
+                </ol>
+              </nav>
+              <div className="flex items-center gap-4 mb-5">
+                <BookOpen className="w-8 h-8 text-[#C9A84C] flex-shrink-0" />
+                <div>
+                  <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">
+                    SouthportGuide.co.uk
+                  </p>
+                  <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
+                    The Guides
+                  </h1>
+                </div>
+              </div>
+              <p className="text-white/80 text-lg leading-relaxed max-w-2xl mb-6">
+                The beach, the pier, the big events, where to park, where to eat — all of it,
+                properly written by people who live here. More added regularly.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {CATEGORY_ORDER.map((cat) => (
+                  <a
+                    key={cat}
+                    href={`#${cat}`}
+                    className="text-white/70 hover:text-[#C9A84C] text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 hover:border-[#C9A84C]/50 transition-all backdrop-blur-sm bg-white/5"
+                  >
+                    {GUIDE_CATEGORIES[cat].label}
+                  </a>
+                ))}
               </div>
             </div>
-            <p className="text-white/70 text-lg leading-relaxed max-w-2xl mb-6">
-              The beach, the pier, the big events, where to park, where to eat — all of it,
-              properly written by people who live here. More added regularly.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {CATEGORY_ORDER.map((cat) => (
-                <a
-                  key={cat}
-                  href={`#${cat}`}
-                  className="text-white/60 hover:text-[#C9A84C] text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 hover:border-[#C9A84C]/50 transition-all"
-                >
-                  {GUIDE_CATEGORIES[cat].label}
-                </a>
-              ))}
-            </div>
           </div>
-        </div>
+        </section>
 
         {/* ── Guide grid (search + filter + grouped sections) ── */}
         <div className="container mx-auto px-4 max-w-7xl py-16">

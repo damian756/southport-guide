@@ -1248,7 +1248,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "The festival runs in two sessions on 18 April. The afternoon is better for food and families. The evening is livelier. I'll tell you which one to book and what to expect from each.",
     categorySlug: "events",
     image: "/images/blog/blog-sausage-cider-fun.webp",
-    date: "26 Mar 2026",
+    date: "30 Mar 2026",
     featured: true,
   },
   {
@@ -1258,7 +1258,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Spring 2026 is unexpectedly packed. Cristal Palace on Lord Street in April. Big Top Festival in May. Sausage & Cider Festival. Easter. Here's how the season shapes up.",
     categorySlug: "events",
     image: "/images/blog/blog-southport-spring-april.webp",
-    date: "26 Mar 2026",
+    date: "31 Mar 2026",
     featured: true,
   },
 
@@ -1270,7 +1270,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A 15-metre flying chandelier. Lord Street as an open-air ballroom. Aerial performers, live music, thousands watching from the pavement. This is Cristal Palace by Transe Express — 3–4 April 2026.",
     categorySlug: "events",
     image: "/images/blog/blog-cristal-palace.webp",
-    date: "26 Mar 2026",
+    date: "31 Mar 2026",
     featured: true,
   },
   {
@@ -1331,7 +1331,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "100,000+ people turn up for the Southport Air Show. Some will stand in the wrong place and see half the display. Here's where the locals go — including the spots most visitors miss.",
     categorySlug: "events",
     image: "/images/blog/blog-airshow-crowds.webp",
-    date: "26 Mar 2026",
+    date: "29 Mar 2026",
   },
   {
     slug: "southport-august-bank-holiday-2026",

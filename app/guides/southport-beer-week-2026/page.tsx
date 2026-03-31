@@ -390,13 +390,13 @@ export default function SouthportBeerWeekGuidePage() {
               <div className="space-y-5 text-gray-700 leading-relaxed text-[1.05rem]">
                 <p>
                   Southport Beer Week is a six-day real ale and craft beer trail organised by{" "}
-                  <a href="https://southportbid.com" target="_blank" rel="noopener noreferrer" className="text-amber-700 hover:text-amber-800 font-medium underline">
+                  <a href="https://southportbid.com" target="_blank" rel="nofollow noopener noreferrer" className="text-amber-700 hover:text-amber-800 font-medium underline">
                     Southport BID
                   </a>{" "}
                   across the town centre. Eighteen pubs and bars sign up, each putting on a curated selection of beers
                   you would not normally find on their standard menu: breweries from across the North West and beyond,
                   alongside some of the better-known national craft producers.{" "}
-                  <a href="https://www.yoursouthport.com/blog/southport-beer-week-returns-for-2026" target="_blank" rel="noopener noreferrer" className="text-amber-700 hover:text-amber-800 font-medium underline">
+                  <a href="https://www.yoursouthport.com/blog/southport-beer-week-returns-for-2026" target="_blank" rel="nofollow noopener noreferrer" className="text-amber-700 hover:text-amber-800 font-medium underline">
                     Full details at Your Southport.
                   </a>
                 </p>
@@ -440,7 +440,7 @@ export default function SouthportBeerWeekGuidePage() {
                 <a
                   href="https://www.yoursouthport.com/beer-week"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   className="mt-5 flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-[#1C0D00] font-bold py-2.5 rounded-lg transition-colors text-sm w-full"
                 >
                   Official Beer Week info <ArrowRight className="w-4 h-4" />
@@ -516,7 +516,7 @@ export default function SouthportBeerWeekGuidePage() {
                 <p className="text-amber-800 text-sm">
                   The full list of 18 venues will be published by Southport BID ahead of the event. The 8 above are
                   confirmed for 2026. Check{" "}
-                  <a href="https://www.yoursouthport.com/beer-week" target="_blank" rel="noopener noreferrer" className="underline font-medium">
+                  <a href="https://www.yoursouthport.com/beer-week" target="_blank" rel="nofollow noopener noreferrer" className="underline font-medium">
                     yoursouthport.com/beer-week
                   </a>{" "}
                   for the complete venue list and trail booklet when available.
@@ -814,7 +814,7 @@ export default function SouthportBeerWeekGuidePage() {
                 Live music festival in a luxury heated marquee at Victoria Park, running over the bank holiday weekend.
                 Part of Southport&apos;s 2026 cultural programme. Victoria Park is 15 minutes walk from the town centre trail.
                 Check{" "}
-                <a href="https://www.visitsouthport.com" target="_blank" rel="noopener noreferrer" className="text-purple-700 underline">
+                <a href="https://www.visitsouthport.com" target="_blank" rel="nofollow noopener noreferrer" className="text-purple-700 underline">
                   visitsouthport.com
                 </a>{" "}
                 for the full lineup.
