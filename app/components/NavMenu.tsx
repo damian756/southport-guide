@@ -35,10 +35,10 @@ const CATEGORIES = [
 ];
 
 const FEATURED_COLLECTIONS = [
-  { href: "/collections/dog-friendly-restaurants-southport", label: "Dog-friendly",    emoji: "🐾" },
-  { href: "/collections/lord-street-restaurants-southport",  label: "Lord Street",     emoji: "🍽️" },
-  { href: "/collections/hotels-near-royal-birkdale",         label: "Near Birkdale",   emoji: "⛳" },
-  { href: "/collections/free-things-to-do-southport",        label: "Free to do",      emoji: "🎟️" },
+  { href: "/collections/dog-friendly-restaurants-southport",  label: "Dog-friendly",    emoji: "🐾" },
+  { href: "/collections/lord-street-restaurants-southport",   label: "Lord Street",     emoji: "🍽️" },
+  { href: "/collections/free-things-to-do-southport",         label: "Free to do",      emoji: "🎟️" },
+  { href: "/collections/sensory-friendly-southport",          label: "Sensory-friendly", emoji: "🧩" },
 ];
 
 const GUIDE_EMOJIS: Record<string, string> = {

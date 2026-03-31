@@ -1056,6 +1056,30 @@ export default function ThingsToDoPage() {
             </div>
           </section>
 
+          {/* ── Accessibility & Sensory ── */}
+          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-10">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+              <div className="text-4xl flex-none">🧩</div>
+              <div className="flex-1">
+                <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-1">Visiting with Autism or Sensory Sensitivities</p>
+                <h2 className="font-display text-xl md:text-2xl font-bold text-[#1B2E4B] mb-2">Planning a Sensory-Friendly Trip</h2>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Southport has calm open spaces, a quiet gallery, and beaches that are rarely crowded outside summer weekends. The honest guide covers which venues work, which events to avoid, and the practical details that actually matter.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 flex-none">
+                <Link href="/guides/autism-friendly-southport"
+                  className="bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#2A4A73] transition-colors whitespace-nowrap text-center">
+                  Autism Friendly Guide
+                </Link>
+                <Link href="/collections/sensory-friendly-southport"
+                  className="border border-[#1B2E4B]/20 text-[#1B2E4B] px-5 py-2.5 rounded-full text-sm font-semibold hover:border-[#C9A84C]/40 hover:text-[#C9A84C] transition-colors whitespace-nowrap text-center">
+                  Sensory-Friendly Places
+                </Link>
+              </div>
+            </div>
+          </section>
+
           {/* ── CTA ── */}
           <section className="bg-[#1B2E4B] rounded-2xl p-8 md:p-12 text-center text-white">
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Southport Business?</p>

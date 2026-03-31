@@ -834,7 +834,7 @@ export const GUIDES: Guide[] = [
       "Autism friendly Southport — a practical guide for autistic visitors and families. Quiet beaches, calm venues, which events to avoid, parking close to entrances, and the honest picture of what works and what does not.",
     category: "practical",
     heroImage: "/images/autism-logo.png",
-    seoPriority: 0.85,
+    seoPriority: 0.92,
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     tags: ["autism", "sensory-friendly", "accessibility", "family-friendly"],
