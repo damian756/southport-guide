@@ -1258,7 +1258,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Spring 2026 is unexpectedly packed. Cristal Palace on Lord Street in April. Big Top Festival in May. Sausage & Cider Festival. Easter. Here's how the season shapes up.",
     categorySlug: "events",
     image: "/images/blog/blog-southport-spring-april.webp",
-    date: "31 Mar 2026",
+    date: "26 Mar 2026",
     featured: true,
   },
 
@@ -1270,7 +1270,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A 15-metre flying chandelier. Lord Street as an open-air ballroom. Aerial performers, live music, thousands watching from the pavement. This is Cristal Palace by Transe Express — 3–4 April 2026.",
     categorySlug: "events",
     image: "/images/blog/blog-cristal-palace.webp",
-    date: "31 Mar 2026",
+    date: "26 Mar 2026",
     featured: true,
   },
   {
