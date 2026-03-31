@@ -27,7 +27,7 @@ export default function DashboardLoginClient() {
       if (!result || !result.ok || result.error) {
         setAuthError(
           result?.error === "Configuration"
-            ? "Server configuration error — please contact support."
+            ? "Server configuration error, please contact support."
             : "Incorrect email or password."
         );
         return;
@@ -153,7 +153,7 @@ export default function DashboardLoginClient() {
             <div className="mt-6 bg-[#FAF8F5] border border-gray-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-[#1B2E4B] text-sm mb-0.5">Not listed yet?</p>
-                <p className="text-gray-500 text-xs leading-relaxed">Claim your free listing in minutes — take control of your details, hours, and photos.</p>
+                <p className="text-gray-500 text-xs leading-relaxed">Claim your free listing in minutes, take control of your details, hours, and photos.</p>
               </div>
               <Link
                 href="/claim-listing"

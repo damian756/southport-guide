@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cristal Palace Southport 2026 | 3–4 April · Free Street Theatre",
     description:
-      "Cristal Palace 2026 — free aerial street theatre by Transe Express. 12-metre chandelier, 36 performers, Town Hall Gardens, Lord Street. 3–4 April, 7:30pm.",
+      "Cristal Palace 2026, free aerial street theatre by Transe Express. 12-metre chandelier, 36 performers, Town Hall Gardens, Lord Street. 3–4 April, 7:30pm.",
     url: `${BASE_URL}/guides/cristal-palace-southport-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -36,11 +36,11 @@ const FAQS = [
   },
   {
     q: "Is Cristal Palace free to attend?",
-    a: "Yes, Cristal Palace is completely free. No tickets are required. Turn up from 6pm to claim your spot. For the best view of the chandelier, arrive early — the gardens fill up quickly once the performance area is established.",
+    a: "Yes, Cristal Palace is completely free. No tickets are required. Turn up from 6pm to claim your spot. For the best view of the chandelier, arrive early, the gardens fill up quickly once the performance area is established.",
   },
   {
     q: "What is Cristal Palace?",
-    a: "Cristal Palace is a large-scale aerial street theatre production by French company Transe Express. The centrepiece is a 12-metre chandelier suspended above the audience, from which 36 performers — including 20 young dancers from Southport schools — perform a 90-minute spectacle of dance, music, and aerial work. It was created to celebrate 150 years of dance and music.",
+    a: "Cristal Palace is a large-scale aerial street theatre production by French company Transe Express. The centrepiece is a 12-metre chandelier suspended above the audience, from which 36 performers, including 20 young dancers from Southport schools, perform a 90-minute spectacle of dance, music, and aerial work. It was created to celebrate 150 years of dance and music.",
   },
   {
     q: "Where is the best place to stand for Cristal Palace?",
@@ -48,11 +48,11 @@ const FAQS = [
   },
   {
     q: "Where can I park for Cristal Palace Southport?",
-    a: "Lord Street car parks — Tulketh Street (PR8 1EW) and the nearby multi-storey are the closest. Do not attempt Marine Drive; it is not convenient for Lord Street events. There are also paid car parks off Eastbank Street and Chapel Street, both within 10 minutes' walk of Town Hall Gardens.",
+    a: "Lord Street car parks. Tulketh Street (PR8 1EW) and the nearby multi-storey are the closest. Do not attempt Marine Drive; it is not convenient for Lord Street events. There are also paid car parks off Eastbank Street and Chapel Street, both within 10 minutes' walk of Town Hall Gardens.",
   },
   {
     q: "Is Cristal Palace accessible for disabled visitors?",
-    a: "Town Hall Gardens is on flat ground and should be accessible for wheelchair users. The event is outdoors. There are no dedicated accessible viewing platforms confirmed at this stage — contact Sefton Council's events team if you need specific accessibility information.",
+    a: "Town Hall Gardens is on flat ground and should be accessible for wheelchair users. The event is outdoors. There are no dedicated accessible viewing platforms confirmed at this stage, contact Sefton Council's events team if you need specific accessibility information.",
   },
 ];
 
@@ -108,18 +108,20 @@ export default function CristalPalacePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
       {/* ── Hero ── */}
-      <div className="relative min-h-[75vh] flex items-end bg-[#1A1040] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/guides/cristal-palace-southport-2026.jpg"
-            alt="Cristal Palace Southport 2026 — free aerial street theatre by Transe Express on Lord Street"
-            fill sizes="100vw" quality={90} className="object-cover"
-            style={{ objectPosition: "center 40%" }} priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1040] via-[#1A1040]/50 to-[#1A1040]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#1A1040] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image
+              src="/images/guides/cristal-palace-southport-2026.jpg"
+              alt="Cristal Palace Southport 2026 — free aerial street theatre by Transe Express on Lord Street"
+              fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain"
+              priority
+            />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
                 3–4 April 2026
@@ -179,7 +181,7 @@ export default function CristalPalacePage() {
               <p>
                 I&apos;ve lived in Southport my whole life and I genuinely cannot remember the last time an event made me
                 stop and think &quot;this is something special.&quot; Transe Express are serious. They&apos;ve performed at major
-                festivals across Europe. The chandelier — 12 metres across, suspended above the crowd — is not a
+                festivals across Europe. The chandelier. 12 metres across, suspended above the crowd, is not a
                 gimmick. It is the show.
               </p>
               <p>
@@ -212,7 +214,7 @@ export default function CristalPalacePage() {
               {
                 emoji: "🎭",
                 title: "Transe Express",
-                detail: "French street theatre company Transe Express have been making large-scale outdoor productions since the 1980s. This show — combining aerial work, dance, and live music — was created to celebrate 150 years of dance and music.",
+                detail: "French street theatre company Transe Express have been making large-scale outdoor productions since the 1980s. This show, combining aerial work, dance, and live music, was created to celebrate 150 years of dance and music.",
               },
               {
                 emoji: "💃",
@@ -222,7 +224,7 @@ export default function CristalPalacePage() {
               {
                 emoji: "🎵",
                 title: "Live Music",
-                detail: "The production features live music throughout. Not background music, but integrated performance — it is part of the show structure. The combination of aerial work, dance, and live music is what makes Transe Express productions distinctive.",
+                detail: "The production features live music throughout. Not background music, but integrated performance, it is part of the show structure. The combination of aerial work, dance, and live music is what makes Transe Express productions distinctive.",
               },
               {
                 emoji: "🌟",
@@ -232,7 +234,7 @@ export default function CristalPalacePage() {
               {
                 emoji: "🗺️",
                 title: "Lord Street Setting",
-                detail: "Town Hall Gardens are on the main boulevard of Lord Street, right in the heart of Southport. The road closes from 4pm on both performance nights. The setting — Victorian buildings, the boulevard, the gardens — is genuinely good for this kind of event.",
+                detail: "Town Hall Gardens are on the main boulevard of Lord Street, right in the heart of Southport. The road closes from 4pm on both performance nights. The setting. Victorian buildings, the boulevard, the gardens, is genuinely good for this kind of event.",
               },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -256,13 +258,13 @@ export default function CristalPalacePage() {
               Lord Street is closed to traffic from 4pm on Thursday 3 April and Friday 4 April.
               If you are driving, do not attempt to park on Lord Street or approach from the town centre end
               after 4pm. Use Tulketh Street car park (PR8 1EW) or Eastbank Street car parks and walk in.
-              The road closures are part of the event setup — plan your arrival accordingly.
+              The road closures are part of the event setup, plan your arrival accordingly.
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { time: "4:00pm", label: "Lord Street closes to traffic", colour: "bg-red-50 border-red-100" },
-              { time: "6:00pm", label: "Doors open — gardens accessible", colour: "bg-green-50 border-green-100" },
+              { time: "6:00pm", label: "Doors open, gardens accessible", colour: "bg-green-50 border-green-100" },
               { time: "7:30pm", label: "Performance begins", colour: "bg-blue-50 border-blue-100" },
             ].map((t) => (
               <div key={t.time} className={`${t.colour} border rounded-xl p-5 text-center`}>
@@ -285,11 +287,11 @@ export default function CristalPalacePage() {
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-4">Parking for Cristal Palace</h3>
               <div className="space-y-2">
                 {[
-                  "Tulketh Street car park, PR8 1EW — 5 min walk, multi-storey, most convenient",
-                  "Eastbank Street car park, PR8 1DQ — 8 min walk to Town Hall Gardens",
-                  "Chapel Street car park — 10 min walk, paid, usually has space",
-                  "Do NOT use Marine Drive — too far from Lord Street for this event",
-                  "Road closures begin 4pm — park before then or approach from side streets",
+                  "Tulketh Street car park, PR8 1EW. 5 min walk, multi-storey, most convenient",
+                  "Eastbank Street car park, PR8 1DQ. 8 min walk to Town Hall Gardens",
+                  "Chapel Street car park. 10 min walk, paid, usually has space",
+                  "Do NOT use Marine Drive, too far from Lord Street for this event",
+                  "Road closures begin 4pm, park before then or approach from side streets",
                 ].map((line) => (
                   <div key={line} className="flex gap-2 text-sm text-gray-600">
                     <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -303,11 +305,11 @@ export default function CristalPalacePage() {
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-4">Where to Eat on Lord Street Beforehand</h3>
               <div className="space-y-2">
                 {[
-                  "The Bold Hotel restaurant — smart pre-theatre menu, book ahead",
-                  "La Lanterna, Lord Street — Italian, reliable, books up on event nights",
-                  "Bettys Bar & Restaurant — casual, good value, no booking needed usually",
-                  "Southport Market, Market Street — street food, no booking, 10 min walk",
-                  "Most Lord Street restaurants are full on event nights — book in advance",
+                  "The Bold Hotel restaurant, smart pre-theatre menu, book ahead",
+                  "La Lanterna, Lord Street. Italian, reliable, books up on event nights",
+                  "Bettys Bar & Restaurant, casual, good value, no booking needed usually",
+                  "Southport Market, Market Street, street food, no booking, 10 min walk",
+                  "Most Lord Street restaurants are full on event nights, book in advance",
                 ].map((line) => (
                   <div key={line} className="flex gap-2 text-sm text-gray-600">
                     <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -323,7 +325,7 @@ export default function CristalPalacePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Cristal Palace Southport — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Cristal Palace Southport. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -362,9 +364,9 @@ export default function CristalPalacePage() {
             <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">More Southport Events in April 2026</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { name: "Easter in Southport 2026", month: "1–6 April 2026", desc: "All the Easter events — egg hunts, craft workshops, panto, and more.", href: "/guides/easter-in-southport-2026" },
+                { name: "Easter in Southport 2026", month: "1–6 April 2026", desc: "All the Easter events, egg hunts, craft workshops, panto, and more.", href: "/guides/easter-in-southport-2026" },
                 { name: "Sausage & Cider Festival", month: "18 April 2026", desc: "Bavarian food festival at Victoria Park. Bratwurst, ciders, oompah bands.", href: "/guides/southport-sausage-cider-festival" },
-                { name: "Southport 2026: Elegantly Eccentric", month: "Year-round", desc: "The full cultural programme — Cristal Palace, Big Top, Summer Solstice, Books Alive!", href: "/guides/southport-year-of-culture-2026" },
+                { name: "Southport 2026: Elegantly Eccentric", month: "Year-round", desc: "The full cultural programme. Cristal Palace, Big Top, Summer Solstice, Books Alive!", href: "/guides/southport-year-of-culture-2026" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">{item.month}</p>

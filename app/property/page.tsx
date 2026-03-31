@@ -7,14 +7,14 @@ import { TrendingUp, Shield, Train, School, Waves, Wifi, ChevronRight, ArrowRigh
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "House Prices in Southport — PR8 & PR9 Honest Data | SouthportGuide",
+  title: "House Prices in Southport. PR8 & PR9 Honest Data | SouthportGuide",
   description:
-    "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport. PR8 and PR9 — from Birkdale to Churchtown. Land Registry data, updated regularly.",
+    "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport. PR8 and PR9, from Birkdale to Churchtown. Land Registry data, updated regularly.",
   alternates: { canonical: `${BASE_URL}/property` },
   openGraph: {
-    title: "House Prices in Southport — Honest Data, Local Knowledge",
+    title: "House Prices in Southport. Honest Data, Local Knowledge",
     description:
-      "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport — PR8 and PR9.",
+      "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport. PR8 and PR9.",
     url: `${BASE_URL}/property`,
     siteName: "SouthportGuide.co.uk",
     images: [{ url: `${BASE_URL}/og-property.webp`, width: 1200, height: 630 }],
@@ -56,11 +56,11 @@ const FAQS = [
   },
   {
     q: "Is Southport a good place to buy a house?",
-    a: "Southport has several things going for it as a place to buy. The Merseyrail line to Liverpool Central (approximately 45 minutes) makes it practical for commuters. The beach, the National Trust coastline at Ainsdale, the independent village feel of Churchtown and Birkdale, and the Botanic Gardens all provide genuine quality of life. The town's investment pipeline — The Open Championship returning to Royal Birkdale in July 2026, and the Marine Lake Events Centre (MLEC) opening in 2027 — points toward improving footfall and visitor economy. Property prices remain significantly more affordable than Liverpool's suburbs of comparable quality.",
+    a: "Southport has several things going for it as a place to buy. The Merseyrail line to Liverpool Central (approximately 45 minutes) makes it practical for commuters. The beach, the National Trust coastline at Ainsdale, the independent village feel of Churchtown and Birkdale, and the Botanic Gardens all provide genuine quality of life. The town's investment pipeline (The Open Championship returning to Royal Birkdale in July 2026, and the Marine Lake Events Centre opening in 2027) points toward improving footfall and visitor economy. Property prices remain significantly more affordable than Liverpool's suburbs of comparable quality.",
   },
   {
     q: "Which is the most expensive area in Southport?",
-    a: "PR8 4 — Birkdale — is consistently the highest-priced postcode sector in Southport. Wide roads, large Edwardian detached and semi-detached houses, proximity to Royal Birkdale Golf Club, and a strong local identity all contribute. PR9 9 (Churchtown) and PR8 3 (Ainsdale) are typically the next tier. PR8 1 (town centre) and PR9 7 (High Park) are at the affordable end.",
+    a: "PR8 4 (Birkdale) is consistently the highest-priced postcode sector in Southport. Wide roads, large Edwardian detached and semi-detached houses, proximity to Royal Birkdale Golf Club, and a strong local identity all contribute. PR9 9 (Churchtown) and PR8 3 (Ainsdale) are typically the next tier. PR8 1 (town centre) and PR9 7 (High Park) are at the affordable end.",
   },
   {
     q: "What is the most affordable area to buy in Southport?",
@@ -76,7 +76,7 @@ const FAQS = [
   },
   {
     q: "What is the flood risk in Southport?",
-    a: "Flood risk varies by postcode across PR8 and PR9. Coastal and low-lying areas carry higher flood zone classifications — each unit postcode page on this guide shows the Environment Agency flood zone designation. Buyers should check flood zone data carefully for any specific postcode, particularly along the coastal strip and near the Marine Lake. Banks and Crossens (PR9 8) includes some higher-risk agricultural land.",
+    a: "Flood risk varies by postcode across PR8 and PR9. Coastal and low-lying areas carry higher flood zone classifications. Each unit postcode page on this guide shows the Environment Agency flood zone designation. Buyers should check flood zone data carefully for any specific postcode, particularly along the coastal strip and near the Marine Lake. Banks and Crossens (PR9 8) includes some higher-risk agricultural land.",
   },
   {
     q: "What is Southport like for commuting to Liverpool?",
@@ -97,7 +97,7 @@ const FAQ_LD = {
 const DATASET_LD = {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  name: "Southport House Prices by Postcode — PR8 & PR9",
+  name: "Southport House Prices by Postcode. PR8 & PR9",
   description:
     "Land Registry Price Paid Data for Southport postcodes PR8 and PR9, enriched with Ofsted school ratings, police.uk crime data, Environment Agency flood zones, EPC energy ratings, and Ofcom broadband speeds.",
   url: `${BASE_URL}/property`,
@@ -180,7 +180,7 @@ export default async function PropertyLandingPage() {
               House Prices in Southport
             </h1>
             <p className="text-white/70 text-base leading-relaxed max-w-2xl mb-8">
-              Every Land Registry sale across PR8 and PR9 over three years — broken down by postcode sector with school Ofsted ratings, crime comparisons, flood zones, broadband speeds, and Merseyrail commute times. The things Rightmove doesn&apos;t show you.
+              Every Land Registry sale across PR8 and PR9 over three years, broken down by postcode sector with school Ofsted ratings, crime comparisons, flood zones, broadband speeds, and Merseyrail commute times. The things Rightmove doesn&apos;t show you.
             </p>
 
             {/* Stats pills */}
@@ -228,13 +228,13 @@ export default async function PropertyLandingPage() {
                 What I notice now is that there are two very different conversations happening depending on which end of town you&apos;re looking at.
               </p>
               <p>
-                At the Birkdale end (PR8 4), you&apos;re talking about some of the most desirable residential streets in Merseyside — wide roads, large Edwardian houses, Royal Birkdale Golf Club around the corner. Prices reflect that. At the High Park end (PR9 7) or Blowick (PR8 6), you&apos;re in solid, affordable terraced housing with good access to the town centre and the Merseyrail line. Both are legitimate choices; they&apos;re just completely different places.
+                At the Birkdale end (PR8 4), you&apos;re talking about some of the most desirable residential streets in Merseyside. Wide roads, large Edwardian houses, Royal Birkdale Golf Club around the corner. Prices reflect that. At the High Park end (PR9 7) or Blowick (PR8 6), you&apos;re in solid, affordable terraced housing with good access to the town centre and the Merseyrail line. Both are legitimate choices. They&apos;re just completely different places.
               </p>
               <p>
-                What I find missing from the national property portals is the context. Knowing a house sold for £220,000 doesn&apos;t tell you whether the nearest primary school is Outstanding or Requires Improvement, whether the street floods, or how long it takes to get to Liverpool Central on a Tuesday morning. That&apos;s what we&apos;ve tried to build here — one place with all of it.
+                What I find missing from the national property portals is the context. Knowing a house sold for £220,000 doesn&apos;t tell you whether the nearest primary school is Outstanding or Requires Improvement, whether the street floods, or how long it takes to get to Liverpool Central on a Tuesday morning. That&apos;s what we&apos;ve tried to build here: one place with all of it.
               </p>
               <p>
-                The timing matters too. The Open Championship returns to Royal Birkdale in July 2026 and the Marine Lake Events Centre opens in 2027 — both will change the volume of visitors to Southport. Whether that flows through to property prices is speculative, but the logic is there: more footfall, more hospitality spend, more infrastructure. Worth factoring in if you&apos;re thinking long-term.
+                The timing matters too. The Open Championship returns to Royal Birkdale in July 2026 and the Marine Lake Events Centre opens in 2027. Both will change the volume of visitors to Southport. Whether that flows through to property prices is speculative, but the logic is there: more footfall, more hospitality spend, more infrastructure. Worth factoring in if you&apos;re thinking long-term.
               </p>
             </div>
           </section>
@@ -288,7 +288,7 @@ export default async function PropertyLandingPage() {
               <p className="text-gray-500 text-sm mb-6">Three-year average, all property types.</p>
               <div className="grid sm:grid-cols-3 gap-4 mb-6">
                 <div className="rounded-xl bg-amber-50 border border-amber-200 p-5 text-center">
-                  <p className="text-xs font-bold uppercase tracking-widest text-amber-700 mb-1">Highest avg — {highestSector.sector}</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-amber-700 mb-1">Highest avg: {highestSector.sector}</p>
                   <p className="font-display text-3xl font-bold text-[#1B2E4B]">{fmtK(highestSector.avgPrice3yr ?? 0)}</p>
                   <p className="text-xs text-gray-500 mt-1">{getAreaLabelForSector(highestSector.sector)}</p>
                 </div>
@@ -300,13 +300,13 @@ export default async function PropertyLandingPage() {
                   </div>
                 )}
                 <div className="rounded-xl bg-teal-50 border border-teal-200 p-5 text-center">
-                  <p className="text-xs font-bold uppercase tracking-widest text-teal-700 mb-1">Most affordable — {lowestSector.sector}</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-teal-700 mb-1">Most affordable: {lowestSector.sector}</p>
                   <p className="font-display text-3xl font-bold text-[#1B2E4B]">{fmtK(lowestSector.avgPrice3yr ?? 0)}</p>
                   <p className="text-xs text-gray-500 mt-1">{getAreaLabelForSector(lowestSector.sector)}</p>
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">
-                The spread between the highest and lowest average sectors in Southport reflects genuine neighbourhood differences, not just housing stock. Birkdale (PR8 4) has larger properties and a different buyer profile to High Park (PR9 7) — they happen to share the same postcode district but are distinct places with distinct markets. Each sector page unpacks what drives the numbers.
+                The spread between the highest and lowest average sectors in Southport reflects genuine neighbourhood differences, not just housing stock. Birkdale (PR8 4) has larger properties and a different buyer profile to High Park (PR9 7). They happen to share the same postcode district but are distinct places with distinct markets. Each sector page unpacks what drives the numbers.
               </p>
             </section>
           )}
@@ -320,7 +320,7 @@ export default async function PropertyLandingPage() {
                 {
                   icon: <TrendingUp className="w-5 h-5 text-[#C9A84C]" />,
                   title: "Real sold prices",
-                  desc: "Land Registry Price Paid Data — what actually changed hands, not asking prices. 3-year averages, medians, and monthly trend charts.",
+                  desc: "Land Registry Price Paid Data: what actually changed hands, not asking prices. 3-year averages, medians, and monthly trend charts.",
                 },
                 {
                   icon: <School className="w-5 h-5 text-[#C9A84C]" />,
@@ -330,12 +330,12 @@ export default async function PropertyLandingPage() {
                 {
                   icon: <Shield className="w-5 h-5 text-[#C9A84C]" />,
                   title: "Crime by category",
-                  desc: "12 months of police.uk data broken down by category — with a comparison to the Southport average so you can see whether a sector is above or below typical.",
+                  desc: "12 months of police.uk data broken down by category, with a comparison to the Southport average so you can see whether a sector is above or below typical.",
                 },
                 {
                   icon: <Waves className="w-5 h-5 text-[#C9A84C]" />,
                   title: "Flood zone classification",
-                  desc: "Environment Agency flood risk zone for every postcode in the sector — Zones 1, 2, and 3. Relevant for the coastal and low-lying parts of Southport.",
+                  desc: "Environment Agency flood risk zone for every postcode in the sector. Zones 1, 2, and 3. Relevant for the coastal and low-lying parts of Southport.",
                 },
                 {
                   icon: <Wifi className="w-5 h-5 text-[#C9A84C]" />,
@@ -345,7 +345,7 @@ export default async function PropertyLandingPage() {
                 {
                   icon: <Train className="w-5 h-5 text-[#C9A84C]" />,
                   title: "Merseyrail commute times",
-                  desc: "Nearest Merseyrail station, walking distance, and typical journey time to Southport town centre and Liverpool Central — for every sector.",
+                  desc: "Nearest Merseyrail station, walking distance, and typical journey time to Southport town centre and Liverpool Central, for every sector.",
                 },
               ].map(({ icon, title, desc }) => (
                 <div key={title} className="bg-white/10 rounded-xl p-5">
@@ -361,7 +361,7 @@ export default async function PropertyLandingPage() {
           <section className="grid sm:grid-cols-2 gap-4">
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
               <div className="text-2xl mb-3">⛳</div>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">The Open 2026 — Royal Birkdale</h3>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">The Open 2026: Royal Birkdale</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-4">
                 Golf&apos;s oldest major returns to Royal Birkdale in July 2026. The championship brings 200,000+ visitors over the week and puts Birkdale (PR8 4) and the surrounding sectors in the global spotlight. Accommodation is already scarce.
               </p>
@@ -371,9 +371,9 @@ export default async function PropertyLandingPage() {
             </div>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
               <div className="text-2xl mb-3">🏗️</div>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">MLEC — Opening 2027</h3>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">MLEC: Opening 2027</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                The Marine Lake Events Centre — a 4,000-capacity arena on the seafront — opens in 2027 with projections of 515,000 additional visitors annually. Relevant context for anyone looking at PR9 0 (Town Centre & Promenade) or PR8 1 sectors.
+                The Marine Lake Events Centre, a 4,000-capacity arena on the seafront, opens in 2027 with projections of 515,000 additional visitors annually. Relevant context for anyone looking at PR9 0 (Town Centre & Promenade) or PR8 1 sectors.
               </p>
               <Link href="/mlec" className="text-[#C9A84C] text-sm font-semibold hover:text-[#1B2E4B] transition-colors flex items-center gap-1">
                 MLEC guide <ArrowRight className="w-3.5 h-3.5" />
@@ -384,7 +384,7 @@ export default async function PropertyLandingPage() {
           {/* ── FAQs ── */}
           <section>
             <div className="mb-6">
-              <h2 className="font-display text-2xl font-bold text-[#1B2E4B]">Southport Property — Common Questions</h2>
+              <h2 className="font-display text-2xl font-bold text-[#1B2E4B]">Southport Property: Common Questions</h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {FAQS.map(({ q, a }) => (
@@ -403,7 +403,7 @@ export default async function PropertyLandingPage() {
           <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
             <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-5">Data Sources &amp; Methodology</h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-5">
-              All data on this guide comes from open government and public sources. We do not adjust, estimate, or editorially modify the underlying figures — they are published as received, with context added where useful. Crime counts are updated monthly via the police.uk API. Land Registry data is updated as new Price Paid records are released (typically 2–3 months after completion). School data reflects the most recent Ofsted inspection at the time of the last data refresh.
+              All data on this guide comes from open government and public sources. We do not adjust, estimate, or editorially modify the underlying figures. They are published as received, with context added where useful. Crime counts are updated monthly via the police.uk API. Land Registry data is updated as new Price Paid records are released (typically 2–3 months after completion). School data reflects the most recent Ofsted inspection at the time of the last data refresh.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               {[

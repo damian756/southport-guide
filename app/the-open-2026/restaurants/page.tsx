@@ -8,7 +8,7 @@ import OpenListingCard from "@/components/OpenListingCard";
 export const metadata: Metadata = {
   title: "Restaurants Near Royal Birkdale | The Open 2026",
   description:
-    "The best restaurants and dining in Southport and Birkdale for The Open Championship 2026. Book ahead — venues near Royal Birkdale fill up weeks in advance during Open week.",
+    "The best restaurants and dining in Southport and Birkdale for The Open Championship 2026. Book ahead, venues near Royal Birkdale fill up weeks in advance during Open week.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/restaurants" },
   openGraph: {
     type: "website",
@@ -54,12 +54,12 @@ const faqLd = {
 const AREA_DINING = [
   {
     area: "Birkdale Village",
-    desc: "The closest dining to the course and the most in-demand during Open week. A handful of excellent independent restaurants and traditional pubs sit within a five-minute walk of Royal Birkdale. Book tables weeks in advance — regulars and hotel guests fill them first.",
-    tips: ["Book at least 6–8 weeks in advance for evening slots", "Lunch reservations on championship days are also popular — don't assume walk-ins work", "The village pubs are atmospheric for post-round drinks"],
+    desc: "The closest dining to the course and the most in-demand during Open week. A handful of excellent independent restaurants and traditional pubs sit within a five-minute walk of Royal Birkdale. Book tables weeks in advance. Regulars and hotel guests fill them first.",
+    tips: ["Book at least 6–8 weeks in advance for evening slots", "Lunch reservations on championship days are also popular. Don't assume walk-ins work.", "The village pubs are atmospheric for post-round drinks"],
   },
   {
     area: "Lord Street, Southport",
-    desc: "Southport's main boulevard has the widest range of restaurants and bars in the area — Italian, modern British, casual dining, and independent cafes all line the Victorian canopy. A short taxi or shuttle from the course, and the better choice for evening entertainment if you want variety.",
+    desc: "Southport's main boulevard has the widest range of restaurants and bars in the area: Italian, modern British, casual dining, and independent cafes all line the Victorian canopy. A short taxi or shuttle from the course, and the better choice for evening entertainment if you want variety.",
     tips: ["More availability than Birkdale, but book for evening sittings during Open week", "Coopers Bar has live music every evening", "Wayfarers Arcade has good café options for lunch before play"],
   },
   {
@@ -70,12 +70,12 @@ const AREA_DINING = [
 ];
 
 const OPEN_DINING_TIPS = [
-  "Book restaurants now — even venues that don't usually fill up will be full during Open week",
+  "Book restaurants now. Even venues that don't usually fill up will be full during Open week.",
   "If you can't get an evening reservation, lunch bookings are easier to secure",
-  "On-course hospitality is available for premium ticket packages — check theopen.com",
-  "Food within the course grounds is available but expensive — eat a proper meal at your accommodation before arriving",
-  "Evening meals in Birkdale village are the most atmospheric — worth the effort of an early booking",
-  "Some Southport restaurants add an Open week supplement — check when booking",
+  "On-course hospitality is available for premium ticket packages, check theopen.com",
+  "Food within the course grounds is available but expensive. Eat a proper meal at your accommodation before arriving.",
+  "Evening meals in Birkdale village are the most atmospheric. Worth the effort of an early booking.",
+  "Some Southport restaurants add an Open week supplement. Check when booking.",
 ];
 
 type ListingItem = {
@@ -153,7 +153,7 @@ export default async function OpenRestaurantsPage() {
             <ArrowLeft className="w-4 h-4" /> The Open 2026
           </Link>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-white">Where to Eat During The Open 2026</h1>
-          <p className="text-white/60 mt-2">Restaurants and pubs in Southport and Birkdale — July 12–19</p>
+          <p className="text-white/60 mt-2">Restaurants and pubs in Southport and Birkdale, July 12–19</p>
         </div>
       </section>
 
@@ -163,10 +163,10 @@ export default async function OpenRestaurantsPage() {
         <div className="bg-white rounded-2xl border border-gray-100 p-7">
           <div className="flex items-start gap-3 mb-4">
             <Clock className="w-5 h-5 text-amber-500 flex-none mt-0.5" />
-            <p className="font-bold text-amber-700 text-sm">Book restaurants now — Open week is not a normal week in Southport</p>
+            <p className="font-bold text-amber-700 text-sm">Book restaurants now. Open week is not a normal week in Southport.</p>
           </div>
           <p className="text-gray-600 leading-relaxed mb-4">
-            250,000 spectators. One week. A town whose restaurants could not normally accommodate half that number if they all arrived on the same evening. Southport&apos;s dining scene is genuinely good — but during Open week, it is under extraordinary pressure. The venues that locals love, that visitors rave about, that have reasonable prices and proper food, will be fully booked weeks before the first round.
+            250,000 spectators. One week. A town whose restaurants could not normally accommodate half that number if they all arrived on the same evening. Southport&apos;s dining scene is genuinely good, but during Open week, it is under extraordinary pressure. The venues that locals love, that visitors rave about, that have reasonable prices and proper food, will be fully booked weeks before the first round.
           </p>
           <p className="text-gray-600 leading-relaxed">
             Book now. For dinner particularly. Lunch is more forgiving, especially if you&apos;re flexible on timing. But dinner from Thursday to Sunday, within two miles of Royal Birkdale, is essentially a sold market.
@@ -175,7 +175,7 @@ export default async function OpenRestaurantsPage() {
 
         {/* Area dining guide */}
         <div>
-          <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">Where to Eat — Area Guide</h2>
+          <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">Where to Eat: Area Guide</h2>
           <div className="space-y-5">
             {AREA_DINING.map(({ area, desc, tips }) => (
               <div key={area} className="bg-white rounded-2xl border border-gray-100 p-6">
@@ -273,7 +273,7 @@ export default async function OpenRestaurantsPage() {
         <div className="bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4">
           <div className="flex-1">
             <p className="font-bold text-[#1B2E4B] text-sm">From the blog</p>
-            <p className="text-gray-600 text-sm mt-1">Read Terry&apos;s honest guide to the best restaurants in Southport for 2026 — written by someone who&apos;s eaten in most of them.</p>
+            <p className="text-gray-600 text-sm mt-1">Read Terry&apos;s honest guide to the best restaurants in Southport for 2026. Written by someone who&apos;s eaten in most of them.</p>
           </div>
           <Link href="/blog/best-restaurants-southport-2026" className="flex-none bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-[#2A4A73] transition-colors whitespace-nowrap">
             Read the guide →

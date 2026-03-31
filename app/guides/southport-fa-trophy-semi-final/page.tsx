@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "Southport FC FA Trophy semi-final, Haig Avenue parking, pubs near Haig Avenue, visiting Southport FC, Southend United away guide, FA Trophy 2026",
   alternates: { canonical: `${BASE_URL}/guides/southport-fa-trophy-semi-final` },
   openGraph: {
-    title: "Southport FC v Southend — FA Trophy Semi-Final Matchday Guide",
+    title: "Southport FC v Southend. FA Trophy Semi-Final Matchday Guide",
     description: "Parking, pubs, getting to Haig Avenue, and what Southport has to offer. The complete visitor guide for 28 March 2026.",
     url: `${BASE_URL}/guides/southport-fa-trophy-semi-final`,
     type: "website",
@@ -39,42 +39,42 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "What is the postcode for Haig Avenue?",
-    a: "The postcode for Haig Avenue Stadium is PR8 6JZ. Put this in your satnav and it will take you directly to the ground. Note there is no car park at the stadium — you'll be looking for street parking on Haig Avenue and surrounding roads.",
+    a: "The postcode for Haig Avenue Stadium is PR8 6JZ. Put this in your satnav and it will take you directly to the ground. Note there is no car park at the stadium, you'll be looking for street parking on Haig Avenue and surrounding roads.",
   },
   {
     q: "Which train station is nearest to Haig Avenue?",
-    a: "Meols Cop is the closest station — about a 10-minute walk to the ground. Come out of the station, turn left onto Norwood Road, walk down to the Thatch and Thistle pub at the bottom, and Haig Avenue is directly opposite. Southport station (town centre) is also an option but it's a 20-minute walk or a short bus ride on the number 44 from Eastbank Street.",
+    a: "Meols Cop is the closest station, about a 10-minute walk to the ground. Come out of the station, turn left onto Norwood Road, walk down to the Thatch and Thistle pub at the bottom, and Haig Avenue is directly opposite. Southport station (town centre) is also an option but it's a 20-minute walk or a short bus ride on the number 44 from Eastbank Street.",
   },
   {
     q: "Is there parking at Haig Avenue?",
-    a: "The club operates matchday parking at Meols Cop school — check southportfc.net for details. Note that for this match, Haig Avenue itself will be closed to traffic from 12:30pm, making street parking near the ground near-impossible after that time. Arrive early, use Meols Cop school parking, or park in Southport town centre and take the number 44 bus or walk the mile and a half to the ground.",
+    a: "The club operates matchday parking at Meols Cop school, check southportfc.net for details. Note that for this match, Haig Avenue itself will be closed to traffic from 12:30pm, making street parking near the ground near-impossible after that time. Arrive early, use Meols Cop school parking, or park in Southport town centre and take the number 44 bus or walk the mile and a half to the ground.",
   },
   {
     q: "Which pubs near Haig Avenue allow away fans?",
-    a: "The Thatch and Thistle at the junction of Norwood Road and Haig Avenue is the most convenient option near the ground — it has Sky Sports and food. The Richmond on Scarisbrick New Road is a short walk away and tends to be slightly more relaxed. Both are fine for away fans. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission or away supporters.",
+    a: "The Thatch and Thistle at the junction of Norwood Road and Haig Avenue is the most convenient option near the ground, it has Sky Sports and food. The Richmond on Scarisbrick New Road is a short walk away and tends to be slightly more relaxed. Both are fine for away fans. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission or away supporters.",
   },
   {
     q: "What is the away end like at Haig Avenue?",
-    a: "Away supporters are in the Blowick End — an open terrace at the south end of the ground. It is uncovered. The Irish Sea wind is a real factor at Haig Avenue, particularly on the exposed terrace. Dress accordingly: waterproof, layers, and do not underestimate how cold a March afternoon on an open terrace can be. The views of the pitch are fine.",
+    a: "Away supporters are in the Blowick End, an open terrace at the south end of the ground. It is uncovered. The Irish Sea wind is a real factor at Haig Avenue, particularly on the exposed terrace. Dress accordingly: waterproof, layers, and do not underestimate how cold a March afternoon on an open terrace can be. The views of the pitch are fine.",
   },
   {
     q: "How much are tickets for the FA Trophy semi-final?",
-    a: "Check the official Southport FC website at southportfc.net for confirmed ticket prices and availability for the semi-final. General admission standing at Haig Avenue is typically around £13–£15 for adults. This is a big occasion — confirm ticket availability before travelling.",
+    a: "Check the official Southport FC website at southportfc.net for confirmed ticket prices and availability for the semi-final. General admission standing at Haig Avenue is typically around £13–£15 for adults. This is a big occasion, confirm ticket availability before travelling.",
   },
   {
     q: "How do I get from Liverpool to Haig Avenue?",
-    a: "From Liverpool, the simplest route is Liverpool Central to Southport on the Merseyrail Northern line (approximately 50 minutes, runs regularly). From Southport station walk to Eastbank Street and take the number 44 bus to Haig Avenue, or walk the 20 minutes. Alternatively, come off at Meols Cop station if that service runs on matchday — confirm timetables with Merseyrail.",
+    a: "From Liverpool, the simplest route is Liverpool Central to Southport on the Merseyrail Northern line (approximately 50 minutes, runs regularly). From Southport station walk to Eastbank Street and take the number 44 bus to Haig Avenue, or walk the 20 minutes. Alternatively, come off at Meols Cop station if that service runs on matchday, confirm timetables with Merseyrail.",
   },
   {
     q: "What if Southport win and go to Wembley?",
-    a: "If Southport beat Southend United and reach the FA Trophy Final at Wembley, we will publish a full Wembley guide immediately — travel from Southport, where to stay in London, and everything you need to know. It would be the first time Southport have reached a Trophy Final since 1998.",
+    a: "If Southport beat Southend United and reach the FA Trophy Final at Wembley, we will publish a full Wembley guide immediately, travel from Southport, where to stay in London, and everything you need to know. It would be the first time Southport have reached a Trophy Final since 1998.",
   },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "SportsEvent",
-  name: "Southport FC v Southend United — FA Trophy Semi-Final",
+  name: "Southport FC v Southend United. FA Trophy Semi-Final",
   description: "FA Trophy 2025/26 semi-final at Haig Avenue, Southport. First FA Trophy semi-final for the club in 28 years.",
   url: `${BASE_URL}/guides/southport-fa-trophy-semi-final`,
     type: "website",
@@ -149,11 +149,11 @@ export default function FATrophySemiFinalGuidePage() {
             <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-5">
               Southport FC
               <span className="block text-[#C9A84C]">v Southend United</span>
-              <span className="block text-2xl md:text-3xl text-white/70 font-semibold mt-2">FA Trophy Semi-Final — Haig Avenue</span>
+              <span className="block text-2xl md:text-3xl text-white/70 font-semibold mt-2">FA Trophy Semi-Final. Haig Avenue</span>
             </h1>
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
               The biggest home game at Haig Avenue in 28 years. Away fans, day trippers, and first-time visitors
-              to Southport — here is everything you need before you travel.
+              to Southport, here is everything you need before you travel.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -162,7 +162,7 @@ export default function FATrophySemiFinalGuidePage() {
                 rel="noopener noreferrer"
                 className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
               >
-                Tickets — southportfc.net →
+                Tickets, southportfc.net →
               </a>
               <a href="#getting-there" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
                 Getting There
@@ -228,7 +228,7 @@ export default function FATrophySemiFinalGuidePage() {
               </p>
               <p>
                 If you are coming from Southend, or you are visiting Southport for the first time and fancying the
-                match: welcome. This is genuinely a good place to spend a day. There is more here than the football —
+                match: welcome. This is genuinely a good place to spend a day. There is more here than the football,
                 Lord Street, the seafront, Southport Market, decent pubs and restaurants. If the weather holds on
                 a March Saturday and you arrive a couple of hours early, you can make a proper day of it.
               </p>
@@ -238,7 +238,7 @@ export default function FATrophySemiFinalGuidePage() {
                 busy before kick-off. Come by train if you can. It is much less stressful.
               </p>
               <p>
-                And if Southport win — the town will be going to Wembley for the first time in a generation. Book
+                And if Southport win, the town will be going to Wembley for the first time in a generation. Book
                 a room now just in case.
               </p>
             </div>
@@ -256,17 +256,17 @@ export default function FATrophySemiFinalGuidePage() {
               {
                 emoji: "🏆",
                 title: "First Semi in 28 Years",
-                detail: "Southport FC have not reached an FA Trophy semi-final since 1998. The 1998 run ended in a final at Wembley — the club lost to Cheltenham Town. This is the first time since then they have come within one result of returning.",
+                detail: "Southport FC have not reached an FA Trophy semi-final since 1998. The 1998 run ended in a final at Wembley, the club lost to Cheltenham Town. This is the first time since then they have come within one result of returning.",
               },
               {
                 emoji: "⚽",
                 title: "The Quarter-Final",
-                detail: "The quarter-final against Yeovil Town at Haig Avenue drew 3,696 — a massive crowd for National League North level. The atmosphere was described as the best at the ground in years. The semi-final is expected to be bigger again.",
+                detail: "The quarter-final against Yeovil Town at Haig Avenue drew 3,696, a massive crowd for National League North level. The atmosphere was described as the best at the ground in years. The semi-final is expected to be bigger again.",
               },
               {
                 emoji: "🎯",
                 title: "One Game from Wembley",
-                detail: "The FA Trophy Final is played at Wembley Stadium. Win this semi-final and Southport FC are there. That is what is at stake. It is a single-leg tie — everything decided in 90 minutes at Haig Avenue.",
+                detail: "The FA Trophy Final is played at Wembley Stadium. Win this semi-final and Southport FC are there. That is what is at stake. It is a single-leg tie, everything decided in 90 minutes at Haig Avenue.",
               },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -284,7 +284,7 @@ export default function FATrophySemiFinalGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Travel</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Getting to Haig Avenue</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg">
-              Postcode: <strong>PR8 6JZ</strong>. There is no car park at the stadium — plan your travel accordingly.
+              Postcode: <strong>PR8 6JZ</strong>. There is no car park at the stadium, plan your travel accordingly.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
@@ -294,8 +294,8 @@ export default function FATrophySemiFinalGuidePage() {
                 title: "By Train (Recommended)",
                 color: "text-blue-600",
                 items: [
-                  "Meols Cop station is the closest — 10-minute walk to the ground. Exit the station, turn left onto Norwood Road, walk down to the Thatch and Thistle pub at the bottom. Haig Avenue is directly opposite the pub.",
-                  "Southport station (town centre) — 20-minute walk or take the number 44 bus from Eastbank Street to Haig Avenue.",
+                  "Meols Cop station is the closest. 10-minute walk to the ground. Exit the station, turn left onto Norwood Road, walk down to the Thatch and Thistle pub at the bottom. Haig Avenue is directly opposite the pub.",
+                  "Southport station (town centre). 20-minute walk or take the number 44 bus from Eastbank Street to Haig Avenue.",
                   "From Liverpool: Liverpool Central (Merseyrail Northern line) to Southport, around 50 minutes. Trains run every 15 minutes on Saturdays.",
                   "From Manchester or further afield: Manchester Piccadilly to Wigan North Western, then Northern rail to Southport. Check National Rail for the latest times.",
                 ],
@@ -306,9 +306,9 @@ export default function FATrophySemiFinalGuidePage() {
                 color: "text-amber-600",
                 items: [
                   "⚠️ Road closure: Haig Avenue is closed to traffic from 12:30pm. If driving, plan to be parked by noon at the latest.",
-                  "Satnav postcode: PR8 6JZ — but do not rely on parking directly on Haig Avenue after 12:30pm.",
-                  "Best alternatives before the closure: Meols Cop Road area streets or Kew area side streets off Scarisbrick New Road — both within 10–15 minutes' walk of the ground.",
-                  "Town centre car parks are another option — park up, then take the number 44 bus or walk the mile and a half to the ground in 25–30 minutes.",
+                  "Satnav postcode: PR8 6JZ, but do not rely on parking directly on Haig Avenue after 12:30pm.",
+                  "Best alternatives before the closure: Meols Cop Road area streets or Kew area side streets off Scarisbrick New Road, both within 10–15 minutes' walk of the ground.",
+                  "Town centre car parks are another option, park up, then take the number 44 bus or walk the mile and a half to the ground in 25–30 minutes.",
                 ],
               },
             ].map((item) => (
@@ -354,10 +354,10 @@ export default function FATrophySemiFinalGuidePage() {
                 detail: "The club operates matchday parking at Meols Cop school near the ground. Check southportfc.net for availability, pricing, and access details before travelling.",
               },
               {
-                option: "Street Parking — Haig Avenue",
+                option: "Street Parking. Haig Avenue",
                 timing: "Must arrive before 12:30pm",
                 color: "bg-red-600",
-                detail: "Haig Avenue is closed to traffic from 12:30pm — street parking near the ground is near-impossible after that. Meols Cop Road area or Kew area side streets off Scarisbrick New Road are within 10–15 minutes' walk but will also fill fast. Be parked by noon.",
+                detail: "Haig Avenue is closed to traffic from 12:30pm, street parking near the ground is near-impossible after that. Meols Cop Road area or Kew area side streets off Scarisbrick New Road are within 10–15 minutes' walk but will also fill fast. Be parked by noon.",
               },
               {
                 option: "Town Centre Car Parks",
@@ -411,7 +411,7 @@ export default function FATrophySemiFinalGuidePage() {
                 type: "Ground bar",
                 badge: "Hospitality only",
                 badgeColor: "bg-slate-500 text-white",
-                detail: "The Grandstand Bar is for hospitality guests only — not accessible to general admission or away supporters. Do not rely on this as a pre-match option.",
+                detail: "The Grandstand Bar is for hospitality guests only, not accessible to general admission or away supporters. Do not rely on this as a pre-match option.",
                 tip: "Not available to away fans.",
               },
               {
@@ -421,7 +421,7 @@ export default function FATrophySemiFinalGuidePage() {
                 badge: "Most convenient",
                 badgeColor: "bg-green-700 text-white",
                 detail: "Right at the bottom of Haig Avenue, directly opposite the ground entrance. Sky Sports, food available, decent enough for a pre-match. Nothing special but it does the job. Gets very busy before a game this size.",
-                tip: "Arrive early — tables go fast.",
+                tip: "Arrive early, tables go fast.",
               },
               {
                 name: "The Richmond",
@@ -438,7 +438,7 @@ export default function FATrophySemiFinalGuidePage() {
                 type: "Craft beer",
                 badge: "Best pint",
                 badgeColor: "bg-amber-600 text-white",
-                detail: "Luke Randles (of the Southport BID) ran this for years — proper CAMRA-award-winning pub in the town centre. If you are arriving 2+ hours early and want a genuinely good pint, this is where to go. About 20–25 minutes walk from the ground.",
+                detail: "Luke Randles (of the Southport BID) ran this for years, proper CAMRA-award-winning pub in the town centre. If you are arriving 2+ hours early and want a genuinely good pint, this is where to go. About 20–25 minutes walk from the ground.",
                 tip: "Worth the walk if you have time.",
               },
               {
@@ -448,7 +448,7 @@ export default function FATrophySemiFinalGuidePage() {
                 badge: "Town centre",
                 badgeColor: "bg-purple-700 text-white",
                 detail: "A popular town centre pub that gets mentioned by away fans researching the area. Good atmosphere, central location. Bus the mile and a half to the ground from here when you are ready.",
-                tip: "Get the bus back — don't rush.",
+                tip: "Get the bus back, don't rush.",
               },
               {
                 name: "Inn Beer Shop",
@@ -499,10 +499,10 @@ export default function FATrophySemiFinalGuidePage() {
                 title: "The Blowick End (Away)",
                 highlight: "Bring layers",
                 items: [
-                  "Away supporters are in the Blowick End — the open terrace at the south end of the ground.",
+                  "Away supporters are in the Blowick End, the open terrace at the south end of the ground.",
                   "It is uncovered. The wind comes in off the Irish Sea and it can be bitter on an exposed terrace in March. Do not underestimate this.",
                   "Wear a waterproof and proper layers. A matchday that starts mild can turn cold quickly in an open terrace.",
-                  "The sightlines are fine — this is a decent lower-league ground. The atmosphere can be good for a game with this kind of stakes.",
+                  "The sightlines are fine, this is a decent lower-league ground. The atmosphere can be good for a game with this kind of stakes.",
                 ],
               },
               {
@@ -512,8 +512,8 @@ export default function FATrophySemiFinalGuidePage() {
                 items: [
                   "Practical sell-out capacity of around 5,400. The registered figure is 6,008 but restricted-view seats and hospitality use reduce the available total.",
                   "The Jack Carr Stand (west) is the main home terrace. The Grandstand (east) has the seating and hospitality.",
-                  "Haig Avenue was built in 1905. It is a traditional lower-league football ground — not modern but with genuine character.",
-                  "Hospitality packages are available via the club — the club pushes this and it is decent value for the level. Check southportfc.net.",
+                  "Haig Avenue was built in 1905. It is a traditional lower-league football ground, not modern but with genuine character.",
+                  "Hospitality packages are available via the club, the club pushes this and it is decent value for the level. Check southportfc.net.",
                 ],
               },
             ].map((item) => (
@@ -549,7 +549,7 @@ export default function FATrophySemiFinalGuidePage() {
               {[
                 {
                   title: "Lord Street",
-                  desc: "Southport's Victorian boulevard — glass canopies, independent shops, restaurants, and cafés. A 20-minute walk from Haig Avenue. Worth an hour on a dry morning.",
+                  desc: "Southport's Victorian boulevard, glass canopies, independent shops, restaurants, and cafés. A 20-minute walk from Haig Avenue. Worth an hour on a dry morning.",
                   href: "/guides/lord-street",
                   emoji: "🏛️",
                 },
@@ -567,13 +567,13 @@ export default function FATrophySemiFinalGuidePage() {
                 },
                 {
                   title: "The Atkinson",
-                  desc: "Lord Street arts centre — gallery, theatre, café. If you are in town with time to spare and the weather is poor, this is genuinely excellent.",
+                  desc: "Lord Street arts centre, gallery, theatre, café. If you are in town with time to spare and the weather is poor, this is genuinely excellent.",
                   href: "/attractions",
                   emoji: "🎨",
                 },
                 {
                   title: "Restaurants",
-                  desc: "Southport has proper dining. If you are staying overnight, book ahead — particularly at weekends. Lord Street and Birkdale village have the best options.",
+                  desc: "Southport has proper dining. If you are staying overnight, book ahead, particularly at weekends. Lord Street and Birkdale village have the best options.",
                   href: "/restaurants",
                   emoji: "🍽️",
                 },
@@ -611,7 +611,7 @@ export default function FATrophySemiFinalGuidePage() {
             <p className="text-white/70 text-lg leading-relaxed mb-6 max-w-2xl">
               If Southport beat Southend United, they go to the FA Trophy Final at Wembley Stadium.
               It would be the first time the club has appeared at Wembley since reaching the final in 1998.
-              We will publish a full Wembley guide within 24 hours of the final whistle — travel from Southport,
+              We will publish a full Wembley guide within 24 hours of the final whistle, travel from Southport,
               where to stay in London, the history, and everything you need.
             </p>
             <p className="text-white/50 text-sm">
@@ -624,7 +624,7 @@ export default function FATrophySemiFinalGuidePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Haig Avenue — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Haig Avenue. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -645,7 +645,7 @@ export default function FATrophySemiFinalGuidePage() {
             <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-2">The Full Matchday Guide</h2>
             <p className="text-gray-600 mb-5 leading-relaxed">
               Not just here for the Trophy? Our permanent Haig Avenue matchday guide covers every away visit
-              to Southport FC — parking, pubs, travel, the ground, and how to make the most of a day in the town.
+              to Southport FC, parking, pubs, travel, the ground, and how to make the most of a day in the town.
             </p>
             <Link
               href="/guides/southport-fc-matchday"

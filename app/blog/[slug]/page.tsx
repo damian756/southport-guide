@@ -401,7 +401,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <p className="text-gray-400 text-xs leading-snug mt-0.5">
                     {isDamian
                       ? "Founder, Churchtown Media. Builder of SouthportGuide.co.uk and SeftonCoastWildlife.co.uk. Based in Churchtown, Southport."
-                      : <>Chief Editor, SouthportGuide.co.uk — Lives in Churchtown with his wife,<br className="hidden sm:block" /> four kids, and Frank the bulldog.</>
+                      : <>Chief Editor, SouthportGuide.co.uk. Lives in Churchtown with his wife,<br className="hidden sm:block" /> four kids, and Frank the bulldog.</>
                     }
                   </p>
                 </div>
@@ -413,7 +413,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="bg-amber-50 border border-amber-100 rounded-xl p-6 text-center">
                 <div className="text-3xl mb-3">✍️</div>
                 <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Full article coming soon</h3>
-                <p className="text-gray-500 text-sm">Check back shortly — Terry&apos;s working on it.</p>
+                <p className="text-gray-500 text-sm">Check back shortly. Terry&apos;s working on it.</p>
               </div>
             </>
           )}

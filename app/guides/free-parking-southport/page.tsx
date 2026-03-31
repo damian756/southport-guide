@@ -39,7 +39,7 @@ const FREE_OPTIONS = [
     postcode: "PR9 9DX",
     type: "Free on-street",
     walkTo: "Lord Street (north end): 8 min. Southport station: 10 min.",
-    notes: "Free on weekdays. Residential streets — check signs for any restrictions. Generally fine Mon–Sat daytime.",
+    notes: "Free on weekdays. Residential streets, check signs for any restrictions. Generally fine Mon–Sat daytime.",
     href: null,
   },
   {
@@ -63,7 +63,7 @@ const FREE_OPTIONS = [
     postcode: "PR8 2QD",
     type: "Free on-street",
     walkTo: "Ainsdale beach: 10 min walk.",
-    notes: "Free on the road itself outside peak season. The official Ainsdale beach car park charges from April. Shore Road fills fast on sunny summer days — arrive before 9am.",
+    notes: "Free on the road itself outside peak season. The official Ainsdale beach car park charges from April. Shore Road fills fast on sunny summer days, arrive before 9am.",
     href: null,
   },
   {
@@ -85,7 +85,7 @@ const PAID_BUT_CHEAP = [
 const FAQS = [
   {
     q: "Is there any completely free parking near Southport Beach?",
-    a: "Not in the immediate beach area. Marine Drive is pay-and-display. The closest free options are residential streets around 15-20 minutes' walk from the beach. For the beach specifically, Marine Drive is the practical choice — prices are lower than the town centre car parks and you pay for what you use.",
+    a: "Not in the immediate beach area. Marine Drive is pay-and-display. The closest free options are residential streets around 15-20 minutes' walk from the beach. For the beach specifically, Marine Drive is the practical choice, prices are lower than the town centre car parks and you pay for what you use.",
   },
   {
     q: "What is the closest free parking to Lord Street?",
@@ -110,7 +110,7 @@ const PAGE_LD = {
   "@type": "WebPage",
   name: "Free Parking in Southport",
   description:
-    "Every free and low-cost parking option in Southport — with postcodes and walking times to the main destinations.",
+    "Every free and low-cost parking option in Southport, with postcodes and walking times to the main destinations.",
   url: `${BASE_URL}/guides/free-parking-southport`,
 };
 
@@ -202,7 +202,7 @@ export default function FreeParkingSouthportPage() {
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4">
             <p className="text-[#1B2E4B] font-medium leading-relaxed text-sm">
-              If you are visiting for the beach or for shopping, the paid car parks are genuinely not expensive — Marine Drive is from £1.50 and most town centre options are £2-4 for a few hours. Sometimes a 10-minute walk from the free option to save £2 is not worth the bother. Your call.
+              If you are visiting for the beach or for shopping, the paid car parks are genuinely not expensive. Marine Drive is from £1.50 and most town centre options are £2-4 for a few hours. Sometimes a 10-minute walk from the free option to save £2 is not worth the bother. Your call.
             </p>
           </div>
         </section>
@@ -304,7 +304,7 @@ export default function FreeParkingSouthportPage() {
             Blue badge holders can park free in designated blue badge bays throughout Southport, including on Lord Street and in most Sefton Council managed car parks. Time limits apply (typically 3 hours on-street, longer in car parks), so check the signs.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Blue badge bays on Lord Street are located at regular intervals along the boulevard. The town centre car parks all have dedicated blue badge sections — usually near the entrances.
+            Blue badge bays on Lord Street are located at regular intervals along the boulevard. The town centre car parks all have dedicated blue badge sections, usually near the entrances.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[

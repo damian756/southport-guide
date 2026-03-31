@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: "SouthportGuide.co.uk — The Complete Visitor Guide to Southport",
+    default: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
     template: "%s | SouthportGuide.co.uk",
   },
   description:
-    "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide — home of The Open Championship 2026.",
+    "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide, home of The Open Championship 2026.",
   keywords:
     "Southport, restaurants Southport, hotels Southport, things to do Southport, The Open 2026, Royal Birkdale, visitor guide, Southport Guide",
   authors: [{ name: "Churchtown Media", url: "https://churchtownmedia.co.uk" }],
@@ -50,15 +50,15 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: BASE_URL,
     siteName: "SouthportGuide.co.uk",
-    title: "SouthportGuide.co.uk — The Complete Visitor Guide to Southport",
+    title: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
     description:
-      "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide — home of The Open Championship 2026.",
+      "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide, home of The Open Championship 2026.",
     images: [
       {
         url: `${BASE_URL}/og-default.png`,
         width: 1200,
         height: 630,
-        alt: "SouthportGuide.co.uk — Discover Southport",
+        alt: "SouthportGuide.co.uk. Discover Southport",
       },
     ],
   },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   // Twitter / X
   twitter: {
     card: "summary_large_image",
-    title: "SouthportGuide.co.uk — The Complete Visitor Guide to Southport",
+    title: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
     description: "Discover the best restaurants, hotels, bars, attractions and things to do in Southport.",
     images: [`${BASE_URL}/og-default.png`],
     creator: "@SouthportGuide",
@@ -158,7 +158,7 @@ function Footer() {
               <span className="text-white/40 text-sm font-normal ml-1">.co.uk</span>
             </div>
             <p className="text-sm leading-relaxed text-white/60 mb-4 max-w-xs">
-              Your definitive guide to eating, staying, and exploring Southport — home of The Open Championship 2026.
+              Your definitive guide to eating, staying, and exploring Southport, home of The Open Championship 2026.
             </p>
             <InstagramCta variant="footer" />
             <div className="flex gap-3 mt-5">
@@ -249,7 +249,7 @@ function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
-          <p>&copy; 2026 SouthportGuide.co.uk — All rights reserved.</p>
+          <p>&copy; 2026 SouthportGuide.co.uk. All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
             <InstagramCta variant="compact" />
             <span className="hidden sm:inline text-white/20" aria-hidden>|</span>

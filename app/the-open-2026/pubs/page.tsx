@@ -27,18 +27,18 @@ const PUBS_BY_AREA = [
     pubs: [
       { name: "The Fisherman's Rest", note: "Classic village local. Open from 11am, live music some evenings during Open week." },
       { name: "The Birkdale Village Inn", note: "Traditional pub atmosphere, large beer garden, good for groups." },
-      { name: "Locals along Liverpool Road", note: "Several smaller bars within the village — explore on foot from the station." },
+      { name: "Locals along Liverpool Road", note: "Several smaller bars within the village, explore on foot from the station." },
     ],
   },
   {
     area: "Southport Town Centre & Lord Street",
     distance: "10 min by taxi from course",
-    desc: "Southport's town centre pub and bar scene is extensive — Lord Street, Chapel Street, and the surrounding streets have everything from Victorian boozers to cocktail bars. This is the better option for evenings when you want variety and atmosphere beyond the immediate course area.",
+    desc: "Southport's town centre pub and bar scene is extensive. Lord Street, Chapel Street, and the surrounding streets have everything from Victorian boozers to cocktail bars. This is the better option for evenings when you want variety and atmosphere beyond the immediate course area.",
     pubs: [
       { name: "Coopers Bar", note: "One of the most popular in town. Live music most evenings. Good beer selection." },
       { name: "The Guest House", note: "Relaxed, local feel. Real ales and a proper pub menu." },
       { name: "The Lakehouse", note: "Near Marine Lake. Good for a post-game drink with views." },
-      { name: "Lord Street bars", note: "Multiple options along the Victorian boulevard — explore at your own pace." },
+      { name: "Lord Street bars", note: "Multiple options along the Victorian boulevard, explore at your own pace." },
     ],
   },
   {
@@ -46,33 +46,33 @@ const PUBS_BY_AREA = [
     distance: "15–20 min walk or 5 min taxi",
     desc: "The seafront has a mix of chain bars and independent spots. Less atmospheric than the town centre or Birkdale, but useful if you're staying on the seafront side of town or want somewhere with outdoor space and sea views.",
     pubs: [
-      { name: "Southport seafront bars", note: "Seasonal venues with outdoor seating — good on a warm Open week evening." },
+      { name: "Southport seafront bars", note: "Seasonal venues with outdoor seating, good on a warm Open week evening." },
       { name: "Ocean Plaza venues", note: "Chain options, can handle larger groups, walk-in friendly." },
     ],
   },
 ];
 
 const TIPS = [
-  "Birkdale village pubs will be at capacity from lunchtime on championship days — arrive early or head to town",
-  "Book a table at any pub serving food if you want to eat during Open week — walk-ins won't get a seat",
-  "Most Southport pubs extend their hours during Open week — last orders will be later than normal",
-  "The atmosphere in Southport town centre on Saturday evening (Moving Day) is genuinely special — don't rush back to your accommodation",
-  "Real ale fans: several Southport pubs stock local and craft ales — ask at the bar what's on",
-  "Taxi back from Birkdale village is easy in the evening — book your return in advance on busy days",
+  "Birkdale village pubs will be at capacity from lunchtime on championship days, arrive early or head to town",
+  "Book a table at any pub serving food if you want to eat during Open week, walk-ins won't get a seat",
+  "Most Southport pubs extend their hours during Open week, last orders will be later than normal",
+  "The atmosphere in Southport town centre on Saturday evening (Moving Day) is genuinely special, don't rush back to your accommodation",
+  "Real ale fans: several Southport pubs stock local and craft ales, ask at the bar what's on",
+  "Taxi back from Birkdale village is easy in the evening, book your return in advance on busy days",
 ];
 
 const FAQS = [
   {
     q: "Are there pubs walking distance from Royal Birkdale?",
-    a: "Yes — Birkdale village, which sits directly adjacent to the course, has several pubs within a 5–10 minute walk of the Royal Birkdale entrance. These are the most in-demand during Open week and fill up quickly on championship days.",
+    a: "Yes. Birkdale village, which sits directly adjacent to the course, has several pubs within a 5–10 minute walk of the Royal Birkdale entrance. These are the most in-demand during Open week and fill up quickly on championship days.",
   },
   {
     q: "Can I watch The Open on TV in Southport pubs?",
-    a: "Yes — most Southport pubs with sports screens will be showing coverage during Open week. For those staying in Southport rather than attending every day, watching in a local pub with fellow golf fans is a great alternative.",
+    a: "Yes, most Southport pubs with sports screens will be showing coverage during Open week. For those staying in Southport rather than attending every day, watching in a local pub with fellow golf fans is a great alternative.",
   },
   {
     q: "What time do Southport pubs open during The Open week?",
-    a: "Many pubs in Birkdale and Southport town centre open earlier than usual during Open week — some from 9am or 10am for breakfast and early spectators. Last orders are also typically extended. Check with your chosen venue for specific hours.",
+    a: "Many pubs in Birkdale and Southport town centre open earlier than usual during Open week, some from 9am or 10am for breakfast and early spectators. Last orders are also typically extended. Check with your chosen venue for specific hours.",
   },
 ];
 
@@ -156,7 +156,7 @@ export default async function OpenPubsPage() {
               <ArrowLeft className="w-4 h-4" /> The Open 2026
             </Link>
             <h1 className="font-display text-3xl md:text-4xl font-bold text-white">Pubs Near Royal Birkdale</h1>
-            <p className="text-white/60 mt-2">Where to drink during The Open Championship 2026 — Birkdale, Lord Street & beyond</p>
+            <p className="text-white/60 mt-2">Where to drink during The Open Championship 2026. Birkdale, Lord Street & beyond</p>
           </div>
         </section>
 
@@ -164,12 +164,12 @@ export default async function OpenPubsPage() {
 
           {/* Intro */}
           <div className="bg-white rounded-2xl border border-gray-100 p-7">
-            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-4">Drinking at The Open — What to Expect</h2>
+            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-4">Drinking at The Open. What to Expect</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              The Open Championship is a week-long event and the pub culture around it is part of the experience. Birkdale village becomes a buzzing social hub during Open week — small pubs packed with golf fans from across the world, atmosphere you won&apos;t find anywhere else in sport. Southport town centre comes alive in the evenings.
+              The Open Championship is a week-long event and the pub culture around it is part of the experience. Birkdale village becomes a buzzing social hub during Open week, small pubs packed with golf fans from across the world, atmosphere you won&apos;t find anywhere else in sport. Southport town centre comes alive in the evenings.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              The key thing to know: popular Birkdale pubs will be at capacity from early afternoon on championship days. If you want a table — especially for food — you need to get there early, or plan around it.
+              The key thing to know: popular Birkdale pubs will be at capacity from early afternoon on championship days. If you want a table, especially for food, you need to get there early, or plan around it.
             </p>
           </div>
 

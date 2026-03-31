@@ -63,13 +63,15 @@ export default function KCArtisanParkPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#1A3D20] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/kc-artisan-party-in-the-park-southport-2026.jpg" alt="KC Artisan Party in the Park Southport 2026 at Victoria Park" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A3D20] via-[#1A3D20]/50 to-[#1A3D20]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#1A3D20] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/kc-artisan-party-in-the-park-southport-2026.jpg" alt="KC Artisan Party in the Park Southport 2026 at Victoria Park" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">11–12 April 2026</span>
               <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 2BZ · Free</span>
@@ -114,7 +116,7 @@ export default function KCArtisanParkPage() {
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Victoria Park on a Spring Weekend</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>Victoria Park suits this kind of event well. The space is right, the setting is pleasant, and two days of artisan stalls and live music over Easter weekend makes for a decent family day out. It runs on the Sunday after Good Friday and Cristal Palace, so if you are making a long Easter weekend of it in Southport, this slots neatly into the programme.</p>
-              <p>The artisan element is genuine — independent makers rather than mass-produced market fare. The live music keeps it from feeling like just a shopping event. Combine it with lunch from the food traders and you have a full Saturday or Sunday covered without spending much.</p>
+              <p>The artisan element is genuine, independent makers rather than mass-produced market fare. The live music keeps it from feeling like just a shopping event. Combine it with lunch from the food traders and you have a full Saturday or Sunday covered without spending much.</p>
               <p>Weather in April in Merseyside is what it is. If it is good, Victoria Park on a sunny spring weekend is one of the better places to spend an afternoon. Bring a layer regardless.</p>
             </div>
           </div>
@@ -128,10 +130,10 @@ export default function KCArtisanParkPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { emoji: "🎸", title: "Live Music", detail: "Live music performances across both days. Mix of local and regional acts. The stage is a central part of the event rather than background entertainment." },
-              { emoji: "🏺", title: "Artisan Market Stalls", detail: "Independent makers selling handmade goods — crafts, jewellery, ceramics, prints, and more. The artisan element is what distinguishes it from a standard market." },
-              { emoji: "🍔", title: "Street Food", detail: "Street food traders across the park. Wide range of food options. Better than average for a park event — independent operators rather than chain concessions." },
+              { emoji: "🏺", title: "Artisan Market Stalls", detail: "Independent makers selling handmade goods, crafts, jewellery, ceramics, prints, and more. The artisan element is what distinguishes it from a standard market." },
+              { emoji: "🍔", title: "Street Food", detail: "Street food traders across the park. Wide range of food options. Better than average for a park event, independent operators rather than chain concessions." },
               { emoji: "👨‍👩‍👧‍👦", title: "Family Entertainment", detail: "Activities and entertainment for families with children. Specific family programming alongside the main market and music." },
-              { emoji: "🌳", title: "Victoria Park Setting", detail: "Victoria Park is Southport's main public park — mature trees, open green space, and enough room to spread out. A proper park festival setting." },
+              { emoji: "🌳", title: "Victoria Park Setting", detail: "Victoria Park is Southport's main public park, mature trees, open green space, and enough room to spread out. A proper park festival setting." },
               { emoji: "📅", title: "Easter Weekend", detail: "Runs Saturday 11 and Sunday 12 April, directly after the Good Friday events including Cristal Palace. Good for combining with the wider Easter programme." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -153,7 +155,7 @@ export default function KCArtisanParkPage() {
               <div>
                 <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-3">By Car</h3>
                 <div className="space-y-2">
-                  {["Victoria Park postcode: PR8 2BZ", "Street parking on Rotten Row and surrounding roads", "Town centre car parks — 10–15 min walk to the park", "Do not rely on finding a space directly outside on busy days"].map((l) => (
+                  {["Victoria Park postcode: PR8 2BZ", "Street parking on Rotten Row and surrounding roads", "Town centre car parks. 10–15 min walk to the park", "Do not rely on finding a space directly outside on busy days"].map((l) => (
                     <div key={l} className="flex gap-2 text-sm text-gray-600"><ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" /><span>{l}</span></div>
                   ))}
                 </div>
@@ -161,7 +163,7 @@ export default function KCArtisanParkPage() {
               <div>
                 <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-3">By Train</h3>
                 <div className="space-y-2">
-                  {["Southport station — Merseyrail Northern Line from Liverpool", "15 min walk from the station to Victoria Park", "Good option for Easter weekend when parking is busier"].map((l) => (
+                  {["Southport station. Merseyrail Northern Line from Liverpool", "15 min walk from the station to Victoria Park", "Good option for Easter weekend when parking is busier"].map((l) => (
                     <div key={l} className="flex gap-2 text-sm text-gray-600"><ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" /><span>{l}</span></div>
                   ))}
                 </div>
@@ -173,7 +175,7 @@ export default function KCArtisanParkPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">KC Party in the Park — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">KC Party in the Park. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

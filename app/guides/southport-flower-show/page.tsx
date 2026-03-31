@@ -41,9 +41,9 @@ const CELEBRITIES = [
     date: "20 Aug",
     guests: [
       { name: "Adam Frost", role: "BBC Gardeners' World presenter" },
-      { name: "Martin & Jill Fish", role: "The Potting Shed — show daily" },
+      { name: "Martin & Jill Fish", role: "The Potting Shed, show daily" },
     ],
-    tip: "Opening day — quietest. Best day for first-timers.",
+    tip: "Opening day, quietest. Best day for first-timers.",
     badgeColor: "bg-green-100 text-green-800",
     dayColor: "bg-green-600",
   },
@@ -54,7 +54,7 @@ const CELEBRITIES = [
       { name: "Arit Anderson", role: "BBC Gardeners' World presenter" },
       { name: "Phil Vickery", role: "Chef · cookery demonstrations" },
     ],
-    tip: "Good balance — busier than Thursday, calmer than the weekend.",
+    tip: "Good balance, busier than Thursday, calmer than the weekend.",
     badgeColor: "bg-blue-100 text-blue-800",
     dayColor: "bg-blue-600",
   },
@@ -92,11 +92,11 @@ const TICKETS = [
 
 const FAQS = [
   { q: "When is the Southport Flower Show 2026?", a: "The Southport Flower Show 2026 runs from Thursday 20 August to Sunday 23 August 2026. Four days at Victoria Park, Southport. The show typically opens at 9am and closes at 6pm Thursday to Saturday, with an earlier close on Sunday." },
-  { q: "Where is the Southport Flower Show?", a: "Victoria Park, Southport. The postcode is PR8 2LG. Victoria Park is on the eastern edge of Southport town centre — approximately 15 minutes' walk from Southport railway station and 10 minutes' walk from Lord Street." },
-  { q: "How much are Southport Flower Show 2026 tickets?", a: "Early bird adult day tickets are £23, rising to £30 at the gate. Children under 16 are free with a paying adult. A 4-day season pass is £78 online. Book at southportflowershow.co.uk for the best prices — gate prices are always higher." },
+  { q: "Where is the Southport Flower Show?", a: "Victoria Park, Southport. The postcode is PR8 2LG. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station and 10 minutes' walk from Lord Street." },
+  { q: "How much are Southport Flower Show 2026 tickets?", a: "Early bird adult day tickets are £23, rising to £30 at the gate. Children under 16 are free with a paying adult. A 4-day season pass is £78 online. Book at southportflowershow.co.uk for the best prices, gate prices are always higher." },
   { q: "Is there parking at the Southport Flower Show?", a: "Victoria Park has limited on-site parking (PR8 2LG). Most visitors use park-and-ride services operating during the show from Birkdale Common (PR8 2LX), or park in town centre car parks and walk approximately 10–15 minutes. Full parking details are published at southportflowershow.co.uk before the show." },
-  { q: "What is the best day to go to the Southport Flower Show?", a: "Thursday (opening day) is consistently the quietest. Everything is fresh, exhibitors are at their most enthusiastic, and you can take your time in the competitive classes without crowds. First-timers should go Thursday. Saturday is the busiest day — arrive early if that's your only option." },
-  { q: "What should I wear to the Southport Flower Show?", a: "Comfortable walking shoes are non-negotiable — the site is large and mostly on grass. August weather in Lancashire can be warm and sunny, cool and rainy, or both on the same day. Bring layers and a waterproof. Sun cream for warm days. Avoid heels on the grass." },
+  { q: "What is the best day to go to the Southport Flower Show?", a: "Thursday (opening day) is consistently the quietest. Everything is fresh, exhibitors are at their most enthusiastic, and you can take your time in the competitive classes without crowds. First-timers should go Thursday. Saturday is the busiest day, arrive early if that's your only option." },
+  { q: "What should I wear to the Southport Flower Show?", a: "Comfortable walking shoes are non-negotiable, the site is large and mostly on grass. August weather in Lancashire can be warm and sunny, cool and rainy, or both on the same day. Bring layers and a waterproof. Sun cream for warm days. Avoid heels on the grass." },
   { q: "How do I get to the Southport Flower Show without a car?", a: "Train to Southport station (Merseyrail from Liverpool Central, approximately 45 minutes), then 15 minutes' walk or a short bus ride to Victoria Park. Shuttle buses usually operate from the town centre during the show. The show also publishes cycling routes from Southport station." },
   { q: "What's at the Southport Flower Show?", a: "Show gardens (Chelsea-calibre designed gardens created for the event), competitive flower and vegetable classes (the heart of the show), a large shopping area of exhibitors, a regional food and drink market, live demonstrations, celebrity appearances, and live entertainment. The competitive horticulture is the bit that surprises first-timers most." },
 ];
@@ -173,7 +173,7 @@ export default function SouthportFlowerShowGuidePage() {
               <span className="block text-[#C9A84C]">Flower Show</span>
             </h1>
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
-              One of England&apos;s most prestigious horticultural shows. Four days every August in Victoria Park —
+              One of England&apos;s most prestigious horticultural shows. Four days every August in Victoria Park,
               show gardens, champion flowers, celebrity appearances, food market, and competitive horticulture
               that takes year-round preparation.
             </p>
@@ -230,24 +230,24 @@ export default function SouthportFlowerShowGuidePage() {
                 It looks like it&apos;s for gardeners, and then it turns out to be for everyone.
               </p>
               <p>
-                The show gardens are genuinely impressive — the same level of craft you&apos;d expect from Chelsea,
+                The show gardens are genuinely impressive, the same level of craft you&apos;d expect from Chelsea,
                 in a park that Southport locals walk through every week without thinking about it. The competitive flower and
                 vegetable classes are a revelation: the standard is extraordinary, the exhibitors have been preparing all year,
                 and the judging takes it completely seriously. A prize-winning onion here is treated as seriously as a prize-winning
                 garden. Rightly.
               </p>
               <p>
-                The food market is also excellent — regional producers, proper food, not the usual show fare.
+                The food market is also excellent, regional producers, proper food, not the usual show fare.
                 And the shopping for garden tools, accessories, plants, and gifts tends to be better quality
                 than anything you&apos;d find in a garden centre.
               </p>
               <p>
-                2026 brings The Lakeside Reset — a new wellness and wellbeing garden area. I&apos;ll reserve judgement
+                2026 brings The Lakeside Reset, a new wellness and wellbeing garden area. I&apos;ll reserve judgement
                 until I see it, but the principle of adding more structured rest areas to a site you spend 6+ hours on
                 is sound.
               </p>
               <p>
-                Go Thursday if you can — quieter, easier to move around, same show. Saturday is busy.
+                Go Thursday if you can, quieter, easier to move around, same show. Saturday is busy.
                 Wear comfortable shoes. Bring something waterproof just in case.
               </p>
             </div>
@@ -266,7 +266,7 @@ export default function SouthportFlowerShowGuidePage() {
                 <h2 className="font-display text-2xl font-bold mb-3">The Lakeside Reset</h2>
                 <p className="text-white/75 text-base leading-relaxed max-w-2xl">
                   New for 2026: a dedicated wellness and wellbeing garden area alongside the main show site.
-                  Designed to give visitors somewhere to slow down — sensory planting, water features, quiet seating.
+                  Designed to give visitors somewhere to slow down, sensory planting, water features, quiet seating.
                   It&apos;s a sensible addition for a show that&apos;s been gradually expanding for over a century.
                   More details will be published at{" "}
                   <a href="https://www.southportflowershow.co.uk" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline font-medium">southportflowershow.co.uk</a>{" "}
@@ -321,12 +321,12 @@ export default function SouthportFlowerShowGuidePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "🌹", title: "Show Gardens", detail: "The centrepiece of the show. Full-scale designed gardens created specifically for the event — the same calibre of craft you&apos;d see at Chelsea or Hampton Court. The brief changes each year; some years formal, some naturalistic, some contemporary. Give yourself time here." },
+              { emoji: "🌹", title: "Show Gardens", detail: "The centrepiece of the show. Full-scale designed gardens created specifically for the event, the same calibre of craft you&apos;d see at Chelsea or Hampton Court. The brief changes each year; some years formal, some naturalistic, some contemporary. Give yourself time here." },
               { emoji: "🏆", title: "Competitive Classes", detail: "The heart of the show. Classes for flowers (roses, dahlias, sweet peas, chrysanthemums), vegetables (leeks, onions, potatoes, runner beans), floral art, and more. Exhibitors compete nationally. The standard is exceptional. This is where the show&apos;s century of heritage lives." },
-              { emoji: "🛍️", title: "Show Shopping", detail: "Enormous range of exhibitors selling tools, plants, garden accessories, gifts, and specialist items you won&apos;t find elsewhere. Much better quality than a garden centre sale. Allow a proper hour for browsing — and a bag for what you buy." },
-              { emoji: "🍽️", title: "Food Market", detail: "Regional food and drink producers, street food, and specialist suppliers. Quality is consistently high. The food market has become one of the show&apos;s highlights in recent years — plan to eat lunch here rather than bringing a packed lunch." },
-              { emoji: "🎭", title: "Demonstrations", detail: "Live demonstrations from horticultural experts, chefs, and craftspeople. Cooking on the outdoor stage, planting and growing workshops, and specialist talks throughout the day. The celebrity appearances are part of this programme — check the programme when you arrive." },
-              { emoji: "🌿", title: "The Lakeside Reset", detail: "New for 2026: a dedicated wellness garden area with sensory planting, water features, and quiet seating. A place to step away from the crowds for half an hour. Particularly good for those who find large shows overwhelming — or who just want to sit somewhere green and quiet." },
+              { emoji: "🛍️", title: "Show Shopping", detail: "Enormous range of exhibitors selling tools, plants, garden accessories, gifts, and specialist items you won&apos;t find elsewhere. Much better quality than a garden centre sale. Allow a proper hour for browsing, and a bag for what you buy." },
+              { emoji: "🍽️", title: "Food Market", detail: "Regional food and drink producers, street food, and specialist suppliers. Quality is consistently high. The food market has become one of the show&apos;s highlights in recent years, plan to eat lunch here rather than bringing a packed lunch." },
+              { emoji: "🎭", title: "Demonstrations", detail: "Live demonstrations from horticultural experts, chefs, and craftspeople. Cooking on the outdoor stage, planting and growing workshops, and specialist talks throughout the day. The celebrity appearances are part of this programme, check the programme when you arrive." },
+              { emoji: "🌿", title: "The Lakeside Reset", detail: "New for 2026: a dedicated wellness garden area with sensory planting, water features, and quiet seating. A place to step away from the crowds for half an hour. Particularly good for those who find large shows overwhelming, or who just want to sit somewhere green and quiet." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -346,8 +346,8 @@ export default function SouthportFlowerShowGuidePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { day: "Thursday 20 Aug", label: "Opening Day", emoji: "⭐", highlight: "Best for quiet browsing", detail: "Opening day is almost always the least crowded. Everything is fresh, exhibitors are enthusiastic, and you can take your time in the competitive classes without a crowd in the way. First-timers: go Thursday.", badge: "Recommended", badgeColor: "bg-green-100 text-green-800" },
-              { day: "Friday 21 Aug", label: "Mid-Show", emoji: "🌸", highlight: "Good balance", detail: "Friday is busier than Thursday but calmer than the weekend. Good day for a relaxed visit. The food market is usually at its best Friday through Sunday — producers tend to bring more on the second day.", badge: "Good choice", badgeColor: "bg-blue-100 text-blue-800" },
-              { day: "Saturday 22 Aug", label: "Peak Day", emoji: "🎉", highlight: "Busiest — arrive early", detail: "The most popular day. Atmosphere is excellent, entertainment is at its best, Anton Du Beke is here, but the site is very busy. If Saturday is your only option: arrive at opening, head to the show gardens first before crowds build from 11am.", badge: "Book early", badgeColor: "bg-amber-100 text-amber-800" },
+              { day: "Friday 21 Aug", label: "Mid-Show", emoji: "🌸", highlight: "Good balance", detail: "Friday is busier than Thursday but calmer than the weekend. Good day for a relaxed visit. The food market is usually at its best Friday through Sunday, producers tend to bring more on the second day.", badge: "Good choice", badgeColor: "bg-blue-100 text-blue-800" },
+              { day: "Saturday 22 Aug", label: "Peak Day", emoji: "🎉", highlight: "Busiest, arrive early", detail: "The most popular day. Atmosphere is excellent, entertainment is at its best, Anton Du Beke is here, but the site is very busy. If Saturday is your only option: arrive at opening, head to the show gardens first before crowds build from 11am.", badge: "Book early", badgeColor: "bg-amber-100 text-amber-800" },
               { day: "Sunday 23 Aug", label: "Final Day", emoji: "🌻", highlight: "Quieter afternoon", detail: "Sunday morning is busy, but the afternoon quietens as visitors drift away. Some exhibitors sell off plants and produce at reduced prices toward the end of the day. A good option if you can&apos;t make Thursday or Friday.", badge: "Bargains later", badgeColor: "bg-purple-100 text-purple-800" },
             ].map((item) => (
               <div key={item.day} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -370,7 +370,7 @@ export default function SouthportFlowerShowGuidePage() {
             <p className="text-gray-600 mt-3 text-lg max-w-2xl">
               Early bird prices are significantly cheaper than gate prices. Book at{" "}
               <a href="https://www.southportflowershow.co.uk" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] font-medium hover:underline">southportflowershow.co.uk</a>{" "}
-              — Saturday tends to sell out.
+             . Saturday tends to sell out.
             </p>
           </div>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
@@ -408,10 +408,10 @@ export default function SouthportFlowerShowGuidePage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { icon: MapPin, title: "Venue", items: ["Victoria Park, Southport, PR8 2LG", "10–15 minute walk from Southport town centre (Lord Street)", "15 minute walk from Southport railway station", "Follow show signage from town centre — well posted during show week"] },
-              { icon: Car, title: "Parking", items: ["Park-and-ride from Birkdale Common, PR8 2LX — runs during the show", "Town centre car parks: 10–15 min walk to Victoria Park", "Limited on-site parking at PR8 2LG — sold through the website, books fast", "Train to Southport (Merseyrail from Liverpool Central) + 15 min walk is the easiest option"] },
-              { icon: Ticket, title: "Tickets", items: ["Book online at southportflowershow.co.uk — cheaper than gate prices", "Saturday sells out — book early if that&apos;s your day", "Family and group discounts available online", "4-day season pass available for all four days"] },
-              { icon: Clock, title: "What to Bring", items: ["Comfortable walking shoes — the site is large and mostly grass", "Light waterproof — August in Lancashire, always prepared", "Sun cream for warm days on an open site", "Cash and/or card — most exhibitors accept both", "Bags for purchases — exhibitors often don&apos;t provide them", "A plan — it&apos;s a big show, some people find a rough priority order helpful"] },
+              { icon: MapPin, title: "Venue", items: ["Victoria Park, Southport, PR8 2LG", "10–15 minute walk from Southport town centre (Lord Street)", "15 minute walk from Southport railway station", "Follow show signage from town centre, well posted during show week"] },
+              { icon: Car, title: "Parking", items: ["Park-and-ride from Birkdale Common, PR8 2LX, runs during the show", "Town centre car parks: 10–15 min walk to Victoria Park", "Limited on-site parking at PR8 2LG, sold through the website, books fast", "Train to Southport (Merseyrail from Liverpool Central) + 15 min walk is the easiest option"] },
+              { icon: Ticket, title: "Tickets", items: ["Book online at southportflowershow.co.uk, cheaper than gate prices", "Saturday sells out, book early if that&apos;s your day", "Family and group discounts available online", "4-day season pass available for all four days"] },
+              { icon: Clock, title: "What to Bring", items: ["Comfortable walking shoes, the site is large and mostly grass", "Light waterproof. August in Lancashire, always prepared", "Sun cream for warm days on an open site", "Cash and/or card, most exhibitors accept both", "Bags for purchases, exhibitors often don&apos;t provide them", "A plan, it&apos;s a big show, some people find a rough priority order helpful"] },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
                 <item.icon className="w-6 h-6 text-[#C9A84C] mb-4" />
@@ -437,9 +437,9 @@ export default function SouthportFlowerShowGuidePage() {
             <div className="space-y-4">
               {[
                 { step: "1", text: "Arrive at opening (9am). Head straight to the show gardens before the crowds build. This is where you need the most space and time." },
-                { step: "2", text: "Competitive classes next — flowers and vegetables. Before 11am is when the displays are at their best and the halls are quieter." },
+                { step: "2", text: "Competitive classes next, flowers and vegetables. Before 11am is when the displays are at their best and the halls are quieter." },
                 { step: "3", text: "Early lunch at the food market, before the 12–2pm rush. The queues double from noon onwards." },
-                { step: "4", text: "Shopping in the afternoon — exhibitors are settled and less rushed than opening. This is when conversations happen." },
+                { step: "4", text: "Shopping in the afternoon, exhibitors are settled and less rushed than opening. This is when conversations happen." },
                 { step: "5", text: "Celebrity appearance / main stage entertainment after lunch. Check the day's programme at the entrance when you arrive." },
                 { step: "6", text: "The Lakeside Reset (new 2026) for a 20-minute break before the afternoon session. Your feet will thank you." },
               ].map((item) => (
@@ -462,7 +462,7 @@ export default function SouthportFlowerShowGuidePage() {
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-3">Eating Out</h3>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">
                   Show week in August is busy across Southport. If you&apos;re eating out in the evening,
-                  book in advance — particularly for Thursday and Saturday nights when the show is at full attendance.
+                  book in advance, particularly for Thursday and Saturday nights when the show is at full attendance.
                   Lord Street has the widest restaurant choice (10 minutes from Victoria Park).
                   Birkdale village is excellent for dinner and tends to be slightly less hectic than the town centre.
                 </p>
@@ -474,7 +474,7 @@ export default function SouthportFlowerShowGuidePage() {
                 <Star className="w-6 h-6 text-[#C9A84C] mb-3" />
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-3">Hotels &amp; Accommodation</h3>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                  Flower Show week fills Southport&apos;s accommodation fast — particularly for Thursday and Friday nights.
+                  Flower Show week fills Southport&apos;s accommodation fast, particularly for Thursday and Friday nights.
                   Book well ahead if you&apos;re planning to stay. Town centre hotels on Lord Street are the most convenient.
                   Birkdale B&Bs are good value and well located for both the show site and Birkdale&apos;s independent restaurants.
                 </p>
@@ -492,7 +492,7 @@ export default function SouthportFlowerShowGuidePage() {
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Bank Holiday Weekend</p>
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">And Then There&apos;s the Air Show</h2>
             <p className="text-white/70 text-lg max-w-2xl leading-relaxed mb-6">
-              The Southport Air Show is 29–30 August 2026 — the Bank Holiday weekend, just one week after the Flower Show.
+              The Southport Air Show is 29–30 August 2026, the Bank Holiday weekend, just one week after the Flower Show.
               Free event. 100,000+ people. The display line runs along the beach and the aircraft fly at close range.
               If you&apos;re in Southport in late August, you could honestly do both and make a proper trip of it.
             </p>
@@ -513,7 +513,7 @@ export default function SouthportFlowerShowGuidePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Flower Show — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Flower Show. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -554,7 +554,7 @@ export default function SouthportFlowerShowGuidePage() {
         {/* ── Tickets CTA ── */}
         <section className="bg-[#1A4020] rounded-2xl p-8 md:p-12 text-center text-white">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Southport Flower Show 2026</p>
-          <h2 className="font-display text-3xl font-bold mb-4">Book Early — Saturday Sells Out</h2>
+          <h2 className="font-display text-3xl font-bold mb-4">Book Early. Saturday Sells Out</h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             Early bird adult tickets are £23. Gate price is £30. Saturday sells out every year.
             Book through the official website for the best prices.
@@ -566,7 +566,7 @@ export default function SouthportFlowerShowGuidePage() {
               rel="noopener noreferrer"
               className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors"
             >
-              Book Tickets — southportflowershow.co.uk
+              Book Tickets, southportflowershow.co.uk
             </a>
             <Link href="/hotels" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">
               Find a Hotel →

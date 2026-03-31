@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Easter in Southport 2026 | Family Events 1–6 April",
     description:
-      "Easter in Southport 2026 — everything happening across the Easter school holidays. Cristal Palace street theatre, egg hunts, craft workshops, Easter panto, and family events by day.",
+      "Easter in Southport 2026, everything happening across the Easter school holidays. Cristal Palace street theatre, egg hunts, craft workshops, Easter panto, and family events by day.",
     url: `${BASE_URL}/guides/easter-in-southport-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: "Is Cristal Palace suitable for children?",
-    a: "Yes — Cristal Palace is an outdoor free event and suitable for all ages. It is an aerial street theatre spectacle with a 12-metre chandelier, live music, and 36 performers. The show starts at 7:30pm and runs approximately 90 minutes, so be prepared for a late night with younger children.",
+    a: "Yes. Cristal Palace is an outdoor free event and suitable for all ages. It is an aerial street theatre spectacle with a 12-metre chandelier, live music, and 36 performers. The show starts at 7:30pm and runs approximately 90 minutes, so be prepared for a late night with younger children.",
   },
   {
     q: "Where is the Wayfarers Arcade Easter Egg Hunt?",
@@ -44,7 +44,7 @@ const FAQS = [
   },
   {
     q: "Are there indoor Easter activities in Southport for rainy days?",
-    a: "Yes. The Atkinson on Lord Street runs Make It! craft workshops during the Easter holidays — book through the Atkinson website. Southport Market on Market Street has indoor food stalls and events. Wayfarers Arcade is covered. The Bijou Cinema on Post Office Avenue runs regular screenings that are good for a wet afternoon.",
+    a: "Yes. The Atkinson on Lord Street runs Make It! craft workshops during the Easter holidays, book through the Atkinson website. Southport Market on Market Street has indoor food stalls and events. Wayfarers Arcade is covered. The Bijou Cinema on Post Office Avenue runs regular screenings that are good for a wet afternoon.",
   },
   {
     q: "When does the Easter school holiday run in 2026?",
@@ -59,7 +59,7 @@ const PAGE_LD = {
   startDate: "2026-04-01",
   endDate: "2026-04-06",
   description:
-    "Family events guide for Easter in Southport 2026 — Cristal Palace street theatre, Wayfarers Easter Egg Hunt, craft workshops at The Atkinson, and more.",
+    "Family events guide for Easter in Southport 2026. Cristal Palace street theatre, Wayfarers Easter Egg Hunt, craft workshops at The Atkinson, and more.",
   url: `${BASE_URL}/guides/easter-in-southport-2026`,
   image: `${BASE_URL}/images/guides/easter-in-southport-2026.jpg`,
   isAccessibleForFree: true,
@@ -104,7 +104,7 @@ const BY_DAY = [
     ],
   },
   {
-    day: "Thursday 3 April — Good Friday",
+    day: "Thursday 3 April. Good Friday",
     events: [
       { name: "Cristal Palace", venue: "Town Hall Gardens, Lord Street", time: "7:30pm (Doors 6pm)", free: true },
       { name: "Southport Lifeboat Open Day", venue: "Southport Lifeboat Station", time: "Check times", free: true },
@@ -114,7 +114,7 @@ const BY_DAY = [
     ],
   },
   {
-    day: "Friday 4 April — Good Friday",
+    day: "Friday 4 April. Good Friday",
     events: [
       { name: "Cristal Palace (night 2)", venue: "Town Hall Gardens, Lord Street", time: "7:30pm (Doors 6pm)", free: true },
       { name: "Wayfarers Easter Egg Hunt", venue: "Wayfarers Arcade, Lord Street", time: "During opening", free: true },
@@ -142,18 +142,20 @@ export default function EasterSouthportPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
       {/* ── Hero ── */}
-      <div className="relative min-h-[75vh] flex items-end bg-[#2D1B4E] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/guides/easter-in-southport-2026.jpg"
-            alt="Easter in Southport 2026 — family events across the Easter holidays"
-            fill sizes="100vw" quality={90} className="object-cover"
-            style={{ objectPosition: "center 50%" }} priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2D1B4E] via-[#2D1B4E]/60 to-[#2D1B4E]/20" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#2D1B4E] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image
+              src="/images/guides/easter-in-southport-2026.jpg"
+              alt="Easter in Southport 2026 — family events across the Easter holidays"
+              fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain"
+              priority
+            />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
                 1–6 April 2026
@@ -301,10 +303,10 @@ export default function EasterSouthportPage() {
                 <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-3">Town Centre Parking</h3>
                 <div className="space-y-2">
                   {[
-                    "Tulketh Street multi-storey, PR8 1EW — best for Lord Street events",
-                    "Eastbank Street car park, PR8 1DQ — 5 min walk to The Atkinson",
+                    "Tulketh Street multi-storey, PR8 1EW, best for Lord Street events",
+                    "Eastbank Street car park, PR8 1DQ. 5 min walk to The Atkinson",
                     "Southport Market has limited pay-and-display nearby",
-                    "Marine Drive fills early on busy days — not convenient for town events",
+                    "Marine Drive fills early on busy days, not convenient for town events",
                   ].map((line) => (
                     <div key={line} className="flex gap-2 text-sm text-gray-600">
                       <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -337,7 +339,7 @@ export default function EasterSouthportPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Easter in Southport — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Easter in Southport. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

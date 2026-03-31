@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
 
           <p style="color: #999; font-size: 12px; text-align: center;">
             Reply directly to this email to respond to ${name}.<br/>
-            SouthportGuide.co.uk — Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
+            SouthportGuide.co.uk. Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
           </p>
         </div>
       `,
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
-      subject: "Thanks for getting in touch — SouthportGuide.co.uk",
+      subject: "Thanks for getting in touch. SouthportGuide.co.uk",
       html: `
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #FAF8F5; padding: 32px; border-radius: 8px;">
           <div style="border-bottom: 3px solid #C9A84C; padding-bottom: 16px; margin-bottom: 24px;">

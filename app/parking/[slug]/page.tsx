@@ -82,7 +82,7 @@ function getBusyGuide(name: string, tags: string[], postcode: string): BusyGuide
         { label: "Summer weekdays", level: "medium" },
         { label: "Winter", level: "low" },
       ],
-      note: "Often full by 10am on sunny summer weekends. Book via the NT app before you arrive — signal in the car park is patchy. Victoria Road is the overflow if Lifeboat Road is full.",
+      note: "Often full by 10am on sunny summer weekends. Book via the NT app before you arrive, signal in the car park is patchy. Victoria Road is the overflow if Lifeboat Road is full.",
     };
   }
   if (n.includes("marine drive") || n.includes("esplanade") || n.includes("promenade") || n.includes("seafront")) {
@@ -202,7 +202,7 @@ function isGenericAreaName(name: string): boolean {
 /**
  * Generic type-only names (e.g. "Car Park", "Car Park, Southport", "Parking")
  * that give zero location signal and produce near-identical titles across
- * multiple listings — use street name + postcode instead.
+ * multiple listings, use street name + postcode instead.
  */
 function isGenericTypeName(name: string): boolean {
   // Strip trailing area qualifier ("Car Park, Southport" → "car park")
@@ -295,18 +295,18 @@ function buildParkingTitle(
 
   if (nameContainsLoc) {
     // Name has location baked in — just add parking signal and postcode
-    const withPc  = pc ? `${cleanName} — ${pc} | SouthportGuide.co.uk` : `${cleanName} — Parking | SouthportGuide.co.uk`;
+    const withPc  = pc ? `${cleanName} — ${pc} | SouthportGuide.co.uk` : `${cleanName}. Parking | SouthportGuide.co.uk`;
     if (withPc.length <= 70) return withPc;
     return `${cleanName} | SouthportGuide.co.uk`;
   }
 
   // Standard: Name — Parking in Location, Postcode
   const withPc  = pc
-    ? `${cleanName} — Parking in ${loc}, ${pc} | SouthportGuide.co.uk`
-    : `${cleanName} — Parking in ${loc} | SouthportGuide.co.uk`;
+    ? `${cleanName}. Parking in ${loc}, ${pc} | SouthportGuide.co.uk`
+    : `${cleanName}. Parking in ${loc} | SouthportGuide.co.uk`;
   if (withPc.length <= 70) return withPc;
 
-  const shorter = `${cleanName} — Parking, ${loc} | SouthportGuide.co.uk`;
+  const shorter = `${cleanName}. Parking, ${loc} | SouthportGuide.co.uk`;
   if (shorter.length <= 70) return shorter;
 
   return `${cleanName} — ${loc} Parking | SouthportGuide.co.uk`;
@@ -361,7 +361,7 @@ function buildParkingMetaDesc(
   } else {
     nameLabel = cleanName;
   }
-  const base = `${priceSignal}${pcPart}${evPart}${ratingPart} ${nameLabel} — get directions and see busy times on SouthportGuide.co.uk.`;
+  const base = `${priceSignal}${pcPart}${evPart}${ratingPart} ${nameLabel}, get directions and see busy times on SouthportGuide.co.uk.`;
   return base.length <= 160 ? base : base.slice(0, 157) + "…";
 }
 
@@ -874,7 +874,7 @@ export default async function ParkingSlugPage({ params }: Props) {
                 <div className="bg-[#F0F7F2] rounded-xl border border-[#B8D9C4] p-5">
                   <p className="text-xs font-bold uppercase tracking-widest text-[#2D6A4F] mb-1">Visiting Formby?</p>
                   <p className="text-sm text-gray-700 leading-relaxed mb-4">
-                    FormbyGuide has the full local guide — the National Trust pinewoods, red squirrel trail, and Formby beach.
+                    FormbyGuide has the full local guide, the National Trust pinewoods, red squirrel trail, and Formby beach.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {[

@@ -134,7 +134,7 @@ export default async function AnalyticsPage({ searchParams }: Props) {
       {/* Daily chart — SVG area chart */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
         <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-1">
-          Daily Activity — last{" "}
+          Daily Activity, last{" "}
           {period === "all" ? "365" : period} days
         </h2>
         <p className="text-xs text-gray-400 mb-5">Total clicks and views per day</p>

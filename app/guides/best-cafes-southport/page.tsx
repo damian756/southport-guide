@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Best Cafés in Southport 2026 | Independent Coffee Guide | SouthportGuide",
     description:
-      "The best independent cafés in Southport — proper coffee, food worth ordering, and the places locals actually use. Terry's guide.",
+      "The best independent cafés in Southport, proper coffee, food worth ordering, and the places locals actually use. Terry's guide.",
     url: `${BASE_URL}/guides/best-cafes-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -33,15 +33,15 @@ const FAQS = [
   },
   {
     q: "Are there dog-friendly cafés in Southport?",
-    a: "Yes — several of the better independent cafés in Southport welcome dogs, particularly those with outdoor seating. Look for a water bowl outside the door — that's the usual sign. The Botanic Gardens café in Churchtown is dog-friendly in the outdoor area. Birkdale Village cafés tend to be more relaxed about dogs than the town centre.",
+    a: "Yes, several of the better independent cafés in Southport welcome dogs, particularly those with outdoor seating. Look for a water bowl outside the door, that's the usual sign. The Botanic Gardens café in Churchtown is dog-friendly in the outdoor area. Birkdale Village cafés tend to be more relaxed about dogs than the town centre.",
   },
   {
     q: "Is there a good café near Southport beach?",
-    a: "There are beach cafés on Marine Drive near the Promenade — mostly catering to beach visitors with the usual ice cream, snacks, and basic hot drinks. For a proper independent café with good espresso, you'll need to walk 10–15 minutes to Lord Street or the town centre.",
+    a: "There are beach cafés on Marine Drive near the Promenade, mostly catering to beach visitors with the usual ice cream, snacks, and basic hot drinks. For a proper independent café with good espresso, you'll need to walk 10–15 minutes to Lord Street or the town centre.",
   },
   {
     q: "What are the best cafés on Lord Street Southport?",
-    a: "Lord Street has several café options — a mix of independents and small chains. The better independent ones are usually on the side streets immediately off Lord Street rather than the main drag. Walk the area and look for the places without laminated menus in the window.",
+    a: "Lord Street has several café options, a mix of independents and small chains. The better independent ones are usually on the side streets immediately off Lord Street rather than the main drag. Walk the area and look for the places without laminated menus in the window.",
   },
   {
     q: "Where can I work from a café in Southport?",
@@ -72,7 +72,7 @@ const CAFES = [
     name: "Botanic Gardens Café",
     area: "Churchtown",
     bestFor: "Post-walk, dogs welcome",
-    notes: "Inside the Botanic Gardens — free entry to the gardens. Outdoor seating. Good for coffee and a straightforward bite after the gardens. Dog-friendly outside.",
+    notes: "Inside the Botanic Gardens, free entry to the gardens. Outdoor seating. Good for coffee and a straightforward bite after the gardens. Dog-friendly outside.",
   },
   {
     name: "Birkdale Village independents",
@@ -91,9 +91,9 @@ const CAFES = [
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Best Cafés in Southport — Independent Coffee Guide",
+  name: "Best Cafés in Southport. Independent Coffee Guide",
   description:
-    "The best independent cafés and coffee shops in Southport — where locals actually go. Terry's honest guide.",
+    "The best independent cafés and coffee shops in Southport, where locals actually go. Terry's honest guide.",
   url: `${BASE_URL}/guides/best-cafes-southport`,
 };
 
@@ -159,10 +159,10 @@ export default async function BestCafesSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Honest Assessment</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport has a decent independent café scene — better than you&apos;d expect from a town this size, worse than Liverpool&apos;s Northern Quarter. The best places are independents that have been around long enough to know what they&apos;re doing. The chains are where you end up when you can&apos;t find anywhere else.
+            Southport has a decent independent café scene, better than you&apos;d expect from a town this size, worse than Liverpool&apos;s Northern Quarter. The best places are independents that have been around long enough to know what they&apos;re doing. The chains are where you end up when you can&apos;t find anywhere else.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The concentration of good cafés is on and around Lord Street and in Birkdale Village. A few are in less obvious spots — Churchtown and the Atkinson are worth knowing about for a different pace.
+            The concentration of good cafés is on and around Lord Street and in Birkdale Village. A few are in less obvious spots. Churchtown and the Atkinson are worth knowing about for a different pace.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
@@ -215,7 +215,7 @@ export default async function BestCafesSouthportGuidePage() {
               },
               {
                 title: "With a laptop",
-                notes: "The Atkinson café is the most comfortable for longer stays — space, wifi, and nobody rushing you. Avoid peak lunch times.",
+                notes: "The Atkinson café is the most comfortable for longer stays, space, wifi, and nobody rushing you. Avoid peak lunch times.",
               },
               {
                 title: "With a dog",
@@ -238,7 +238,7 @@ export default async function BestCafesSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Tea Rooms &amp; a Different Pace</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            If coffee shops aren&apos;t the goal and you want a proper pot of tea with something to eat, there are a handful of more traditional options in Southport. The Churchtown area around the Botanic Gardens is the most appropriate setting for this — slower, quieter, and genuinely pleasant.
+            If coffee shops aren&apos;t the goal and you want a proper pot of tea with something to eat, there are a handful of more traditional options in Southport. The Churchtown area around the Botanic Gardens is the most appropriate setting for this, slower, quieter, and genuinely pleasant.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Wayfarers Arcade also has a relaxed café that doesn&apos;t feel rushed. Good for a mid-afternoon sit-down without the pressure of a busy lunch service.

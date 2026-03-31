@@ -121,13 +121,13 @@ export async function POST(req: Request) {
         <p style="color: #1B2E4B; font-size: 16px;">Hi ${parsed.data.name},</p>
         <p style="color: #444; line-height: 1.7;">
           Thanks for submitting a claim request for <strong>${business.name}</strong>.
-          We'll review it and get back to you by email — usually within 1–2 business days.
+          We'll review it and get back to you by email, usually within 1–2 business days.
         </p>
         <p style="color: #444; line-height: 1.7;">
           Once approved, you'll receive a link to set your password and access your Business Hub dashboard.
         </p>
         <p style="color: #999; font-size: 12px; margin-top: 32px;">
-          SouthportGuide.co.uk — Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
+          SouthportGuide.co.uk. Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
         </p>
       </div>
     `,
@@ -184,7 +184,7 @@ export async function POST(req: Request) {
         </p>
 
         <p style="color: #999; font-size: 12px; margin-top: 24px;">
-          SouthportGuide.co.uk — Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
+          SouthportGuide.co.uk. Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
         </p>
       </div>
     `,

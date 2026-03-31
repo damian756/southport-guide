@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/big-top-festival-southport-2026` },
   openGraph: {
     title: "Big Top Festival Southport 2026 | 2–3 May · Circus Arts",
-    description: "Big Top Festival Southport 2026 — two days of world-class circus arts. Circa and Gandini Juggling. 2–3 May. Free outdoor events and ticketed shows.",
+    description: "Big Top Festival Southport 2026, two days of world-class circus arts. Circa and Gandini Juggling. 2–3 May. Free outdoor events and ticketed shows.",
     url: `${BASE_URL}/guides/big-top-festival-southport-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -26,11 +26,11 @@ export const metadata: Metadata = {
 const FAQS = [
   { q: "When is Big Top Festival in Southport 2026?", a: "Big Top Festival Southport 2026 takes place on Saturday 2 and Sunday 3 May 2026. It is part of the Bank Holiday weekend that also coincides with Southport Beer Week." },
   { q: "What is the Big Top Festival in Southport?", a: "Big Top Festival is a circus and street arts festival in Southport town centre, part of the Southport 2026: Elegantly Eccentric cultural programme. It features world-class circus companies including Circa (Australia) and Gandini Juggling (UK), with a mix of free outdoor performances and ticketed indoor shows." },
-  { q: "Is Big Top Festival free?", a: "Some elements are free — outdoor performances in the town centre are free to watch. Some ticketed indoor shows require tickets. Check the Southport 2026 website for the specific programme and which performances are free versus ticketed." },
+  { q: "Is Big Top Festival free?", a: "Some elements are free, outdoor performances in the town centre are free to watch. Some ticketed indoor shows require tickets. Check the Southport 2026 website for the specific programme and which performances are free versus ticketed." },
   { q: "Who is performing at Big Top Festival 2026?", a: "Confirmed performers include Circa, an acclaimed Australian physical theatre and circus company, and Gandini Juggling, one of the world's leading contemporary juggling companies. Both are internationally touring companies of the highest quality." },
-  { q: "Where does Big Top Festival take place in Southport?", a: "Big Top Festival takes place across Southport town centre — on Lord Street, in the town's public spaces, and at The Atkinson. Some performances may be in Victoria Park. The outdoor performances typically move through the town centre over the two days." },
+  { q: "Where does Big Top Festival take place in Southport?", a: "Big Top Festival takes place across Southport town centre, on Lord Street, in the town's public spaces, and at The Atkinson. Some performances may be in Victoria Park. The outdoor performances typically move through the town centre over the two days." },
   { q: "Is Big Top Festival family friendly?", a: "Yes. Circus and street arts are inherently accessible and engaging for all ages. The outdoor performances are particularly suitable for families. It is one of the best events of the year for bringing children into town." },
-  { q: "Can I combine Big Top Festival with Southport Beer Week?", a: "Yes — Southport Beer Week runs 20–25 May across 18 town-centre pubs, and the Big Top Festival falls at the start of that period. The Bank Holiday weekend of 2–3 May is one of the busiest weekends of Southport's year. Plan accommodation well in advance if you are staying over." },
+  { q: "Can I combine Big Top Festival with Southport Beer Week?", a: "Yes. Southport Beer Week runs 20–25 May across 18 town-centre pubs, and the Big Top Festival falls at the start of that period. The Bank Holiday weekend of 2–3 May is one of the busiest weekends of Southport's year. Plan accommodation well in advance if you are staying over." },
 ];
 
 const PAGE_LD = {
@@ -65,13 +65,15 @@ export default function BigTopFestivalPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#5C1A1A] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/big-top-festival-southport-2026.jpg" alt="Big Top Festival Southport 2026 — circus arts festival" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#5C1A1A] via-[#5C1A1A]/50 to-[#5C1A1A]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#5C1A1A] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/big-top-festival-southport-2026.jpg" alt="Big Top Festival Southport 2026 — circus arts festival" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">2–3 May 2026</span>
               <span className="text-white/50 text-sm font-medium">Southport Town Centre · Circus Arts</span>
@@ -115,9 +117,9 @@ export default function BigTopFestivalPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Circus in the Town Centre. This Is Worth Your Bank Holiday.</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>Circa are not a touring novelty act. They are an Australian physical theatre company with an international reputation. Gandini Juggling are similarly serious — they have performed at the Edinburgh Festival and major arts venues across Europe. Bringing them to Southport for a Bank Holiday weekend is a genuine coup.</p>
-              <p>The outdoor free shows are the heart of it — circus in a town centre on a spring Bank Holiday weekend is exactly what these streets are built for. Lord Street with performers in it, the weather cooperating, and people stopping to watch: that is the version of Southport I am proud of.</p>
-              <p>The Bank Holiday weekend also runs into Beer Week (20–25 May). If you are planning to visit Southport for an event weekend, Big Top plus Beer Week is the combination to plan around. Book accommodation early — May is busy.</p>
+              <p>Circa are not a touring novelty act. They are an Australian physical theatre company with an international reputation. Gandini Juggling are similarly serious, they have performed at the Edinburgh Festival and major arts venues across Europe. Bringing them to Southport for a Bank Holiday weekend is a genuine coup.</p>
+              <p>The outdoor free shows are the heart of it, circus in a town centre on a spring Bank Holiday weekend is exactly what these streets are built for. Lord Street with performers in it, the weather cooperating, and people stopping to watch: that is the version of Southport I am proud of.</p>
+              <p>The Bank Holiday weekend also runs into Beer Week (20–25 May). If you are planning to visit Southport for an event weekend, Big Top plus Beer Week is the combination to plan around. Book accommodation early. May is busy.</p>
             </div>
           </div>
         </section>
@@ -136,7 +138,7 @@ export default function BigTopFestivalPage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <div className="text-3xl mb-3">🤹</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-3">Gandini Juggling</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">One of the world&apos;s leading contemporary juggling companies, based in the UK. Gandini&apos;s work transcends what most people think of when they hear &quot;juggling&quot; — it is choreographed, musical, and genuinely theatrical. Multiple Edinburgh Festival Fringe appearances and international touring.</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">One of the world&apos;s leading contemporary juggling companies, based in the UK. Gandini&apos;s work transcends what most people think of when they hear &quot;juggling&quot;, it is choreographed, musical, and genuinely theatrical. Multiple Edinburgh Festival Fringe appearances and international touring.</p>
             </div>
           </div>
         </section>
@@ -144,7 +146,7 @@ export default function BigTopFestivalPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Big Top Festival — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Big Top Festival. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

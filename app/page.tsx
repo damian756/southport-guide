@@ -73,7 +73,7 @@ const NEIGHBOURHOODS = [
   },
   {
     name: "Town Centre",
-    desc: "Lord Street, the seafront, Southport station. Merseyrail direct to Liverpool Central. Flats and terraces — the most affordable entry point.",
+    desc: "Lord Street, the seafront, Southport station. Merseyrail direct to Liverpool Central. Flats and terraces: the most affordable entry point.",
     sector: "PR8 1 / PR9 0",
     slug: "pr8-1",
     image: "/images/neighbourhoods/town-centre.webp",
@@ -247,7 +247,7 @@ export default async function Home() {
     <div className="min-h-screen flex flex-col">
 
       {/* ══════════════════════════════════════════════════════
-          HERO — SPLIT LAYOUT
+          HERO. SPLIT LAYOUT
       ══════════════════════════════════════════════════════ */}
       <section className="bg-[#1B2E4B] overflow-hidden">
         <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
@@ -285,7 +285,7 @@ export default async function Home() {
             <p className="text-white/60 text-sm md:text-base mb-7 leading-relaxed max-w-sm">
               Restaurants, hotels, beaches, and{" "}
               <Link href="/property" className="text-white/80 hover:text-[#C9A84C] underline underline-offset-2 transition-colors">house prices</Link>
-              {" "}— written by locals who actually live here.
+              {" "}Written by locals who actually live here.
             </p>
 
             {/* Open countdown card */}
@@ -388,7 +388,7 @@ export default async function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          WHAT'S ON — EVENTS STRIP
+          WHAT'S ON. EVENTS STRIP
       ══════════════════════════════════════════════════════ */}
       {upcomingEvents.length > 0 && (
         <section className="py-12 bg-[#FAF8F5]">
@@ -732,7 +732,7 @@ export default async function Home() {
                 </Link>
               </h2>
               <p className="text-white/70 leading-relaxed mb-5 max-w-lg">
-                Every sale in PR8 and PR9 over three years. School Ofsted ratings, crime by category, flood zones, broadband speeds, and Merseyrail commute times — all in one place. This is what Rightmove doesn&apos;t give you.
+                Every sale in PR8 and PR9 over three years. School Ofsted ratings, crime by category, flood zones, broadband speeds, and Merseyrail commute times. All in one place. This is what Rightmove doesn&apos;t give you.
               </p>
               <div className="flex flex-wrap gap-3 text-sm mb-5">
                 {[
@@ -915,7 +915,7 @@ export default async function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          TOP RATED — MAGAZINE GRID
+          TOP RATED. MAGAZINE GRID
       ══════════════════════════════════════════════════════ */}
       {featured.length > 0 && (
         <section className="py-16 bg-[#FAF8F5]">
@@ -1112,10 +1112,10 @@ export default async function Home() {
                 Written by people who actually live here.
               </h2>
               <p className="text-gray-600 leading-relaxed mb-3">
-                I&apos;ve lived in Churchtown my whole life — 41 years. I&apos;ve eaten in most of the restaurants in this town, some of them multiple times a week when the kids were small. I know where Marine Drive car park fills up by 10am on a summer Saturday, and I know which end of Lord Street to park on. I have a bulldog called Frank who has opinions about beer gardens.
+                I&apos;ve lived in Churchtown my whole life. 41 years. I&apos;ve eaten in most of the restaurants in this town, some of them multiple times a week when the kids were small. I know where Marine Drive car park fills up by 10am on a summer Saturday, and I know which end of Lord Street to park on. I have a bulldog called Frank who has opinions about beer gardens.
               </p>
               <p className="text-gray-600 leading-relaxed mb-5">
-                SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide — not a reprint of the council website. If something isn&apos;t worth your time, I say so.
+                SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide. Not a reprint of the council website. If something isn&apos;t worth your time, I say so.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -1167,8 +1167,7 @@ export default async function Home() {
                 </Link>
               </h2>
               <p className="text-white/70 leading-relaxed mb-5 max-w-lg">
-                Postcode PR8 1RX. Free entry. Dogs welcome year-round. At low tide the sea retreats over a kilometre
-                — it&apos;s a coastal landscape like nothing else in the North West.
+                Postcode PR8 1RX. Free entry. Dogs welcome year-round. At low tide the sea retreats over a kilometre. A coastal landscape like nothing else in the North West.
               </p>
               <div className="flex flex-wrap gap-3 text-sm mb-5">
                 <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Free to visit</span>
@@ -1231,7 +1230,7 @@ export default async function Home() {
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Royal Birkdale · 2026</p>
                 <h3 className="font-display text-3xl font-bold text-white mb-3">The Open Championship</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-5">
-                  Golf&apos;s oldest major returns to Royal Birkdale. Book accommodation early — Southport fills up fast.
+                  Golf&apos;s oldest major returns to Royal Birkdale. Book accommodation early. Southport fills up fast.
                 </p>
                 <span className="inline-flex items-center gap-2 bg-[#C9A84C] text-white text-sm font-semibold px-5 py-2.5 rounded-full group-hover:bg-[#E8C87A] transition-colors">
                   Plan your visit <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

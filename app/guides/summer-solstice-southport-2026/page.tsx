@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/summer-solstice-southport-2026` },
   openGraph: {
     title: "Summer Solstice Festival Southport 2026 | 20 June Victoria Park",
-    description: "Summer Solstice Festival Southport 2026 — 8-hour dance and music event at Victoria Park. 20 June, 2pm–10pm. Ticketed.",
+    description: "Summer Solstice Festival Southport 2026. 8-hour dance and music event at Victoria Park. 20 June, 2pm–10pm. Ticketed.",
     url: `${BASE_URL}/guides/summer-solstice-southport-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { q: "When is the Summer Solstice Festival in Southport 2026?", a: "The Summer Solstice Festival takes place on Saturday 20 June 2026 at Victoria Park, Southport. The event runs from 2pm to 10pm — an 8-hour outdoor event on the longest day of the year." },
-  { q: "What is the Summer Solstice Festival in Southport?", a: "The Summer Solstice Festival is an outdoor dance and music event at Victoria Park, forming part of the Southport 2026: Elegantly Eccentric cultural programme. It runs on the summer solstice — the longest day — for 8 hours of continuous music and performance." },
-  { q: "Do I need tickets for the Summer Solstice Festival?", a: "Yes — the Summer Solstice Festival is a ticketed VIP event. Tickets must be purchased in advance. Check the Southport 2026 website and Southport BID for ticket information." },
-  { q: "Where is Victoria Park in Southport?", a: "Victoria Park is on Rotten Row, Southport, PR8 2BZ — Southport's main public park, used for the Flower Show, Sausage & Cider Festival, and other major events. It is approximately 15 minutes' walk from Southport railway station." },
+  { q: "When is the Summer Solstice Festival in Southport 2026?", a: "The Summer Solstice Festival takes place on Saturday 20 June 2026 at Victoria Park, Southport. The event runs from 2pm to 10pm, an 8-hour outdoor event on the longest day of the year." },
+  { q: "What is the Summer Solstice Festival in Southport?", a: "The Summer Solstice Festival is an outdoor dance and music event at Victoria Park, forming part of the Southport 2026: Elegantly Eccentric cultural programme. It runs on the summer solstice, the longest day, for 8 hours of continuous music and performance." },
+  { q: "Do I need tickets for the Summer Solstice Festival?", a: "Yes, the Summer Solstice Festival is a ticketed VIP event. Tickets must be purchased in advance. Check the Southport 2026 website and Southport BID for ticket information." },
+  { q: "Where is Victoria Park in Southport?", a: "Victoria Park is on Rotten Row, Southport, PR8 2BZ. Southport's main public park, used for the Flower Show, Sausage & Cider Festival, and other major events. It is approximately 15 minutes' walk from Southport railway station." },
   { q: "What type of music is at the Summer Solstice Festival?", a: "The Summer Solstice Festival focuses on dance and electronic music. It is positioned as a premium outdoor dance event. The 8-hour format and VIP positioning suggests a festival-quality production rather than a local night out." },
   { q: "Is the Summer Solstice Festival family friendly?", a: "The event is an evening dance event running until 10pm, which makes it more adult-oriented. It is not described as a family festival. Check the official event information for age restrictions." },
 ];
@@ -63,13 +63,15 @@ export default function SummerSolsticePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#3D2A00] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/summer-solstice-southport-2026.jpg" alt="Summer Solstice Festival Southport 2026 at Victoria Park" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#3D2A00] via-[#3D2A00]/50 to-[#3D2A00]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#3D2A00] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/summer-solstice-southport-2026.jpg" alt="Summer Solstice Festival Southport 2026 at Victoria Park" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">20 June 2026</span>
               <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 2BZ · 2pm–10pm</span>
@@ -113,8 +115,8 @@ export default function SummerSolsticePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Eight Hours on the Longest Day</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>Victoria Park in June is a different thing entirely to Victoria Park in April. This is peak summer — or as close as you get in Merseyside. The Summer Solstice is the longest day of the year. Eight hours of music starting at 2pm means you are dancing in daylight for most of it.</p>
-              <p>The VIP positioning means this is not a cheap night out. But it is a proper outdoor event with production values to match. Part of the Southport 2026: Elegantly Eccentric programme, which has delivered at every event so far this year — Cristal Palace, Big Top Festival. The standard has been high.</p>
+              <p>Victoria Park in June is a different thing entirely to Victoria Park in April. This is peak summer, or as close as you get in Merseyside. The Summer Solstice is the longest day of the year. Eight hours of music starting at 2pm means you are dancing in daylight for most of it.</p>
+              <p>The VIP positioning means this is not a cheap night out. But it is a proper outdoor event with production values to match. Part of the Southport 2026: Elegantly Eccentric programme, which has delivered at every event so far this year. Cristal Palace, Big Top Festival. The standard has been high.</p>
               <p>If outdoor dance events are your thing and you are within travelling distance of Southport, this is worth planning around. Check the Southport 2026 website for ticket information.</p>
             </div>
           </div>
@@ -129,12 +131,12 @@ export default function SummerSolsticePage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <div className="text-3xl mb-3">☀️</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-3">Summer Solstice Setting</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">The event is timed to the longest day of the year — maximum daylight, evening light that lasts until after 10pm at this latitude. Victoria Park in full summer with an evening music event is about as good as outdoor events get in this part of the country.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">The event is timed to the longest day of the year, maximum daylight, evening light that lasts until after 10pm at this latitude. Victoria Park in full summer with an evening music event is about as good as outdoor events get in this part of the country.</p>
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <div className="text-3xl mb-3">🎵</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-3">Dance &amp; Music Focus</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">An 8-hour outdoor dance event with live music and DJ sets. The VIP positioning suggests premium production — stage, sound, lighting — rather than a basic outdoor event. Check the Southport 2026 website for the confirmed line-up as it is announced.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">An 8-hour outdoor dance event with live music and DJ sets. The VIP positioning suggests premium production, stage, sound, lighting, rather than a basic outdoor event. Check the Southport 2026 website for the confirmed line-up as it is announced.</p>
             </div>
           </div>
         </section>
@@ -142,7 +144,7 @@ export default function SummerSolsticePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Summer Solstice Festival — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Summer Solstice Festival. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

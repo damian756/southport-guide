@@ -37,35 +37,35 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "What is the postcode for Haig Avenue?",
-    a: "The postcode for Haig Avenue Stadium is PR8 6JZ. There is no car park at the stadium — you'll be looking for street parking on Haig Avenue and the surrounding residential streets.",
+    a: "The postcode for Haig Avenue Stadium is PR8 6JZ. There is no car park at the stadium, you'll be looking for street parking on Haig Avenue and the surrounding residential streets.",
   },
   {
     q: "Which train station is nearest to Haig Avenue?",
-    a: "Meols Cop is the closest station at about a 10-minute walk. Exit the station, turn left onto Norwood Road, walk down to the Thatch and Thistle pub at the bottom, and Haig Avenue is directly opposite. Southport station (town centre) is also an option — a 20-minute walk or take the number 44 bus from Eastbank Street.",
+    a: "Meols Cop is the closest station at about a 10-minute walk. Exit the station, turn left onto Norwood Road, walk down to the Thatch and Thistle pub at the bottom, and Haig Avenue is directly opposite. Southport station (town centre) is also an option, a 20-minute walk or take the number 44 bus from Eastbank Street.",
   },
   {
     q: "Is there a car park at Haig Avenue?",
-    a: "The club operates matchday parking at Meols Cop school near the ground — check southportfc.net for availability and pricing on the day. Street parking on Haig Avenue and surrounding residential streets fills early for popular fixtures. Town centre car parks are a lower-stress alternative with a 25–30 minute walk or the number 44 bus.",
+    a: "The club operates matchday parking at Meols Cop school near the ground, check southportfc.net for availability and pricing on the day. Street parking on Haig Avenue and surrounding residential streets fills early for popular fixtures. Town centre car parks are a lower-stress alternative with a 25–30 minute walk or the number 44 bus.",
   },
   {
     q: "Which pubs near Haig Avenue are good for away fans?",
-    a: "The Thatch and Thistle at the bottom of Haig Avenue (at the Norwood Road junction) is the closest option — straightforward pub with Sky Sports. The Richmond on Scarisbrick New Road is a short walk and slightly more relaxed. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission supporters. If you have more time, Southport town centre has significantly better options — a mile and a half away, worth it if you arrive 2+ hours early.",
+    a: "The Thatch and Thistle at the bottom of Haig Avenue (at the Norwood Road junction) is the closest option, straightforward pub with Sky Sports. The Richmond on Scarisbrick New Road is a short walk and slightly more relaxed. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission supporters. If you have more time, Southport town centre has significantly better options, a mile and a half away, worth it if you arrive 2+ hours early.",
   },
   {
     q: "What is the away end like at Haig Avenue?",
-    a: "Away supporters are in the Blowick End — an open, uncovered terrace at the south end of the ground. The Irish Sea wind can be significant on an exposed terrace. Dress in layers and bring a waterproof regardless of the forecast. The sightlines are fine.",
+    a: "Away supporters are in the Blowick End, an open, uncovered terrace at the south end of the ground. The Irish Sea wind can be significant on an exposed terrace. Dress in layers and bring a waterproof regardless of the forecast. The sightlines are fine.",
   },
   {
     q: "How much are tickets at Southport FC?",
-    a: "Adult standing tickets are typically around £13–£15, with seated options in the Grandstand at a slight premium. Hospitality packages are also available and are good value for the level. Check southportfc.net for confirmed prices — they vary by fixture and competition.",
+    a: "Adult standing tickets are typically around £13–£15, with seated options in the Grandstand at a slight premium. Hospitality packages are also available and are good value for the level. Check southportfc.net for confirmed prices, they vary by fixture and competition.",
   },
   {
     q: "What is there to do in Southport before or after the match?",
-    a: "More than most people expect. Lord Street is a genuinely impressive Victorian boulevard with independent shops and restaurants — about a 20-minute walk or short bus ride from Haig Avenue. Southport Market is good for lunch. The beach and pier are worth seeing if you arrive early enough. If the weather is poor, The Atkinson on Lord Street (arts centre, gallery, café) is one of the better rainy-day options in the North West.",
+    a: "More than most people expect. Lord Street is a genuinely impressive Victorian boulevard with independent shops and restaurants, about a 20-minute walk or short bus ride from Haig Avenue. Southport Market is good for lunch. The beach and pier are worth seeing if you arrive early enough. If the weather is poor, The Atkinson on Lord Street (arts centre, gallery, café) is one of the better rainy-day options in the North West.",
   },
   {
     q: "Is Southport FC in the National League?",
-    a: "Southport FC currently compete in the National League North — the sixth tier of English football. Home games at Haig Avenue typically draw attendances in the hundreds to low thousands, rising significantly for cup fixtures and high-profile visitors.",
+    a: "Southport FC currently compete in the National League North, the sixth tier of English football. Home games at Haig Avenue typically draw attendances in the hundreds to low thousands, rising significantly for cup fixtures and high-profile visitors.",
   },
 ];
 
@@ -144,7 +144,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 rel="noopener noreferrer"
                 className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
               >
-                Fixtures &amp; Tickets — southportfc.net →
+                Fixtures &amp; Tickets, southportfc.net →
               </a>
               <a
                 href="#getting-there"
@@ -188,7 +188,7 @@ export default function SouthportFCMatchdayGuidePage() {
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>
                 Haig Avenue is a proper old non-league ground, built in 1905 and updated over the years in the
-                way that lower-league clubs update things — a stand here, some floodlights there. It has character.
+                way that lower-league clubs update things, a stand here, some floodlights there. It has character.
                 It is not modern. It is a football ground in the way that football grounds used to be, and that
                 is not a complaint from me.
               </p>
@@ -225,8 +225,8 @@ export default function SouthportFCMatchdayGuidePage() {
                 color: "text-blue-600",
                 recommended: true,
                 items: [
-                  "Meols Cop station — 10-minute walk. Exit left onto Norwood Road, walk to the Thatch and Thistle at the bottom, ground is directly opposite.",
-                  "Southport station (town centre) — 20-minute walk or the number 44 bus from Eastbank Street.",
+                  "Meols Cop station. 10-minute walk. Exit left onto Norwood Road, walk to the Thatch and Thistle at the bottom, ground is directly opposite.",
+                  "Southport station (town centre). 20-minute walk or the number 44 bus from Eastbank Street.",
                   "From Liverpool: Liverpool Central to Southport on the Merseyrail Northern line, around 50 minutes, running every 15 minutes on Saturdays.",
                   "From Manchester: Manchester Piccadilly to Wigan North Western, then Northern rail to Southport. Check National Rail for times.",
                   "From the south via Liverpool: Liverpool Lime Street to Liverpool Central is a 5-minute walk, then Merseyrail onward.",
@@ -241,7 +241,7 @@ export default function SouthportFCMatchdayGuidePage() {
                   "Satnav: PR8 6JZ takes you to the ground. No car park at the stadium.",
                   "Street parking on Haig Avenue and surrounding residential roads fills early for popular fixtures.",
                   "Arrive at least 90 minutes before kick-off if relying on street parking near the ground.",
-                  "Town centre car parks are an alternative — then walk 25–30 minutes or take the number 44 bus.",
+                  "Town centre car parks are an alternative, then walk 25–30 minutes or take the number 44 bus.",
                   "Marine Drive car park (PR8 1RX) is on the far side of town from the ground and requires a bus or longer walk.",
                 ],
               },
@@ -286,9 +286,9 @@ export default function SouthportFCMatchdayGuidePage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {[
-                  { option: "Meols Cop School (club parking)", distance: "Near the ground", note: "Club-operated matchday parking — check southportfc.net for availability" },
-                  { option: "Haig Avenue (street)", distance: "At the ground", note: "Fills early — arrive 90+ mins before KO for popular games" },
-                  { option: "Surrounding residential streets", distance: "2–5 min walk", note: "Norwood Road, Scarisbrick New Road — check for residents-only signs" },
+                  { option: "Meols Cop School (club parking)", distance: "Near the ground", note: "Club-operated matchday parking, check southportfc.net for availability" },
+                  { option: "Haig Avenue (street)", distance: "At the ground", note: "Fills early, arrive 90+ mins before KO for popular games" },
+                  { option: "Surrounding residential streets", distance: "2–5 min walk", note: "Norwood Road, Scarisbrick New Road, check for residents-only signs" },
                   { option: "Town centre car parks", distance: "25–30 min walk or bus", note: "Lower stress on a matchday; bus 44 from Eastbank Street" },
                 ].map((row) => (
                   <tr key={row.option} className="hover:bg-[#FAF8F5] transition-colors">
@@ -328,12 +328,12 @@ export default function SouthportFCMatchdayGuidePage() {
                 {
                   name: "Grandstand Bar",
                   location: "At the stadium",
-                  detail: "The Grandstand Bar is for hospitality guests only — it is not accessible to general admission or away supporters. Do not count on it as a pre-match option.",
+                  detail: "The Grandstand Bar is for hospitality guests only, it is not accessible to general admission or away supporters. Do not count on it as a pre-match option.",
                 },
                 {
                   name: "Thatch and Thistle",
                   location: "Haig Avenue / Norwood Road junction",
-                  detail: "The default option for away fans — right at the bottom of the road leading to the ground. Sky Sports, food, functional. Nothing special but it works. Gets busy for popular games.",
+                  detail: "The default option for away fans, right at the bottom of the road leading to the ground. Sky Sports, food, functional. Nothing special but it works. Gets busy for popular games.",
                 },
                 {
                   name: "The Richmond",
@@ -355,7 +355,7 @@ export default function SouthportFCMatchdayGuidePage() {
             <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-4">Town Centre (if arriving early)</h3>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <p className="text-gray-700 leading-relaxed mb-5">
-                Southport town centre is about a mile and a half from Haig Avenue — 25–30 minutes on foot or
+                Southport town centre is about a mile and a half from Haig Avenue. 25–30 minutes on foot or
                 a short bus ride on the number 44. If you are arriving two or more hours before kick-off,
                 this is the better option for a pre-match drink. The pubs are significantly better than the options
                 right by the ground.
@@ -400,7 +400,7 @@ export default function SouthportFCMatchdayGuidePage() {
               {
                 emoji: "🎽",
                 title: "Away End",
-                detail: "The Blowick End — south terrace, open and uncovered. Irish Sea wind is a real factor. Bring a waterproof and layers regardless of the forecast.",
+                detail: "The Blowick End, south terrace, open and uncovered. Irish Sea wind is a real factor. Bring a waterproof and layers regardless of the forecast.",
               },
               {
                 emoji: "🍺",
@@ -432,7 +432,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Adult standing tickets are typically around £13–£15. Seated options in the Grandstand
                   are available at a small premium. Hospitality packages (the club pushes these and they are
-                  decent value for the level — around £47 per person) include catering and a reserved seat.
+                  decent value for the level, around £47 per person) include catering and a reserved seat.
                   Check the official Southport FC website for confirmed prices and availability for each fixture,
                   as cup games and high-profile visitors may be priced differently.
                 </p>
@@ -442,7 +442,7 @@ export default function SouthportFCMatchdayGuidePage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-[#C9A84C] hover:text-[#1B2E4B] transition-colors"
                 >
-                  Tickets — southportfc.net <ArrowRight className="w-4 h-4" />
+                  Tickets, southportfc.net <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -468,7 +468,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 },
                 {
                   title: "Southport Beach",
-                  desc: "One of England's widest beaches. Easy access from Marine Drive. In autumn and winter it is bracing — good for a short walk if you dress for it.",
+                  desc: "One of England's widest beaches. Easy access from Marine Drive. In autumn and winter it is bracing, good for a short walk if you dress for it.",
                   href: "/guides/southport-beach",
                   emoji: "🏖️",
                 },
@@ -480,7 +480,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 },
                 {
                   title: "Restaurants",
-                  desc: "Southport has proper dining options on Lord Street and in Birkdale village. Book ahead for an evening meal — particularly at weekends.",
+                  desc: "Southport has proper dining options on Lord Street and in Birkdale village. Book ahead for an evening meal, particularly at weekends.",
                   href: "/restaurants",
                   emoji: "🍽️",
                 },
@@ -518,7 +518,7 @@ export default function SouthportFCMatchdayGuidePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Haig Avenue — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Haig Avenue. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

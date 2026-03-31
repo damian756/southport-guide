@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Getting to Royal Birkdale | Transport Guide for The Open 2026",
   description:
-    "How to get to Royal Birkdale for The Open Championship 2026. Merseyrail trains, park and ride, taxis, road closures and walking routes — everything you need for Open week in Southport.",
+    "How to get to Royal Birkdale for The Open Championship 2026. Merseyrail trains, park and ride, taxis, road closures and walking routes, everything you need for Open week in Southport.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/getting-there" },
   openGraph: {
     type: "website",
@@ -94,10 +94,10 @@ export default function OpenGettingTherePage() {
             <div className="w-10 h-10 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center">
               <Train className="w-5 h-5 text-[#C9A84C]" />
             </div>
-            <h2 className="font-display text-xl font-bold text-[#1B2E4B]">By Train — The Recommended Option</h2>
+            <h2 className="font-display text-xl font-bold text-[#1B2E4B]">By Train: The Recommended Option</h2>
           </div>
           <p className="text-gray-600 text-sm leading-relaxed mb-5">
-            Merseyrail operates frequent services on the Southport line from Liverpool Central, with a stop at Birkdale station. The station is approximately a 10–15 minute walk from the Royal Birkdale course entrance on Waterloo Road — a pleasant walk through Birkdale village.
+            Merseyrail operates frequent services on the Southport line from Liverpool Central, with a stop at Birkdale station. The station is approximately a 10–15 minute walk from the Royal Birkdale course entrance on Waterloo Road, through Birkdale village.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -117,7 +117,7 @@ export default function OpenGettingTherePage() {
             </table>
           </div>
           <p className="text-xs text-gray-400 mt-4">
-            Trains will be busier than normal during Open week. Allow extra time in the morning, particularly before the first tee times. Return journeys after play can have queues — consider staying in Birkdale village for dinner before catching the train back.
+            Trains will be busier than normal during Open week. Allow extra time in the morning, particularly before the first tee times. Return journeys after play can have queues. Consider staying in Birkdale village for dinner before catching the train back.
           </p>
         </div>
 
@@ -134,19 +134,19 @@ export default function OpenGettingTherePage() {
           </p>
           <ul className="space-y-3">
             {[
-              ["Victoria Park, Southport", "Central site, well served, popular — book early"],
+              ["Victoria Park, Southport", "Central site, well served, popular. Book early."],
               ["Woodvale Airfield (Formby Road)", "Good if approaching from the south on the A565"],
               ["Meols Cop Road area", "Eastern approach, less traffic than coastal route"],
             ].map(([site, note]) => (
               <li key={site} className="flex gap-3 text-sm">
                 <span className="text-[#C9A84C] font-bold flex-none">→</span>
-                <span><span className="font-semibold text-[#1B2E4B]">{site}</span> — <span className="text-gray-500">{note}</span></span>
+                <span><span className="font-semibold text-[#1B2E4B]">{site}:</span> <span className="text-gray-500">{note}</span></span>
               </li>
             ))}
           </ul>
           <div className="mt-5 bg-[#FAF8F5] rounded-xl p-4">
             <p className="text-sm text-gray-600">
-              <span className="font-semibold text-[#1B2E4B]">Note:</span> Full park and ride details — including confirmed site locations, prices, and booking links — are published by The R&A at{" "}
+              <span className="font-semibold text-[#1B2E4B]">Note:</span> Full park and ride details (confirmed site locations, prices, and booking links) are published by The R&A at{" "}
               <a href="https://www.theopen.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline font-semibold">theopen.com</a>{" "}
               as the championship approaches. Check there for the definitive information.
             </p>
@@ -162,7 +162,7 @@ export default function OpenGettingTherePage() {
             <h2 className="font-display text-xl font-bold text-[#1B2E4B]">Driving to Southport</h2>
           </div>
           <p className="text-gray-600 text-sm leading-relaxed mb-5">
-            Southport is well connected by road. If you&apos;re driving to the area — to reach your accommodation, park and ride site, or Southport town centre — the main routes are straightforward.
+            Southport is well connected by road. If you&apos;re driving to the area (to reach your accommodation, park and ride site, or Southport town centre), the main routes are straightforward.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
@@ -196,9 +196,9 @@ export default function OpenGettingTherePage() {
           </p>
           <ul className="space-y-2 text-sm text-gray-600">
             {[
-              "Book return taxis in advance — demand massively outstrips supply on championship days",
+              "Book return taxis in advance. Demand massively outstrips supply on championship days.",
               "Ride-hailing apps (Uber, etc.) operate in Southport and can be more reliable for returns",
-              "Some local taxi firms offer pre-booked Open week packages — worth checking with your accommodation",
+              "Some local taxi firms offer pre-booked Open week packages. Worth checking with your accommodation.",
               "Walking from Southport town centre to Birkdale is feasible (around 30–40 minutes along the seafront)",
             ].map((tip) => (
               <li key={tip} className="flex gap-3">

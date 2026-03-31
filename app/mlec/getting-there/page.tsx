@@ -70,10 +70,10 @@ const TRANSPORT_OPTIONS = [
       "MLEC is on your left, directly on Marine Lake (5 minutes)",
     ],
     tips: [
-      "Check the last train time before you go — services reduce in the evening",
+      "Check the last train time before you go, services reduce in the evening",
       "The walk from the station is well-lit and straightforward",
       "Accessible route: no significant gradients, smooth pavements throughout",
-      "On event nights, trains from Southport may be busier — allow extra time",
+      "On event nights, trains from Southport may be busier, allow extra time",
     ],
   },
   {
@@ -81,9 +81,9 @@ const TRANSPORT_OPTIONS = [
     method: "By Car",
     badge: "Parking Available",
     badgeColor: "bg-blue-100 text-blue-800",
-    walkTime: "Various — see car parks below",
+    walkTime: "Various, see car parks below",
     description:
-      "Southport is easily accessible by road. Junction 3 of the M58 provides the main motorway link. The Promenade itself has some surface parking, and Southport's town centre car parks are within a 10–20 minute walk of MLEC. For major events, expect road congestion on the Promenade — arrive early or consider parking further out and walking in.",
+      "Southport is easily accessible by road. Junction 3 of the M58 provides the main motorway link. The Promenade itself has some surface parking, and Southport's town centre car parks are within a 10–20 minute walk of MLEC. For major events, expect road congestion on the Promenade, arrive early or consider parking further out and walking in.",
     steps: [
       "From M58: Exit at Junction 3, follow signs for Southport town centre",
       "Follow signs to the Promenade / Seafront",
@@ -92,9 +92,9 @@ const TRANSPORT_OPTIONS = [
       "King's Gardens car park also close to the Promenade route",
     ],
     tips: [
-      "Promenade car parks will fill quickly on event nights — arrive at least 60 minutes early",
-      "Town centre NCP car parks offer overnight parking — useful if you're staying nearby",
-      "Do NOT drive if attending an evening event and planning to drink — Southport taxis are plentiful",
+      "Promenade car parks will fill quickly on event nights, arrive at least 60 minutes early",
+      "Town centre NCP car parks offer overnight parking, useful if you're staying nearby",
+      "Do NOT drive if attending an evening event and planning to drink. Southport taxis are plentiful",
       "For accessibility parking, drop-off points will be clearly signed at MLEC",
     ],
   },
@@ -105,16 +105,16 @@ const TRANSPORT_OPTIONS = [
     badgeColor: "bg-purple-100 text-purple-800",
     walkTime: "Door to door",
     description:
-      "Southport has a good taxi network — both traditional cabs and Uber/ride-share operate in the town. After major events, there will be higher demand, so pre-booking for the return journey is strongly advised. Several taxi ranks operate in the town centre.",
+      "Southport has a good taxi network, both traditional cabs and Uber/ride-share operate in the town. After major events, there will be higher demand, so pre-booking for the return journey is strongly advised. Several taxi ranks operate in the town centre.",
     steps: [
       "Pre-book a taxi for the return journey before attending the event",
       "Taxi ranks are on Lord Street (near the station) and Cambridge Road",
-      "Uber and Bolt both operate in Southport — download the app before travelling",
+      "Uber and Bolt both operate in Southport, download the app before travelling",
       "Hotel taxis can be arranged through reception if you're staying locally",
     ],
     tips: [
-      "Don't rely on hailing a cab after a major show — they will all be booked",
-      "Share a taxi with other event-goers if possible — reduces cost and demand",
+      "Don't rely on hailing a cab after a major show, they will all be booked",
+      "Share a taxi with other event-goers if possible, reduces cost and demand",
       "Taxis from Southport to Formby/Ormskirk: approximately £15–25",
       "For disability-adapted vehicles, pre-book directly with a local firm",
     ],
@@ -126,18 +126,18 @@ const TRANSPORT_OPTIONS = [
     badgeColor: "bg-orange-100 text-orange-800",
     walkTime: "Varies by service",
     description:
-      "Several Arriva bus services connect Southport with surrounding areas including Ormskirk, Crosby, and Formby. Bus stops on Lord Street and the Promenade area are closest to MLEC. For most visitors travelling from outside Southport, the train is faster and more reliable — but bus is a valid option for local travel.",
+      "Several Arriva bus services connect Southport with surrounding areas including Ormskirk, Crosby, and Formby. Bus stops on Lord Street and the Promenade area are closest to MLEC. For most visitors travelling from outside Southport, the train is faster and more reliable, but bus is a valid option for local travel.",
     steps: [
       "Check Traveline (traveline.info) for live bus timetables to Southport",
       "Services 47, 105, X2 serve Southport from surrounding areas",
       "Alight in Southport town centre, then walk to the Promenade (10 min)",
-      "Check return times before you travel — evening services reduce significantly",
+      "Check return times before you travel, evening services reduce significantly",
     ],
     tips: [
       "Download the Arriva Bus UK app for live bus times",
       "Contactless payment accepted on most Merseyside buses",
-      "Last buses from Southport town centre: check Traveline — typically before midnight",
-      "Not ideal for arriving at a set time — allow plenty of extra time",
+      "Last buses from Southport town centre: check Traveline, typically before midnight",
+      "Not ideal for arriving at a set time, allow plenty of extra time",
     ],
   },
 ];
@@ -171,7 +171,7 @@ const PARKING_OPTIONS = [
     name: "Marine Drive (on-street)",
     distance: "2–5 min walk",
     type: "On-Street (limited)",
-    notes: "Very limited. Do not rely on this — aim for pay & display car parks instead.",
+    notes: "Very limited. Do not rely on this, aim for pay & display car parks instead.",
   },
 ];
 
@@ -227,7 +227,7 @@ export default function MLECGettingTherePage() {
             <div className="bg-green-50 border border-green-200 rounded-xl p-5">
               <p className="text-xs uppercase tracking-widest text-green-600 font-bold mb-1">By Train</p>
               <p className="text-slate-900 font-semibold">15 min from Southport Station</p>
-              <p className="text-slate-600 text-sm mt-1">Merseyrail Southport Line — terminus station on Lord Street</p>
+              <p className="text-slate-600 text-sm mt-1">Merseyrail Southport Line, terminus station on Lord Street</p>
             </div>
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
               <p className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-1">By Car</p>
@@ -242,7 +242,7 @@ export default function MLECGettingTherePage() {
           <div className="bg-white rounded-xl shadow-sm border border-amber-200 border-l-4 border-l-amber-400 p-6">
             <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-1">Terry's Advice</p>
             <p className="text-gray-700 leading-relaxed">
-              Honestly? Take the train. Southport Station is the end of the line — you cannot accidentally miss your
+              Honestly? Take the train. Southport Station is the end of the line, you cannot accidentally miss your
               stop. The walk from the station to MLEC is flat, straightforward, and takes you right through the town
               centre past Lord Street. If you're coming by car, the biggest mistake is arriving too close to showtime
               and spending the first 20 minutes of your evening trying to find a space. Get there early, grab a coffee
@@ -353,15 +353,15 @@ export default function MLECGettingTherePage() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
             <h2 className="text-xl font-bold text-slate-900 mb-4">Accessibility</h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              MLEC is being built to modern accessibility standards. Specific accessibility provisions — including
-              accessible seating, hearing loops, accessible car parking, and drop-off points — will be confirmed
+              MLEC is being built to modern accessibility standards. Specific accessibility provisions, including
+              accessible seating, hearing loops, accessible car parking, and drop-off points, will be confirmed
               ahead of opening. The route from Southport train station is flat with good pavements throughout.
             </p>
             <ul className="space-y-2">
               {[
                 "Southport Station is step-free accessible (lifts available)",
                 "The walk from station to MLEC is entirely flat with smooth pavements",
-                "Accessible parking bays will be designated at or near MLEC — details TBC",
+                "Accessible parking bays will be designated at or near MLEC, details TBC",
                 "For disabled-adapted taxis, pre-book with local specialist firms",
                 "Full accessibility guide to be published by Sefton Council ahead of 2027 opening",
               ].map((point) => (

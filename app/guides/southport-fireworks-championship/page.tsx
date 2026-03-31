@@ -45,11 +45,11 @@ const TEAMS_2025 = [
 
 const FAQS = [
   { q: "When is the British Musical Fireworks Championship 2026?", a: "The British Musical Fireworks Championship 2026 takes place on Saturday 26 and Sunday 27 September 2026 at Victoria Park, Southport. Gates open at 5:30pm each day and displays run until approximately 9:30pm." },
-  { q: "How much are tickets for the Southport Fireworks Championship?", a: "Tickets for the British Musical Fireworks Championship are £12 per person plus a booking fee (based on 2025 pricing — confirm at visitsouthport.com for 2026). Children under 5 are free. Carers enter free with a full-paying ticket holder. There are no gate sales — all tickets must be booked online in advance." },
+  { q: "How much are tickets for the Southport Fireworks Championship?", a: "Tickets for the British Musical Fireworks Championship are £12 per person plus a booking fee (based on 2025 pricing, confirm at visitsouthport.com for 2026). Children under 5 are free. Carers enter free with a full-paying ticket holder. There are no gate sales, all tickets must be booked online in advance." },
   { q: "Is there parking at the British Musical Fireworks Championship?", a: "The official event car park is Princes Park (near Victoria Park), open from 4pm on event days. Parking is £8 per car, payable by cash or card. Disabled parking is available at Splash World on a first-come, first-served basis with a valid blue badge." },
-  { q: "What is the British Musical Fireworks Championship?", a: "It's a competitive fireworks event where professional pyrotechnic companies create displays choreographed to music. Competitors are judged on synchronisation, mood, and flow. Previous champions return for Champion of Champions events in special years. It's not just a fireworks show — it's a competition where each team is trying to win." },
+  { q: "What is the British Musical Fireworks Championship?", a: "It's a competitive fireworks event where professional pyrotechnic companies create displays choreographed to music. Competitors are judged on synchronisation, mood, and flow. Previous champions return for Champion of Champions events in special years. It's not just a fireworks show, it's a competition where each team is trying to win." },
   { q: "Can I buy tickets at the gate?", a: "No. There are no gate sales at Victoria Park. All tickets for the British Musical Fireworks Championship must be purchased online in advance. Book at visitsouthport.com. Do not turn up without a ticket." },
-  { q: "Are dogs allowed at the Southport Fireworks Championship?", a: "Dogs are technically permitted but the organisers strongly advise against bringing them. Professional fireworks displays produce extremely loud noise at close range — this is genuinely distressing for most dogs. If you do bring a dog, keep it on a lead at all times." },
+  { q: "Are dogs allowed at the Southport Fireworks Championship?", a: "Dogs are technically permitted but the organisers strongly advise against bringing them. Professional fireworks displays produce extremely loud noise at close range, this is genuinely distressing for most dogs. If you do bring a dog, keep it on a lead at all times." },
   { q: "What else is at the fireworks event?", a: "Alongside the fireworks displays, the event includes a drone show (new addition from 2025), street food, bars and hot drinks, children's inflatables, glitter and face painting, and other entertainment. Arrive early to make the most of the ground entertainment before the evening programme." },
   { q: "How do I get to Victoria Park for the fireworks?", a: "By train: Southport and Birkdale stations are both approximately 15 minutes' walk from Victoria Park. By car: use the official Princes Park car park (open from 4pm on event days). Follow event signage on arrival in Southport." },
 ];
@@ -139,7 +139,7 @@ export default function FireworksChampionshipPage() {
             <div className="flex flex-wrap gap-3">
               <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="noopener noreferrer"
                 className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
-                Buy Tickets — £12 →
+                Buy Tickets: £12 →
               </a>
               <a href="#practical" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
                 Parking & Practical Info
@@ -156,7 +156,7 @@ export default function FireworksChampionshipPage() {
             {[
               { icon: CalendarDays, value: "26–27 Sep", label: "When", sub: "Saturday & Sunday" },
               { icon: MapPin, value: "PR8 2LG", label: "Where", sub: "Victoria Park" },
-              { icon: Ticket, value: "£12", label: "Tickets", sub: "Book online — no gate sales" },
+              { icon: Ticket, value: "£12", label: "Tickets", sub: "Book online, no gate sales" },
               { icon: Clock, value: "5:30–9:30pm", label: "Hours", sub: "Gates open 5:30pm" },
             ].map((s) => (
               <div key={s.label} className="text-center px-4 py-4">
@@ -176,7 +176,7 @@ export default function FireworksChampionshipPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex gap-4">
           <div className="flex-none text-2xl">⚠️</div>
           <div>
-            <p className="font-bold text-amber-900 text-base mb-1">No gate sales — advance tickets only</p>
+            <p className="font-bold text-amber-900 text-base mb-1">No gate sales, advance tickets only</p>
             <p className="text-amber-800 text-sm leading-relaxed">
               Unlike most events, the British Musical Fireworks Championship has <strong>no ticket sales at the venue</strong>.
               You must book online in advance at{" "}
@@ -199,16 +199,16 @@ export default function FireworksChampionshipPage() {
                 from a display-only event, and once you understand what you&apos;re watching, you watch it differently.
               </p>
               <p>
-                The setting is genuinely good — Victoria Park at night, a proper crowd, the trees lit from below.
+                The setting is genuinely good. Victoria Park at night, a proper crowd, the trees lit from below.
                 The 2025 show added a drone display before the fireworks, which was actually worth watching.
                 Hundreds of drones moving in formation before the teams go on.
                 It&apos;s worth being there from 5:30pm for all of it.
               </p>
               <p>
                 Practical note: book your tickets the moment they go on sale. This event does sell out.
-                And the no-gate-sales rule is serious — I&apos;ve seen people turn up without tickets expecting to get in.
+                And the no-gate-sales rule is serious. I&apos;ve seen people turn up without tickets expecting to get in.
                 They didn&apos;t. Book online. Princes Park is your best car option; the official car park opens at 4pm.
-                Or just take the train — Birkdale station is a 15-minute walk.
+                Or just take the train. Birkdale station is a 15-minute walk.
               </p>
             </div>
           </div>
@@ -222,12 +222,12 @@ export default function FireworksChampionshipPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "🎵", title: "Pyro-Musical Format", detail: "Each competing team fires a display precisely choreographed to a music track of their choice. The fireworks — timing, colour, tempo, intensity — are designed to match the music. You&apos;re watching two things at once and the synchronisation is what impresses or disappoints." },
+              { emoji: "🎵", title: "Pyro-Musical Format", detail: "Each competing team fires a display precisely choreographed to a music track of their choice. The fireworks, timing, colour, tempo, intensity, are designed to match the music. You&apos;re watching two things at once and the synchronisation is what impresses or disappoints." },
               { emoji: "🏆", title: "Championship Judging", detail: "Teams are judged by an independent panel on three criteria: synchronisation (how precisely the fireworks match the music), mood (does the display match the emotional character of the track), and flow (coherence and pacing across the full display). The winners are announced after Sunday&apos;s final." },
               { emoji: "🚁", title: "The Drone Show", detail: "Added for 2025: a drone show runs before the main fireworks programme each evening at 7:45pm. Hundreds of illuminated drones paint shapes and stories across the night sky. It&apos;s genuinely impressive as a standalone spectacle. Arrive before 7:45pm to see the full evening." },
-              { emoji: "⚔️", title: "Champion of Champions", detail: "In special years, the championship becomes a &apos;Champion of Champions&apos; event where previous title holders return to compete. 2025 was one of those years. 2026 format TBC — check visitsouthport.com for the confirmed programme." },
+              { emoji: "⚔️", title: "Champion of Champions", detail: "In special years, the championship becomes a &apos;Champion of Champions&apos; event where previous title holders return to compete. 2025 was one of those years. 2026 format TBC, check visitsouthport.com for the confirmed programme." },
               { emoji: "🍔", title: "Ground Entertainment", detail: "Before the displays begin: street food stalls, bars and hot drinks, children&apos;s inflatables, glitter and face painting. Arrive from 5:30pm when gates open to get food before it gets busy. The queues build from around 7pm." },
-              { emoji: "♿", title: "Accessibility", detail: "Designated disabled viewing area on hard standing with clear sightlines and dedicated toilet facilities. Blue badge holders can access Victoria Park from 5pm — 30 minutes before the main gates open. Disabled parking at Splash World car park, first-come first-served." },
+              { emoji: "♿", title: "Accessibility", detail: "Designated disabled viewing area on hard standing with clear sightlines and dedicated toilet facilities. Blue badge holders can access Victoria Park from 5pm. 30 minutes before the main gates open. Disabled parking at Splash World car park, first-come first-served." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -291,10 +291,10 @@ export default function FireworksChampionshipPage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { icon: Car, title: "Parking", items: ["Official car park: Princes Park — opens 4pm on event days, £8 per car", "Disabled parking: Splash World car park, blue badge required, first-come first-served", "Town centre car parks: 10–15 min walk to Victoria Park", "Nearest train stations: Southport or Birkdale (both 15 min walk) — recommended"] },
-              { icon: Ticket, title: "Tickets — Important", items: ["£12 per adult + booking fee (2025 pricing — confirm for 2026)", "Children under 5: FREE", "Carers: free entry with documentation (DLA, PIP, Access Card etc.)", "Book only at visitsouthport.com — NO gate sales. Tickets not available on the night."] },
+              { icon: Car, title: "Parking", items: ["Official car park: Princes Park, opens 4pm on event days, £8 per car", "Disabled parking: Splash World car park, blue badge required, first-come first-served", "Town centre car parks: 10–15 min walk to Victoria Park", "Nearest train stations: Southport or Birkdale (both 15 min walk), recommended"] },
+              { icon: Ticket, title: "Tickets. Important", items: ["£12 per adult + booking fee (2025 pricing, confirm for 2026)", "Children under 5: FREE", "Carers: free entry with documentation (DLA, PIP, Access Card etc.)", "Book only at visitsouthport.com. NO gate sales. Tickets not available on the night."] },
               { icon: Clock, title: "Timings", items: ["Gates open: 5:30pm each day", "Blue badge holders: access from 5:00pm", "Drone show: 7:45pm each evening (before fireworks)", "First fireworks team: 8:00pm each night", "Final display: approximately 9:00–9:30pm"] },
-              { icon: MapPin, title: "What to Bring", items: ["Warm layers — Victoria Park in September, late evening, usually cold", "Hot drinks from the stalls or bring a flask", "Ear defenders for young children — professional fireworks are very loud", "Printed or digital ticket — required for entry", "Blue badge if using disabled parking at Splash World"] },
+              { icon: MapPin, title: "What to Bring", items: ["Warm layers. Victoria Park in September, late evening, usually cold", "Hot drinks from the stalls or bring a flask", "Ear defenders for young children, professional fireworks are very loud", "Printed or digital ticket, required for entry", "Blue badge if using disabled parking at Splash World"] },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
                 <item.icon className="w-6 h-6 text-[#C9A84C] mb-4" />
@@ -316,7 +316,7 @@ export default function FireworksChampionshipPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">British Musical Fireworks — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">British Musical Fireworks. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -342,7 +342,7 @@ export default function FireworksChampionshipPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="noopener noreferrer"
               className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">
-              Book Tickets — visitsouthport.com
+              Book Tickets, visitsouthport.com
             </a>
             <Link href="/hotels" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">
               Hotels in Southport →

@@ -26,16 +26,16 @@ export const metadata: Metadata = {
 const FAQS = [
   { q: "When is The 39 Steps at Southport Little Theatre?", a: "The 39 Steps runs at Southport Little Theatre from Friday 10 April to Saturday 18 April 2026. This is a nine-night run. Evening performances are typically at 7:30pm. Check the Little Theatre website for the complete schedule and any matinee performances." },
   { q: "Where is Southport Little Theatre?", a: "Southport Little Theatre is on Hoghton Street, Southport, PR9 0SX. It is approximately 10 minutes' walk from Southport railway station and 15 minutes from the Lord Street town centre." },
-  { q: "What is The 39 Steps play?", a: "The 39 Steps is a stage adaptation of John Buchan's 1915 spy novel, made famous by Alfred Hitchcock's 1935 film. The comedic stage version — adapted by Patrick Barlow — uses four actors to play all 150 characters and is known for its inventive staging and physical comedy. It is a fast-paced, entertaining thriller." },
-  { q: "How do I book tickets for The 39 Steps at the Little Theatre?", a: "Book directly through Southport Little Theatre's website. The Little Theatre is a community theatre with a loyal audience, so early booking is recommended — particularly for weekend performances." },
-  { q: "Is Southport Little Theatre accessible?", a: "Contact the Little Theatre directly to discuss access requirements. The venue is a traditional community theatre and access arrangements vary — it is best to call ahead if you have specific needs." },
-  { q: "Is there parking near Southport Little Theatre?", a: "Hoghton Street is in the town centre area, close to several pay-and-display car parks. The nearest are on King Street and the multi-storey on Tulketh Street (PR8 1EW). Street parking is limited in the immediate area. Arriving by train is a good option — Southport station is 10 min walk." },
+  { q: "What is The 39 Steps play?", a: "The 39 Steps is a stage adaptation of John Buchan's 1915 spy novel, made famous by Alfred Hitchcock's 1935 film. The comedic stage version, adapted by Patrick Barlow, uses four actors to play all 150 characters and is known for its inventive staging and physical comedy. It is a fast-paced, entertaining thriller." },
+  { q: "How do I book tickets for The 39 Steps at the Little Theatre?", a: "Book directly through Southport Little Theatre's website. The Little Theatre is a community theatre with a loyal audience, so early booking is recommended, particularly for weekend performances." },
+  { q: "Is Southport Little Theatre accessible?", a: "Contact the Little Theatre directly to discuss access requirements. The venue is a traditional community theatre and access arrangements vary, it is best to call ahead if you have specific needs." },
+  { q: "Is there parking near Southport Little Theatre?", a: "Hoghton Street is in the town centre area, close to several pay-and-display car parks. The nearest are on King Street and the multi-storey on Tulketh Street (PR8 1EW). Street parking is limited in the immediate area. Arriving by train is a good option. Southport station is 10 min walk." },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "The 39 Steps — Southport Dramatic Club at Southport Little Theatre",
+  name: "The 39 Steps. Southport Dramatic Club at Southport Little Theatre",
   startDate: "2026-04-10T19:30:00+01:00",
   endDate: "2026-04-18T22:00:00+01:00",
   description: "The 39 Steps performed by Southport Dramatic Club at the Little Theatre, Hoghton Street. 9-night run, 10–18 April 2026.",
@@ -65,13 +65,15 @@ export default function ThirtyNineStepsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#1A1A2E] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/39-steps-southport-2026.jpg" alt="The 39 Steps at Southport Little Theatre 2026 — Southport Dramatic Club" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] via-[#1A1A2E]/50 to-[#1A1A2E]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#1A1A2E] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/39-steps-southport-2026.jpg" alt="The 39 Steps at Southport Little Theatre 2026 — Southport Dramatic Club" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">10–18 April 2026</span>
               <span className="text-white/50 text-sm font-medium">Little Theatre · Hoghton Street · PR9 0SX</span>
@@ -115,8 +117,8 @@ export default function ThirtyNineStepsPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">The Little Theatre Is Worth Knowing About</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>Southport Little Theatre is one of those institutions that most people who have not been to Southport long do not know about. It is an independent community theatre that has been running for decades, on Hoghton Street just away from the main drag. Southport Dramatic Club are the resident company and they produce proper drama — The 39 Steps is exactly the kind of thing they do well.</p>
-              <p>The stage adaptation of The 39 Steps — the Patrick Barlow version, not the original novel — is clever, funny, and physically inventive. It uses four actors to play all 150 characters. Done well, it is genuinely entertaining. Done badly, it is a nightmare. Southport Dramatic Club are experienced enough that it tends to be the former.</p>
+              <p>Southport Little Theatre is one of those institutions that most people who have not been to Southport long do not know about. It is an independent community theatre that has been running for decades, on Hoghton Street just away from the main drag. Southport Dramatic Club are the resident company and they produce proper drama. The 39 Steps is exactly the kind of thing they do well.</p>
+              <p>The stage adaptation of The 39 Steps, the Patrick Barlow version, not the original novel, is clever, funny, and physically inventive. It uses four actors to play all 150 characters. Done well, it is genuinely entertaining. Done badly, it is a nightmare. Southport Dramatic Club are experienced enough that it tends to be the former.</p>
               <p>Nine nights. Weekend performances will go first. Book early if you want a choice of date.</p>
             </div>
           </div>
@@ -125,18 +127,18 @@ export default function ThirtyNineStepsPage() {
         <section id="about" className="scroll-mt-28">
           <div className="mb-8">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">About the Production</p>
-            <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">The 39 Steps — About the Show</h2>
+            <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">The 39 Steps. About the Show</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <div className="text-3xl mb-3">📖</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">The Story</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Based on John Buchan&apos;s 1915 spy novel and the Patrick Barlow stage adaptation. Richard Hannay, a bored Londoner, gets embroiled in a spy plot and finds himself on the run across Britain. The stage version — four actors, 150 characters, relentless pace — is a comedy thriller. The Hitchcock film is famous; the stage adaptation is a different animal entirely.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Based on John Buchan&apos;s 1915 spy novel and the Patrick Barlow stage adaptation. Richard Hannay, a bored Londoner, gets embroiled in a spy plot and finds himself on the run across Britain. The stage version, four actors, 150 characters, relentless pace, is a comedy thriller. The Hitchcock film is famous; the stage adaptation is a different animal entirely.</p>
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <div className="text-3xl mb-3">🎭</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Southport Little Theatre</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">The Little Theatre on Hoghton Street is one of Southport&apos;s independent cultural venues. It is a proper theatre — raked seating, a real stage, technical lighting, and a bar. Southport Dramatic Club have been performing here for decades. It is the kind of venue that sustains a town&apos;s cultural life over the long term.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">The Little Theatre on Hoghton Street is one of Southport&apos;s independent cultural venues. It is a proper theatre, raked seating, a real stage, technical lighting, and a bar. Southport Dramatic Club have been performing here for decades. It is the kind of venue that sustains a town&apos;s cultural life over the long term.</p>
             </div>
           </div>
         </section>
@@ -144,7 +146,7 @@ export default function ThirtyNineStepsPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The 39 Steps Southport — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The 39 Steps Southport. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -175,7 +177,7 @@ export default function ThirtyNineStepsPage() {
               {[
                 { name: "Whistle Down the Wind", month: "9–11 April 2026", desc: "Andrew Lloyd Webber musical at The Atkinson. SONG Productions. Three nights only.", href: "/guides/whistle-down-the-wind-southport-2026" },
                 { name: "The Atkinson Southport", month: "Year-round", desc: "Gallery, theatre, café, and library on Lord Street. The cultural anchor of Southport.", href: "/guides/the-atkinson-southport" },
-                { name: "Easter in Southport 2026", month: "1–6 April 2026", desc: "All Easter events — Cristal Palace, egg hunts, workshops, and more.", href: "/guides/easter-in-southport-2026" },
+                { name: "Easter in Southport 2026", month: "1–6 April 2026", desc: "All Easter events. Cristal Palace, egg hunts, workshops, and more.", href: "/guides/easter-in-southport-2026" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">{item.month}</p>

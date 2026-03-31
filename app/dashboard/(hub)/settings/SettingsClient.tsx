@@ -184,7 +184,7 @@ export function SettingsClient({ user, business, subscription }: Props) {
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Email address{" "}
             <span className="text-gray-400 font-normal">
-              — changing this changes your login email
+             , changing this changes your login email
             </span>
           </label>
           <div className="flex gap-2">
@@ -316,7 +316,7 @@ export function SettingsClient({ user, business, subscription }: Props) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-semibold text-[#1B2E4B]">
-                  Pro plan — active
+                  Pro plan, active
                 </p>
                 {periodEnd && (
                   <p className="text-xs text-gray-400 mt-0.5">

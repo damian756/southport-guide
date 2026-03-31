@@ -82,63 +82,63 @@ const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
 
 const CATEGORY_CONTENT: Record<string, string[]> = {
   "restaurants": [
-    "Lord Street is the obvious starting point for eating out in Southport — it runs through the town centre and has a good mix of options at most price points. Bistrot Verite in Birkdale is the one that gets mentioned most when people want a proper meal, and it's worth booking ahead. Bistro Bar Med and The Vincent are solid choices if you want something central.",
-    "The town has more independent restaurants than you'd expect — particularly on and around Lord Street and Chapel Street. If you're after Indian or Asian food, you've got a decent range and most places are very reasonably priced.",
+    "Lord Street is the obvious starting point for eating out in Southport, it runs through the town centre and has a good mix of options at most price points. Bistrot Verite in Birkdale is the one that gets mentioned most when people want a proper meal, and it's worth booking ahead. Bistro Bar Med and The Vincent are solid choices if you want something central.",
+    "The town has more independent restaurants than you'd expect, particularly on and around Lord Street and Chapel Street. If you're after Indian or Asian food, you've got a decent range and most places are very reasonably priced.",
     "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
   ],
   "hotels": [
-    "Southport has a good range of places to stay — from The Bold Hotel on Lord Street (the nicest in town by most accounts) to seafront B&Bs and a clutch of chain hotels near the retail park. The Scarisbrick Hotel is the historic option on Lord Street if you want somewhere with character.",
-    "If you're here for The Open 2026 at Royal Birkdale, accommodation books out fast — months in advance for tournament week. Get in early. Birkdale village (walking distance from the course) is the most practical base, but the whole town fills up.",
-    "For a quieter stay, Churchtown is worth considering — it's the old village end of Southport, much calmer than the seafront, and still only about 10 minutes from the town centre.",
+    "Southport has a good range of places to stay, from The Bold Hotel on Lord Street (the nicest in town by most accounts) to seafront B&Bs and a clutch of chain hotels near the retail park. The Scarisbrick Hotel is the historic option on Lord Street if you want somewhere with character.",
+    "If you're here for The Open 2026 at Royal Birkdale, accommodation books out fast, months in advance for tournament week. Get in early. Birkdale village (walking distance from the course) is the most practical base, but the whole town fills up.",
+    "For a quieter stay, Churchtown is worth considering, it's the old village end of Southport, much calmer than the seafront, and still only about 10 minutes from the town centre.",
   ],
   "bars-nightlife": [
-    "Southport's nightlife is mostly concentrated around Neville Street and the town centre — it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
-    "Lord Street has a good run of bars and restaurants that work well for a lower-key evening — cocktails and food rather than clubs. If you want to keep going later, the town centre has options.",
+    "Southport's nightlife is mostly concentrated around Neville Street and the town centre, it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
+    "Lord Street has a good run of bars and restaurants that work well for a lower-key evening, cocktails and food rather than clubs. If you want to keep going later, the town centre has options.",
     "Worth knowing: weekend nights in Southport get properly busy in summer. If you're visiting in peak season and want somewhere specific, arrive early or book where you can.",
   ],
   "cafes": [
-    "Southport does good coffee. There are independent cafes along Lord Street and in the side streets around it — worth exploring if you're spending a day in town. Cibo on Lord Street comes up regularly as a local favourite.",
-    "Over at the seafront end, there are plenty of spots to grab a coffee with a sea view — quality varies but the setting makes up for a lot.",
-    "For tea rooms and a slower pace, Churchtown village is worth the short drive — it's got that quieter, more village feel that can be hard to find in the town centre on a busy day.",
+    "Southport does good coffee. There are independent cafes along Lord Street and in the side streets around it, worth exploring if you're spending a day in town. Cibo on Lord Street comes up regularly as a local favourite.",
+    "Over at the seafront end, there are plenty of spots to grab a coffee with a sea view, quality varies but the setting makes up for a lot.",
+    "For tea rooms and a slower pace, Churchtown village is worth the short drive, it's got that quieter, more village feel that can be hard to find in the town centre on a busy day.",
   ],
   "attractions": [
-    "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier is one of the longest in England — worth a walk, especially if the weather's decent.",
-    "Adventure Coast Southport (formerly Pleasureland) is the obvious family draw — fairground rides, free entry with pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
-    "The Atkinson on Lord Street is the arts centre and local museum — free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
+    "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier is one of the longest in England, worth a walk, especially if the weather's decent.",
+    "Adventure Coast Southport (formerly Pleasureland) is the obvious family draw, fairground rides, free entry with pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
+    "The Atkinson on Lord Street is the arts centre and local museum, free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
   ],
   "beaches-parks": [
-    "Southport Beach is broad, sandy, and free — you can drive onto part of it, which is very useful if you've got kids and a lot of kit. The sea goes out a long way at low tide; it's not always swimmable, but as a beach for walking and messing about on, it's brilliant.",
-    "Victoria Park hosts the big events — Southport Flower Show, air shows, the food festival. If one of those is on when you're visiting, the park is worth seeing at its best.",
-    "The Marine Lake is a calmer alternative to the open beach — separated from the sea by the promenade, much flatter water. Good for paddleboarding and kayaking; the Watersports Centre is based there.",
+    "Southport Beach is broad, sandy, and free, you can drive onto part of it, which is very useful if you've got kids and a lot of kit. The sea goes out a long way at low tide; it's not always swimmable, but as a beach for walking and messing about on, it's brilliant.",
+    "Victoria Park hosts the big events. Southport Flower Show, air shows, the food festival. If one of those is on when you're visiting, the park is worth seeing at its best.",
+    "The Marine Lake is a calmer alternative to the open beach, separated from the sea by the promenade, much flatter water. Good for paddleboarding and kayaking; the Watersports Centre is based there.",
   ],
   "golf": [
-    "Southport is one of the best places to play golf in England — no exaggeration. Royal Birkdale is the headline act, one of the Open Championship venues and hosting The Open again in summer 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
-    "Formby Golf Club is about 15 minutes south and considered one of the finest heathland links courses in the country — slightly more straightforward to book as a visitor than Royal Birkdale. Southport Old Links, Hillside Golf Club, and Southport & Ainsdale are all nearby and all serious courses.",
+    "Southport is one of the best places to play golf in England, no exaggeration. Royal Birkdale is the headline act, one of the Open Championship venues and hosting The Open again in summer 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
+    "Formby Golf Club is about 15 minutes south and considered one of the finest heathland links courses in the country, slightly more straightforward to book as a visitor than Royal Birkdale. Southport Old Links, Hillside Golf Club, and Southport & Ainsdale are all nearby and all serious courses.",
     "If you're a golfer visiting the area, this stretch of the Sefton Coast is genuinely exceptional and underrated by most people outside the golfing community. Plan a few days and work your way around them.",
   ],
   "shopping": [
-    "Lord Street is the main shopping strip — a long Victorian boulevard with covered arcades, a mix of independents and some chains. It's one of the nicest high streets in the north west, worth a stroll even if you're not buying anything.",
-    "The Wayfarers Arcade is the best of the covered arcades — independent shops, antiques, a bit eclectic. Worth a browse on a rainy afternoon. The Market is useful for fresh food and local produce.",
+    "Lord Street is the main shopping strip, a long Victorian boulevard with covered arcades, a mix of independents and some chains. It's one of the nicest high streets in the north west, worth a stroll even if you're not buying anything.",
+    "The Wayfarers Arcade is the best of the covered arcades, independent shops, antiques, a bit eclectic. Worth a browse on a rainy afternoon. The Market is useful for fresh food and local produce.",
     "Cambridge Walks and the side streets off Lord Street are where you'll find most of the boutiques and independents. Hirshmans on Chapel Street has been going for years and is reliable for pharmacy and travel essentials.",
   ],
   "wellness": [
-    "Southport has a decent number of salons, spas and wellness places, mostly dotted around the town centre and Birkdale. If you're staying for a few days, booking a treatment is straightforward. The bigger hotels — The Bold, The Vincent — have spa facilities if you'd rather keep it all in one place.",
+    "Southport has a decent number of salons, spas and wellness places, mostly dotted around the town centre and Birkdale. If you're staying for a few days, booking a treatment is straightforward. The bigger hotels. The Bold, The Vincent, have spa facilities if you'd rather keep it all in one place.",
     "Day spas and independent beauty salons are scattered throughout town. This directory lists what's available across all areas so you can find what you need based on where you're staying.",
   ],
   "activities": [
-    "Things to do in Southport range from the obvious (beach, Pleasureland, the pier) to the less expected. The Marine Lake Watersports Centre does paddleboarding, kayaking and sailing — good fun for adults and kids, no experience needed for most sessions.",
-    "Southport is well set up for cycling — the coastal path runs along the seafront and bikes are available to hire locally. It's a flat, easy ride with proper sea views.",
-    "For families, Pleasureland is the main draw alongside the beach. The Botanic Gardens in Churchtown have a small zoo and play areas — free entry and much less busy than the seafront on peak days.",
+    "Things to do in Southport range from the obvious (beach, Pleasureland, the pier) to the less expected. The Marine Lake Watersports Centre does paddleboarding, kayaking and sailing, good fun for adults and kids, no experience needed for most sessions.",
+    "Southport is well set up for cycling, the coastal path runs along the seafront and bikes are available to hire locally. It's a flat, easy ride with proper sea views.",
+    "For families, Pleasureland is the main draw alongside the beach. The Botanic Gardens in Churchtown have a small zoo and play areas, free entry and much less busy than the seafront on peak days.",
   ],
   "transport": [
-    "Southport has a direct train link to Liverpool — about 45 minutes on the Merseyrail Northern line. It runs frequently and is the easiest way in if you're coming from Liverpool or Formby.",
-    "By road, the A565 is the main route from Liverpool and Formby. Parking in the town centre is mostly paid — there are car parks off Lord Street and near the seafront. The beach itself has paid parking with reasonable rates for a full day.",
-    "Getting around within Southport is straightforward on foot if you're based on Lord Street — the beach, Pleasureland and most of the town centre are walkable. For Churchtown and the golf courses, you'll want a car.",
+    "Southport has a direct train link to Liverpool, about 45 minutes on the Merseyrail Northern line. It runs frequently and is the easiest way in if you're coming from Liverpool or Formby.",
+    "By road, the A565 is the main route from Liverpool and Formby. Parking in the town centre is mostly paid, there are car parks off Lord Street and near the seafront. The beach itself has paid parking with reasonable rates for a full day.",
+    "Getting around within Southport is straightforward on foot if you're based on Lord Street, the beach, Pleasureland and most of the town centre are walkable. For Churchtown and the golf courses, you'll want a car.",
   ],
   "parking": [
-    "Parking in Southport is mostly paid and can get busy in summer — especially on the seafront and near Pleasureland. The Esplanade car park (Sefton Council) on the seafront is the main one. The NCP on London Street is useful for the town centre. There's also on-street parking off Lord Street if you're lucky with timing.",
-    "For the beach, the Marine Drive car parks are the most practical. They fill up early on hot Saturdays — arrive before 10am if you want a spot close to the sand. The Southport Marine Drive Car Park has pay-and-display all day.",
-    "Over in Formby, the National Trust car parks at Victoria Road (L37 1YH) and Lifeboat Road (L37 2EB) are the main options for the pinewoods and beach. Book via the NT app — the signal in the car park is patchy and there's no paper ticket option. Formby Station Park & Ride on Duke Street is a good alternative if the NT car parks are full.",
+    "Parking in Southport is mostly paid and can get busy in summer, especially on the seafront and near Pleasureland. The Esplanade car park (Sefton Council) on the seafront is the main one. The NCP on London Street is useful for the town centre. There's also on-street parking off Lord Street if you're lucky with timing.",
+    "For the beach, the Marine Drive car parks are the most practical. They fill up early on hot Saturdays, arrive before 10am if you want a spot close to the sand. The Southport Marine Drive Car Park has pay-and-display all day.",
+    "Over in Formby, the National Trust car parks at Victoria Road (L37 1YH) and Lifeboat Road (L37 2EB) are the main options for the pinewoods and beach. Book via the NT app, the signal in the car park is patchy and there's no paper ticket option. Formby Station Park & Ride on Duke Street is a good alternative if the NT car parks are full.",
   ],
 };
 
@@ -188,11 +188,11 @@ const BASE_URL = "https://www.southportguide.co.uk";
 
 // Per-category meta description overrides — more specific than the generic template
 const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
-  parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days — all on SouthportGuide.",
-  attractions: "Browse Southport's attractions — The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
+  parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days, all on SouthportGuide.",
+  attractions: "Browse Southport's attractions. The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
   activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
-  hotels: "Hotels in Southport — from The Vincent and The Bold Hotel on Lord Street to B&Bs in Birkdale and budget chains. Find every hotel with Google ratings, walking times from the beach, and availability. Booking early is essential for The Open 2026.",
-  restaurants: "Restaurants in Southport — Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
+  hotels: "Hotels in Southport, from The Vincent and The Bold Hotel on Lord Street to B&Bs in Birkdale and budget chains. Find every hotel with Google ratings, walking times from the beach, and availability. Booking early is essential for The Open 2026.",
+  restaurants: "Restaurants in Southport. Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -202,7 +202,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const theme = THEMES[category];
   const title = `${cat.name} in Southport`;
   const description = CAT_META_DESCRIPTIONS[category]
-    ?? `${theme?.tagline || cat.description} — browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
+    ?? `${theme?.tagline || cat.description}, browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
   const url = `${BASE_URL}/${category}`;
   return {
     title, description,
@@ -532,7 +532,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-[#1B2E4B] mb-1">Thinking of living in Southport?</p>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    We&apos;ve mapped sold prices, schools, crime and flood risk for every postcode in PR8 and PR9 — using Land Registry and public data, not estate agent spin.
+                    We&apos;ve mapped sold prices, schools, crime and flood risk for every postcode in PR8 and PR9, using Land Registry and public data, not estate agent spin.
                   </p>
                 </div>
                 <Link

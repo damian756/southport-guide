@@ -177,7 +177,7 @@ export default async function EventsPage() {
                       </p>
                     ) : (
                       <p className="text-xs text-gray-400">
-                        No competitors have boosted yet — be first.
+                        No competitors have boosted yet, be first.
                       </p>
                     )}
                   </div>

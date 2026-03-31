@@ -24,19 +24,19 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { q: "When is Whistle Down the Wind at The Atkinson?", a: "Whistle Down the Wind runs at The Atkinson on Thursday 9, Friday 10, and Saturday 11 April 2026. Check The Atkinson's website for specific performance times — evening shows plus possible matinees on the Saturday." },
+  { q: "When is Whistle Down the Wind at The Atkinson?", a: "Whistle Down the Wind runs at The Atkinson on Thursday 9, Friday 10, and Saturday 11 April 2026. Check The Atkinson's website for specific performance times, evening shows plus possible matinees on the Saturday." },
   { q: "What is Whistle Down the Wind?", a: "Whistle Down the Wind is a musical by Andrew Lloyd Webber with lyrics by Jim Steinman, based on the novel by Mary Hayley Bell. It tells the story of children in the American Deep South who believe a stranger hiding in their barn is Jesus Christ. It contains powerful Lloyd Webber ballads and is considered one of his most affecting works." },
   { q: "Who is performing Whistle Down the Wind at The Atkinson?", a: "The Southport performance is by SONG Productions. SONG (Southport) are a local theatre company who produce regular musical theatre productions at The Atkinson. They have a strong track record of quality local theatre productions." },
-  { q: "How do I book tickets for Whistle Down the Wind at The Atkinson?", a: "Book directly through The Atkinson's website at atkinson.co.uk or call the box office. Booking in advance is essential — The Atkinson's studio theatre is intimate and the run is only three nights." },
+  { q: "How do I book tickets for Whistle Down the Wind at The Atkinson?", a: "Book directly through The Atkinson's website at atkinson.co.uk or call the box office. Booking in advance is essential. The Atkinson's studio theatre is intimate and the run is only three nights." },
   { q: "Where is The Atkinson Southport?", a: "The Atkinson is on Lord Street, Southport, PR8 1DB. It is in the centre of town on the main boulevard. Parking is available at the nearby Tulketh Street multi-storey (PR8 1EW, 5 min walk)." },
-  { q: "Is there somewhere to eat near The Atkinson before the show?", a: "Yes. Lord Street has numerous restaurants within a few minutes' walk of The Atkinson. La Lanterna (Italian), The Bold Hotel restaurant, and several cafés and casual dining options are all close. Book ahead for a pre-show meal — midweek evenings in April can be busy." },
+  { q: "Is there somewhere to eat near The Atkinson before the show?", a: "Yes. Lord Street has numerous restaurants within a few minutes' walk of The Atkinson. La Lanterna (Italian), The Bold Hotel restaurant, and several cafés and casual dining options are all close. Book ahead for a pre-show meal, midweek evenings in April can be busy." },
   { q: "Is The Atkinson accessible for disabled visitors?", a: "The Atkinson is an accessible venue with step-free access, hearing loops, and accessible toilet facilities. Contact the box office in advance if you have specific access requirements." },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "Whistle Down the Wind — SONG Productions at The Atkinson Southport",
+  name: "Whistle Down the Wind. SONG Productions at The Atkinson Southport",
   startDate: "2026-04-09T19:30:00+01:00",
   endDate: "2026-04-11T22:00:00+01:00",
   description: "Andrew Lloyd Webber's Whistle Down the Wind performed by SONG Productions at The Atkinson, Lord Street, Southport. 9–11 April 2026.",
@@ -66,13 +66,15 @@ export default function WhistleDownTheWindPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#3D0A0A] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/whistle-down-the-wind-southport-2026.jpg" alt="Whistle Down the Wind at The Atkinson Southport 2026 — SONG Productions musical theatre" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#3D0A0A] via-[#3D0A0A]/50 to-[#3D0A0A]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#3D0A0A] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/whistle-down-the-wind-southport-2026.jpg" alt="Whistle Down the Wind at The Atkinson Southport 2026 — SONG Productions musical theatre" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">9–11 April 2026</span>
               <span className="text-white/50 text-sm font-medium">The Atkinson · Lord Street · PR8 1DB</span>
@@ -116,7 +118,7 @@ export default function WhistleDownTheWindPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">SONG at The Atkinson: Local Theatre Worth Going To</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>SONG Productions are one of Southport&apos;s best-kept secrets. They produce proper musical theatre at The Atkinson — not amateur dramatics in the pejorative sense, but genuinely accomplished productions with good production values and strong performances. Whistle Down the Wind is one of Lloyd Webber&apos;s best scores. The songs hold up.</p>
+              <p>SONG Productions are one of Southport&apos;s best-kept secrets. They produce proper musical theatre at The Atkinson, not amateur dramatics in the pejorative sense, but genuinely accomplished productions with good production values and strong performances. Whistle Down the Wind is one of Lloyd Webber&apos;s best scores. The songs hold up.</p>
               <p>The Atkinson&apos;s theatre is an intimate space. A three-night run means tickets go quickly. If you are interested in this, book now rather than later. The box office number is on the Atkinson website.</p>
               <p>The Atkinson itself is worth knowing about if you do not already. Gallery, café, library, and a proper arts programme. It is the cultural anchor of the town and one of the places that makes Southport more interesting than it might otherwise be.</p>
             </div>
@@ -145,7 +147,7 @@ export default function WhistleDownTheWindPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Whistle Down the Wind — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Whistle Down the Wind. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -161,7 +163,7 @@ export default function WhistleDownTheWindPage() {
 
         <section className="bg-[#3D0A0A] rounded-2xl p-8 md:p-12 text-center text-white">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Whistle Down the Wind · 9–11 April 2026</p>
-          <h2 className="font-display text-3xl font-bold mb-4">Three Nights Only — Book Now</h2>
+          <h2 className="font-display text-3xl font-bold mb-4">Three Nights Only. Book Now</h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">The Atkinson&apos;s studio theatre is intimate. Three nights sells out. Book through the Atkinson website.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="https://www.theatkinson.co.uk" target="_blank" rel="noopener noreferrer" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">Book at theatkinson.co.uk</a>

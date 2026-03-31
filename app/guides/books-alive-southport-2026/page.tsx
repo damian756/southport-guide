@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/books-alive-southport-2026` },
   openGraph: {
     title: "Books Alive! Literature Festival Southport 2026 | 24–31 October",
-    description: "Books Alive! Southport 2026 — family literature festival over October half-term. Storytelling, author events, workshops. 24–31 October. Free events.",
+    description: "Books Alive! Southport 2026, family literature festival over October half-term. Storytelling, author events, workshops. 24–31 October. Free events.",
     url: `${BASE_URL}/guides/books-alive-southport-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { q: "When is Books Alive! in Southport 2026?", a: "Books Alive! Southport 2026 runs from Saturday 24 October to Saturday 31 October 2026 — a week across the October half-term school holiday." },
-  { q: "What is Books Alive! in Southport?", a: "Books Alive! is Southport's family literature festival — a week-long programme of storytelling installations, author performances, and workshops aimed at children and families. It takes place at venues across Southport town centre, with a focus on making literature accessible and engaging for young audiences." },
+  { q: "When is Books Alive! in Southport 2026?", a: "Books Alive! Southport 2026 runs from Saturday 24 October to Saturday 31 October 2026, a week across the October half-term school holiday." },
+  { q: "What is Books Alive! in Southport?", a: "Books Alive! is Southport's family literature festival, a week-long programme of storytelling installations, author performances, and workshops aimed at children and families. It takes place at venues across Southport town centre, with a focus on making literature accessible and engaging for young audiences." },
   { q: "Is Books Alive! free?", a: "The majority of Books Alive! events are free. Some ticketed workshops and author events may require booking. Check the Books Alive! programme for the specific events and any associated costs." },
-  { q: "Is Books Alive! suitable for families?", a: "Yes — Books Alive! is specifically designed as a family literature festival. Events are tailored to different age groups from young children to teenagers. It is one of Southport's key family events of the autumn." },
+  { q: "Is Books Alive! suitable for families?", a: "Yes. Books Alive! is specifically designed as a family literature festival. Events are tailored to different age groups from young children to teenagers. It is one of Southport's key family events of the autumn." },
   { q: "Where do Books Alive! events take place?", a: "Books Alive! takes place at multiple venues across Southport town centre, including The Atkinson on Lord Street (gallery, theatre, and library), Southport Market, Wayfarers Arcade, and other town centre locations. The festival is designed to be walked between venues." },
-  { q: "Is this the first year of Books Alive! in Southport?", a: "Books Alive! is part of the Southport 2026: Elegantly Eccentric programme — the town's year of culture. The format of a literature festival in October is new for 2026. Check the Southport 2026 website for programme details as they are announced." },
+  { q: "Is this the first year of Books Alive! in Southport?", a: "Books Alive! is part of the Southport 2026: Elegantly Eccentric programme, the town's year of culture. The format of a literature festival in October is new for 2026. Check the Southport 2026 website for programme details as they are announced." },
 ];
 
 const PAGE_LD = {
@@ -64,13 +64,15 @@ export default function BooksAlivePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#2E1A00] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/books-alive-southport-2026.jpg" alt="Books Alive! Literature Festival Southport 2026 — half-term family events" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A00] via-[#2E1A00]/50 to-[#2E1A00]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#2E1A00] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/books-alive-southport-2026.jpg" alt="Books Alive! Literature Festival Southport 2026 — half-term family events" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">24–31 October 2026</span>
               <span className="text-white/50 text-sm font-medium">October Half-Term · Multiple Venues · Free</span>
@@ -114,8 +116,8 @@ export default function BooksAlivePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Half-Term in Southport Just Got More Interesting</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>October half-term with four kids is a logistical problem that needs to be solved seven days in a row. Books Alive! is a genuinely useful addition to the half-term calendar — free events, indoor venues, and programming that is designed for children rather than tolerating their presence.</p>
-              <p>The festival is new for 2026 as part of the Elegantly Eccentric programme. Storytelling installations across the town centre are the kind of thing my kids would actually engage with — interactive, exploratory, spread across multiple venues so you are moving between things rather than sitting still. The Atkinson is the obvious hub, with the library and gallery and workshop space all in one building.</p>
+              <p>October half-term with four kids is a logistical problem that needs to be solved seven days in a row. Books Alive! is a genuinely useful addition to the half-term calendar, free events, indoor venues, and programming that is designed for children rather than tolerating their presence.</p>
+              <p>The festival is new for 2026 as part of the Elegantly Eccentric programme. Storytelling installations across the town centre are the kind of thing my kids would actually engage with, interactive, exploratory, spread across multiple venues so you are moving between things rather than sitting still. The Atkinson is the obvious hub, with the library and gallery and workshop space all in one building.</p>
               <p>More details will come as the programme is confirmed closer to the date. Check the Southport 2026 and Atkinson websites for updates. Worth putting in the diary now.</p>
             </div>
           </div>
@@ -128,12 +130,12 @@ export default function BooksAlivePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "📚", title: "Storytelling Installations", detail: "Large-scale storytelling installations across Southport town centre — designed to be discovered as you move between venues. The kind of thing that works for all ages." },
-              { emoji: "✍️", title: "Author Performances", detail: "Author events and performances across the festival week. Mix of children's authors and other writers. Some may require booking — check the programme as it is released." },
+              { emoji: "📚", title: "Storytelling Installations", detail: "Large-scale storytelling installations across Southport town centre, designed to be discovered as you move between venues. The kind of thing that works for all ages." },
+              { emoji: "✍️", title: "Author Performances", detail: "Author events and performances across the festival week. Mix of children's authors and other writers. Some may require booking, check the programme as it is released." },
               { emoji: "🎨", title: "Workshops", detail: "Hands-on creative writing and literacy workshops, particularly at The Atkinson. Some free, some ticketed. Suitable for different age groups." },
-              { emoji: "🏛️", title: "The Atkinson Hub", detail: "The Atkinson on Lord Street is the main hub — gallery, theatre, library, and workshop spaces all under one roof. The library is an obvious anchor point for a literature festival." },
-              { emoji: "🛍️", title: "Multiple Venues", detail: "The festival is designed to be walked — events across The Atkinson, Southport Market, Wayfarers Arcade, and other town centre venues. A good way to see a different side of Southport." },
-              { emoji: "🍂", title: "October Half-Term", detail: "Week of 24–31 October covers the Sefton schools October half-term. Specific school holiday dates may vary — check your school. The festival runs across the full week." },
+              { emoji: "🏛️", title: "The Atkinson Hub", detail: "The Atkinson on Lord Street is the main hub, gallery, theatre, library, and workshop spaces all under one roof. The library is an obvious anchor point for a literature festival." },
+              { emoji: "🛍️", title: "Multiple Venues", detail: "The festival is designed to be walked, events across The Atkinson, Southport Market, Wayfarers Arcade, and other town centre venues. A good way to see a different side of Southport." },
+              { emoji: "🍂", title: "October Half-Term", detail: "Week of 24–31 October covers the Sefton schools October half-term. Specific school holiday dates may vary, check your school. The festival runs across the full week." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -147,7 +149,7 @@ export default function BooksAlivePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Books Alive! — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Books Alive!. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -178,7 +180,7 @@ export default function BooksAlivePage() {
               {[
                 { name: "Southport Comedy Festival", month: "2–18 October 2026", desc: "15th annual comedy festival. 17 nights at Victoria Park. Runs just before Books Alive!", href: "/guides/southport-comedy-festival" },
                 { name: "British Musical Fireworks Championship", month: "26–27 September 2026", desc: "Pyrotechnics choreographed to music. Two nights at Victoria Park.", href: "/guides/southport-fireworks-championship" },
-                { name: "The Atkinson Southport", month: "Year-round", desc: "Gallery, theatre, café, and library on Lord Street — the Books Alive! hub.", href: "/guides/the-atkinson-southport" },
+                { name: "The Atkinson Southport", month: "Year-round", desc: "Gallery, theatre, café, and library on Lord Street, the Books Alive! hub.", href: "/guides/the-atkinson-southport" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">{item.month}</p>

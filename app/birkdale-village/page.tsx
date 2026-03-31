@@ -18,7 +18,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Birkdale Village | Shops, Restaurants & Cafés Guide",
   description:
-    "Birkdale Village — Southport&apos;s independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
+    "Birkdale Village. Southport&apos;s independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
   keywords:
     "Birkdale village, Birkdale village shops, Birkdale village restaurants, Birkdale village Southport, Liverpool Road Birkdale, Birkdale cafes",
   alternates: { canonical: `${BASE_URL}/birkdale-village` },
@@ -37,27 +37,27 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "Where is Birkdale Village?",
-    a: "Birkdale Village is centred on Liverpool Road, Birkdale, Southport — postcode PR8 4AR. It is approximately 2 miles south of Southport town centre, and about 2 minutes' drive (or 10 minutes' walk) from Royal Birkdale Golf Club.",
+    a: "Birkdale Village is centred on Liverpool Road, Birkdale, Southport, postcode PR8 4AR. It is approximately 2 miles south of Southport town centre, and about 2 minutes' drive (or 10 minutes' walk) from Royal Birkdale Golf Club.",
   },
   {
     q: "What is Birkdale Village like?",
-    a: "Birkdale Village has the feel of a proper neighbourhood high street — independent boutiques, decent restaurants, good cafés, a butcher, an off-licence, and the general sense that you're somewhere that people actually live and use. It's quieter and more residential than Southport town centre, and that's the point.",
+    a: "Birkdale Village has the feel of a proper neighbourhood high street, independent boutiques, decent restaurants, good cafés, a butcher, an off-licence, and the general sense that you're somewhere that people actually live and use. It's quieter and more residential than Southport town centre, and that's the point.",
   },
   {
     q: "Is there parking in Birkdale Village?",
-    a: "Yes — there's on-street parking along Liverpool Road and side streets. It fills up on busy weekend mornings but isn't usually a problem on weekday visits. The village is also walkable from Birkdale train station (about 5 minutes on foot).",
+    a: "Yes, there's on-street parking along Liverpool Road and side streets. It fills up on busy weekend mornings but isn't usually a problem on weekday visits. The village is also walkable from Birkdale train station (about 5 minutes on foot).",
   },
   {
     q: "How do I get to Birkdale Village by train?",
-    a: "Birkdale station is on the Merseyrail Northern Line — the same line as Southport, one stop south. From Liverpool Central, trains run direct to Birkdale approximately every 20–30 minutes. The village is about a 5-minute walk from the station.",
+    a: "Birkdale station is on the Merseyrail Northern Line, the same line as Southport, one stop south. From Liverpool Central, trains run direct to Birkdale approximately every 20–30 minutes. The village is about a 5-minute walk from the station.",
   },
   {
     q: "What shops are in Birkdale Village?",
-    a: "Birkdale Village has a strong concentration of independent shops — fashion boutiques, homeware, gifts, jewellery, artisan food shops, and services. The absence of chain stores is one of its main attractions. The exact mix changes over time — walking the length of Liverpool Road gives you the full picture.",
+    a: "Birkdale Village has a strong concentration of independent shops, fashion boutiques, homeware, gifts, jewellery, artisan food shops, and services. The absence of chain stores is one of its main attractions. The exact mix changes over time, walking the length of Liverpool Road gives you the full picture.",
   },
   {
     q: "Is Birkdale Village good for dinner?",
-    a: "Yes — Birkdale Village has a quality dining offer relative to its size. Several independent restaurants along Liverpool Road, ranging from relaxed bistro dining to more formal options. Booking ahead is recommended for Friday and Saturday evenings, particularly during The Open Championship week when the village gets very busy.",
+    a: "Yes. Birkdale Village has a quality dining offer relative to its size. Several independent restaurants along Liverpool Road, ranging from relaxed bistro dining to more formal options. Booking ahead is recommended for Friday and Saturday evenings, particularly during The Open Championship week when the village gets very busy.",
   },
   {
     q: "How far is Birkdale Village from Royal Birkdale Golf Club?",
@@ -65,7 +65,7 @@ const FAQS = [
   },
   {
     q: "Is Birkdale Village worth visiting if I'm staying in Southport?",
-    a: "Yes — it's a completely different character to the town centre and worth the short journey. Best for an afternoon's browsing combined with lunch or dinner. The pace is slower, the quality is high, and it gives you a sense of how Southport's residents actually live rather than the tourism-facing version of the town.",
+    a: "Yes, it's a completely different character to the town centre and worth the short journey. Best for an afternoon's browsing combined with lunch or dinner. The pace is slower, the quality is high, and it gives you a sense of how Southport's residents actually live rather than the tourism-facing version of the town.",
   },
 ];
 
@@ -74,7 +74,7 @@ const PAGE_LD = {
   "@type": "ShoppingDistrict",
   name: "Birkdale Village",
   description:
-    "Birkdale Village — Southport's independent shopping and dining quarter, centred on Liverpool Road. Two minutes from Royal Birkdale Golf Club.",
+    "Birkdale Village. Southport's independent shopping and dining quarter, centred on Liverpool Road. Two minutes from Royal Birkdale Golf Club.",
   url: `${BASE_URL}/birkdale-village`,
   geo: { "@type": "GeoCoordinates", latitude: 53.6326, longitude: -3.0258 },
   address: {
@@ -142,8 +142,8 @@ export default function BirkdaleVillagePage() {
                 <span className="block text-[#C9A84C]">Village</span>
               </h1>
               <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
-                The locals&apos; preference. Independent boutiques, proper restaurants, and decent coffee on Liverpool Road — 
-                two minutes from Royal Birkdale Golf Club, and entirely worth the short detour from the town centre.
+                The locals&apos; preference. Independent boutiques, proper restaurants, and decent coffee on Liverpool Road.
+                Two minutes from Royal Birkdale Golf Club, and entirely worth the short detour from the town centre.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#shopping" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
@@ -194,13 +194,13 @@ export default function BirkdaleVillagePage() {
                   boutiques that sell things you actually want to buy.
                 </p>
                 <p>
-                  For shopping, I&apos;d take Birkdale over Lord Street most days — it&apos;s more manageable, 
+                  For shopping, I&apos;d take Birkdale over Lord Street most days, it&apos;s more manageable, 
                   easier to park, and the quality of what you find is consistently higher. 
                   For dinner, the restaurants in the village hold up well: the kind of places where the cooking is serious 
                   but the atmosphere is relaxed, and you don&apos;t need to book three weeks ahead except on event weekends.
                 </p>
                 <p>
-                  The Royal Birkdale connection adds something too — during Open week, international golf fans find their way 
+                  The Royal Birkdale connection adds something too, during Open week, international golf fans find their way 
                   here, and the village handles it well. But on a quiet Wednesday in October it&apos;s just as good, 
                   if not better. That&apos;s what a proper neighbourhood looks like.
                 </p>
@@ -229,7 +229,7 @@ export default function BirkdaleVillagePage() {
                 {
                   emoji: "🏡",
                   category: "Homeware & Gifts",
-                  detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present — not the standard Waterstones-adjacent gift shop fare. Several have strong local maker representation.",
+                  detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present, not the standard Waterstones-adjacent gift shop fare. Several have strong local maker representation.",
                 },
                 {
                   emoji: "💎",
@@ -239,7 +239,7 @@ export default function BirkdaleVillagePage() {
                 {
                   emoji: "🥩",
                   category: "Food & Artisan Produce",
-                  detail: "A proper butcher, a bakery, and specialist food shops. The butcher in particular has a following — the kind of place where the staff know where the meat comes from and will tell you if you ask. Worth the visit even if you&apos;re not buying clothes.",
+                  detail: "A proper butcher, a bakery, and specialist food shops. The butcher in particular has a following, the kind of place where the staff know where the meat comes from and will tell you if you ask. Worth the visit even if you&apos;re not buying clothes.",
                 },
                 {
                   emoji: "📚",
@@ -269,9 +269,9 @@ export default function BirkdaleVillagePage() {
                 <div>
                   <p className="font-display font-bold text-white text-base mb-2">Shopping tip</p>
                   <p className="text-white/70 text-sm leading-relaxed">
-                    The village is best walked end to end — Liverpool Road is the main artery, but several worth-visiting 
+                    The village is best walked end to end. Liverpool Road is the main artery, but several worth-visiting 
                     shops are on the side streets off it. Allow a couple of hours to browse properly. 
-                    Saturday mornings tend to be the most active. The village is quieter on weekday afternoons — 
+                    Saturday mornings tend to be the most active. The village is quieter on weekday afternoons,
                     easier to browse, easier to park.
                   </p>
                 </div>
@@ -297,11 +297,11 @@ export default function BirkdaleVillagePage() {
                   type: "Restaurants",
                   color: "from-[#1B2E4B] to-[#2A4A73]",
                   highlights: [
-                    "Independent bistro dining — the village avoids chains",
+                    "Independent bistro dining, the village avoids chains",
                     "Book ahead for Friday and Saturday evenings",
-                    "Open week (The Open Championship, July) gets very busy — essential to book",
+                    "Open week (The Open Championship, July) gets very busy, essential to book",
                     "Cuisine mix: modern European, Italian, and international",
-                    "Most restaurants are smaller (30–60 covers) — book early for groups",
+                    "Most restaurants are smaller (30–60 covers), book early for groups",
                   ],
                 },
                 {
@@ -312,7 +312,7 @@ export default function BirkdaleVillagePage() {
                     "The village has several quality independent cafés",
                     "Morning coffee stop before exploring the village is a well-worn routine",
                     "Proper flat whites, not supermarket-style espresso machines",
-                    "Food menus lean toward quality over volume — good scones, good lunch",
+                    "Food menus lean toward quality over volume, good scones, good lunch",
                     "Generally quieter and easier to get a table than Lord Street equivalents",
                   ],
                 },
@@ -321,9 +321,9 @@ export default function BirkdaleVillagePage() {
                   type: "Pubs & Bars",
                   color: "from-[#7A1A1A] to-[#B02020]",
                   highlights: [
-                    "The Bold Hotel bar is the premium Birkdale drinking option — good cocktails, proper setting",
+                    "The Bold Hotel bar is the premium Birkdale drinking option, good cocktails, proper setting",
                     "Several traditional pubs within walking distance",
-                    "Village pubs tend to welcome dogs — ask on arrival",
+                    "Village pubs tend to welcome dogs, ask on arrival",
                     "Post-round drinks culture strong during Open week",
                     "Pre-dinner drinks are better here than town centre for a quieter start",
                   ],
@@ -366,8 +366,8 @@ export default function BirkdaleVillagePage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <p className="text-white/70 text-base leading-relaxed mb-4">
-                    Royal Birkdale Golf Club — one of the finest links courses in England, host of The Open Championship 
-                    eleven times — is approximately 10 minutes&apos; walk from the village centre. The two are neighbours 
+                    Royal Birkdale Golf Club, one of the finest links courses in England, host of The Open Championship 
+                    eleven times, is approximately 10 minutes&apos; walk from the village centre. The two are neighbours 
                     in the most literal sense.
                   </p>
                   <p className="text-white/70 text-base leading-relaxed">
@@ -413,10 +413,10 @@ export default function BirkdaleVillagePage() {
                 <div className="space-y-2">
                   {[
                     "Postcode: PR8 4AR (Liverpool Road, Birkdale)",
-                    "2 miles south of Southport town centre — 5–10 minute drive",
+                    "2 miles south of Southport town centre. 5–10 minute drive",
                     "On-street parking along Liverpool Road and side streets",
                     "Usually straightforward on weekdays and weekend afternoons",
-                    "Open week (July) and summer Saturdays: busier — arrive before 10am",
+                    "Open week (July) and summer Saturdays: busier, arrive before 10am",
                   ].map((line) => (
                     <div key={line} className="flex gap-2 text-sm text-gray-600">
                       <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -451,7 +451,7 @@ export default function BirkdaleVillagePage() {
           <section>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               <div className="p-8 border-b border-gray-100">
-                <h2 className="font-display text-2xl font-bold text-[#1B2E4B]">Birkdale Village vs Lord Street — Which to Choose?</h2>
+                <h2 className="font-display text-2xl font-bold text-[#1B2E4B]">Birkdale Village vs Lord Street. Which to Choose?</h2>
                 <p className="text-gray-600 mt-2 text-sm">The honest comparison.</p>
               </div>
               <div className="overflow-x-auto">
@@ -465,11 +465,11 @@ export default function BirkdaleVillagePage() {
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {[
-                      { want: "Independent shops", birkdale: "Excellent — the whole point", lord: "Good — strong independents" },
+                      { want: "Independent shops", birkdale: "Excellent, the whole point", lord: "Good, strong independents" },
                       { want: "A quiet browse", birkdale: "✅ Easier to move around", lord: "Busier, more footfall" },
-                      { want: "Wider choice", birkdale: "Smaller — more curated", lord: "✅ More shops overall" },
+                      { want: "Wider choice", birkdale: "Smaller, more curated", lord: "✅ More shops overall" },
                       { want: "Easy parking", birkdale: "✅ On-street, usually fine", lord: "Pay and display, busier" },
-                      { want: "Good dinner", birkdale: "✅ Excellent independents", lord: "Good — wider choice" },
+                      { want: "Good dinner", birkdale: "✅ Excellent independents", lord: "Good, wider choice" },
                       { want: "Near Royal Birkdale", birkdale: "✅ 10 min walk", lord: "20–25 min drive" },
                       { want: "Victorian architecture", birkdale: "Charming neighbourhood", lord: "✅ Spectacular" },
                       { want: "Relaxed atmosphere", birkdale: "✅ Village pace", lord: "Town centre pace" },
@@ -490,7 +490,7 @@ export default function BirkdaleVillagePage() {
           <section id="faq" className="scroll-mt-28">
             <div className="text-center mb-10">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Birkdale Village — FAQs</h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Birkdale Village. FAQs</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {FAQS.map((faq) => (

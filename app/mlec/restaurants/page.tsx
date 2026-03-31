@@ -59,12 +59,12 @@ const DINING_AREAS = [
     walkTime: "2–5 min from MLEC",
     vibe: "Casual, seafront",
     description:
-      "The stretch of the Promenade around MLEC will have the MLEC's own signature restaurant and lakeside café as anchors. Existing seafront options include fish and chips, casual cafés, and ice cream — ideal for a relaxed pre-show snack or a quick post-show something sweet. Expect the dining offer on the Promenade to expand significantly once MLEC opens and footfall increases.",
+      "The stretch of the Promenade around MLEC will have the MLEC's own signature restaurant and lakeside café as anchors. Existing seafront options include fish and chips, casual cafés, and ice cream, ideal for a relaxed pre-show snack or a quick post-show something sweet. Expect the dining offer on the Promenade to expand significantly once MLEC opens and footfall increases.",
     options: [
-      { type: "MLEC Signature Restaurant", detail: "Lake views, full-service dining — inside MLEC itself. Opening 2027." },
+      { type: "MLEC Signature Restaurant", detail: "Lake views, full-service dining, inside MLEC itself. Opening 2027." },
       { type: "MLEC Lakeside Café", detail: "Coffee by day, bistro by night. Year-round, no event required." },
-      { type: "Seafront fish & chip shops", detail: "Classic British seaside — grab and go, or sit down." },
-      { type: "Promenade cafés & kiosks", detail: "Coffee, ice cream, light bites — good for pre-show casual." },
+      { type: "Seafront fish & chip shops", detail: "Classic British seaside, grab and go, or sit down." },
+      { type: "Promenade cafés & kiosks", detail: "Coffee, ice cream, light bites, good for pre-show casual." },
     ],
   },
   {
@@ -72,9 +72,9 @@ const DINING_AREAS = [
     walkTime: "10–15 min from MLEC",
     vibe: "Buzzing, lots of choice",
     description:
-      "Lord Street is Southport's main dining and drinking strip, and it's genuinely excellent. Independent restaurants, national chains, cocktail bars, traditional pubs — you'll find something for every taste and budget. The walk from Lord Street to MLEC takes about 10–15 minutes along the Promenade, which is easy to factor into your pre-show timing.",
+      "Lord Street is Southport's main dining and drinking strip, and it's genuinely excellent. Independent restaurants, national chains, cocktail bars, traditional pubs, you'll find something for every taste and budget. The walk from Lord Street to MLEC takes about 10–15 minutes along the Promenade, which is easy to factor into your pre-show timing.",
     options: [
-      { type: "Independent restaurants", detail: "Wide range of cuisines — Italian, Indian, Thai, modern British, and more." },
+      { type: "Independent restaurants", detail: "Wide range of cuisines. Italian, Indian, Thai, modern British, and more." },
       { type: "Cocktail bars & wine bars", detail: "Several quality cocktail bars on and around Lord Street for post-show drinks." },
       { type: "Traditional pubs", detail: "Classic Southport pubs with good food menus and real ale." },
       { type: "Coffee shops", detail: "Multiple independents and chains for pre-show coffee." },
@@ -88,7 +88,7 @@ const DINING_AREAS = [
       "Birkdale village has quietly become one of the best dining destinations in Southport. A cluster of quality independent restaurants and bars on Liverpool Road, with a genuinely local, unhurried feel. If you're staying in Birkdale, have dinner here before getting a taxi to MLEC rather than trying to rush back into town.",
     options: [
       { type: "Independent bistros & restaurants", detail: "Several quality independents along Liverpool Road, Birkdale." },
-      { type: "Local pubs with food", detail: "Village pub dining — relaxed, good portions." },
+      { type: "Local pubs with food", detail: "Village pub dining, relaxed, good portions." },
       { type: "Takeaway options", detail: "Pizza, Indian, and chippy all within the village." },
     ],
   },
@@ -103,38 +103,38 @@ const PRE_SHOW_TIPS = [
   {
     icon: AlertTriangle,
     title: "Book Ahead on Event Nights",
-    body: "When MLEC opens, popular shows will mean the whole of Lord Street fills up. Don't assume you can walk into your favourite restaurant at 6pm on a Saturday show night. Book ahead — at least a week in advance for big events.",
+    body: "When MLEC opens, popular shows will mean the whole of Lord Street fills up. Don't assume you can walk into your favourite restaurant at 6pm on a Saturday show night. Book ahead, at least a week in advance for big events.",
   },
   {
     icon: MapPin,
     title: "Promenade Walk = No Stress",
-    body: "Eating on Lord Street and walking to MLEC along the Promenade is genuinely enjoyable — flat, well-lit, and pleasant. Build the walk into your evening rather than rushing it.",
+    body: "Eating on Lord Street and walking to MLEC along the Promenade is genuinely enjoyable, flat, well-lit, and pleasant. Build the walk into your evening rather than rushing it.",
   },
   {
     icon: Wine,
     title: "Post-Show Drinks",
-    body: "MLEC's lakeside café will likely be open for post-show drinks. Lord Street bars are a 10–15 minute walk. If the show finishes late, have a plan — taxi apps can have surge pricing after big shows.",
+    body: "MLEC's lakeside café will likely be open for post-show drinks. Lord Street bars are a 10–15 minute walk. If the show finishes late, have a plan, taxi apps can have surge pricing after big shows.",
   },
   {
     icon: Coffee,
     title: "MLEC Has Its Own Restaurant",
-    body: "From 2027, you'll be able to dine in the MLEC signature restaurant with 180-degree lake views. Book this for special occasions — it will be the most dramatic pre-show dining experience in the town.",
+    body: "From 2027, you'll be able to dine in the MLEC signature restaurant with 180-degree lake views. Book this for special occasions, it will be the most dramatic pre-show dining experience in the town.",
   },
   {
     icon: Star,
     title: "The Promenade Walk at Night",
-    body: "Post-MLEC opening, the Promenade at night will have The Light Fantastic water show as a backdrop. Even if you're just grabbing a coffee on the way home, it's worth stopping. Factor this into your evening — it's free to watch.",
+    body: "Post-MLEC opening, the Promenade at night will have The Light Fantastic water show as a backdrop. Even if you're just grabbing a coffee on the way home, it's worth stopping. Factor this into your evening, it's free to watch.",
   },
 ];
 
 const FOOD_TYPES = [
   { cuisine: "Modern British", desc: "Fine dining and gastropubs doing seasonal menus. Lord Street and town centre." },
   { cuisine: "Italian", desc: "Several solid Italian restaurants across town, from casual pizza to proper trattoria." },
-  { cuisine: "Indian", desc: "Strong Indian restaurant scene — Southport has several long-standing quality spots." },
+  { cuisine: "Indian", desc: "Strong Indian restaurant scene. Southport has several long-standing quality spots." },
   { cuisine: "Fish & Chips", desc: "Mandatory at the seaside. Multiple award-winning chippies within a mile of MLEC." },
   { cuisine: "Thai & Asian Fusion", desc: "Growing selection of Thai, Japanese, and Asian fusion restaurants in the town centre." },
   { cuisine: "Bars & Cocktails", desc: "Lord Street has a strong cocktail bar scene for pre and post-show drinks." },
-  { cuisine: "Brunch & Cafés", desc: "Southport's café culture is strong — ideal for matinée days starting with brunch." },
+  { cuisine: "Brunch & Cafés", desc: "Southport's café culture is strong, ideal for matinée days starting with brunch." },
   { cuisine: "MLEC Dining", desc: "MLEC's own signature restaurant (lake views) and lakeside café from April 2027." },
 ];
 
@@ -170,7 +170,7 @@ export default function MLECRestaurantsPage() {
             Eat & Drink near MLEC
           </h1>
           <p className="text-slate-200 text-lg max-w-xl drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
-            Pre-show dining, post-show drinks, and everything in between — Southport&apos;s restaurant scene is ready.
+            Pre-show dining, post-show drinks, and everything in between. Southport&apos;s restaurant scene is ready.
           </p>
         </div>
       </div>
@@ -183,7 +183,7 @@ export default function MLECRestaurantsPage() {
             <p className="text-amber-800 font-semibold text-sm mb-1">Terry&apos;s Take</p>
             <p className="text-amber-900 text-base leading-relaxed">
               People underestimate Southport&apos;s food scene. Lord Street has quietly built a genuinely good
-              selection of independent restaurants over the past few years — nothing like it was a decade ago.
+              selection of independent restaurants over the past few years, nothing like it was a decade ago.
               My honest recommendation: book a table on Lord Street, take your time over dinner, then walk to
               MLEC along the Promenade. That&apos;s the perfect MLEC evening. And when the venue opens, The Light
               Fantastic water show on the way back? Bonus.
@@ -262,7 +262,7 @@ export default function MLECRestaurantsPage() {
             <div>
               <h2 className="text-2xl font-extrabold text-white mb-2">Browse All Southport Restaurants</h2>
               <p className="text-slate-300">
-                Full directory of restaurants, bars, cafés, and takeaways in Southport — all within reach of MLEC.
+                Full directory of restaurants, bars, cafés, and takeaways in Southport, all within reach of MLEC.
               </p>
             </div>
             <Link

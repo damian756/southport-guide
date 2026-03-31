@@ -17,7 +17,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Southport Air Show 2026 | Free Event, Dates, Best Viewing Spots & Guide",
   description:
-    "Southport Air Show 2026 — free event on Southport Beach. Dates, best viewing spots, parking, and how to make the most of one of the UK's best air shows. Over 100,000 visitors.",
+    "Southport Air Show 2026, free event on Southport Beach. Dates, best viewing spots, parking, and how to make the most of one of the UK's best air shows. Over 100,000 visitors.",
   keywords:
     "Southport Air Show 2026, Southport Air Show dates, Southport Air Show free, Southport Air Show viewing, Southport airshow parking",
   alternates: { canonical: `${BASE_URL}/southport-air-show` },
@@ -36,19 +36,19 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "When is the Southport Air Show 2026?",
-    a: "The Southport Air Show 2026 is typically held over a weekend in late August or early September. Exact 2026 dates will be announced at visitsouthport.com — check there for the official confirmation. The show traditionally takes place on a Saturday and Sunday.",
+    a: "The Southport Air Show 2026 is typically held over a weekend in late August or early September. Exact 2026 dates will be announced at visitsouthport.com, check there for the official confirmation. The show traditionally takes place on a Saturday and Sunday.",
   },
   {
     q: "Is the Southport Air Show free?",
-    a: "Yes — the Southport Air Show is free to attend for general spectators. You watch from Southport Beach and the Promenade. There are paid grandstand packages and hospitality options for those who want a reserved viewing area, but the entire beach is free public viewing.",
+    a: "Yes, the Southport Air Show is free to attend for general spectators. You watch from Southport Beach and the Promenade. There are paid grandstand packages and hospitality options for those who want a reserved viewing area, but the entire beach is free public viewing.",
   },
   {
     q: "Where is the best place to watch the Southport Air Show?",
-    a: "The airshow display line runs along the coastline parallel to the beach. Any point along the Promenade and beach gives a good view — the aircraft fly relatively close to the shore. The grandstand area near the Pier is the premium spot. To the north of the Pier is often slightly less crowded while still having excellent views.",
+    a: "The airshow display line runs along the coastline parallel to the beach. Any point along the Promenade and beach gives a good view, the aircraft fly relatively close to the shore. The grandstand area near the Pier is the premium spot. To the north of the Pier is often slightly less crowded while still having excellent views.",
   },
   {
     q: "How many people attend the Southport Air Show?",
-    a: "The Southport Air Show draws over 100,000 visitors across the two days — sometimes significantly more for headline displays. It is one of the largest free air shows in the UK by attendance.",
+    a: "The Southport Air Show draws over 100,000 visitors across the two days, sometimes significantly more for headline displays. It is one of the largest free air shows in the UK by attendance.",
   },
   {
     q: "What aircraft perform at the Southport Air Show?",
@@ -56,7 +56,7 @@ const FAQS = [
   },
   {
     q: "Where should I park for the Southport Air Show?",
-    a: "Marine Drive fills very early on airshow weekend — expect it to be full by 9am. Town centre car parks are a better bet. Park-and-ride services usually operate specifically for the airshow. Come by train if you can — it's the most reliable option. Details published by the organisers each year.",
+    a: "Marine Drive fills very early on airshow weekend, expect it to be full by 9am. Town centre car parks are a better bet. Park-and-ride services usually operate specifically for the airshow. Come by train if you can, it's the most reliable option. Details published by the organisers each year.",
   },
   {
     q: "What time does the Southport Air Show start and finish?",
@@ -145,7 +145,7 @@ export default function SouthportAirShowPage() {
               </h1>
               <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
                 One of the UK&apos;s best free air shows. Over 100,000 visitors over the weekend. 
-                The display line runs right along the coastline — the entire beach is your viewing platform.
+                The display line runs right along the coastline, the entire beach is your viewing platform.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#viewing" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
@@ -190,7 +190,7 @@ export default function SouthportAirShowPage() {
               <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
                 <p>
                   I&apos;ve been going to the Southport Air Show since I was a kid. My kids have now been going 
-                  since they were kids. It&apos;s that kind of event — it becomes a fixture. You don&apos;t miss it.
+                  since they were kids. It&apos;s that kind of event, it becomes a fixture. You don&apos;t miss it.
                 </p>
                 <p>
                   What makes it work, apart from the obvious fact that watching aircraft do extraordinary things at close range 
@@ -202,7 +202,7 @@ export default function SouthportAirShowPage() {
                 <p>
                   Practical advice: do not try to drive there and park on Marine Drive. You will spend the morning in traffic 
                   and the afternoon furious. Come by train from Liverpool or Wigan. Walk to the Promenade. 
-                  Get there by 9:30am if you want a good spot on the beach. Bring something to eat — the food stalls are good 
+                  Get there by 9:30am if you want a good spot on the beach. Bring something to eat, the food stalls are good 
                   but the queues at lunchtime are substantial. And bring earplugs for children under about ten. 
                   The jets are loud.
                 </p>
@@ -221,12 +221,12 @@ export default function SouthportAirShowPage() {
                 {
                   emoji: "✈️",
                   title: "The Flying Programme",
-                  detail: "A full day of displays running from approximately 10am to 5pm. Mix of military jets, warbirds, aerobatic teams, helicopters, and civilian display aircraft. The headline acts vary each year — confirmed when the programme is published, typically 6–8 weeks before the show.",
+                  detail: "A full day of displays running from approximately 10am to 5pm. Mix of military jets, warbirds, aerobatic teams, helicopters, and civilian display aircraft. The headline acts vary each year, confirmed when the programme is published, typically 6–8 weeks before the show.",
                 },
                 {
                   emoji: "🎺",
                   title: "The Red Arrows",
-                  detail: "The Red Arrows perform at Southport most years — subject to their annual schedule. When they appear, the atmosphere peaks. Nine Hawks, nine smoke trails, formation flying at extraordinary precision. The beach crowd reaction is something else entirely.",
+                  detail: "The Red Arrows perform at Southport most years, subject to their annual schedule. When they appear, the atmosphere peaks. Nine Hawks, nine smoke trails, formation flying at extraordinary precision. The beach crowd reaction is something else entirely.",
                 },
                 {
                   emoji: "⚔️",
@@ -236,12 +236,12 @@ export default function SouthportAirShowPage() {
                 {
                   emoji: "🎪",
                   title: "Ground Events",
-                  detail: "Static aircraft displays along the Promenade, food stalls and market traders, fairground rides, and entertainment stages. The ground events are good but secondary — the flying is the show. Plan your walking to ground-level activities between flying sets.",
+                  detail: "Static aircraft displays along the Promenade, food stalls and market traders, fairground rides, and entertainment stages. The ground events are good but secondary, the flying is the show. Plan your walking to ground-level activities between flying sets.",
                 },
                 {
                   emoji: "🎖️",
                   title: "Grandstand Packages",
-                  detail: "Paid grandstand packages are available for reserved seating in the best central viewing position. These include catering options and are limited in number. Book early — sold through the official airshow website. Worth it if you want guaranteed position for the headline acts.",
+                  detail: "Paid grandstand packages are available for reserved seating in the best central viewing position. These include catering options and are limited in number. Book early, sold through the official airshow website. Worth it if you want guaranteed position for the headline acts.",
                 },
                 {
                   emoji: "🏖️",
@@ -267,7 +267,7 @@ export default function SouthportAirShowPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Where to Stand</p>
               <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Best Viewing Positions</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg">
-                The display line runs parallel to the beach. Every part of the seafront gives a view — but some spots are better than others.
+                The display line runs parallel to the beach. Every part of the seafront gives a view, but some spots are better than others.
               </p>
             </div>
 
@@ -277,7 +277,7 @@ export default function SouthportAirShowPage() {
                   position: "Central (Grandstand Area)",
                   quality: "Best",
                   color: "bg-green-600",
-                  detail: "The paid grandstand area, centred near the Pier, is the optimal viewing position — directly in front of the main display line. If you want the best view without paying for grandstand, the public beach immediately north and south of the paid area is still excellent.",
+                  detail: "The paid grandstand area, centred near the Pier, is the optimal viewing position, directly in front of the main display line. If you want the best view without paying for grandstand, the public beach immediately north and south of the paid area is still excellent.",
                   tip: "Book grandstand packages early at the official website.",
                 },
                 {
@@ -325,12 +325,12 @@ export default function SouthportAirShowPage() {
               {[
                 {
                   icon: Car,
-                  title: "Getting There — Don&apos;t Drive",
+                  title: "Getting There. Don&apos;t Drive",
                   items: [
-                    "Train: Merseyrail Northern Line from Liverpool — direct to Southport, 15 min walk to the beach. Also to Birkdale or Ainsdale if you want to approach from north or south.",
-                    "Marine Drive fills by 9am on airshow weekend — don&apos;t rely on it",
+                    "Train: Merseyrail Northern Line from Liverpool, direct to Southport, 15 min walk to the beach. Also to Birkdale or Ainsdale if you want to approach from north or south.",
+                    "Marine Drive fills by 9am on airshow weekend, don&apos;t rely on it",
                     "Town centre car parks are your best car option (10–15 min walk to beach)",
-                    "Park-and-ride may operate specifically for the airshow — check visitsouthport.com",
+                    "Park-and-ride may operate specifically for the airshow, check visitsouthport.com",
                   ],
                 },
                 {
@@ -340,20 +340,20 @@ export default function SouthportAirShowPage() {
                     "Arrive by 9–9:30am to secure a good viewing position on the beach",
                     "Flying typically begins 10am–11am each day",
                     "Eat before the main lunchtime rush (before 12pm or after 2pm)",
-                    "Headline acts usually mid-afternoon — the show builds to them",
-                    "Crowd disperses quickly after the last display — leaving around 5pm is busy",
+                    "Headline acts usually mid-afternoon, the show builds to them",
+                    "Crowd disperses quickly after the last display, leaving around 5pm is busy",
                   ],
                 },
                 {
                   icon: MapPin,
                   title: "What to Bring",
                   items: [
-                    "Earplugs — essential for young children, recommended for everyone",
+                    "Earplugs, essential for young children, recommended for everyone",
                     "Folding chairs or blankets if you want to sit on the beach",
-                    "Binoculars — useful for the higher-altitude manoeuvres",
-                    "Sunscreen — you&apos;ll be on an exposed beach for hours",
-                    "Packed food — reduces queuing time significantly",
-                    "Waterproof layer — Lancashire in August, always prepared",
+                    "Binoculars, useful for the higher-altitude manoeuvres",
+                    "Sunscreen, you&apos;ll be on an exposed beach for hours",
+                    "Packed food, reduces queuing time significantly",
+                    "Waterproof layer. Lancashire in August, always prepared",
                   ],
                 },
                 {
@@ -391,7 +391,7 @@ export default function SouthportAirShowPage() {
           <section id="faq" className="scroll-mt-28">
             <div className="text-center mb-10">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Air Show — FAQs</h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Air Show. FAQs</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {FAQS.map((faq) => (
@@ -433,7 +433,7 @@ export default function SouthportAirShowPage() {
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Planning Your Visit</p>
             <h2 className="font-display text-3xl font-bold mb-4">Make a Weekend of It</h2>
             <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-              The Air Show is two days. Make a weekend of it — the beach, the Pier, Lord Street, and some of 
+              The Air Show is two days. Make a weekend of it, the beach, the Pier, Lord Street, and some of 
               Southport&apos;s restaurants are all right there.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

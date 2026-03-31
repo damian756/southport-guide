@@ -34,10 +34,10 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "When is the Sausage & Cider Festival in Southport 2026?", a: "The Sausage & Cider Festival Southport 2026 is on Saturday 18 April 2026 at Victoria Park (Rotten Row, PR8 2BZ). There are two sessions: afternoon (1pm–5pm) and evening (5pm–10pm)." },
-  { q: "Do I need a ticket for the Sausage & Cider Festival?", a: "Yes — tickets are required and must be purchased in advance. The event runs as two separate sessions (afternoon 1–5pm and evening 5–10pm). Book online via the event ticketing pages — check feverup.com/m/99142 or skiddle.com for availability." },
+  { q: "Do I need a ticket for the Sausage & Cider Festival?", a: "Yes, tickets are required and must be purchased in advance. The event runs as two separate sessions (afternoon 1–5pm and evening 5–10pm). Book online via the event ticketing pages, check feverup.com/m/99142 or skiddle.com for availability." },
   { q: "What is at the Sausage & Cider Festival?", a: "A Bavarian-inspired food and drink festival featuring: a traditional beer and cider tent with craft beers, seasonal brews, and artisan ciders; German-style food (bratwurst, schnitzel, oversized pretzels, cider-infused sausages); live oompah bands and Bavarian folk dancers; a live DJ; and on-stage challenges and giveaways." },
   { q: "Where is the Sausage & Cider Festival in Southport?", a: "Victoria Park, Rotten Row, Southport. Postcode PR8 2BZ. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station." },
-  { q: "Which session should I go to — afternoon or evening?", a: "The afternoon session (1–5pm) is generally better for families and those who want a more relaxed experience. The evening session (5–10pm) tends to have a livelier atmosphere. Both include the full food and drink offer, live music, and entertainment." },
+  { q: "Which session should I go to, afternoon or evening?", a: "The afternoon session (1–5pm) is generally better for families and those who want a more relaxed experience. The evening session (5–10pm) tends to have a livelier atmosphere. Both include the full food and drink offer, live music, and entertainment." },
   { q: "Is the Sausage & Cider Festival suitable for families?", a: "The afternoon session (1–5pm) is generally family-friendly. The evening session is more adult-oriented as the evening progresses. There is no specific age restriction but it's primarily an adult food and drink event. Check the event listing for the latest guidance." },
   { q: "How do I get to the Sausage & Cider Festival?", a: "Victoria Park is approximately 15 minutes' walk from Southport railway station (Merseyrail from Liverpool). Town centre car parks are a 10–15 minute walk from the park. Street parking is available on surrounding roads." },
 ];
@@ -106,7 +106,7 @@ export default function SausageCiderFestivalPage() {
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
               Bavarian-style food and drink festival at Victoria Park. Bratwurst, artisan ciders,
               live oompah bands, and Bavarian folk dancers. Two sessions: afternoon and evening.
-              Tickets required — no door sales.
+              Tickets required, no door sales.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="https://feverup.com/m/99142" target="_blank" rel="noopener noreferrer"
@@ -148,22 +148,22 @@ export default function SausageCiderFestivalPage() {
         <section>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 border-l-4 border-l-[#C9A84C]">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
-            <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Oktoberfest&apos;s Little Sister — In April</h2>
+            <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Oktoberfest&apos;s Little Sister. In April</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>
-                Victoria Park does food festivals well. The setting — the bandstand, the trees, the space —
+                Victoria Park does food festivals well. The setting, the bandstand, the trees, the space,
                 suits this kind of event better than a town square or a car park would. The Sausage &amp; Cider
                 Festival is marketed as Oktoberfest in spring, which is an accurate description.
                 Bratwurst, pretzels, steins, oompah music. It does exactly what it says.
               </p>
               <p>
-                The food quality at these events varies — the honest answer is that you&apos;re getting festival food,
+                The food quality at these events varies, the honest answer is that you&apos;re getting festival food,
                 not restaurant quality. But the cider selection tends to be better than average, there are usually
                 a few good local producers in the mix, and the atmosphere on a warm April Saturday in the park
                 is hard to beat. If it&apos;s raining, it&apos;s less fun. April in Lancashire, plan accordingly.
               </p>
               <p>
-                Two sessions — afternoon and evening. The afternoon is better for families and for actually tasting
+                Two sessions, afternoon and evening. The afternoon is better for families and for actually tasting
                 things at a relaxed pace. The evening gets livelier. Book in advance; this does sell tickets.
               </p>
             </div>
@@ -178,11 +178,11 @@ export default function SausageCiderFestivalPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "🍺", title: "Beer & Cider Tent", detail: "A traditional beer and cider tent featuring craft beers, seasonal brews, lagers, and artisan ciders. Mix of German imports and local producers. The cider selection is usually the highlight — regional varieties you won't find in a supermarket." },
-              { emoji: "🌭", title: "German Food", detail: "Bratwurst, schnitzel, oversized pretzels, and cider-infused sausages from artisan producers. Local sausage makers alongside the German staples. Festival food, honestly — but good festival food." },
-              { emoji: "🎺", title: "Live Oompah Bands", detail: "Traditional Bavarian oompah bands throughout the day. Not just background noise — these are proper live performances with an eye on the crowd. Bavarian folk dancers are part of the entertainment programme too." },
-              { emoji: "🎧", title: "Live DJ", detail: "A live DJ runs alongside the oompah entertainment — not at the same time, but across the day's programme. On-stage challenges and giveaways, crowd participation. The evening session skews toward this end of the programme." },
-              { emoji: "🌳", title: "Victoria Park Setting", detail: "The festival takes place in Victoria Park — Southport's main public park near the town centre. The bandstand, mature trees, and open space make it a genuinely pleasant setting on a good day. Easy to walk around and explore." },
+              { emoji: "🍺", title: "Beer & Cider Tent", detail: "A traditional beer and cider tent featuring craft beers, seasonal brews, lagers, and artisan ciders. Mix of German imports and local producers. The cider selection is usually the highlight, regional varieties you won't find in a supermarket." },
+              { emoji: "🌭", title: "German Food", detail: "Bratwurst, schnitzel, oversized pretzels, and cider-infused sausages from artisan producers. Local sausage makers alongside the German staples. Festival food, honestly, but good festival food." },
+              { emoji: "🎺", title: "Live Oompah Bands", detail: "Traditional Bavarian oompah bands throughout the day. Not just background noise, these are proper live performances with an eye on the crowd. Bavarian folk dancers are part of the entertainment programme too." },
+              { emoji: "🎧", title: "Live DJ", detail: "A live DJ runs alongside the oompah entertainment, not at the same time, but across the day's programme. On-stage challenges and giveaways, crowd participation. The evening session skews toward this end of the programme." },
+              { emoji: "🌳", title: "Victoria Park Setting", detail: "The festival takes place in Victoria Park. Southport's main public park near the town centre. The bandstand, mature trees, and open space make it a genuinely pleasant setting on a good day. Easy to walk around and explore." },
               { emoji: "📅", title: "Two Sessions", detail: "Afternoon: 1pm–5pm. Evening: 5pm–10pm. Each session is separately ticketed. You book the session you want. The afternoon is more family-oriented; the evening session tends to be livelier and more adult in atmosphere." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -208,11 +208,11 @@ export default function SausageCiderFestivalPage() {
               </div>
               <div className="p-6 space-y-3">
                 {[
-                  "More relaxed pace — time to browse and actually taste things",
+                  "More relaxed pace, time to browse and actually taste things",
                   "Better for families with children",
                   "Usually the better session for food quality and queuing",
                   "Oompah bands tend to dominate the programme",
-                  "Ends at 5pm — easy to continue into the evening in town",
+                  "Ends at 5pm, easy to continue into the evening in town",
                 ].map((line) => (
                   <div key={line} className="flex gap-2 text-sm text-gray-600">
                     <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -232,7 +232,7 @@ export default function SausageCiderFestivalPage() {
                   "DJ and on-stage challenges more prominent",
                   "More adult-oriented from 7pm onwards",
                   "Slightly less crowded at the food stalls in early evening",
-                  "Runs until 10pm — good for a longer event night out",
+                  "Runs until 10pm, good for a longer event night out",
                 ].map((line) => (
                   <div key={line} className="flex gap-2 text-sm text-gray-600">
                     <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -253,7 +253,7 @@ export default function SausageCiderFestivalPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             {[
               { icon: MapPin, title: "Venue & Getting There", items: ["Victoria Park, Rotten Row, Southport. Postcode PR8 2BZ", "10–15 min walk from Southport town centre", "15 min walk from Southport railway station (Merseyrail from Liverpool)", "Town centre car parks: 10–15 min walk from the park entrance", "Street parking available on surrounding residential roads"] },
-              { icon: Utensils, title: "Food & Drink Tips", items: ["Card payments accepted at most stalls", "Bring cash as backup — some traders prefer it", "April weather is unpredictable — bring a light jacket", "Eat before if you're not a fan of festival food prices", "The cider selection is usually the strongest part of the offering"] },
+              { icon: Utensils, title: "Food & Drink Tips", items: ["Card payments accepted at most stalls", "Bring cash as backup, some traders prefer it", "April weather is unpredictable, bring a light jacket", "Eat before if you're not a fan of festival food prices", "The cider selection is usually the strongest part of the offering"] },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
                 <item.icon className="w-6 h-6 text-[#C9A84C] mb-4" />
@@ -275,7 +275,7 @@ export default function SausageCiderFestivalPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Sausage &amp; Cider Festival — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Sausage &amp; Cider Festival. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -314,7 +314,7 @@ export default function SausageCiderFestivalPage() {
             <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">More Southport Events in 2026</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { name: "Southport 2026: Elegantly Eccentric", month: "Year-round", desc: "Cristal Palace, Big Top Festival, Books Alive! — Southport's year of culture.", href: "/guides/southport-year-of-culture-2026" },
+                { name: "Southport 2026: Elegantly Eccentric", month: "Year-round", desc: "Cristal Palace, Big Top Festival, Books Alive!. Southport's year of culture.", href: "/guides/southport-year-of-culture-2026" },
                 { name: "Flower Show", month: "20–23 August 2026", desc: "One of England's most prestigious horticultural shows. Victoria Park.", href: "/guides/southport-flower-show" },
                 { name: "Full Events Calendar", month: "All of 2026", desc: "10+ major Southport events across the year.", href: "/events" },
               ].map((item) => (

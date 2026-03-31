@@ -199,7 +199,7 @@ export default async function CollectionPage({ params }: Props) {
               <span>{count === 1 ? "listing" : "listings"} found</span>
               {!isIndexable && (
                 <span className="ml-2 text-amber-400 text-xs font-semibold uppercase tracking-wider">
-                  · Building — more coming soon
+                  · Building, more coming soon
                 </span>
               )}
             </div>
@@ -264,7 +264,7 @@ export default async function CollectionPage({ params }: Props) {
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-[#1B2E4B] mb-1">House prices in Birkdale (PR8 4)</p>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  One of Southport&apos;s most sought-after areas — walking distance from Royal Birkdale Golf Club. See average sold prices, schools, crime and flood risk data.
+                  One of Southport&apos;s most sought-after areas, walking distance from Royal Birkdale Golf Club. See average sold prices, schools, crime and flood risk data.
                 </p>
               </div>
               <Link

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Best Restaurants in Southport 2026 | Honest Local Guide | SouthportGuide",
     description:
-      "The best restaurants in Southport — Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
+      "The best restaurants in Southport. Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
     url: `${BASE_URL}/guides/best-restaurants-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -29,23 +29,23 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "What is the best restaurant in Southport?",
-    a: "Bistrot Véronique on Scarisbrick New Road is consistently the most discussed fine dining option in Southport — French bistro cooking, proper wine list, booking essential. For a less formal option that still delivers, V-Café on Lord Street has a loyal following. The restaurant scene in Birkdale Village has also improved significantly over the last few years.",
+    a: "Bistrot Véronique on Scarisbrick New Road is consistently the most discussed fine dining option in Southport. French bistro cooking, proper wine list, booking essential. For a less formal option that still delivers, V-Café on Lord Street has a loyal following. The restaurant scene in Birkdale Village has also improved significantly over the last few years.",
   },
   {
     q: "Do I need to book restaurants in Southport?",
-    a: "For the better restaurants — yes, especially Friday and Saturday evenings. Bistrot Véronique in particular books up well in advance at weekends. During Open week (July) and Flower Show weekend (August), the entire town's restaurant capacity gets stretched — book as early as possible for those dates.",
+    a: "For the better restaurants, yes, especially Friday and Saturday evenings. Bistrot Véronique in particular books up well in advance at weekends. During Open week (July) and Flower Show weekend (August), the entire town's restaurant capacity gets stretched, book as early as possible for those dates.",
   },
   {
     q: "Is Southport good for dining?",
-    a: "Better than its reputation suggests. The top end is genuinely good — Bistrot Véronique competes with anything in Liverpool. The mid-range has improved considerably in the last decade, particularly in Birkdale Village. The weakest area is the area immediately around the seafront, which skews more toward casual eating.",
+    a: "Better than its reputation suggests. The top end is genuinely good. Bistrot Véronique competes with anything in Liverpool. The mid-range has improved considerably in the last decade, particularly in Birkdale Village. The weakest area is the area immediately around the seafront, which skews more toward casual eating.",
   },
   {
     q: "Where should I eat near Southport Beach?",
-    a: "The seafront has more casual options — beach cafés, fish and chips, and a few pub-grills. For a proper meal, head inland to Lord Street or Birkdale Village. It's 15–20 minutes' walk from the beach to the better restaurants. If you're combining beach and dinner, factor in the walk or a short drive.",
+    a: "The seafront has more casual options, beach cafés, fish and chips, and a few pub-grills. For a proper meal, head inland to Lord Street or Birkdale Village. It's 15–20 minutes' walk from the beach to the better restaurants. If you're combining beach and dinner, factor in the walk or a short drive.",
   },
   {
     q: "Are there good Indian restaurants in Southport?",
-    a: "Yes — Southport has a solid selection of Indian restaurants. Several are on or near Lord Street and in the wider town centre. The quality varies, but there are reliable options for a good curry. Check current reviews on Google Maps for up-to-date recommendations.",
+    a: "Yes. Southport has a solid selection of Indian restaurants. Several are on or near Lord Street and in the wider town centre. The quality varies, but there are reliable options for a good curry. Check current reviews on Google Maps for up-to-date recommendations.",
   },
   {
     q: "Are there restaurants suitable for children in Southport?",
@@ -84,7 +84,7 @@ const RESTAURANTS = [
     style: "Thai",
     price: "££",
     bookAhead: true,
-    notes: "Consistently good Thai cooking in Southport. Popular and gets busy — worth booking. Good value relative to the quality.",
+    notes: "Consistently good Thai cooking in Southport. Popular and gets busy, worth booking. Good value relative to the quality.",
   },
   {
     name: "Birkdale Village restaurants",
@@ -92,7 +92,7 @@ const RESTAURANTS = [
     style: "Various",
     price: "££–£££",
     bookAhead: true,
-    notes: "The village has a growing restaurant scene — check what's current on Liverpool Road. The mix changes but quality has been improving. Booking advised for Friday and Saturday evenings.",
+    notes: "The village has a growing restaurant scene, check what's current on Liverpool Road. The mix changes but quality has been improving. Booking advised for Friday and Saturday evenings.",
   },
   {
     name: "Don Luigi",
@@ -107,9 +107,9 @@ const RESTAURANTS = [
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Best Restaurants in Southport — Honest Local Guide",
+  name: "Best Restaurants in Southport. Honest Local Guide",
   description:
-    "The best restaurants in Southport, ranked honestly by locals — Lord Street, Birkdale Village, and the places most visitors never find.",
+    "The best restaurants in Southport, ranked honestly by locals. Lord Street, Birkdale Village, and the places most visitors never find.",
   url: `${BASE_URL}/guides/best-restaurants-southport`,
 };
 
@@ -175,7 +175,7 @@ export default async function BestRestaurantsSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Honest Assessment</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport&apos;s restaurant scene is better than its reputation. The top end competes with anything in Liverpool. The mid-range has improved significantly over the last decade. The weakest area is the zone immediately around the seafront — which skews heavily toward casual eating and pub food.
+            Southport&apos;s restaurant scene is better than its reputation. The top end competes with anything in Liverpool. The mid-range has improved significantly over the last decade. The weakest area is the zone immediately around the seafront, which skews heavily toward casual eating and pub food.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             The places worth knowing about are mostly on or near Lord Street, in Birkdale Village, or on the side streets running off the main drag. They don&apos;t advertise much. Some have been here for decades. Most visitors stumble on them or don&apos;t find them at all.
@@ -183,7 +183,7 @@ export default async function BestRestaurantsSouthportGuidePage() {
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
               <span className="mr-2">📅</span>
-              During Open week (July 12–19) and Flower Show weekend (August 20–23), Southport&apos;s entire restaurant capacity gets stretched. Book 2–4 weeks ahead for those dates — not just a few days.
+              During Open week (July 12–19) and Flower Show weekend (August 20–23), Southport&apos;s entire restaurant capacity gets stretched. Book 2–4 weeks ahead for those dates, not just a few days.
             </p>
           </div>
         </section>
@@ -229,15 +229,15 @@ export default async function BestRestaurantsSouthportGuidePage() {
             {[
               {
                 area: "Lord Street & Town Centre",
-                notes: "The main concentration of restaurants. Mix of quality — the better independents are on or just off Lord Street. Best for an evening out. Walk the length first and see what appeals.",
+                notes: "The main concentration of restaurants. Mix of quality, the better independents are on or just off Lord Street. Best for an evening out. Walk the length first and see what appeals.",
               },
               {
                 area: "Birkdale Village",
-                notes: "Growing dining scene on Liverpool Road. More relaxed than the town centre. Good for a neighbourhood dinner feel. 2 miles south of the town centre — worth the short drive.",
+                notes: "Growing dining scene on Liverpool Road. More relaxed than the town centre. Good for a neighbourhood dinner feel. 2 miles south of the town centre, worth the short drive.",
               },
               {
                 area: "Seafront & Promenade",
-                notes: "More casual — beach cafés, fish and chips, pub food. Good for a quick lunch after the beach. Not the area for a special occasion dinner.",
+                notes: "More casual, beach cafés, fish and chips, pub food. Good for a quick lunch after the beach. Not the area for a special occasion dinner.",
               },
               {
                 area: "Churchtown",
@@ -259,9 +259,9 @@ export default async function BestRestaurantsSouthportGuidePage() {
             {[
               "Bistrot Véronique: book at least a week ahead for weekend evenings. More for Open week and Flower Show.",
               "Most mid-range Lord Street restaurants: 2–3 days notice for weekends, walk-in usually fine for weekday lunches.",
-              "Birkdale Village: call ahead for Friday and Saturday evenings — smaller rooms fill quickly.",
+              "Birkdale Village: call ahead for Friday and Saturday evenings, smaller rooms fill quickly.",
               "Open week (July) and Flower Show (August): treat these as peak season and book everything as early as possible.",
-              "Lunch is generally easier than dinner across all restaurants — useful if you're flexible.",
+              "Lunch is generally easier than dinner across all restaurants, useful if you're flexible.",
             ].map((tip) => (
               <li key={tip} className="flex gap-3 text-gray-700">
                 <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>

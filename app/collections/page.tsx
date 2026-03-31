@@ -12,7 +12,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Collections | Curated Lists of Southport Businesses",
   description:
-    "Curated collections of Southport businesses — dog-friendly restaurants, hotels with parking, live music bars, and more. Filtered, local, and honest.",
+    "Curated collections of Southport businesses, dog-friendly restaurants, hotels with parking, live music bars, and more. Filtered, local, and honest.",
   alternates: { canonical: `${BASE_URL}/collections` },
   openGraph: {
     title: "Collections | SouthportGuide.co.uk",
@@ -78,7 +78,7 @@ export default async function CollectionsIndexPage() {
               Southport Collections
             </h1>
             <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
-              Filtered lists of Southport businesses — dog-friendly, family-friendly, outdoor seating, and more. 
+              Filtered lists of Southport businesses, dog-friendly, family-friendly, outdoor seating, and more. 
               No aggregator ranking. Just what&apos;s actually there, with a bit of honest context.
             </p>
           </div>

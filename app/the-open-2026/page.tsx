@@ -6,7 +6,7 @@ import { BLOG_POSTS } from "@/lib/southport-data";
 export const metadata = {
   title: "The Open 2026 at Royal Birkdale | Hotels, Tickets & Visitor Guide",
   description:
-    "The Open Championship at Royal Birkdale, Southport — 12–19 July 2026. Hotels near the course, how to get there, spectator tips, tickets and restaurants. Plan your visit now.",
+    "The Open Championship at Royal Birkdale, Southport. 12–19 July 2026. Hotels near the course, how to get there, spectator tips, tickets and restaurants. Plan your visit now.",
   keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026" },
   openGraph: {
@@ -37,16 +37,16 @@ const KEY_DATES = [
   { date: "Mon 13 Jul", label: "Practice Day 1", desc: "Open to spectators. Best day to walk the course and get close to players.", badge: "Practice" },
   { date: "Tue 14 Jul", label: "Practice Day 2", desc: "Celebrity Pro-Am in the afternoon. Relaxed atmosphere, shorter queues.", badge: "Practice" },
   { date: "Wed 15 Jul", label: "Practice Day 3", desc: "Final practice. Players finalise game plans. Worth attending for access.", badge: "Practice" },
-  { date: "Thu 16 Jul", label: "Round 1", desc: "Championship begins. Get in early — the crowd builds fast after midday.", badge: "Championship" },
+  { date: "Thu 16 Jul", label: "Round 1", desc: "Championship begins. Get in early. The crowd builds fast after midday.", badge: "Championship" },
   { date: "Fri 17 Jul", label: "Round 2", desc: "Cut day. Drama on every hole. Afternoon is peak atmosphere.", badge: "Championship" },
-  { date: "Sat 18 Jul", label: "Round 3 — Moving Day", desc: "The leaderboard reshapes. One of the best days in all of sport.", badge: "Championship" },
+  { date: "Sat 18 Jul", label: "Round 3: Moving Day", desc: "The leaderboard reshapes. One of the best days in all of sport.", badge: "Championship" },
   { date: "Sun 19 Jul", label: "Final Round", desc: "Champion crowned. Arrive early and don't plan anything for the evening.", badge: "Championship" },
 ];
 
 const FAQS = [
   {
     q: "How do I get to Royal Birkdale for The Open 2026?",
-    a: "Do not drive to the course — road closures around Birkdale make it impractical and parking near the club is reserved for accredited officials only. The best options are Merseyrail from Southport or Liverpool to Birkdale station (10–15 minute walk from the course), or park and ride buses operating from designated sites across Southport. Full transport details are published by The R&A at theopen.com closer to the event.",
+    a: "Do not drive to the course. Road closures around Birkdale make it impractical and parking near the club is reserved for accredited officials only. The best options are Merseyrail from Southport or Liverpool to Birkdale station (10–15 minute walk from the course), or park and ride buses operating from designated sites across Southport. Full transport details are published by The R&A at theopen.com closer to the event.",
   },
   {
     q: "Where should I stay for The Open Championship 2026?",
@@ -54,15 +54,15 @@ const FAQS = [
   },
   {
     q: "Can I buy tickets for The Open 2026 on the gate?",
-    a: "No. The Open Championship is a ticketed event — you cannot purchase on the gate on championship round days (Thursday–Sunday). Practice round tickets (Monday–Wednesday) are sold in advance through theopen.com and are more widely available. Championship round tickets frequently sell out months in advance. Buy as early as possible.",
+    a: "No. The Open Championship is a ticketed event. You cannot purchase on the gate on championship round days (Thursday–Sunday). Practice round tickets (Monday–Wednesday) are sold in advance through theopen.com and are more widely available. Championship round tickets frequently sell out months in advance. Buy as early as possible.",
   },
   {
     q: "What is the difference between practice round and championship round tickets?",
-    a: "Practice round tickets (Mon–Wed, 13–15 July) are significantly cheaper — typically £30–50 per day — and offer excellent player access. You can walk close to the fairways and watch players up close without the championship-day crowds. Championship tickets (Thu–Sun) are more expensive, starting from around £60–100 per day, but deliver the full competitive atmosphere.",
+    a: "Practice round tickets (Mon–Wed, 13–15 July) are significantly cheaper, typically £30–50 per day, and offer excellent player access. You can walk close to the fairways and watch players up close without the championship-day crowds. Championship tickets (Thu–Sun) are more expensive, starting from around £60–100 per day, but deliver the full competitive atmosphere.",
   },
   {
     q: "What can I bring to The Open Championship?",
-    a: "Binoculars, waterproofs (essential — it is Lancashire in July), comfortable walking shoes, a small soft-sided bag or backpack, sunscreen, and cash. Banned items include selfie sticks, tripods, large umbrellas (small clear ones are permitted), drones, commercial signage, and glass containers. Check the full restricted items list at theopen.com.",
+    a: "Binoculars, waterproofs (essential, it is Lancashire in July), comfortable walking shoes, a small soft-sided bag or backpack, sunscreen, and cash. Banned items include selfie sticks, tripods, large umbrellas (small clear ones are permitted), drones, commercial signage, and glass containers. Check the full restricted items list at theopen.com.",
   },
   {
     q: "How far is Royal Birkdale from Southport town centre?",
@@ -70,11 +70,11 @@ const FAQS = [
   },
   {
     q: "What is the best day to attend The Open if I can only go once?",
-    a: "Saturday (Round 3 — Moving Day) is widely regarded as the best single day at any Open. The leaderboard changes shape, the pressure builds, and the atmosphere is electric. If Saturday is sold out, Friday afternoon offers similar drama as players fight to make the cut.",
+    a: "Saturday (Round 3, Moving Day) is widely regarded as the best single day at any Open. The leaderboard changes shape, the pressure builds, and the atmosphere is electric. If Saturday is sold out, Friday afternoon offers similar drama as players fight to make the cut.",
   },
   {
     q: "Will restaurants and pubs in Southport be busy during Open week?",
-    a: "Yes — extremely busy. Book restaurants in advance, particularly in Birkdale village and along Lord Street. Evening bookings from Thursday onwards are the hardest to secure. See our restaurants guide for the best options, and book now.",
+    a: "Yes. Extremely busy. Book restaurants in advance, particularly in Birkdale village and along Lord Street. Evening bookings from Thursday onwards are the hardest to secure. See our restaurants guide for the best options, and book now.",
   },
 ];
 
@@ -237,10 +237,10 @@ export default function TheOpen2026Page() {
                 Royal Birkdale: One of the World&apos;s Great Links Courses
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Royal Birkdale Golf Club sits in the sand dunes of Southport, Merseyside — less than two miles from the town centre. Founded in 1889 and awarded its Royal charter in 1951, it is consistently ranked among the finest links courses on the planet, and has hosted The Open Championship more times than almost any other venue.
+                Royal Birkdale Golf Club sits in the sand dunes of Southport, Merseyside, less than two miles from the town centre. Founded in 1889 and awarded its Royal charter in 1951, it is consistently ranked among the finest links courses on the planet, and has hosted The Open Championship more times than almost any other venue.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                What makes Birkdale distinctive is its layout. Unlike many links courses, the fairways run through the valleys between the dunes rather than over the tops of them. The result is a course where the wind matters enormously, natural hollows shape every shot, and the rough — thick, punishing willow scrub — demands precision from the first tee to the 72nd hole.
+                What makes Birkdale distinctive is its layout. Unlike many links courses, the fairways run through the valleys between the dunes rather than over the tops of them. The result is a course where the wind matters enormously, natural hollows shape every shot, and the rough (thick, punishing willow scrub) demands precision from the first tee to the 72nd hole.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 In 2026, 250,000 spectators are expected across the week. The world&apos;s best players will be here. And for those of us who live nearby, it is genuinely extraordinary to have this on our doorstep.
@@ -253,7 +253,7 @@ export default function TheOpen2026Page() {
                 >
                   SeftonLinks has the full course guide
                 </a>{" "}
-                — green fees, visitor policy, handicap requirements, and what to expect on the day.
+                . Green fees, visitor policy, handicap requirements, and what to expect on the day.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -278,7 +278,7 @@ export default function TheOpen2026Page() {
         <section>
           <div className="flex items-center gap-3 mb-8">
             <CalendarDays className="w-6 h-6 text-[#C9A84C]" />
-            <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Key Dates — July 2026</h2>
+            <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Key Dates: July 2026</h2>
           </div>
           <div className="space-y-3">
             {KEY_DATES.map(({ date, label, desc, badge }) => (
@@ -309,7 +309,7 @@ export default function TheOpen2026Page() {
           </div>
           <div className="mt-5 bg-[#FAF8F5] border border-gray-200 rounded-2xl p-5">
             <p className="text-sm text-gray-600">
-              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> If you can only go once and budget allows, go Saturday. Round 3 — Moving Day — is when the Open truly comes alive. The leaderboard reshapes, pressure builds, and you get atmosphere that doesn&apos;t exist anywhere else in sport.
+              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> If you can only go once and budget allows, go Saturday. Round 3 (Moving Day) is when the Open truly comes alive. The leaderboard reshapes, pressure builds, and you get atmosphere that doesn&apos;t exist anywhere else in sport.
               If championship tickets are gone, a practice round (Monday–Wednesday) is genuinely excellent value. You can walk the entire course, watch players up close, and experience Royal Birkdale without the championship-day scrum.
             </p>
           </div>
@@ -336,7 +336,7 @@ export default function TheOpen2026Page() {
                 ].map(([item, tip]) => (
                   <li key={item} className="flex gap-3 text-sm">
                     <span className="text-[#C9A84C] font-bold flex-none">→</span>
-                    <span><span className="font-semibold text-[#1B2E4B]">{item}</span> — {tip}</span>
+                    <span><span className="font-semibold text-[#1B2E4B]">{item}:</span> {tip}</span>
                   </li>
                 ))}
               </ul>
@@ -366,7 +366,7 @@ export default function TheOpen2026Page() {
                 <a href="https://www.theopen.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline">
                   theopen.com
                 </a>{" "}
-                before attending — rules can change between championships.
+                before attending, rules can change between championships.
               </p>
             </div>
 
@@ -462,7 +462,7 @@ export default function TheOpen2026Page() {
             </div>
           </div>
           <p className="text-sm text-gray-500 mt-4 leading-relaxed">
-            Royal Birkdale has hosted ten Open Championships since 1954, producing some of the most iconic moments in golf history — Arnold Palmer&apos;s raw power in 1961, Lee Trevino&apos;s brilliance in 1971, Tom Watson&apos;s artistry in 1983, and Jordan Spieth&apos;s dramatic come-from-behind victory in 2017. The 2026 champion joins that list. History is made here.
+            Royal Birkdale has hosted ten Open Championships since 1954, producing some of the most memorable moments in golf history: Arnold Palmer&apos;s raw power in 1961, Lee Trevino&apos;s brilliance in 1971, Tom Watson&apos;s artistry in 1983, and Jordan Spieth&apos;s dramatic come-from-behind victory in 2017. The 2026 champion joins that list. History is made here.
           </p>
         </section>
 
@@ -556,9 +556,9 @@ export default function TheOpen2026Page() {
         <section className="bg-[#FAF8F5] rounded-2xl border border-gray-200 p-6 flex flex-col sm:flex-row sm:items-center gap-5">
           <div className="flex-1 min-w-0">
             <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-1">Property Data</p>
-            <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Living Near Royal Birkdale — PR8 4 House Prices</h3>
+            <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Living Near Royal Birkdale: PR8 4 House Prices</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Birkdale (PR8 4) is Southport&apos;s highest-priced postcode sector, and Royal Birkdale Golf Club is part of the reason why. If you&apos;re thinking of buying in the area, the full picture — sold prices, schools, crime, flood risk, broadband — is on our postcode guide.
+              Birkdale (PR8 4) is Southport&apos;s highest-priced postcode sector, and Royal Birkdale Golf Club is part of the reason why. If you&apos;re thinking of buying in the area, the full picture (sold prices, schools, crime, flood risk, broadband) is on our postcode guide.
             </p>
           </div>
           <Link
@@ -576,7 +576,7 @@ export default function TheOpen2026Page() {
             Reach 250,000 Open Visitors
           </h2>
           <p className="text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
-            Hotels, restaurants, transport companies, and attractions — feature your business on SouthportGuide during The Open week. Limited placements available. Championship packages start from £199.
+            Hotels, restaurants, transport companies, and attractions. Feature your business on SouthportGuide during The Open week. Limited placements available. Championship packages start from £199.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

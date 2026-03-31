@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rainy Day Southport | Indoor Things to Do | SouthportGuide",
     description:
-      "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade — everything worth doing in Southport when it rains.",
+      "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade, everything worth doing in Southport when it rains.",
     url: `${BASE_URL}/guides/rainy-day-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "What is Splash World Southport?",
-    a: "Splash World is an indoor waterpark in Southport — one of the UK's largest. It has slides, pools, wave machine, and facilities for all ages. Located in Southport Pleasureland on Marine Drive. Tickets should be booked in advance online; it gets busy in school holidays and wet weather.",
+    a: "Splash World is an indoor waterpark in Southport, one of the UK's largest. It has slides, pools, wave machine, and facilities for all ages. Located in Southport Pleasureland on Marine Drive. Tickets should be booked in advance online; it gets busy in school holidays and wet weather.",
   },
   {
     q: "Is The Atkinson free?",
@@ -45,11 +45,11 @@ const FAQS = [
   },
   {
     q: "Is there a cinema in Southport?",
-    a: "Yes — Vue Cinema is on The Esplanade near the seafront. Standard multiplex with mainstream releases. Worth checking listings if you're stuck for a wet afternoon.",
+    a: "Yes. Vue Cinema is on The Esplanade near the seafront. Standard multiplex with mainstream releases. Worth checking listings if you're stuck for a wet afternoon.",
   },
   {
     q: "What can kids do in Southport on a rainy day?",
-    a: "Splash World is the main dedicated option for families with children — it's genuinely excellent and very popular. Beyond that, the Pleasureland indoor attractions, The Atkinson (family-friendly gallery and activities), and Southport Market are all good. Bowling is available at Southport Superbowl near the seafront.",
+    a: "Splash World is the main dedicated option for families with children, it's genuinely excellent and very popular. Beyond that, the Pleasureland indoor attractions, The Atkinson (family-friendly gallery and activities), and Southport Market are all good. Bowling is available at Southport Superbowl near the seafront.",
   },
 ];
 
@@ -60,7 +60,7 @@ const INDOOR_OPTIONS = [
     postcode: "PR8 1RX",
     cost: "Paid (book online)",
     bestFor: "Families, groups",
-    notes: "One of the UK's largest indoor waterparks. Book ahead — fills up. Right on Marine Drive.",
+    notes: "One of the UK's largest indoor waterparks. Book ahead, fills up. Right on Marine Drive.",
   },
   {
     name: "The Atkinson",
@@ -107,9 +107,9 @@ const INDOOR_OPTIONS = [
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Rainy Day Southport — Indoor Things to Do",
+  name: "Rainy Day Southport. Indoor Things to Do",
   description:
-    "Indoor things to do in Southport — Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth doing when it rains.",
+    "Indoor things to do in Southport. Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth doing when it rains.",
   url: `${BASE_URL}/guides/rainy-day-southport`,
 };
 
@@ -159,11 +159,11 @@ export default async function RainyDaySouthportGuidePage() {
           <div className="flex flex-wrap gap-3 text-sm">
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <Users className="w-4 h-4 text-[#C9A84C]" />
-              <span>Splash World — book ahead</span>
+              <span>Splash World, book ahead</span>
             </div>
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <Clock className="w-4 h-4 text-[#C9A84C]" />
-              <span>The Atkinson — gallery is free</span>
+              <span>The Atkinson, gallery is free</span>
             </div>
           </div>
         </div>
@@ -175,10 +175,10 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Honest Reality</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport on a sunny day is genuinely excellent. On a rainy Tuesday in November it&apos;s a different proposition — but not a hopeless one. The town has enough indoor options to salvage a wet day, provided you know where they are.
+            Southport on a sunny day is genuinely excellent. On a rainy Tuesday in November it&apos;s a different proposition, but not a hopeless one. The town has enough indoor options to salvage a wet day, provided you know where they are.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The main event for families is Splash World — an indoor waterpark that most people either don&apos;t know about or don&apos;t associate with Southport. It&apos;s one of the UK&apos;s largest and it&apos;s good. For adults without children, The Atkinson and Southport Market are the more useful options. Wayfarers Arcade takes care of the browsing instinct when Lord Street feels too exposed.
+            The main event for families is Splash World, an indoor waterpark that most people either don&apos;t know about or don&apos;t associate with Southport. It&apos;s one of the UK&apos;s largest and it&apos;s good. For adults without children, The Atkinson and Southport Market are the more useful options. Wayfarers Arcade takes care of the browsing instinct when Lord Street feels too exposed.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
@@ -228,10 +228,10 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Splash World</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Splash World is the standout option for families. It&apos;s an indoor waterpark on Marine Drive — part of the Southport Pleasureland complex — with slides, flumes, a wave machine, pools, and facilities for young children and older kids alike.
+            Splash World is the standout option for families. It&apos;s an indoor waterpark on Marine Drive, part of the Southport Pleasureland complex, with slides, flumes, a wave machine, pools, and facilities for young children and older kids alike.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Postcode: <strong>PR8 1RX</strong>. Book tickets online at splashworld.co.uk — it&apos;s cheaper and guarantees entry. On wet school holiday days, walk-up can be difficult.
+            Postcode: <strong>PR8 1RX</strong>. Book tickets online at splashworld.co.uk, it&apos;s cheaper and guarantees entry. On wet school holiday days, walk-up can be difficult.
           </p>
           <p className="text-gray-700 leading-relaxed">
             It&apos;s genuinely one of the better attractions in Southport and significantly underrated by visitors who come primarily for the beach. Worth building a day around if you have children.
@@ -242,7 +242,7 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Atkinson</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Atkinson is Southport&apos;s arts centre, at the northern end of Lord Street. It has a gallery (free entry), a museum covering local history, a theatre, and a café. The gallery runs changing exhibitions — the quality varies but the building itself is good and the café is a solid rainy-day stop.
+            The Atkinson is Southport&apos;s arts centre, at the northern end of Lord Street. It has a gallery (free entry), a museum covering local history, a theatre, and a café. The gallery runs changing exhibitions, the quality varies but the building itself is good and the café is a solid rainy-day stop.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Postcode: <strong>PR8 1DB</strong>. Check theatkinson.co.uk for current exhibitions and what&apos;s on. Even without a specific draw, it&apos;s worth 30–45 minutes and the café is decent.
@@ -281,7 +281,7 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Where to Sit It Out</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Sometimes the best rainy-day strategy is a good café and running out the clock. The Atkinson café and Southport Market are the best bets in the town centre — both have space, decent coffee, and food worth ordering. Wayfarers Arcade has a café too.
+            Sometimes the best rainy-day strategy is a good café and running out the clock. The Atkinson café and Southport Market are the best bets in the town centre, both have space, decent coffee, and food worth ordering. Wayfarers Arcade has a café too.
           </p>
           <p className="text-gray-700 leading-relaxed">
             For more café options, see our <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] font-semibold hover:underline">Best Cafés guide</Link>.

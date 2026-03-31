@@ -8,7 +8,7 @@ import BlogClient from "./BlogClient";
 export const metadata = {
   title: "Blog",
   description:
-    "Local guides, tips and Southport stories — written by people who actually live here.",
+    "Local guides, tips and Southport stories, written by people who actually live here.",
   alternates: { canonical: "https://www.southportguide.co.uk/blog" },
   openGraph: {
     type: "website",

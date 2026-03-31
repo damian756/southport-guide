@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/live-music-southport` },
   openGraph: {
     title: "Live Music in Southport | Every Venue & Night Guide",
-    description: "Where to find live music in Southport — every venue doing regular live music. Jazz, rock, acoustic, open mic. Which nights, which venues, what to expect.",
+    description: "Where to find live music in Southport, every venue doing regular live music. Jazz, rock, acoustic, open mic. Which nights, which venues, what to expect.",
     url: `${BASE_URL}/guides/live-music-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -25,18 +25,18 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "Where is there live music in Southport?", a: "Southport has regular live music at Coopers Bar (Lord Street), The Auld Dubliner (Lord Street), The Chop House (Lord Street), and several other town centre venues. Most live music happens on Friday and Saturday evenings, with some Sunday afternoon sessions and weeknight open mic nights." },
-  { q: "Which pubs have live music every weekend in Southport?", a: "Coopers Bar on Lord Street has consistent live music on Friday and Saturday nights — a mix of jazz, soul, and rock acts. The Auld Dubliner runs acoustic sessions at weekends. The Chop House hosts bands on Fridays and Saturdays. The Marine pub on the Promenade also has regular live music." },
+  { q: "Which pubs have live music every weekend in Southport?", a: "Coopers Bar on Lord Street has consistent live music on Friday and Saturday nights, a mix of jazz, soul, and rock acts. The Auld Dubliner runs acoustic sessions at weekends. The Chop House hosts bands on Fridays and Saturdays. The Marine pub on the Promenade also has regular live music." },
   { q: "Is there an open mic night in Southport?", a: "Yes. Several Southport pubs run open mic nights, typically mid-week. Venues change their schedules seasonally, so check social media for the current weekly open mic night in town. The Hesketh Arms in Churchtown has had open mic sessions historically." },
   { q: "Where is the best live music in Southport?", a: "Coopers Bar on Lord Street is consistently rated the best live music venue in Southport for quality and regularity of acts. It is a proper music bar rather than a pub that occasionally has a band on. For acoustic and singer-songwriter acts, The Auld Dubliner is the go-to." },
   { q: "Does Southport have any music festivals?", a: "Southport Beer Week (May) includes live music across 18 town-centre pubs. The Big Top Festival (May) features circus and street arts. The Comedy Festival (October) sometimes includes music acts. The Bijou Cinema on Post Office Avenue runs regular live gig nights throughout the year." },
-  { q: "What type of music can I see live in Southport?", a: "The main genres covered by Southport's live music venues are classic rock, soul, jazz, acoustic/singer-songwriter, and covers bands. There is less of a scene for electronic, hip-hop, or indie music compared to a major city — Southport's live music is pub-and-bar focused and tends toward accessible crowd-pleasers." },
+  { q: "What type of music can I see live in Southport?", a: "The main genres covered by Southport's live music venues are classic rock, soul, jazz, acoustic/singer-songwriter, and covers bands. There is less of a scene for electronic, hip-hop, or indie music compared to a major city. Southport's live music is pub-and-bar focused and tends toward accessible crowd-pleasers." },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "Guide",
   name: "Live Music in Southport",
-  description: "Complete guide to live music venues in Southport — every venue, every night, what to expect.",
+  description: "Complete guide to live music venues in Southport, every venue, every night, what to expect.",
   url: `${BASE_URL}/guides/live-music-southport`,
   image: `${BASE_URL}/images/guides/live-music-southport.jpg`,
 };
@@ -51,7 +51,7 @@ const VENUES = [
   {
     name: "Coopers Bar",
     area: "Lord Street",
-    music: "Jazz, soul, rock — regular weekend live acts",
+    music: "Jazz, soul, rock, regular weekend live acts",
     nights: "Fri & Sat evenings",
     vibe: "Proper music bar. The best consistent live music offer in Southport.",
     dogFriendly: false,
@@ -75,7 +75,7 @@ const VENUES = [
   {
     name: "The Marine",
     area: "Promenade / Seafront",
-    music: "Mixed — local acts and covers",
+    music: "Mixed, local acts and covers",
     nights: "Weekend evenings",
     vibe: "Seafront pub with decent music nights. Good summer option.",
     dogFriendly: true,
@@ -83,16 +83,16 @@ const VENUES = [
   {
     name: "Southport Bijou Cinema",
     area: "Post Office Avenue",
-    music: "Live gig nights — mixed genres",
+    music: "Live gig nights, mixed genres",
     nights: "Check schedule",
-    vibe: "Intimate venue. Not a standard pub gig — more of an event.",
+    vibe: "Intimate venue. Not a standard pub gig, more of an event.",
     dogFriendly: false,
   },
   {
     name: "The Hesketh Arms",
     area: "Churchtown",
     music: "Open mic, acoustic sessions",
-    nights: "Midweek — check schedule",
+    nights: "Midweek, check schedule",
     vibe: "Traditional village pub in Churchtown. Good for open mic evenings.",
     dogFriendly: true,
   },
@@ -104,13 +104,15 @@ export default function LiveMusicPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#1A0A3D] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/live-music-southport.jpg" alt="Live music in Southport — guide to venues and nights" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A0A3D] via-[#1A0A3D]/50 to-[#1A0A3D]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#1A0A3D] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/live-music-southport.jpg" alt="Live music in Southport — guide to venues and nights" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">Every Week</span>
               <span className="text-white/50 text-sm font-medium">Pubs · Bars · Venues Across Southport</span>
@@ -119,7 +121,7 @@ export default function LiveMusicPage() {
               Live Music
               <span className="block text-[#C9A84C]">in Southport</span>
             </h1>
-            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">Where to find live music in Southport every week — venue by venue, night by night. Jazz, rock, acoustic, open mic, and gig nights across the town.</p>
+            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">Where to find live music in Southport every week, venue by venue, night by night. Jazz, rock, acoustic, open mic, and gig nights across the town.</p>
             <div className="flex flex-wrap gap-3">
               <a href="#venues" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">Venue Guide</a>
               <a href="#by-night" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">By Night of Week</a>
@@ -136,7 +138,7 @@ export default function LiveMusicPage() {
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>Southport is not Manchester. It does not have a sweaty indie venue with three bands on a Tuesday. What it does have is a consistent pub-based live music scene that punches above its weight for a town this size. Coopers Bar on Lord Street in particular has been putting on good acts for years.</p>
               <p>If you are visiting for a weekend and want an evening out with live music, Friday or Saturday on Lord Street covers you. Coopers for the best acts, Auld Dubliner for something more low-key, Chop House if you want it louder. They are within walking distance of each other.</p>
-              <p>The Bijou Cinema gig nights are worth knowing about for something different. The Hesketh Arms in Churchtown is the local option if you are staying that end of town. And during Beer Week in May, live music breaks out across 18 pubs simultaneously — that week is worth planning a visit around specifically.</p>
+              <p>The Bijou Cinema gig nights are worth knowing about for something different. The Hesketh Arms in Churchtown is the local option if you are staying that end of town. And during Beer Week in May, live music breaks out across 18 pubs simultaneously, that week is worth planning a visit around specifically.</p>
             </div>
           </div>
         </section>
@@ -172,10 +174,10 @@ export default function LiveMusicPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { day: "Thursday", venues: ["Some venues — check schedules"] },
-              { day: "Friday", venues: ["Coopers Bar — bands/jazz", "The Chop House — rock/covers", "The Auld Dubliner — acoustic"] },
-              { day: "Saturday", venues: ["Coopers Bar — bands/soul", "The Chop House — rock/covers", "The Auld Dubliner — acoustic", "The Marine — seafront option"] },
-              { day: "Sunday", venues: ["Some venues — afternoon sessions", "Check Hesketh Arms (Churchtown)", "Bijou Cinema gig nights (occasional)"] },
+              { day: "Thursday", venues: ["Some venues, check schedules"] },
+              { day: "Friday", venues: ["Coopers Bar, bands/jazz", "The Chop House, rock/covers", "The Auld Dubliner, acoustic"] },
+              { day: "Saturday", venues: ["Coopers Bar, bands/soul", "The Chop House, rock/covers", "The Auld Dubliner, acoustic", "The Marine, seafront option"] },
+              { day: "Sunday", venues: ["Some venues, afternoon sessions", "Check Hesketh Arms (Churchtown)", "Bijou Cinema gig nights (occasional)"] },
             ].map((d) => (
               <div key={d.day} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-3">{d.day}</h3>
@@ -192,7 +194,7 @@ export default function LiveMusicPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Live Music in Southport — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Live Music in Southport. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

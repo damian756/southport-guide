@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lord Street Southport | The Complete Guide",
     description:
-      "Lord Street is a mile-long Victorian boulevard — glass canopies, independent boutiques, restaurants, and one of England's finest streets. Your complete guide.",
+      "Lord Street is a mile-long Victorian boulevard, glass canopies, independent boutiques, restaurants, and one of England's finest streets. Your complete guide.",
     url: `${BASE_URL}/guides/lord-street`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -32,11 +32,11 @@ const FAQS = [
   },
   {
     q: "Why is Lord Street famous?",
-    a: "Lord Street is one of the finest Victorian boulevards in England. It's famous for its glass-canopied walkways, wide tree-lined central reservation, and elegant Victorian architecture. The most discussed theory is that Napoleon III — who lived in exile in Southport before becoming Emperor of France — was inspired by Lord Street when he commissioned Baron Haussmann to redesign Paris. Historians debate this, but the architectural parallels are striking.",
+    a: "Lord Street is one of the finest Victorian boulevards in England. It's famous for its glass-canopied walkways, wide tree-lined central reservation, and elegant Victorian architecture. The most discussed theory is that Napoleon III, who lived in exile in Southport before becoming Emperor of France, was inspired by Lord Street when he commissioned Baron Haussmann to redesign Paris. Historians debate this, but the architectural parallels are striking.",
   },
   {
     q: "What is there to do on Lord Street?",
-    a: "Lord Street is best as a walking and browsing destination — independent boutiques, cafés, restaurants, and the glass-canopied arcade stretch. The Wayfarers Arcade (off Lord Street) is worth a detour for independent shops and a coffee stop. The Atkinson arts centre is at the northern end. Most visitors combine shopping with lunch or dinner.",
+    a: "Lord Street is best as a walking and browsing destination, independent boutiques, cafés, restaurants, and the glass-canopied arcade stretch. The Wayfarers Arcade (off Lord Street) is worth a detour for independent shops and a coffee stop. The Atkinson arts centre is at the northern end. Most visitors combine shopping with lunch or dinner.",
   },
   {
     q: "Where can I park for Lord Street?",
@@ -44,7 +44,7 @@ const FAQS = [
   },
   {
     q: "Is Lord Street good for restaurants?",
-    a: "Yes — Lord Street and its immediate side streets have a solid restaurant and café offer. From relaxed lunch spots to proper evening dining. The concentration gets better the further south you go toward the Birkdale end. Booking recommended on Friday and Saturday evenings.",
+    a: "Yes. Lord Street and its immediate side streets have a solid restaurant and café offer. From relaxed lunch spots to proper evening dining. The concentration gets better the further south you go toward the Birkdale end. Booking recommended on Friday and Saturday evenings.",
   },
   {
     q: "What is Wayfarers Arcade?",
@@ -57,7 +57,7 @@ const PAGE_LD = {
   "@type": "ShoppingDistrict",
   name: "Lord Street, Southport",
   description:
-    "Lord Street is a mile-long Victorian boulevard at the heart of Southport — glass canopies, independent boutiques, restaurants, and the street that may have inspired Haussmann's Paris.",
+    "Lord Street is a mile-long Victorian boulevard at the heart of Southport, glass canopies, independent boutiques, restaurants, and the street that may have inspired Haussmann's Paris.",
   url: `${BASE_URL}/guides/lord-street`,
   geo: { "@type": "GeoCoordinates", latitude: 53.6472, longitude: -3.0072 },
   address: {
@@ -108,7 +108,7 @@ export default function LordStreetGuidePage() {
             Lord Street
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-            Southport&apos;s mile-long Victorian boulevard. Glass canopies, independent shops, proper restaurants —
+            Southport&apos;s mile-long Victorian boulevard. Glass canopies, independent shops, proper restaurants,
             and the street that may have inspired Haussmann&apos;s redesign of Paris.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
@@ -150,13 +150,13 @@ export default function LordStreetGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">What is Lord Street?</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Lord Street is a mile-long boulevard running through the heart of Southport town centre. It&apos;s one of the finest Victorian streets in England — wide, tree-lined, with glass-and-iron canopied walkways along the eastern side that keep you dry when it inevitably rains.
+            Lord Street is a mile-long boulevard running through the heart of Southport town centre. It&apos;s one of the finest Victorian streets in England, wide, tree-lined, with glass-and-iron canopied walkways along the eastern side that keep you dry when it inevitably rains.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The street was laid out in the early 19th century and developed through the Victorian era as Southport grew into one of England&apos;s most fashionable seaside resorts. The glass canopies over the pavement were added later and are now the defining visual feature — they&apos;re functional as well as attractive, which in Lancashire is always the right priority.
+            The street was laid out in the early 19th century and developed through the Victorian era as Southport grew into one of England&apos;s most fashionable seaside resorts. The glass canopies over the pavement were added later and are now the defining visual feature, they&apos;re functional as well as attractive, which in Lancashire is always the right priority.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The mix on Lord Street today is mostly independent — boutiques, cafés, restaurants, jewellers, gift shops — with some nationals mixed in. The southern end toward Birkdale has the better independent concentration. The northern end, near The Atkinson, is more mixed but includes Wayfarers Arcade (worth visiting).
+            The mix on Lord Street today is mostly independent, boutiques, cafés, restaurants, jewellers, gift shops, with some nationals mixed in. The southern end toward Birkdale has the better independent concentration. The northern end, near The Atkinson, is more mixed but includes Wayfarers Arcade (worth visiting).
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
@@ -170,7 +170,7 @@ export default function LordStreetGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Did Lord Street Inspire Paris?</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            This is the most interesting thing about Lord Street, and it&apos;s genuinely debated. Louis Napoleon Bonaparte — the future Napoleon III, Emperor of France — lived in exile in Southport in the 1840s. He stayed on Lord Street and, according to the story, was so impressed by its wide boulevards and glass-covered promenades that when he came to power and commissioned Baron Haussmann to redesign Paris in the 1850s, the influence of Lord Street can be seen in the result.
+            This is the most interesting thing about Lord Street, and it&apos;s genuinely debated. Louis Napoleon Bonaparte, the future Napoleon III, Emperor of France, lived in exile in Southport in the 1840s. He stayed on Lord Street and, according to the story, was so impressed by its wide boulevards and glass-covered promenades that when he came to power and commissioned Baron Haussmann to redesign Paris in the 1850s, the influence of Lord Street can be seen in the result.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Whether that&apos;s entirely accurate, historians argue about. But the architectural parallels between Lord Street and the covered arcades of central Paris are there, and the story is plausible enough that it&apos;s become part of the street&apos;s identity. There&apos;s a blue plaque marking Napoleon&apos;s connection on the street.
@@ -189,7 +189,7 @@ export default function LordStreetGuidePage() {
               {
                 icon: ShoppingBag,
                 title: "Shopping",
-                body: "The independent shops are the main draw — boutique clothing, homeware, gifts, jewellery, artisan food. The mix changes but there's generally something worth a look. Better on the southern half of the street.",
+                body: "The independent shops are the main draw, boutique clothing, homeware, gifts, jewellery, artisan food. The mix changes but there's generally something worth a look. Better on the southern half of the street.",
               },
               {
                 icon: Coffee,
@@ -199,7 +199,7 @@ export default function LordStreetGuidePage() {
               {
                 icon: Star,
                 title: "The Atkinson",
-                body: "Southport's arts centre at the northern end of Lord Street — gallery, theatre, café, museum. Free entry to the gallery. Regular exhibitions and a solid events programme. Worth 45 minutes even if you don't plan to.",
+                body: "Southport's arts centre at the northern end of Lord Street, gallery, theatre, café, museum. Free entry to the gallery. Regular exhibitions and a solid events programme. Worth 45 minutes even if you don't plan to.",
               },
               {
                 icon: Utensils,
@@ -259,7 +259,7 @@ export default function LordStreetGuidePage() {
             </table>
           </div>
           <p className="text-gray-500 text-sm mt-3">
-            Free on-street parking is usually available on residential side streets north of Lord Street on weekdays. Summer Saturdays are busier — arrive before 11am.{" "}
+            Free on-street parking is usually available on residential side streets north of Lord Street on weekdays. Summer Saturdays are busier, arrive before 11am.{" "}
             <Link href="/parking" className="text-[#C9A84C] font-semibold hover:underline">Browse all Southport car parks →</Link>
           </p>
         </section>
@@ -268,7 +268,7 @@ export default function LordStreetGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Getting to Lord Street</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Southport train station (PR8 1BN) is about 5 minutes&apos; walk from Lord Street — exit the station and head west. Merseyrail Northern Line runs from Liverpool Central with trains roughly every 30 minutes; the journey is about 50 minutes.
+            Southport train station (PR8 1BN) is about 5 minutes&apos; walk from Lord Street, exit the station and head west. Merseyrail Northern Line runs from Liverpool Central with trains roughly every 30 minutes; the journey is about 50 minutes.
           </p>
           <p className="text-gray-700 leading-relaxed">
             By car, Lord Street is signed from the main A565 approach road into Southport town centre. The car parks listed above are all accessible from the town centre ring road.

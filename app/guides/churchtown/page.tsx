@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Churchtown Southport | Botanic Gardens & Village Guide",
     description:
-      "Churchtown is Southport's oldest district — Botanic Gardens, St Cuthbert's Church, Hesketh Park, and the independent shops most visitors never find.",
+      "Churchtown is Southport's oldest district. Botanic Gardens, St Cuthbert's Church, Hesketh Park, and the independent shops most visitors never find.",
     url: `${BASE_URL}/guides/churchtown`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -32,11 +32,11 @@ const FAQS = [
   },
   {
     q: "What is Churchtown known for?",
-    a: "Churchtown is the oldest part of Southport — it was a settlement here long before modern Southport existed. It's known for the Botanic Gardens (free entry, café, beautiful Victorian glasshouses), St Cuthbert's Church (one of the oldest churches in Merseyside), Hesketh Park (Victorian park with boating lake), and a cluster of independent shops and pubs around the village centre.",
+    a: "Churchtown is the oldest part of Southport, it was a settlement here long before modern Southport existed. It's known for the Botanic Gardens (free entry, café, beautiful Victorian glasshouses), St Cuthbert's Church (one of the oldest churches in Merseyside), Hesketh Park (Victorian park with boating lake), and a cluster of independent shops and pubs around the village centre.",
   },
   {
     q: "Are Churchtown Botanic Gardens free?",
-    a: "Yes — entry to Churchtown Botanic Gardens is free. The gardens are open daily. There's a café inside the gardens and a small museum. The Victorian glasshouses are the highlight. Parking is available near the entrance.",
+    a: "Yes, entry to Churchtown Botanic Gardens is free. The gardens are open daily. There's a café inside the gardens and a small museum. The Victorian glasshouses are the highlight. Parking is available near the entrance.",
   },
   {
     q: "What is Hesketh Park like?",
@@ -44,11 +44,11 @@ const FAQS = [
   },
   {
     q: "How do I get to Churchtown from Southport town centre?",
-    a: "By bus: the 44 service runs from Southport town centre to Churchtown — about 15 minutes. By car: take the A570 northbound from the town centre and follow signs for Churchtown, approximately 10 minutes. There's on-street parking in the village and a car park near the Botanic Gardens.",
+    a: "By bus: the 44 service runs from Southport town centre to Churchtown, about 15 minutes. By car: take the A570 northbound from the town centre and follow signs for Churchtown, approximately 10 minutes. There's on-street parking in the village and a car park near the Botanic Gardens.",
   },
   {
     q: "Is Churchtown worth visiting?",
-    a: "Yes, particularly if you want to see a different side of Southport. Most visitors stay on Lord Street or the seafront. Churchtown is quieter, greener, and genuinely historic — the kind of place locals take pride in. Combine the Botanic Gardens with a walk around the village and lunch at one of the local pubs and you've got a very good half-day.",
+    a: "Yes, particularly if you want to see a different side of Southport. Most visitors stay on Lord Street or the seafront. Churchtown is quieter, greener, and genuinely historic, the kind of place locals take pride in. Combine the Botanic Gardens with a walk around the village and lunch at one of the local pubs and you've got a very good half-day.",
   },
 ];
 
@@ -57,7 +57,7 @@ const PAGE_LD = {
   "@type": "TouristAttraction",
   name: "Churchtown Village, Southport",
   description:
-    "Churchtown is the oldest part of Southport — a medieval village with Botanic Gardens, St Cuthbert's Church, Hesketh Park, and independent local shops.",
+    "Churchtown is the oldest part of Southport, a medieval village with Botanic Gardens, St Cuthbert's Church, Hesketh Park, and independent local shops.",
   url: `${BASE_URL}/guides/churchtown`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -150,10 +150,10 @@ export default function ChurchtownGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">What is Churchtown?</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Churchtown is the oldest part of Southport — a village that existed centuries before the rest of the town was built. While Southport developed as a Victorian seaside resort in the 18th and 19th centuries, Churchtown was already there, centred on St Cuthbert&apos;s Church, which dates back to the 13th century.
+            Churchtown is the oldest part of Southport, a village that existed centuries before the rest of the town was built. While Southport developed as a Victorian seaside resort in the 18th and 19th centuries, Churchtown was already there, centred on St Cuthbert&apos;s Church, which dates back to the 13th century.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Today Churchtown feels like a genuine village — quieter than the town centre, with its own cluster of shops, pubs, and a community that&apos;s been here longer than most. The Botanic Gardens are the main draw for visitors. Hesketh Park is underrated. St Cuthbert&apos;s is worth a look if you&apos;re interested in local history.
+            Today Churchtown feels like a genuine village, quieter than the town centre, with its own cluster of shops, pubs, and a community that&apos;s been here longer than most. The Botanic Gardens are the main draw for visitors. Hesketh Park is underrated. St Cuthbert&apos;s is worth a look if you&apos;re interested in local history.
           </p>
           <p className="text-gray-700 leading-relaxed">
             It&apos;s the kind of place where Southport residents take out-of-town guests when they want to show them the town properly, rather than just the seafront and Lord Street. Most day trippers never make it here.
@@ -164,16 +164,16 @@ export default function ChurchtownGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Churchtown Botanic Gardens</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Botanic Gardens are the best reason to visit Churchtown. Founded in 1874, they&apos;re now over 150 years old — one of the oldest municipal botanic gardens in the north-west. Entry is free, they&apos;re open every day, and they&apos;re genuinely good.
+            The Botanic Gardens are the best reason to visit Churchtown. Founded in 1874, they&apos;re now over 150 years old, one of the oldest municipal botanic gardens in the north-west. Entry is free, they&apos;re open every day, and they&apos;re genuinely good.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
               <span className="mr-2">🌿</span>
-              Botanic Gardens postcode: PR9 7NB. Parking available on site — free. Café inside the gardens. Open daily year-round. Victorian glasshouses are the centrepiece.
+              Botanic Gardens postcode: PR9 7NB. Parking available on site, free. Café inside the gardens. Open daily year-round. Victorian glasshouses are the centrepiece.
             </p>
           </div>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Victorian glasshouses are the visual highlight — well maintained and stocked with tropical and subtropical plants. There&apos;s also a formal rose garden, a lake, children&apos;s play area, and a small museum covering local history. The café does decent coffee and straightforward food.
+            The Victorian glasshouses are the visual highlight, well maintained and stocked with tropical and subtropical plants. There&apos;s also a formal rose garden, a lake, children&apos;s play area, and a small museum covering local history. The café does decent coffee and straightforward food.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Best visited on a weekday morning if you want to avoid families at weekends. In summer, the gardens are at their best. In winter, they&apos;re quieter but still worth the trip for the glasshouses alone.
@@ -187,7 +187,7 @@ export default function ChurchtownGuidePage() {
             Hesketh Park is a Victorian public park opened in 1868, about 10 minutes&apos; walk from the Botanic Gardens. It has a boating lake, formal gardens, a bandstand, a café, and tennis courts. Free entry. Postcode: PR9 9NB.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            It&apos;s popular with dog walkers and families, well-maintained, and genuinely pleasant on a decent day. The boating lake is working — rowing boats available in summer. A good stop if you&apos;re combining a few things in Churchtown.
+            It&apos;s popular with dog walkers and families, well-maintained, and genuinely pleasant on a decent day. The boating lake is working, rowing boats available in summer. A good stop if you&apos;re combining a few things in Churchtown.
           </p>
         </section>
 
@@ -198,7 +198,7 @@ export default function ChurchtownGuidePage() {
             St Cuthbert&apos;s is one of the oldest churches in Merseyside. The current building has 13th-century origins, though much of what you see is later. It&apos;s the focal point of Churchtown village and surrounded by old gravestones that give some sense of how long people have been living here.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            Worth a look if you&apos;re in the village — it&apos;s in the centre of things, not out of the way. The graveyard has interesting local history for those who look.
+            Worth a look if you&apos;re in the village, it&apos;s in the centre of things, not out of the way. The graveyard has interesting local history for those who look.
           </p>
         </section>
 
@@ -206,13 +206,13 @@ export default function ChurchtownGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Where to Eat and Drink in Churchtown</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Churchtown has a handful of good local pubs and cafés centred on the village. The pace is slower than the town centre — these are places where locals come for a proper lunch, not tourist-facing operations.
+            Churchtown has a handful of good local pubs and cafés centred on the village. The pace is slower than the town centre, these are places where locals come for a proper lunch, not tourist-facing operations.
           </p>
           <ul className="space-y-3 mb-4">
             {[
-              "The Hesketh Arms — traditional village pub, good for lunch, reliable food. On the main village road.",
-              "The Bold Arms — another solid local option in the village.",
-              "Botanic Gardens Café — good for coffee and a bite while you're in the gardens. Nothing fancy but fine.",
+              "The Hesketh Arms, traditional village pub, good for lunch, reliable food. On the main village road.",
+              "The Bold Arms, another solid local option in the village.",
+              "Botanic Gardens Café, good for coffee and a bite while you're in the gardens. Nothing fancy but fine.",
             ].map((item) => (
               <li key={item} className="flex gap-3 text-gray-700">
                 <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>
@@ -221,7 +221,7 @@ export default function ChurchtownGuidePage() {
             ))}
           </ul>
           <p className="text-gray-700 leading-relaxed text-sm">
-            For more options, Southport town centre is 10 minutes by car. Churchtown itself is a village — the dining offer reflects that.
+            For more options, Southport town centre is 10 minutes by car. Churchtown itself is a village, the dining offer reflects that.
           </p>
         </section>
 
@@ -238,7 +238,7 @@ export default function ChurchtownGuidePage() {
               {
                 icon: MapPin,
                 title: "By bus",
-                body: "The 44 bus runs from Southport town centre to Churchtown — approximately 15 minutes. Runs regularly during the day.",
+                body: "The 44 bus runs from Southport town centre to Churchtown, approximately 15 minutes. Runs regularly during the day.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="bg-white rounded-2xl border border-gray-100 p-5">

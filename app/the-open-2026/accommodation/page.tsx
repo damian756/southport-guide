@@ -8,7 +8,7 @@ import OpenListingCard from "@/components/OpenListingCard";
 export const metadata: Metadata = {
   title: "Hotels Near Royal Birkdale Golf Club | The Open 2026",
   description:
-    "Hotels near Royal Birkdale for The Open 2026 — every Southport hotel ranked by walking distance from the course. Birkdale B&Bs book out first. Compare options before they go.",
+    "Hotels near Royal Birkdale for The Open 2026, every Southport hotel ranked by walking distance from the course. Birkdale B&Bs book out first. Compare options before they go.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/accommodation" },
   openGraph: {
     type: "website",
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 const BOOKING_BASE = "https://www.booking.com/searchresults.html?checkin=2026-07-12&checkout=2026-07-19&dest_type=hotel&ss=";
 
 const HOTELS_BY_DISTANCE = [
-  { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible — book months ahead", bookingUrl: BOOKING_BASE + "Birkdale%2C+Southport%2C+UK" },
-  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest — luxury boutique", bookingUrl: BOOKING_BASE + "The+Vincent+Hotel+Southport" },
+  { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible. Book months ahead.", bookingUrl: BOOKING_BASE + "Birkdale%2C+Southport%2C+UK" },
+  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest. Luxury boutique.", bookingUrl: BOOKING_BASE + "The+Vincent+Hotel+Southport" },
   { name: "Ramada Plaza Southport", distance: "1.1 miles", walk: "22 min", drive: "5 min", price: "£££", note: "Large hotel, conference facilities, seafront", bookingUrl: BOOKING_BASE + "Ramada+Plaza+Southport" },
   { name: "Holiday Inn Southport", distance: "1.3 miles", walk: "26 min", drive: "6 min", price: "££", note: "Reliable chain, good availability", bookingUrl: BOOKING_BASE + "Holiday+Inn+Southport" },
   { name: "Scarisbrick Hotel", distance: "1.4 miles", walk: "28 min", drive: "6 min", price: "££", note: "Historic Lord Street hotel, character property", bookingUrl: BOOKING_BASE + "Scarisbrick+Hotel+Southport" },
@@ -42,23 +42,23 @@ const HOTELS_BY_DISTANCE = [
 const AREA_GUIDE = [
   {
     area: "Birkdale Village",
-    proximity: "Walking distance — 10–15 min on foot",
+    proximity: "Walking distance. 10–15 min on foot.",
     best: "Anyone who wants maximum convenience. Walk to and from the course every day without transport.",
     status: "Almost fully booked",
     statusColor: "text-red-500",
-    notes: ["Closest possible to the course — some options under 10 minutes", "Birkdale village has excellent restaurants and pubs for evenings", "Book 6–12 months ahead for future Opens"],
+    notes: ["Closest possible to the course. Some options under 10 minutes.", "Birkdale village has excellent restaurants and pubs for evenings", "Book 6–12 months ahead for future Opens"],
   },
   {
     area: "Southport Town Centre",
-    proximity: "2 miles — 10 min taxi or shuttle bus",
+    proximity: "2 miles. 10 min taxi or shuttle bus.",
     best: "Most visitors. Widest range of accommodation, restaurants, and evening entertainment.",
     status: "Limited availability",
     statusColor: "text-amber-500",
-    notes: ["Lord Street, The Grand, and surrounding hotels", "Excellent evening options — restaurants, bars, live music", "Easy park and ride access from Victoria Park"],
+    notes: ["Lord Street, The Grand, and surrounding hotels", "Excellent evening options: restaurants, bars, live music", "Easy park and ride access from Victoria Park"],
   },
   {
     area: "Formby",
-    proximity: "20 min drive — best via A565",
+    proximity: "20 min drive, best via A565",
     best: "Those who've left it late or want a quieter base with good road access.",
     status: "Check current availability",
     statusColor: "text-green-600",
@@ -81,7 +81,7 @@ const FAQS = [
   },
   {
     q: "Can you walk from Southport town centre to Royal Birkdale?",
-    a: "Yes — it is walkable from most central hotels in 20–35 minutes along flat, straightforward roads. The walk along Waterloo Road and Liverpool Road is well-signed during Open week and many spectators prefer it to dealing with transport queues.",
+    a: "Yes. It is walkable from most central hotels in 20–35 minutes along flat, straightforward roads. The walk along Waterloo Road and Liverpool Road is well-signed during Open week and many spectators prefer it to dealing with transport queues.",
   },
   {
     q: "Which Southport hotels are closest to Royal Birkdale golf course?",
@@ -89,7 +89,7 @@ const FAQS = [
   },
   {
     q: "Is there accommodation available in Birkdale itself?",
-    a: "Yes — Birkdale village has several guesthouses and B&Bs within walking distance of the course. These book out very quickly for Open week. Check availability immediately — these are typically the first properties to sell out.",
+    a: "Yes. Birkdale village has several guesthouses and B&amp;Bs within walking distance of the course. These book out very quickly for Open week. Check availability immediately. These are typically the first properties to sell out.",
   },
   {
     q: "How do I get from my hotel to Royal Birkdale during Open week?",
@@ -102,12 +102,12 @@ const FAQS = [
 ];
 
 const TIPS = [
-  "Book tonight — every day you wait, availability decreases and prices rise",
+  "Book tonight, every day you wait, availability decreases and prices rise",
   "Self-catering sleeps groups more cheaply than multiple hotel rooms",
-  "Check Booking.com and direct hotel websites — rates differ",
-  "Ask your accommodation about parking during Open week — on-site parking is worth its weight",
-  "Some hotels offer shuttle packages — worth asking when you call",
-  "If your first choice is full, call the hotel directly — some allocations aren't listed online",
+  "Check Booking.com and direct hotel websites. Rates differ.",
+  "Ask your accommodation about parking during Open week. On-site parking is worth its weight.",
+  "Some hotels offer shuttle packages. Worth asking when you call.",
+  "If your first choice is full, call the hotel directly. Some allocations aren't listed online.",
 ];
 
 // JSON-LD structured data
@@ -134,7 +134,7 @@ const faqLd = {
 const itemListLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Hotels Near Royal Birkdale — The Open 2026",
+  name: "Hotels Near Royal Birkdale. The Open 2026",
   description: "Hotels and accommodation in Southport ranked by distance from Royal Birkdale Golf Club for The Open Championship 2026",
   itemListElement: HOTELS_BY_DISTANCE.map((h, i) => ({
     "@type": "ListItem",
@@ -205,7 +205,7 @@ export default async function OpenAccommodationPage() {
               <ArrowLeft className="w-4 h-4" /> The Open 2026
             </Link>
             <h1 className="font-display text-3xl md:text-4xl font-bold text-white">Hotels Near Royal Birkdale</h1>
-            <p className="text-white/60 mt-2">The Open Championship 2026 — every accommodation option ranked by distance from the course</p>
+            <p className="text-white/60 mt-2">The Open Championship 2026. Every accommodation option ranked by distance from the course.</p>
           </div>
         </section>
 
@@ -215,7 +215,7 @@ export default async function OpenAccommodationPage() {
           <div className="flex items-start gap-4 bg-amber-50 border border-amber-200 rounded-2xl p-5">
             <AlertTriangle className="w-5 h-5 text-amber-500 flex-none mt-0.5" />
             <div>
-              <p className="font-bold text-amber-800 text-sm">Book immediately — accommodation is nearly gone</p>
+              <p className="font-bold text-amber-800 text-sm">Book immediately. Accommodation is nearly gone.</p>
               <p className="text-amber-700 text-sm mt-1 leading-relaxed">
                 The Open Championship brings 250,000 spectators to Southport over seven days. Hotels and B&Bs in Birkdale and Southport town centre were heavily booked within weeks of the fixture confirmation. If you need accommodation for Open week, every day of delay reduces your options.
               </p>
@@ -339,7 +339,7 @@ export default async function OpenAccommodationPage() {
 
           {/* FAQ block */}
           <div>
-            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">Accommodation FAQ — The Open 2026</h2>
+            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">Accommodation FAQ: The Open 2026</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {FAQS.map(({ q, a }) => (
                 <div key={q} className="bg-white rounded-2xl border border-gray-100 p-6">
@@ -356,7 +356,7 @@ export default async function OpenAccommodationPage() {
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-[#1B2E4B] mb-1">Thinking of buying near Royal Birkdale?</p>
               <p className="text-gray-600 text-sm leading-relaxed">
-                The Open brings attention — and buyers. See what houses in PR8 4 (Birkdale) are actually selling for, including schools, crime and flood risk data.
+                The Open brings attention and buyers. See what houses in PR8 4 (Birkdale) are actually selling for, including schools, crime and flood risk data.
               </p>
             </div>
             <Link

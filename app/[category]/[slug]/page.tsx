@@ -99,11 +99,11 @@ function formatAddress(address: string, postcode: string): string {
 // Per-slug meta overrides for high-value listings with poor SERP CTR
 const LISTING_META_OVERRIDES: Record<string, { title?: string; description?: string }> = {
   "restaurants/roberto-s-italian": {
-    title: "Roberto's Italian, Southport — Restaurant on Lord Street",
+    title: "Roberto's Italian, Southport. Restaurant on Lord Street",
     description: "Roberto's Italian is one of Southport's most visited restaurants — classic Italian food, good portions, relaxed atmosphere. Opening hours, contact details and directions on SouthportGuide.",
   },
   "restaurants/limoncello": {
-    title: "Limoncello, Birkdale — Italian Restaurant in Southport",
+    title: "Limoncello, Birkdale. Italian Restaurant in Southport",
     description: "Limoncello is a popular Italian restaurant in Birkdale Village, Southport. See Google rating, opening hours, contact details and directions — all in one place on SouthportGuide.",
   },
 };
@@ -713,7 +713,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       <div>
                         <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
                         <p className="text-white font-semibold mb-1">Royal Birkdale, 12–19 July 2026</p>
-                        <p className="text-white/70 text-sm leading-relaxed mb-4">Attending The Open? We&apos;ve ranked every hotel and B&amp;B in Southport by walking distance to the course — with prices, transport times, and availability links.</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Attending The Open? We&apos;ve ranked every hotel and B&amp;B in Southport by walking distance to the course, with prices, transport times, and availability links.</p>
                         <a href="/the-open-2026/accommodation" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
                           View Open 2026 accommodation guide →
                         </a>
@@ -730,7 +730,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       <div>
                         <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
                         <p className="text-white font-semibold mb-1">Where to eat &amp; drink near Royal Birkdale</p>
-                        <p className="text-white/70 text-sm leading-relaxed mb-4">Heading to The Open? We&apos;ve picked the best restaurants, pubs, and cafés near the course — sorted by distance and atmosphere.</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Heading to The Open? We&apos;ve picked the best restaurants, pubs, and cafés near the course, sorted by distance and atmosphere.</p>
                         <div className="flex flex-wrap gap-2">
                           <a href="/the-open-2026/restaurants" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
                             Restaurants near Royal Birkdale →
@@ -751,7 +751,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       <span className="text-3xl flex-none">⛳</span>
                       <div>
                         <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">The Open Championship 2026</p>
-                        <p className="text-white font-semibold mb-1">Royal Birkdale hosts The Open — 12–19 July 2026</p>
+                        <p className="text-white font-semibold mb-1">Royal Birkdale hosts The Open. 12–19 July 2026</p>
                         <p className="text-white/70 text-sm leading-relaxed mb-4">Southport is links golf country. See our full Open 2026 guide for tickets, accommodation, transport, and everything else you need.</p>
                         <a href="/the-open-2026" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
                           Open 2026 hub →
@@ -786,7 +786,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       <div>
                         <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wide mb-1">Getting to The Open 2026</p>
                         <p className="text-white font-semibold mb-1">Royal Birkdale, 12–19 July 2026</p>
-                        <p className="text-white/70 text-sm leading-relaxed mb-4">Train, bus, taxi or park &amp; ride — we&apos;ve laid out every transport option to get you to and from Royal Birkdale during Open week.</p>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">Train, bus, taxi or park &amp; ride, we&apos;ve laid out every transport option to get you to and from Royal Birkdale during Open week.</p>
                         <a href="/the-open-2026/getting-there" className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#e0ba66] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
                           Transport guide →
                         </a>
@@ -961,7 +961,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       {(isFree || isPaid || business.priceRange) && (
                         <InfoRow icon={<span className="w-4 h-4 text-blue-500 text-sm font-bold leading-none mt-0.5">£</span>} label="Cost">
                           <span className="text-gray-800 text-sm">
-                            {business.priceRange || (isFree ? "Free" : "Paid — check signs")}
+                            {business.priceRange || (isFree ? "Free" : "Paid, check signs")}
                           </span>
                         </InfoRow>
                       )}
@@ -1328,7 +1328,7 @@ function getParkingBusyGuide(name: string, tags: string[], postcode: string): {
         { label: "Summer weekday", level: "medium" },
         { label: "Winter weekend", level: "low" },
       ],
-      note: "Fills early on sunny weekends — often full by 10am in July and August. Book via the NT app in advance. Victoria Road car park is a good overflow if Lifeboat Road is full.",
+      note: "Fills early on sunny weekends, often full by 10am in July and August. Book via the NT app in advance. Victoria Road car park is a good overflow if Lifeboat Road is full.",
     };
   }
 

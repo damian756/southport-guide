@@ -25,7 +25,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Things to Do in Southport | The Complete Local Guide",
   description:
-    "The definitive guide to things to do in Southport — 22 miles of coastline, England's Golf Coast, red squirrels at Formby, Antony Gormley's Another Place, family attractions, culture, and the UK's biggest events calendar. Written by locals.",
+    "The definitive guide to things to do in Southport. 22 miles of coastline, England's Golf Coast, red squirrels at Formby, Antony Gormley's Another Place, family attractions, culture, and the UK's biggest events calendar. Written by locals.",
   keywords:
     "things to do in Southport, things to do Southport, Southport attractions, Southport beaches, Southport with kids, free things to do Southport, things to do in Southport Merseyside",
   alternates: { canonical: `${BASE_URL}/things-to-do` },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     title: "Things to Do in Southport | The Complete Local Guide",
     description:
-      "From Formby's red squirrels to Royal Birkdale, Antony Gormley's iron men to England's second-longest pier — the guide the tourism boards don't write.",
+      "From Formby's red squirrels to Royal Birkdale, Antony Gormley's iron men to England's second-longest pier, the guide the tourism boards don't write.",
     url: `${BASE_URL}/things-to-do`,
     images: [{ url: `${BASE_URL}/southport-pier.webp`, width: 1200, height: 630, alt: "Things to Do in Southport" }],
   },
@@ -57,14 +57,14 @@ const BEACHES = [
   {
     name: "Formby Beach",
     tag: "National Trust · Red Squirrels",
-    highlight: "22,200 searches/mo — the region's most searched beach",
+    highlight: "22,200 searches/mo. The region's most searched beach.",
     description:
-      "Seven miles of sand backed by pine woodland where native red squirrels still survive — one of only twelve refuges left in Britain. Walk the Lifeboat Road pinewood trails at dawn in spring or autumn and you'll see them. The beach itself is vast and backed by dramatic dunes; at low tide, prehistoric footprints from 8,000 BC occasionally emerge from the sand. One of the genuinely extraordinary days out within reach of Southport.",
+      "Seven miles of sand backed by pine woodland where native red squirrels still survive, one of only twelve refuges left in Britain. Walk the Lifeboat Road pinewood trails at dawn in spring or autumn and you'll see them. The beach itself is vast and backed by dramatic dunes; at low tide, prehistoric footprints from 8,000 BC occasionally emerge from the sand. One of the genuinely extraordinary days out within reach of Southport.",
     practical: [
-      "Parking: Lifeboat Road car park, L37 — £8.50 per car. Victoria Road car park currently closed for conservation works.",
+      "Parking: Lifeboat Road car park, L37. £8.50 per car. Victoria Road car park currently closed for conservation works.",
       "Go early on weekdays to avoid queues in summer.",
       "Squirrel nuts available from the Warden's Office on-site.",
-      "7 miles south of Southport — 15 minutes by car or train (Formby station).",
+      "7 miles south of Southport. 15 minutes by car or train (Formby station).",
       "Dogs welcome, on leads in the squirrel reserve.",
     ],
     gradient: "from-[#1A4020] to-[#2E6830]",
@@ -74,11 +74,11 @@ const BEACHES = [
   {
     name: "Southport Beach",
     tag: "Town Centre · Marine Lake",
-    highlight: "9,900 searches/mo — Southport's famous main beach",
+    highlight: "9,900 searches/mo. Southport's famous main beach.",
     description:
-      "Southport Beach is enormous — one of the widest in England. At low tide the sea can be a kilometre away, making it a landscape to walk through rather than a swim spot (though the tide does come in). The best time to visit is at sunset, when the light across the flats is genuinely spectacular. The beach sits alongside Marine Lake, Adventure Coast, and King's Gardens — you can easily make a full day of it without touching the sea at all.",
+      "Southport Beach is enormous, one of the widest in England. At low tide the sea can be a kilometre away, making it a landscape to walk through rather than a swim spot (though the tide does come in). The best time to visit is at sunset, when the light across the flats is genuinely spectacular. The beach sits alongside Marine Lake, Adventure Coast, and King's Gardens. You can easily make a full day of it without touching the sea at all.",
     practical: [
-      "Access via Marine Drive / the Promenade — postcode PR8 1RX.",
+      "Access via Marine Drive / the Promenade. Postcode PR8 1RX.",
       "Free parking along Marine Drive bays.",
       "Best at low to mid-tide for walking; check tide times before you go.",
       "Dog-friendly year-round on most sections.",
@@ -91,13 +91,13 @@ const BEACHES = [
   {
     name: "Ainsdale Beach",
     tag: "Nature Reserve · Dog-Friendly",
-    highlight: "6,600 searches/mo — the local's quieter choice",
+    highlight: "6,600 searches/mo. The local's quieter choice.",
     description:
-      "Two miles south of Southport, Ainsdale is backed by one of north-west Europe's most important dune systems — a Site of Special Scientific Interest home to natterjack toads, sand lizards, and great crested newts. Blue Flag awarded. Noticeably quieter than Southport Beach, with a more natural feel. The beach here is genuinely wide even at higher tide, making it the best choice when you want sand underfoot rather than a hike across the flats.",
+      "Two miles south of Southport, Ainsdale is backed by one of north-west Europe's most important dune systems, a Site of Special Scientific Interest home to natterjack toads, sand lizards, and great crested newts. Blue Flag awarded. Noticeably quieter than Southport Beach, with a more natural feel. The beach here is genuinely wide even at higher tide, making it the best choice when you want sand underfoot rather than a hike across the flats.",
     practical: [
-      "Car park on Shore Road, Ainsdale — pay and display.",
+      "Car park on Shore Road, Ainsdale. Pay and display.",
       "Dog-friendly year-round.",
-      "Blue Flag beach — high water quality.",
+      "Blue Flag beach. High water quality.",
       "4 miles from Southport town centre; direct train to Ainsdale station.",
       "Café and facilities in the car park area.",
     ],
@@ -108,12 +108,12 @@ const BEACHES = [
   {
     name: "Crosby Beach",
     tag: "Antony Gormley · Another Place",
-    highlight: "18,100 searches/mo — the art installation that stops people in their tracks",
+    highlight: "18,100 searches/mo. The art installation that stops people in their tracks.",
     description:
-      "One hundred cast-iron figures, each weighing 650 kilos, spread across three kilometres of tidal beach — all facing out to sea. Antony Gormley's *Another Place* is one of the most quietly powerful pieces of public art in England. Each figure is a cast of Gormley's own body. They're most visible at low tide, at their most dramatic at sunset. Technically 14 miles south of Southport, but an obvious pairing for any visit to the area.",
+      "One hundred cast-iron figures, each weighing 650 kilos, spread across three kilometres of tidal beach, all facing out to sea. Antony Gormley's *Another Place* is one of the most quietly powerful pieces of public art in England. Each figure is a cast of Gormley's own body. They're most visible at low tide, at their most dramatic at sunset. Technically 14 miles south of Southport, but an obvious pairing for any visit to the area.",
     practical: [
-      "Best visited at low tide — check tide times before you go.",
-      "Do not walk to the furthest figures — stay within 50 metres of the promenade.",
+      "Best visited at low tide. Check tide times before you go.",
+      "Do not walk to the furthest figures. Stay within 50 metres of the promenade.",
       "Nearest stations: Hall Road, Blundellsands & Crosby (Merseyrail, every 15 mins).",
       "Parking at Hall Road or Crosby Leisure Centre.",
       "Allow 1 hour. Free to visit. Year-round.",
@@ -129,7 +129,7 @@ const FAMILY = [
     name: "Adventure Coast Southport",
     sub: "Formerly Southport Pleasureland",
     detail:
-      "30+ rides across four themed lands — Cartoon Boardwalk, Viking Landing, Steampunk Bay, and Pirate Cove. Free to enter; pay per ride or buy a wristband. Open weekends and selected weekdays, late March to end of September, 11am–5pm. The Enigma thrill ride, Ghost Train, and Loki's Log Flume are the headline acts; there's plenty for toddlers too.",
+      "30+ rides across four themed lands: Cartoon Boardwalk, Viking Landing, Steampunk Bay, and Pirate Cove. Free to enter; pay per ride or buy a wristband. Open weekends and selected weekdays, late March to end of September, 11am–5pm. The Enigma thrill ride, Ghost Train, and Loki's Log Flume are the headline acts; there's plenty for toddlers too.",
     practical: "Marine Drive, PR8 1RX · 15 min walk from Southport station · Free entry",
     emoji: "🎢",
     href: "/attractions",
@@ -145,7 +145,7 @@ const FAMILY = [
   },
   {
     name: "Splash World",
-    sub: "Indoor water park — all weather",
+    sub: "Indoor water park. All weather.",
     detail:
       "The answer to the inevitable Lancashire question. Splash World is Southport's indoor water park, with slides, pools, and water play for all ages. Fully under cover, which makes it the obvious backup plan when the weather turns.",
     practical: "Esplanade, PR8 1RX · Near Adventure Coast · Check opening times online",
@@ -156,7 +156,7 @@ const FAMILY = [
     name: "Marine Lake",
     sub: "140 acres · Motorboats · Pedalos",
     detail:
-      "One of the largest man-made lakes in the UK, right in the heart of Southport. Hire motorboats, jet skis, or swan pedalos by the hour. Lake cruises run in summer. Pram-friendly paths run around the whole perimeter — good for a walk with younger children even without getting on the water.",
+      "One of the largest man-made lakes in the UK, right in the heart of Southport. Hire motorboats, jet skis, or swan pedalos by the hour. Lake cruises run in summer. Pram-friendly paths run around the whole perimeter, good for a walk with younger children even without getting on the water.",
     practical: "Marine Drive · Boat hire from Marine Lake · Accessible pathways",
     emoji: "⛵",
     href: "/activities",
@@ -165,7 +165,7 @@ const FAMILY = [
     name: "Southport Model Railway Village",
     sub: "UK's first model railway village",
     detail:
-      "The first model railway village ever built in the UK. 45mm G-gauge trains run through a miniature village built to replicate south west Lancashire architecture. Niche and wonderful — ideal for a couple of hours with children or grandchildren who have any interest in railways.",
+      "The first model railway village ever built in the UK. 45mm G-gauge trains run through a miniature village built to replicate south west Lancashire architecture. Niche and wonderful. Ideal for a couple of hours with children or grandchildren who have any interest in railways.",
     practical: "Kings Gardens, Marine Drive · Check seasonal opening times",
     emoji: "🚂",
     href: "/attractions",
@@ -174,7 +174,7 @@ const FAMILY = [
     name: "British Lawnmower Museum",
     sub: "The world's strangest museum",
     detail:
-      "Genuinely the most peculiar museum in England. Over 200 vintage and celebrity lawnmowers — including machines owned by Nicholas Parsons, Brian May, and HRH Prince Charles. Inexplicably compelling. Allow 45 minutes and come with an open mind.",
+      "Genuinely the most peculiar museum in England. Over 200 vintage and celebrity lawnmowers, including machines owned by Nicholas Parsons, Brian May, and HRH Prince Charles. Inexplicably compelling. Allow 45 minutes and come with an open mind.",
     practical: "106 Shakespeare Street, PR8 5AJ · Small admission charge · Year-round",
     emoji: "🌱",
     href: "/attractions",
@@ -187,11 +187,11 @@ const NATURE = [
     org: "Royal Society for the Protection of Birds",
     vol: "Free entry · 80,000+ Pink-footed Geese · PR9 9PH",
     story:
-      "On the northern edge of Southport — five minutes from Churchtown — and almost completely unknown to visitors. Free entry to one of the best birdwatching sites in the North West. In winter, 80,000+ Pink-footed Geese roost on the Ribble Estuary and flight overhead at dusk; the noise arrives before the birds do. Nel's Hide looks over the managed scrapes with breeding Avocets in spring. The coastal saltmarsh path on the other side of the sea wall adds a completely different walk — flat, exposed, tidal pools, big sky. Dogs on leads throughout.",
+      "On the northern edge of Southport, five minutes from Churchtown, and almost completely unknown to visitors. Free entry to one of the best birdwatching sites in the North West. In winter, 80,000+ Pink-footed Geese roost on the Ribble Estuary and flight overhead at dusk; the noise arrives before the birds do. Nel's Hide looks over the managed scrapes with breeding Avocets in spring. The coastal saltmarsh path on the other side of the sea wall adds a completely different walk. Flat, exposed, tidal pools, big sky. Dogs on leads throughout.",
     tips: [
-      "Car park on Redshank Road — £1.50 up to 2 hrs, £3 over 2 hrs. RSPB members free.",
+      "Car park on Redshank Road. £1.50 up to 2 hrs, £3 over 2 hrs. RSPB members free.",
       "Car park hours: 8:30am–4pm (Nov–Mar), 8:30am–5pm (Mar–Oct). Locked at closing.",
-      "Nel's Hide open 8:30am–4pm. Guide dogs only inside. Bring a flask — no café on site.",
+      "Nel's Hide open 8:30am–4pm. Guide dogs only inside. Bring a flask. No café on site.",
       "Pink-footed Geese: October–March at dusk on the sea wall viewpoints.",
       "Dogs allowed on leads on paths and coastal saltmarsh. Keep off the saltmarsh itself.",
     ],
@@ -203,9 +203,9 @@ const NATURE = [
     org: "National Trust",
     vol: "One of twelve red squirrel refuges in Britain",
     story:
-      "The red squirrel population at Formby nearly collapsed after a squirrelpox outbreak in 2008. It has since recovered, and Formby remains one of the last places in England to see native red squirrels in the wild. The pine woodland above the dunes is their habitat — walk quietly on the signposted trails and you'll often spot them, especially in the early morning. Spring and autumn are the best seasons.",
+      "The red squirrel population at Formby nearly collapsed after a squirrelpox outbreak in 2008. It has since recovered, and Formby remains one of the last places in England to see native red squirrels in the wild. The pine woodland above the dunes is their habitat. Walk quietly on the signposted trails and you'll often spot them, especially in the early morning. Spring and autumn are the best seasons.",
     tips: [
-      "Go early — the squirrels are most active in the first two hours after dawn.",
+      "Go early. The squirrels are most active in the first two hours after dawn.",
       "Spring (April–May) and autumn (September–October) offer best sightings.",
       "Squirrel nuts available from the Warden's Office to attract them.",
       "Stay on signposted paths through the pine woodland above the beach.",
@@ -219,12 +219,12 @@ const NATURE = [
     org: "Wildfowl & Wetlands Trust",
     vol: "600 acres · 10 miles from Southport",
     story:
-      "One of the best wildlife experiences in the North West, yet almost entirely unknown to people visiting Southport. Martin Mere's 600 acres of wetland attract thousands of migratory birds each year — pink-footed geese in winter, breeding lapwing and redshank in spring, marsh harriers and avocets through summer. Year-round otters, kingfishers, and canoe safaris on the waterways. Guided walks run Tuesday to Thursday. Free parking; discounted entry if you arrive without a car.",
+      "One of the best wildlife experiences in the North West, yet almost entirely unknown to people visiting Southport. Martin Mere's 600 acres of wetland attract thousands of migratory birds each year: pink-footed geese in winter, breeding lapwing and redshank in spring, marsh harriers and avocets through summer. Year-round otters, kingfishers, and canoe safaris on the waterways. Guided walks run Tuesday to Thursday. Free parking; discounted entry if you arrive without a car.",
     tips: [
-      "Fish Lane, Burscough, L40 0TA — 10 miles from Southport.",
+      "Fish Lane, Burscough, L40 0TA. 10 miles from Southport.",
       "Free parking on site.",
       "Arrive without a car for a discounted entry rate.",
-      "Guided walks run Tues–Thurs (seasonal — check wwt.org.uk).",
+      "Guided walks run Tues–Thurs, seasonal. Check wwt.org.uk.",
       "Canoe safaris available to book in advance.",
     ],
     color: "blue",
@@ -237,7 +237,7 @@ const CULTURE = [
     name: "Lord Street",
     tag: "Victorian boulevard · Paris connection",
     detail:
-      "A mile-long, tree-lined Victorian boulevard 80 metres wide — so wide because it was built across marshy ground between two sandhills. Prince Louis-Napoléon Bonaparte lived in Southport from 1846 to 1848. When he later became Emperor Napoleon III, he commissioned Baron Haussmann to redesign Paris. The grand, wide, tree-lined boulevards of Paris are widely believed to have been inspired by Lord Street. Walk it with that in mind.",
+      "A mile-long, tree-lined Victorian boulevard 80 metres wide, built across marshy ground between two sandhills. Prince Louis-Napoléon Bonaparte lived in Southport from 1846 to 1848. When he later became Emperor Napoleon III, he commissioned Baron Haussmann to redesign Paris. The grand, wide, tree-lined boulevards of Paris are widely believed to have been inspired by Lord Street. Walk it with that in mind.",
     href: "/shopping",
     emoji: "🏛️",
   },
@@ -253,7 +253,7 @@ const CULTURE = [
     name: "Churchtown",
     tag: "Medieval village · Botanic Gardens",
     detail:
-      "The oldest part of Southport — a village within a town. Most visitors to Southport never find it. St Cuthbert's medieval parish church, Botanic Gardens (opened 1875, established by working men who raised £18,000, now celebrating its 150th anniversary), Botanic Road independent shops, and a pace of life entirely at odds with the seafront. Ten minutes from the town centre by car or bus.",
+      "The oldest part of Southport, a village within a town. Most visitors to Southport never find it. St Cuthbert's medieval parish church, Botanic Gardens (opened 1875, established by working men who raised £18,000, now celebrating its 150th anniversary), Botanic Road independent shops, and a pace of life entirely at odds with the seafront. Ten minutes from the town centre by car or bus.",
     href: "/attractions",
     emoji: "🌿",
   },
@@ -261,7 +261,7 @@ const CULTURE = [
     name: "Southport Pier",
     tag: "England's second longest · 1,108 metres",
     detail:
-      "The second longest pier in England (Southend takes the title, but requires a train). Victorian, restored, and worth the walk. From the end you get a proper sense of the scale of this coastline — the estuary, the dunes, the wide sky over the Irish Sea. On a clear day you can see Wales. Allow 40 minutes for a relaxed return walk.",
+      "The second longest pier in England (Southend takes the title, but requires a train). Victorian, restored, and worth the walk. From the end you get a proper sense of the scale of this coastline: the estuary, the dunes, the wide sky over the Irish Sea. On a clear day you can see Wales. Allow 40 minutes for a relaxed return walk.",
     href: "/guides/southport-pier",
     emoji: "🌊",
   },
@@ -277,7 +277,7 @@ const CULTURE = [
     name: "Birkdale Village",
     tag: "Independent boutiques · Village atmosphere",
     detail:
-      "A village within the town — and the locals' preference for a quieter afternoon of coffee and shopping. Birkdale has a strong concentration of independent food, fashion, and lifestyle shops along Liverpool Road and the surrounding streets. Two minutes from Royal Birkdale Golf Club.",
+      "A village within the town, and the locals' preference for a quieter afternoon of coffee and shopping. Birkdale has a strong concentration of independent food, fashion, and lifestyle shops along Liverpool Road and the surrounding streets. Two minutes from Royal Birkdale Golf Club.",
     href: "/attractions",
     emoji: "🛍️",
   },
@@ -299,7 +299,7 @@ const GOLF_COURSES = [
     name: "Hillside Golf Club",
     rank: "UK & Ireland Top 100",
     detail:
-      "England Top 100. UK & Ireland Top 100. And yet Hillside has never hosted The Open Championship — a fact that golfers find bewildering and locals take mild satisfaction in. The back nine, running through towering dunes alongside Royal Birkdale's fairways, is as good a stretch of links golf as you'll play anywhere in Britain. Host of the 2019 British Masters. Green fees from £110.",
+      "England Top 100. UK &amp; Ireland Top 100. And yet Hillside has never hosted The Open Championship. A fact that golfers find bewildering and locals take mild satisfaction in. The back nine, running through towering dunes alongside Royal Birkdale's fairways, is as good a stretch of links golf as you'll play anywhere in Britain. Host of the 2019 British Masters. Green fees from £110.",
     open: "Members & visitors · Green fees from £110",
     tag: "Often called Birkdale's equal",
     tagColor: "bg-blue-100 text-blue-800",
@@ -310,7 +310,7 @@ const GOLF_COURSES = [
     name: "Southport & Ainsdale",
     rank: "Open Championship Qualifier",
     detail:
-      "Classic links, across the railway line from Hillside. S&A serves as an Open Championship Qualifier course when the Open is at Royal Birkdale. Sir Nick Faldo described the cluster of Birkdale, Hillside, and S&A as 'tough to beat for true links golf anywhere in the world.' Underrated and often underbooked — good value relative to its neighbours.",
+      "Classic links, across the railway line from Hillside. S&amp;A serves as an Open Championship Qualifier course when the Open is at Royal Birkdale. Sir Nick Faldo described the cluster of Birkdale, Hillside, and S&amp;A as 'tough to beat for true links golf anywhere in the world.' Underrated and often underbooked. Good value relative to its neighbours.",
     open: "Members & visitors · Green fees from ~£60",
     tag: "Open qualifier course",
     tagColor: "bg-amber-100 text-amber-800",
@@ -319,9 +319,9 @@ const GOLF_COURSES = [
   },
   {
     name: "Hesketh Golf Club",
-    rank: "Founded 1885 — Southport's oldest club",
+    rank: "Founded 1885. Southport's oldest club.",
     detail:
-      "The most underrated course in the area. Founded in 1885, making it Southport's oldest golf club. Sir Henry Cotton described the 16th hole as 'Lancashire's best Par 3.' Green fees start from £50 — exceptional value for a course of this quality and history. Often the easiest to book, and worth seeking out specifically.",
+      "The most underrated course in the area. Founded in 1885, making it Southport's oldest golf club. Sir Henry Cotton described the 16th hole as 'Lancashire's best Par 3.' Green fees start from £50. Exceptional value for a course of this quality and history. Often the easiest to book, and worth seeking out specifically.",
     open: "Members & visitors · Green fees from £50",
     tag: "Best value in the area",
     tagColor: "bg-purple-100 text-purple-800",
@@ -367,7 +367,7 @@ const AUDIENCE_PANELS = [
 
 const EVENTS_2026 = [
   { month: "Feb", event: "Lightport", desc: "World-class light installation on Lord Street.", free: true },
-  { month: "Apr", event: "Cristal Palace", desc: "French street theatre — 15m flying chandelier on Lord Street.", free: true },
+  { month: "Apr", event: "Cristal Palace", desc: "French street theatre. 15m flying chandelier on Lord Street.", free: true },
   { month: "May", event: "Big Top Festival", desc: "International circus arts. Circa and Gandini Juggling.", free: true },
   { month: "May", event: "Food & Drink Festival", desc: "Best food weekend of the year.", free: true },
   { month: "Jul", event: "The Open Championship", desc: "The 154th Open at Royal Birkdale.", free: false },
@@ -385,19 +385,19 @@ const FAQS = [
   },
   {
     q: "Is Southport good for a family day out?",
-    a: "Excellent. King's Gardens is free — 17 acres with a large adventure playground. Adventure Coast Southport (the former Pleasureland) has free entry with pay-per-ride. Marine Lake has pedalos and motorboats. Splash World is the indoor water park option for wet days. And there are 22 miles of beach. You can comfortably fill a full day without spending much at all.",
+    a: "Excellent. King's Gardens is free. 17 acres with a large adventure playground. Adventure Coast Southport (the former Pleasureland) has free entry with pay-per-ride. Marine Lake has pedalos and motorboats. Splash World is the indoor water park option for wet days. And there are 22 miles of beach. You can comfortably fill a full day without spending much at all.",
   },
   {
     q: "What is Southport famous for?",
-    a: "Southport is best known for its pier (England's second longest at 1,108 metres), its Victorian boulevard Lord Street (reportedly the inspiration for Haussmann's redesign of Paris), the Southport Flower Show, the Air Show, and above all its golf — England's Golf Coast, home to Royal Birkdale, Hillside, and several other courses ranked in the UK's top 100. In 2026, Southport will host The Open Championship for the 11th time.",
+    a: "Southport is best known for its pier (England's second longest at 1,108 metres), its Victorian boulevard Lord Street (reportedly the inspiration for Haussmann's redesign of Paris), the Southport Flower Show, the Air Show, and above all its golf. England's Golf Coast, home to Royal Birkdale, Hillside, and several other courses ranked in the UK's top 100. In 2026, Southport will host The Open Championship for the 11th time.",
   },
   {
     q: "Is Southport Beach worth visiting?",
-    a: "Yes, but go with realistic expectations. Southport Beach is enormous — one of the widest in England — but at low tide the sea can be a kilometre away. It's a coastal landscape for walking rather than swimming. The best time to visit is at sunset, or at mid-tide when the water is closer. The beach is most rewarding as part of a wider day combining Marine Lake, King's Gardens, and the Promenade.",
+    a: "Yes, but go with realistic expectations. Southport Beach is enormous, one of the widest in England, but at low tide the sea can be a kilometre away. It's a coastal landscape for walking rather than swimming. The best time to visit is at sunset, or at mid-tide when the water is closer. The beach is most rewarding as part of a wider day combining Marine Lake, King's Gardens, and the Promenade.",
   },
   {
     q: "How far is Formby from Southport?",
-    a: "About 7 miles south of Southport town centre — approximately 15 minutes by car, or you can take the Merseyrail Northern Line direct to Formby station, then a short walk to the beach. The National Trust red squirrel reserve is accessed via the Lifeboat Road car park (currently the main car park while Victoria Road is closed for conservation works).",
+    a: "About 7 miles south of Southport town centre, approximately 15 minutes by car, or you can take the Merseyrail Northern Line direct to Formby station, then a short walk to the beach. The National Trust red squirrel reserve is accessed via the Lifeboat Road car park (currently the main car park while Victoria Road is closed for conservation works).",
   },
   {
     q: "What is free to do in Southport?",
@@ -405,15 +405,15 @@ const FAQS = [
   },
   {
     q: "How long does it take to walk Southport Pier?",
-    a: "About 20 minutes each way at a relaxed pace, making the return trip roughly 40 minutes total. The pier is 1,108 metres long. A tram used to run its length but currently walking is the main option. The views from the end are the reward — on a clear day you can see Wales across the estuary.",
+    a: "About 20 minutes each way at a relaxed pace, making the return trip roughly 40 minutes total. The pier is 1,108 metres long. A tram used to run its length but currently walking is the main option. The views from the end are the reward. On a clear day you can see Wales across the estuary.",
   },
   {
     q: "What is the best time to visit Southport?",
-    a: "Summer (June to August) for the beach and outdoor events, including the Air Show and Flower Show. Spring and autumn are best for Formby red squirrels and quieter beaches. July 2026 is unmissable for The Open Championship at Royal Birkdale. The town has a solid year-round events calendar — even February has Lightport, one of the best light installations in the North.",
+    a: "Summer (June to August) for the beach and outdoor events, including the Air Show and Flower Show. Spring and autumn are best for Formby red squirrels and quieter beaches. July 2026 is unmissable for The Open Championship at Royal Birkdale. The town has a solid year-round events calendar. Even February has Lightport, one of the best light installations in the North.",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
-    a: "Yes. Dogs are welcome year-round on most sections of Southport Beach and on Ainsdale Beach. There are seasonal restrictions on some sections during peak summer months — follow the signage on site. At Formby, dogs must be on leads in the red squirrel reserve but can run on the beach itself.",
+    a: "Yes. Dogs are welcome year-round on most sections of Southport Beach and on Ainsdale Beach. There are seasonal restrictions on some sections during peak summer months. Follow the signage on site. At Formby, dogs must be on leads in the red squirrel reserve but can run on the beach itself.",
   },
 ];
 
@@ -422,7 +422,7 @@ const PAGE_LD = {
   "@type": "TouristDestination",
   name: "Southport",
   description:
-    "Southport, Merseyside — seaside resort with 22 miles of coastline, England's Golf Coast, National Trust red squirrel reserve at Formby, and a year-round events calendar.",
+    "Southport, Merseyside, seaside resort with 22 miles of coastline, England's Golf Coast, National Trust red squirrel reserve at Formby, and a year-round events calendar.",
   url: `${BASE_URL}/things-to-do`,
   touristType: ["Family", "Golf", "Nature", "Culture", "Beach"],
   geo: { "@type": "GeoCoordinates", latitude: 53.645, longitude: -3.009 },
@@ -563,7 +563,7 @@ export default function ThingsToDoPage() {
               <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
                 <p>
                   Walk down Lord Street on a summer evening and you&apos;re walking down one of Victorian England&apos;s greatest
-                  achievements — a mile-long, tree-lined boulevard 80 metres wide, with iron-and-glass verandahs over the
+                  achievements: a mile-long, tree-lined boulevard 80 metres wide, with iron-and-glass verandahs over the
                   shopfronts and architectural detail that would look at home in Paris. Which is apt, because it may have
                   inspired it. Prince Louis-Napoléon Bonaparte lived in Southport from 1846 to 1848. When he later became
                   Emperor Napoleon III and commissioned Haussmann to redesign Paris, those boulevards looked remarkably
@@ -571,11 +571,11 @@ export default function ThingsToDoPage() {
                 </p>
                 <p>
                   But Southport&apos;s offer runs deeper than one brilliant street. Seven miles south, at Formby, red squirrels
-                  still live in the pine woodland above the dunes — one of only twelve refuges left in Britain. At Crosby,
+                  still live in the pine woodland above the dunes, one of only twelve refuges left in Britain. At Crosby,
                   100 iron figures face out to sea across three kilometres of tidal beach. Inland, WWT Martin Mere is
                   600 acres of wetland with otters and migratory birds that most people driving through Lancashire never
-                  know exists. And on the golf course side: Royal Birkdale, Hillside, Southport &amp; Ainsdale, Hesketh —
-                  four courses within two miles of each other, three of them ranked in the UK&apos;s top 100, collectively
+                  know exists. And on the golf course side: Royal Birkdale, Hillside, Southport &amp; Ainsdale, Hesketh.
+                  Four courses within two miles of each other, three of them ranked in the UK&apos;s top 100, collectively
                   representing some of the finest links golf in the world.
                 </p>
                 <p>
@@ -594,7 +594,7 @@ export default function ThingsToDoPage() {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The Beaches</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
                 Four very different beaches, each worth knowing about. Not all of them are in Southport, but all of them
-                are within easy reach — and each one offers a completely distinct experience.
+                are within easy reach, and each one offers a completely distinct experience.
               </p>
             </div>
 
@@ -689,7 +689,7 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Beyond the Beach</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Nature &amp; Wildlife</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                Three of the best wildlife experiences in the North West — all within 10 miles of Southport, all almost entirely
+                Three of the best wildlife experiences in the North West, all within 10 miles of Southport, all almost entirely
                 overlooked by visitors who come for the beach.
               </p>
             </div>
@@ -729,7 +729,7 @@ export default function ThingsToDoPage() {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Culture &amp; Heritage</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
                 Southport has a Victorian heritage that most seaside towns can&apos;t match. The Napoleon connection,
-                the Atkinson&apos;s Egyptology collection, the medieval village hidden in plain sight — these are the
+                the Atkinson&apos;s Egyptology collection, the medieval village hidden in plain sight. These are the
                 things that reward a slower look at the town.
               </p>
             </div>
@@ -790,7 +790,7 @@ export default function ThingsToDoPage() {
                   <h3 className="font-display text-xl font-bold">The Open Championship at Royal Birkdale</h3>
                   <p className="text-white/60 text-sm mt-2 leading-relaxed">
                     The 154th Open Championship. 12–19 July 2026. The biggest sporting event in Southport&apos;s modern history.
-                    Accommodation is limited — if you&apos;re attending, plan now.
+                    Accommodation is limited. If you&apos;re attending, plan now.
                   </p>
                 </div>
                 <Link
@@ -829,25 +829,25 @@ export default function ThingsToDoPage() {
                 {
                   emoji: "🚴",
                   title: "Coastal Cycling",
-                  detail: "NCN Route 62 runs along the Sefton Coast. The Sefton Coastal Path is also suitable for cycling in sections. Flat, scenic, and largely off-road — one of the better cycling routes in the North West.",
+                  detail: "NCN Route 62 runs along the Sefton Coast. The Sefton Coastal Path is also suitable for cycling in sections. Flat, scenic, and largely off-road. One of the better cycling routes in the North West.",
                   link: "/activities",
                 },
                 {
                   emoji: "🥾",
                   title: "Walking",
-                  detail: "The Sefton Coastal Path (21 miles, Crosby to Southport) is the headline walk, but shorter options are plentiful — the Formby dune walks, the Lord Street heritage trail, and the Churchtown to Botanic Gardens loop are all worth doing.",
+                  detail: "The Sefton Coastal Path (21 miles, Crosby to Southport) is the headline walk, but shorter options are plentiful. The Formby dune walks, the Lord Street heritage trail, and the Churchtown to Botanic Gardens loop are all worth doing.",
                   link: "/activities",
                 },
                 {
                   emoji: "🏇",
                   title: "Horse Riding on the Beach",
-                  detail: "Seasonal beach rides operate from the Southport area — the wide, flat beach at low tide makes for an exceptional riding surface. Contact local stables for availability.",
+                  detail: "Seasonal beach rides operate from the Southport area. The wide, flat beach at low tide makes for an exceptional riding surface. Contact local stables for availability.",
                   link: "/activities",
                 },
                 {
                   emoji: "🎯",
                   title: "Crazy Golf & Leisure",
-                  detail: "Multiple crazy golf courses across the town — in King's Gardens and along the Promenade. Traditional seaside amusements at Funland and Fun Palace on the seafront.",
+                  detail: "Multiple crazy golf courses across the town, in King's Gardens and along the Promenade. Traditional seaside amusements at Funland and Fun Palace on the seafront.",
                   link: "/attractions",
                 },
               ].map((item) => (
@@ -879,21 +879,21 @@ export default function ThingsToDoPage() {
                 {
                   name: "Lord Street",
                   sub: "Victorian boulevard · 1 mile long",
-                  detail: "The main event. A mile of Victorian iron-and-glass verandahs sheltering an unusually high concentration of independent boutiques — particularly strong for jewellery, fashion, gifts, and homeware. The street is also simply beautiful; it deserves a slow walk even if you don't intend to buy anything.",
+                  detail: "The main event. A mile of Victorian iron-and-glass verandahs sheltering an unusually high concentration of independent boutiques. Particularly strong for jewellery, fashion, gifts, and homeware. The street is also simply beautiful; it deserves a slow walk even if you don't intend to buy anything.",
                   href: "/shopping",
                   emoji: "🏛️",
                 },
                 {
                   name: "Birkdale Village",
                   sub: "Independent · Village atmosphere",
-                  detail: "The locals' preference. Liverpool Road in Birkdale has a strong independent retail scene — coffee shops, food, fashion, and lifestyle stores with a neighbourhood feel that Lord Street's scale doesn't always deliver.",
+                  detail: "The locals' preference. Liverpool Road in Birkdale has a strong independent retail scene: coffee shops, food, fashion, and lifestyle stores with a neighbourhood feel that Lord Street's scale doesn't always deliver.",
                   href: "/shopping",
                   emoji: "🏘️",
                 },
                 {
                   name: "Wayfarers Arcade",
                   sub: "Grade II listed · 125 years old",
-                  detail: "Lord Street's hidden interior. A Grade II listed Victorian arcade — around 125 years old — with independent traders, antiques, and a café. The architecture alone is worth the detour.",
+                  detail: "Lord Street's hidden interior. A Grade II listed Victorian arcade, around 125 years old, with independent traders, antiques, and a café. The architecture alone is worth the detour.",
                   href: "/shopping",
                   emoji: "🏚️",
                 },
@@ -907,7 +907,7 @@ export default function ThingsToDoPage() {
                 {
                   name: "Churchtown / Botanic Road",
                   sub: "Design · Local makers",
-                  detail: "Botanic Road in Churchtown has a cluster of design-led independent shops — homeware, fashion, accessories, and local makers. Often overlooked by visitors who don't venture out of the town centre.",
+                  detail: "Botanic Road in Churchtown has a cluster of design-led independent shops: homeware, fashion, accessories, and local makers. Often overlooked by visitors who don't venture out of the town centre.",
                   href: "/shopping",
                   emoji: "🌿",
                 },
@@ -939,7 +939,7 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Year-Round</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Events in Southport 2026</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                2026 is exceptional. Ten major events running from February to October — including The Open Championship,
+                2026 is exceptional. Ten major events running from February to October, including The Open Championship,
                 the Air Show, the Flower Show, and a full cultural programme under the Southport 2026 banner.
               </p>
             </div>
@@ -1018,14 +1018,14 @@ export default function ThingsToDoPage() {
                   <MapPin className="w-7 h-7 text-red-600" />
                 </div>
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Restaurants</h3>
-                <p className="text-gray-500 text-sm">The best places to eat — from Lord Street fine dining to seafront fish and chips.</p>
+                <p className="text-gray-500 text-sm">The best places to eat, from Lord Street fine dining to seafront fish and chips.</p>
               </Link>
               <Link href="/hotels" className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-[#FAF8F5] transition">
                 <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition">
                   <Users className="w-7 h-7 text-blue-600" />
                 </div>
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Hotels</h3>
-                <p className="text-gray-500 text-sm">From The Vincent on Lord Street to B&amp;Bs in Birkdale — accommodation for every budget.</p>
+                <p className="text-gray-500 text-sm">From The Vincent on Lord Street to B&amp;Bs in Birkdale. Accommodation for every budget.</p>
               </Link>
               <Link href="/bars-nightlife" className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-[#FAF8F5] transition">
                 <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-4 group-hover:bg-purple-100 transition">
@@ -1041,7 +1041,7 @@ export default function ThingsToDoPage() {
           <section id="faq" className="scroll-mt-28">
             <div className="text-center mb-10">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Things to Do in Southport — FAQs</h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Things to Do in Southport: FAQs</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {FAQS.map((faq) => (

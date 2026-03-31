@@ -533,7 +533,7 @@ async function SectorPage({
               <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
                 <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-900">
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-100 text-sm">🔐</span>
-                  Crime — last 12 months
+                  Crime, last 12 months
                 </h2>
                 <CrimeSummary
                   categories={crimeByCategory}
@@ -802,7 +802,7 @@ async function UnitPage({
               className="flex items-center gap-2 rounded-xl border border-[var(--teal)]/30 bg-teal-50 px-4 py-3 text-sm font-medium text-[var(--teal)] hover:bg-teal-100 transition-colors"
             >
               <span>←</span>
-              <span>All of {unit.sector} — {areaLabel}</span>
+              <span>All of {unit.sector}, {areaLabel}</span>
             </Link>
 
             {/* Flood risk */}

@@ -140,7 +140,7 @@ export default function UpgradePageClient() {
             £390/year
           </div>
           <p className="text-gray-500 text-sm mb-6">
-            Save £78 — 2 months free
+            Save £78. 2 months free
           </p>
           <button
             onClick={() => handleUpgrade("annual")}

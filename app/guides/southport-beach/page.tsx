@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Southport Beach | The Honest Local Guide",
     description:
-      "Postcode, parking, dogs, tides, and what to actually expect. Southport Beach is one of the widest in England — here's how to make the most of it.",
+      "Postcode, parking, dogs, tides, and what to actually expect. Southport Beach is one of the widest in England, here's how to make the most of it.",
     url: `${BASE_URL}/guides/southport-beach`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -55,27 +55,27 @@ const FAQS = [
   },
   {
     q: "Is there parking at Southport Beach?",
-    a: "Yes. There is free parking along Marine Drive and the Promenade — parking bays line much of the seafront road. During peak summer weekends, these fill early. There are also pay-and-display car parks near the Promenade. The town centre has additional parking a 10-minute walk away.",
+    a: "Yes. There is free parking along Marine Drive and the Promenade, parking bays line much of the seafront road. During peak summer weekends, these fill early. There are also pay-and-display car parks near the Promenade. The town centre has additional parking a 10-minute walk away.",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
-    a: "Yes — dogs are welcome year-round on the main sections of Southport Beach and along the Promenade. Seasonal restrictions may apply to certain sections during peak summer months (typically June–September). Follow the signage on-site. Dogs must be kept on leads in King's Gardens.",
+    a: "Yes, dogs are welcome year-round on the main sections of Southport Beach and along the Promenade. Seasonal restrictions may apply to certain sections during peak summer months (typically June–September). Follow the signage on-site. Dogs must be kept on leads in King's Gardens.",
   },
   {
     q: "How far out does the tide go at Southport Beach?",
-    a: "At low tide, the sea can be over a kilometre away — one of the widest beaches in England. This is the beach's most distinctive feature. The flat wet sand stretches almost to the horizon. Check tide times before you visit: at high tide the beach is narrower but the sea is much closer. bbc.co.uk/weather/coast-and-sea has live tide data.",
+    a: "At low tide, the sea can be over a kilometre away, one of the widest beaches in England. This is the beach's most distinctive feature. The flat wet sand stretches almost to the horizon. Check tide times before you visit: at high tide the beach is narrower but the sea is much closer. bbc.co.uk/weather/coast-and-sea has live tide data.",
   },
   {
     q: "Is Southport Beach good for swimming?",
-    a: "Southport Beach is better for walking than swimming. The tidal range is huge — at low tide the sea is very far out, and at high tide the water can be shallow and murky. If you want to swim, Ainsdale Beach (2 miles south, Blue Flag) is a better option, or Marine Lake for flat water. Never swim near the outlet channel.",
+    a: "Southport Beach is better for walking than swimming. The tidal range is huge, at low tide the sea is very far out, and at high tide the water can be shallow and murky. If you want to swim, Ainsdale Beach (2 miles south, Blue Flag) is a better option, or Marine Lake for flat water. Never swim near the outlet channel.",
   },
   {
     q: "What facilities are there at Southport Beach?",
-    a: "Public toilets at several points along the Promenade. A café at Marine Lake and others near Adventure Coast Southport. The Marine Lake café and King's Gardens are adjacent to the beach and both have toilet facilities. Lifeguard cover operates on sections of the beach during summer months — check the red and yellow flags.",
+    a: "Public toilets at several points along the Promenade. A café at Marine Lake and others near Adventure Coast Southport. The Marine Lake café and King's Gardens are adjacent to the beach and both have toilet facilities. Lifeguard cover operates on sections of the beach during summer months, check the red and yellow flags.",
   },
   {
     q: "When is the best time to visit Southport Beach?",
-    a: "Sunset on a clear evening is exceptional — the light across the flats towards the Irish Sea is genuinely beautiful. For walking, mid-tide is ideal (more sand exposed, sea closer). For peace and quiet, early morning on any day, or weekdays outside July and August. Summer weekends are busy from 11am onwards.",
+    a: "Sunset on a clear evening is exceptional, the light across the flats towards the Irish Sea is genuinely beautiful. For walking, mid-tide is ideal (more sand exposed, sea closer). For peace and quiet, early morning on any day, or weekdays outside July and August. Summer weekends are busy from 11am onwards.",
   },
   {
     q: "What is near Southport Beach?",
@@ -88,7 +88,7 @@ const PAGE_LD = {
   "@type": "Beach",
   name: "Southport Beach",
   description:
-    "Southport Beach — one of the widest beaches in England, on the Lancashire coast. Adjacent to Marine Lake and King's Gardens. Dogs welcome year-round.",
+    "Southport Beach, one of the widest beaches in England, on the Lancashire coast. Adjacent to Marine Lake and King's Gardens. Dogs welcome year-round.",
   url: `${BASE_URL}/guides/southport-beach`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -151,7 +151,7 @@ export default function SouthportBeachGuidePage() {
               <span className="block text-[#C9A84C]">Beach</span>
             </h1>
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
-              One of the widest beaches in England. At low tide the sea can be over a kilometre away —
+              One of the widest beaches in England. At low tide the sea can be over a kilometre away,
               this is a coastal landscape to walk through, not just sit by. Stunning at sunset. Free to visit.
               Dogs welcome all year.
             </p>
@@ -223,7 +223,7 @@ export default function SouthportBeachGuidePage() {
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Planning a visit?</p>
               <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-1">Southport Weather</h2>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Southport is on the exposed Sefton Coast — it can feel colder and windier than the inland forecast suggests.
+                Southport is on the exposed Sefton Coast, it can feel colder and windier than the inland forecast suggests.
                 A 16°C sunny day in a stiff westerly off the Irish Sea is a jumper day. Check before you leave.
               </p>
               <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-500">
@@ -258,10 +258,10 @@ export default function SouthportBeachGuidePage() {
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">What Southport Beach Is Actually Like</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>
-                People visit Southport expecting a typical English seaside beach — strip of sand, sea right there, maybe an ice cream.
+                People visit Southport expecting a typical English seaside beach, strip of sand, sea right there, maybe an ice cream.
                 What they find is something stranger and more impressive. At low tide, Southport Beach is vast.
                 The sea retreats so far that you could walk for twenty minutes and still not reach the water.
-                What&apos;s left behind is a flat, reflective landscape — wet sand stretching to the horizon, sky filling everything above it.
+                What&apos;s left behind is a flat, reflective landscape, wet sand stretching to the horizon, sky filling everything above it.
                 On a clear evening with the sun going down over the Irish Sea, it&apos;s one of the better views in the North West.
                 I&apos;ve lived here forty-one years and it still gets me.
               </p>
@@ -297,14 +297,14 @@ export default function SouthportBeachGuidePage() {
                 title: "The Tidal Range",
                 emoji: "🌊",
                 color: "from-[#1A5C7A] to-[#1E8AB0]",
-                content: "Southport has one of the most dramatic tidal ranges of any beach in England. At low tide the sea withdraws over a kilometre — you're left with flat wet sand that reflects the sky like a mirror. At high tide the water comes right up to the sea wall. Check tide times before you go: at low tide there's more sand to walk on, but the sea is very distant. Mid-tide is often the sweet spot.",
+                content: "Southport has one of the most dramatic tidal ranges of any beach in England. At low tide the sea withdraws over a kilometre, you're left with flat wet sand that reflects the sky like a mirror. At high tide the water comes right up to the sea wall. Check tide times before you go: at low tide there's more sand to walk on, but the sea is very distant. Mid-tide is often the sweet spot.",
                 tip: "BBC Weather (bbc.co.uk/weather/coast-and-sea) has live Southport tide times.",
               },
               {
                 title: "The Scale",
                 emoji: "📏",
                 color: "from-[#1B2E4B] to-[#2A4A73]",
-                content: "Southport Beach is enormous — literally one of the widest beaches in England. On a clear day you can see Blackpool Tower to the north and the Welsh hills to the south. This is a beach where the sense of space is the main attraction. Kids can run without supervision worries. Dogs can run free. Wind is generally available for kite-flying.",
+                content: "Southport Beach is enormous, literally one of the widest beaches in England. On a clear day you can see Blackpool Tower to the north and the Welsh hills to the south. This is a beach where the sense of space is the main attraction. Kids can run without supervision worries. Dogs can run free. Wind is generally available for kite-flying.",
                 tip: "Walk south along the beach towards Ainsdale for the most dramatic dune scenery.",
               },
               {
@@ -312,14 +312,14 @@ export default function SouthportBeachGuidePage() {
                 emoji: "🏊",
                 color: "from-[#7A4A1A] to-[#B06A20]",
                 content: "Be honest about this: Southport Beach is not a great swimming beach. The tidal range means the water is often either very far away or very shallow. The sea here is not known for clear water. If you want to swim, Ainsdale Beach (2 miles south, Blue Flag award) is the better option, or hire a pedalo on Marine Lake for flat-water fun with zero risk.",
-                tip: "Never swim near the outlet channel at the southern end of Marine Lake — currents can be strong.",
+                tip: "Never swim near the outlet channel at the southern end of Marine Lake, currents can be strong.",
               },
               {
                 title: "Sunset Views",
                 emoji: "🌅",
                 color: "from-[#4A1A7A] to-[#6A2AB0]",
-                content: "Southport Beach faces west, out across the Irish Sea. The sunsets here are genuinely exceptional — especially in autumn and winter when the light is lower and the colours run across the flat wet sand. Late afternoon on a clear day, walk out onto the beach and face west. It's one of those views that surprises people who weren't expecting it.",
-                tip: "October and November often produce the best sunsets — lower sun angle, dramatic clouds over Wales.",
+                content: "Southport Beach faces west, out across the Irish Sea. The sunsets here are genuinely exceptional, especially in autumn and winter when the light is lower and the colours run across the flat wet sand. Late afternoon on a clear day, walk out onto the beach and face west. It's one of those views that surprises people who weren't expecting it.",
+                tip: "October and November often produce the best sunsets, lower sun angle, dramatic clouds over Wales.",
               },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -358,9 +358,9 @@ export default function SouthportBeachGuidePage() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {[
-                    { location: "Marine Drive bays", cost: "Free", distance: "On the seafront", notes: "Street parking along the Promenade — fills fast on summer weekends", href: "/parking/parking-southport-marine-drive-car-park" },
+                    { location: "Marine Drive bays", cost: "Free", distance: "On the seafront", notes: "Street parking along the Promenade, fills fast on summer weekends", href: "/parking/parking-southport-marine-drive-car-park" },
                     { location: "Esplanade car park", cost: "Pay & display", distance: "50m from beach", notes: "Pay-and-display, near Adventure Coast and Splash World", href: "/parking/parking-esplanade-parking" },
-                    { location: "Ocean Plaza", cost: "Free (shoppers)", distance: "5 min walk", notes: "Free with retail — Asda, cinema, and other stores nearby" },
+                    { location: "Ocean Plaza", cost: "Free (shoppers)", distance: "5 min walk", notes: "Free with retail. Asda, cinema, and other stores nearby" },
                     { location: "Town centre NCP", cost: "Pay & display", distance: "10–12 min walk", notes: "Multiple town centre car parks available, well-signed", href: "/parking/parking-ncp-southport-london-street" },
                   ].map((row) => (
                     <tr key={row.location} className="hover:bg-gray-50 transition-colors">
@@ -382,7 +382,7 @@ export default function SouthportBeachGuidePage() {
             <div className="px-5 py-4 bg-amber-50 border-t border-amber-100 flex items-start gap-3">
               <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
               <p className="text-amber-800 text-xs leading-relaxed">
-                <span className="font-semibold">Summer weekends:</span> Marine Drive fills by mid-morning. Arrive before 10am or use the town centre car parks and walk. The Promenade walk takes about 12 minutes from the town centre — it&apos;s a pleasant one.
+                <span className="font-semibold">Summer weekends:</span> Marine Drive fills by mid-morning. Arrive before 10am or use the town centre car parks and walk. The Promenade walk takes about 12 minutes from the town centre, it&apos;s a pleasant one.
               </p>
             </div>
           </div>
@@ -392,14 +392,14 @@ export default function SouthportBeachGuidePage() {
               <div>
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">By Train</p>
                 <p className="text-white/70 text-sm leading-relaxed">
-                  Southport train station is on the Merseyrail Northern Line — direct trains from Liverpool Central every 15–20 minutes.
+                  Southport train station is on the Merseyrail Northern Line, direct trains from Liverpool Central every 15–20 minutes.
                   From the station it&apos;s about a 12-minute walk to the seafront, following signs to the beach and Marine Drive.
                 </p>
               </div>
               <div>
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Satnav Postcode</p>
                 <p className="text-white font-mono text-2xl font-bold mb-1">PR8 1RX</p>
-                <p className="text-white/60 text-sm">Marine Drive, Southport — this puts you right on the seafront road alongside the beach and Marine Lake.</p>
+                <p className="text-white/60 text-sm">Marine Drive, Southport, this puts you right on the seafront road alongside the beach and Marine Lake.</p>
               </div>
             </div>
           </div>
@@ -422,26 +422,26 @@ export default function SouthportBeachGuidePage() {
                   <h3 className="font-display font-bold text-[#1B2E4B] text-lg">Year-Round Access</h3>
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                  Dogs are welcome on Southport Beach all year. The main beach — the wide expanse you access from Marine Drive —
+                  Dogs are welcome on Southport Beach all year. The main beach, the wide expanse you access from Marine Drive,
                   has no permanent dog restrictions. Seasonal restrictions may apply to certain sections during peak summer
                   months: follow the signs on-site, which are clearly posted.
                 </p>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  The sheer size of the beach means there&apos;s always plenty of room — even on a busy Saturday in August,
+                  The sheer size of the beach means there&apos;s always plenty of room, even on a busy Saturday in August,
                   you can walk ten minutes from the main access point and have the beach to yourself.
-                  Frank — my bulldog — has been coming here for three years and has registered no complaints.
+                  Frank, my bulldog, has been coming here for three years and has registered no complaints.
                 </p>
               </div>
               <div>
                 <h4 className="font-display font-bold text-[#1B2E4B] mb-4">Dog-owner checklist</h4>
                 <div className="space-y-3">
                   {[
-                    "Fresh water — the beach has none; bring your own",
-                    "Lead near the Marine Lake outlet — the current can surprise dogs",
+                    "Fresh water, the beach has none; bring your own",
+                    "Lead near the Marine Lake outlet, the current can surprise dogs",
                     "Check seasonal signs at the access points",
                     "Dogs must be on leads in King&apos;s Gardens adjacent to the beach",
-                    "Bags (obviously) — bins are at regular intervals along the Promenade",
-                    "Towel — wet sand + dog = you know what's coming",
+                    "Bags (obviously), bins are at regular intervals along the Promenade",
+                    "Towel, wet sand + dog = you know what's coming",
                   ].map((tip) => (
                     <div key={tip} className="flex gap-2 text-sm text-gray-600">
                       <ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
@@ -476,12 +476,12 @@ export default function SouthportBeachGuidePage() {
               {
                 emoji: "🏥",
                 title: "Lifeguards",
-                detail: "RNLI lifeguard cover operates on sections of Southport Beach during the summer season. Swim between the red and yellow flags. Outside these hours and in winter, swim with caution — the beach is not patrolled.",
+                detail: "RNLI lifeguard cover operates on sections of Southport Beach during the summer season. Swim between the red and yellow flags. Outside these hours and in winter, swim with caution, the beach is not patrolled.",
               },
               {
                 emoji: "♿",
                 title: "Accessibility",
-                detail: "The Promenade is fully accessible. The beach itself is flat and firm at low to mid-tide, making it one of the more accessible beaches in the area for wheelchair users — though some sections of loose dry sand above the tide line are harder going.",
+                detail: "The Promenade is fully accessible. The beach itself is flat and firm at low to mid-tide, making it one of the more accessible beaches in the area for wheelchair users, though some sections of loose dry sand above the tide line are harder going.",
               },
               {
                 emoji: "🅿️",
@@ -511,11 +511,11 @@ export default function SouthportBeachGuidePage() {
               <h2 className="font-display text-xl font-bold text-amber-900 mb-4">Safety on Southport Beach</h2>
               <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
                 {[
-                  "Never swim near the outlet channel at the southern end of Marine Lake — currents are unpredictable.",
-                  "The tide comes in quickly across the flat beach — don&apos;t get cut off. Always watch the tide direction.",
-                  "Soft sand areas near the waterline can be boggy — stick to firmer wet sand.",
-                  "In winter, the beach is exposed and wind chill is significant — layers are not optional.",
-                  "In fog, the flat landscape can be disorienting — always walk parallel to the Promenade so you know the direction back.",
+                  "Never swim near the outlet channel at the southern end of Marine Lake, currents are unpredictable.",
+                  "The tide comes in quickly across the flat beach, don&apos;t get cut off. Always watch the tide direction.",
+                  "Soft sand areas near the waterline can be boggy, stick to firmer wet sand.",
+                  "In winter, the beach is exposed and wind chill is significant, layers are not optional.",
+                  "In fog, the flat landscape can be disorienting, always walk parallel to the Promenade so you know the direction back.",
                   "The RNLI has a station in Southport. Lifeguards patrol in summer. Outside lifeguard hours, take extra care.",
                 ].map((tip) => (
                   <div key={tip} className="flex gap-2 text-sm text-amber-900">
@@ -549,7 +549,7 @@ export default function SouthportBeachGuidePage() {
                 months: "Jun–Aug",
                 emoji: "☀️",
                 highlight: "Busy, warm, families",
-                detail: "July and August are peak season — Marine Drive fills early, the beach gets busy by midday, and the seafront hums. Arrive before 10am for easy parking. The Air Show in late August is the peak event: enormous crowds, book parking the night before.",
+                detail: "July and August are peak season. Marine Drive fills early, the beach gets busy by midday, and the seafront hums. Arrive before 10am for easy parking. The Air Show in late August is the peak event: enormous crowds, book parking the night before.",
               },
               {
                 season: "Autumn",
@@ -593,7 +593,7 @@ export default function SouthportBeachGuidePage() {
                 emoji: "⛵",
                 name: "Marine Lake",
                 sub: "140 acres · Boat hire · Free to walk",
-                detail: "Right next to the beach — 140 acres of flat water with pedalo and motorboat hire, swan boats, and a seasonal café. The perimeter path is one of the nicest easy walks in Southport.",
+                detail: "Right next to the beach. 140 acres of flat water with pedalo and motorboat hire, swan boats, and a seasonal café. The perimeter path is one of the nicest easy walks in Southport.",
                 href: "/activities",
               },
               {
@@ -628,7 +628,7 @@ export default function SouthportBeachGuidePage() {
                 emoji: "🛍️",
                 name: "Lord Street",
                 sub: "10 min walk · Victorian boulevard",
-                detail: "Southport&apos;s famous Victorian shopping boulevard — independent boutiques, restaurants, and the particular grandeur of 1850s civic architecture. Worth walking at any time of day.",
+                detail: "Southport&apos;s famous Victorian shopping boulevard, independent boutiques, restaurants, and the particular grandeur of 1850s civic architecture. Worth walking at any time of day.",
                 href: "/shopping",
               },
             ].map((item) => (
@@ -655,7 +655,7 @@ export default function SouthportBeachGuidePage() {
                 <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-1">Where to Eat After the Beach</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   The Promenade has several places for a post-beach meal. For proper food, Lord Street (10 minutes&apos; walk)
-                  is the better option — a wider choice of restaurants, café options, and the general pleasure of walking
+                  is the better option, a wider choice of restaurants, café options, and the general pleasure of walking
                   one of England&apos;s finest Victorian boulevards.
                 </p>
               </div>
@@ -681,7 +681,7 @@ export default function SouthportBeachGuidePage() {
                 <p className="text-white/70 text-sm leading-relaxed mb-5">
                   Southport Beach is one of the best photography locations in the North West. The combination of flat wet sand,
                   wide sky, and the Irish Sea light makes for conditions that photographers travel for.
-                  The golden hour before sunset — roughly an hour before the sun hits the horizon — is when the light is best.
+                  The golden hour before sunset, roughly an hour before the sun hits the horizon, is when the light is best.
                   Mid-tide means more reflections in the wet sand. Low tide means more distance and drama.
                 </p>
                 <div className="grid sm:grid-cols-3 gap-4">
@@ -705,7 +705,7 @@ export default function SouthportBeachGuidePage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Beach — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Beach. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -727,7 +727,7 @@ export default function SouthportBeachGuidePage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">The Wider Coast</p>
               <h2 className="font-display text-2xl font-bold text-[#1B2E4B]">Other Beaches Near Southport</h2>
               <p className="text-gray-600 mt-2 max-w-xl mx-auto text-sm">
-                Southport Beach is the starting point. These are the other beaches within easy reach — each one very different.
+                Southport Beach is the starting point. These are the other beaches within easy reach, each one very different.
               </p>
             </div>
             {/* Ainsdale — full-width featured card */}
@@ -747,7 +747,7 @@ export default function SouthportBeachGuidePage() {
                 <span className="text-xs font-bold bg-[#C9A84C] text-[#1B2E4B] px-2 py-0.5 rounded-full">Best for swimming · Blue Flag</span>
                 <h3 className="font-display font-bold text-white text-2xl mt-3 mb-1">Ainsdale Beach</h3>
                 <p className="text-white/75 text-sm leading-relaxed max-w-lg">
-                  2 miles south. Backed by SSSI dunes — natterjack toads, sand lizards, mermaid&apos;s purses on the tideline. Better for swimming than Southport Beach.
+                  2 miles south. Backed by SSSI dunes, natterjack toads, sand lizards, mermaid&apos;s purses on the tideline. Better for swimming than Southport Beach.
                 </p>
                 <p className="text-[#C9A84C] text-xs font-bold mt-3 group-hover:underline">
                   A winter beachcombing guide to Ainsdale →
@@ -765,7 +765,7 @@ export default function SouthportBeachGuidePage() {
                 },
                 {
                   name: "Crosby Beach",
-                  detail: "14 miles south. Antony Gormley&apos;s Another Place — 100 iron figures facing out to sea. One of England&apos;s most powerful pieces of public art.",
+                  detail: "14 miles south. Antony Gormley&apos;s Another Place. 100 iron figures facing out to sea. One of England&apos;s most powerful pieces of public art.",
                   tag: "Antony Gormley",
                   href: "/attractions/another-place-crosby",
                 },
@@ -800,7 +800,7 @@ export default function SouthportBeachGuidePage() {
           <div className="bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-5">
             <div className="flex-1 min-w-0">
               <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-1">Property Data</p>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Living Near the Beach — Coastal Postcode Prices</h3>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Living Near the Beach. Coastal Postcode Prices</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 PR8 2 (Ainsdale-on-Sea) and PR9 0 (Marine Drive promenade) offer some of the best coastal proximity value in the North West. Sold prices, flood zone data, school ratings, and broadband speeds for every coastal postcode in Southport.
               </p>
@@ -810,13 +810,13 @@ export default function SouthportBeachGuidePage() {
                 href="/property/pr8-2"
                 className="bg-[#1B2E4B] hover:bg-[#2A4A73] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap text-center"
               >
-                PR8 2 — Ainsdale →
+                PR8 2. Ainsdale →
               </Link>
               <Link
                 href="/property/pr9-0"
                 className="bg-white border border-gray-200 hover:border-[#1B2E4B] text-[#1B2E4B] px-5 py-2.5 rounded-full font-semibold text-sm transition-colors whitespace-nowrap text-center"
               >
-                PR9 0 — Promenade →
+                PR9 0. Promenade →
               </Link>
             </div>
           </div>

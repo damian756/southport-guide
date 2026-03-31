@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Southport Artisan Market | Monthly Independent Makers Market",
     description:
-      "Southport Artisan Market at Southport Market — 50+ independent makers, artists, and food producers. Monthly, free entry. Dates, what to expect, parking.",
+      "Southport Artisan Market at Southport Market. 50+ independent makers, artists, and food producers. Monthly, free entry. Dates, what to expect, parking.",
     url: `${BASE_URL}/guides/southport-artisan-market`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -29,8 +29,8 @@ const FAQS = [
   { q: "When is the Southport Artisan Market?", a: "The Southport Artisan Market runs monthly, typically on a Saturday or Sunday. The next date is usually the first Saturday of the month at Southport Market on Market Street (PR8 1EF). Check the Southport Market social media pages for confirmed monthly dates." },
   { q: "Where is the Southport Artisan Market?", a: "Southport Market, Market Street, Southport, PR8 1EF. The market building is a converted Victorian market hall just off Lord Street in the town centre. The artisan market runs inside the market hall and, weather permitting, extends onto Market Street itself." },
   { q: "How much does the Southport Artisan Market cost?", a: "Entry is free. There is no charge to browse the stalls. You pay for whatever you buy from the traders." },
-  { q: "What is sold at the Southport Artisan Market?", a: "The market typically features 50+ stalls selling handmade crafts, artwork, jewellery, ceramics, candles, food and drink producers, plants, vintage items, and local artisan goods. The mix of stalls changes each month. Expect to spend time browsing — it is not a quick visit." },
-  { q: "Is the Southport Artisan Market dog friendly?", a: "Dogs on leads are welcome at the outdoor sections of the market. The indoor Southport Market hall has its own rules on dogs — check with individual vendors. Generally, well-behaved dogs on leads are tolerated in the outdoor areas." },
+  { q: "What is sold at the Southport Artisan Market?", a: "The market typically features 50+ stalls selling handmade crafts, artwork, jewellery, ceramics, candles, food and drink producers, plants, vintage items, and local artisan goods. The mix of stalls changes each month. Expect to spend time browsing, it is not a quick visit." },
+  { q: "Is the Southport Artisan Market dog friendly?", a: "Dogs on leads are welcome at the outdoor sections of the market. The indoor Southport Market hall has its own rules on dogs, check with individual vendors. Generally, well-behaved dogs on leads are tolerated in the outdoor areas." },
   { q: "Where can I park for the Southport Artisan Market?", a: "Southport Market is just off Lord Street in the town centre. The nearest car parks are Tulketh Street multi-storey (PR8 1EW, 5 min walk) and Eastbank Street (PR8 1DQ, 7 min walk). Lord Street itself has some on-street parking. Arrive early on busy market days as town centre parking fills up." },
   { q: "Where can I eat at or near the Southport Artisan Market?", a: "Southport Market itself has a permanent food hall with several independent food operators including coffee, street food, and dessert traders. These run every day the market is open, not just on artisan market days. After browsing the artisan stalls, the food hall is the obvious choice." },
 ];
@@ -75,13 +75,15 @@ export default function SouthportArtisanMarketPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#2C1A00] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/southport-artisan-market.jpg" alt="Southport Artisan Market — 50+ independent makers at Southport Market" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2C1A00] via-[#2C1A00]/50 to-[#2C1A00]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#2C1A00] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/southport-artisan-market.jpg" alt="Southport Artisan Market — 50+ independent makers at Southport Market" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">Monthly Event</span>
               <span className="text-white/50 text-sm font-medium">Southport Market · PR8 1EF · Free Entry</span>
@@ -128,8 +130,8 @@ export default function SouthportArtisanMarketPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">The Best Version of Southport Market</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>Southport Market is one of the better things to happen to the town centre in recent years. It took a building that had been sitting underused and turned it into something with genuine energy. The artisan market days — when 50+ independent makers fill the stalls — are the best version of the place.</p>
-              <p>The mix changes month to month. Some of the regulars are excellent — good ceramics, proper food producers, jewellery worth looking at. The food hall that runs alongside it every day is decent for a coffee and something to eat. It is not a tourist trap version of a market. It is the real thing.</p>
+              <p>Southport Market is one of the better things to happen to the town centre in recent years. It took a building that had been sitting underused and turned it into something with genuine energy. The artisan market days, when 50+ independent makers fill the stalls, are the best version of the place.</p>
+              <p>The mix changes month to month. Some of the regulars are excellent, good ceramics, proper food producers, jewellery worth looking at. The food hall that runs alongside it every day is decent for a coffee and something to eat. It is not a tourist trap version of a market. It is the real thing.</p>
               <p>If you are visiting Southport for the first time and you are there on an artisan market day, it should be on your list. If you live here and have not been: you are missing out. Check the Southport Market social pages for exact monthly dates before you go.</p>
             </div>
           </div>
@@ -144,10 +146,10 @@ export default function SouthportArtisanMarketPage() {
             {[
               { emoji: "🎨", title: "Art & Prints", detail: "Original paintings, limited edition prints, photography, and illustrations from local and regional artists. Mix of established sellers and newer makers." },
               { emoji: "🏺", title: "Ceramics & Pottery", detail: "Handmade ceramics from independent potters. Everything from mugs and bowls to decorative pieces. Some of the best stalls at the market." },
-              { emoji: "💍", title: "Jewellery & Accessories", detail: "Handmade jewellery — silver, semi-precious stones, repurposed materials. Not the mass-produced kind you find in high street markets." },
+              { emoji: "💍", title: "Jewellery & Accessories", detail: "Handmade jewellery, silver, semi-precious stones, repurposed materials. Not the mass-produced kind you find in high street markets." },
               { emoji: "🕯️", title: "Candles, Soaps & Wellbeing", detail: "Local makers doing scented candles, artisan soaps, and wellness products. The quality here is generally well above average." },
               { emoji: "🍞", title: "Food & Drink Producers", detail: "Artisan food producers alongside the main craft stalls. Cheese, bread, preserves, honey, and speciality food from local and regional makers." },
-              { emoji: "☕", title: "Southport Market Food Hall", detail: "The permanent food hall runs every day the market is open — not just artisan market days. Coffee, street food, and dessert operators. Worth combining your market visit with lunch here." },
+              { emoji: "☕", title: "Southport Market Food Hall", detail: "The permanent food hall runs every day the market is open, not just artisan market days. Coffee, street food, and dessert operators. Worth combining your market visit with lunch here." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -168,7 +170,7 @@ export default function SouthportArtisanMarketPage() {
               <MapPin className="w-6 h-6 text-[#C9A84C] mb-4" />
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-4">Parking</h3>
               <div className="space-y-2">
-                {["Tulketh Street multi-storey, PR8 1EW — 5 min walk, usually has space", "Eastbank Street car park, PR8 1DQ — 7 min walk", "Lord Street on-street parking — limited, fills early on market days", "Arrive before 10:30am for the best parking options on busy Saturdays"].map((l) => (
+                {["Tulketh Street multi-storey, PR8 1EW. 5 min walk, usually has space", "Eastbank Street car park, PR8 1DQ. 7 min walk", "Lord Street on-street parking, limited, fills early on market days", "Arrive before 10:30am for the best parking options on busy Saturdays"].map((l) => (
                   <div key={l} className="flex gap-2 text-sm text-gray-600"><ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" /><span>{l}</span></div>
                 ))}
               </div>
@@ -177,7 +179,7 @@ export default function SouthportArtisanMarketPage() {
               <MapPin className="w-6 h-6 text-[#C9A84C] mb-4" />
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-4">By Train</h3>
               <div className="space-y-2">
-                {["Southport station — Merseyrail Northern Line from Liverpool Central", "30–40 min direct from Liverpool", "10 min walk from the station to Southport Market", "Good option if town centre parking is likely to be busy"].map((l) => (
+                {["Southport station. Merseyrail Northern Line from Liverpool Central", "30–40 min direct from Liverpool", "10 min walk from the station to Southport Market", "Good option if town centre parking is likely to be busy"].map((l) => (
                   <div key={l} className="flex gap-2 text-sm text-gray-600"><ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" /><span>{l}</span></div>
                 ))}
               </div>
@@ -188,7 +190,7 @@ export default function SouthportArtisanMarketPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Artisan Market — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Artisan Market. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

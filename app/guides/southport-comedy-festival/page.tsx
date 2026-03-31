@@ -36,19 +36,19 @@ export const metadata: Metadata = {
 const CONFIRMED_ACTS = [
   { name: "Henning Wehn", desc: "German Comedy Ambassador to the UK. Regular Mock the Week, Would I Lie to You, QI. Consistently one of the strongest live acts on the circuit." },
   { name: "Gary Delaney", desc: "BAFTA-nominated. The UK's best one-liner comedian. Every sentence is a punchline. Not for people who like build-up jokes." },
-  { name: "Scott Bennett", desc: "Northern comic. Clean, sharp, family-friendly — but funny. Won Best Show at multiple festivals. One of the most consistent live performers around." },
+  { name: "Scott Bennett", desc: "Northern comic. Clean, sharp, family-friendly, but funny. Won Best Show at multiple festivals. One of the most consistent live performers around." },
   { name: "Laura Smyth", desc: "Stand-up comedian and writer. Fresh, sharp material. One of the breakout acts of the past few years on the UK circuit." },
 ];
 
 const FAQS = [
-  { q: "When is the Southport Comedy Festival 2026?", a: "The Southport Comedy Festival 2026 runs from Friday 2 October to Sunday 18 October 2026 — 17 days. It's the 15th annual festival." },
+  { q: "When is the Southport Comedy Festival 2026?", a: "The Southport Comedy Festival 2026 runs from Friday 2 October to Sunday 18 October 2026. 17 days. It's the 15th annual festival." },
   { q: "Where is the Southport Comedy Festival?", a: "The festival takes place in a luxury heated and seated marquee in the grounds of Victoria Park, Southport. The entrance is via the Esplanade, postcode PR8 1RX." },
-  { q: "How do I buy tickets for the Southport Comedy Festival?", a: "Tickets are available through southportcomedyfestival.com, Skiddle, and Ticketmaster. Shows vary in price depending on the act — book early for popular shows as several sell out each year. More acts will be announced through 2026." },
+  { q: "How do I buy tickets for the Southport Comedy Festival?", a: "Tickets are available through southportcomedyfestival.com, Skiddle, and Ticketmaster. Shows vary in price depending on the act, book early for popular shows as several sell out each year. More acts will be announced through 2026." },
   { q: "Who is performing at the Southport Comedy Festival 2026?", a: "Confirmed acts so far include Henning Wehn, Gary Delaney, Scott Bennett, and Laura Smyth. More acts will be announced over the coming months. Check southportcomedyfestival.com for the full programme as it builds." },
   { q: "How many people attend the Southport Comedy Festival?", a: "The 2025 festival attracted over 6,000 attendees with nine sell-out shows. The festival has grown significantly year on year since it began in 2012. It's now a substantial event in the Southport calendar." },
-  { q: "Is the marquee warm?", a: "Yes — the venue is a luxury heated and seated marquee specifically designed for the event. Courtesy of Elite Events. It's comfortable even in a cold October evening. You won't need to wear your coat inside." },
-  { q: "Is there parking at Victoria Park for the comedy festival?", a: "Victoria Park has limited on-site parking. Town centre car parks are the most practical option — 10–15 minutes' walk from the Esplanade entrance. By train: Southport station is approximately 20 minutes' walk. Bus services also run to the town centre." },
-  { q: "Can I go to the comedy festival with children?", a: "Some shows are suitable for families and some are not — it depends entirely on the act. Check the individual show listings at southportcomedyfestival.com for content guidance before booking. Scott Bennett's shows, for example, are generally family-friendly. Others are adult content." },
+  { q: "Is the marquee warm?", a: "Yes, the venue is a luxury heated and seated marquee specifically designed for the event. Courtesy of Elite Events. It's comfortable even in a cold October evening. You won't need to wear your coat inside." },
+  { q: "Is there parking at Victoria Park for the comedy festival?", a: "Victoria Park has limited on-site parking. Town centre car parks are the most practical option. 10–15 minutes' walk from the Esplanade entrance. By train: Southport station is approximately 20 minutes' walk. Bus services also run to the town centre." },
+  { q: "Can I go to the comedy festival with children?", a: "Some shows are suitable for families and some are not, it depends entirely on the act. Check the individual show listings at southportcomedyfestival.com for content guidance before booking. Scott Bennett's shows, for example, are generally family-friendly. Others are adult content." },
 ];
 
 const PAGE_LD = {
@@ -161,11 +161,11 @@ export default function ComedyFestivalPage() {
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>
                 The Comedy Festival has been running since 2012 and has got considerably better each year.
-                The marquee setup works well — heated, seated properly, decent acoustics for a temporary venue.
+                The marquee setup works well, heated, seated properly, decent acoustics for a temporary venue.
                 It feels like a proper theatre, not a converted tent.
               </p>
               <p>
-                The acts they get are genuinely good. Henning Wehn is excellent live — better than on TV.
+                The acts they get are genuinely good. Henning Wehn is excellent live, better than on TV.
                 Gary Delaney is one of the best one-liner comics in the country and Southport gets him
                 on a proper stage in a venue that&apos;s the right size for that kind of comedy.
                 Nine sell-out shows in 2025. This is not a struggling fringe event.
@@ -173,7 +173,7 @@ export default function ComedyFestivalPage() {
               <p>
                 One practical point: the more popular shows sell out well in advance.
                 When they announce the line-up for individual dates, book the shows you want immediately.
-                Don&apos;t wait. The full programme builds up through 2026 — sign up to their mailing list
+                Don&apos;t wait. The full programme builds up through 2026, sign up to their mailing list
                 at southportcomedyfestival.com to get notified when new shows go on sale.
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function ComedyFestivalPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Confirmed So Far</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">2026 Lineup</h2>
             <p className="text-gray-500 text-sm mt-3 max-w-2xl leading-relaxed">
-              First acts confirmed. More to be announced throughout 2026 — check{" "}
+              First acts confirmed. More to be announced throughout 2026, check{" "}
               <a href="https://southportcomedyfestival.com/whats-on" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline font-medium">southportcomedyfestival.com</a>{" "}
               for the full programme as it builds.
             </p>
@@ -222,11 +222,11 @@ export default function ComedyFestivalPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { emoji: "🎪", title: "The Marquee", detail: "A luxury heated and seated marquee in Victoria Park, courtesy of Elite Events. Tiered seating, proper acoustics, a real stage. Comfortable even on a cold October night. Entrance via the Esplanade, PR8 1RX." },
-              { emoji: "🎟️", title: "How to Book", detail: "Tickets via southportcomedyfestival.com, Skiddle, or Ticketmaster. Shows vary in price depending on the act. Book early — popular shows sell out. The full programme builds over the year as new acts are confirmed." },
-              { emoji: "🍺", title: "Bar & Atmosphere", detail: "Bar available at the venue. The atmosphere is that of a proper comedy club night — not a theatre with rules about drinks. The audience is there to enjoy themselves. Shows typically run 60–90 minutes." },
+              { emoji: "🎟️", title: "How to Book", detail: "Tickets via southportcomedyfestival.com, Skiddle, or Ticketmaster. Shows vary in price depending on the act. Book early, popular shows sell out. The full programme builds over the year as new acts are confirmed." },
+              { emoji: "🍺", title: "Bar & Atmosphere", detail: "Bar available at the venue. The atmosphere is that of a proper comedy club night, not a theatre with rules about drinks. The audience is there to enjoy themselves. Shows typically run 60–90 minutes." },
               { emoji: "👨‍👩‍👧", title: "Family Shows", detail: "Some shows are family-friendly, some are adult content. Check individual show listings before booking. Scott Bennett and similar acts are suitable for older children. Gary Delaney is firmly adult." },
-              { emoji: "🚗", title: "Getting There", detail: "Victoria Park Esplanade entrance, PR8 1RX. Town centre car parks 10–15 min walk. Southport train station 20 min walk — or short taxi. Bus services run to the town centre from across the region." },
-              { emoji: "📅", title: "17 Nights", detail: "The festival runs 2 October to 18 October — 17 days. Most nights have one show. Some nights have two shows (early and late). Not all nights are the same act — browse by show rather than by date." },
+              { emoji: "🚗", title: "Getting There", detail: "Victoria Park Esplanade entrance, PR8 1RX. Town centre car parks 10–15 min walk. Southport train station 20 min walk, or short taxi. Bus services run to the town centre from across the region." },
+              { emoji: "📅", title: "17 Nights", detail: "The festival runs 2 October to 18 October. 17 days. Most nights have one show. Some nights have two shows (early and late). Not all nights are the same act, browse by show rather than by date." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -246,7 +246,7 @@ export default function ComedyFestivalPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             {[
               { icon: MapPin, title: "Venue & Getting Here", items: ["Victoria Park Marquee, entrance via Esplanade, PR8 1RX", "Town centre car parks: 10–15 min walk", "Southport railway station: approximately 20 min walk", "Taxi from town centre: 5 min and inexpensive"] },
-              { icon: Clock, title: "Booking Tips", items: ["Book early — 9 shows sold out in 2025", "More acts announced throughout 2026 — sign up to the mailing list", "Check show-specific content guidance before booking for children", "Tickets via southportcomedyfestival.com, Skiddle, or Ticketmaster"] },
+              { icon: Clock, title: "Booking Tips", items: ["Book early. 9 shows sold out in 2025", "More acts announced throughout 2026, sign up to the mailing list", "Check show-specific content guidance before booking for children", "Tickets via southportcomedyfestival.com, Skiddle, or Ticketmaster"] },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
                 <item.icon className="w-6 h-6 text-[#C9A84C] mb-4" />
@@ -268,7 +268,7 @@ export default function ComedyFestivalPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Comedy Festival — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Southport Comedy Festival. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (
@@ -293,7 +293,7 @@ export default function ComedyFestivalPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="https://southportcomedyfestival.com/whats-on" target="_blank" rel="noopener noreferrer"
               className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">
-              Get Tickets — southportcomedyfestival.com
+              Get Tickets, southportcomedyfestival.com
             </a>
             <Link href="/hotels" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">
               Hotels in Southport →

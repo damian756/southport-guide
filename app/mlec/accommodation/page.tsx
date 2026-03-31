@@ -67,12 +67,12 @@ const AREAS = [
     badge: "Closest",
     badgeColor: "bg-green-100 text-green-800",
     description:
-      "Right on the doorstep of MLEC. Staying on the Promenade means you can walk to the venue in minutes — ideal for shows that finish late, or if you want to catch The Light Fantastic water show before heading back to your room. A handful of hotels sit directly on the seafront with views across Marine Lake.",
+      "Right on the doorstep of MLEC. Staying on the Promenade means you can walk to the venue in minutes, ideal for shows that finish late, or if you want to catch The Light Fantastic water show before heading back to your room. A handful of hotels sit directly on the seafront with views across Marine Lake.",
     tips: [
-      "Best choice for late-night events — no transport needed",
+      "Best choice for late-night events, no transport needed",
       "Walk home along the illuminated Promenade",
       "Watch The Light Fantastic from your hotel (select rooms)",
-      "Book very early — limited stock at this proximity",
+      "Book very early, limited stock at this proximity",
     ],
   },
   {
@@ -81,7 +81,7 @@ const AREAS = [
     badge: "Best Value",
     badgeColor: "bg-amber-100 text-amber-800",
     description:
-      "Southport's town centre has the widest range of accommodation options — from boutique hotels on Lord Street to budget B&Bs tucked down the side streets. The walk to MLEC along the Promenade is a genuine pleasure: past King's Gardens, along the coast, with the lake on one side. Worth the extra ten minutes.",
+      "Southport's town centre has the widest range of accommodation options, from boutique hotels on Lord Street to budget B&Bs tucked down the side streets. The walk to MLEC along the Promenade is a genuine pleasure: past King's Gardens, along the coast, with the lake on one side. Worth the extra ten minutes.",
     tips: [
       "Biggest choice of price points and styles",
       "Lord Street restaurants and bars on your doorstep",
@@ -95,11 +95,11 @@ const AREAS = [
     badge: "Residential",
     badgeColor: "bg-blue-100 text-blue-800",
     description:
-      "The leafy suburbs south of Southport offer a quieter, more residential feel — particularly good for families or those who prefer to be away from the town centre buzz. B&Bs and smaller guest houses dominate here. Getting to MLEC means a taxi or a longer walk, but Birkdale village has its own excellent restaurant and pub scene.",
+      "The leafy suburbs south of Southport offer a quieter, more residential feel, particularly good for families or those who prefer to be away from the town centre buzz. B&Bs and smaller guest houses dominate here. Getting to MLEC means a taxi or a longer walk, but Birkdale village has its own excellent restaurant and pub scene.",
     tips: [
-      "Good for families — quieter environment",
+      "Good for families, quieter environment",
       "Birkdale village has excellent restaurants pre-show",
-      "Pre-book a taxi for the return journey — don't rely on hailing one late at night",
+      "Pre-book a taxi for the return journey, don't rely on hailing one late at night",
       "Merseyrail from Birkdale to Southport station (2 min), then walk/taxi",
     ],
   },
@@ -111,7 +111,7 @@ const AREAS = [
     description:
       "If MLEC accommodation in Southport itself is fully booked (which will happen for big shows), Formby and Ormskirk are sensible fallbacks. Both are on the Merseyrail Northern Line into Southport, with direct trains taking around 20–30 minutes. Not ideal for a spontaneous last drink, but perfectly workable for planned events.",
     tips: [
-      "Check Merseyrail timetables — last trains can be early",
+      "Check Merseyrail timetables, last trains can be early",
       "Formby has a useful town centre with food options",
       "Ideal if you're attending a matinée rather than an evening show",
       "Useful backup when Southport hotels sell out for major events",
@@ -123,7 +123,7 @@ const BOOKING_TIPS = [
   {
     icon: Clock,
     title: "Book Early for Big Shows",
-    body: "For major concerts or sell-out events at MLEC, Southport hotels will fill up fast — just as they do for The Open or the Air Show. For anything remotely high-profile, book accommodation the day tickets go on sale, not after.",
+    body: "For major concerts or sell-out events at MLEC, Southport hotels will fill up fast, just as they do for The Open or the Air Show. For anything remotely high-profile, book accommodation the day tickets go on sale, not after.",
   },
   {
     icon: MapPin,
@@ -138,7 +138,7 @@ const BOOKING_TIPS = [
   {
     icon: Waves,
     title: "Ask for Lake Views",
-    body: "Promenade hotels with lake-facing rooms will have views of The Light Fantastic water show directly from the window. Worth asking when booking — it turns a good stay into a memorable one.",
+    body: "Promenade hotels with lake-facing rooms will have views of The Light Fantastic water show directly from the window. Worth asking when booking, it turns a good stay into a memorable one.",
   },
 ];
 
@@ -187,7 +187,7 @@ export default function MLECAccommodationPage() {
             <p className="text-amber-800 font-semibold text-sm mb-1">Terry's Quick Take</p>
             <p className="text-amber-900 text-base leading-relaxed">
               Staying within walking distance of MLEC is the play. The Promenade walk from the town centre is
-              genuinely lovely — King's Gardens on one side, the lake on the other — so even if you're 15 minutes away
+              genuinely lovely. King's Gardens on one side, the lake on the other, so even if you're 15 minutes away
               on foot, it's not a hardship. But for late shows, proximity matters. Book early.
               When MLEC opens and word spreads, Southport accommodation will fill faster than it ever has.
             </p>
@@ -258,7 +258,7 @@ export default function MLECAccommodationPage() {
             <div>
               <h2 className="text-2xl font-extrabold text-white mb-2">Browse All Southport Hotels</h2>
               <p className="text-slate-300">
-                All hotels, B&Bs and serviced apartments listed on SouthportGuide — from budget to luxury.
+                All hotels, B&Bs and serviced apartments listed on SouthportGuide, from budget to luxury.
               </p>
             </div>
             <Link

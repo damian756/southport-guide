@@ -10,12 +10,12 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Southport Guides | The Complete Local Guide Collection",
   description:
-    "All of SouthportGuide's editorial guides in one place — beaches, events, areas, practical info, and food & drink. Written by locals. Updated regularly.",
+    "All of SouthportGuide's editorial guides in one place, beaches, events, areas, practical info, and food & drink. Written by locals. Updated regularly.",
   alternates: { canonical: `${BASE_URL}/guides` },
   openGraph: {
     title: "Southport Guides",
     description:
-      "The complete collection of Southport local guides — beaches, events, neighbourhoods, parking, and where to eat. Written by someone who lives here.",
+      "The complete collection of Southport local guides, beaches, events, neighbourhoods, parking, and where to eat. Written by someone who lives here.",
     url: `${BASE_URL}/guides`,
     images: [{ url: `${BASE_URL}/southport-pier.webp` }],
   },
@@ -35,7 +35,7 @@ const COLLECTION_LD = {
   "@type": "CollectionPage",
   name: "Southport Guides",
   description:
-    "The complete collection of editorial guides to Southport — beaches, events, areas, practical info, and food & drink.",
+    "The complete collection of editorial guides to Southport, beaches, events, areas, practical info, and food & drink.",
   url: `${BASE_URL}/guides`,
   publisher: {
     "@type": "Organization",
@@ -106,7 +106,7 @@ export default function GuidesIndexPage() {
                 </div>
               </div>
               <p className="text-white/80 text-lg leading-relaxed max-w-2xl mb-6">
-                The beach, the pier, the big events, where to park, where to eat — all of it,
+                The beach, the pier, the big events, where to park, where to eat, all of it,
                 properly written by people who live here. More added regularly.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -138,7 +138,7 @@ export default function GuidesIndexPage() {
             </h2>
             <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
               SouthportGuide reaches visitors actively planning their trip. 
-              List your business and appear in relevant guides — the beach guide shows beach cafés, 
+              List your business and appear in relevant guides, the beach guide shows beach cafés, 
               the Birkdale guide shows Birkdale businesses, automatically.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

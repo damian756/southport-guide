@@ -27,9 +27,9 @@ const FAQS = [
   { q: "What is the Sefton Open?", a: "The Sefton Open is an annual open art exhibition held at The Atkinson on Lord Street, Southport. It is an open submission exhibition where artists from across Sefton and the wider region submit work to be selected and displayed. Categories typically include painting, drawing, sculpture, print, photography, and mixed media." },
   { q: "When is the Sefton Open 2026?", a: "The Sefton Open 2026 runs from Thursday 2 April to Saturday 13 June 2026 at The Atkinson, Lord Street, Southport (PR8 1DB). It is open during normal Atkinson gallery hours." },
   { q: "How much does it cost to see the Sefton Open?", a: "Entry to the Sefton Open is free. The Atkinson gallery is free to visit. No tickets or booking is required." },
-  { q: "Can I buy work from the Sefton Open?", a: "Yes — work in the Sefton Open is generally for sale. Prices and purchase arrangements are handled through The Atkinson. Speak to the gallery staff if you are interested in buying a piece." },
+  { q: "Can I buy work from the Sefton Open?", a: "Yes, work in the Sefton Open is generally for sale. Prices and purchase arrangements are handled through The Atkinson. Speak to the gallery staff if you are interested in buying a piece." },
   { q: "How do I get to The Atkinson for the Sefton Open?", a: "The Atkinson is on Lord Street, Southport, PR8 1DB. Parking at Tulketh Street multi-storey (PR8 1EW, 5 min walk) or Eastbank Street car park. Train: Southport station is 10 min walk via Lord Street." },
-  { q: "Can artists submit work to the Sefton Open?", a: "Yes — the Sefton Open is an open submission exhibition. Submission details, deadlines, and eligibility criteria are published by The Atkinson each year. Check the Atkinson website for the submission process for future exhibitions." },
+  { q: "Can artists submit work to the Sefton Open?", a: "Yes, the Sefton Open is an open submission exhibition. Submission details, deadlines, and eligibility criteria are published by The Atkinson each year. Check the Atkinson website for the submission process for future exhibitions." },
 ];
 
 const PAGE_LD = {
@@ -64,13 +64,15 @@ export default function SeftonOpenPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
-      <div className="relative min-h-[75vh] flex items-end bg-[#0A2E3D] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/guides/sefton-open-2026.jpg" alt="Sefton Open 2026 at The Atkinson Southport — free art exhibition" fill sizes="100vw" quality={90} className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E3D] via-[#0A2E3D]/50 to-[#0A2E3D]/10" />
-        </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
-          <div className="max-w-3xl">
+      <div className="bg-[#0A2E3D] text-white overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="flex flex-col md:flex-row md:min-h-[72vh]">
+          {/* Poster */}
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
+            <Image src="/images/guides/sefton-open-2026.jpg" alt="Sefton Open 2026 at The Atkinson Southport — free art exhibition" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+          </div>
+          {/* Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">2 Apr – 13 Jun 2026</span>
               <span className="text-white/50 text-sm font-medium">The Atkinson · Lord Street · Free Entry</span>
@@ -115,7 +117,7 @@ export default function SeftonOpenPage() {
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">The Best of What Local Artists Are Making Right Now</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>The Sefton Open is the exhibition I go to every year without having to think about it. It runs from April, so it is the thing that is on when you visit in Easter or spring. Two and a half months at The Atkinson. Free. No pretence about it.</p>
-              <p>It is an open exhibition — any artist from the area can submit. That means the quality varies and there is always something that makes you think the selection panel had a generous day. It also means there are always a few things that are genuinely excellent. The discovery element is part of the appeal.</p>
+              <p>It is an open exhibition, any artist from the area can submit. That means the quality varies and there is always something that makes you think the selection panel had a generous day. It also means there are always a few things that are genuinely excellent. The discovery element is part of the appeal.</p>
               <p>The work is for sale. The prices are reasonable by the standards of original art. If you visit and find something you want on your wall, you can buy it through the gallery. Worth knowing.</p>
             </div>
           </div>
@@ -128,12 +130,12 @@ export default function SeftonOpenPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "🎨", title: "Painting & Drawing", detail: "The largest category — oil, watercolour, acrylic, gouache, and mixed media. Landscapes, portraits, abstracts, and observational work from artists across Sefton and the north-west." },
-              { emoji: "🖼️", title: "Print", detail: "Printmaking including etching, screen print, linocut, and lithography. Often strong in open exhibitions — the discipline of printmaking tends to produce focused, considered work." },
+              { emoji: "🎨", title: "Painting & Drawing", detail: "The largest category, oil, watercolour, acrylic, gouache, and mixed media. Landscapes, portraits, abstracts, and observational work from artists across Sefton and the north-west." },
+              { emoji: "🖼️", title: "Print", detail: "Printmaking including etching, screen print, linocut, and lithography. Often strong in open exhibitions, the discipline of printmaking tends to produce focused, considered work." },
               { emoji: "🏺", title: "Sculpture & 3D", detail: "Three-dimensional work including sculpture, ceramics, and installation. The Atkinson gallery has good space for larger pieces." },
               { emoji: "📷", title: "Photography", detail: "Fine art photography as part of the exhibition selection. Local and regional photographers submitting work alongside the other disciplines." },
-              { emoji: "🎭", title: "Mixed Media", detail: "Work that does not fit neatly into a single category — collage, textiles, assemblage, and pieces combining multiple techniques." },
-              { emoji: "💰", title: "Work for Sale", detail: "Most work in the Sefton Open is priced for sale. Speak to gallery staff for details of any piece. Original art from local artists at accessible prices — this is one of the better opportunities to buy something that means something." },
+              { emoji: "🎭", title: "Mixed Media", detail: "Work that does not fit neatly into a single category, collage, textiles, assemblage, and pieces combining multiple techniques." },
+              { emoji: "💰", title: "Work for Sale", detail: "Most work in the Sefton Open is priced for sale. Speak to gallery staff for details of any piece. Original art from local artists at accessible prices, this is one of the better opportunities to buy something that means something." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -147,7 +149,7 @@ export default function SeftonOpenPage() {
         <section id="faq" className="scroll-mt-28">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Sefton Open 2026 — FAQs</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Sefton Open 2026. FAQs</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {FAQS.map((faq) => (

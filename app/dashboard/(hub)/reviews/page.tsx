@@ -170,7 +170,7 @@ export default async function ReviewsPage({
 
           {/* Rating trend */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-            <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-4">Rating trend — last 90 days</h2>
+            <h2 className="font-display text-lg font-bold text-[#1B2E4B] mb-4">Rating trend, last 90 days</h2>
             {chartSnapshots.length >= 2 ? (
               <div className="overflow-x-auto">
                 <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full max-w-lg" style={{ height: svgHeight }}>

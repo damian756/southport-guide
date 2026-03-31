@@ -165,7 +165,7 @@ export default function PricingPage() {
         {/* The Open 2026 */}
         <div className="bg-[#1B2E4B] rounded-2xl p-6 text-white">
           <h3 className="font-display font-bold text-lg mb-2 flex items-center gap-2">
-            🏌️ The Open 2026 — Royal Birkdale
+            🏌️ The Open 2026, Royal Birkdale
           </h3>
           <p className="text-white/80 text-sm">
             Limited to one slot per category. 6 of 11 category slots available.

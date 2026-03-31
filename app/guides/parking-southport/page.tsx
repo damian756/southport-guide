@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Parking in Southport | Car Parks, Prices & Tips",
     description:
-      "Where to park in Southport — car parks near the beach, Lord Street, and the town centre. Prices, postcodes, and which ones fill first on a summer Saturday.",
+      "Where to park in Southport, car parks near the beach, Lord Street, and the town centre. Prices, postcodes, and which ones fill first on a summer Saturday.",
     url: `${BASE_URL}/guides/parking-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: "Where is the best place to park near Southport Beach?",
-    a: "Marine Drive car park (PR8 1RQ) is the main option for beach parking — it runs alongside the promenade and beach. It's a large car park so it can accommodate significant numbers, but it does fill on busy summer Saturdays and during the Air Show. Arrive before 10am in peak season to be safe.",
+    a: "Marine Drive car park (PR8 1RQ) is the main option for beach parking, it runs alongside the promenade and beach. It's a large car park so it can accommodate significant numbers, but it does fill on busy summer Saturdays and during the Air Show. Arrive before 10am in peak season to be safe.",
   },
   {
     q: "Where should I park for Lord Street?",
@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Is there parking near Southport Pier?",
-    a: "Yes — Marine Drive car park is the closest to Southport Pier, approximately 5 minutes' walk. The Promenade car park (PR8 1RQ) is also nearby.",
+    a: "Yes. Marine Drive car park is the closest to Southport Pier, approximately 5 minutes' walk. The Promenade car park (PR8 1RQ) is also nearby.",
   },
   {
     q: "What is the postcode for Southport beach parking?",
@@ -48,18 +48,18 @@ const FAQS = [
   },
   {
     q: "Is there EV charging in Southport?",
-    a: "Yes, but provision is patchy. Confirmed EV charging points exist at the NCP on London Street, the Morrisons on Meols Cop Road, and at several hotel car parks. Coverage is improving but it is not universal — check Zap-Map or our parking directory (filter by EV charging) before you travel if it is essential.",
+    a: "Yes, but provision is patchy. Confirmed EV charging points exist at the NCP on London Street, the Morrisons on Meols Cop Road, and at several hotel car parks. Coverage is improving but it is not universal, check Zap-Map or our parking directory (filter by EV charging) before you travel if it is essential.",
   },
   {
     q: "Can I park free on the street in Southport?",
-    a: "On-street parking on residential streets north of Lord Street (off Roe Lane, Scarisbrick Avenue, and similar streets) is often free on weekdays. Some areas have residents' permit requirements. Check the signs — enforcement is active in the centre. Summer weekends reduce your free options considerably.",
+    a: "On-street parking on residential streets north of Lord Street (off Roe Lane, Scarisbrick Avenue, and similar streets) is often free on weekdays. Some areas have residents' permit requirements. Check the signs, enforcement is active in the centre. Summer weekends reduce your free options considerably.",
   },
 ];
 
 const CAR_PARKS = [
-  { name: "Marine Drive (Beach)", postcode: "PR8 1RQ", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays — arrive early.", href: "/parking/parking-southport-marine-drive-car-park" },
+  { name: "Marine Drive (Beach)", postcode: "PR8 1RQ", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays, arrive early.", href: "/parking/parking-southport-marine-drive-car-park" },
   { name: "Esplanade", postcode: "PR8 1RX", best: "Beach, seafront", notes: "Pay-and-display on the Esplanade, steps from the sand.", href: "/parking/parking-esplanade-parking" },
-  { name: "NCP London Street", postcode: "PR8 1QU", best: "Town centre, Lord Street", notes: "Multi-storey. Covered — good in wet weather. Central for Lord Street.", href: "/parking/parking-ncp-southport-london-street" },
+  { name: "NCP London Street", postcode: "PR8 1QU", best: "Town centre, Lord Street", notes: "Multi-storey. Covered, good in wet weather. Central for Lord Street.", href: "/parking/parking-ncp-southport-london-street" },
   { name: "Tulketh Street", postcode: "PR8 1DP", best: "Lord Street (north)", notes: "Convenient for The Atkinson and northern Lord Street." },
   { name: "Eastbank Street", postcode: "PR8 1DG", best: "Lord Street (central)", notes: "Multi-storey. Central for Lord Street shopping." },
   { name: "Market Street", postcode: "PR8 1HH", best: "Town centre, Market", notes: "Good for the market hall and southern Lord Street." },
@@ -69,9 +69,9 @@ const CAR_PARKS = [
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Parking in Southport — Complete Guide",
+  name: "Parking in Southport. Complete Guide",
   description:
-    "Where to park in Southport — car parks near the beach, Lord Street, and the town centre. Prices, postcodes, and tips from a local.",
+    "Where to park in Southport, car parks near the beach, Lord Street, and the town centre. Prices, postcodes, and tips from a local.",
   url: `${BASE_URL}/guides/parking-southport`,
 };
 
@@ -156,7 +156,7 @@ export default function ParkingSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Southport Car Parks at a Glance</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            The table below covers the main car parks. Use the postcode in your satnav — Southport&apos;s one-way system means the approach matters.
+            The table below covers the main car parks. Use the postcode in your satnav. Southport&apos;s one-way system means the approach matters.
           </p>
           <div className="overflow-x-auto rounded-2xl border border-gray-100">
             <table className="w-full text-sm">
@@ -203,11 +203,11 @@ export default function ParkingSouthportGuidePage() {
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
               <span className="mr-2">⚠️</span>
-              On summer Saturdays and during the Air Show, Marine Drive fills by around 10–11am. If you&apos;re arriving later, have a backup plan — the town centre car parks are a 10–15 minute walk from the beach.
+              On summer Saturdays and during the Air Show, Marine Drive fills by around 10–11am. If you&apos;re arriving later, have a backup plan, the town centre car parks are a 10–15 minute walk from the beach.
             </p>
           </div>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Promenade car park (same postcode area) is adjacent and slightly less busy. Both are pay-and-display. Prices are lower here than in the town centre — worth it if you&apos;re spending the day at the beach rather than shopping.
+            The Promenade car park (same postcode area) is adjacent and slightly less busy. Both are pay-and-display. Prices are lower here than in the town centre, worth it if you&apos;re spending the day at the beach rather than shopping.
           </p>
           <p className="text-gray-700 leading-relaxed">
             The train is worth considering for busy days. Southport station is about 15 minutes&apos; walk from the beach via Lord Street, and avoids the parking stress entirely. Merseyrail runs regularly from Liverpool.
@@ -221,7 +221,7 @@ export default function ParkingSouthportGuidePage() {
             For shopping on Lord Street, Tulketh Street car park (PR8 1DP) is the most convenient for the northern end near The Atkinson. Eastbank Street multi-storey (PR8 1DG) serves the central stretch and has more capacity.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Free on-street parking is usually available on residential side streets running north from Lord Street — off Roe Lane, Scarisbrick Avenue, and similar. Check the signs carefully; some areas have permit requirements.
+            Free on-street parking is usually available on residential side streets running north from Lord Street, off Roe Lane, Scarisbrick Avenue, and similar. Check the signs carefully; some areas have permit requirements.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Weekday mornings in term time are the easiest time to park. Saturday mornings in summer are the hardest.
@@ -294,12 +294,12 @@ export default function ParkingSouthportGuidePage() {
               {
                 icon: MapPin,
                 title: "Blue badge bays",
-                body: "Blue badge holders can park in designated bays throughout the town centre and on Marine Drive. Several car parks have specific blue badge sections — check the car park entrance boards.",
+                body: "Blue badge holders can park in designated bays throughout the town centre and on Marine Drive. Several car parks have specific blue badge sections, check the car park entrance boards.",
               },
               {
                 icon: CreditCard,
                 title: "Payment methods",
-                body: "Most Southport car parks now accept contactless card payment. Some still require cash for short stays — it's worth having coins as a backup.",
+                body: "Most Southport car parks now accept contactless card payment. Some still require cash for short stays, it's worth having coins as a backup.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="bg-white rounded-2xl border border-gray-100 p-6">

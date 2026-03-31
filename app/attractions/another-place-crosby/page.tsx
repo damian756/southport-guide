@@ -7,7 +7,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Another Place by Antony Gormley | Crosby Beach Guide",
   description:
-    "One hundred cast-iron figures on Crosby Beach — Antony Gormley's Another Place is one of the most powerful works of public art in England. Everything you need to visit: tide times, parking, photography, and how to get there.",
+    "One hundred cast-iron figures on Crosby Beach. Antony Gormley's Another Place is one of the most powerful works of public art in England. Everything you need to visit: tide times, parking, photography, and how to get there.",
   keywords:
     "Another Place Crosby, Antony Gormley Crosby Beach, Crosby Beach iron men, Another Place art installation, Antony Gormley iron men, Crosby Beach Southport",
   alternates: { canonical: `${BASE_URL}/attractions/another-place-crosby` },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     title: "Another Place by Antony Gormley | Crosby Beach",
     description:
-      "100 cast-iron figures, each a cast of Gormley's own body, spread across 3km of tidal beach. One of England's most powerful works of public art — and completely free to visit.",
+      "100 cast-iron figures, each a cast of Gormley's own body, spread across 3km of tidal beach. One of England's most powerful works of public art, and completely free to visit.",
     url: `${BASE_URL}/attractions/another-place-crosby`,
     images: [{ url: `${BASE_URL}/southport-pier.webp`, width: 1200, height: 630, alt: "Another Place by Antony Gormley, Crosby Beach" }],
   },
@@ -84,7 +84,7 @@ const faqLd = {
       name: "What is the best time to visit Another Place?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Low tide reveals the most figures — at high tide, many are submerged. Sunset is the most dramatic time visually: the figures are silhouetted against the sky and the light across the Irish Sea can be extraordinary. Check tide times before you visit — low tide around 90 minutes before sunset is the ideal combination.",
+        text: "Low tide reveals the most figures, at high tide, many are submerged. Sunset is the most dramatic time visually: the figures are silhouetted against the sky and the light across the Irish Sea can be extraordinary. Check tide times before you visit, low tide around 90 minutes before sunset is the ideal combination.",
       },
     },
     {
@@ -92,7 +92,7 @@ const faqLd = {
       name: "How far is Crosby Beach from Southport?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Crosby Beach is approximately 14 miles south of Southport town centre — around 25-30 minutes by car. By Merseyrail, take any Southport line train toward Liverpool and change at Blundellsands & Crosby or Hall Road stations, both within a short walk of the beach.",
+        text: "Crosby Beach is approximately 14 miles south of Southport town centre, around 25-30 minutes by car. By Merseyrail, take any Southport line train toward Liverpool and change at Blundellsands & Crosby or Hall Road stations, both within a short walk of the beach.",
       },
     },
     {
@@ -100,7 +100,7 @@ const faqLd = {
       name: "Is it safe to walk out to the figures?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The figures closest to the promenade are safe to visit at all tide states. Do not walk out to figures at the far end of the installation — the tide at Crosby can come in quickly and the outer figures are submerged at high water. Stay within 100 metres of the promenade if in any doubt, and always check tide times before visiting.",
+        text: "The figures closest to the promenade are safe to visit at all tide states. Do not walk out to figures at the far end of the installation, the tide at Crosby can come in quickly and the outer figures are submerged at high water. Stay within 100 metres of the promenade if in any doubt, and always check tide times before visiting.",
       },
     },
     {
@@ -108,7 +108,7 @@ const faqLd = {
       name: "Can I touch the figures?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — the figures are not behind barriers and visitors regularly touch, photograph, and interact with them. Many figures have accumulated barnacles, seaweed, and marine growth, which has become part of the artwork. Some visitors dress figures with hats, scarves, and other items.",
+        text: "Yes, the figures are not behind barriers and visitors regularly touch, photograph, and interact with them. Many figures have accumulated barnacles, seaweed, and marine growth, which has become part of the artwork. Some visitors dress figures with hats, scarves, and other items.",
       },
     },
   ],
@@ -118,25 +118,25 @@ const GETTING_THERE = [
   {
     icon: Train,
     title: "By Train (recommended)",
-    detail: "Merseyrail Southport line — alight at Hall Road or Blundellsands & Crosby stations. Both are a short walk from the beach. Trains run every 15 minutes from Liverpool Central and connect from Southport. From Southport, journey time is approximately 40 minutes.",
-    tip: "Check Merseyrail.org for live departures. The stations are small — there's no ticket office, buy before you travel or use the Avanti/Merseyrail app.",
+    detail: "Merseyrail Southport line, alight at Hall Road or Blundellsands & Crosby stations. Both are a short walk from the beach. Trains run every 15 minutes from Liverpool Central and connect from Southport. From Southport, journey time is approximately 40 minutes.",
+    tip: "Check Merseyrail.org for live departures. The stations are small, there's no ticket office, buy before you travel or use the Avanti/Merseyrail app.",
   },
   {
     icon: Car,
     title: "By Car",
-    detail: "From Southport: A565 south through Formby and Crosby — 25-30 minutes. From Liverpool city centre: A565 north, approximately 25 minutes. Parking at Hall Road West car park (L23 8SY) — usually free or low charge. Crosby Leisure Centre car park is a short walk further north.",
+    detail: "From Southport: A565 south through Formby and Crosby. 25-30 minutes. From Liverpool city centre: A565 north, approximately 25 minutes. Parking at Hall Road West car park (L23 8SY), usually free or low charge. Crosby Leisure Centre car park is a short walk further north.",
     tip: "The sat-nav postcode L23 8SY brings you to the Hall Road car park, which is the closest to the main cluster of figures.",
   },
 ];
 
 const PHOTOGRAPHY_TIPS = [
-  "Low tide gives you the most figures — aim to arrive 1-2 hours after high tide starts receding",
-  "Golden hour (30-60 minutes before sunset) produces the best light — figures are backlit against the sky",
+  "Low tide gives you the most figures, aim to arrive 1-2 hours after high tide starts receding",
+  "Golden hour (30-60 minutes before sunset) produces the best light, figures are backlit against the sky",
   "A wide-angle lens captures multiple figures and the scale of the installation",
-  "Get low — shooting at figure-height rather than standing height changes the composition completely",
+  "Get low, shooting at figure-height rather than standing height changes the composition completely",
   "The figures face west: morning light is behind you (front-lit), evening light is dramatic side or backlight",
-  "Overcast days produce even, dramatic skies — don't write off grey February mornings",
-  "Include a person in frame occasionally to give scale — each figure is life-size but people underestimate them",
+  "Overcast days produce even, dramatic skies, don't write off grey February mornings",
+  "Include a person in frame occasionally to give scale, each figure is life-size but people underestimate them",
 ];
 
 export default function AnotherPlacePage() {
@@ -177,7 +177,7 @@ export default function AnotherPlacePage() {
             </h1>
             <p className="text-white/70 text-xl max-w-2xl mb-8 leading-relaxed">
               One hundred cast-iron figures face out to sea across three kilometres of tidal beach. Each one a cast of Gormley&apos;s
-              own body. One of the most quietly powerful works of public art in England — and completely free.
+              own body. One of the most quietly powerful works of public art in England, and completely free.
             </p>
 
             {/* Quick facts */}
@@ -218,7 +218,7 @@ export default function AnotherPlacePage() {
                   except somewhere like this.
                 </p>
                 <p>
-                  Technically, this is Crosby — about 14 miles south of Southport. But for anyone visiting Southport and the
+                  Technically, this is Crosby, about 14 miles south of Southport. But for anyone visiting Southport and the
                   surrounding area, Another Place is a non-negotiable addition to the itinerary. Go at low tide. Go at sunset
                   if you can manage it. The combination is as good as public art gets in England.
                 </p>
@@ -238,7 +238,7 @@ export default function AnotherPlacePage() {
                 <h3 className="font-display text-lg font-bold text-[#1B2E4B] mb-3">The Figures</h3>
                 <div className="space-y-3 text-gray-600 text-sm leading-relaxed">
                   <p>
-                    Each of the 100 figures is a cast of Gormley&apos;s own body — made during the early 1990s using his actual
+                    Each of the 100 figures is a cast of Gormley&apos;s own body, made during the early 1990s using his actual
                     physical form as the mould. They weigh 650 kilos each. They stand between 1.5 and 1.85 metres tall, depending
                     on how deep the sand beneath them has shifted over the years. All of them face west, toward the horizon, toward
                     the sea.
@@ -260,7 +260,7 @@ export default function AnotherPlacePage() {
                   </p>
                   <p>
                     Sefton Council voted to keep them permanently after a public campaign and considerable debate about safety,
-                    shipping lane interference (the figures are technically in a shipping lane), and — inevitably — whether art
+                    shipping lane interference (the figures are technically in a shipping lane), and, inevitably, whether art
                     belongs on a functional beach. The permanent status was confirmed in 2007.
                     Twenty years later, they&apos;ve become as much a part of Crosby Beach as the sand.
                   </p>
@@ -271,7 +271,7 @@ export default function AnotherPlacePage() {
                 <h3 className="font-display text-lg font-bold text-[#1B2E4B] mb-3">Gormley&apos;s Intent</h3>
                 <div className="space-y-3 text-gray-600 text-sm leading-relaxed">
                   <p>
-                    Gormley has described Another Place as an exploration of the relationship between a person and the world —
+                    Gormley has described Another Place as an exploration of the relationship between a person and the world,
                     each figure confronting the horizon, the future, the unknown. The figures don&apos;t move. They stand and look
                     outward. Unlike so much public sculpture, they don&apos;t perform or gesture. They simply are.
                   </p>
@@ -287,12 +287,12 @@ export default function AnotherPlacePage() {
                 <h3 className="font-display text-lg font-bold text-[#1B2E4B] mb-3">What Visitors Find</h3>
                 <div className="space-y-3 text-gray-600 text-sm leading-relaxed">
                   <p>
-                    At low tide, dozens of figures are visible simultaneously — stretching down the beach into the distance,
+                    At low tide, dozens of figures are visible simultaneously, stretching down the beach into the distance,
                     becoming smaller, becoming abstract. The effect is quietly overwhelming. People regularly stop and stand
                     still when they first see the full installation.
                   </p>
                   <p>
-                    Many figures are dressed by visitors — hats, scarves, flags, hi-vis jackets during major football
+                    Many figures are dressed by visitors, hats, scarves, flags, hi-vis jackets during major football
                     tournaments. This unplanned participation has become part of the work. Gormley has expressed approval.
                     The figures accumulate the town&apos;s character over time.
                   </p>
@@ -320,7 +320,7 @@ export default function AnotherPlacePage() {
                 {
                   emoji: "🌅",
                   title: "Time of day",
-                  desc: "Sunset is exceptional — the figures are silhouetted against the western sky and the light across the Irish Sea can be extraordinary. Combine low tide with the hour before sunset for the best possible visit.",
+                  desc: "Sunset is exceptional, the figures are silhouetted against the western sky and the light across the Irish Sea can be extraordinary. Combine low tide with the hour before sunset for the best possible visit.",
                   tag: "Best experience",
                   tagColor: "bg-amber-100 text-amber-700",
                 },
@@ -345,7 +345,7 @@ export default function AnotherPlacePage() {
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-4">
               <Waves className="w-5 h-5 text-amber-500 flex-none mt-0.5" />
               <div>
-                <p className="font-bold text-amber-800 text-sm mb-1">Tide safety — read before visiting</p>
+                <p className="font-bold text-amber-800 text-sm mb-1">Tide safety, read before visiting</p>
                 <div className="text-amber-700 text-sm space-y-1 leading-relaxed">
                   <p>The figures near the promenade are safe at all tide states. The outer figures are in the tidal zone and are submerged at high tide.</p>
                   <p><strong>Do not walk to the furthest figures without checking tide times.</strong> The tide at Crosby comes in faster than expected and can cut off return routes. Keep within 100 metres of the promenade if in any doubt, particularly with children.</p>
@@ -408,10 +408,10 @@ export default function AnotherPlacePage() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
                   { label: "Address", value: "Hall Road West, Crosby, L23 8SY" },
-                  { label: "Admission", value: "Free — open 24 hours, 365 days" },
+                  { label: "Admission", value: "Free, open 24 hours, 365 days" },
                   { label: "Parking", value: "Free at Hall Road West car park" },
                   { label: "Nearest station", value: "Hall Road (Merseyrail)" },
-                  { label: "From Southport", value: "14 miles — 25–30 min by car" },
+                  { label: "From Southport", value: "14 miles. 25–30 min by car" },
                   { label: "Dogs", value: "Welcome on leads" },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex gap-2 text-sm">
@@ -430,7 +430,7 @@ export default function AnotherPlacePage() {
           <section>
             <div className="text-center mb-10">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Common Questions</p>
-              <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Another Place — FAQs</h2>
+              <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Another Place. FAQs</h2>
             </div>
             <div className="max-w-3xl mx-auto space-y-4">
               {faqLd.mainEntity.map((faq) => (
@@ -456,19 +456,19 @@ export default function AnotherPlacePage() {
                 {
                   emoji: "🚤",
                   title: "Crosby Lakeside Adventure Centre",
-                  desc: "Sailing, kayaking, paddleboarding, and open-water swimming — 10 minutes from the Gormley installation.",
+                  desc: "Sailing, kayaking, paddleboarding, and open-water swimming. 10 minutes from the Gormley installation.",
                   href: "/activities",
                 },
                 {
                   emoji: "🐿️",
                   title: "Formby Red Squirrel Reserve",
-                  desc: "National Trust pine woodland where native red squirrels still live. 8 miles north — easy to combine for a full day.",
+                  desc: "National Trust pine woodland where native red squirrels still live. 8 miles north, easy to combine for a full day.",
                   href: "/beaches-parks",
                 },
                 {
                   emoji: "🌊",
                   title: "Southport Beach & Pier",
-                  desc: "30 minutes north — a completely different coastal experience. England's second-longest pier and 22 miles of beach.",
+                  desc: "30 minutes north, a completely different coastal experience. England's second-longest pier and 22 miles of beach.",
                   href: "/things-to-do",
                 },
               ].map((item) => (
@@ -493,7 +493,7 @@ export default function AnotherPlacePage() {
             <h2 className="font-display text-2xl font-bold mb-3">More to Do in and Around Southport</h2>
             <p className="text-white/60 max-w-xl mx-auto mb-7 text-sm leading-relaxed">
               Crosby Beach is 14 miles from Southport town centre. Our complete guide covers every beach, attraction, golf course,
-              and neighbourhood — with the practical details that the official tourism sites leave out.
+              and neighbourhood, with the practical details that the official tourism sites leave out.
             </p>
             <Link
               href="/things-to-do"

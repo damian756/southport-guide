@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dog-Friendly Southport | Beach, Walks, Pubs & Cafés | SouthportGuide",
     description:
-      "Southport is genuinely dog-friendly — beach access, off-lead walks, dog-welcoming pubs and cafés. The complete guide for dogs and their people.",
+      "Southport is genuinely dog-friendly, beach access, off-lead walks, dog-welcoming pubs and cafés. The complete guide for dogs and their people.",
     url: `${BASE_URL}/guides/dog-friendly-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -33,30 +33,30 @@ const FAQS = [
   },
   {
     q: "Can dogs be off-lead at Southport Beach?",
-    a: "Dogs can be off-lead on the unrestricted sections of the beach — particularly the northern end and Ainsdale beach just south of Southport. The beach is wide and there's space to run. Be aware of other beach users and any specific byelaws posted on site.",
+    a: "Dogs can be off-lead on the unrestricted sections of the beach, particularly the northern end and Ainsdale beach just south of Southport. The beach is wide and there's space to run. Be aware of other beach users and any specific byelaws posted on site.",
   },
   {
     q: "Is Ainsdale beach dog-friendly?",
-    a: "Ainsdale beach, just south of Southport, is very dog-friendly and popular with dog owners precisely because it has fewer restrictions than the central Southport beach section. It's a National Nature Reserve — dogs must be kept under control near the dunes and nature reserve areas. Good parking at Ainsdale-on-Sea (PR8 2PZ).",
+    a: "Ainsdale beach, just south of Southport, is very dog-friendly and popular with dog owners precisely because it has fewer restrictions than the central Southport beach section. It's a National Nature Reserve, dogs must be kept under control near the dunes and nature reserve areas. Good parking at Ainsdale-on-Sea (PR8 2PZ).",
   },
   {
     q: "Are dogs allowed in Southport town centre?",
-    a: "Dogs are welcome on Lord Street and in general outdoor areas. Many independent shops and cafés on Lord Street and in Birkdale Village are dog-friendly — look for the water bowl outside or ask at the door. Larger chain stores vary.",
+    a: "Dogs are welcome on Lord Street and in general outdoor areas. Many independent shops and cafés on Lord Street and in Birkdale Village are dog-friendly, look for the water bowl outside or ask at the door. Larger chain stores vary.",
   },
   {
     q: "Are there dog-friendly pubs in Southport?",
-    a: "Yes — several Southport pubs welcome dogs, particularly those with outdoor seating areas or a more traditional pub character. The Hesketh Arms in Churchtown is a classic dog-welcoming village pub. Most pubs along the seafront are generally accommodating. Always worth phoning ahead for evening visits.",
+    a: "Yes, several Southport pubs welcome dogs, particularly those with outdoor seating areas or a more traditional pub character. The Hesketh Arms in Churchtown is a classic dog-welcoming village pub. Most pubs along the seafront are generally accommodating. Always worth phoning ahead for evening visits.",
   },
   {
     q: "Where can I walk my dog near Southport?",
-    a: "Best options: Southport Beach (northern end, year-round), Ainsdale Beach and Dunes (great off-lead space), Hesketh Park in Churchtown (well-maintained park, popular with dog walkers), the Marine Drive Promenade (the full length is dog-friendly and gives excellent sea views), and the RSPB Marshside coastal saltmarsh path on Redshank Road — flat, exposed, tidal pools, dogs on leads, five minutes from Churchtown.",
+    a: "Best options: Southport Beach (northern end, year-round), Ainsdale Beach and Dunes (great off-lead space), Hesketh Park in Churchtown (well-maintained park, popular with dog walkers), the Marine Drive Promenade (the full length is dog-friendly and gives excellent sea views), and the RSPB Marshside coastal saltmarsh path on Redshank Road, flat, exposed, tidal pools, dogs on leads, five minutes from Churchtown.",
   },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Dog-Friendly Southport — Complete Guide",
+  name: "Dog-Friendly Southport. Complete Guide",
   description:
     "Beach access, dog-welcoming pubs and cafés, and the best walks in Southport for dogs and their owners.",
   url: `${BASE_URL}/guides/dog-friendly-southport`,
@@ -102,7 +102,7 @@ export default async function DogFriendlySouthportGuidePage() {
             Dog-Friendly Southport
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-            Southport is genuinely good for dogs — most of the beach, the full Promenade,
+            Southport is genuinely good for dogs, most of the beach, the full Promenade,
             and a decent number of pubs and cafés that actually mean it when they say welcome.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
@@ -143,16 +143,16 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Dogs on Southport Beach</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport Beach is one of the widest in England — there&apos;s genuinely room for everyone, including dogs. The restrictions that do exist are limited to a specific central section and specific seasonal hours. For most visitors with dogs, the northern end of the beach is the practical answer.
+            Southport Beach is one of the widest in England, there&apos;s genuinely room for everyone, including dogs. The restrictions that do exist are limited to a specific central section and specific seasonal hours. For most visitors with dogs, the northern end of the beach is the practical answer.
           </p>
 
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6">
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-amber-600 flex-none mt-0.5" />
               <div>
-                <p className="font-semibold text-amber-900 text-sm mb-1">Seasonal restrictions — central beach section</p>
+                <p className="font-semibold text-amber-900 text-sm mb-1">Seasonal restrictions, central beach section</p>
                 <p className="text-amber-800 text-sm leading-relaxed">
-                  Between May 1 and September 30, dogs are restricted on the central section of Southport Beach (the area near the funfair and main promenade) during certain hours. The northern section — past the funfair, toward Ainsdale — has no restrictions. Signs on site show the current boundaries.
+                  Between May 1 and September 30, dogs are restricted on the central section of Southport Beach (the area near the funfair and main promenade) during certain hours. The northern section, past the funfair, toward Ainsdale, has no restrictions. Signs on site show the current boundaries.
                 </p>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default async function DogFriendlySouthportGuidePage() {
             In practice, most dog owners head straight for the northern end regardless. It&apos;s less busy, the sand is better, and the access from Marine Drive is straightforward. Postcode for the northern parking area: <strong>PR8 1RL</strong>.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            The Promenade (Marine Drive) runs the full length of the seafront and is completely dog-friendly year-round. It&apos;s tarmacked and easily walkable — a good option on days when you don&apos;t want to deal with sand.
+            The Promenade (Marine Drive) runs the full length of the seafront and is completely dog-friendly year-round. It&apos;s tarmacked and easily walkable, a good option on days when you don&apos;t want to deal with sand.
           </p>
         </section>
 
@@ -170,7 +170,7 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Ainsdale Beach and Dunes</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Ainsdale beach is a 5-minute drive south of Southport and is one of the best dog-walking destinations on the Sefton coast. It&apos;s a National Nature Reserve, so dogs must be kept under control near the dunes and designated areas — but the beach itself has excellent off-lead space.
+            Ainsdale beach is a 5-minute drive south of Southport and is one of the best dog-walking destinations on the Sefton coast. It&apos;s a National Nature Reserve, so dogs must be kept under control near the dunes and designated areas, but the beach itself has excellent off-lead space.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Parking at Ainsdale-on-Sea: postcode <strong>PR8 2PZ</strong>. Paid car park. The beach is a short walk from the car park through the dunes.
@@ -195,7 +195,7 @@ export default async function DogFriendlySouthportGuidePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
-              <p className="text-white font-semibold text-sm">RSPB Marshside coastal saltmarsh walk — dogs on leads, Ribble Estuary Special Protection Area</p>
+              <p className="text-white font-semibold text-sm">RSPB Marshside coastal saltmarsh walk, dogs on leads, Ribble Estuary Special Protection Area</p>
             </div>
           </div>
 
@@ -204,7 +204,7 @@ export default async function DogFriendlySouthportGuidePage() {
               {
                 name: "Southport Beach (north end)",
                 postcode: "PR8 1RL",
-                notes: "Year-round, no restrictions on the northern stretch. Wide and flat — good for any dog.",
+                notes: "Year-round, no restrictions on the northern stretch. Wide and flat, good for any dog.",
               },
               {
                 name: "Marine Drive Promenade",
@@ -214,10 +214,10 @@ export default async function DogFriendlySouthportGuidePage() {
               {
                 name: "Ainsdale Beach and Dunes",
                 postcode: "PR8 2PZ",
-                notes: "NNR — dogs under control near dunes. Excellent open beach for off-lead running.",
+                notes: "NNR, dogs under control near dunes. Excellent open beach for off-lead running.",
               },
               {
-                name: "RSPB Marshside — coastal saltmarsh walk",
+                name: "RSPB Marshside, coastal saltmarsh walk",
                 postcode: "SD 353204",
                 notes: "The coastal path on the Redshank Road side of the sea wall. Flat, exposed, tidal pools and a big estuary sky. Dogs on leads throughout. Part of the Ribble Estuary Special Protection Area. Car park £1.50/£3, RSPB members free. Five minutes from Churchtown.",
               },
@@ -250,7 +250,7 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Dog-Friendly Pubs</h2>
           <p className="text-gray-700 leading-relaxed mb-5">
-            A number of Southport pubs are genuinely dog-friendly — water bowls outside, dogs allowed inside, no fuss. These are the most reliably welcoming:
+            A number of Southport pubs are genuinely dog-friendly, water bowls outside, dogs allowed inside, no fuss. These are the most reliably welcoming:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {[
@@ -267,7 +267,7 @@ export default async function DogFriendlySouthportGuidePage() {
               {
                 name: "Seafront pubs (Marine Drive)",
                 location: "Promenade",
-                notes: "Several pubs along the seafront are accommodating — particularly those with outdoor seating areas. Worth checking before evening visits.",
+                notes: "Several pubs along the seafront are accommodating, particularly those with outdoor seating areas. Worth checking before evening visits.",
               },
               {
                 name: "Birkdale Village pubs",
@@ -289,7 +289,7 @@ export default async function DogFriendlySouthportGuidePage() {
             );})}
           </div>
           <p className="text-gray-500 text-sm mt-4">
-            Always phone ahead for evening visits — policies and capacity change. A quick call saves a difficult conversation on the doorstep.
+            Always phone ahead for evening visits, policies and capacity change. A quick call saves a difficult conversation on the doorstep.
           </p>
         </section>
 
@@ -297,7 +297,7 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Dog-Friendly Cafés</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The better independent cafés in Southport tend to be more dog-friendly than the chains. Look for a water bowl outside — that&apos;s usually the signal. Several on Lord Street and in Birkdale Village welcome dogs, particularly those with outdoor seating.
+            The better independent cafés in Southport tend to be more dog-friendly than the chains. Look for a water bowl outside, that&apos;s usually the signal. Several on Lord Street and in Birkdale Village welcome dogs, particularly those with outdoor seating.
           </p>
           <p className="text-gray-700 leading-relaxed">
             The Botanic Gardens café in Churchtown is dog-friendly (the gardens themselves are dog-friendly on leads). Good for a post-walk coffee with the dog.
@@ -305,7 +305,7 @@ export default async function DogFriendlySouthportGuidePage() {
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
               <span className="mr-2">☕</span>
-              For a full list of good cafés, see the <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] hover:underline font-semibold">Best Cafés in Southport guide</Link>. Most independent cafés listed there are dog-friendly or have outdoor seating — worth checking the notes.
+              For a full list of good cafés, see the <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] hover:underline font-semibold">Best Cafés in Southport guide</Link>. Most independent cafés listed there are dog-friendly or have outdoor seating, worth checking the notes.
             </p>
           </div>
         </section>
@@ -315,11 +315,11 @@ export default async function DogFriendlySouthportGuidePage() {
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Practical Tips</h2>
           <ul className="space-y-3">
             {[
-              "Bag dispensers are available at the main beach access points — but bring your own to be safe.",
+              "Bag dispensers are available at the main beach access points, but bring your own to be safe.",
               "Fresh water on the beach is limited. Bring a travel bowl and water for longer outings.",
-              "During the Air Show (August), Southport Beach gets very crowded — not ideal for anxious dogs.",
+              "During the Air Show (August), Southport Beach gets very crowded, not ideal for anxious dogs.",
               "Parking at the northern beach end (PR8 1RL) is the quickest route to the unrestricted section.",
-              "Nearest vet: several practices in Southport town centre — search 'vet Southport PR8' for current options.",
+              "Nearest vet: several practices in Southport town centre, search 'vet Southport PR8' for current options.",
             ].map((tip) => (
               <li key={tip} className="flex gap-3 text-gray-700">
                 <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>

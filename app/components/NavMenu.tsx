@@ -112,7 +112,7 @@ export default function NavMenu() {
             <div className="grid grid-cols-2 gap-1.5 mb-4">
               <Link href="/things-to-do" onClick={() => setExploreOpen(false)}
                 className="col-span-2 flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm hover:bg-[#2A4A73] transition-colors">
-                <span className="font-semibold">Things to Do — Full Guide</span>
+                <span className="font-semibold">Things to Do. Full Guide</span>
               </Link>
               <Link href="/events" onClick={() => setExploreOpen(false)}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] text-[#1B2E4B] text-xs font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
@@ -184,13 +184,24 @@ export default function NavMenu() {
             <Link href="/guides" onClick={() => setGuidesOpen(false)}
               className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm hover:bg-[#2A4A73] transition-colors mb-3">
               <BookOpen className="w-4 h-4 flex-none text-[#C9A84C]" />
-              <span className="font-semibold">All Guides — Full Index</span>
+              <span className="font-semibold">All Guides. Full Index</span>
             </Link>
             {/* Top 2 per category */}
             {(["events", "beaches-coast", "areas", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
+              const today = new Date().toISOString().slice(0, 10);
               const catGuides = publishedGuides
                 .filter((g) => g.category === cat)
-                .sort((a, b) => b.seoPriority - a.seoPriority);
+                .sort((a, b) => {
+                  if (cat === "events") {
+                    const aDate = a.eventDate ?? "9999-12-31";
+                    const bDate = b.eventDate ?? "9999-12-31";
+                    const aUpcoming = aDate >= today;
+                    const bUpcoming = bDate >= today;
+                    if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+                    if (aDate !== bDate) return aDate.localeCompare(bDate);
+                  }
+                  return b.seoPriority - a.seoPriority;
+                });
               if (catGuides.length === 0) return null;
               const { label, emoji } = GUIDE_CATEGORIES[cat];
               const top = catGuides.slice(0, 2);
@@ -361,7 +372,7 @@ export default function NavMenu() {
             </div>
             <Link href="/the-open-2026" onClick={() => setMobileOpen(false)}
               className="flex items-center gap-2 px-4 py-3 rounded-xl bg-amber-50 text-[#B8972A] text-sm font-bold">
-              🏌️ The Open Championship — 12–19 July · Royal Birkdale
+              🏌️ The Open Championship. 12–19 July · Royal Birkdale
             </Link>
             <div className="grid grid-cols-2 gap-1.5">
               {(() => {
