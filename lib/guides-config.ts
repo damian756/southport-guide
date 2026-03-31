@@ -823,6 +823,29 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes"],
     },
   },
+
+  // ── Practical: Autism and sensory ────────────────────────────────────────
+  {
+    slug: "autism-friendly-southport",
+    title: "Autism Friendly Southport",
+    shortTitle: "Autism Friendly",
+    description: "Sensory-friendly venues, quiet beaches, and honest advice for autistic visitors and their families planning a trip to Southport.",
+    excerpt:
+      "Autism friendly Southport — a practical guide for autistic visitors and families. Quiet beaches, calm venues, which events to avoid, parking close to entrances, and the honest picture of what works and what does not.",
+    category: "practical",
+    heroImage: "/images/autism-logo.png",
+    seoPriority: 0.85,
+    datePublished: "2026-03-31",
+    dateUpdated: "2026-03-31",
+    tags: ["autism", "sensory-friendly", "accessibility", "family-friendly"],
+    status: "published",
+    metaTitle: "Autism Friendly Southport | Sensory-Friendly Guide for Visitors",
+    metaDescription:
+      "Autism friendly Southport — quiet beaches, calm venues, sensory-friendly days out, and honest advice about which events to avoid. A practical guide for autistic visitors and their families.",
+    listingFilter: {
+      tags: ["sensory-friendly"],
+    },
+  },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────

@@ -207,6 +207,20 @@ export const COLLECTIONS: Collection[] = [
     priority: 0.85,
   },
 
+  // ── Sensory-friendly ─────────────────────────────────────────────────────
+  {
+    slug: "sensory-friendly-southport",
+    title: "Sensory-Friendly Places in Southport",
+    metaDescription:
+      "Sensory-friendly places in Southport — calm venues, open spaces, and businesses welcoming to autistic visitors and those with sensory sensitivities.",
+    intro:
+      "Some places in Southport are naturally easier — open outdoor spaces, quieter galleries, calm cafes without background music blaring. These are the venues and attractions that tend to work well for autistic visitors and families with sensory sensitivities. Not every place on this list will suit every person, but they are the ones worth knowing about before you plan your day.",
+    tags: ["sensory-friendly"],
+    categorySlugs: ["attractions", "activities", "cafes", "restaurants", "beaches-parks"],
+    emoji: "🧩",
+    priority: 0.8,
+  },
+
   // ── Free / budget-friendly ────────────────────────────────────────────────
   {
     slug: "free-things-to-do-southport",

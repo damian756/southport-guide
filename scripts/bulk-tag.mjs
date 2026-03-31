@@ -225,6 +225,22 @@ const RULES = [
     },
   },
   {
+    tag: "sensory-friendly",
+    test: (b) => {
+      const h = haystack(b);
+      const name = (b.name ?? "").toLowerCase();
+      // Explicitly sensory-aware
+      if (/sensory[- ]friendly/i.test(h) || /autism[- ]friendly/i.test(h) || /neurodivergent/i.test(h) || /autism\s+hour/i.test(h) || /quiet\s+hour/i.test(h)) return true;
+      // Known calm outdoor venues by name
+      if (/botanic\s+garden/i.test(name) || /hesketh\s+park/i.test(name) || /king.?s\s+garden/i.test(name) || /marine\s+lake/i.test(name) || /marshside/i.test(name)) return true;
+      // Galleries, museums, libraries by description
+      if ((/\bgallery\b/i.test(h) || /\bmuseum\b/i.test(h) || /\blibrary\b/i.test(h)) && !/nightclub/i.test(h) && !/bar/i.test(h)) return true;
+      // Botanical / nature reserves
+      if (/botanical/i.test(h) || /nature\s+reserve/i.test(h) || /wildlife\s+reserve/i.test(h)) return true;
+      return false;
+    },
+  },
+  {
     tag: "golf",
     test: (b) => {
       const h = haystack(b);
