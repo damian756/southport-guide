@@ -282,7 +282,7 @@ export const COLLECTIONS: Collection[] = [
     slug: "free-things-to-do-southport",
     title: "Free Things to Do in Southport",
     metaDescription:
-      "Free things to do in Southport — beaches, parks, parks and attractions that cost nothing. The honest local list.",
+      "Free things to do in Southport — the beach, Botanic Gardens, Southport Pier, Victoria Park, Marine Lake, and 30+ more attractions that cost nothing. Updated local list.",
     intro:
       "Southport has more free things to do than most seaside towns — the beach is free, the Promenade is free, the Botanic Gardens in Churchtown are free, and the pier is free to walk. These are the attractions, outdoor spaces, and activities in and around Southport that genuinely cost nothing. Good for families on a budget.",
     tags: ["free"],

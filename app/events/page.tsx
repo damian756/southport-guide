@@ -9,18 +9,18 @@ import MonthFilter from "./MonthFilter";
 export const revalidate = 3600; // Refresh hourly so Eventbrite sync appears
 
 export const metadata = {
-  title: "What's On in Southport 2026 | Events Calendar",
+  title: "Southport Events 2026 | What's On This Weekend & All Year",
   description:
-    "The complete guide to events in Southport in 2026. From The Open Championship to the Flower Show, Comedy Festival and more, updated regularly.",
+    "The full Southport events calendar for 2026 — The Open Championship, Flower Show, Air Show, Comedy Festival and more. Updated weekly by locals.",
   alternates: { canonical: "https://www.southportguide.co.uk/events" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "What's On in Southport 2026 | Events Calendar",
-    description: "The complete guide to events in Southport in 2026. From The Open Championship to the Flower Show, Comedy Festival and more — updated regularly.",
+    title: "Southport Events 2026 | What's On This Weekend & All Year",
+    description: "The full Southport events calendar for 2026 — The Open Championship, Flower Show, Air Show, Comedy Festival and more. Updated weekly by locals.",
     url: "https://www.southportguide.co.uk/events",
-    images: [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630, alt: "Events in Southport 2026" }],
+    images: [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630, alt: "Southport Events Calendar 2026" }],
   },
 };
 

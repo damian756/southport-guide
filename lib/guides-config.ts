@@ -80,7 +80,7 @@ export const GUIDES: Guide[] = [
     title: "Southport Beach",
     description: "One of England's widest beaches. Postcode, parking, dogs, tides, and what to expect.",
     excerpt:
-      "Southport Beach guide — postcode PR8 1RX, parking on Marine Drive, dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
+      "Southport Beach guide — parking postcode PR8 1RQ (Marine Drive), dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
     category: "beaches-coast",
     heroImage: "/images/southport-beach.webp",
     seoPriority: 0.92,
@@ -92,9 +92,9 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes", "activities", "attractions"],
       tags: ["beach", "seafront"],
     },
-    metaTitle: "Southport Beach Guide | Postcode PR8 1RX, Parking, Dogs & Tips",
+    metaTitle: "Southport Beach Guide | Parking PR8 1RQ, Dogs, Tide Times & Tips",
     metaDescription:
-      "Southport Beach — postcode PR8 1RX, free parking on Marine Drive, dogs welcome year-round, tide times, facilities and honest local advice. One of England's widest beaches.",
+      "Southport Beach — parking postcode PR8 1RQ (Marine Drive), dogs welcome year-round, tide times, facilities and honest local advice. One of England's widest beaches.",
   },
   {
     slug: "southport-pier",

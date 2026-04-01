@@ -88,11 +88,11 @@ const QUICK_LINKS = [
 const FAQS = [
   {
     q: "What is the postcode for Southport Beach?",
-    a: "The postcode for Southport Beach and the Promenade is PR8 1RX. This will take you to the Marine Drive area, right alongside the beach and Marine Lake. For satnav, use Marine Drive, Southport, PR8 1RX.",
+    a: "The main parking postcode for Southport Beach is PR8 1RQ — this is Marine Drive, the pay-and-display car park running along the seafront promenade. The Esplanade car park (PR8 1RX) is a smaller alternative 50m from the sand near Adventure Coast. For satnav, use PR8 1RQ.",
   },
   {
     q: "Is there parking at Southport Beach?",
-    a: "Yes. There is free parking along Marine Drive and the Promenade, parking bays line much of the seafront road. During peak summer weekends, these fill early. There are also pay-and-display car parks near the Promenade. The town centre has additional parking a 10-minute walk away.",
+    a: "Yes. Marine Drive (PR8 1RQ) is the main beach car park — pay-and-display bays running along the promenade. The Esplanade car park (PR8 1RX) is a smaller pay-and-display option near Adventure Coast. Ocean Plaza (PR8 1SQ) is free for shoppers. On summer weekends, Marine Drive fills by mid-morning — arrive before 10am or use town centre parking and walk (12 minutes).",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
@@ -134,12 +134,12 @@ const PAGE_LD = {
     "@type": "PostalAddress",
     streetAddress: "Marine Drive",
     addressLocality: "Southport",
-    postalCode: "PR8 1RX",
+    postalCode: "PR8 1RQ",
     addressCountry: "GB",
   },
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Dogs allowed", value: true },
-    { "@type": "LocationFeatureSpecification", name: "Free parking", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Paid parking", value: true },
     { "@type": "LocationFeatureSpecification", name: "Toilets", value: true },
   ],
 };
@@ -184,7 +184,7 @@ export default async function SouthportBeachGuidePage() {
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
                 Southport Guide
               </span>
-              <span className="text-white/50 text-sm font-medium">PR8 1RX · Marine Drive</span>
+              <span className="text-white/50 text-sm font-medium">PR8 1RQ · Marine Drive</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               Southport
@@ -237,8 +237,8 @@ export default async function SouthportBeachGuidePage() {
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">The quick answers</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
-              { icon: MapPin, label: "Postcode", value: "PR8 1RX", sub: "Marine Drive" },
-              { icon: Car, label: "Parking", value: "Free", sub: "Marine Drive bays" },
+              { icon: MapPin, label: "Postcode", value: "PR8 1RQ", sub: "Marine Drive" },
+              { icon: Car, label: "Parking", value: "Pay & display", sub: "Marine Drive" },
               { icon: Dog, label: "Dogs", value: "Welcome", sub: "Year-round" },
               { icon: Waves, label: "Swimming", value: "Caution", sub: "Check tides first" },
               { icon: Clock, label: "Open", value: "Always", sub: "No entry fee" },
@@ -425,7 +425,7 @@ export default async function SouthportBeachGuidePage() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {[
-                    { location: "Marine Drive bays", cost: "Free", distance: "On the seafront", notes: "Street parking along the Promenade, fills fast on summer weekends", href: "/parking/parking-southport-marine-drive-car-park" },
+                    { location: "Marine Drive (PR8 1RQ)", cost: "Pay & display", distance: "On the seafront", notes: "Main beach car park. Pay-and-display bays along the promenade. Fills fast on summer weekends", href: "/parking/parking-southport-marine-drive-car-park" },
                     { location: "Esplanade car park", cost: "Pay & display", distance: "50m from beach", notes: "Pay-and-display, near Adventure Coast and Splash World", href: "/parking/parking-esplanade-parking" },
                     { location: "Ocean Plaza", cost: "Free (shoppers)", distance: "5 min walk", notes: "Free with retail. Asda, cinema, and other stores nearby" },
                     { location: "Town centre NCP", cost: "Pay & display", distance: "10–12 min walk", notes: "Multiple town centre car parks available, well-signed", href: "/parking/parking-ncp-southport-london-street" },
@@ -465,8 +465,8 @@ export default async function SouthportBeachGuidePage() {
               </div>
               <div>
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Satnav Postcode</p>
-                <p className="text-white font-mono text-2xl font-bold mb-1">PR8 1RX</p>
-                <p className="text-white/60 text-sm">Marine Drive, Southport, this puts you right on the seafront road alongside the beach and Marine Lake.</p>
+                <p className="text-white font-mono text-2xl font-bold mb-1">PR8 1RQ</p>
+                <p className="text-white/60 text-sm">Marine Drive, Southport — the main pay-and-display car park running alongside the beach and Marine Lake.</p>
               </div>
             </div>
           </div>
