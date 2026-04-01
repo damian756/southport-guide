@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { LATEROOMS } from "@/lib/affiliate-links";
 import {
   Waves,
   MapPin,
@@ -1020,13 +1021,23 @@ export default function ThingsToDoPage() {
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Restaurants</h3>
                 <p className="text-gray-500 text-sm">The best places to eat, from Lord Street fine dining to seafront fish and chips.</p>
               </Link>
-              <Link href="/hotels" className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-[#FAF8F5] transition">
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition">
-                  <Users className="w-7 h-7 text-blue-600" />
-                </div>
-                <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Hotels</h3>
-                <p className="text-gray-500 text-sm">From The Vincent on Lord Street to B&amp;Bs in Birkdale. Accommodation for every budget.</p>
-              </Link>
+              <div className="flex flex-col items-center text-center p-6 rounded-xl">
+                <Link href="/hotels" className="group flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition">
+                    <Users className="w-7 h-7 text-blue-600" />
+                  </div>
+                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Hotels</h3>
+                  <p className="text-gray-500 text-sm">From The Vincent on Lord Street to B&amp;Bs in Birkdale. Accommodation for every budget.</p>
+                </Link>
+                <a
+                  href={LATEROOMS.southport}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="mt-3 text-xs font-semibold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors"
+                >
+                  Compare prices on LateRooms →
+                </a>
+              </div>
               <Link href="/bars-nightlife" className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-[#FAF8F5] transition">
                 <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-4 group-hover:bg-purple-100 transition">
                   <Wine className="w-7 h-7 text-purple-600" />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Hotel, MapPin, Clock, Star, ChevronRight, ArrowRight, Waves, CheckCircle } from "lucide-react";
+import { LATEROOMS } from "@/lib/affiliate-links";
 
 export const metadata = {
   title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs",
@@ -251,6 +252,25 @@ export default function MLECAccommodationPage() {
             ))}
           </div>
         </section>
+
+        {/* LateRooms partner CTA */}
+        <div className="bg-gradient-to-r from-[#1B2E4B] to-[#2A4A73] rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
+          <div className="flex-1 text-center sm:text-left">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Partner</p>
+            <h3 className="font-display text-xl font-bold text-white mb-2">Compare Southport Hotel Prices</h3>
+            <p className="text-white/70 text-sm leading-relaxed">
+              Over 100,000 UK properties. Free cancellation and pay-later flexibility on most rooms.
+            </p>
+          </div>
+          <a
+            href={LATEROOMS.southport}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+          >
+            Search on LateRooms →
+          </a>
+        </div>
 
         {/* CTA */}
         <section className="bg-slate-900 text-white rounded-2xl p-8 md:p-10">

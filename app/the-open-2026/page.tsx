@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Hotel, Utensils, Car, MapPin, CalendarDays, ArrowRight, ExternalLink, Trophy, ChevronRight, AlertTriangle } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/southport-data";
+import { LATEROOMS } from "@/lib/affiliate-links";
 
 export const metadata = {
   title: "The Open 2026 at Royal Birkdale | Hotels, Tickets & Visitor Guide",
@@ -488,12 +489,22 @@ export default function TheOpen2026Page() {
                 </div>
               ))}
             </div>
-            <Link
-              href="/the-open-2026/accommodation"
-              className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
-            >
-              View accommodation options <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/the-open-2026/accommodation"
+                className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
+              >
+                View accommodation options <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href={LATEROOMS.southportOpen2026}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
+              >
+                Search LateRooms for Open Week →
+              </a>
+            </div>
           </div>
         </section>
 

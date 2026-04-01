@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ChevronRight } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
+import { LATEROOMS } from "@/lib/affiliate-links";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
 import type { MapPin as MapPinType } from "@/components/CategoryMapTypes";
 
@@ -483,6 +484,24 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                   <p className="text-[13px] text-gray-500 leading-relaxed">
                     {CATEGORY_CONTENT[category][0]}
                   </p>
+                </div>
+              )}
+
+              {category === "hotels" && (
+                <div className="bg-[#1B2E4B] rounded-2xl p-4 text-center">
+                  <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">Partner</p>
+                  <p className="text-white text-sm font-semibold mb-1">Compare prices on LateRooms</p>
+                  <p className="text-white/60 text-xs leading-relaxed mb-3">
+                    UK&apos;s biggest range of accommodation. Free cancellation on most rooms.
+                  </p>
+                  <a
+                    href={LATEROOMS.southport}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-4 py-2 rounded-full transition-colors"
+                  >
+                    Search Southport →
+                  </a>
                 </div>
               )}
             </div>

@@ -21,22 +21,20 @@ export const metadata: Metadata = {
   },
 };
 
-// Distance data — measured from Royal Birkdale Golf Club main entrance
-// Search-based URLs — guaranteed to work, no 404 risk.
-// Replace with CJ affiliate deep links once approved.
-const BOOKING_BASE = "https://www.booking.com/searchresults.html?checkin=2026-07-12&checkout=2026-07-19&dest_type=hotel&ss=";
+import { LATEROOMS } from "@/lib/affiliate-links";
 
+// Distance data — measured from Royal Birkdale Golf Club main entrance
 const HOTELS_BY_DISTANCE = [
-  { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible. Book months ahead.", bookingUrl: BOOKING_BASE + "Birkdale%2C+Southport%2C+UK" },
-  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest. Luxury boutique.", bookingUrl: BOOKING_BASE + "The+Vincent+Hotel+Southport" },
-  { name: "Ramada Plaza Southport", distance: "1.1 miles", walk: "22 min", drive: "5 min", price: "£££", note: "Large hotel, conference facilities, seafront", bookingUrl: BOOKING_BASE + "Ramada+Plaza+Southport" },
-  { name: "Holiday Inn Southport", distance: "1.3 miles", walk: "26 min", drive: "6 min", price: "££", note: "Reliable chain, good availability", bookingUrl: BOOKING_BASE + "Holiday+Inn+Southport" },
-  { name: "Scarisbrick Hotel", distance: "1.4 miles", walk: "28 min", drive: "6 min", price: "££", note: "Historic Lord Street hotel, character property", bookingUrl: BOOKING_BASE + "Scarisbrick+Hotel+Southport" },
-  { name: "Premier Inn Southport", distance: "1.5 miles", walk: "30 min", drive: "7 min", price: "£", note: "Best-value option, book early for Open week", bookingUrl: BOOKING_BASE + "Premier+Inn+Southport" },
-  { name: "The Bold Hotel", distance: "1.6 miles", walk: "32 min", drive: "7 min", price: "££", note: "Boutique hotel on Lord Street, popular with golfers", bookingUrl: BOOKING_BASE + "The+Bold+Hotel+Southport" },
-  { name: "The Metropole Hotel", distance: "1.7 miles", walk: "34 min", drive: "8 min", price: "££", note: "Victorian seafront hotel, traditional atmosphere", bookingUrl: BOOKING_BASE + "Metropole+Hotel+Southport" },
-  { name: "Travelodge Southport", distance: "1.8 miles", walk: "36 min", drive: "8 min", price: "£", note: "Budget-friendly, no frills, functional", bookingUrl: BOOKING_BASE + "Travelodge+Southport" },
-  { name: "Royal Clifton Hotel", distance: "2.0 miles", walk: "40 min", drive: "9 min", price: "££", note: "Seafront location, sea views from upper floors", bookingUrl: BOOKING_BASE + "Royal+Clifton+Hotel+Southport" },
+  { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible. Book months ahead." },
+  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest. Luxury boutique." },
+  { name: "Ramada Plaza Southport", distance: "1.1 miles", walk: "22 min", drive: "5 min", price: "£££", note: "Large hotel, conference facilities, seafront" },
+  { name: "Holiday Inn Southport", distance: "1.3 miles", walk: "26 min", drive: "6 min", price: "££", note: "Reliable chain, good availability" },
+  { name: "Scarisbrick Hotel", distance: "1.4 miles", walk: "28 min", drive: "6 min", price: "££", note: "Historic Lord Street hotel, character property" },
+  { name: "Premier Inn Southport", distance: "1.5 miles", walk: "30 min", drive: "7 min", price: "£", note: "Best-value option, book early for Open week" },
+  { name: "The Bold Hotel", distance: "1.6 miles", walk: "32 min", drive: "7 min", price: "££", note: "Boutique hotel on Lord Street, popular with golfers" },
+  { name: "The Metropole Hotel", distance: "1.7 miles", walk: "34 min", drive: "8 min", price: "££", note: "Victorian seafront hotel, traditional atmosphere" },
+  { name: "Travelodge Southport", distance: "1.8 miles", walk: "36 min", drive: "8 min", price: "£", note: "Budget-friendly, no frills, functional" },
+  { name: "Royal Clifton Hotel", distance: "2.0 miles", walk: "40 min", drive: "9 min", price: "££", note: "Seafront location, sea views from upper floors" },
 ];
 
 const AREA_GUIDE = [
@@ -104,7 +102,7 @@ const FAQS = [
 const TIPS = [
   "Book tonight, every day you wait, availability decreases and prices rise",
   "Self-catering sleeps groups more cheaply than multiple hotel rooms",
-  "Check Booking.com and direct hotel websites. Rates differ.",
+  "Check LateRooms and direct hotel websites. Rates differ.",
   "Ask your accommodation about parking during Open week. On-site parking is worth its weight.",
   "Some hotels offer shuttle packages. Worth asking when you call.",
   "If your first choice is full, call the hotel directly. Some allocations aren't listed online.",
@@ -254,10 +252,10 @@ export default async function OpenAccommodationPage() {
                         <td className="px-4 py-4 text-gray-700 font-semibold">{h.price}</td>
                         <td className="px-4 py-4">
                           <a
-                            href={h.bookingUrl}
+                            href={LATEROOMS.southportOpen2026}
                             target="_blank"
                             rel="noopener noreferrer sponsored"
-                            className="inline-flex items-center gap-1 bg-[#003580] hover:bg-[#002a6e] text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
+                            className="inline-flex items-center gap-1 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
                           >
                             Check availability <ExternalLink className="w-3 h-3" />
                           </a>
@@ -268,7 +266,7 @@ export default async function OpenAccommodationPage() {
                 </table>
               </div>
               <div className="px-5 py-3 bg-[#FAF8F5] border-t border-gray-100">
-                <p className="text-xs text-gray-400">Prices are approximate and subject to change. Booking.com links open in a new tab. Distances verified via Google Maps from Royal Birkdale main entrance.</p>
+                <p className="text-xs text-gray-400">Prices are approximate and subject to change. Availability links open LateRooms.com in a new tab (partner link). Distances verified via Google Maps from Royal Birkdale main entrance.</p>
               </div>
             </div>
           </div>
@@ -313,6 +311,25 @@ export default async function OpenAccommodationPage() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* LateRooms partner CTA */}
+          <div className="bg-gradient-to-r from-[#1B2E4B] to-[#2A4A73] rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Partner</p>
+              <h3 className="font-display text-xl font-bold text-white mb-2">Search Southport Hotels for Open Week</h3>
+              <p className="text-white/70 text-sm leading-relaxed">
+                Compare prices and availability for 12–19 July 2026 across hotels, B&Bs and guest houses in Southport. Free cancellation on most rooms.
+              </p>
+            </div>
+            <a
+              href={LATEROOMS.southportOpen2026}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+            >
+              Search on LateRooms →
+            </a>
           </div>
 
           {/* Featured hotel listings from DB */}

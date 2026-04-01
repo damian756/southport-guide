@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { LATEROOMS } from "@/lib/affiliate-links";
 import {
   MapPin,
   Car,
@@ -440,6 +441,14 @@ export default function SouthportAirShowPage() {
               <Link href="/hotels" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">
                 Find a Hotel
               </Link>
+              <a
+                href={LATEROOMS.southport}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20"
+              >
+                Compare on LateRooms →
+              </a>
               <Link href="/things-to-do" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">
                 Things to Do →
               </Link>
