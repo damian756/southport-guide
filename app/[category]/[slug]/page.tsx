@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { MapPin, Phone, Globe, Clock, Star, ChevronRight, ShieldCheck, ShieldAlert, ShieldX, Shield } from "lucide-react";
@@ -204,7 +204,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       where: { slug, categoryId: catRecord.id },
       select: { name: true, address: true, postcode: true, shortDescription: true, description: true, rating: true, reviewCount: true, images: true },
     });
-    if (!b) return { title: slug };
+    if (!b) {
+      const moved = await prisma.business.findFirst({
+        where: { slug },
+        select: { category: { select: { slug: true } } },
+      });
+      if (moved) permanentRedirect(`/${moved.category.slug}/${slug}`);
+      return { title: slug };
+    }
 
     const area      = extractArea(b.address, b.postcode);
     const cleanName = sanitize(b.name);
@@ -347,7 +354,16 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     // DB not connected
   }
 
-  if (!business) notFound();
+  if (!business) {
+    try {
+      const moved = await prisma.business.findFirst({
+        where: { slug },
+        select: { category: { select: { slug: true } } },
+      });
+      if (moved) permanentRedirect(`/${moved.category.slug}/${slug}`);
+    } catch { /* fall through to 404 */ }
+    notFound();
+  }
 
   // Fetch on-site review aggregate for AggregateRating schema.
   // Google's guidelines require the rating to reflect reviews collected by the site,
