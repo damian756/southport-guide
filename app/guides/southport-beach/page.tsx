@@ -12,10 +12,47 @@ import {
   Clock,
   Utensils,
   Camera,
+  Wind,
+  Droplets,
+  Thermometer,
 } from "lucide-react";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+
+// WMO weather code → label + emoji
+function weatherLabel(code: number): { label: string; emoji: string } {
+  if (code === 0) return { label: "Clear sky", emoji: "☀️" };
+  if (code <= 2) return { label: "Partly cloudy", emoji: "⛅" };
+  if (code === 3) return { label: "Overcast", emoji: "☁️" };
+  if (code <= 49) return { label: "Foggy", emoji: "🌫️" };
+  if (code <= 57) return { label: "Drizzle", emoji: "🌦️" };
+  if (code <= 67) return { label: "Rain", emoji: "🌧️" };
+  if (code <= 77) return { label: "Snow", emoji: "❄️" };
+  if (code <= 82) return { label: "Rain showers", emoji: "🌦️" };
+  if (code <= 86) return { label: "Snow showers", emoji: "🌨️" };
+  if (code <= 99) return { label: "Thunderstorm", emoji: "⛈️" };
+  return { label: "Unknown", emoji: "🌡️" };
+}
+
+async function getSouthportWeather() {
+  try {
+    const res = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=53.6476&longitude=-3.00418&current=temperature_2m,wind_speed_10m,weather_code,relative_humidity_2m&wind_speed_unit=mph&timezone=Europe%2FLondon",
+      { next: { revalidate: 1800 } } // cache 30 mins
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return {
+      temp: Math.round(data.current.temperature_2m),
+      wind: Math.round(data.current.wind_speed_10m),
+      humidity: data.current.relative_humidity_2m,
+      code: data.current.weather_code as number,
+    };
+  } catch {
+    return null;
+  }
+}
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-beach");
@@ -117,7 +154,10 @@ const FAQ_LD = {
   })),
 };
 
-export default function SouthportBeachGuidePage() {
+export default async function SouthportBeachGuidePage() {
+  const weather = await getSouthportWeather();
+  const wx = weather ? weatherLabel(weather.code) : null;
+
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -233,17 +273,44 @@ export default function SouthportBeachGuidePage() {
               </div>
             </div>
             <div className="flex-none">
-              <iframe
-                src="https://wttr.in/Southport,England?format=v2"
-                title="Current weather in Southport"
-                className="rounded-xl border border-gray-100 bg-gray-50"
-                style={{ width: "340px", height: "120px", border: "none" }}
-                loading="lazy"
-              />
-              <p className="text-[10px] text-gray-400 mt-1 text-right">
-                Live forecast via{" "}
-                <a href="https://wttr.in" target="_blank" rel="noopener noreferrer" className="hover:underline">wttr.in</a>
-              </p>
+              {weather && wx ? (
+                <div className="bg-[#1B2E4B] rounded-2xl px-6 py-5 min-w-[220px]">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-4xl leading-none">{wx.emoji}</span>
+                    <div>
+                      <p className="text-white font-bold text-2xl leading-none">{weather.temp}°C</p>
+                      <p className="text-white/60 text-xs mt-0.5">{wx.label}</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                      <Wind className="w-3.5 h-3.5 text-[#C9A84C] flex-shrink-0" />
+                      <span>{weather.wind} mph wind</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                      <Droplets className="w-3.5 h-3.5 text-[#C9A84C] flex-shrink-0" />
+                      <span>{weather.humidity}% humidity</span>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-white/30 mt-3">
+                    Southport · Updated every 30 min ·{" "}
+                    <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/50 transition-colors">open-meteo.com</a>
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-[#FAF8F5] border border-gray-100 rounded-2xl px-6 py-5 min-w-[220px] text-center">
+                  <Thermometer className="w-8 h-8 text-[#C9A84C] mx-auto mb-2" />
+                  <p className="text-[#1B2E4B] font-semibold text-sm mb-1">Check the forecast</p>
+                  <a
+                    href="https://www.bbc.co.uk/weather/2637433"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#C9A84C] text-xs font-semibold hover:underline"
+                  >
+                    BBC Weather for Southport →
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
