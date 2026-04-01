@@ -669,6 +669,22 @@ export default function SouthportBeachGuidePage() {
               </Link>
             </div>
           </div>
+
+          <div className="mt-5 bg-[#1B2E4B] rounded-2xl p-6 md:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            <div className="flex-1 min-w-0">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Staying Overnight?</p>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Southport has hotels on the seafront, on Lord Street, and in Birkdale village. If you&apos;re making a weekend of it,
+                The Bold Hotel and The Scarisbrick are both walking distance from the beach. Book ahead in summer and during Open week (July 2026).
+              </p>
+            </div>
+            <Link
+              href="/hotels"
+              className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+            >
+              Hotels in Southport →
+            </Link>
+          </div>
         </section>
 
         {/* ── Photography ── */}

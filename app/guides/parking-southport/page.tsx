@@ -333,11 +333,28 @@ export default function ParkingSouthportGuidePage() {
           </div>
         </section>
 
+        <section className="bg-[#1B2E4B] rounded-2xl p-6 md:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-8">
+          <div className="flex-1 min-w-0">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Staying Overnight?</p>
+            <p className="text-white/80 text-sm leading-relaxed">
+              If you&apos;re visiting for more than a day, Southport has hotels on Lord Street, the seafront, and in Birkdale.
+              During Open week (July 2026) and summer event weekends, accommodation books out quickly. Check availability early.
+            </p>
+          </div>
+          <Link
+            href="/hotels"
+            className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
+          >
+            Hotels in Southport →
+          </Link>
+        </section>
+
         <section className="bg-[#FAF8F5] rounded-2xl p-6">
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">More practical guides</p>
           <div className="flex flex-wrap gap-3">
             {[
               { href: "/guides/southport-beach", label: "Southport Beach Guide" },
+              { href: "/hotels", label: "Hotels in Southport" },
               { href: "/guides/dog-friendly-southport", label: "Dog-Friendly Guide" },
               { href: "/guides/rainy-day-southport", label: "Rainy Day Guide" },
               { href: "/guides/lord-street", label: "Lord Street" },

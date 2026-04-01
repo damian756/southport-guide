@@ -1,0 +1,17 @@
+# Disavow file for southportguide.co.uk
+# Generated 2026-03-31
+# Spam/fake SEO link networks with zero traffic and nofollow links only.
+# Upload to Google Search Console: https://search.google.com/search-console/disavow-links
+
+domain:itxoft-organic-seo-growth.site
+domain:itxoft-seo-for-modern-business.site
+domain:itxoft-cost-effective-seo-services.site
+domain:itxoft-trusted-seo-solutions.site
+domain:itxoft-results-focused-seo.site
+domain:itxoft-seo-for-higher-rankings.site
+domain:itxoft-reliable-seo-services.site
+domain:itxoft-proven-seo-strategies.site
+domain:fiverr-seo-for-business-growth.site
+domain:fiverr-affordable-seo-services.site
+domain:fiverr-cost-effective-seo.site
+domain:nexusnext.agency

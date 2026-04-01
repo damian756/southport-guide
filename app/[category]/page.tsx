@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, MapPin as MapPinIcon, Bed, CalendarDays, PoundSterling } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import { LATEROOMS } from "@/lib/affiliate-links";
@@ -64,8 +64,10 @@ const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
   ],
   "hotels": [
     { href: "/the-open-2026/accommodation", label: "Open 2026 Accommodation Guide" },
-    { href: "/things-to-do", label: "Things to Do in Southport" },
+    { href: "/guides/southport-beach", label: "Southport Beach Guide" },
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
+    { href: "/things-to-do", label: "Things to Do in Southport" },
+    { href: "/guides/parking-southport", label: "Parking in Southport" },
   ],
   "parking": [
     { href: "/guides/parking-southport", label: "Southport Parking Guide" },
@@ -88,9 +90,10 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
   ],
   "hotels": [
-    "Southport has a good range of places to stay, from The Bold Hotel on Lord Street (the nicest in town by most accounts) to seafront B&Bs and a clutch of chain hotels near the retail park. The Scarisbrick Hotel is the historic option on Lord Street if you want somewhere with character.",
-    "If you're here for The Open 2026 at Royal Birkdale, accommodation books out fast, months in advance for tournament week. Get in early. Birkdale village (walking distance from the course) is the most practical base, but the whole town fills up.",
-    "For a quieter stay, Churchtown is worth considering, it's the old village end of Southport, much calmer than the seafront, and still only about 10 minutes from the town centre.",
+    "Southport has a genuine range of hotels and accommodation, from The Bold Hotel on Lord Street (the nicest in town by most accounts) to seafront B&Bs, Victorian guest houses, and the chain hotels near Ocean Plaza. The Scarisbrick Hotel is the historic option with character. Premier Inn operates two Southport locations if you want reliability and a fixed price.",
+    "If you're here for The Open 2026 at Royal Birkdale (12-19 July), accommodation books out months in advance. Get in early. Birkdale village is walking distance from the course and the most practical base, but the whole town fills up during tournament week.",
+    "For a quieter stay, Churchtown is worth considering, it's the old village end of Southport, calmer than the seafront, and only about 10 minutes from the town centre. Lord Street is the best base for shopping, restaurants, and easy access to the pier and beach.",
+    "Budget-wise, Southport is good value compared to most English seaside towns. A decent double room starts around £60-80 per night midweek, rising to £100-150 at weekends and significantly more during Open week and the August events. B&Bs and guest houses on the residential streets off Lord Street offer the best value-for-money.",
   ],
   "bars-nightlife": [
     "Southport's nightlife is mostly concentrated around Neville Street and the town centre, it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
@@ -408,6 +411,77 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           </div>
         )}
       </div>
+
+      {/* ── Hotels editorial guide (above listings) ──────────────────────── */}
+      {category === "hotels" && (
+        <div className="container mx-auto px-4 max-w-7xl pt-6 lg:pt-8">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden mb-6">
+            <div className="border-l-4 border-l-[#C9A84C] p-6 md:p-10">
+              <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Local&apos;s Guide</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-6">Where to Stay in Southport</h2>
+              <div className="space-y-4 text-gray-700 leading-relaxed text-[0.95rem]">
+                <p>
+                  Southport has more hotel stock than most visitors expect. Lord Street is the obvious base, a mile-long Victorian
+                  boulevard with The Bold Hotel at one end and The Scarisbrick at the other. Both are proper hotels with character,
+                  not identikit chains. If you want reliable and predictable, Premier Inn has two Southport locations: one on the
+                  seafront (handy for the beach and Marine Lake) and one on the edge of town.
+                </p>
+                <p>
+                  Birkdale village is the quieter, more upmarket option, particularly for golfers. It&apos;s walking distance from
+                  Royal Birkdale Golf Club and has its own cluster of good restaurants and pubs. For The Open 2026 (12-19 July),
+                  Birkdale is the most practical base, but accommodation within walking distance of the course books out months
+                  in advance.
+                </p>
+                <p>
+                  B&amp;Bs and guest houses are scattered across the residential streets between Lord Street and the seafront.
+                  They&apos;re often better value than the hotels, typically £60-80 per night midweek. Some are excellent,
+                  some are tired. Check reviews carefully and look for recent ones.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 bg-[#FAF8F5]">
+              {[
+                { icon: MapPinIcon, label: "Best for Lord Street", value: "The Bold Hotel, The Scarisbrick" },
+                { icon: Bed, label: "Best budget", value: "Premier Inn, B&Bs off Lord St" },
+                { icon: CalendarDays, label: "Open 2026 base", value: "Birkdale village" },
+                { icon: PoundSterling, label: "Midweek doubles from", value: "~£60/night" },
+              ].map(({ icon: Icon, label, value }) => (
+                <div key={label} className="px-5 py-4 text-center">
+                  <Icon className="w-5 h-5 text-[#C9A84C] mx-auto mb-2" />
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold mb-0.5">{label}</p>
+                  <p className="text-[#1B2E4B] font-bold text-xs">{value}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-px bg-gray-100">
+              {[
+                {
+                  area: "Lord Street",
+                  desc: "Southport's main boulevard. Walking distance to shops, restaurants, The Atkinson, and the Pier. The best base for a first visit.",
+                  link: "/hotels?area=town-centre",
+                },
+                {
+                  area: "Birkdale",
+                  desc: "Quieter, more residential. Close to Royal Birkdale golf course. Independent restaurants and a village feel. Best for Open 2026.",
+                  link: "/hotels?area=birkdale",
+                },
+                {
+                  area: "Seafront",
+                  desc: "Marine Drive and the Promenade. Wake up to sea views. Walking distance to the beach, Marine Lake, and Adventure Coast.",
+                  link: "/hotels?area=seafront",
+                },
+              ].map(({ area, desc, link }) => (
+                <Link key={area} href={link} className="bg-white p-5 hover:bg-[#FAF8F5] transition-colors group">
+                  <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">{area}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Main layout ───────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 max-w-7xl py-4 lg:py-6">

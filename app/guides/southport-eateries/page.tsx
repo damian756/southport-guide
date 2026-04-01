@@ -730,7 +730,7 @@ export default async function SouthportEateriesGuidePage() {
         {/* ── Related guides strip ── */}
         <section className="bg-[#FAF8F5] rounded-2xl p-6 md:p-8">
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-4">Related guides</p>
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link href="/guides/best-restaurants-southport" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
               <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Best Restaurants in Southport</h3>
               <p className="text-gray-500 text-xs">Terry&apos;s ranked guide to the top tables in town.</p>
@@ -742,6 +742,10 @@ export default async function SouthportEateriesGuidePage() {
             <Link href="/guides/birkdale-village" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
               <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Birkdale Village</h3>
               <p className="text-gray-500 text-xs">The locals&apos; neighbourhood, shops, restaurants, and why it&apos;s worth the walk.</p>
+            </Link>
+            <Link href="/hotels" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
+              <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Hotels in Southport</h3>
+              <p className="text-gray-500 text-xs">From The Bold on Lord Street to seafront B&amp;Bs. Book early for Open week.</p>
             </Link>
           </div>
         </section>
