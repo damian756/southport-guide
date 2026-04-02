@@ -1050,30 +1050,34 @@ export default function SouthportMarketPage() {
             </div>
           </div>
 
-          {/* King Street exterior — full natural aspect ratio */}
-          <ImageLightbox
-            src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
-            alt="Southport Market exterior on King Street on a summer day"
-            width={1920}
-            height={1282}
-            sizes="100vw"
-            containerClassName="relative rounded-2xl overflow-hidden w-full"
-            imageClassName="w-full h-auto"
-          >
-            <StopPropLink
-              href="https://maps.google.com/?q=Southport+Market,+King+Street,+Southport,+PR8+1LA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute bottom-5 left-5 pointer-events-auto"
+          {/* Philly cheese video — Brunch N' Bagel */}
+          <div className="rounded-2xl overflow-hidden w-full bg-black">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto block"
             >
-              <div className="bg-black/45 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-black/60 transition-colors">
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
-                <p className="text-white font-display font-bold text-xl leading-tight">King Street</p>
-                <p className="text-white/80 text-sm">Southport · Merseyside · PR8 1LA</p>
-                <p className="text-white/50 text-xs mt-1">Open in Google Maps →</p>
-              </div>
-            </StopPropLink>
-          </ImageLightbox>
+              <source src="/videos/southport-market/philly-cheese-brunch-bagel.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          {/* Exciting callout */}
+          <div className="mt-6 bg-[#1B2E4B] rounded-2xl p-7 md:p-9">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">New at Brunch N&apos; Bagel · Unit 03</p>
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
+              The Philly Cheese Has Landed.
+            </h3>
+            <p className="text-white/70 text-[15px] leading-relaxed mb-4">
+              Thin-cut ribeye, griddled onions and peppers, melted cheese, loaded into a proper hoagie roll.
+              Brunch N&apos; Bagel have form for doing this — they take a classic and they nail it.
+              This is the kind of thing that sells out before most people know it&apos;s on the menu.
+            </p>
+            <p className="text-white/50 text-sm">
+              Unit 03 · Southport Market · King Street · PR8 1LA · Wednesday to Sunday
+            </p>
+          </div>
         </section>
 
         {/* ── The People Behind the Food ── */}
