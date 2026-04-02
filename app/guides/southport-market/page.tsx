@@ -483,7 +483,7 @@ const FAQS = [
   },
   {
     q: "Can you hire the Extravaganza Room for private events?",
-    a: "Yes. The Extravaganza Room handles weddings, parties, corporate events, conferences, live bands, and performance shows. Smaller function rooms are also available for meetings. Contact Southport Market via southportmarket.com/information.",
+    a: "Yes. The Extravaganza Room handles weddings, parties, corporate events, conferences, live bands, and performance shows. Smaller function rooms are also available for meetings. Use the enquiry button in the events section above, or visit southportmarket.com directly.",
   },
   {
     q: "What is the best thing to eat at Southport Market?",
@@ -830,6 +830,19 @@ export default function SouthportMarketPage() {
               as long as you know what you are walking into.
             </p>
           </div>
+
+          <p className="mt-4 text-sm text-gray-500 leading-relaxed">
+            Hours vary on bank holidays and during special events. Always confirm before travelling at{" "}
+            <a
+              href="https://southportmarket.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#C9A84C] font-semibold hover:underline"
+            >
+              southportmarket.com
+            </a>
+            .
+          </p>
         </section>
 
         {/* ── Sensory-Friendly ── */}
@@ -1036,27 +1049,31 @@ export default function SouthportMarketPage() {
             </div>
           </div>
 
-          {/* Map image placeholder with exterior photo */}
+          {/* King Street exterior — full natural aspect ratio */}
           <ImageLightbox
             src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
             alt="Southport Market exterior on King Street on a summer day"
-            fill
-            sizes="(max-width: 768px) 100vw, 100vw"
-            containerClassName="relative rounded-2xl overflow-hidden h-[26rem] md:h-[34rem]"
-            imageClassName="object-cover object-center"
-          />
-          <div className="mt-5 flex flex-wrap gap-6">
-            <div>
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
-              <p className="text-[#1B2E4B] font-display font-bold text-xl">King Street</p>
-              <p className="text-gray-500 text-sm">Southport · Merseyside · PR8 1LA</p>
-            </div>
-            <div>
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Postcode</p>
-              <p className="text-[#1B2E4B] font-display font-bold text-xl">PR8 1LA</p>
-              <p className="text-gray-500 text-sm">For sat-nav and Google Maps</p>
-            </div>
-          </div>
+            width={1920}
+            height={1282}
+            sizes="100vw"
+            containerClassName="relative rounded-2xl overflow-hidden w-full"
+            imageClassName="w-full h-auto"
+          >
+            <a
+              href="https://maps.google.com/?q=Southport+Market,+King+Street,+Southport,+PR8+1LA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-5 left-5 pointer-events-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-black/45 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-black/60 transition-colors">
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
+                <p className="text-white font-display font-bold text-xl leading-tight">King Street</p>
+                <p className="text-white/80 text-sm">Southport · Merseyside · PR8 1LA</p>
+                <p className="text-white/50 text-xs mt-1">Open in Google Maps →</p>
+              </div>
+            </a>
+          </ImageLightbox>
         </section>
 
         {/* ── The People Behind the Food ── */}
@@ -1272,7 +1289,7 @@ export default function SouthportMarketPage() {
         </section>
 
         {/* Cross-links strip */}
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { href: "/guides/autism-friendly-southport", label: "Autism-Friendly Southport", desc: "Quiet venues, events guide, and honest practical advice." },
             { href: "/guides/parking-southport", label: "Parking in Southport", desc: "Every car park near the market — prices and postcodes." },
@@ -1292,6 +1309,20 @@ export default function SouthportMarketPage() {
               </div>
             </Link>
           ))}
+          <a
+            href="https://southportmarket.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1B2E4B] border border-[#1B2E4B] rounded-2xl p-5 hover:bg-[#243d63] transition-all group"
+          >
+            <p className="font-display font-bold text-white text-sm mb-1">
+              southportmarket.com
+            </p>
+            <p className="text-white/50 text-xs leading-relaxed">Official site — current events, opening times, and private hire.</p>
+            <div className="flex items-center gap-1 mt-3 text-[#C9A84C] text-xs font-semibold">
+              Visit website <ArrowRight className="w-3 h-3" />
+            </div>
+          </a>
         </div>
       </div>
 
