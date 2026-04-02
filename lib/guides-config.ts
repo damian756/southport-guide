@@ -780,10 +780,6 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-04-02",
     tags: ["southport-market", "food", "food-hall", "restaurants", "family-friendly", "dog-friendly", "sensory-friendly", "events"],
     status: "published",
-    listingFilter: {
-      categorySlugs: ["restaurants", "cafes"],
-      tags: ["southport-market", "market-quarter"],
-    },
     metaTitle: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
     metaDescription:
       "Southport Market on King Street (PR8 1LA) — every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
