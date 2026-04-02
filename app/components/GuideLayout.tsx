@@ -225,7 +225,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                   href={`/guides/${related.slug}`}
                   className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all group overflow-hidden"
                 >
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-32 overflow-hidden bg-[#1B2E4B]">
                     <Image
                       src={related.heroImage}
                       alt={related.title}
