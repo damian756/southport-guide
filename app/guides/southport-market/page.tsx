@@ -440,18 +440,15 @@ const HISTORIC_IMAGES = [
   { src: "/images/southport-market/historic/market-historic-four.webp", alt: "Southport Market stalls in the original market" },
   { src: "/images/southport-market/historic/market-historic-five.webp", alt: "Southport Market traders in earlier years" },
   { src: "/images/southport-market/historic/market-historic-six.webp", alt: "Historic Southport Market scene" },
-  { src: "/images/southport-market/historic/southport-market-gallery-014.webp", alt: "Southport Market gallery photograph" },
-  { src: "/images/southport-market/historic/southport-market-gallery-022.webp", alt: "Southport Market archive image" },
-  { src: "/images/southport-market/historic/IMG_2552.webp", alt: "Southport Market building exterior, historic" },
 ];
 
 const EVENTS_LIST = [
   { name: "Live Music", freq: "Every Thursday", image: "/images/southport-market/interior/live-band.webp", desc: "Regular live music on Thursday evenings at the Market Bar." },
-  { name: "Comedy Bingo", freq: "Winter months", image: null, desc: "Winter events specifically designed to get people out of the house. Run with community isolation in mind." },
+  { name: "Comedy Bingo", freq: "Winter months", image: "/images/blog/blog-comedy-lineup.webp", desc: "Winter events specifically designed to get people out of the house. Run with community isolation in mind." },
   { name: "Teddyfest", freq: "Annual", image: "/images/southport-market/events/teddyfest.webp", desc: "Family-focused event. Kids bring their bears." },
   { name: "Easter Wonderland", freq: "Easter", image: "/images/southport-market/events/easter-wonderland-poster.webp", desc: "Family Easter events including Bounce Mania and themed activities." },
   { name: "The Big Night Out", freq: "Regular", image: "/images/southport-market/events/the-big-night-out-event-poster.webp", desc: "Evening entertainment events in the Extravaganza Room." },
-  { name: "Artisan Market", freq: "Monthly", image: null, desc: "50+ independent makers and food producers on Market Street outside the main building. Free entry." },
+  { name: "Artisan Market", freq: "Monthly", image: "/images/guides/southport-artisan-market.jpg", desc: "50+ independent makers and food producers on Market Street outside the main building. Free entry." },
 ];
 
 const FAQS = [
@@ -1031,19 +1028,20 @@ export default function SouthportMarketPage() {
           </div>
 
           {/* Map image placeholder with exterior photo */}
-          <div className="relative rounded-2xl overflow-hidden h-56">
-            <Image
-              src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
-              alt="Southport Market exterior on King Street on a summer day"
-              fill
-              sizes="(max-width: 768px) 100vw, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/80 to-transparent" />
-            <div className="absolute left-6 top-1/2 -translate-y-1/2">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Address</p>
-              <p className="text-white font-display font-bold text-2xl">King Street</p>
-              <p className="text-white/80 text-sm">Southport · Merseyside · PR8 1LA</p>
+          <div className="rounded-2xl overflow-hidden">
+            <div className="relative h-80 md:h-96">
+              <Image
+                src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
+                alt="Southport Market exterior on King Street on a summer day"
+                fill
+                sizes="(max-width: 768px) 100vw, 100vw"
+                className="object-cover object-bottom"
+              />
+            </div>
+            <div className="bg-[#1B2E4B] px-6 py-4">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
+              <p className="text-white font-display font-bold text-xl">King Street</p>
+              <p className="text-white/70 text-sm">Southport · Merseyside · PR8 1LA</p>
             </div>
           </div>
         </section>
@@ -1178,19 +1176,14 @@ export default function SouthportMarketPage() {
             {EVENTS_LIST.map(({ name, freq, image, desc }) => (
               <div key={name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-sm transition-shadow">
                 {image && (
-                  <div className="relative h-40 bg-[#1B2E4B]/5">
+                  <div className="relative h-52 bg-[#1B2E4B]">
                     <Image
                       src={image}
                       alt={`${name} at Southport Market`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-contain"
                     />
-                  </div>
-                )}
-                {!image && (
-                  <div className="h-40 bg-gradient-to-br from-[#1B2E4B] to-[#2E4A6B] flex items-center justify-center">
-                    <Music className="w-10 h-10 text-[#C9A84C]/50" />
                   </div>
                 )}
                 <div className="p-5">
