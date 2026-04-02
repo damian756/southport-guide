@@ -1051,13 +1051,13 @@ export default function SouthportMarketPage() {
           </div>
 
           {/* Philly cheese video — Brunch N' Bagel */}
-          <div className="rounded-2xl overflow-hidden w-full bg-black">
+          <div className="rounded-2xl overflow-hidden h-[380px] md:h-[480px] bg-black">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="w-full h-auto block"
+              className="w-full h-full object-cover block"
             >
               <source src="/videos/southport-market/philly-cheese-brunch-bagel.mp4" type="video/mp4" />
             </video>
@@ -1297,70 +1297,6 @@ export default function SouthportMarketPage() {
           </div>
         </section>
 
-        {/* Cross-links strip */}
-        <div className="mt-16">
-          <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-4">Related Guides</p>
-
-          {/* Events hosted at Southport Market */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-            {[
-              { href: "/guides/southport-artisan-market", label: "Southport Artisan Market", desc: "Monthly market inside the building. 50+ independent makers. Free entry." },
-              { href: "/guides/easter-in-southport-2026", label: "Easter in Southport 2026", desc: "Easter Wonderland and family events hosted at the market over the Easter holidays." },
-              { href: "/guides/live-music-southport", label: "Live Music in Southport", desc: "Thursday nights at the Market Bar are one of the best regular nights in town." },
-            ].map(({ href, label, desc }) => (
-              <Link
-                key={href}
-                href={href}
-                className="bg-[#FAF8F5] border border-[#C9A84C]/20 rounded-2xl p-5 hover:border-[#C9A84C]/60 hover:shadow-sm transition-all group"
-              >
-                <p className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">
-                  {label}
-                </p>
-                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
-                <div className="flex items-center gap-1 mt-3 text-[#C9A84C] text-xs font-semibold">
-                  Read guide <ArrowRight className="w-3 h-3" />
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Supporting guides + official site */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { href: "/guides/autism-friendly-southport", label: "Autism-Friendly Southport", desc: "Sensory-friendly venues and honest practical advice for the whole town." },
-              { href: "/guides/parking-southport", label: "Parking in Southport", desc: "Every car park near the market — prices and postcodes." },
-              { href: "/guides/rainy-day-southport", label: "Rainy Day Southport", desc: "Indoor options when the weather does what it does." },
-            ].map(({ href, label, desc }) => (
-              <Link
-                key={href}
-                href={href}
-                className="bg-white border border-gray-200 rounded-2xl p-5 hover:border-[#C9A84C]/40 hover:shadow-sm transition-all group"
-              >
-                <p className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">
-                  {label}
-                </p>
-                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
-                <div className="flex items-center gap-1 mt-3 text-[#C9A84C] text-xs font-semibold">
-                  Read guide <ArrowRight className="w-3 h-3" />
-                </div>
-              </Link>
-            ))}
-            <a
-              href="https://southportmarket.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#1B2E4B] border border-[#1B2E4B] rounded-2xl p-5 hover:bg-[#243d63] transition-all group"
-            >
-              <p className="font-display font-bold text-white text-sm mb-1">
-                southportmarket.com
-              </p>
-              <p className="text-white/50 text-xs leading-relaxed">Official site — current events, opening times, and private hire.</p>
-              <div className="flex items-center gap-1 mt-3 text-[#C9A84C] text-xs font-semibold">
-                Visit website <ArrowRight className="w-3 h-3" />
-              </div>
-            </a>
-          </div>
-        </div>
       </div>
 
       {/* ── Anchor for listings ── */}

@@ -43,6 +43,8 @@ export interface Guide {
   metaDescription?: string;
   /** ISO date (YYYY-MM-DD) for event guides — enables chronological sorting in nav and homepage */
   eventDate?: string;
+  /** Explicit related guide slugs — overrides the automatic tag/category scoring when present */
+  relatedSlugs?: string[];
 }
 
 export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; description: string; emoji: string }> = {
@@ -780,6 +782,12 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-04-02",
     tags: ["southport-market", "food", "food-hall", "restaurants", "family-friendly", "dog-friendly", "sensory-friendly", "events"],
     status: "published",
+    relatedSlugs: [
+      "southport-artisan-market",
+      "easter-in-southport-2026",
+      "live-music-southport",
+      "autism-friendly-southport",
+    ],
     metaTitle: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
     metaDescription:
       "Southport Market on King Street (PR8 1LA) — every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
@@ -892,6 +900,14 @@ export function getGuidesByCategory(category: GuideCategory): Guide[] {
 export function getRelatedGuides(slug: string, limit = 4): Guide[] {
   const current = GUIDES.find((g) => g.slug === slug);
   if (!current) return [];
+
+  // If explicit slugs are specified, use them in order
+  if (current.relatedSlugs && current.relatedSlugs.length > 0) {
+    return current.relatedSlugs
+      .slice(0, limit)
+      .map((s) => GUIDES.find((g) => g.slug === s && g.status === "published"))
+      .filter((g): g is Guide => g !== undefined);
+  }
 
   const scored = GUIDES.filter((g) => g.slug !== slug && g.status === "published").map((g) => {
     let score = 0;
