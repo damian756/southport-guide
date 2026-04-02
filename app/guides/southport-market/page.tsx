@@ -441,7 +441,6 @@ const HISTORIC_IMAGES = [
   { src: "/images/southport-market/historic/market-historic-three.webp", alt: "Southport Market historical interior" },
   { src: "/images/southport-market/historic/market-historic-four.webp", alt: "Southport Market stalls in the original market" },
   { src: "/images/southport-market/historic/market-historic-five.webp", alt: "Southport Market traders in earlier years" },
-  { src: "/images/southport-market/historic/market-historic-six.webp", alt: "Historic Southport Market scene" },
 ];
 
 const EVENTS_LIST = [
