@@ -529,6 +529,49 @@ export default async function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
+          FEATURED GUIDE — SUNFLOWER MEMBERSHIP
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-12 bg-[#FAF8F5]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <Link
+            href="/guides/southportguide-sunflower-member"
+            className="group grid md:grid-cols-[200px_1fr] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-[#1C3A20]/20"
+          >
+            {/* Badge panel */}
+            <div className="bg-white flex items-center justify-center p-8 md:p-10 min-h-[180px]">
+              <Image
+                src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
+                alt="Hidden Disabilities Sunflower — SouthportGuide is a proud member"
+                width={160}
+                height={160}
+                className="object-contain w-full max-w-[140px]"
+              />
+            </div>
+            {/* Content panel */}
+            <div className="bg-[#1C3A20] px-8 py-8 md:px-10 md:py-10 flex flex-col justify-center">
+              <div className="flex flex-wrap items-center gap-3 mb-3">
+                <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                  New — 2 Apr 2026
+                </span>
+                <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Accessibility</span>
+              </div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-white leading-snug mb-3">
+                SouthportGuide has joined the Hidden Disabilities Sunflower scheme
+              </h3>
+              <p className="text-white/65 text-sm leading-relaxed mb-5 max-w-2xl">
+                We are now a Sunflower member. Our commitment to sensory-friendly event coverage, accessible content across
+                the site, and why it matters to us — written by a Southport local with a 17-year-old autistic son at Southport College.
+              </p>
+              <div className="flex items-center gap-2 text-[#C9A84C] font-bold text-sm group-hover:gap-3 transition-all">
+                <span>Read the announcement</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
           LATEST FROM THE BLOG
       ══════════════════════════════════════════════════════ */}
       {(() => {
