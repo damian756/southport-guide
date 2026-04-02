@@ -444,12 +444,12 @@ const HISTORIC_IMAGES = [
 ];
 
 const EVENTS_LIST = [
-  { name: "Live Music", freq: "Every Thursday", image: "/images/southport-market/interior/live-band.webp", objectPosition: "object-center", desc: "Regular live music on Thursday evenings at the Market Bar." },
-  { name: "Comedy Bingo", freq: "Winter months", image: "/images/blog/blog-comedy-lineup.webp", objectPosition: "object-center", desc: "Winter events specifically designed to get people out of the house. Run with community isolation in mind." },
-  { name: "Teddyfest", freq: "Annual", image: "/images/southport-market/events/teddyfest.webp", objectPosition: "object-top", desc: "Family-focused event. Kids bring their bears." },
-  { name: "Easter Wonderland", freq: "Easter", image: "/images/southport-market/events/easter-wonderland-poster.webp", objectPosition: "object-top", desc: "Family Easter events including Bounce Mania and themed activities." },
-  { name: "The Big Night Out", freq: "Regular", image: "/images/southport-market/events/the-big-night-out-event-poster.webp", objectPosition: "object-top", desc: "Evening entertainment events in the Extravaganza Room." },
-  { name: "Artisan Market", freq: "Monthly", image: "/images/guides/southport-artisan-market.jpg", objectPosition: "object-center", desc: "50+ independent makers and food producers on Market Street outside the main building. Free entry." },
+  { name: "Live Music", freq: "Every Thursday", image: "/images/southport-market/interior/live-band.webp", objectPosition: "object-center", desc: "Regular live music on Thursday evenings at the Market Bar.", href: "/guides/live-music-southport" },
+  { name: "Comedy Bingo", freq: "Winter months", image: "/images/blog/blog-comedy-lineup.webp", objectPosition: "object-center", desc: "Winter events specifically designed to get people out of the house. Run with community isolation in mind.", href: null },
+  { name: "Teddyfest", freq: "Annual", image: "/images/southport-market/events/teddyfest.webp", objectPosition: "object-top", desc: "Family-focused event. Kids bring their bears.", href: null },
+  { name: "Easter Wonderland", freq: "Easter", image: "/images/southport-market/events/easter-wonderland-poster.webp", objectPosition: "object-top", desc: "Family Easter events including Bounce Mania and themed activities.", href: "/guides/easter-in-southport-2026" },
+  { name: "The Big Night Out", freq: "Regular", image: "/images/southport-market/events/the-big-night-out-event-poster.webp", objectPosition: "object-top", desc: "Evening entertainment events in the Extravaganza Room.", href: null },
+  { name: "Artisan Market", freq: "Monthly", image: "/images/guides/southport-artisan-market.jpg", objectPosition: "object-center", desc: "50+ independent makers and food producers on Market Street outside the main building. Free entry.", href: "/guides/southport-artisan-market" },
 ];
 
 const FAQS = [
@@ -1197,7 +1197,7 @@ export default function SouthportMarketPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 mb-10">
-            {EVENTS_LIST.map(({ name, freq, image, objectPosition, desc }) => (
+            {EVENTS_LIST.map(({ name, freq, image, objectPosition, desc, href }) => (
               <div key={name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md transition-shadow group">
                 {image && (
                   <ImageLightbox
@@ -1216,6 +1216,11 @@ export default function SouthportMarketPage() {
                 <div className="p-6">
                   <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">{name}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
+                  {href && (
+                    <Link href={href} className="inline-flex items-center gap-1 mt-3 text-[#C9A84C] text-xs font-bold hover:underline">
+                      Full guide <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
