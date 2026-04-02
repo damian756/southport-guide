@@ -850,6 +850,27 @@ export const GUIDES: Guide[] = [
     },
   },
 
+  // ── Practical: Sunflower membership ─────────────────────────────────────
+  {
+    slug: "southportguide-sunflower-member",
+    title: "SouthportGuide Joins the Hidden Disabilities Sunflower Scheme",
+    shortTitle: "Sunflower Member",
+    description: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. What it means for visitors and our plans for accessible Southport.",
+    excerpt:
+      "SouthportGuide has joined the Hidden Disabilities Sunflower scheme. Our commitment to accessible content, sensory-friendly events, and why it matters — written by a Southport local with a 17-year-old autistic son.",
+    category: "practical",
+    heroImage: "/images/sunflower/PROUD-To-SUPPORT-UK_2.webp",
+    seoPriority: 0.85,
+    datePublished: "2026-04-02",
+    dateUpdated: "2026-04-02",
+    tags: ["accessibility", "hidden-disabilities", "sunflower", "autism", "sensory-friendly"],
+    status: "published",
+    relatedSlugs: ["autism-friendly-southport", "southport-market", "southport-artisan-market"],
+    metaTitle: "SouthportGuide Joins the Hidden Disabilities Sunflower Scheme",
+    metaDescription:
+      "SouthportGuide is now a proud supporter of the Hidden Disabilities Sunflower scheme. Our commitment to accessible Southport, sensory-friendly events, and helping visitors with hidden disabilities.",
+  },
+
   // ── Practical: Autism and sensory ────────────────────────────────────────
   {
     slug: "autism-friendly-southport",

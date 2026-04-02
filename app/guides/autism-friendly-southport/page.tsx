@@ -250,7 +250,7 @@ const PRACTICAL_TIPS = [
   {
     icon: Heart,
     title: "Hidden Disabilities Sunflower",
-    body: "The Sunflower Lanyard scheme is accepted at Southport station, The Atkinson, and a growing number of businesses in the town. It is worth phoning specific venues in advance if this matters to your visit, as awareness varies.",
+    body: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. The Sunflower lanyard is accepted at Southport station, The Atkinson, and a growing number of businesses. Lanyards are free — available at the station or via hiddendisabilitiesstore.com. No proof of disability required.",
   },
   {
     icon: Users,
@@ -296,7 +296,7 @@ const FAQS = [
   },
   {
     q: "Are there hidden disability lanyards available in Southport?",
-    a: "The Hidden Disabilities Sunflower Lanyard scheme is accepted at an increasing number of Southport businesses and venues. The Atkinson, Southport station, and larger retail chains in the town centre are among those that recognise it. It is worth contacting specific venues in advance to confirm, as awareness varies.",
+    a: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. Sunflower lanyards are available free at Southport train station and from hiddendisabilitiesstore.com — no proof of disability required. The Atkinson, Southport station, and a growing number of town-centre businesses recognise the lanyard. We are actively working to increase awareness and the number of registered venues across Southport.",
   },
 ];
 
@@ -387,7 +387,7 @@ export default function AutismFriendlySouthportPage() {
             {[
               { icon: Flower2,  label: "Calm venues",         value: "8 listed",         sub: "all verified in person" },
               { icon: Clock,    label: "Best time",            value: "Weekday mornings", sub: "before 11am" },
-              { icon: Heart,    label: "Hidden Disabilities",  value: "Sunflower lanyard",sub: "accepted at key venues" },
+              { icon: Heart,    label: "Hidden Disabilities",  value: "Sunflower member",  sub: "SouthportGuide accredited" },
               { icon: Waves,    label: "Free entry",           value: "Most venues",      sub: "beach, parks, gallery" },
             ].map((item) => (
               <div key={item.label} className="bg-white/10 rounded-xl p-4 text-center">
@@ -429,8 +429,9 @@ export default function AutismFriendlySouthportPage() {
                   which to avoid.
                 </p>
                 <p>
-                  I have four kids. This is field-tested. I have taken them to every venue in this guide and I know
-                  exactly what works and what does not. The advice is honest because it needs to be.
+                  I have four kids. My eldest is 17, he&apos;s autistic, and he attends Southport College.
+                  This guide is field-tested because it has to be. I know exactly what works and what does not,
+                  because we have been working it out for years. The advice is honest because anything less is useless.
                 </p>
               </div>
             </div>
@@ -575,6 +576,33 @@ export default function AutismFriendlySouthportPage() {
                 <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Sunflower membership CTA */}
+        <section>
+          <div className="bg-[#1C3A20] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6">
+            <Image
+              src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
+              alt="Hidden Disabilities Sunflower — SouthportGuide is a proud member"
+              width={100}
+              height={100}
+              className="flex-shrink-0 rounded-xl bg-white p-2"
+            />
+            <div className="flex-1 text-center md:text-left">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Official Member</p>
+              <h3 className="font-display text-xl font-bold text-white mb-2">SouthportGuide is a Sunflower member</h3>
+              <p className="text-white/70 text-sm leading-relaxed max-w-xl">
+                We have joined the Hidden Disabilities Sunflower scheme. Find out what that means, what we are
+                committing to next, and how Southport businesses can register.
+              </p>
+            </div>
+            <Link
+              href="/guides/southportguide-sunflower-member"
+              className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+            >
+              Read more →
+            </Link>
           </div>
         </section>
 
