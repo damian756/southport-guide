@@ -366,9 +366,9 @@ export default async function Home() {
           <div className="flex flex-wrap items-center gap-2 py-3">
             <span className="text-[10px] font-bold text-[#1B2E4B]/40 uppercase tracking-widest mr-1 hidden sm:inline">Quick answers:</span>
             {[
-              { icon: "🏖️", label: "Beach postcode", value: "PR8 1RX", href: "/guides/southport-beach" },
+              { icon: "🏖️", label: "Beach parking", value: "PR8 1RQ", href: "/guides/southport-beach" },
               { icon: "🚆", label: "Train station", value: "Southport", href: "/guides/getting-to-southport" },
-              { icon: "🅿️", label: "Marine Drive car park", value: "PR8 1RX", href: "/guides/parking-southport" },
+              { icon: "🅿️", label: "Marine Drive car park", value: "PR8 1RQ", href: "/guides/parking-southport" },
               { icon: "🛍️", label: "Lord Street", value: "PR8 1PX", href: "/shopping" },
               { icon: "🎭", label: "The Atkinson", value: "PR8 1DB", href: "/attractions/the-atkinson-southport" },
               { icon: "🏠", label: "House prices", value: "PR8 & PR9 data", href: "/property" },
@@ -1167,7 +1167,7 @@ export default async function Home() {
                 </Link>
               </h2>
               <p className="text-white/70 leading-relaxed mb-5 max-w-lg">
-                Postcode PR8 1RX. Free entry. Dogs welcome year-round. At low tide the sea retreats over a kilometre. A coastal landscape like nothing else in the North West.
+                Parking postcode PR8 1RQ (Marine Drive). Free entry. Dogs welcome year-round. At low tide the sea retreats over a kilometre. A coastal landscape like nothing else in the North West.
               </p>
               <div className="flex flex-wrap gap-3 text-sm mb-5">
                 <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Free to visit</span>
@@ -1192,8 +1192,8 @@ export default async function Home() {
             </div>
             <div className="flex-none md:w-64 lg:w-80 grid grid-cols-2 gap-2">
               {[
-                { label: "Postcode", value: "PR8 1RX" },
-                { label: "Parking", value: "Free" },
+                { label: "Postcode", value: "PR8 1RQ" },
+                { label: "Parking", value: "Pay & display" },
                 { label: "Entry", value: "Free" },
                 { label: "Dogs", value: "Welcome" },
               ].map(({ label, value }) => (
