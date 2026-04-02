@@ -1028,20 +1028,19 @@ export default function SouthportMarketPage() {
           </div>
 
           {/* Map image placeholder with exterior photo */}
-          <div className="rounded-2xl overflow-hidden">
-            <div className="relative h-80 md:h-96">
-              <Image
-                src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
-                alt="Southport Market exterior on King Street on a summer day"
-                fill
-                sizes="(max-width: 768px) 100vw, 100vw"
-                className="object-cover object-bottom"
-              />
-            </div>
-            <div className="bg-[#1B2E4B] px-6 py-4">
+          <div className="relative rounded-2xl overflow-hidden h-80 md:h-96">
+            <Image
+              src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
+              alt="Southport Market exterior on King Street on a summer day"
+              fill
+              sizes="(max-width: 768px) 100vw, 100vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-5 left-6">
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
-              <p className="text-white font-display font-bold text-xl">King Street</p>
-              <p className="text-white/70 text-sm">Southport · Merseyside · PR8 1LA</p>
+              <p className="text-white font-display font-bold text-xl drop-shadow">King Street</p>
+              <p className="text-white/90 text-sm drop-shadow">Southport · Merseyside · PR8 1LA</p>
             </div>
           </div>
         </section>
