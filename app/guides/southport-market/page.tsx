@@ -23,6 +23,7 @@ import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
 import ImageLightbox from "@/app/components/ImageLightbox";
 import GalleryLightbox from "@/app/components/GalleryLightbox";
+import StopPropLink from "@/app/components/StopPropLink";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-market");
@@ -1059,12 +1060,11 @@ export default function SouthportMarketPage() {
             containerClassName="relative rounded-2xl overflow-hidden w-full"
             imageClassName="w-full h-auto"
           >
-            <a
+            <StopPropLink
               href="https://maps.google.com/?q=Southport+Market,+King+Street,+Southport,+PR8+1LA"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute bottom-5 left-5 pointer-events-auto"
-              onClick={(e) => e.stopPropagation()}
             >
               <div className="bg-black/45 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-black/60 transition-colors">
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
@@ -1072,7 +1072,7 @@ export default function SouthportMarketPage() {
                 <p className="text-white/80 text-sm">Southport · Merseyside · PR8 1LA</p>
                 <p className="text-white/50 text-xs mt-1">Open in Google Maps →</p>
               </div>
-            </a>
+            </StopPropLink>
           </ImageLightbox>
         </section>
 
