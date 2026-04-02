@@ -35,30 +35,6 @@ const FAQS = [
   { q: "Where can I eat at or near the Southport Artisan Market?", a: "Southport Market itself has a permanent food hall with several independent food operators including coffee, street food, and dessert traders. These run every day the market is open, not just on artisan market days. After browsing the artisan stalls, the food hall is the obvious choice." },
 ];
 
-const PAGE_LD = {
-  "@context": "https://schema.org",
-  "@type": "Event",
-  name: "Southport Artisan Market",
-  description: "Monthly artisan market at Southport Market with 50+ independent makers, artists, and food producers. Free entry.",
-  url: `${BASE_URL}/guides/southport-artisan-market`,
-  image: `${BASE_URL}/images/guides/southport-artisan-market.jpg`,
-  isAccessibleForFree: true,
-  eventStatus: "https://schema.org/EventScheduled",
-  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  location: {
-    "@type": "Place",
-    name: "Southport Market",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Market Street",
-      addressLocality: "Southport",
-      postalCode: "PR8 1EF",
-      addressCountry: "GB",
-    },
-  },
-  organizer: { "@type": "Organization", name: "Southport Market" },
-};
-
 const FAQ_LD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -72,7 +48,6 @@ const FAQ_LD = {
 export default function SouthportArtisanMarketPage() {
   return (
     <GuideLayout guide={GUIDE}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
 
       <div className="bg-[#2C1A00] text-white overflow-hidden">
