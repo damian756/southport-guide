@@ -767,6 +767,28 @@ export const GUIDES: Guide[] = [
 
   // ── Food & Drink ─────────────────────────────────────────────────────────
   {
+    slug: "southport-market",
+    title: "Southport Market",
+    shortTitle: "Southport Market",
+    description: "Nine traders, one bar, and the best food hall on the Sefton Coast. The complete local guide.",
+    excerpt:
+      "Southport Market — the complete guide. Every trader reviewed, opening times, what to order, the sensory-friendly picture, parking, and the history. King Street, PR8 1LA.",
+    category: "food-drink",
+    heroImage: "/images/southport-market/exterior/entrance-main-signage.webp",
+    seoPriority: 0.92,
+    datePublished: "2026-04-02",
+    dateUpdated: "2026-04-02",
+    tags: ["southport-market", "food", "food-hall", "restaurants", "family-friendly", "dog-friendly", "sensory-friendly", "events"],
+    status: "published",
+    listingFilter: {
+      categorySlugs: ["restaurants", "cafes"],
+      tags: ["southport-market", "market-quarter"],
+    },
+    metaTitle: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
+    metaDescription:
+      "Southport Market on King Street (PR8 1LA) — every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
+  },
+  {
     slug: "best-restaurants-southport",
     title: "Best Restaurants in Southport",
     description: "The honest ranking — from Lord Street fine dining to hidden neighbourhood gems.",

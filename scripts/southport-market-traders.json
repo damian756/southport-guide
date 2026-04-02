@@ -1,0 +1,684 @@
+{
+  "_meta": {
+    "generated": "2026-04-02",
+    "purpose": "Comprehensive trader and market data for Southport Market guide page at /guides/southport-market",
+    "sources": [
+      "southportmarket.com",
+      "standupforsouthport.com",
+      "600-degrees.co.uk",
+      "51express.co.uk",
+      "cakecorners.co.uk",
+      "findmeglutenfree.com",
+      "food.gov.uk hygiene ratings"
+    ],
+    "images_processed": "public/images/southport-market/ (manifest.json)",
+    "notes": "Tikka Bros (Unit 01) has minimal online presence — newest trader, no dedicated press coverage found. All other traders well-documented."
+  },
+
+  "market": {
+    "name": "Southport Market",
+    "address": {
+      "street": "King Street",
+      "town": "Southport",
+      "county": "Merseyside",
+      "postcode": "PR8 1LA",
+      "googleMapsEmbed": "corner of King Street and Market Street"
+    },
+    "openingHours": {
+      "monday": "CLOSED",
+      "tuesday": "CLOSED",
+      "wednesday": "10:00–22:00",
+      "thursday": "10:00–22:00",
+      "friday": "10:00–23:00",
+      "saturday": "10:00–23:00",
+      "sunday": "10:00–20:30",
+      "note": "No table reservations — walk-in only. Brunch N' Bagel opens from 10am; most other traders open from noon."
+    },
+    "history": {
+      "originalMarket": "A traditional indoor market for decades — Blackhurst Butchers has been there since 1963. At its peak there were six butchers, poultry stalls, a specialist pork butcher, wool shops, fabric outlets, a sweet shop, card shops.",
+      "decline": "Internet shopping and big supermarkets gradually emptied the building. By the late 2010s it was nearly defunct.",
+      "transformation": {
+        "cost": "£1.4 million",
+        "fundingSources": [
+          "£900,000 from Southport Town Deal (Government)",
+          "£500,000 from Liverpool City Region Combined Authority"
+        ],
+        "designedBy": "DV8 Design (hospitality and commercial transformation specialists)",
+        "builtBy": "Medlock",
+        "concept": "Seaside fairground theme — carousel bar, bold colours, open food hall layout",
+        "opened": "22 July 2021"
+      }
+    },
+    "recognition": [
+      "Named among top 10 seaside markets in the UK (Gazeboshop study, 2023) — ranked by TripAdvisor reviews, Instagram hashtags, TikTok views, Google searches",
+      "Market Bar won Southport BID 'Bar of the Year' for two consecutive years (voted by public)",
+      "Described by politicians and council officers as a benchmark venue — regular fact-finding visits from other councils"
+    ],
+    "keyStats": {
+      "mealsServedInYear": "nearly 500,000 meals and drinks in a twelve-month period",
+      "breakdown": {
+        "pizzas": "23,000–45,000 (range across different reporting periods)",
+        "gyros": "19,000–19,287",
+        "burgers": "30,000",
+        "pasta": "13,000–13,200",
+        "poutines": "7,465",
+        "cakes": "33,000",
+        "pints": "431,000",
+        "noodle_dishes": "8,500",
+        "burritos": "7,000"
+      },
+      "waitingList": "There is a waiting list of food traders wanting to get in as soon as a unit becomes available.",
+      "traderRetention": "Original traders from July 2021 include 600 Degrees, Pitamu, and Blackhurst Butchers — very low turnover."
+    },
+    "accessibility": {
+      "physicalAccess": [
+        "Ramps on main entrance for visual impairments or mobility issues",
+        "Ample space around bar area for wheelchairs and mobility scooters",
+        "Accessible toilets and washing facilities throughout the building",
+        "Changing place toilets with specialist equipment: hoists, curtains for privacy, adult-sized changing benches, carer space",
+        "Highchair seating available for infants"
+      ],
+      "visualImpairment": [
+        "All traders equipped with large print yellow menus"
+      ],
+      "dietary": [
+        "Gluten-free options at multiple traders (Pitamu has dedicated gluten-free fryer)",
+        "Vegan options available across most traders",
+        "Vegetarian options across most traders",
+        "Traders can cater for lactose intolerance"
+      ],
+      "families": [
+        "Dedicated children's play area",
+        "Baby changing facilities",
+        "Kids menus at multiple traders",
+        "Family-friendly atmosphere noted consistently in reviews"
+      ],
+      "dogs": [
+        "Dog-friendly venue",
+        "Dog water stations provided",
+        "Guide dogs welcome"
+      ],
+      "senNotes": {
+        "physical": "The layout is open-plan and spacious — no narrow corridors, wide sightlines. The changing place facility is notably well-equipped and has been 'critically praised for its functionality' per the market's own site.",
+        "sensory": "No dedicated quiet hours confirmed as of April 2026. Noise levels vary significantly — quieter mid-week (Wed-Thu lunchtimes) vs. Friday/Saturday evenings with live music. Wednesday and Thursday afternoons are likely the calmest visiting times.",
+        "jordan_angle": "Jordan Khokhar (Sefton Council, Senior GM Tourism & Economic Growth) has expressed interest in SEN/autism accessibility schemes. The market is a natural partner — its open layout, changing places facility, dietary flexibility, and dog-friendly nature make it inherently accessible.",
+        "actionable_for_guide": "Contact market management directly before publishing to confirm any quiet hours or SEN sessions. Frame the guide around practical sensory advice: visit midweek, arrive early, know the layout before you go, use the changing places facility."
+      }
+    },
+    "extravaganzaRoom": {
+      "description": "Multi-purpose function room for private hire. Accommodates large gatherings.",
+      "uses": ["wedding parties", "birthday parties", "corporate events", "conferences", "networking", "buffets", "live bands", "performance shows"],
+      "smallerRooms": "Private function rooms also available for smaller meetings.",
+      "contactForBooking": "southportmarket.com/information"
+    },
+    "monthlyMarket": {
+      "description": "An artisan/makers market operates in the Market Quarter area outside the main building. Vendors sell crafts, produce, and independent goods.",
+      "frequency": "Monthly (check southportmarket.com for dates)"
+    },
+    "reservations": "Walk-in only. No table bookings accepted.",
+    "parking": {
+      "nearestCarParks": [
+        "Market Street car park (adjacent)",
+        "Tulketh Street car park (5 min walk)",
+        "Lord Street car parks (5–8 min walk)"
+      ],
+      "note": "The Market Quarter public realm improvements (Market Street pedestrianisation) were underway in 2025 — check current access before visiting."
+    },
+    "gettingHere": {
+      "train": "Southport station (Northern Rail from Liverpool Lime Street, approx 45 mins) — 12-minute walk to the market or short taxi ride",
+      "bus": "Multiple bus routes serve Southport town centre. Lord Street is the main stop.",
+      "byFoot": "Lord Street is the main boulevard — the market is a 3-minute walk from the bottom of Lord Street, turning onto King Street."
+    },
+    "events": {
+      "regularEvents": [
+        "Live music (Thursdays)",
+        "Comedy Bingo evenings (winter months — specifically targeting community isolation)",
+        "Seasonal events: Easter Wonderland, Halloween, Christmas Extravaganza",
+        "Bounce Mania (children's event)",
+        "Teddyfest",
+        "The Big Night Out",
+        "Mama Mia: The Party",
+        "80s Mixtape live events",
+        "Southport Comedy Festival (market traders, notably Pasta 51 Express, partner with the festival)"
+      ],
+      "note": "Event schedule published on southportmarket.com — check ahead as the Extravaganza Room hosts private functions that may affect capacity."
+    }
+  },
+
+  "traders": [
+    {
+      "unit": "01",
+      "name": "Tikka Bros",
+      "slug": "tikka-bros",
+      "cuisine": "Indian street food",
+      "imageFile": "traders/tikka-bros-and-their-mouthwatering-chicken-tikka-rice-bowl.webp",
+      "knownFor": [
+        "Chicken tikka rice bowls",
+        "Indian street food"
+      ],
+      "onlinePresence": {
+        "websiteUrl": null,
+        "southportMarketPage": "https://southportmarket.com/tikka-bros (returns 404 — page not yet indexed or moved)",
+        "instagram": null,
+        "notes": "Tikka Bros is the newest trader at the market and has the lowest online footprint of any current unit. They appear on the market homepage as Unit 01 but no dedicated press coverage or standalone web presence was found as of April 2026. The Instagram image caption references 'mouthwatering chicken tikka rice bowls'."
+      },
+      "dietaryInfo": {
+        "halal": "unconfirmed — likely given the nature of the offering, but verify directly",
+        "vegan": "unconfirmed",
+        "glutenFree": "unconfirmed"
+      },
+      "terryAngle": "The newest arrival. Indian street food in Southport has always been underrepresented at the casual end — if they can do a good chicken tikka rice bowl at market prices it fills a real gap.",
+      "confidence": "LOW — verify details on visit or by contacting the market directly before publishing."
+    },
+
+    {
+      "unit": "02",
+      "name": "600 Degrees",
+      "slug": "600-degrees",
+      "cuisine": "Neapolitan wood-fired pizza",
+      "website": "https://www.600-degrees.co.uk/",
+      "southportMarketPage": "https://southportmarket.com/600-degrees",
+      "imageFile": null,
+      "ownerStory": {
+        "founderName": "Dan Johnstone",
+        "inspiration": "Dan visited Naples on his honeymoon. He developed his pizza dough obsession there and spent time learning the authentic Neapolitan method before opening.",
+        "alsoMentioned": "He visited the Amalfi Coast which reinforced the inspiration."
+      },
+      "craft": {
+        "oven": "Custom-made Neapolitan oven designed and built in Naples — cooks in front of customers",
+        "dough": "Made fresh daily using only Caputo flour, yeast, salt and water. Proved for a minimum of 24 hours.",
+        "tomatoes": "San Marzano tomatoes from Campania region",
+        "cheese": "Fior Di Latte from Campania region"
+      },
+      "menu": {
+        "pizzaStyles": [
+          "Margherita",
+          "Pepperoni",
+          "Marinara with Olives",
+          "Veg Special",
+          "Vegan Special",
+          "Italian Stallion",
+          "Moroccan Lamb",
+          "Capricciosa (Ham & Mushroom)",
+          "Pizza Toscano"
+        ],
+        "minimum": "9 styles with customisable toppings and dips",
+        "options": ["eat-in", "takeaway"]
+      },
+      "businessGrowth": "One of the original traders from opening day in July 2021. Success here led to Dan opening a standalone 600 Degrees restaurant in Hillside, Southport.",
+      "salesData": "Approximately 23,000–45,000 pizzas sold per year (market figures across different reporting periods)",
+      "terryAngle": "This is the original. Dan built this from scratch in the market, learned his craft, and it worked well enough that he's now opened a restaurant. The pizza is genuinely the real deal — Caputo flour, San Marzano tomatoes, proved for 24 hours. It tastes like it does because of the method, not marketing.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "03",
+      "name": "Brunch N' Bagel",
+      "slug": "brunch-n-bagel",
+      "cuisine": "New York-inspired brunch, bagels, jacket potatoes",
+      "website": null,
+      "southportMarketPage": "https://www.southportmarket.com/brunch-n-bagel",
+      "pressArticle": "https://standupforsouthport.com/new-brunch-n-bagel-opens-at-southport-market-with-delicious-bagels-brunches-and-jacket-potatoes/",
+      "opened": "17 October 2025",
+      "openingHours": "10:00–16:00 daily (first trader in the market to open at 10am)",
+      "owner": {
+        "name": "Leanne Prescott",
+        "age": 24,
+        "backstory": "Started Cake Corner aged 17 in 2018, from home. Opened first shop in Hillside in 2021. Now operates Cake Corner at Crown Buildings and inside Southport Market, as well as Brunch N' Bagel. Has 12 staff across her businesses.",
+        "otherVentures": ["Cake Corner (Hillside)", "Cake Corner (Southport Market)", "Catering for events at Edge Hill University 5x/month"],
+        "meatSupplier": "Blackhurst Butchers (inside Southport Market)"
+      },
+      "slogan": "A Whole Lotta' Brunch",
+      "mascot": "Barry the Bagel",
+      "menu": {
+        "brunchDishes": [
+          {
+            "name": "The Classic Smash",
+            "description": "Avocado with poached eggs, caramelised red onion chutney, chilli flakes"
+          },
+          {
+            "name": "Chorizo Scramble",
+            "description": "Fluffy scrambled eggs, honey glazed chorizo, cherry tomatoes"
+          },
+          {
+            "name": "The Big Brunch Bite",
+            "description": "Cumberland sausages, crispy bacon, eggs your way, tater tots, beans, black pudding, mushrooms, cherry tomatoes"
+          }
+        ],
+        "bagels": [
+          {
+            "name": "The Breakfast One",
+            "description": "Cumberland sausage, crispy bacon, fried egg, golden tater tots, melted cheese"
+          },
+          {
+            "name": "The Club One",
+            "description": "Battered chicken, crispy bacon, lettuce, tomato, mayo"
+          },
+          {
+            "name": "The Caprese One",
+            "description": "Pesto, creamy mozzarella, tomatoes, peppery rocket, balsamic glaze"
+          },
+          {
+            "name": "The Buffalo One",
+            "description": "Crispy battered chicken tenders in Frank's buffalo sauce, coleslaw, pickles"
+          },
+          {
+            "name": "Bagel With Cream Cheese",
+            "description": "Simple classic"
+          }
+        ],
+        "extras": ["Loaded tater tots", "Jacket potatoes with various toppings", "Kids Lunch Box (sandwich, crisps, dried fruit, mini Cake Corner brownie, colouring pencils)"],
+        "dietaryOptions": ["vegan", "vegetarian", "gluten-free options available"],
+        "bagel_of_month": "Monthly rotating special bagel"
+      },
+      "senNote": "The 10am–4pm window is useful for SEN/autism visitors who want to come before the market gets busy. Midweek mornings would be the quietest window.",
+      "terryAngle": "Leanne Prescott opened Cake Corner aged 17 from her bedroom. She is now 24, has two units inside the market, a separate shop in Hillside, and caters at Edge Hill University. That is not a hobby business. The bagels are New York-inspired, the brunch options cover everything from avocado smash to full English, and it is the only place in the market open at 10am. If you are visiting with kids, or just want a decent breakfast before you head down to the seafront, this is the one.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "04",
+      "name": "Pitamu",
+      "slug": "pitamu",
+      "cuisine": "Greek street food",
+      "website": null,
+      "southportMarketPage": "https://southportmarket.com/pitamu",
+      "pressArticle": "https://standupforsouthport.com/vibrant-greek-street-food-stall-pitamu-revealed-as-latest-addition-to-southport-market",
+      "imageFiles": ["traders/pitamu-chicken-strip-skewer.webp"],
+      "owners": [
+        {
+          "name": "Dino Kottis",
+          "background": "Greek-Cypriot roots. Previously operated restaurants and takeaway stores in Greece and the UK."
+        },
+        {
+          "name": "Banico Zeniou",
+          "background": "Also co-owns Lennys Smashport (Unit 10) with his wife Jodie. Previously operated restaurants/takeaways in Greece and the UK.",
+          "combinedExperience": "40+ years combined hospitality experience between Kottis and Zeniou"
+        }
+      ],
+      "ethos": "Bringing the combination of delicious Greek street food with high quality ingredients — recreating the feeling of eating pita with yeeros and souvlaki on a Greek holiday.",
+      "menu": {
+        "mainItems": [
+          {
+            "name": "Yeeros",
+            "description": "Classic Greek street food — gyros-style rotisserie meat wrapped in flatbread"
+          },
+          {
+            "name": "Souvlaki",
+            "description": "Skewered grilled meat — traditional Greek preparation"
+          },
+          {
+            "name": "Greek Salad",
+            "description": "Classic feta, olives, tomatoes, cucumber"
+          },
+          {
+            "name": "Halloumi Fries",
+            "description": "Deep fried halloumi with various toppings: Salt & Pepper; Hoisin & Spring Onion; Traditional Tzatziki; Chilli & Lime"
+          },
+          {
+            "name": "Chips with Feta",
+            "description": "A popular casual option"
+          }
+        ]
+      },
+      "dietaryInfo": {
+        "glutenFree": "Dedicated gluten-free fryer for chips. Staff (including manager Matthew) are knowledgeable about allergens and go out of their way to ensure safety for GF diners.",
+        "vegetarian": "Yes — Greek salad, halloumi options",
+        "vegan": "Query directly — some options likely available"
+      },
+      "salesData": "19,000–19,287 gyros sold per year (market figures)",
+      "businessGrowth": "One of the original July 2021 traders. Now also attends regional food festivals and events.",
+      "marketBarConnection": "Banico Zeniou co-owns both Pitamu and Lennys Smashport — one family running two units.",
+      "terryAngle": "Pitamu was there from day one. The gyros have become the most consistent seller in the market — nearly 20,000 a year. The halloumi fries have evolved too; the rotating toppings (Hoisin and Spring Onion on halloumi is an unusual call, but it works). If you have a coeliac in the group, this is the safest option — dedicated fryer, staff who actually know what they are talking about.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "05",
+      "name": "Cake Corner",
+      "slug": "cake-corner",
+      "cuisine": "Artisan cakes, desserts, waffles, milkshakes",
+      "website": "https://www.cakecorners.co.uk/",
+      "southportMarketPage": "https://southportmarket.com/cake-corner/",
+      "pressArticles": [
+        "https://standupforsouthport.com/cake-corner-opens-its-second-venture-at-new-look-southport-market",
+        "https://standupforsouthport.com/cake-corner-expands-into-new-larger-premises-in-southport-market-with-even-more-choice"
+      ],
+      "imageFile": "traders/cake-corner.webp",
+      "owner": {
+        "name": "Leanne Prescott",
+        "age": 24,
+        "startedBusiness": 2018,
+        "startedAge": 17,
+        "note": "Also owns Brunch N' Bagel (Unit 03). See Brunch N' Bagel entry for full owner story."
+      },
+      "locations": {
+        "southportMarket": {
+          "address": "King Street, PR8 1LA",
+          "hours": {
+            "wednesday": "09:00–21:00",
+            "thursday": "09:00–21:00",
+            "friday": "09:00–22:00",
+            "saturday": "09:00–22:00",
+            "sunday": "10:00–18:30",
+            "mondayTuesday": "CLOSED"
+          }
+        },
+        "crownBuildings": {
+          "area": "Hillside, Southport",
+          "hours": {
+            "tuesday_friday": "08:30–17:00",
+            "saturday": "09:00–21:00",
+            "sunday": "10:00–21:00",
+            "monday": "CLOSED"
+          }
+        },
+        "edgeHillUniversity": "Catering 5 times per month"
+      },
+      "menu": {
+        "products": [
+          "Cakes and luxury cakes",
+          "Brownies and blondies",
+          "Cookie pies",
+          "Freshly made waffles",
+          "Milkshakes",
+          "Desserts"
+        ],
+        "special": ["Wedding cakes and occasion cakes", "Cake-making parties for kids", "Pop-up tents for functions and parties", "Wholesale options for businesses"]
+      },
+      "hygieneRating": 5,
+      "eventsPresence": ["Southport Food & Drink Festival", "Southport Flower Show", "Ainsdale Show"],
+      "salesData": "33,000 cakes sold per year (market figures)",
+      "senNote": "Cake Corner's kid-friendly nature and dessert-only focus makes it a low-pressure stop for families. Simple menu with visual appeal — good for children with autism who are comforted by predictable sweet options.",
+      "terryAngle": "Leanne started selling cakes from home at 17. She is now 24 and has two units in the market, a shop in Hillside, and a University contract. The brownies and waffles are the things to go for — the waffles are made to order. It is the obvious first stop with kids.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "08",
+      "name": "Pasta 51 Express",
+      "slug": "pasta-51-express",
+      "cuisine": "Fresh handmade Italian pasta",
+      "website": "https://www.51express.co.uk/",
+      "southportMarketPage": "https://southportmarket.com/pasta51/",
+      "pressArticles": [
+        "https://standupforsouthport.com/new-pasta-51-express-at-southport-is-now-open-serving-fresh-italian-pasta-and-appetisers",
+        "https://standupforsouthport.com/pasta-51-express-reveals-plans-to-bring-fresh-authentic-italian-pasta-to-southport-market"
+      ],
+      "imageFile": "traders/pasta-51-express.webp",
+      "owner": {
+        "name": "Attilio Sergi",
+        "experience": "45 years in the hospitality business",
+        "origin": "Born and raised in Santa Maria di Leuca, Puglia, Italy — 'the home of tomatoes' — at the heel of the boot",
+        "background": "Family grew special wheat crops for pasta. Childhood spent helping his mother prepare fresh pasta.",
+        "southportHistory": "Has been in Southport for 20 years. Opened Trattoria 51 on the Promenade in 2003.",
+        "otherVentures": [
+          "Trattoria 51 — Promenade, Southport (est. 2003)",
+          "Trattoria 51 — Old Hall Street, Liverpool city centre",
+          "Pasta 51 Express — Liverpool city centre (opened first, then Southport Market)"
+        ]
+      },
+      "menu": {
+        "freshPastas": [
+          "Pappardelle",
+          "Penne",
+          "Orecchiette",
+          "Spaghetti bucatini",
+          "Fresh ravioli",
+          "Lasagne",
+          "Parmigiana",
+          "Gnocchi"
+        ],
+        "sauces": [
+          "Arrabiata",
+          "Bolognese",
+          "Boscaiola",
+          "Carbonara",
+          "Cacio e Pepe",
+          "Chicken Ragout",
+          "Lentil Ragout",
+          "Chorizo e Zola"
+        ],
+        "appetisers": [
+          "Meatballs",
+          "Suppli (Roman rice balls)",
+          "Grissini",
+          "Panzerotti",
+          "Croquettes with dipping sauces",
+          "Antipasti misto",
+          "Bruschetta varieties",
+          "Focaccia"
+        ]
+      },
+      "dietaryInfo": {
+        "vegan": "Yes — vegan options available",
+        "glutenFree": "Yes — gluten intolerant options available"
+      },
+      "salesData": "13,000–13,200 pasta dishes sold per year (market figures)",
+      "attilioQuote": "There has been something missing at Southport Market, and Pasta 51 Express is looking to fill that gap.",
+      "priceNote": "Attilio has publicly stated he tried to keep prices down — 'very affordable for people'.",
+      "terryAngle": "Attilio Sergi has been in Southport for twenty years. He opened Trattoria 51 on the Promenade in 2003 and it is still there. When someone with 45 years in the food business brings their pasta to a market stall, they are not phoning it in. The pasta is made here. The sauces are slow-cooked. The orecchiette with cacio e pepe is the one to go for if you want something straightforward. The suppli as a starter is underrated.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "09",
+      "name": "Little Korean Kitchen",
+      "slug": "little-korean-kitchen",
+      "cuisine": "Korean street food",
+      "website": null,
+      "southportMarketPage": "https://southportmarket.com/little-korean-kitchen",
+      "pressArticle": "https://standupforsouthport.com/little-korean-kitchen-enjoys-great-response-on-opening-weekend-as-new-addition-at-southport-market",
+      "hygieneRating": "https://ratings.food.gov.uk/business/1486487/little-korean-kitchen-southport/online-ratings",
+      "owner": {
+        "name": "Taeyeop Kim",
+        "background": "Originally opened Korean Kitchen in Hillside. Success led to Lord Street restaurant (509 Lord Street) opening in 2023, creating 10 jobs in a Grade II Listed building. Little Korean Kitchen at Southport Market is the third venture."
+      },
+      "manager": "Eddie Weights",
+      "concept": "A streamlined, fast-casual version of the Korean Kitchen restaurant menu — dishes selected specifically for speed of preparation in a market setting.",
+      "parentRestaurant": {
+        "name": "Korean Kitchen",
+        "address": "509 Lord Street, Southport",
+        "opened": 2023,
+        "description": "Full-service Korean restaurant in a Grade II Listed building"
+      },
+      "menu": {
+        "dishes": [
+          {
+            "name": "Korean Fried Chicken",
+            "description": "Boneless chicken breast, cooked fresh, tossed in house-made sticky sauces. Manager calls it 'the real KFC'.",
+            "popular": true
+          },
+          {
+            "name": "Korean Corndogs",
+            "description": "Hot dog sausage or mozzarella (or half and half) coated in batter, rolled in Panko breadcrumbs, deep fried. Topped with ketchup, honey mustard, and sugar. Described as 'iconic South Korean street food'.",
+            "socialMediaNote": "Went viral on TikTok — extremely popular with younger visitors",
+            "popular": true
+          },
+          {
+            "name": "Korean Katsu Cups",
+            "description": "Katsu-style dish served in a cup format — good for eating while moving around the market"
+          },
+          {
+            "name": "Korean Cupbab",
+            "description": "Rice bowl in a cup — fragrant rice with Korean-flavoured toppings"
+          },
+          {
+            "name": "Chicken Salad Boxes",
+            "description": "Lighter option for those wanting something fresher"
+          }
+        ]
+      },
+      "openingReception": "Queues on opening weekend. Staff noted they could complete orders quickly due to streamlined menu.",
+      "terryAngle": "If you have a teenager in the group, this is where they will end up. Korean corndogs are genuinely all over TikTok and they taste as good as they look. The Korean fried chicken is the main event though — boneless breast, made-to-order sauces. The Lord Street restaurant does a longer menu, but for the market the fast-casual format works well. Worth noting: the market stall is the lowest-pressure way to try Korean food if it is new to you.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "10",
+      "name": "Lennys Smashport",
+      "slug": "lennys-smashport",
+      "cuisine": "Smash burgers, seafood bar",
+      "website": null,
+      "southportMarketPage": "https://www.southportmarket.com/lennys",
+      "pressArticles": [
+        "https://standupforsouthport.com/brand-new-burger-and-seafood-bar-opens-at-southport-market",
+        "https://standupforsouthport.com/lennys-burger-and-seafood-at-southport-market-is-officially-opened-by-southport-saviours"
+      ],
+      "imageFile": "traders/burger-and-chips-classiv.webp",
+      "opened": "Launched November 2023, officially opened December 2023",
+      "launchEvent": "100 free burgers given away on launch night",
+      "owners": {
+        "banico_zeniou": {
+          "role": "Co-owner",
+          "also": "Co-owns Pitamu (Unit 04) with Dino Kottis"
+        },
+        "jodie_zeniou": {
+          "role": "Co-owner",
+          "relationship": "Banico's wife"
+        },
+        "namedAfter": "Lenny Goldwater — grandfather of Banico and Jodie Zeniou",
+        "otherBusiness": "The Zeniou family also own Fylde Fish Bar (award-winning fish and chip shops)"
+      },
+      "meatSupplier": "Blackhurst Butchers (neighbouring Unit 11) — all meat sourced from Blackhurst",
+      "menu": {
+        "focus": "Fresh beef and chicken smash burgers plus seafood options",
+        "note": "Full menu details not publicly documented online. Fresh cooking emphasis, bold flavours."
+      },
+      "officialOpening": "Opened by Southport Saviours — described as 'hugely successful'",
+      "familyConnections": "The Zeniou family operate both Pitamu (Greek) and Lennys (burgers/seafood) — two very different cuisines, one family.",
+      "terryAngle": "Banico Zeniou was already running Pitamu when he and Jodie opened Lennys. Named after his grandfather. The meat comes from Blackhurst next door — that is not marketing, that is practicality. Smash burgers done properly are better than most pub burgers twice the price. The seafood element sets it apart from every other burger stand.",
+      "confidence": "MEDIUM-HIGH — menu details thin online, confidence in backstory is high"
+    },
+
+    {
+      "unit": "11",
+      "name": "Blackhurst Butchers",
+      "slug": "blackhurst-butchers",
+      "cuisine": "Traditional butcher — fresh meat, sausages, BBQ packs, ready meals",
+      "website": "https://www.facebook.com/Blackhurstbutchers/",
+      "phone": "01704 532047",
+      "southportMarketPage": "https://southportmarket.com/blackhurst-butchers",
+      "pressArticles": [
+        "https://standupforsouthport.com/blackhurst-butchers-in-southport-reveal-how-quality-has-been-the-secret-behind-their-success",
+        "https://standupforsouthport.com/blackhurst-butchers-at-southport-market-celebrates-60th-anniversary-of-family-run-local-business"
+      ],
+      "openingHours": {
+        "monday_to_saturday": "09:00–17:00",
+        "sunday": "CLOSED"
+      },
+      "history": {
+        "established": 1963,
+        "founder": "John Blackhurst",
+        "anniversary": "60 years in 2023",
+        "bbcCoverage": "https://www.bbc.co.uk/programmes/p0gw4bp4 — BBC Radio Merseyside feature on 60th anniversary"
+      },
+      "owner": {
+        "name": "Tony Blackhurst",
+        "tenure": "40+ years (started as a Saturday boy aged 12, following his father)",
+        "quote": "I am the last butcher in Southport town centre."
+      },
+      "significance": "Last remaining butcher in Southport town centre. At its peak, there were five butchers in Southport Market alone plus poultry stalls and a specialist pork butcher.",
+      "sourcing": {
+        "beef": "Whole sides sourced from farms in Cumbria. Matured on the bone for 28 days.",
+        "sausages": "Made in-store: Olde English, Traditional Pork, Cumberland, Garlic & Herb, plus a rotating Sausage of the Week",
+        "other": "Burgers, kebabs, and sausage rolls all made in-store"
+      },
+      "keyProducts": {
+        "steaks": "28-day dry-aged beef on the bone — their most famous product",
+        "bacon": "Dry-cured — 'You don't get the water content in it that you get from some supermarket bacon'",
+        "chickenFillets": "High quality, not water-injected",
+        "bbqPackA": {
+          "price": "£23",
+          "contents": "4 Chinese Pork Steaks, 4 Homemade Burgers (Beef/Pork & Leek/Lamb & Mint), 8 Homemade Pork Sausages, 4 Lamb Koftas, 4 Piri Piri Kebabs"
+        },
+        "bbqPackB": {
+          "price": "£34",
+          "contents": "4 Chinese Pork Steaks, 4 Homemade Burgers, 4 Piri Piri Kebabs, 4 Minted Welsh Lamb Chops, 8 Homemade Pork Sausages, 4 Peppered or Plain Rump Steaks"
+        },
+        "readyMeals": ["Stuffed chicken breast", "Fillet steak Cantonese", "Bacon ribs"],
+        "seasonal": "BBQ packs are the summer speciality"
+      },
+      "supplyRelationships": [
+        "Supplies meat to Lennys Smashport (Unit 10)",
+        "Supplies meat to Brunch N' Bagel (Unit 03)",
+        "Both traders publicly acknowledge using Blackhurst meat"
+      ],
+      "reach": "Customers travel from Wigan, Liverpool, Chorley, St Helens regularly. One customer travels from Wimbledon; another from Scotland.",
+      "services": {
+        "inStore": true,
+        "delivery": "Delivers within 5-mile radius (Banks, Scarisbrick etc.)",
+        "preOrder": "Via Facebook, website, and app",
+        "online": "App and website available"
+      },
+      "terryAngle": "Tony Blackhurst started here as a Saturday boy at 12. He is now the last butcher in the whole town centre. That is not a heritage story for the sake of it — the meat is genuinely the reason people come back. The 28-day dry-aged beef is the centrepiece but the sausages are what I would tell you to take home. The fact that Lennys and Brunch N Bagel both use his meat is the most honest endorsement you can get. A customer drives from Wimbledon to fill up his car. That tells you everything.",
+      "confidence": "HIGH"
+    },
+
+    {
+      "unit": "MB",
+      "name": "Market Bar",
+      "slug": "market-bar",
+      "type": "Bar — cocktails, cask ales, gin, coffee",
+      "website": null,
+      "southportMarketPage": "https://southportmarket.com/market-bar/",
+      "design": "Carousel-inspired bar in the centre of the market hall — a visual centrepiece",
+      "drinks": {
+        "cocktails": "Yes",
+        "caskAles": "Locally brewed",
+        "gin": "Large selection",
+        "coffee": {
+          "type": "Flat whites",
+          "beans": "Crosby Coffee (freshly ground)",
+          "note": "Crosby Coffee is a local roaster — branding the coffee offering around a local supplier"
+        },
+        "tea": "Yes",
+        "softDrinks": "Yes"
+      },
+      "awards": [
+        "Southport BID 'Bar of the Year' Award — won for two consecutive years",
+        "Voted by members of the public at the Southport BID Your Southport Stars Awards"
+      ],
+      "policy": "No table reservations — walk-in only throughout the entire market",
+      "familyPolicy": "Fully licensed; alcohol not served to under-18s unless accompanied by and with permission of an adult",
+      "liveMusic": "Regular — specifically noted on Thursdays. Occasional larger events in Extravaganza Room.",
+      "senNote": "The central bar location means it can be noisy, especially on evenings and weekends. For SEN visitors, a morning weekday visit avoids the sound system and crowd concentration around the bar.",
+      "terryAngle": "The Market Bar won bar of the year twice in a row — voted by the public, not a panel of judges. The carousel design is one of those things visitors photograph and locals walk past without thinking about. The flat whites are made with Crosby Coffee beans, which is a good call. The gin selection is serious. If you want to sit somewhere central and let the kids roam between traders, this is where you anchor.",
+      "confidence": "HIGH"
+    }
+  ],
+
+  "keyThemes": {
+    "traderConnections": [
+      "Leanne Prescott (24) owns both Cake Corner (Unit 05) AND Brunch N' Bagel (Unit 03)",
+      "Banico Zeniou co-owns both Pitamu (Unit 04, with Dino Kottis) AND Lennys Smashport (Unit 10, with wife Jodie)",
+      "Blackhurst Butchers (Unit 11) supplies meat to both Lennys Smashport (Unit 10) AND Brunch N' Bagel (Unit 03)",
+      "Attilio Sergi (Pasta 51, Unit 08) has run Trattoria 51 on the Southport Promenade since 2003 — a 20-year Southport presence",
+      "Korean Kitchen (Lord Street restaurant) is the parent of Little Korean Kitchen (Unit 09)"
+    ],
+    "originTraders": {
+      "note": "These traders were there from Day 1 — July 22, 2021",
+      "traders": ["600 Degrees", "Pitamu", "Blackhurst Butchers"]
+    },
+    "growthStories": [
+      "600 Degrees: Market stall → standalone Hillside restaurant",
+      "Leanne Prescott: Bedroom baker at 17 → two market units + Hillside shop + University catering at 24",
+      "Korean Kitchen: Hillside → Lord Street restaurant → Southport Market stall"
+    ],
+    "funFacts": [
+      "The market building has been on King Street since at least 1963 (Blackhurst opening date)",
+      "At peak the market had 6 butchers — now there is one, and it is the last in the whole town centre",
+      "Nearly half a million meals and drinks served in one year",
+      "431,000 pints poured in a single year",
+      "The Market Bar has won bar of the year twice — voted by the public",
+      "There is a waiting list of traders wanting to get in"
+    ]
+  },
+
+  "contentGaps": {
+    "tikka_bros": "Tikka Bros (Unit 01) has no online presence. We know the name and that they serve Indian street food (chicken tikka rice bowl from Instagram image). Contact the market or visit to get: owner name, origin story, menu items, prices.",
+    "prices": "Most traders do not publish prices online. Visit or contact the market for current price guidance across all traders.",
+    "quiet_hours_sen": "No confirmed SEN/quiet hours programme found. Contact Jordan Khokhar at Sefton Council or the market management directly to establish whether any SEN sessions are planned or can be recommended for the guide.",
+    "lenny_menu": "Lennys Smashport menu details are thin — burger/seafood confirmed but specific dishes not publicly documented."
+  }
+}
