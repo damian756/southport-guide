@@ -199,7 +199,7 @@ const TRADERS = [
     unit: "02",
     name: "600 Degrees",
     cuisine: "Neapolitan wood-fired pizza",
-    image: "/images/southport-market/interior/600d-tile.webp",
+    image: "/images/southport-market/traders/600d-tile.jpg",
     imageAlt: "Neapolitan pizza at 600 Degrees, Southport Market",
     owner: "Dan Johnstone",
     ownerStory:
@@ -443,12 +443,12 @@ const HISTORIC_IMAGES = [
 ];
 
 const EVENTS_LIST = [
-  { name: "Live Music", freq: "Every Thursday", image: "/images/southport-market/interior/live-band.webp", desc: "Regular live music on Thursday evenings at the Market Bar." },
-  { name: "Comedy Bingo", freq: "Winter months", image: "/images/blog/blog-comedy-lineup.webp", desc: "Winter events specifically designed to get people out of the house. Run with community isolation in mind." },
-  { name: "Teddyfest", freq: "Annual", image: "/images/southport-market/events/teddyfest.webp", desc: "Family-focused event. Kids bring their bears." },
-  { name: "Easter Wonderland", freq: "Easter", image: "/images/southport-market/events/easter-wonderland-poster.webp", desc: "Family Easter events including Bounce Mania and themed activities." },
-  { name: "The Big Night Out", freq: "Regular", image: "/images/southport-market/events/the-big-night-out-event-poster.webp", desc: "Evening entertainment events in the Extravaganza Room." },
-  { name: "Artisan Market", freq: "Monthly", image: "/images/guides/southport-artisan-market.jpg", desc: "50+ independent makers and food producers on Market Street outside the main building. Free entry." },
+  { name: "Live Music", freq: "Every Thursday", image: "/images/southport-market/interior/live-band.webp", objectPosition: "object-center", desc: "Regular live music on Thursday evenings at the Market Bar." },
+  { name: "Comedy Bingo", freq: "Winter months", image: "/images/blog/blog-comedy-lineup.webp", objectPosition: "object-center", desc: "Winter events specifically designed to get people out of the house. Run with community isolation in mind." },
+  { name: "Teddyfest", freq: "Annual", image: "/images/southport-market/events/teddyfest.webp", objectPosition: "object-top", desc: "Family-focused event. Kids bring their bears." },
+  { name: "Easter Wonderland", freq: "Easter", image: "/images/southport-market/events/easter-wonderland-poster.webp", objectPosition: "object-top", desc: "Family Easter events including Bounce Mania and themed activities." },
+  { name: "The Big Night Out", freq: "Regular", image: "/images/southport-market/events/the-big-night-out-event-poster.webp", objectPosition: "object-top", desc: "Evening entertainment events in the Extravaganza Room." },
+  { name: "Artisan Market", freq: "Monthly", image: "/images/guides/southport-artisan-market.jpg", objectPosition: "object-center", desc: "50+ independent makers and food producers on Market Street outside the main building. Free entry." },
 ];
 
 const FAQS = [
@@ -668,7 +668,7 @@ export default function SouthportMarketPage() {
                       alt={trader.imageAlt}
                       fill
                       sizes="(max-width: 768px) 100vw, 320px"
-                      className="object-cover"
+                      className={trader.name === "Pasta 51 Express" ? "object-contain scale-90" : "object-cover"}
                     />
                     {/* Unit badge */}
                     <div className="absolute top-3 left-3">
@@ -755,7 +755,7 @@ export default function SouthportMarketPage() {
               </div>
             </div>
 
-            <div>
+            <div className="bg-[#FAF8F5] border border-[#C9A84C]/25 rounded-2xl p-7 md:p-9">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">At the centre of it all</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B] mb-5">The Market Bar</h2>
               <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed mb-6">
@@ -836,16 +836,25 @@ export default function SouthportMarketPage() {
         <section id="sensory" className="scroll-mt-28">
           <div className="bg-gradient-to-br from-[#F0F7FF] to-[#E8F4FD] border border-blue-100 rounded-2xl overflow-hidden">
             <div className="p-8 md:p-10">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
-                  <Accessibility className="w-6 h-6 text-white" />
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <Accessibility className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-1">Accessibility</p>
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
+                      Sensory-Friendly Visiting
+                    </h2>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-1">Accessibility</p>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
-                    Sensory-Friendly Visiting
-                  </h2>
-                </div>
+                <Image
+                  src="/images/southport-market/southport-guide-autism-badge.png"
+                  alt="Southport Guide Autism Friendly"
+                  width={80}
+                  height={80}
+                  className="flex-shrink-0 rounded-lg"
+                />
               </div>
 
               <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -1028,7 +1037,7 @@ export default function SouthportMarketPage() {
           </div>
 
           {/* Map image placeholder with exterior photo */}
-          <div className="relative rounded-2xl overflow-hidden h-80 md:h-96">
+          <div className="relative rounded-2xl overflow-hidden h-[26rem] md:h-[34rem]">
             <Image
               src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
               alt="Southport Market exterior on King Street on a summer day"
@@ -1171,25 +1180,26 @@ export default function SouthportMarketPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-            {EVENTS_LIST.map(({ name, freq, image, desc }) => (
-              <div key={name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-sm transition-shadow">
+          <div className="grid sm:grid-cols-2 gap-6 mb-10">
+            {EVENTS_LIST.map(({ name, freq, image, objectPosition, desc }) => (
+              <div key={name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md transition-shadow group">
                 {image && (
-                  <div className="relative h-52 bg-[#1B2E4B]">
+                  <div className="relative h-72 overflow-hidden">
                     <Image
                       src={image}
                       alt={`${name} at Southport Market`}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className={`object-cover transition-transform duration-500 group-hover:scale-105 ${objectPosition ?? "object-center"}`}
                     />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
+                    <span className="absolute bottom-4 right-4 bg-white/90 text-[#1B2E4B] text-xs font-bold px-3 py-1 rounded-full">
+                      {freq}
+                    </span>
                   </div>
                 )}
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="font-display font-bold text-[#1B2E4B] text-base">{name}</h3>
-                    <span className="text-xs text-gray-400 font-medium flex-shrink-0">{freq}</span>
-                  </div>
+                <div className="p-6">
+                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">{name}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                 </div>
               </div>
@@ -1216,13 +1226,13 @@ export default function SouthportMarketPage() {
                   Enquire about hire <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-              <div className="relative h-52 md:h-auto rounded-xl overflow-hidden min-h-[180px]">
+              <div className="relative h-72 md:h-auto rounded-xl overflow-hidden min-h-[240px]">
                 <Image
                   src="/images/southport-market/events/poster-offering-to-rent-the-extravaganze-room.webp"
                   alt="The Extravaganza Room at Southport Market — available for private hire"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
             </div>
