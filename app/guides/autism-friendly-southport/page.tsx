@@ -536,13 +536,20 @@ export default function AutismFriendlySouthportPage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 bg-[#1B2E4B] rounded-xl p-4">
+              <div className="mt-4 bg-[#1B2E4B] rounded-xl p-4 space-y-2">
                 <p className="text-white/60 text-xs leading-relaxed">
                   For a full calendar of what is on when, see the{" "}
                   <Link href="/events" className="text-[#C9A84C] hover:underline font-semibold">
                     2026 events page
                   </Link>
                   . Individual event guides include crowd estimates and logistics.
+                </p>
+                <p className="text-white/60 text-xs leading-relaxed">
+                  Southport Market runs Quiet Hours and has a sensory-friendly layout. See our{" "}
+                  <Link href="/guides/southport-market" className="text-[#C9A84C] hover:underline font-semibold">
+                    full Southport Market guide
+                  </Link>{" "}
+                  for accessibility detail, trader listings, and what to expect.
                 </p>
               </div>
             </div>

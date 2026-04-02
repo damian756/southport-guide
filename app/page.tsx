@@ -451,6 +451,84 @@ export default async function Home() {
       )}
 
       {/* ══════════════════════════════════════════════════════
+          FEATURED GUIDE — SOUTHPORT MARKET
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-14 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">New Complete Guide</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
+                Featured on SouthportGuide
+              </h2>
+            </div>
+            <Link
+              href="/guides"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#1B2E4B] hover:text-[#C9A84C] font-semibold transition-colors"
+            >
+              All guides <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <Link
+            href="/guides/southport-market"
+            className="group grid md:grid-cols-[1fr_480px] lg:grid-cols-[1fr_560px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100"
+          >
+            {/* Image panel */}
+            <div className="relative h-72 md:h-full min-h-[340px] overflow-hidden order-first">
+              <Image
+                src="/images/southport-market/interior/the-bar-tile.webp"
+                alt="The Market Bar at Southport Market"
+                fill
+                sizes="(max-width: 768px) 100vw, 60vw"
+                quality={90}
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+
+            {/* Content panel */}
+            <div className="bg-[#1B2E4B] p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+              <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-5">
+                ✦ Complete Guide — 2026
+              </span>
+
+              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                Southport Market
+              </h3>
+
+              <p className="text-white/65 text-base leading-relaxed mb-6 max-w-md">
+                Nine independent traders, one award-winning bar, and the best food hall on the Sefton Coast.
+                Every trader reviewed, what to order, opening times, parking, and the full accessibility picture.
+                King Street · PR8 1LA.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {[
+                  "9 Traders",
+                  "Dog Friendly",
+                  "No booking needed",
+                  "Sensory-friendly",
+                  "Free entry",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-white/10 border border-white/15 text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 text-[#C9A84C] font-bold text-sm group-hover:gap-3 transition-all">
+                <span>Read the full guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
           LATEST FROM THE BLOG
       ══════════════════════════════════════════════════════ */}
       {(() => {

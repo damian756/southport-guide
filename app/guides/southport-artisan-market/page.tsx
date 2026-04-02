@@ -108,6 +108,7 @@ export default function SouthportArtisanMarketPage() {
               <p>Southport Market is one of the better things to happen to the town centre in recent years. It took a building that had been sitting underused and turned it into something with genuine energy. The artisan market days, when 50+ independent makers fill the stalls, are the best version of the place.</p>
               <p>The mix changes month to month. Some of the regulars are excellent, good ceramics, proper food producers, jewellery worth looking at. The food hall that runs alongside it every day is decent for a coffee and something to eat. It is not a tourist trap version of a market. It is the real thing.</p>
               <p>If you are visiting Southport for the first time and you are there on an artisan market day, it should be on your list. If you live here and have not been: you are missing out. Check the Southport Market social pages for exact monthly dates before you go.</p>
+              <p>For every trader, opening times, and the full picture on what the market building offers every day of the week, see our <Link href="/guides/southport-market" className="text-[#C9A84C] font-semibold hover:underline">complete Southport Market guide</Link>.</p>
             </div>
           </div>
         </section>

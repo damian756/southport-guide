@@ -762,6 +762,7 @@ export default function SouthportBeerWeekGuidePage() {
                 desc: "Street food market in the town centre with multiple vendors and no booking required. Good for a quick bite between venues.",
                 badge: "No booking",
                 badgeColor: "bg-blue-100 text-blue-700",
+                href: "/guides/southport-market",
               },
               {
                 name: "The Bold Hotel Restaurant",
@@ -782,6 +783,11 @@ export default function SouthportBeerWeekGuidePage() {
                   <MapPin className="w-3 h-3 flex-shrink-0" /> {r.area}
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">{r.desc}</p>
+                {r.href && (
+                  <Link href={r.href} className="text-[#C9A84C] text-xs font-bold hover:underline mt-3 inline-flex items-center gap-1">
+                    Full Guide <ArrowRight className="w-3 h-3" />
+                  </Link>
+                )}
               </div>
             ))}
           </div>

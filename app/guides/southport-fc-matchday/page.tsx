@@ -475,7 +475,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 {
                   title: "Southport Market",
                   desc: "Street food and independents on Market Street in the town centre. Good for lunch if you are arriving early.",
-                  href: "/attractions",
+                  href: "/guides/southport-market",
                   emoji: "🍜",
                 },
                 {

@@ -253,7 +253,7 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Southport Market &amp; Wayfarers Arcade</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            <strong>Southport Market</strong> is a covered indoor market hall in the town centre (postcode PR8 1HH). It has independent food stalls, street food traders, a café, and craft vendors. A good lunch option and pleasant to browse for an hour without spending anything.
+            <strong>Southport Market</strong> is a covered indoor market hall in the town centre (postcode PR8 1HH). It has independent food stalls, street food traders, a café, and craft vendors. A good lunch option and pleasant to browse for an hour without spending anything. See our <Link href="/guides/southport-market" className="text-[#C9A84C] font-semibold hover:underline">complete Southport Market guide</Link> for every trader, opening times, and what to order.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             <strong>Wayfarers Arcade</strong> is a Victorian arcade just off Lord Street (PR8 1QN). Covered and independent, with a café inside. Not a destination in itself but a genuinely pleasant alternative to walking in the rain, and the architecture is worth a look.

@@ -21,6 +21,8 @@ import {
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import ImageLightbox from "@/app/components/ImageLightbox";
+import GalleryLightbox from "@/app/components/GalleryLightbox";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-market");
@@ -284,7 +286,7 @@ const TRADERS = [
     unit: "08",
     name: "Pasta 51 Express",
     cuisine: "Fresh handmade Italian pasta",
-    image: "/images/southport-market/traders/pasta-51-express.webp",
+    image: "/images/southport-market/traders/pasta51-tile.webp",
     imageAlt: "Fresh pasta dishes at Pasta 51 Express, Southport Market",
     owner: "Attilio Sergi",
     ownerStory:
@@ -662,21 +664,21 @@ export default function SouthportMarketPage() {
               >
                 <div className="grid md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr]">
                   {/* Image */}
-                  <div className="relative h-56 md:h-auto min-h-[200px] bg-[#1B2E4B]/5 flex-shrink-0">
-                    <Image
-                      src={trader.image}
-                      alt={trader.imageAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 320px"
-                      className={trader.name === "Pasta 51 Express" ? "object-contain scale-90" : "object-cover"}
-                    />
+                  <ImageLightbox
+                    src={trader.image}
+                    alt={trader.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 320px"
+                    containerClassName="relative h-56 md:h-auto min-h-[200px] bg-[#1B2E4B]/5 flex-shrink-0"
+                    imageClassName="object-cover"
+                  >
                     {/* Unit badge */}
-                    <div className="absolute top-3 left-3">
+                    <div className="absolute top-3 left-3 pointer-events-none">
                       <span className="bg-[#1B2E4B] text-[#C9A84C] text-xs font-black px-2.5 py-1 rounded-full">
                         Unit {trader.unit}
                       </span>
                     </div>
-                  </div>
+                  </ImageLightbox>
 
                   {/* Content */}
                   <div className="p-6 lg:p-8">
@@ -739,21 +741,20 @@ export default function SouthportMarketPage() {
         {/* ── Market Bar ── */}
         <section id="bar" className="scroll-mt-28">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative rounded-2xl overflow-hidden h-72 md:h-full min-h-[280px]">
-              <Image
-                src="/images/southport-market/interior/the-bar-tile.webp"
-                alt="The Market Bar at Southport Market — carousel-inspired centrepiece"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B]/70 to-transparent" />
-              <div className="absolute bottom-4 left-5">
+            <ImageLightbox
+              src="/images/southport-market/interior/the-bar-tile.webp"
+              alt="The Market Bar at Southport Market — carousel-inspired centrepiece"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              containerClassName="relative rounded-2xl overflow-hidden h-72 md:h-full min-h-[280px]"
+              imageClassName="object-cover"
+            >
+              <div className="absolute bottom-4 left-5 pointer-events-none">
                 <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
                   Bar of the Year — twice
                 </span>
               </div>
-            </div>
+            </ImageLightbox>
 
             <div className="bg-[#FAF8F5] border border-[#C9A84C]/25 rounded-2xl p-7 md:p-9">
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">At the centre of it all</p>
@@ -1037,19 +1038,24 @@ export default function SouthportMarketPage() {
           </div>
 
           {/* Map image placeholder with exterior photo */}
-          <div className="relative rounded-2xl overflow-hidden h-[26rem] md:h-[34rem]">
-            <Image
-              src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
-              alt="Southport Market exterior on King Street on a summer day"
-              fill
-              sizes="(max-width: 768px) 100vw, 100vw"
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-5 left-6">
+          <ImageLightbox
+            src="/images/southport-market/exterior/outside-street-on-a-summer-day.webp"
+            alt="Southport Market exterior on King Street on a summer day"
+            fill
+            sizes="(max-width: 768px) 100vw, 100vw"
+            containerClassName="relative rounded-2xl overflow-hidden h-[26rem] md:h-[34rem]"
+            imageClassName="object-cover object-center"
+          />
+          <div className="mt-5 flex flex-wrap gap-6">
+            <div>
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Address</p>
-              <p className="text-white font-display font-bold text-xl drop-shadow">King Street</p>
-              <p className="text-white/90 text-sm drop-shadow">Southport · Merseyside · PR8 1LA</p>
+              <p className="text-[#1B2E4B] font-display font-bold text-xl">King Street</p>
+              <p className="text-gray-500 text-sm">Southport · Merseyside · PR8 1LA</p>
+            </div>
+            <div>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-0.5">Postcode</p>
+              <p className="text-[#1B2E4B] font-display font-bold text-xl">PR8 1LA</p>
+              <p className="text-gray-500 text-sm">For sat-nav and Google Maps</p>
             </div>
           </div>
         </section>
@@ -1148,19 +1154,13 @@ export default function SouthportMarketPage() {
           {/* Historic photo gallery */}
           <div>
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">Historic images</p>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
-              {HISTORIC_IMAGES.map(({ src, alt }, i) => (
-                <div key={i} className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
-                  <Image
-                    src={src}
-                    alt={alt}
-                    fill
-                    sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 20vw"
-                    className="object-cover opacity-80 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              ))}
-            </div>
+            <GalleryLightbox
+              images={HISTORIC_IMAGES}
+              gridClassName="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2"
+              itemClassName="aspect-square rounded-xl bg-white/5"
+              imageClassName="object-cover"
+              sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 20vw"
+            />
             <p className="text-white/30 text-xs mt-3">
               Historic images courtesy of Southport Market. Used with permission.
             </p>
@@ -1184,19 +1184,18 @@ export default function SouthportMarketPage() {
             {EVENTS_LIST.map(({ name, freq, image, objectPosition, desc }) => (
               <div key={name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md transition-shadow group">
                 {image && (
-                  <div className="relative h-72 overflow-hidden">
-                    <Image
-                      src={image}
-                      alt={`${name} at Southport Market`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                      className={`object-cover transition-transform duration-500 group-hover:scale-105 ${objectPosition ?? "object-center"}`}
-                    />
-                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
-                    <span className="absolute bottom-4 right-4 bg-white/90 text-[#1B2E4B] text-xs font-bold px-3 py-1 rounded-full">
+                  <ImageLightbox
+                    src={image}
+                    alt={`${name} at Southport Market`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    containerClassName="relative h-72 overflow-hidden"
+                    imageClassName={`object-cover transition-transform duration-500 group-hover:scale-105 ${objectPosition ?? "object-center"}`}
+                  >
+                    <span className="absolute bottom-4 right-4 bg-white/90 text-[#1B2E4B] text-xs font-bold px-3 py-1 rounded-full pointer-events-none">
                       {freq}
                     </span>
-                  </div>
+                  </ImageLightbox>
                 )}
                 <div className="p-6">
                   <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">{name}</h3>
@@ -1226,15 +1225,14 @@ export default function SouthportMarketPage() {
                   Enquire about hire <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-              <div className="relative h-72 md:h-auto rounded-xl overflow-hidden min-h-[240px]">
-                <Image
-                  src="/images/southport-market/events/poster-offering-to-rent-the-extravaganze-room.webp"
-                  alt="The Extravaganza Room at Southport Market — available for private hire"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-top"
-                />
-              </div>
+              <ImageLightbox
+                src="/images/southport-market/events/poster-offering-to-rent-the-extravaganze-room.webp"
+                alt="The Extravaganza Room at Southport Market — available for private hire"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                containerClassName="relative h-72 md:h-auto rounded-xl overflow-hidden min-h-[240px]"
+                imageClassName="object-cover object-top"
+              />
             </div>
           </div>
 

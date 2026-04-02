@@ -117,7 +117,7 @@ export default function ComedyPubCrawlPage() {
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>Southport has a genuine comedy scene, the Comedy Festival in October draws serious acts to a heated marquee at Victoria Park. The pub crawl format is a different thing: more informal, more unpredictable, and in some ways more fun because of it. You are moving between venues rather than sitting in one place all night.</p>
               <p>The mystery route element is part of the appeal. You do not know exactly where you are going until you get there. Southport has the pubs to make this work, enough variety in the town centre to keep it interesting over an evening. The comedy itself ranges from local acts to touring stand-ups depending on the event.</p>
-              <p>Buy tickets in advance. These events sell out. And eat before you go, it is a long evening and pub food on a crawl is hit and miss. Southport Market or any of the Lord Street restaurants are your best options for a pre-event meal.</p>
+              <p>Buy tickets in advance. These events sell out. And eat before you go, it is a long evening and pub food on a crawl is hit and miss. <Link href="/guides/southport-market" className="text-[#C9A84C] font-semibold hover:underline">Southport Market</Link> or any of the Lord Street restaurants are your best options for a pre-event meal.</p>
             </div>
           </div>
         </section>
