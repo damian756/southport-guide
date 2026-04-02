@@ -1207,7 +1207,7 @@ export default function SouthportMarketPage() {
 
           {/* Extravaganza Room */}
           <div className="bg-[#1B2E4B] rounded-2xl p-8 md:p-10">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid md:grid-cols-[1fr_260px] gap-8 items-center">
               <div>
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Private hire</p>
                 <h3 className="font-display text-2xl font-bold text-white mb-4">The Extravaganza Room</h3>
@@ -1229,9 +1229,9 @@ export default function SouthportMarketPage() {
                 src="/images/southport-market/events/poster-offering-to-rent-the-extravaganze-room.webp"
                 alt="The Extravaganza Room at Southport Market — available for private hire"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                containerClassName="relative h-72 md:h-auto rounded-xl overflow-hidden min-h-[240px]"
-                imageClassName="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 260px"
+                containerClassName="relative rounded-xl overflow-hidden bg-[#0f1f38] aspect-[3/4] md:aspect-auto md:h-[360px]"
+                imageClassName="object-contain"
               />
             </div>
           </div>
