@@ -45,6 +45,8 @@ export interface Guide {
   eventDate?: string;
   /** Explicit related guide slugs — overrides the automatic tag/category scoring when present */
   relatedSlugs?: string[];
+  /** Collection slugs to surface at the bottom of this guide page */
+  relatedCollections?: string[];
 }
 
 export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; description: string; emoji: string }> = {
@@ -97,6 +99,7 @@ export const GUIDES: Guide[] = [
     metaTitle: "Southport Beach Guide | Parking PR8 1RQ, Dogs, Tide Times & Tips",
     metaDescription:
       "Southport Beach — parking postcode PR8 1RQ (Marine Drive), dogs welcome year-round, tide times, facilities and honest local advice. One of England's widest beaches.",
+    relatedCollections: ["free-things-to-do-southport", "nature-reserves-southport", "dog-friendly-cafes-southport", "marine-lake-southport"],
   },
   {
     slug: "southport-pier",
@@ -118,6 +121,7 @@ export const GUIDES: Guide[] = [
     metaTitle: "Southport Pier | England's Second Longest Pier | Complete Guide",
     metaDescription:
       "Southport Pier — 1,108 metres, England's second longest. History, what to see, when to visit, parking, and honest advice from a local. Free to walk.",
+    relatedCollections: ["free-things-to-do-southport", "marine-lake-southport", "dog-friendly-cafes-southport"],
   },
 
   // ── Events ───────────────────────────────────────────────────────────────
@@ -646,6 +650,7 @@ export const GUIDES: Guide[] = [
     metaTitle: "Birkdale Village | Shops, Restaurants, Cafés & Guide",
     metaDescription:
       "Birkdale Village — Southport's independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
+    relatedCollections: ["birkdale-village-restaurants", "hotels-near-royal-birkdale", "dog-friendly-pubs-southport", "outdoor-seating-restaurants-southport"],
   },
   {
     slug: "lord-street",
@@ -666,6 +671,7 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["restaurants", "shopping", "cafes", "bars-nightlife"],
       tags: ["lord-street"],
     },
+    relatedCollections: ["lord-street-restaurants-southport", "lord-street-cafes-southport", "art-galleries-southport", "outdoor-seating-restaurants-southport"],
   },
   {
     slug: "churchtown",
@@ -686,6 +692,7 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["restaurants", "cafes", "shopping"],
       tags: ["churchtown"],
     },
+    relatedCollections: ["botanic-gardens-southport", "free-things-to-do-southport", "sensory-friendly-southport"],
   },
 
   // ── Practical ────────────────────────────────────────────────────────────
@@ -746,6 +753,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["attractions", "cafes", "activities"],
     },
+    relatedCollections: ["art-galleries-southport", "free-things-to-do-southport", "lord-street-cafes-southport", "botanic-gardens-southport"],
   },
   {
     slug: "dog-friendly-southport",
@@ -765,6 +773,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["bars-nightlife", "cafes", "restaurants"],
     },
+    relatedCollections: ["dog-friendly-restaurants-southport", "dog-friendly-pubs-southport", "dog-friendly-cafes-southport", "nature-reserves-southport"],
   },
 
   // ── Food & Drink ─────────────────────────────────────────────────────────
@@ -791,6 +800,7 @@ export const GUIDES: Guide[] = [
     metaTitle: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
     metaDescription:
       "Southport Market on King Street (PR8 1LA) — every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
+    relatedCollections: ["family-friendly-restaurants-southport", "sensory-friendly-southport", "free-things-to-do-southport"],
   },
   {
     slug: "best-restaurants-southport",
@@ -810,6 +820,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["restaurants"],
     },
+    relatedCollections: ["lord-street-restaurants-southport", "birkdale-village-restaurants", "family-friendly-restaurants-southport", "outdoor-seating-restaurants-southport", "afternoon-tea-southport"],
   },
   {
     slug: "southport-eateries",
@@ -829,6 +840,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["restaurants", "cafes", "bars-nightlife"],
     },
+    relatedCollections: ["lord-street-restaurants-southport", "birkdale-village-restaurants", "outdoor-seating-restaurants-southport", "afternoon-tea-southport", "dog-friendly-restaurants-southport"],
   },
   {
     slug: "best-cafes-southport",
@@ -848,6 +860,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["cafes"],
     },
+    relatedCollections: ["dog-friendly-cafes-southport", "lord-street-cafes-southport", "afternoon-tea-southport"],
   },
 
   // ── Practical: Sunflower membership ─────────────────────────────────────
@@ -866,6 +879,7 @@ export const GUIDES: Guide[] = [
     tags: ["accessibility", "hidden-disabilities", "sunflower", "autism", "sensory-friendly"],
     status: "published",
     relatedSlugs: ["accessible-southport", "autism-friendly-southport", "the-open-2026-accessibility", "southport-market"],
+    relatedCollections: ["sunflower-friendly-southport", "sensory-friendly-southport", "free-things-to-do-southport"],
     metaTitle: "SouthportGuide Joins the Hidden Disabilities Sunflower Scheme",
     metaDescription:
       "SouthportGuide is now a proud supporter of the Hidden Disabilities Sunflower scheme. Our commitment to accessible Southport, sensory-friendly events, and helping visitors with hidden disabilities.",
@@ -893,6 +907,7 @@ export const GUIDES: Guide[] = [
       tags: ["sensory-friendly"],
     },
     relatedSlugs: ["southportguide-sunflower-member", "accessible-southport", "the-open-2026-accessibility", "southport-market"],
+    relatedCollections: ["sensory-friendly-southport", "sunflower-friendly-southport", "free-things-to-do-southport", "family-friendly-things-to-do-southport"],
   },
 
   // ── Practical: Accessible Southport directory ─────────────────────────────
@@ -917,6 +932,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       tags: ["sunflower-friendly"],
     },
+    relatedCollections: ["sunflower-friendly-southport", "sensory-friendly-southport", "free-things-to-do-southport"],
   },
 
   // ── Practical: Open 2026 accessibility guide ──────────────────────────────
@@ -939,6 +955,7 @@ export const GUIDES: Guide[] = [
     metaDescription:
       "The Open Championship 2026 at Royal Birkdale — accessibility guide covering the sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, disabled parking, and practical tips for hidden disability visitors.",
     relatedSlugs: ["southportguide-sunflower-member", "autism-friendly-southport", "accessible-southport"],
+    relatedCollections: ["hotels-near-royal-birkdale", "sunflower-friendly-southport", "sensory-friendly-southport"],
   },
 ];
 
@@ -965,6 +982,11 @@ export function getGuidesByCategory(category: GuideCategory): Guide[] {
  * Get related guides for a given guide.
  * Returns up to `limit` guides that share tags or category, excluding self.
  */
+export function getRelatedCollections(slug: string): string[] {
+  const guide = GUIDES.find((g) => g.slug === slug);
+  return guide?.relatedCollections ?? [];
+}
+
 export function getRelatedGuides(slug: string, limit = 4): Guide[] {
   const current = GUIDES.find((g) => g.slug === slug);
   if (!current) return [];

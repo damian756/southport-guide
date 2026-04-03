@@ -5,6 +5,7 @@ import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
 import { ChevronRight, MapPin as MapPinIcon, Bed, CalendarDays, PoundSterling } from "lucide-react";
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
+import { COLLECTIONS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
 import { LATEROOMS } from "@/lib/affiliate-links";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
@@ -80,6 +81,51 @@ const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
   "shopping": [
     { href: "/guides/lord-street", label: "Lord Street Guide" },
     { href: "/guides/birkdale-village", label: "Birkdale Village Guide" },
+  ],
+};
+
+const CATEGORY_COLLECTIONS: Record<string, string[]> = {
+  restaurants: [
+    "dog-friendly-restaurants-southport",
+    "family-friendly-restaurants-southport",
+    "outdoor-seating-restaurants-southport",
+    "lord-street-restaurants-southport",
+    "birkdale-village-restaurants",
+    "afternoon-tea-southport",
+  ],
+  hotels: [
+    "hotels-with-parking-southport",
+    "budget-hotels-southport",
+    "hotels-near-royal-birkdale",
+  ],
+  "bars-nightlife": [
+    "dog-friendly-pubs-southport",
+    "live-music-bars-southport",
+    "late-night-bars-southport",
+  ],
+  cafes: [
+    "dog-friendly-cafes-southport",
+    "lord-street-cafes-southport",
+    "afternoon-tea-southport",
+  ],
+  attractions: [
+    "free-things-to-do-southport",
+    "family-friendly-things-to-do-southport",
+    "art-galleries-southport",
+    "nature-reserves-southport",
+    "botanic-gardens-southport",
+    "marine-lake-southport",
+  ],
+  "beaches-parks": [
+    "nature-reserves-southport",
+    "marine-lake-southport",
+    "free-things-to-do-southport",
+  ],
+  activities: [
+    "free-things-to-do-southport",
+    "family-friendly-things-to-do-southport",
+    "marine-lake-southport",
+    "nature-reserves-southport",
   ],
 };
 
@@ -617,6 +663,39 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 </div>
               </div>
             )}
+
+            {/* ── Curated Lists ───────────────────────────────────────────── */}
+            {CATEGORY_COLLECTIONS[category] && (() => {
+              const cols = CATEGORY_COLLECTIONS[category]
+                .map((slug) => COLLECTIONS.find((c) => c.slug === slug))
+                .filter((c): c is (typeof COLLECTIONS)[number] => c !== undefined);
+              if (cols.length === 0) return null;
+              return (
+                <div className="mt-5 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-4">Curated Lists</p>
+                  <div className="flex flex-wrap gap-3">
+                    {cols.map((c) => (
+                      <Link
+                        key={c.slug}
+                        href={`/collections/${c.slug}`}
+                        className="inline-flex items-center gap-1.5 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors border border-gray-100 hover:border-[#1B2E4B]"
+                      >
+                        <span>{c.emoji}</span>
+                        {c.title.replace(/ in Southport$/, "").replace(/ Southport$/, "")} →
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <Link
+                      href="/collections"
+                      className="text-xs font-semibold text-gray-400 hover:text-[#C9A84C] transition-colors"
+                    >
+                      All curated lists →
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* ── Living in Southport callout ───────────────────────────── */}
             {category !== "parking" && category !== "transport" && (

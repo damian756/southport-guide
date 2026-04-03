@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, ArrowRight, MapPin } from "lucide-react";
 import type { Guide } from "@/lib/guides-config";
-import { getRelatedGuides, GUIDE_CATEGORIES } from "@/lib/guides-config";
+import { getRelatedGuides, getRelatedCollections, GUIDE_CATEGORIES } from "@/lib/guides-config";
+import { COLLECTIONS } from "@/lib/collections-config";
 
 interface BusinessCard {
   id: string;
@@ -81,6 +82,11 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
     Promise.resolve(getRelatedGuides(guide.slug)),
     fetchRelatedListings(guide),
   ]);
+
+  const relatedCollectionSlugs = getRelatedCollections(guide.slug);
+  const relatedCollections = relatedCollectionSlugs
+    .map((slug) => COLLECTIONS.find((c) => c.slug === slug))
+    .filter((c): c is (typeof COLLECTIONS)[number] => c !== undefined);
 
   const categoryLabel = GUIDE_CATEGORIES[guide.category].label;
 
@@ -200,6 +206,61 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                 className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm hover:text-[#1B2E4B] transition-colors"
               >
                 Browse all listings <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Related Collections ── */}
+      {relatedCollections.length > 0 && (
+        <section className="bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 max-w-7xl py-14">
+            <div className="mb-7">
+              <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">
+                Curated Lists
+              </p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
+                Related Collections
+              </h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {relatedCollections.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/collections/${c.slug}`}
+                  className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-[#C9A84C]/30 hover:-translate-y-0.5 transition-all"
+                >
+                  {c.image ? (
+                    <div className="relative h-32 overflow-hidden">
+                      <Image
+                        src={c.image}
+                        alt={c.title}
+                        fill
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <span className="absolute bottom-2 left-3 text-xl">{c.emoji}</span>
+                    </div>
+                  ) : (
+                    <div className="h-14 flex items-center px-4 text-2xl">{c.emoji}</div>
+                  )}
+                  <div className="p-4">
+                    <h3 className="font-display font-bold text-[#1B2E4B] text-sm leading-snug mb-1 group-hover:text-[#C9A84C] transition-colors">
+                      {c.title}
+                    </h3>
+                    <span className="text-xs font-semibold text-[#C9A84C]">View list →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-6">
+              <Link
+                href="/collections"
+                className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm hover:text-[#1B2E4B] transition-colors"
+              >
+                All collections <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
