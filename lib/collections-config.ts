@@ -207,6 +207,20 @@ export const COLLECTIONS: Collection[] = [
     priority: 0.85,
   },
 
+  // ── Sunflower-friendly ───────────────────────────────────────────────────
+  {
+    slug: "sunflower-friendly-southport",
+    title: "Sunflower-Friendly Venues in Southport",
+    metaDescription:
+      "Sunflower-friendly venues in Southport — businesses and attractions registered with the Hidden Disabilities Sunflower scheme, where staff recognise the lanyard and offer support.",
+    intro:
+      "These are the Southport venues that are registered with the Hidden Disabilities Sunflower scheme, meaning staff are trained to recognise the lanyard and offer discreet additional support. No explanation needed, no proof of disability required. The list is growing — SouthportGuide is actively encouraging more venues to register. Lanyards are free at Southport train station and from hiddendisabilitiesstore.com.",
+    tags: ["sunflower-friendly"],
+    categorySlugs: ["attractions", "cafes", "restaurants", "hotels", "activities", "transport"],
+    emoji: "🌻",
+    priority: 0.82,
+  },
+
   // ── Sensory-friendly ─────────────────────────────────────────────────────
   {
     slug: "sensory-friendly-southport",

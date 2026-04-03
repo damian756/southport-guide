@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/the-open-2026-accessibility`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/the-open-2026.webp` }],
+    images: [{ url: `${BASE_URL}/images/open-2026.webp` }],
   },
 };
 
@@ -152,7 +152,7 @@ export default function OpenAccessibilityGuidePage() {
           {/* Image panel */}
           <div className="relative min-h-[260px] sm:min-h-[340px] md:min-h-0 md:w-[45%] order-first md:order-last">
             <Image
-              src="/images/the-open-2026.webp"
+              src="/images/open-2026.webp"
               alt="Royal Birkdale Golf Club — host of The Open Championship 2026"
               fill
               sizes="(max-width: 768px) 100vw, 45vw"

@@ -177,13 +177,14 @@ export default function AccessibleSouthportPage() {
         <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
         <div className="flex flex-col md:flex-row md:min-h-[56vh]">
           {/* Badge panel */}
-          <div className="relative min-h-[240px] sm:min-h-[320px] md:min-h-0 md:w-[38%] order-first md:order-last bg-white flex items-center justify-center p-10">
+          <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[42%] order-first md:order-last flex items-center justify-center bg-white p-10 md:p-16">
             <Image
               src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
               alt="Hidden Disabilities Sunflower — SouthportGuide is a proud member"
-              width={280}
-              height={280}
-              className="object-contain w-full max-w-[220px]"
+              width={400}
+              height={400}
+              sizes="(max-width: 768px) 80vw, 42vw"
+              className="object-contain w-full max-w-[320px] md:max-w-none"
               priority
             />
           </div>

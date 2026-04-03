@@ -914,6 +914,9 @@ export const GUIDES: Guide[] = [
     metaDescription:
       "Accessible Southport — wheelchair access, Sunflower-registered venues, quiet hours, blue badge parking, and practical guidance for visitors with visible and hidden disabilities.",
     relatedSlugs: ["autism-friendly-southport", "southportguide-sunflower-member", "the-open-2026-accessibility", "southport-market"],
+    listingFilter: {
+      tags: ["sunflower-friendly"],
+    },
   },
 
   // ── Practical: Open 2026 accessibility guide ──────────────────────────────
@@ -925,7 +928,7 @@ export const GUIDES: Guide[] = [
     excerpt:
       "The Open 2026 accessibility guide — sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, carer tickets, disabled parking, and practical advice for visiting Royal Birkdale with a hidden disability.",
     category: "events",
-    heroImage: "/images/the-open-2026.webp",
+    heroImage: "/images/open-2026.webp",
     seoPriority: 0.9,
     eventDate: "2026-07-12",
     datePublished: "2026-04-02",
