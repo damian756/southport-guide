@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
@@ -166,6 +167,22 @@ function Footer() {
                 Built by Churchtown Media ↗
               </a>
             </div>
+            <Link
+              href="/guides/southportguide-sunflower-member"
+              className="inline-flex items-center gap-3 mt-6 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
+            >
+              <Image
+                src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
+                alt="Hidden Disabilities Sunflower — Proud to Support UK"
+                width={44}
+                height={44}
+                className="rounded-lg flex-none"
+              />
+              <div>
+                <p className="text-white text-xs font-semibold leading-snug group-hover:text-[#C9A84C] transition-colors">Proud Sunflower member</p>
+                <p className="text-white/40 text-[11px] leading-snug mt-0.5">Hidden Disabilities Sunflower</p>
+              </div>
+            </Link>
           </div>
 
           {/* Explore */}
