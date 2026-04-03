@@ -1244,7 +1244,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // ── April 2026 posts ──────────────────────────────────────────────────────
   {
     slug: "easter-weekend-southport-2026",
-    title: "Easter Weekend in Southport 2026 — What to Do, Where to Eat, What's On",
+    title: "Easter Weekend in Southport 2026: What to Do, Where to Eat, What's On",
     excerpt: "The beach, the Botanic Gardens, Southport Market, the Pier. Here's how I'm spending Easter weekend in Southport with four kids and a bulldog.",
     categorySlug: "events",
     image: "/images/blog/blog-easter-southport.jpg",
@@ -1253,7 +1253,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-marine-lake-seafront-walk",
-    title: "Southport Marine Lake and Seafront Walk — The Local's Complete Guide",
+    title: "Southport Marine Lake and Seafront Walk: The Local's Complete Guide",
     excerpt: "The Marine Lake is one of Southport's genuinely great things and most visitors barely notice it. Here's the full loop, what to stop for, and when to go.",
     categorySlug: "outdoors",
     image: "/images/blog/blog-marine-lake-walk.jpg",
@@ -1262,7 +1262,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "getting-to-the-open-2026-transport-parking",
-    title: "Getting to The Open 2026 — Transport, Parking, and What Not to Do",
+    title: "Getting to The Open 2026: Transport, Parking, and What Not to Do",
     excerpt: "I live three miles from Royal Birkdale. I've been to Open weeks before. Here's the honest guide to getting there without ruining the day before you even arrive.",
     categorySlug: "golf",
     image: "/images/blog/blog-open-transport-birkdale.jpg",
