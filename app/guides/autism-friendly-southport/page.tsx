@@ -633,6 +633,36 @@ export default function AutismFriendlySouthportPage() {
           </div>
         </section>
 
+        {/* Accessible Southport and Open cross-links */}
+        <section className="grid sm:grid-cols-2 gap-5">
+          <Link
+            href="/guides/accessible-southport"
+            className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#C9A84C]/50 hover:shadow-sm transition-all"
+          >
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">Disability Guide</p>
+            <h3 className="font-bold text-[#1B2E4B] text-base mb-2">Accessible Southport</h3>
+            <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              Wheelchair access, blue badge parking, Sunflower venues, quiet hours, and practical transport for all disabled visitors.
+            </p>
+            <span className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              Full accessibility guide →
+            </span>
+          </Link>
+          <Link
+            href="/guides/the-open-2026-accessibility"
+            className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#C9A84C]/50 hover:shadow-sm transition-all"
+          >
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">The Open 2026</p>
+            <h3 className="font-bold text-[#1B2E4B] text-base mb-2">Open Championship accessibility guide</h3>
+            <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              Sensory zone at Spectator Village 4, Sunflower lanyard recognised, carer tickets, and practical planning for Royal Birkdale.
+            </p>
+            <span className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              Open accessibility guide →
+            </span>
+          </Link>
+        </section>
+
         {/* FAQs */}
         <section id="faq" className="scroll-mt-28">
           <div className="mb-10">

@@ -11,6 +11,7 @@ import {
   Star,
   Music,
 } from "lucide-react";
+import SensoryInfoCard from "@/app/components/SensoryInfoCard";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
@@ -311,6 +312,18 @@ export default function FireworksChampionshipPage() {
             ))}
           </div>
         </section>
+
+        {/* ── Sensory & Accessibility ── */}
+        <SensoryInfoCard
+          noiseLevel="very-high"
+          noiseLevelNote="Professional pyrotechnics at close range. Deep percussion, sudden loud bursts. Some of the loudest moments of any Southport event."
+          crowdDensity="high"
+          crowdDensityNote="Ticketed and capped venue. Crowded but controlled. Fixed seating helps predict your environment."
+          quietSpace="No quiet space inside the venue once the event begins. Outside the gates, the surrounding park is accessible but you will miss the displays. The accessible viewing area on hard standing is physically calmer than general admission."
+          sensoryTriggers={["Sudden loud explosions", "Bright flashes in dark surroundings", "Percussion from pyrotechnics", "Enclosed crowd movement", "PA announcements", "Ground vibration from larger shells"]}
+          sunflowerNote="Carers enter free with a full-paying ticket holder. Contact the event organisers via visitsouthport.com ahead of your visit if you have specific requirements."
+          lowSensoryTip="This event is genuinely not well-suited to visitors with severe noise sensitivity — the fireworks are the entire point. If attending, book aisle seats for the clearest exit route. The accessible viewing area on hard standing with dedicated toilet facilities is the calmest option. Noise-reducing ear defenders are strongly recommended."
+        />
 
         {/* ── FAQ ── */}
         <section id="faq" className="scroll-mt-28">

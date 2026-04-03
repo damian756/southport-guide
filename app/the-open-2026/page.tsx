@@ -580,6 +580,32 @@ export default function TheOpen2026Page() {
           </Link>
         </section>
 
+        {/* ── Accessibility callout ── */}
+        <section className="bg-[#1C3A20] text-white rounded-2xl p-7 md:p-9 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+          <Image
+            src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
+            alt="Hidden Disabilities Sunflower"
+            width={72}
+            height={72}
+            className="object-contain rounded-xl bg-white p-2 flex-none"
+          />
+          <div className="flex-1">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-1.5">Hidden Disabilities</p>
+            <h3 className="font-display text-xl font-bold text-white mb-2">Visiting The Open with a hidden disability?</h3>
+            <p className="text-white/65 text-sm leading-relaxed mb-4">
+              The R&A recognises the Sunflower lanyard. There is a dedicated sensory zone at Spectator Village 4.
+              Our full accessibility guide covers disabled parking, carer tickets, accessible transport, and practical
+              tips for a low-sensory visit.
+            </p>
+            <Link
+              href="/guides/the-open-2026-accessibility"
+              className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-sm font-bold px-5 py-2.5 rounded-full transition-colors"
+            >
+              Open 2026 accessibility guide <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </section>
+
         {/* ── Partner / advertise CTA ──────────────────────────────── */}
         <section className="bg-white rounded-2xl border border-[#C9A84C]/20 p-8 md:p-12 text-center">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">For Businesses</p>

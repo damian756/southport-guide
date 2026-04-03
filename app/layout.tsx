@@ -236,6 +236,7 @@ function Footer() {
                 ["Business Dashboard", "/dashboard"],
                 ["The Open 2026", "/the-open-2026"],
                 ["MLEC", "/mlec"],
+                ["Accessibility", "/accessibility"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href} className="text-white/60 hover:text-[#C9A84C] transition">{label}</Link>

@@ -13,6 +13,7 @@ import {
   Star,
   Sparkles,
 } from "lucide-react";
+import SensoryInfoCard from "@/app/components/SensoryInfoCard";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
@@ -509,6 +510,18 @@ export default function SouthportFlowerShowGuidePage() {
             </div>
           </div>
         </section>
+
+        {/* ── Sensory & Accessibility ── */}
+        <SensoryInfoCard
+          noiseLevel="moderate"
+          noiseLevelNote="Live music stages, PA announcements, general show ambience. Avoidable by staying in the show gardens away from entertainment areas."
+          crowdDensity="high"
+          crowdDensityNote="Ticketed site but busy, particularly on Saturday. Thursday is the quietest day by a significant margin."
+          quietSpace="The show gardens themselves — the designed gardens created for the event — are relatively calm and away from the main entertainment zones. Head there first before the crowds build."
+          sensoryTriggers={["PA announcements across the site", "Celebrity stage noise", "Busy food market area", "Unexpected queues at busy exhibits", "Saturday afternoon crowd peaks"]}
+          sunflowerNote="The Southport Flower Show is a large outdoor event. Contact the show organisers via southportflowershow.co.uk ahead of your visit if you have specific accessibility requirements."
+          lowSensoryTip="Thursday (opening day) is consistently the quietest. Arrive at 10am, go to the show gardens first, avoid the celebrity stage and food market until after 2pm when they are better managed. Children under 16 are free, so this is one of the most accessible family events in the Southport calendar."
+        />
 
         {/* ── FAQ ── */}
         <section id="faq" className="scroll-mt-28">

@@ -14,6 +14,7 @@ import {
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import SensoryInfoCard from "@/app/components/SensoryInfoCard";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-air-show");
@@ -439,6 +440,18 @@ export default function SouthportAirShowGuidePage() {
             </div>
           </div>
         </section>
+
+        {/* ── Sensory & Accessibility ── */}
+        <SensoryInfoCard
+          noiseLevel="very-high"
+          noiseLevelNote="Jet engines, supersonic passes, PA system. One of the loudest free events in the UK."
+          crowdDensity="very-high"
+          crowdDensityNote="100,000+ over the weekend. Beach is densely packed during headline acts."
+          quietSpace="No designated quiet space on the beach. The southern end towards Ainsdale has significantly thinner crowds. Princes Park is a 15-minute walk from the main display area and is quieter."
+          sensoryTriggers={["Sudden high-volume jet engine noise", "Supersonic passes and bangs", "Very large crowd density", "PA system announcements", "Coastal wind", "Crowd surge during headline acts"]}
+          sunflowerNote="Wear your Sunflower lanyard. St John Ambulance and event marshals are on-site throughout and can direct you to quieter areas."
+          lowSensoryTip="Watch from Ainsdale (south end of the beach) — the same display, significantly fewer people. Ear defenders or noise-reducing ear plugs are genuinely useful here, not optional. Sunday afternoon is marginally quieter than Saturday. Early morning gives you the best position and lowest crowd density."
+        />
 
         {/* ── Late Summer Cross-Sell ── */}
         <section>

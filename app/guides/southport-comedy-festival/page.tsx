@@ -10,6 +10,7 @@ import {
   Star,
   Mic,
 } from "lucide-react";
+import SensoryInfoCard from "@/app/components/SensoryInfoCard";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
@@ -263,6 +264,18 @@ export default function ComedyFestivalPage() {
             ))}
           </div>
         </section>
+
+        {/* ── Sensory & Accessibility ── */}
+        <SensoryInfoCard
+          noiseLevel="high"
+          noiseLevelNote="Amplified live comedy in an enclosed marquee. Audience laughter, PA system, occasional music between acts."
+          crowdDensity="moderate"
+          crowdDensityNote="Fixed seating venue with defined capacity. Predictable environment. Seats are allocated — you know where you will be."
+          quietSpace="Outside the marquee between shows. Victoria Park itself is calm. The foyer area is quieter than inside the main tent."
+          sensoryTriggers={["Indoor enclosed space with amplified sound", "Unexpected audience laughter and applause", "Darkness during performances", "Sudden punchlines causing crowd noise peaks", "Crowded bar area before shows"]}
+          sunflowerNote="Contact southportcomedyfestival.com ahead of your visit for accessibility requirements. Fixed seating means a predictable and manageable environment."
+          lowSensoryTip="Aisle seats give the clearest exit route if you need to leave. The marquee is heated and comfortable, which removes cold as a compounding sensory factor. October weeknights are quieter than weekends. Midweek shows tend to have smaller audiences."
+        />
 
         {/* ── FAQ ── */}
         <section id="faq" className="scroll-mt-28">

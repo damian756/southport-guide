@@ -865,7 +865,7 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-04-02",
     tags: ["accessibility", "hidden-disabilities", "sunflower", "autism", "sensory-friendly"],
     status: "published",
-    relatedSlugs: ["autism-friendly-southport", "southport-market", "southport-artisan-market"],
+    relatedSlugs: ["accessible-southport", "autism-friendly-southport", "the-open-2026-accessibility", "southport-market"],
     metaTitle: "SouthportGuide Joins the Hidden Disabilities Sunflower Scheme",
     metaDescription:
       "SouthportGuide is now a proud supporter of the Hidden Disabilities Sunflower scheme. Our commitment to accessible Southport, sensory-friendly events, and helping visitors with hidden disabilities.",
@@ -883,8 +883,8 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/autism-logo.png",
     seoPriority: 0.92,
     datePublished: "2026-03-31",
-    dateUpdated: "2026-03-31",
-    tags: ["autism", "sensory-friendly", "accessibility", "family-friendly"],
+    dateUpdated: "2026-04-02",
+    tags: ["autism", "sensory-friendly", "accessibility", "sunflower", "hidden-disabilities", "family-friendly"],
     status: "published",
     metaTitle: "Autism Friendly Southport | Sensory-Friendly Guide for Visitors",
     metaDescription:
@@ -892,6 +892,50 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       tags: ["sensory-friendly"],
     },
+    relatedSlugs: ["southportguide-sunflower-member", "accessible-southport", "the-open-2026-accessibility", "southport-market"],
+  },
+
+  // ── Practical: Accessible Southport directory ─────────────────────────────
+  {
+    slug: "accessible-southport",
+    title: "Accessible Southport",
+    shortTitle: "Accessible Southport",
+    description: "Wheelchair access, Sunflower-friendly venues, quiet hours, and practical guidance for visitors with visible and non-visible disabilities.",
+    excerpt:
+      "Accessible Southport guide — wheelchair access, Sunflower-registered venues, quiet hours at Southport Market, blue badge parking, and practical transport information for disabled visitors.",
+    category: "practical",
+    heroImage: "/images/sunflower/PROUD-To-SUPPORT-UK_2.webp",
+    seoPriority: 0.88,
+    datePublished: "2026-04-02",
+    dateUpdated: "2026-04-02",
+    tags: ["accessibility", "wheelchair", "sunflower", "hidden-disabilities", "sensory-friendly", "disabled-visitors"],
+    status: "published",
+    metaTitle: "Accessible Southport | Wheelchair Access, Sunflower Venues & Disability Guide",
+    metaDescription:
+      "Accessible Southport — wheelchair access, Sunflower-registered venues, quiet hours, blue badge parking, and practical guidance for visitors with visible and hidden disabilities.",
+    relatedSlugs: ["autism-friendly-southport", "southportguide-sunflower-member", "the-open-2026-accessibility", "southport-market"],
+  },
+
+  // ── Practical: Open 2026 accessibility guide ──────────────────────────────
+  {
+    slug: "the-open-2026-accessibility",
+    title: "The Open 2026 Accessibility Guide",
+    shortTitle: "Open 2026 Accessibility",
+    description: "Hidden disabilities, sensory zone, wheelchair access, and practical planning for The Open Championship at Royal Birkdale.",
+    excerpt:
+      "The Open 2026 accessibility guide — sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, carer tickets, disabled parking, and practical advice for visiting Royal Birkdale with a hidden disability.",
+    category: "events",
+    heroImage: "/images/the-open-2026.webp",
+    seoPriority: 0.9,
+    eventDate: "2026-07-12",
+    datePublished: "2026-04-02",
+    dateUpdated: "2026-04-02",
+    tags: ["the-open", "accessibility", "sunflower", "hidden-disabilities", "sensory-friendly", "royal-birkdale", "wheelchair"],
+    status: "published",
+    metaTitle: "The Open 2026 Accessibility Guide | Sensory Zone, Sunflower Lanyard & Disabled Access",
+    metaDescription:
+      "The Open Championship 2026 at Royal Birkdale — accessibility guide covering the sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, disabled parking, and practical tips for hidden disability visitors.",
+    relatedSlugs: ["southportguide-sunflower-member", "autism-friendly-southport", "accessible-southport"],
   },
 ];
 

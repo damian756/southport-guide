@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, CalendarDays, ChevronRight, ArrowRight, Clock } from "lucide-react";
+import SensoryInfoCard from "@/app/components/SensoryInfoCard";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
@@ -320,6 +321,18 @@ export default function CristalPalacePage() {
             </div>
           </div>
         </section>
+
+        {/* ── Sensory & Accessibility ── */}
+        <SensoryInfoCard
+          noiseLevel="moderate"
+          noiseLevelNote="Live music and performance audio, open-air setting so sound disperses naturally. Less intense than indoor venues."
+          crowdDensity="high"
+          crowdDensityNote="Free event attracting large crowds at the best viewing spots. Edge positions give you space and easy escape routes."
+          quietSpace="Lord Street itself is very wide. Position yourself at the edge of the gardens or on the boulevard behind the crowd for natural space. There is no designated quiet zone but the outdoor setting makes it easy to step back."
+          sensoryTriggers={["Performers suspended overhead (unexpected movement)", "Crowd density at prime spots", "Live music and PA audio", "Sudden crowd reaction to aerial moments", "Darkness as the performance progresses"]}
+          sunflowerNote="This is a free outdoor event on public space. You have full control over your distance and exit. Wear your Sunflower lanyard if you need additional support from event stewards."
+          lowSensoryTip="Stand at the edge of the gardens rather than the centre. You get almost the same view of the overhead chandelier with far more space. Arriving at 6pm rather than 6:30pm means you can choose your position calmly before the crowd builds. The outdoor setting means natural light and air, which is significantly less intense than indoor events."
+        />
 
         {/* ── FAQ ── */}
         <section id="faq" className="scroll-mt-28">
