@@ -624,6 +624,89 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                   </a>
                 </div>
               )}
+
+              {/* Related Guides */}
+              {CATEGORY_GUIDES[category] && (
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Related Guides</p>
+                  <div className="space-y-0.5">
+                    {CATEGORY_GUIDES[category].map(({ href, label }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        className="flex items-center justify-between w-full px-2 py-1.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-[#C9A84C] transition-all"
+                      >
+                        <span className="truncate pr-2">{label}</span>
+                        <span className="text-[#C9A84C] flex-none">→</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Curated Lists */}
+              {CATEGORY_COLLECTIONS[category] && (() => {
+                const cols = CATEGORY_COLLECTIONS[category]
+                  .map((slug) => COLLECTIONS.find((c) => c.slug === slug))
+                  .filter((c): c is (typeof COLLECTIONS)[number] => c !== undefined);
+                if (cols.length === 0) return null;
+                return (
+                  <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Curated Lists</p>
+                    <div className="space-y-0.5">
+                      {cols.map((c) => (
+                        <Link
+                          key={c.slug}
+                          href={`/collections/${c.slug}`}
+                          className="flex items-center gap-2 w-full px-2 py-1.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-[#C9A84C] transition-all"
+                        >
+                          <span className="flex-none text-sm">{c.emoji}</span>
+                          <span className="flex-1 truncate">{c.title.replace(/ in Southport$/, "").replace(/ Southport$/, "")}</span>
+                          <span className="text-[#C9A84C] flex-none">→</span>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-gray-100">
+                      <Link href="/collections" className="text-xs font-semibold text-gray-400 hover:text-[#C9A84C] transition-colors">
+                        All curated lists →
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Living in Southport */}
+              {category !== "parking" && category !== "transport" && (
+                <div className="bg-[#FAF8F5] rounded-2xl border border-gray-200 p-4">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Southport Property</p>
+                  <p className="text-sm font-semibold text-[#1B2E4B] mb-1">Thinking of living here?</p>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                    Sold prices, schools, crime and flood risk for every PR8 and PR9 postcode.
+                  </p>
+                  <Link
+                    href="/property"
+                    className="inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] text-white text-xs font-bold px-4 py-2 rounded-full transition-colors"
+                  >
+                    House prices →
+                  </Link>
+                </div>
+              )}
+
+              {/* Own a business CTA */}
+              <div className="bg-[#1B2E4B] rounded-2xl p-4 text-center">
+                <div className="text-2xl mb-2">{theme.emoji}</div>
+                <p className="text-white text-sm font-semibold mb-1">Own a business here?</p>
+                <p className="text-white/60 text-xs leading-relaxed mb-3">
+                  List for free and get discovered by thousands of visitors planning their Southport trip.
+                </p>
+                <Link
+                  href="/claim-listing"
+                  className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-4 py-2 rounded-full transition-colors"
+                >
+                  Add Your Business →
+                </Link>
+              </div>
+
             </div>
           </aside>
 
@@ -646,89 +729,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               boostedBusinessIds={boostedIds}
             />
 
-            {/* ── Related Guides ──────────────────────────────────────────── */}
-            {CATEGORY_GUIDES[category] && (
-              <div className="mt-8 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-4">Related Guides</p>
-                <div className="flex flex-wrap gap-3">
-                  {CATEGORY_GUIDES[category].map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="inline-flex items-center gap-1.5 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors border border-gray-100 hover:border-[#1B2E4B]"
-                    >
-                      {label} →
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* ── Curated Lists ───────────────────────────────────────────── */}
-            {CATEGORY_COLLECTIONS[category] && (() => {
-              const cols = CATEGORY_COLLECTIONS[category]
-                .map((slug) => COLLECTIONS.find((c) => c.slug === slug))
-                .filter((c): c is (typeof COLLECTIONS)[number] => c !== undefined);
-              if (cols.length === 0) return null;
-              return (
-                <div className="mt-5 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-4">Curated Lists</p>
-                  <div className="flex flex-wrap gap-3">
-                    {cols.map((c) => (
-                      <Link
-                        key={c.slug}
-                        href={`/collections/${c.slug}`}
-                        className="inline-flex items-center gap-1.5 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors border border-gray-100 hover:border-[#1B2E4B]"
-                      >
-                        <span>{c.emoji}</span>
-                        {c.title.replace(/ in Southport$/, "").replace(/ Southport$/, "")} →
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <Link
-                      href="/collections"
-                      className="text-xs font-semibold text-gray-400 hover:text-[#C9A84C] transition-colors"
-                    >
-                      All curated lists →
-                    </Link>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* ── Living in Southport callout ───────────────────────────── */}
-            {category !== "parking" && category !== "transport" && (
-              <div className="mt-8 bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                <span className="text-3xl flex-none">🏠</span>
-                <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-[#1B2E4B] mb-1">Thinking of living in Southport?</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    We&apos;ve mapped sold prices, schools, crime and flood risk for every postcode in PR8 and PR9, using Land Registry and public data, not estate agent spin.
-                  </p>
-                </div>
-                <Link
-                  href="/property"
-                  className="flex-none inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap"
-                >
-                  House prices →
-                </Link>
-              </div>
-            )}
-
-            {/* ── Bottom CTA ──────────────────────────────────────────────── */}
-            <div className="mt-10 rounded-2xl overflow-hidden">
-              <div className={`bg-gradient-to-br ${theme.gradient} p-8 md:p-10 text-center`}>
-                <div className="text-4xl mb-3">{theme.emoji}</div>
-                <h3 className="font-display text-2xl font-bold text-white mb-2">Own a business in this category?</h3>
-                <p className="text-white/70 text-sm mb-6 max-w-sm mx-auto">
-                  List for free and get discovered by thousands of visitors planning their Southport trip.
-                </p>
-                <Link href="/claim-listing" className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-white px-7 py-3 rounded-full font-bold text-sm transition-all hover:shadow-lg">
-                  Add Your Business →
-                </Link>
-              </div>
-            </div>
           </div>
 
         </div>
