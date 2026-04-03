@@ -11,7 +11,7 @@ export interface Collection {
   title: string;
   /** Meta description */
   metaDescription: string;
-  /** Short Clare-voice intro — 60–100 words, shown above the listings */
+  /** Terry-voice intro — 60–100 words, shown above the listings */
   intro: string;
   /** Exclude from sitemap (e.g. pages that render noindex due to thin content) */
   sitemapExclude?: boolean;
@@ -23,6 +23,8 @@ export interface Collection {
   emoji: string;
   /** Sitemap priority */
   priority: number;
+  /** Card image path (relative to /public) */
+  image?: string;
 }
 
 export const COLLECTIONS: Collection[] = [
@@ -33,11 +35,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Dog-friendly restaurants in Southport — places that actually mean it, with water bowls outside and dogs welcome inside. Updated local list.",
     intro:
-      "Finding a restaurant that genuinely welcomes dogs (rather than just tolerating them on the pavement) takes a bit of research. These are the places in Southport that actually mean it — dogs inside, water bowls, no fuss when you walk in with a muddy spaniel. Worth phoning ahead for evening visits, as capacity can change.",
+      "Frank has been to most of the dog-friendly restaurants in Southport at least once. The ones that genuinely welcome dogs are a shorter list than you might think: water bowls out front, space inside, staff who don't look panicked when you walk in with a bulldog. Those are the ones on this list. Phone ahead for evening visits. Most places have limited outside tables and the inside situation can change.",
     tags: ["dog-friendly"],
     categorySlugs: ["restaurants"],
     emoji: "🐾",
     priority: 0.8,
+    image: "/images/collections/collection-dog-friendly-restaurants.jpg",
   },
   {
     slug: "dog-friendly-pubs-southport",
@@ -45,11 +48,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Dog-friendly pubs in Southport — welcoming dogs inside, with outdoor space and post-walk food worth having. The honest local list.",
     intro:
-      "Post-walk pub visits with the dog in tow work much better when you know which pubs are genuinely on board with the idea. These are Southport's most reliably dog-welcoming pubs — water bowls, dogs inside, no side-eye from the bar staff. Best to call ahead on busy weekends.",
+      "Frank rates a pub partly on its beer garden and partly on whether the bar staff acknowledge him when he walks in. He has strong opinions. These are the Southport pubs that pass both tests: dogs genuinely welcome inside, outdoor space worth using, and post-walk food that makes the trip worthwhile. Call ahead at weekends. Some of the smaller places fill up fast.",
     tags: ["dog-friendly"],
     categorySlugs: ["bars-nightlife"],
     emoji: "🐶",
     priority: 0.8,
+    image: "/images/collections/collection-dog-friendly-pubs.jpg",
   },
   {
     slug: "dog-friendly-cafes-southport",
@@ -57,11 +61,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Dog-friendly cafés in Southport — independent coffee shops and tea rooms that welcome dogs. Honest local list, water bowls and all.",
     intro:
-      "A decent coffee after a beach walk is non-negotiable. These Southport cafés are the ones that put water bowls outside and mean it when they say dogs are welcome — inside, not just chained to a post in the rain. Independents tend to be more accommodating than chains; most of the places here are exactly that.",
+      "After a walk on the beach or through the dunes, a coffee is non-negotiable. Frank's view is that a decent café has a water bowl outside and doesn't make you tie him to a post in the rain. I agree. These are the Southport cafes that actually mean it when they say dogs welcome. They're almost all independents, which is usually a reliable indicator.",
     tags: ["dog-friendly"],
     categorySlugs: ["cafes"],
     emoji: "☕",
     priority: 0.75,
+    image: "/images/collections/collection-dog-friendly-cafes.jpg",
   },
 
   // ── Outdoor seating ──────────────────────────────────────────────────────
@@ -71,11 +76,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Restaurants with outdoor seating in Southport — the best places to eat outside when the weather actually plays ball.",
     intro:
-      "Southport's outdoor eating scene depends heavily on the weather playing along, which it does sometimes. When it does, these are the restaurants worth booking for a table outside — proper al fresco, not just a couple of chairs on a pavement. Lord Street has some decent options; Birkdale Village has a few more.",
+      "Southport's outdoor eating is entirely dependent on the weather cooperating, which it does maybe half the time. When it does, these are the restaurants where sitting outside is actually worth it: proper terraces, not two chairs on a pavement. Lord Street has a few. Birkdale village has more. Book ahead in summer, especially when the sun is forecast. Everyone else has the same idea.",
     tags: ["outdoor-seating"],
     categorySlugs: ["restaurants"],
     emoji: "🌤️",
     priority: 0.75,
+    image: "/images/collections/collection-outdoor-seating.jpg",
   },
 
   // ── Family-friendly ──────────────────────────────────────────────────────
@@ -85,11 +91,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Family-friendly restaurants in Southport — places with kids' menus, highchairs, and staff who don't visibly panic when children arrive.",
     intro:
-      "Family dining in Southport has improved a lot. These are the restaurants that actively cater for families — proper kids' menus, highchairs, and the kind of space where nobody's going to glare at you if your five-year-old drops something. Covers the full range from pizza-and-pasta to slightly more ambitious cooking.",
+      "I've taken four kids to most of the restaurants in this town, so I know which ones are genuinely set up for families and which ones just tolerate them. These are the ones with proper kids' menus, highchairs, and enough space that your four-year-old dropping a fork doesn't ruin anyone's evening. Covers everything from pizza to something a bit more ambitious, depending on what your lot will actually eat.",
     tags: ["family-friendly"],
     categorySlugs: ["restaurants"],
     emoji: "👨‍👩‍👧‍👦",
     priority: 0.8,
+    image: "/images/collections/collection-family-friendly-restaurants.jpg",
   },
   {
     slug: "family-friendly-things-to-do-southport",
@@ -97,11 +104,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Family-friendly things to do in Southport — activities and attractions worth the effort with kids. Honest, no filler.",
     intro:
-      "Southport is genuinely good for families — the beach, Pleasureland, Southport Zoo, the Atkinson. These are the attractions and activities that are actually worth the trip with kids in tow, rather than the ones that look good in a leaflet and disappoint in person. Covers a range of ages and budgets.",
+      "Southport is genuinely good with kids. I've been taking mine to the beach, the Atkinson, Pleasureland, and the Botanic Gardens for years, and I have a reasonable sense of what holds up with actual children in tow and what looks better in a leaflet than it is. This list is the honest version, across a range of ages and budgets.",
     tags: ["family-friendly"],
     categorySlugs: ["attractions", "activities"],
     emoji: "🎡",
     priority: 0.8,
+    image: "/images/collections/collection-family-friendly-things.jpg",
   },
 
   // ── Location-based: restaurants ──────────────────────────────────────────
@@ -111,11 +119,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Restaurants on Lord Street Southport — dining along the Victorian boulevard. The best places to eat on Southport's main street.",
     intro:
-      "Lord Street is a mile long and has restaurants scattered all the way along it — some good, some less so. These are the ones actually on or immediately off Lord Street that are worth your time. The street itself is beautiful for a walk between courses, which helps.",
+      "Lord Street is a mile long and the quality varies enormously. I've eaten along most of it over the years. These are the restaurants worth your time: actually on or just off the boulevard, under the Victorian canopies. The street itself is worth walking even between courses. Not many town centres look like this.",
     tags: ["lord-street"],
     categorySlugs: ["restaurants"],
     emoji: "🍽️",
     priority: 0.8,
+    image: "/images/collections/collection-lord-street-restaurants.jpg",
   },
   {
     slug: "lord-street-cafes-southport",
@@ -123,11 +132,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Cafés on Lord Street Southport — coffee shops and tea rooms along the Victorian boulevard. Where to stop for a proper coffee.",
     intro:
-      "Lord Street has more cafés than you'd think for a single street — they're tucked into the Victorian arcades and under the glass canopies. These are the ones worth stopping at, from proper espresso to a decent pot of tea. Good for a browse-and-coffee combination if you're spending time on the street.",
+      "There are more cafes on Lord Street than most people realise. They're tucked into the arcades and behind the glass canopies. Some are good, some are average, some are overpriced because of the location. These are the ones worth stopping at. If you're spending time on the street anyway, a coffee and something to eat is the right way to do it.",
     tags: ["lord-street"],
     categorySlugs: ["cafes"],
     emoji: "☕",
     priority: 0.75,
+    image: "/images/collections/collection-lord-street-cafes.jpg",
   },
   {
     slug: "birkdale-village-restaurants",
@@ -135,11 +145,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Restaurants in Birkdale Village Southport — dining on Liverpool Road, two minutes from Royal Birkdale Golf Club. The local favourite.",
     intro:
-      "Birkdale Village is where Southport locals tend to eat when they want somewhere decent without going into town. Liverpool Road has a solid cluster of independent restaurants and bars — better quality per square mile than most of the town centre. Worth booking at weekends. Parking is straightforward.",
+      "Birkdale village is where I go when I want a decent meal without the town centre. Liverpool Road has a cluster of independent restaurants that are genuinely good: not fancy, just reliable. Better quality per square mile than most of the town centre, honestly. Book at weekends. Parking is straightforward compared to Lord Street.",
     tags: ["birkdale"],
     categorySlugs: ["restaurants"],
     emoji: "🍷",
     priority: 0.8,
+    image: "/images/collections/collection-birkdale-village-restaurants.jpg",
   },
 
   // ── Dining style ─────────────────────────────────────────────────────────
@@ -149,11 +160,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Afternoon tea in Southport — the best places for a proper afternoon tea. Hotels, independent tea rooms, and the ones worth booking ahead.",
     intro:
-      "Southport has a decent afternoon tea scene — not quite Bath, but better than you'd expect. These are the places doing it properly, with proper sandwiches, scones worth eating, and tea that comes in a pot. The hotel options tend to be the more reliable end of the market. Book ahead at weekends.",
+      "Southport does afternoon tea reasonably well. Not Bath, but better than you'd think for a seaside town in Merseyside. These are the places doing it properly: sandwiches that are actually worth eating, scones with decent jam, tea in a pot rather than a bag on a string. The hotels tend to be the safer bet. Book ahead at weekends, especially in summer.",
     tags: ["afternoon-tea"],
     categorySlugs: ["restaurants", "cafes", "hotels"],
     emoji: "🫖",
     priority: 0.78,
+    image: "/images/collections/collection-afternoon-tea.jpg",
   },
   {
     slug: "bottomless-brunch-southport",
@@ -161,7 +173,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Bottomless brunch in Southport — restaurants and bars offering bottomless brunch deals. What's on, where, and what to expect.",
     intro:
-      "Bottomless brunch in Southport is a growing thing — not everywhere offers it, but the places that do are increasingly worth knowing about. Typically weekends only, and booking essential. These are the current options in Southport doing it properly rather than just pouring house prosecco at speed.",
+      "Bottomless brunch in Southport is a growing thing. Not everywhere offers it, and quality varies. These are the places worth booking: typically weekends only, and you do need to book. The best ones do it properly. The worst just pour cheap prosecco at speed. The ones on this list are the former.",
     tags: ["bottomless-brunch"],
     categorySlugs: ["restaurants", "bars-nightlife"],
     emoji: "🥂",
@@ -176,11 +188,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Hotels with parking in Southport — accommodation with on-site or adjacent parking. Useful for The Open 2026 and peak summer visits.",
     intro:
-      "Parking in central Southport can be a hassle on busy weekends, particularly during the Air Show and around The Open 2026. These hotels have their own parking or direct access to nearby car parks — which removes one headache from the stay. Worth confirming parking arrangements when you book.",
+      "Parking in central Southport on a busy weekend is a genuine headache. During the Air Show or Open week it gets properly difficult. These hotels either have their own car park or sit close enough to one that it removes the problem. Confirm the arrangements when you book. Some places have limited spaces and they go quickly.",
     tags: ["parking"],
     categorySlugs: ["hotels"],
     emoji: "🏨",
     priority: 0.8,
+    image: "/images/collections/collection-hotels-parking.jpg",
   },
   {
     slug: "budget-hotels-southport",
@@ -188,11 +201,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Budget hotels in Southport — affordable accommodation without the premium. Good value places to stay in Southport and nearby.",
     intro:
-      "Southport has a solid range of budget accommodation — from mid-market chains to independent guest houses that offer better value than you'd expect. These are the affordable end of the market that are still worth staying in, rather than places where you're just paying for the location. Good for families and short breaks.",
+      "Southport has plenty of budget accommodation. Some of it is genuinely good value; some of it is just cheap. These are the ones worth the money: independent guest houses and mid-market options that offer a decent stay without the premium. Good for families and anyone who doesn't need a fancy hotel to enjoy the town.",
     tags: ["budget"],
     categorySlugs: ["hotels"],
     emoji: "💷",
     priority: 0.78,
+    image: "/images/collections/collection-budget-hotels.jpg",
   },
   {
     slug: "hotels-near-royal-birkdale",
@@ -200,11 +214,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Hotels near Royal Birkdale Golf Club Southport — accommodation for The Open 2026 and golf visitors. Where to stay near the course.",
     intro:
-      "If you're here for The Open 2026 — or just playing Royal Birkdale — where you stay matters more than usual. These hotels are the closest options to Royal Birkdale Golf Club, meaning you can walk to the course or at least avoid the worst of the traffic. Book early; July 2026 availability is already tight.",
+      "The Open is at Royal Birkdale, 12 to 19 July 2026. If you're going, where you're staying matters more than it normally would. These are the closest hotels to the course. Some you can walk from. All of them avoid the worst of the traffic. July availability is already tight. I am not exaggerating. Book now if you haven't.",
     tags: ["birkdale"],
     categorySlugs: ["hotels"],
     emoji: "⛳",
     priority: 0.85,
+    image: "/images/collections/collection-hotels-birkdale.jpg",
   },
 
   // ── Sunflower-friendly ───────────────────────────────────────────────────
@@ -214,7 +229,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Sunflower-friendly venues in Southport — businesses and attractions registered with the Hidden Disabilities Sunflower scheme, where staff recognise the lanyard and offer support.",
     intro:
-      "These are the Southport venues that are registered with the Hidden Disabilities Sunflower scheme, meaning staff are trained to recognise the lanyard and offer discreet additional support. No explanation needed, no proof of disability required. The list is growing — SouthportGuide is actively encouraging more venues to register. Lanyards are free at Southport train station and from hiddendisabilitiesstore.com.",
+      "These Southport venues are registered with the Hidden Disabilities Sunflower scheme. Staff have been trained to recognise the lanyard and know to offer support quietly, without asking for explanations or proof. No fuss required. The list is shorter than it should be, and we're working on that. Lanyards are free to collect at Southport train station or order from hiddendisabilitiesstore.com.",
     tags: ["sunflower-friendly"],
     categorySlugs: ["attractions", "cafes", "restaurants", "hotels", "activities", "transport"],
     emoji: "🌻",
@@ -228,11 +243,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Sensory-friendly places in Southport — calm venues, open spaces, and businesses welcoming to autistic visitors and those with sensory sensitivities.",
     intro:
-      "Some places in Southport are naturally easier — open outdoor spaces, quieter galleries, calm cafes without background music blaring. These are the venues and attractions that tend to work well for autistic visitors and families with sensory sensitivities. Not every place on this list will suit every person, but they are the ones worth knowing about before you plan your day.",
+      "Some places in Southport are naturally calmer: open outdoor spaces, quieter galleries, cafes that don't have music blaring. These are the venues and attractions that tend to work well for autistic visitors and families with sensory sensitivities. Not every place will suit every person, but these are the ones I'd point you to first when planning a day out.",
     tags: ["sensory-friendly"],
     categorySlugs: ["attractions", "activities", "cafes", "restaurants", "beaches-parks"],
     emoji: "🧩",
     priority: 0.8,
+    image: "/images/collections/collection-sensory-friendly.jpg",
   },
 
   // ── Art galleries ─────────────────────────────────────────────────────────
@@ -242,11 +258,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Art galleries in Southport — independent galleries and exhibition spaces across the town. From Lord Street to Wayfarers Arcade and beyond.",
     intro:
-      "Southport has a genuine cluster of independent galleries that most visitors walk straight past. Wayfarers Arcade alone has three. The Atkinson on Lord Street is the anchor of the whole thing — one of the best free gallery spaces in the North West, regularly rotating exhibitions. The independents on Lord Street and in Ainsdale are smaller but worth the stop. These are places to browse without pressure or a booking fee.",
+      "Most visitors walk straight past the galleries in Southport without realising they're there. Wayfarers Arcade alone has three of them. The Atkinson on Lord Street is the main one: free entry, regularly changing exhibitions, and genuinely good. It's the kind of place that makes you proud to live here. The independents on Lord Street and out in Ainsdale are smaller but worth the stop. No booking, no entry fee.",
     tags: ["gallery"],
     categorySlugs: ["attractions", "shopping"],
     emoji: "🖼️",
     priority: 0.78,
+    image: "/images/collections/collection-art-galleries.jpg",
   },
 
   // ── Nature reserves ───────────────────────────────────────────────────────
@@ -256,11 +273,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Nature reserves near Southport — coastal dunes, wetland reserves, and wildlife sites on the Sefton Coast. RSPB Marshside, Ainsdale Dunes, and more.",
     intro:
-      "The Sefton Coast has one of the most significant stretches of coastal dune habitat in England. Ainsdale Sand Dunes National Nature Reserve, the Ainsdale and Birkdale Sandhills, Banks Marsh, Freshfield Dune Heath, and RSPB Marshside are all within easy reach of Southport. Most are free to enter. Most are quiet on weekday mornings. The RSPB Marshside reserve north of the town is particularly good in winter — wide skies, waders, and almost no one else there.",
+      "The dunes and wetland reserves along this stretch of coast are genuinely significant. I've been walking them for forty years and they still surprise me. Ainsdale Sand Dunes, Birkdale Sandhills, RSPB Marshside, Freshfield Dune Heath: all within easy reach of the town, almost all free. Go on a weekday morning and you'll have most of them to yourself. The RSPB reserve at Marshside is best in winter: wide skies, wading birds, and almost nobody else there.",
     tags: ["nature-reserve"],
     categorySlugs: ["beaches-parks", "activities", "attractions"],
     emoji: "🌿",
     priority: 0.8,
+    image: "/images/collections/collection-nature-reserves.jpg",
   },
 
   // ── Botanic Gardens ───────────────────────────────────────────────────────
@@ -270,11 +288,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Botanic Gardens Southport — the Victorian walled garden in Churchtown. Fernery, aviaries, cafe, and free entry. A Southport institution since 1874.",
     intro:
-      "Botanic Gardens in Churchtown is one of those Southport places that locals take completely for granted and visitors discover by accident. It opened in 1874, has a proper heated fernery, an aviary, formal gardens, and a cafe. Entry is free. It is calm in a way that most visitor attractions are not, because it was designed for that purpose. The surrounding Churchtown village is worth an extra half hour — it is the historic heart of Southport, older than the town itself.",
+      "I grew up a ten-minute walk from the Botanic Gardens in Churchtown and took them completely for granted for about thirty years. Visitors discover it by accident and can't believe it's free. It opened in 1874 and has a proper heated fernery, an aviary, formal gardens, and a café. It's calm in a way that most visitor attractions aren't. The surrounding Churchtown village is worth the extra half hour. It's the historic heart of Southport, older than the town itself.",
     tags: ["botanic-gardens"],
     categorySlugs: ["attractions", "cafes", "activities"],
     emoji: "🌱",
     priority: 0.8,
+    image: "/images/collections/collection-botanic-gardens.jpg",
   },
 
   // ── Marine Lake ───────────────────────────────────────────────────────────
@@ -284,11 +303,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Marine Lake Southport — boating, cafes, and open water on the Southport seafront. Everything at and around the Marine Lake, including boat hire and the adjacent King's Gardens.",
     intro:
-      "Marine Lake is 140 acres of flat, calm water right on the Southport seafront — one of the largest enclosed tidal lakes in England. You can hire pedalos, take a boat trip, walk the perimeter path, or sit at the cafe and watch the water. King's Gardens runs alongside it. The combination of flat water, open space, and easy access from the car parks on Marine Drive makes it one of the most visited parts of the town. Free to access. Good for families.",
+      "Marine Lake is 140 acres of flat, calm water right on the seafront. On a good day it looks like something from a different town. You can hire pedalos, take a boat trip, walk the path around the edge, or just sit at the cafe and watch the water. King's Gardens runs alongside it. Marine Drive car park is the closest, but it fills by 10am on a summer Saturday. Go early or park further back and walk. Free to access. Good for families, good on your own.",
     tags: ["marine-lake"],
     categorySlugs: ["attractions", "activities", "cafes", "beaches-parks"],
     emoji: "⛵",
     priority: 0.82,
+    image: "/images/collections/collection-marine-lake.jpg",
   },
 
   // ── Free / budget-friendly ────────────────────────────────────────────────
@@ -298,11 +318,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Free things to do in Southport — the beach, Botanic Gardens, Southport Pier, Victoria Park, Marine Lake, and 30+ more attractions that cost nothing. Updated local list.",
     intro:
-      "Southport has more free things to do than most seaside towns — the beach is free, the Promenade is free, the Botanic Gardens in Churchtown are free, and the pier is free to walk. These are the attractions, outdoor spaces, and activities in and around Southport that genuinely cost nothing. Good for families on a budget.",
+      "Southport has more free things to do than most seaside towns its size. The beach is free. The pier is free to walk. The Botanic Gardens in Churchtown are free. The Atkinson gallery on Lord Street is free. This list covers the attractions, outdoor spaces, and activities that genuinely cost nothing. Some of the best things in this town are on it.",
     tags: ["free"],
     categorySlugs: ["attractions", "beaches-parks", "activities"],
     emoji: "🎟️",
     priority: 0.82,
+    image: "/images/collections/collection-free-things.jpg",
   },
 
   // ── Bars ─────────────────────────────────────────────────────────────────
@@ -312,11 +333,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Live music bars in Southport — pubs and bars with regular live music. Where to find a proper night out with live acts.",
     intro:
-      "Southport has a decent live music scene concentrated in a handful of bars and venues. These are the ones with regular live acts — usually weekends, sometimes midweek. The quality varies but the best of them are worth making a night of. Worth checking the venue's social media for current listings before you go.",
+      "Southport has a decent live music scene, most of it concentrated in a handful of bars. These are the ones with regular acts, usually at weekends and occasionally midweek. The quality varies, which is honest. The best of them are worth planning a night around. Check the venue's social media before you go: the listings change and cancellations happen.",
     tags: ["live-music"],
     categorySlugs: ["bars-nightlife"],
     emoji: "🎸",
     priority: 0.75,
+    image: "/images/collections/collection-live-music.jpg",
   },
   {
     slug: "late-night-bars-southport",
@@ -324,11 +346,12 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Late night bars in Southport — bars and venues open past midnight. Where to go for a late drink in Southport.",
     intro:
-      "Southport's nightlife is centred on a cluster of bars and clubs around the town centre. These are the late-night options — open past midnight, with the kind of atmosphere that warrants it. The weekend scene is more active than midweek; Friday and Saturday are when these places make sense.",
+      "Southport's late-night scene is mainly clustered around the town centre. These are the bars that are actually open past midnight and worth going to when they are. Friday and Saturday are when it makes sense. Midweek is quieter than you'd expect for a town this size, but the weekend can be lively. Don't expect a city.",
     tags: ["late-night"],
     categorySlugs: ["bars-nightlife"],
     emoji: "🌙",
     priority: 0.72,
+    image: "/images/collections/collection-late-night-bars.jpg",
   },
 ];
 

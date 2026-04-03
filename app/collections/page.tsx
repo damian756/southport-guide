@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { COLLECTIONS, MIN_LISTINGS } from "@/lib/collections-config";
@@ -66,23 +67,34 @@ export default async function CollectionsIndexPage() {
       <div className="min-h-screen bg-[#FAF8F5]">
 
         {/* ── Hero ─────────────────────────────────────────────────────── */}
-        <div className="bg-[#1B2E4B] text-white py-14 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <nav className="flex items-center gap-1.5 text-white/40 text-xs mb-6">
-              <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
-              <span className="text-white/20">›</span>
-              <span className="text-white/70">Collections</span>
-            </nav>
-            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">SouthportGuide.co.uk</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-              Southport Collections
-            </h1>
-            <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
-              Filtered lists of Southport businesses, dog-friendly, family-friendly, outdoor seating, and more. 
-              No aggregator ranking. Just what&apos;s actually there, with a bit of honest context.
-            </p>
+        <div className="relative text-white overflow-hidden">
+          <Image
+            src="/images/collections/collections-hero.jpg"
+            alt="Lord Street boulevard, Southport"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/80 via-[#1B2E4B]/70 to-[#1B2E4B]/90" />
+          <div className="relative py-20 px-4">
+            <div className="container mx-auto max-w-4xl">
+              <nav className="flex items-center gap-1.5 text-white/40 text-xs mb-6">
+                <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+                <span className="text-white/20">›</span>
+                <span className="text-white/70">Collections</span>
+              </nav>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">SouthportGuide.co.uk</p>
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                Southport Collections
+              </h1>
+              <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
+                Filtered lists of Southport businesses, dog-friendly, family-friendly, outdoor seating, and more. 
+                No aggregator ranking. Just what&apos;s actually there, with a bit of honest context.
+              </p>
+            </div>
           </div>
-          <div className="h-6 overflow-hidden mt-6">
+          <div className="relative h-6 overflow-hidden">
             <svg viewBox="0 0 1440 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
               <path d="M0 24L360 12C720 0 1080 0 1440 12V24H0Z" fill="#FAF8F5" />
             </svg>
@@ -97,18 +109,34 @@ export default async function CollectionsIndexPage() {
               <Link
                 key={c.slug}
                 href={`/collections/${c.slug}`}
-                className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md hover:-translate-y-0.5 transition-all"
+                className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all"
               >
-                <div className="text-3xl mb-3">{c.emoji}</div>
-                <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors">
-                  {c.title}
-                </h2>
-                <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">
-                  {c.metaDescription}
-                </p>
-                <span className="inline-flex items-center gap-1.5 text-[#C9A84C] text-sm font-semibold">
-                  View list <ArrowRight className="w-3.5 h-3.5" />
-                </span>
+                {c.image ? (
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <Image
+                      src={c.image}
+                      alt={c.title}
+                      fill
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <span className="absolute bottom-3 left-3 text-2xl">{c.emoji}</span>
+                  </div>
+                ) : (
+                  <div className="text-3xl p-6 pb-0">{c.emoji}</div>
+                )}
+                <div className="p-5">
+                  <h2 className="font-display font-bold text-[#1B2E4B] text-base leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors">
+                    {c.title}
+                  </h2>
+                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">
+                    {c.metaDescription}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-[#C9A84C] text-sm font-semibold">
+                    View list <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

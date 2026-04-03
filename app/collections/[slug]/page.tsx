@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ChevronRight, Star, MapPin, ArrowRight } from "lucide-react";
 import { getCollection, COLLECTIONS, MIN_LISTINGS } from "@/lib/collections-config";
@@ -176,8 +177,23 @@ export default async function CollectionPage({ params }: Props) {
       <div className="min-h-screen bg-[#FAF8F5]">
 
         {/* ── Hero ─────────────────────────────────────────────────────────── */}
-        <div className="bg-[#1B2E4B] text-white">
-          <div className="container mx-auto px-4 max-w-6xl py-12 md:py-16">
+        <div className="relative text-white overflow-hidden">
+          {collection.image ? (
+            <>
+              <Image
+                src={collection.image}
+                alt={collection.title}
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/80 via-[#1B2E4B]/70 to-[#1B2E4B]/95" />
+            </>
+          ) : (
+            <div className="absolute inset-0 bg-[#1B2E4B]" />
+          )}
+          <div className="relative container mx-auto px-4 max-w-6xl py-16 md:py-20">
             <nav className="flex items-center gap-1.5 text-white/40 text-xs mb-6">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
               <ChevronRight className="w-3 h-3" />
@@ -205,7 +221,7 @@ export default async function CollectionPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="h-6 overflow-hidden">
+          <div className="relative h-6 overflow-hidden">
             <svg viewBox="0 0 1440 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
               <path d="M0 24L360 12C720 0 1080 0 1440 12V24H0Z" fill="#FAF8F5" />
             </svg>
