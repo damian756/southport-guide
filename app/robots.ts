@@ -11,6 +11,7 @@ export default function robots(): MetadataRoute.Robots {
           "/dashboard/",
           "/admin/",
           "/_next/static/",
+          "/manifest.json",
         ],
       },
     ],

@@ -610,7 +610,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                       <a
                         href={trackUrl(business.id, "website", websiteHref(business.website))}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel={isFeatured ? "noopener noreferrer" : "nofollow noopener noreferrer"}
                         className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full hover:bg-[#2A4A73] transition font-semibold text-sm"
                       >
                         <Globe className="w-4 h-4" /> Visit Website
@@ -949,7 +949,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                     <a
                       href={trackUrl(business.id, "website", websiteHref(business.website))}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel={isFeatured ? "noopener noreferrer" : "nofollow noopener noreferrer"}
                       className="text-blue-600 text-sm hover:underline break-all"
                     >
                       {business.website.replace(/^https?:\/\/(www\.)?/, "").split("/")[0]}

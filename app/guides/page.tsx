@@ -46,8 +46,6 @@ const COLLECTION_LD = {
     "@type": "Article",
     name: g.title,
     url: `${BASE_URL}/guides/${g.slug}`,
-    type: "website",
-    siteName: "SouthportGuide.co.uk",
     description: g.description,
     image: `${BASE_URL}${g.heroImage}`,
   })),

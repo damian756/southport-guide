@@ -241,8 +241,6 @@ const PAGE_LD = {
   description:
     "The complete guide to eating out in Southport, where to go by area, occasion, and budget. Lord Street, Birkdale Village, Churchtown, and the seafront.",
   url: `${BASE_URL}/guides/southport-eateries`,
-    type: "website",
-    siteName: "SouthportGuide.co.uk",
   publisher: {
     "@type": "Organization",
     name: "SouthportGuide.co.uk",

@@ -50,8 +50,6 @@ const PAGE_LD = {
   name: "Southport Pier",
   description: "Southport Pier. 1,108 metres long, England's second longest pier. Victorian, restored, free to walk. Views over the Irish Sea estuary from the pierhead.",
   url: `${BASE_URL}/guides/southport-pier`,
-    type: "website",
-    siteName: "SouthportGuide.co.uk",
   geo: { "@type": "GeoCoordinates", latitude: 53.6475, longitude: -3.0155 },
   address: {
     "@type": "PostalAddress",
