@@ -370,7 +370,7 @@ export default async function Home() {
               { icon: "🚆", label: "Train station", value: "Southport", href: "/guides/getting-to-southport" },
               { icon: "🅿️", label: "Marine Drive car park", value: "PR8 1RQ", href: "/guides/parking-southport" },
               { icon: "🛍️", label: "Lord Street", value: "PR8 1PX", href: "/shopping" },
-              { icon: "🎭", label: "The Atkinson", value: "PR8 1DB", href: "/attractions/the-atkinson-southport" },
+              { icon: "🎭", label: "The Atkinson", value: "PR8 1DB", href: "/guides/the-atkinson-southport" },
               { icon: "🏠", label: "House prices", value: "PR8 & PR9 data", href: "/property" },
             ].map(({ icon, label, value, href }) => (
               <Link

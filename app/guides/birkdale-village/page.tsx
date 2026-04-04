@@ -47,7 +47,7 @@ const FAQS = [
 
 const PAGE_LD = {
   "@context": "https://schema.org",
-  "@type": "ShoppingDistrict",
+  "@type": "Place",
   name: "Birkdale Village",
   description: "Birkdale Village. Southport's independent shopping and dining quarter, centred on Liverpool Road. Two minutes from Royal Birkdale Golf Club.",
   url: `${BASE_URL}/guides/birkdale-village`,

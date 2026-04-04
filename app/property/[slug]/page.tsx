@@ -373,7 +373,8 @@ async function SectorPage({
     distribution: {
       "@type": "DataDownload",
       name: "Land Registry Price Paid Data",
-      url: "https://www.gov.uk/government/collections/price-paid-data",
+      contentUrl: "https://www.gov.uk/government/collections/price-paid-data",
+      encodingFormat: "text/csv",
     },
   };
   const breadcrumbLd = {

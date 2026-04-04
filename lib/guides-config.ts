@@ -96,7 +96,7 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes", "activities", "attractions"],
       tags: ["beach", "seafront"],
     },
-    metaTitle: "Southport Beach Guide | Parking PR8 1RQ, Dogs, Tide Times & Tips",
+    metaTitle: "Southport Beach | Parking, Dogs, Tide Times & Local Tips",
     metaDescription:
       "Southport Beach — parking postcode PR8 1RQ (Marine Drive), dogs welcome year-round, tide times, facilities and honest local advice. One of England's widest beaches.",
     relatedCollections: ["free-things-to-do-southport", "nature-reserves-southport", "dog-friendly-cafes-southport", "marine-lake-southport"],
@@ -227,7 +227,7 @@ export const GUIDES: Guide[] = [
     tags: ["fireworks", "events", "september", "victoria-park", "tickets"],
     status: "published",
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
-    metaTitle: "British Musical Fireworks Championship Southport 2026 | Tickets, Dates & Guide",
+    metaTitle: "Southport Fireworks Championship 2026 | Tickets & Guide",
     metaDescription:
       "British Musical Fireworks Championship 2026 — 26–27 September, Victoria Park, Southport. Tickets from £12. Pyrotechnics synchronized to music, drone show, and full practical guide.",
   },
@@ -267,7 +267,7 @@ export const GUIDES: Guide[] = [
     tags: ["armed-forces", "events", "june", "free", "military", "promenade"],
     status: "published",
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
-    metaTitle: "Southport Armed Forces Festival 2026 | 27–28 June · Free Event Guide",
+    metaTitle: "Southport Armed Forces Festival 2026 | Free Event Guide",
     metaDescription:
       "Southport Armed Forces Festival 2026 — 27–28 June. Free town-wide event. Military parades, fly-overs, vehicles on display, Drumhead Service. Across the Promenade, King's Gardens, and town centre.",
   },
@@ -697,6 +697,24 @@ export const GUIDES: Guide[] = [
 
   // ── Practical ────────────────────────────────────────────────────────────
   {
+    slug: "getting-to-southport",
+    title: "Getting to Southport",
+    shortTitle: "Getting Here",
+    description: "Train, car, bus, or bike — the complete guide to getting to Southport from Liverpool, Manchester, and beyond.",
+    excerpt:
+      "Southport is 35 minutes from Liverpool by Merseyrail, 90 minutes from Manchester by car, and surprisingly straightforward to reach without one. Train, car, coach, and cycle routes — the complete guide.",
+    category: "practical",
+    heroImage: "/images/guides/getting-to-southport.jpg",
+    seoPriority: 0.87,
+    datePublished: "2026-04-04",
+    dateUpdated: "2026-04-04",
+    tags: ["transport", "practical", "train", "car"],
+    status: "published",
+    listingFilter: { categorySlugs: ["transport", "parking"] },
+    metaTitle: "Getting to Southport | Train, Car, Bus & Bike Routes",
+    metaDescription: "How to get to Southport by train, car, bus, or bike. Merseyrail from Liverpool takes 35 minutes. Parking postcodes, coach routes, and the honest picture on driving.",
+  },
+  {
     slug: "parking-southport",
     title: "Parking in Southport",
     description: "Where to park near the beach, Lord Street, and the town centre — prices and tips.",
@@ -712,7 +730,7 @@ export const GUIDES: Guide[] = [
     listingFilter: {
       categorySlugs: ["parking"],
     },
-    metaTitle: "Parking in Southport | Car Parks, Prices, Free Options & Postcodes",
+    metaTitle: "Parking in Southport | Car Parks, Prices & Postcodes",
     metaDescription: "Where to park in Southport — car parks near the beach, Lord Street, and town centre. Prices, postcodes, free options, blue badge bays, and which ones fill up first on a summer Saturday.",
   },
   {

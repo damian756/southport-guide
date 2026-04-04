@@ -1652,7 +1652,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "callout", emoji: "📅", text: "The Open Championship 2026 · Royal Birkdale, Southport · Tuesday 14 July (first practice round) to Sunday 19 July (final round) · The 154th Open Championship" },
     { type: "h2", text: "Tuesday–Wednesday: Practice Rounds" },
     { type: "p", text: "Practice rounds are the best value experience of the week. Tickets are cheaper, crowds are smaller, and you can get much closer to the players. The atmosphere is relaxed and players will sometimes engage with the crowd. If you're on a budget or new to watching golf live, Tuesday and Wednesday practice rounds are the recommendation." },
-    { type: "cta", text: "Getting to Royal Birkdale by train, shuttle and on foot:", href: "/guides/the-open-2026", label: "The Open 2026 Transport Guide →" },
+    { type: "cta", text: "Getting to Royal Birkdale by train, shuttle and on foot:", href: "/the-open-2026/getting-there", label: "The Open 2026 Transport Guide →" },
     { type: "h2", text: "Thursday–Friday: The Opening Rounds" },
     { type: "p", text: "The competitive rounds begin on Thursday. By Friday evening, the cut has been made and the field is down to the top half of scorers. The town energy shifts noticeably from Wednesday to Thursday — there's something electric about opening day of a major that you feel in the town as well as on the course." },
     { type: "h2", text: "The Weekend: When Southport Is at Its Most Extraordinary" },

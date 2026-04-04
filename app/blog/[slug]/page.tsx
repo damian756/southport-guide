@@ -20,11 +20,16 @@ export async function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
 
+const DEFAULT_OG = "https://www.southportguide.co.uk/images/blog-hero.jpg";
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
   const url = `https://www.southportguide.co.uk/blog/${slug}`;
+  const imageUrl = post.image
+    ? (post.image.startsWith("http") ? post.image : `https://www.southportguide.co.uk${post.image}`)
+    : DEFAULT_OG;
   return {
     title: post.title,
     description: post.excerpt,
@@ -36,6 +41,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.excerpt,
       url,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [imageUrl],
     },
   };
 }

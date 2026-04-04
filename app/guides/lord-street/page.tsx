@@ -54,7 +54,7 @@ const FAQS = [
 
 const PAGE_LD = {
   "@context": "https://schema.org",
-  "@type": "ShoppingDistrict",
+  "@type": "LandmarksOrHistoricalBuildings",
   name: "Lord Street, Southport",
   description:
     "Lord Street is a mile-long Victorian boulevard at the heart of Southport, glass canopies, independent boutiques, restaurants, and the street that may have inspired Haussmann's Paris.",

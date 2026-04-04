@@ -7,7 +7,7 @@ import { TrendingUp, Shield, Train, School, Waves, Wifi, ChevronRight, ArrowRigh
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "House Prices in Southport. PR8 & PR9 Honest Data | SouthportGuide",
+  title: "House Prices in Southport | PR8 & PR9 Data",
   description:
     "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport. PR8 and PR9, from Birkdale to Churchtown. Land Registry data, updated regularly.",
   alternates: { canonical: `${BASE_URL}/property` },
