@@ -6,8 +6,9 @@ import { makeUniqueNewsSlug } from "@/lib/slugify";
 import { rewriteAsTerry, rewriteAsTerryFeatured, VALID_CATEGORY_SET } from "@/lib/rewrite-as-terry";
 import { fetchUnsplashImage } from "@/lib/unsplash";
 import { fetchArticleText } from "@/lib/fetch-article-text";
+import { postToSocial } from "@/lib/post-to-social";
 
-type Action = "publish" | "reject" | "feature";
+type Action = "publish" | "reject" | "feature" | "delete";
 
 // Returns Claude's category if valid, else falls back to the existing DB value.
 function resolveCategory(claudeCategory: string | undefined, fallback: string): string {
@@ -24,7 +25,7 @@ export async function PATCH(request: Request) {
   const body = (await request.json()) as { id?: string; action?: Action };
   const { id, action } = body;
 
-  if (!id || !action || !["publish", "reject", "feature"].includes(action)) {
+  if (!id || !action || !["publish", "reject", "feature", "delete"].includes(action)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
@@ -39,6 +40,11 @@ export async function PATCH(request: Request) {
       data: { status: "rejected" },
     });
     return NextResponse.json({ ok: true, status: "rejected" });
+  }
+
+  if (action === "delete") {
+    await prisma.newsItem.delete({ where: { id } });
+    return NextResponse.json({ ok: true, status: "deleted" });
   }
 
   // Standard publish: rewrite first (Claude picks category), then fetch image with correct category
@@ -75,6 +81,10 @@ export async function PATCH(request: Request) {
         publishedAt: new Date(),
       },
     });
+
+    // Fire-and-forget: post to Facebook + X via Publer
+    const socialTeaser = rewritten?.teaser ?? finalTitle;
+    void postToSocial({ title: finalTitle, teaser: socialTeaser, slug });
 
     return NextResponse.json({ ok: true, status: "published", category: finalCategory, slug });
   }
@@ -119,6 +129,10 @@ export async function PATCH(request: Request) {
       publishedAt: new Date(),
     },
   });
+
+  // Fire-and-forget: post to Facebook + X via Publer
+  const featuredTeaser = rewritten?.teaser ?? finalTitle;
+  void postToSocial({ title: finalTitle, teaser: featuredTeaser, slug });
 
   return NextResponse.json({ ok: true, status: "published", featured: true, category: finalCategory, slug });
 }

@@ -1,0 +1,101 @@
+const PUBLER_API_BASE = "https://app.publer.com/api/v1";
+const ARTICLE_BASE = "https://www.southportguide.co.uk/news";
+
+const X_ACCOUNT_ID = "69d2ab9defe8d34c58a27856";
+const FB_ACCOUNT_ID = "69d2ab0498f6ddba3fee7895";
+
+let cachedWorkspaceId: string | null = null;
+
+async function getWorkspaceId(apiKey: string): Promise<string | null> {
+  if (cachedWorkspaceId) return cachedWorkspaceId;
+  try {
+    const res = await fetch(`${PUBLER_API_BASE}/workspaces`, {
+      headers: { Authorization: `Bearer-API ${apiKey}` },
+    });
+    if (!res.ok) return null;
+    const workspaces = await res.json() as Array<{ id: string }>;
+    if (Array.isArray(workspaces) && workspaces.length > 0) {
+      cachedWorkspaceId = workspaces[0].id;
+      return cachedWorkspaceId;
+    }
+  } catch {
+    // fall through
+  }
+  return null;
+}
+
+function buildXText(teaser: string, url: string): string {
+  const hashtags = "#Southport #SouthportNews";
+  // URL counts as 23 chars on X regardless of length; leave 280 - 23 - 2 - len(hashtags) - 2 for text
+  const maxText = 280 - 23 - 2 - hashtags.length - 2;
+  const text = teaser.length > maxText
+    ? teaser.slice(0, maxText - 1).trimEnd() + "..."
+    : teaser;
+  return `${text}\n\n${url}\n\n${hashtags}`;
+}
+
+function buildFbText(teaser: string, url: string): string {
+  return `${teaser}\n\n${url}\n\n#Southport #SouthportNews #Merseyside`;
+}
+
+export async function postToSocial(params: {
+  title: string;
+  teaser: string;
+  slug: string;
+}): Promise<void> {
+  const apiKey = process.env.PUBLER_API_KEY;
+  if (!apiKey) {
+    console.warn("[Publer] PUBLER_API_KEY not set — skipping social post");
+    return;
+  }
+
+  const workspaceId = await getWorkspaceId(apiKey);
+  if (!workspaceId) {
+    console.warn("[Publer] Could not resolve workspace ID — skipping social post");
+    return;
+  }
+
+  const articleUrl = `${ARTICLE_BASE}/${params.slug}`;
+  const xText = buildXText(params.teaser, articleUrl);
+  const fbText = buildFbText(params.teaser, articleUrl);
+
+  const body = {
+    bulk: {
+      state: "scheduled",
+      posts: [
+        {
+          networks: {
+            twitter: { type: "status", text: xText },
+            facebook: { type: "status", text: fbText },
+          },
+          accounts: [
+            { id: X_ACCOUNT_ID },
+            { id: FB_ACCOUNT_ID },
+          ],
+        },
+      ],
+    },
+  };
+
+  try {
+    const res = await fetch(`${PUBLER_API_BASE}/posts/schedule/publish`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer-API ${apiKey}`,
+        "Publer-Workspace-Id": workspaceId,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json() as { data?: { job_id?: string }; errors?: string[] };
+
+    if (!res.ok) {
+      console.error("[Publer] API error:", data.errors ?? data);
+    } else {
+      console.log("[Publer] Posted to Facebook + X. Job ID:", data?.data?.job_id);
+    }
+  } catch (err) {
+    console.error("[Publer] Fetch failed:", err);
+  }
+}
