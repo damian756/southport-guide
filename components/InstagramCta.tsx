@@ -149,7 +149,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           </span>
           <span className="min-w-0 text-left">
             <span className="font-display text-sm font-bold text-[#1B2E4B] group-hover:text-black transition-colors block">
-              Follow on X
+              Follow on X (Twitter)
             </span>
             <span className="mt-0.5 block text-xs text-gray-500">@SouthportGuide · live news updates</span>
           </span>
@@ -165,7 +165,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
   return (
     <div className="mt-6">
       <p className="text-white/40 text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">Follow us</p>
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col gap-3">
         {/* Instagram */}
         <a
           href={INSTAGRAM_URL}
@@ -232,7 +232,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           </span>
           <span className="min-w-0 text-left">
             <span className="font-display text-sm font-bold text-white transition group-hover:text-white block">
-              X (Twitter)
+              X
             </span>
             <span className="mt-0.5 block text-xs text-white/50 transition group-hover:text-white/65">@SouthportGuide</span>
           </span>
