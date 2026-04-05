@@ -25,7 +25,7 @@ async function getWorkspaceId(apiKey: string): Promise<string | null> {
 }
 
 function buildXText(teaser: string, url: string): string {
-  const hashtags = "#Southport #SouthportNews";
+  const hashtags = "#Southport #SouthportNews #SouthportGuide";
   // URL counts as 23 chars on X regardless of length; leave 280 - 23 - 2 - len(hashtags) - 2 for text
   const maxText = 280 - 23 - 2 - hashtags.length - 2;
   const text = teaser.length > maxText
@@ -35,7 +35,7 @@ function buildXText(teaser: string, url: string): string {
 }
 
 function buildFbText(teaser: string, url: string): string {
-  return `${teaser}\n\n${url}\n\n#Southport #SouthportNews #Merseyside`;
+  return `${teaser}\n\n#Southport #SouthportNews #SouthportGuide #Merseyside`;
 }
 
 export async function postToSocial(params: {
@@ -66,7 +66,11 @@ export async function postToSocial(params: {
         {
           networks: {
             twitter: { type: "status", text: xText },
-            facebook: { type: "status", text: fbText },
+            facebook: {
+              type: "link",
+              text: fbText,
+              url: articleUrl,
+            },
           },
           accounts: [
             { id: X_ACCOUNT_ID },
