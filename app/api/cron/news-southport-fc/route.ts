@@ -1,46 +1,15 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { fetchUnsplashImage } from "@/lib/unsplash";
+import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
+import { parseRssItems } from "@/lib/parse-rss";
 
 // Runs every 6 hours (configured in vercel.json).
-// Pulls Southport FC news from their official RSS feed.
-// Auto-publishes — official club content.
+// Pulls Southport FC news via Google News RSS (club site RSS unavailable).
+// Rewrites in Terry's voice — goes to pending_review for approval.
 
-const FEED_URL = "https://www.southportfc.net/news/rss.xml";
-
-function extractText(xml: string, tag: string): string {
-  const match = xml.match(new RegExp(`<${tag}[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/${tag}>`, "s"));
-  return match?.[1]?.trim() ?? "";
-}
-
-function stripHtml(html: string): string {
-  return html
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function parseItems(xml: string): Array<{ title: string; description: string; link: string; guid: string; pubDate: string }> {
-  const items: Array<{ title: string; description: string; link: string; guid: string; pubDate: string }> = [];
-  const itemRegex = /<item>([\s\S]*?)<\/item>/g;
-  let match;
-  while ((match = itemRegex.exec(xml)) !== null) {
-    const block = match[1];
-    items.push({
-      title: stripHtml(extractText(block, "title")),
-      description: stripHtml(extractText(block, "description")),
-      link: extractText(block, "link"),
-      guid: extractText(block, "guid"),
-      pubDate: extractText(block, "pubDate"),
-    });
-  }
-  return items;
-}
+const FEED_URL =
+  "https://news.google.com/rss/search?q=%22southport+fc%22&hl=en-GB&gl=GB&ceid=GB:en";
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -51,65 +20,53 @@ export async function GET(request: Request) {
 
   let xml: string;
   try {
-    const res = await fetch(FEED_URL, {
-      headers: {
-        "User-Agent": "SouthportGuide/1.0 (contact@southportguide.co.uk)",
-      },
-      next: { revalidate: 0 },
-    });
+    const res = await fetch(FEED_URL, { next: { revalidate: 0 } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     xml = await res.text();
   } catch (err) {
-    // Southport FC may not have a standard RSS feed — log and return gracefully
     return NextResponse.json(
-      { error: "Failed to fetch Southport FC feed", details: String(err) },
+      { error: "Failed to fetch Google News RSS", details: String(err) },
       { status: 502 }
     );
   }
 
-  const items = parseItems(xml);
+  const items = parseRssItems(xml);
   let inserted = 0;
   let skipped = 0;
+  let rewriteFailed = 0;
 
   for (const item of items) {
     if (!item.title) continue;
 
     const externalId = `southport-fc-${item.guid || item.link}`;
+    if (!item.guid && !item.link) continue;
 
     const existing = await prisma.newsItem.findUnique({ where: { externalId } });
-    if (existing) {
-      skipped++;
-      continue;
-    }
+    if (existing) { skipped++; continue; }
+
+    const rewritten = await rewriteAsTerry(item.title, item.description || item.title);
+    if (!rewritten) rewriteFailed++;
 
     const image = await fetchUnsplashImage("sport");
     const pubDate = item.pubDate ? new Date(item.pubDate) : new Date();
 
-    const summary = item.description?.length > 30
-      ? item.description.slice(0, 600)
-      : `Latest news from Southport FC. ${item.title}.`;
-
     await prisma.newsItem.create({
       data: {
-        title: item.title.slice(0, 200),
-        summary,
+        title: (rewritten?.title ?? item.title).slice(0, 200),
+        summary: rewritten?.summary ?? item.description.slice(0, 600),
+        rawContent: item.description,
         category: "sport",
         source: "southport-fc",
-        sourceUrl: item.link || "https://www.southportfc.net/news",
+        sourceUrl: item.link || null,
         externalId,
         imageUrl: image?.url ?? null,
         imageCredit: image?.credit ?? null,
-        status: "auto_published",
-        publishedAt: pubDate,
+        status: "pending_review",
+        publishedAt: null,
       },
     });
     inserted++;
   }
 
-  return NextResponse.json({
-    ok: true,
-    fetched: items.length,
-    inserted,
-    skipped,
-  });
+  return NextResponse.json({ ok: true, fetched: items.length, inserted, skipped, rewriteFailed });
 }

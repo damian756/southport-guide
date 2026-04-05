@@ -2,25 +2,24 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { fetchUnsplashImage } from "@/lib/unsplash";
 import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
+import { parseRssItems } from "@/lib/parse-rss";
 
 // Runs every 4 hours (configured in vercel.json).
 // Pulls Stand Up For Southport RSS feed.
-// Rewrites each item in Terry's voice via Claude/OpenRouter.
-// Saves as pending_review — requires admin approval before publishing.
-// Legal basis: we cover the same news independently with original writing.
+// Rewrites each item in Terry's voice via Claude — goes to pending_review for approval.
 
 const FEED_URL = "https://standupforsouthport.com/feed/";
 
-// Category detection from SUFS content keywords
 const CATEGORY_MAP: Array<{ keywords: string[]; category: string }> = [
-  { keywords: ["restaurant", "cafe", "food", "dining", "opening", "menu", "eat"], category: "food-drink" },
-  { keywords: ["shop", "retail", "store", "business", "opens", "launch"], category: "business" },
-  { keywords: ["southport fc", "football", "match", "sport", "game"], category: "sport" },
-  { keywords: ["council", "sefton", "planning", "development", "vote"], category: "council" },
-  { keywords: ["event", "festival", "market", "show", "concert"], category: "events" },
-  { keywords: ["police", "crime", "incident", "arrest", "appeal"], category: "crime-safety" },
-  { keywords: ["property", "house", "homes", "housing"], category: "property" },
-  { keywords: ["flood", "weather", "storm", "coast"], category: "community" },
+  { keywords: ["restaurant", "cafe", "food", "dining", "opening", "menu", "eat", "pub", "bar", "tikka", "pizza", "curry"], category: "food-drink" },
+  { keywords: ["shop", "retail", "store", "business", "opens", "launch", "market"], category: "business" },
+  { keywords: ["southport fc", "football", "match", "sport", "game", "rugby", "cricket", "haig avenue"], category: "sport" },
+  { keywords: ["council", "sefton", "planning", "development", "vote", "election", "mp", "councillor"], category: "council" },
+  { keywords: ["event", "festival", "market", "show", "concert", "airshow", "flower show", "bee day", "remembrance"], category: "events" },
+  { keywords: ["police", "crime", "incident", "arrest", "appeal", "missing", "assault", "jailed"], category: "crime-safety" },
+  { keywords: ["property", "house", "homes", "housing", "rent"], category: "property" },
+  { keywords: ["flood", "weather", "storm", "coast", "sea", "beach"], category: "community" },
+  { keywords: ["planning", "application", "development", "building", "demolish"], category: "planning" },
 ];
 
 function detectCategory(text: string): string {
@@ -29,43 +28,6 @@ function detectCategory(text: string): string {
     if (keywords.some((kw) => lower.includes(kw))) return category;
   }
   return "community";
-}
-
-function extractText(xml: string, tag: string): string {
-  const match = xml.match(new RegExp(`<${tag}[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/${tag}>`, "s"));
-  return match?.[1]?.trim() ?? "";
-}
-
-function stripHtml(html: string): string {
-  return html
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function parseItems(xml: string): Array<{ title: string; description: string; content: string; link: string; guid: string; pubDate: string }> {
-  const items: Array<{ title: string; description: string; content: string; link: string; guid: string; pubDate: string }> = [];
-  const itemRegex = /<item>([\s\S]*?)<\/item>/g;
-  let match;
-  while ((match = itemRegex.exec(xml)) !== null) {
-    const block = match[1];
-    // Try content:encoded first (WordPress full post content), fall back to description
-    const contentEncoded = block.match(/<content:encoded>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/content:encoded>/)?.[1]?.trim() ?? "";
-    items.push({
-      title: stripHtml(extractText(block, "title")),
-      description: stripHtml(extractText(block, "description")),
-      content: stripHtml(contentEncoded),
-      link: extractText(block, "link"),
-      guid: extractText(block, "guid"),
-      pubDate: extractText(block, "pubDate"),
-    });
-  }
-  return items;
 }
 
 export async function GET(request: Request) {
@@ -78,9 +40,7 @@ export async function GET(request: Request) {
   let xml: string;
   try {
     const res = await fetch(FEED_URL, {
-      headers: {
-        "User-Agent": "SouthportGuide/1.0 (contact@southportguide.co.uk)",
-      },
+      headers: { "User-Agent": "SouthportGuide/1.0 (contact@southportguide.co.uk)" },
       next: { revalidate: 0 },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -92,7 +52,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const items = parseItems(xml);
+  const items = parseRssItems(xml);
   let inserted = 0;
   let skipped = 0;
   let rewriteFailed = 0;
@@ -101,22 +61,14 @@ export async function GET(request: Request) {
     if (!item.title) continue;
 
     const externalId = `sufs-${item.guid || item.link}`;
+    if (!item.guid && !item.link) continue;
 
     const existing = await prisma.newsItem.findUnique({ where: { externalId } });
-    if (existing) {
-      skipped++;
-      continue;
-    }
+    if (existing) { skipped++; continue; }
 
-    const rawBody = item.content || item.description;
-    const category = detectCategory(`${item.title} ${rawBody}`);
-
-    // Rewrite in Terry's voice
-    const rewritten = await rewriteAsTerry(item.title, rawBody);
-    if (!rewritten) {
-      rewriteFailed++;
-      // Save with original content as fallback — still needs review
-    }
+    const category = detectCategory(`${item.title} ${item.description}`);
+    const rewritten = await rewriteAsTerry(item.title, item.description || item.title);
+    if (!rewritten) rewriteFailed++;
 
     const image = await fetchUnsplashImage(category);
     const pubDate = item.pubDate ? new Date(item.pubDate) : new Date();
@@ -124,8 +76,8 @@ export async function GET(request: Request) {
     await prisma.newsItem.create({
       data: {
         title: (rewritten?.title ?? item.title).slice(0, 200),
-        summary: rewritten?.summary ?? rawBody.slice(0, 600),
-        rawContent: rawBody.slice(0, 2000),
+        summary: rewritten?.summary ?? item.description.slice(0, 600),
+        rawContent: item.description.slice(0, 2000),
         category,
         source: "sufs",
         sourceUrl: item.link || null,
@@ -139,11 +91,5 @@ export async function GET(request: Request) {
     inserted++;
   }
 
-  return NextResponse.json({
-    ok: true,
-    fetched: items.length,
-    inserted,
-    skipped,
-    rewriteFailed,
-  });
+  return NextResponse.json({ ok: true, fetched: items.length, inserted, skipped, rewriteFailed });
 }
