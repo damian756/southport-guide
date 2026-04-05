@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { parseRssItems } from "@/lib/parse-rss";
+import { detectNewsCategory } from "@/lib/categorize-news";
 
 // Runs every 6 hours (configured in vercel.json).
 // Stores raw RSS items as pending_review — NO Claude call here.
@@ -48,13 +49,15 @@ export async function GET(request: Request) {
     if (existing) { skipped++; continue; }
 
     const raw = item.description || item.title;
+    // Analyse content first, default to "sport" only if nothing else matches
+    const category = detectNewsCategory(`${item.title} ${raw}`, "sport");
 
     await prisma.newsItem.create({
       data: {
         title: item.title.slice(0, 200),
         summary: raw.slice(0, 600),
         rawContent: raw.slice(0, 2000),
-        category: "sport",
+        category,
         source: "southport-fc",
         sourceUrl: item.link || null,
         externalId,

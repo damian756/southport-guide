@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { parseRssItems } from "@/lib/parse-rss";
+import { detectNewsCategory } from "@/lib/categorize-news";
 
 // Runs every 4 hours (configured in vercel.json).
 // Stores raw SUFS items as pending_review — NO Claude call here.
@@ -8,26 +9,6 @@ import { parseRssItems } from "@/lib/parse-rss";
 
 const FEED_URL = "https://standupforsouthport.com/feed/";
 const MAX_AGE_DAYS = 14;
-
-const CATEGORY_MAP: Array<{ keywords: string[]; category: string }> = [
-  { keywords: ["restaurant", "cafe", "food", "dining", "opening", "menu", "eat", "pub", "bar", "tikka", "pizza", "curry"], category: "food-drink" },
-  { keywords: ["shop", "retail", "store", "business", "opens", "launch", "market"], category: "business" },
-  { keywords: ["southport fc", "football", "match", "sport", "game", "rugby", "cricket", "haig avenue"], category: "sport" },
-  { keywords: ["council", "sefton", "planning", "development", "vote", "election", "mp", "councillor"], category: "council" },
-  { keywords: ["event", "festival", "market", "show", "concert", "airshow", "flower show", "bee day", "remembrance"], category: "events" },
-  { keywords: ["police", "crime", "incident", "arrest", "appeal", "missing", "assault", "jailed"], category: "crime-safety" },
-  { keywords: ["property", "house", "homes", "housing", "rent"], category: "property" },
-  { keywords: ["flood", "weather", "storm", "coast", "sea", "beach"], category: "community" },
-  { keywords: ["planning", "application", "development", "building", "demolish"], category: "planning" },
-];
-
-function detectCategory(text: string): string {
-  const lower = text.toLowerCase();
-  for (const { keywords, category } of CATEGORY_MAP) {
-    if (keywords.some((kw) => lower.includes(kw))) return category;
-  }
-  return "community";
-}
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -70,7 +51,7 @@ export async function GET(request: Request) {
     if (existing) { skipped++; continue; }
 
     const raw = item.description || item.title;
-    const category = detectCategory(`${item.title} ${raw}`);
+    const category = detectNewsCategory(`${item.title} ${raw}`);
 
     await prisma.newsItem.create({
       data: {
