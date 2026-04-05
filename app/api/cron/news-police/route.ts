@@ -3,12 +3,12 @@ import { prisma } from "@/lib/prisma";
 import { fetchUnsplashImage } from "@/lib/unsplash";
 
 // Runs every 4 hours (configured in vercel.json).
-// Pulls Merseyside Police press releases via their RSS feed.
+// Pulls Merseyside Police news via Google News RSS (official site blocks server requests).
 // Filters to Southport-relevant items only.
-// Auto-publishes — structured factual data, no rewrite needed.
+// Auto-publishes — factual news data, no rewrite needed.
 
 const FEED_URL =
-  "https://www.merseyside.police.uk/news/merseyside/news/rss/merseyside-police-news/";
+  "https://news.google.com/rss/search?q=merseyside+police+southport&hl=en-GB&gl=GB&ceid=GB:en";
 
 const SOUTHPORT_KEYWORDS = [
   "southport",
@@ -110,7 +110,7 @@ export async function GET(request: Request) {
         summary: item.description.slice(0, 1000),
         category: "crime-safety",
         source: "merseyside-police",
-        sourceUrl: item.link || null,
+        sourceUrl: item.link || "https://news.google.com/search?q=merseyside+police+southport",
         externalId,
         imageUrl: image?.url ?? null,
         imageCredit: image?.credit ?? null,
