@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 // One-time endpoint: deletes all pending_review items so they can be re-scraped with the new prompt.
 // Remove this file after use.
-export async function DELETE(request: Request) {
+export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || authHeader !== `Bearer ${secret}`) {
