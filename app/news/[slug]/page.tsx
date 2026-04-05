@@ -17,6 +17,7 @@ import {
   Home,
   ShieldAlert,
   Train,
+  CheckCircle2,
 } from "lucide-react";
 
 export const revalidate = 60;
@@ -70,7 +71,6 @@ function formatDate(dateStr: string): string {
 }
 
 async function getItem(slug: string) {
-  // Accept both slug (new) and UUID (legacy links)
   return prisma.newsItem.findFirst({
     where: {
       status: { in: ["auto_published", "published"] },
@@ -135,13 +135,11 @@ export default async function NewsArticlePage({
   const CategoryIcon = CATEGORY_ICONS[item.category] ?? Newspaper;
   const canonical = `https://www.southportguide.co.uk/news/${item.slug ?? item.id}`;
 
-  // Split on double newlines for paragraphs
   const paragraphs = item.summary
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
 
-  // JSON-LD NewsArticle schema
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -151,9 +149,10 @@ export default async function NewsArticlePage({
     dateModified: dateStr,
     url: canonical,
     author: {
-      "@type": "Organization",
-      name: "SouthportGuide.co.uk",
-      url: "https://www.southportguide.co.uk",
+      "@type": "Person",
+      name: "Terry",
+      description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk/news",
     },
     publisher: {
       "@type": "Organization",
@@ -180,7 +179,6 @@ export default async function NewsArticlePage({
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -200,7 +198,7 @@ export default async function NewsArticlePage({
       </div>
 
       <article className="max-w-3xl mx-auto px-4 py-8 lg:px-8">
-        {/* Category badge */}
+        {/* Category + source */}
         <div className="flex items-center gap-2 mb-4">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1B2E4B]/10 text-[#1B2E4B]">
             <CategoryIcon className="w-3.5 h-3.5" />
@@ -214,7 +212,7 @@ export default async function NewsArticlePage({
           {item.title}
         </h1>
 
-        {/* Meta */}
+        {/* Date */}
         <div className="flex items-center gap-2 text-xs text-gray-400 mb-6">
           <Clock className="w-3.5 h-3.5" />
           <time dateTime={dateStr}>{formatDate(dateStr)}</time>
@@ -239,7 +237,24 @@ export default async function NewsArticlePage({
           </div>
         )}
 
-        {/* Body — multiple paragraphs */}
+        {/* Key facts box */}
+        {item.keyFacts && item.keyFacts.length > 0 && (
+          <div className="mb-8 bg-[#1B2E4B]/5 border border-[#1B2E4B]/10 rounded-xl p-5">
+            <p className="text-xs font-semibold text-[#1B2E4B]/60 uppercase tracking-wide mb-3">
+              Key facts
+            </p>
+            <ul className="space-y-2">
+              {item.keyFacts.map((fact, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-[#1B2E4B]">
+                  <CheckCircle2 className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" />
+                  <span>{fact}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Body */}
         <div className="space-y-4 text-gray-700 leading-relaxed text-base">
           {paragraphs.map((para, i) => (
             <p key={i}>{para}</p>
@@ -262,7 +277,24 @@ export default async function NewsArticlePage({
           </div>
         )}
 
-        {/* Back link */}
+        {/* Terry bio */}
+        <div className="mt-10 pt-6 border-t border-gray-200">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-shrink-0 text-white text-lg font-bold select-none">
+              T
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-[#1B2E4B]">Written by Terry</p>
+              <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                41-year-old Southport local. Lived in Churchtown his whole life.
+                Writes the Southport Live news section for SouthportGuide.co.uk.
+                He tells it straight.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Back */}
         <div className="mt-8">
           <Link
             href="/news"

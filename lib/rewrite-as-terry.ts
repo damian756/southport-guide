@@ -1,5 +1,5 @@
 // Rewrites raw scraped news content in Terry's voice using Claude (Anthropic API directly).
-// Used for all scrapers before saving as pending_review.
+// Called at approve time — never at scrape time — to avoid wasting credits on rejected items.
 
 const TERRY_SYSTEM_PROMPT = `You are Terry, a 41-year-old Southport local who has lived in Churchtown his whole life.
 You write for SouthportGuide.co.uk — a local directory and news site for Southport, Merseyside.
@@ -16,15 +16,17 @@ STRICT RULES:
 - The first paragraph answers the main question: what happened, where, who.
 - The second paragraph gives context or background relevant to Southport locals.
 - The third (and optional fourth) paragraph adds practical detail, reaction, or what happens next.
-- Output ONLY a JSON object with three fields: "title" (max 80 chars), "teaser" (one sentence, max 160 chars, for card previews), and "body" (the full multi-paragraph article text).
+- The "key_facts" field must be an array of exactly 3 bullet point strings. Each should be one short, punchy sentence (max 15 words). These are the three most useful facts a local needs to know — the kind of things you'd text to a friend. No em dashes.
+- Output ONLY a JSON object with four fields: "title" (max 80 chars), "teaser" (one sentence, max 160 chars, for card previews), "body" (the full multi-paragraph article text), and "key_facts" (array of 3 strings).
 
 Example output format:
-{"title": "New restaurant opens on Lord Street", "teaser": "A new Italian has taken over the old unit at 45 Lord Street, opening this weekend.", "body": "Paragraph one here.\\n\\nParagraph two here.\\n\\nParagraph three here."}`;
+{"title": "New restaurant opens on Lord Street", "teaser": "A new Italian has taken over the old unit at 45 Lord Street, opening this weekend.", "body": "Paragraph one here.\\n\\nParagraph two here.\\n\\nParagraph three here.", "key_facts": ["Opens Saturday 12 April on Lord Street.", "Booking recommended for weekends.", "Dog-friendly garden at the back."]}`;
 
 export interface TerryRewrite {
   title: string;
   teaser: string;
   body: string;
+  keyFacts: string[];
 }
 
 export async function rewriteAsTerry(
@@ -41,7 +43,7 @@ Original headline: ${rawTitle}
 Original content:
 ${rawContent.slice(0, 2500)}
 
-Return only a JSON object with "title", "teaser", and "body" fields. No other text. No markdown fences.`;
+Return only a JSON object with "title", "teaser", "body", and "key_facts" fields. No other text. No markdown fences.`;
 
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -53,7 +55,7 @@ Return only a JSON object with "title", "teaser", and "body" fields. No other te
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-5",
-        max_tokens: 900,
+        max_tokens: 1100,
         system: TERRY_SYSTEM_PROMPT,
         messages: [{ role: "user", content: userMessage }],
       }),
@@ -73,13 +75,14 @@ Return only a JSON object with "title", "teaser", and "body" fields. No other te
       title?: string;
       teaser?: string;
       body?: string;
-      // backwards compat: some calls may still return summary
+      key_facts?: string[];
       summary?: string;
     };
 
     const title = parsed.title;
     const teaser = parsed.teaser ?? parsed.summary ?? "";
     const body = parsed.body ?? parsed.summary ?? "";
+    const keyFacts = Array.isArray(parsed.key_facts) ? parsed.key_facts.slice(0, 4) : [];
 
     if (!title || !body) return null;
 
@@ -87,6 +90,7 @@ Return only a JSON object with "title", "teaser", and "body" fields. No other te
       title: title.slice(0, 200),
       teaser: teaser.slice(0, 300),
       body,
+      keyFacts,
     };
   } catch {
     return null;
