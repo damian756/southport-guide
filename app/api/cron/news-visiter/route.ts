@@ -5,10 +5,12 @@ import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
 import { parseRssItems } from "@/lib/parse-rss";
 
 // Runs every 4 hours (configured in vercel.json).
-// Pulls Southport Visiter RSS feed (Reach PLC local news).
+// Pulls Liverpool Echo Southport RSS feed (Reach PLC — powers southportvisiter.co.uk).
 // Rewrites each item in Terry's voice via Claude — goes to pending_review for approval.
+// MAX_NEW caps Claude API calls per run to stay within Vercel function timeout.
 
-const FEED_URL = "https://www.southportvisiter.co.uk/news/?service=rss";
+const FEED_URL = "https://www.liverpoolecho.co.uk/all-about/southport?service=rss";
+const MAX_NEW = 6;
 
 const CATEGORY_MAP: Array<{ keywords: string[]; category: string }> = [
   { keywords: ["restaurant", "cafe", "food", "dining", "opening", "menu", "eat", "pub", "bar"], category: "food-drink" },
@@ -58,6 +60,7 @@ export async function GET(request: Request) {
   let rewriteFailed = 0;
 
   for (const item of items) {
+    if (inserted >= MAX_NEW) break;
     if (!item.title) continue;
 
     const externalId = `visiter-${item.guid || item.link}`;

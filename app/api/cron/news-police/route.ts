@@ -10,6 +10,7 @@ import { parseRssItems } from "@/lib/parse-rss";
 
 const FEED_URL =
   "https://news.google.com/rss/search?q=merseyside+police+southport&hl=en-GB&gl=GB&ceid=GB:en";
+const MAX_NEW = 6;
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -36,6 +37,7 @@ export async function GET(request: Request) {
   let rewriteFailed = 0;
 
   for (const item of items) {
+    if (inserted >= MAX_NEW) break;
     if (!item.title) continue;
 
     const externalId = `police-${item.guid || item.link}`;

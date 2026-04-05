@@ -9,6 +9,7 @@ import { parseRssItems } from "@/lib/parse-rss";
 // Rewrites each item in Terry's voice via Claude — goes to pending_review for approval.
 
 const FEED_URL = "https://standupforsouthport.com/feed/";
+const MAX_NEW = 5;
 
 const CATEGORY_MAP: Array<{ keywords: string[]; category: string }> = [
   { keywords: ["restaurant", "cafe", "food", "dining", "opening", "menu", "eat", "pub", "bar", "tikka", "pizza", "curry"], category: "food-drink" },
@@ -58,6 +59,7 @@ export async function GET(request: Request) {
   let rewriteFailed = 0;
 
   for (const item of items) {
+    if (inserted >= MAX_NEW) break;
     if (!item.title) continue;
 
     const externalId = `sufs-${item.guid || item.link}`;
