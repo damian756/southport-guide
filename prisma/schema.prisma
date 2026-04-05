@@ -531,3 +531,28 @@ model EPCRecord {
   @@index([postcode])
 }
 
+// ── Southport Live News ─────────────────────────────────────────────────────
+
+model NewsItem {
+  id            String    @id @default(uuid())
+  title         String
+  summary       String    @db.Text
+  rawContent    String?   @db.Text  // original scraped text before rewrite
+  category      String    // planning | business | sport | council | community | events | food-drink | property | crime-safety | transport
+  source        String    // sefton-council | merseyside-police | environment-agency | southport-fc | sufs | visiter | user-submitted
+  sourceUrl     String?
+  externalId    String    @unique  // dedup key: "{source}-{unique-id}"
+  imageUrl      String?
+  imageCredit   String?   // Unsplash photographer credit
+  status        String    @default("auto_published") // auto_published | pending_review | published | rejected
+  publishedAt   DateTime?
+  postedToSocial Boolean  @default(false)
+  createdAt     DateTime  @default(now())
+
+  @@index([status])
+  @@index([category])
+  @@index([source])
+  @@index([publishedAt])
+  @@index([createdAt])
+}
+

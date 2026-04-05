@@ -15,10 +15,12 @@ import {
   X,
   ExternalLink,
   Star,
+  Newspaper,
 } from "lucide-react";
 
 const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
+  { href: "/admin/news", label: "News", icon: Newspaper },
   { href: "/admin/claims", label: "Claims", icon: FileCheck },
   { href: "/admin/reviews", label: "Reviews", icon: Star },
   { href: "/admin/businesses", label: "Businesses", icon: Building2 },
