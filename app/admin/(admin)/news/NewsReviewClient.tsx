@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, XCircle, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { CheckCircle, XCircle, ExternalLink, ChevronDown, ChevronUp, Star } from "lucide-react";
 
 type NewsItem = {
   id: string;
@@ -13,6 +13,7 @@ type NewsItem = {
   sourceUrl: string | null;
   imageUrl: string | null;
   status: string;
+  featured: boolean;
   publishedAt: string | null;
   createdAt: string;
 };
@@ -43,6 +44,8 @@ function formatDate(dateStr: string) {
   });
 }
 
+type Action = "publish" | "reject" | "feature";
+
 function NewsRow({
   item,
   showActions,
@@ -50,12 +53,12 @@ function NewsRow({
 }: {
   item: NewsItem;
   showActions: boolean;
-  onAction?: (id: string, action: "publish" | "reject") => void;
+  onAction?: (id: string, action: Action) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const [loading, setLoading] = useState<"publish" | "reject" | null>(null);
+  const [loading, setLoading] = useState<Action | null>(null);
 
-  async function handleAction(action: "publish" | "reject") {
+  async function handleAction(action: Action) {
     setLoading(action);
     try {
       await fetch("/api/admin/news", {
@@ -70,7 +73,7 @@ function NewsRow({
   }
 
   return (
-    <div className="border border-gray-100 rounded-lg bg-white overflow-hidden">
+    <div className={`border rounded-lg bg-white overflow-hidden ${item.featured ? "border-[#C9A84C]" : "border-gray-100"}`}>
       <div className="p-4">
         <div className="flex items-start gap-3">
           {item.imageUrl && (
@@ -83,9 +86,17 @@ function NewsRow({
           )}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLES[item.status] ?? "bg-gray-100 text-gray-600"}`}>
+              <span
+                className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLES[item.status] ?? "bg-gray-100 text-gray-600"}`}
+              >
                 {item.status.replace("_", " ")}
               </span>
+              {item.featured && (
+                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-[#C9A84C]/20 text-[#C9A84C] flex items-center gap-1">
+                  <Star className="w-2.5 h-2.5" />
+                  Featured
+                </span>
+              )}
               <span className="text-xs text-gray-400">{SOURCE_LABELS[item.source] ?? item.source}</span>
               <span className="text-xs text-gray-300">{item.category}</span>
               <span className="text-xs text-gray-300">{formatDate(item.createdAt)}</span>
@@ -105,6 +116,15 @@ function NewsRow({
               >
                 <CheckCircle className="w-3.5 h-3.5" />
                 {loading === "publish" ? "Rewriting with Claude..." : "Approve & Publish"}
+              </button>
+              <button
+                onClick={() => handleAction("feature")}
+                disabled={loading !== null}
+                title="Fetch full article + write 500-word featured piece. Goes in the hero slot on /news."
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#C9A84C] text-white text-xs font-medium rounded-lg hover:bg-[#b8963d] disabled:opacity-50"
+              >
+                <Star className="w-3.5 h-3.5" />
+                {loading === "feature" ? "Writing feature..." : "Feature"}
               </button>
               <button
                 onClick={() => handleAction("reject")}
@@ -163,7 +183,6 @@ export default function NewsReviewClient({
 
   return (
     <div className="space-y-8">
-      {/* Pending review */}
       <section>
         <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
           Pending Review ({pendingItems.length})
@@ -186,7 +205,6 @@ export default function NewsReviewClient({
         )}
       </section>
 
-      {/* Recent auto-published */}
       <section>
         <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
           Recent (last 20)

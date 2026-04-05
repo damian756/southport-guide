@@ -31,6 +31,7 @@ export default async function AdminNewsPage() {
       sourceUrl: item.sourceUrl ?? null,
       imageUrl: item.imageUrl ?? null,
       status: item.status,
+      featured: item.featured,
       publishedAt: item.publishedAt?.toISOString() ?? null,
       createdAt: item.createdAt.toISOString(),
     }));
@@ -44,7 +45,7 @@ export default async function AdminNewsPage() {
         {pending.length} item{pending.length !== 1 ? "s" : ""} waiting for approval
       </p>
       <p className="text-xs text-gray-400 mb-6">
-        Raw headlines shown. Claude rewrites only on approve — reject freely, no credit cost.
+          Raw headlines shown. Claude rewrites on approve. Feature button fetches the full article and writes 500+ words for the hero slot.
       </p>
       <NewsReviewClient pending={serialise(pending)} recent={serialise(recent)} />
     </div>

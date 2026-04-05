@@ -16,6 +16,8 @@ import {
   Train,
   Gavel,
   Trophy,
+  Star,
+  Mail,
 } from "lucide-react";
 import type { NewsItemCard } from "./page";
 
@@ -45,7 +47,6 @@ const CATEGORY_STYLES: Record<string, { bg: string; text: string; icon: React.El
   "crime-safety": { bg: "bg-red-100", text: "text-red-800", icon: ShieldAlert },
   transport: { bg: "bg-sky-100", text: "text-sky-800", icon: Train },
 };
-
 
 function formatTimeAgo(dateStr: string): string {
   const date = new Date(dateStr);
@@ -88,9 +89,57 @@ function FallbackCard({ category }: { category: string }) {
   const style = CATEGORY_STYLES[category] ?? { bg: "bg-gray-100", text: "text-gray-500", icon: Newspaper };
   const Icon = style.icon;
   return (
-    <div className={`w-full h-full flex items-center justify-center ${style.bg} min-h-[160px]`}>
+    <div className={`w-full h-full flex items-center justify-center ${style.bg}`}>
       <Icon className={`w-12 h-12 ${style.text} opacity-40`} />
     </div>
+  );
+}
+
+function FeaturedHero({ item }: { item: NewsItemCard }) {
+  const timeStr = item.publishedAt ?? item.createdAt;
+  const firstParagraph = item.summary.split("\n\n")[0] ?? item.summary;
+
+  return (
+    <Link href={`/news/${item.slug ?? item.id}`} className="block mb-8 group">
+      <div className="bg-white rounded-2xl border border-[#C9A84C]/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        <div className="relative h-64 sm:h-80 bg-gray-100 overflow-hidden">
+          {item.imageUrl ? (
+            <Image
+              src={item.imageUrl}
+              alt={item.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, 1200px"
+              priority
+            />
+          ) : (
+            <FallbackCard category={item.category} />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute top-4 left-4 flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-1 bg-[#C9A84C] text-white text-xs font-semibold rounded-full">
+              <Star className="w-3 h-3" />
+              Featured
+            </span>
+            <CategoryBadge category={item.category} />
+          </div>
+        </div>
+        <div className="p-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#1B2E4B] leading-tight mb-3 group-hover:text-[#C9A84C] transition-colors">
+            {item.title}
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+            {firstParagraph}
+          </p>
+          <div className="flex items-center gap-2 text-xs text-gray-400">
+            <Clock className="w-3 h-3" />
+            <span>{formatTimeAgo(timeStr)}</span>
+            <span className="text-gray-300">·</span>
+            <span>Full story</span>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
 
@@ -98,9 +147,8 @@ function NewsCard({ item }: { item: NewsItemCard }) {
   const timeStr = item.publishedAt ?? item.createdAt;
 
   return (
-      <Link href={`/news/${item.slug ?? item.id}`} className="block h-full">
+    <Link href={`/news/${item.slug ?? item.id}`} className="block h-full">
       <div className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
-        {/* Image */}
         <div className="relative h-40 bg-gray-50 overflow-hidden flex-shrink-0">
           {item.imageUrl ? (
             <Image
@@ -118,7 +166,6 @@ function NewsCard({ item }: { item: NewsItemCard }) {
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-4 flex flex-col flex-1">
           <h2 className="font-semibold text-[#1B2E4B] text-sm leading-snug mb-2 line-clamp-2 group-hover:text-[#C9A84C] transition-colors">
             {item.title}
@@ -127,11 +174,11 @@ function NewsCard({ item }: { item: NewsItemCard }) {
             {item.summary}
           </p>
           <div className="mt-3 flex items-center text-xs text-gray-400">
-          <span className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            {formatTimeAgo(timeStr)}
-          </span>
-        </div>
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              {formatTimeAgo(timeStr)}
+            </span>
+          </div>
           {item.imageCredit && (
             <p className="mt-1 text-[10px] text-gray-300">{item.imageCredit}</p>
           )}
@@ -141,12 +188,34 @@ function NewsCard({ item }: { item: NewsItemCard }) {
   );
 }
 
+function GotAStoryCTA() {
+  return (
+    <div className="my-8 bg-[#1B2E4B] rounded-2xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center gap-5">
+      <div className="flex-1">
+        <p className="font-bold text-lg leading-snug">Got a tip or a story?</p>
+        <p className="text-white/70 text-sm mt-1">
+          Know something that Southport should know about? Send it over. A photo, a tip, a local issue, or something worth celebrating.
+        </p>
+      </div>
+      <a
+        href="mailto:news@southportguide.co.uk?subject=Story tip"
+        className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-white font-semibold text-sm rounded-xl hover:bg-[#b8963d] transition-colors"
+      >
+        <Mail className="w-4 h-4" />
+        Get in touch
+      </a>
+    </div>
+  );
+}
+
 export default function NewsPageClient({
   items,
+  featuredItem,
   activeCategory,
   lastUpdated,
 }: {
   items: NewsItemCard[];
+  featuredItem: NewsItemCard | null;
   activeCategory: string;
   lastUpdated: string | null;
 }) {
@@ -158,6 +227,11 @@ export default function NewsPageClient({
     if (value !== "all") params.set("category", value);
     router.push(`${pathname}${params.toString() ? `?${params}` : ""}`);
   }
+
+  // Insert CTA after 9th card (3 rows of 3 on desktop)
+  const gridItems = items;
+  const beforeCta = gridItems.slice(0, 9);
+  const afterCta = gridItems.slice(9);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -202,8 +276,13 @@ export default function NewsPageClient({
         </div>
       </div>
 
-      {/* News grid */}
+      {/* Content */}
       <div className="max-w-6xl mx-auto px-4 py-8 lg:px-8">
+        {/* Featured hero */}
+        {featuredItem && activeCategory === "all" && (
+          <FeaturedHero item={featuredItem} />
+        )}
+
         {items.length === 0 ? (
           <div className="text-center py-20">
             <AlertTriangle className="w-10 h-10 text-gray-300 mx-auto mb-3" />
@@ -211,19 +290,31 @@ export default function NewsPageClient({
             <p className="text-gray-400 text-sm mt-1">Check back soon or try another filter.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {items.map((item) => (
-              <NewsCard key={item.id} item={item} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {beforeCta.map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
+            </div>
+
+            {/* Got a story CTA — between rows */}
+            <GotAStoryCTA />
+
+            {afterCta.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {afterCta.map((item) => (
+                  <NewsCard key={item.id} item={item} />
+                ))}
+              </div>
+            )}
+          </>
         )}
 
-        {/* Attribution note */}
+        {/* Footer note */}
         <div className="mt-10 pt-6 border-t border-gray-200">
           <p className="text-xs text-gray-400 max-w-2xl">
             Southport Live pulls from public sources including Sefton Council, Merseyside Police, the Environment Agency, and Southport FC.
-            Some items are summarised in Terry's voice from third-party sources. Original source links open in a new tab.
-            Unsplash images credited where used.
+            Some items are rewritten in Terry's voice. Unsplash images credited where used.
           </p>
         </div>
       </div>

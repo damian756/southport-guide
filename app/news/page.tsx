@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import NewsPageClient from "./NewsPageClient";
 import type { Metadata } from "next";
 
-export const revalidate = 300; // Refresh every 5 minutes
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Southport News | Southport Live | SouthportGuide.co.uk",
@@ -38,6 +38,7 @@ export type NewsItemCard = {
   sourceUrl: string | null;
   imageUrl: string | null;
   imageCredit: string | null;
+  featured: boolean;
   publishedAt: string | null;
   createdAt: string;
 };
@@ -54,39 +55,73 @@ export default async function NewsPage({
     ...(category && category !== "all" ? { category } : {}),
   };
 
-  const items = await prisma.newsItem.findMany({
-    where,
-    orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
-    take: 60,
-    select: {
-      id: true,
-      slug: true,
-      title: true,
-      summary: true,
-      category: true,
-      source: true,
-      sourceUrl: true,
-      imageUrl: true,
-      imageCredit: true,
-      publishedAt: true,
-      createdAt: true,
-    },
-  });
+  const [featuredItem, items] = await Promise.all([
+    // Fetch the most recent featured item (always, regardless of category filter)
+    category && category !== "all"
+      ? Promise.resolve(null)
+      : prisma.newsItem.findFirst({
+          where: { status: { in: ["auto_published", "published"] }, featured: true },
+          orderBy: { publishedAt: "desc" },
+          select: {
+            id: true,
+            slug: true,
+            title: true,
+            summary: true,
+            category: true,
+            source: true,
+            sourceUrl: true,
+            imageUrl: true,
+            imageCredit: true,
+            featured: true,
+            publishedAt: true,
+            createdAt: true,
+          },
+        }),
+    prisma.newsItem.findMany({
+      where,
+      orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
+      take: 60,
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        summary: true,
+        category: true,
+        source: true,
+        sourceUrl: true,
+        imageUrl: true,
+        imageCredit: true,
+        featured: true,
+        publishedAt: true,
+        createdAt: true,
+      },
+    }),
+  ]);
 
   const latestItem = items[0];
   const lastUpdated = latestItem
     ? (latestItem.publishedAt ?? latestItem.createdAt)
     : null;
 
-  const serialised: NewsItemCard[] = items.map((item) => ({
-    ...item,
-    publishedAt: item.publishedAt?.toISOString() ?? null,
-    createdAt: item.createdAt.toISOString(),
-  }));
+  function serialiseItem(item: (typeof items)[0]): NewsItemCard {
+    return {
+      ...item,
+      publishedAt: item.publishedAt?.toISOString() ?? null,
+      createdAt: item.createdAt.toISOString(),
+    };
+  }
+
+  const serialisedFeatured = featuredItem ? serialiseItem(featuredItem) : null;
+
+  // Exclude the featured item from the grid to avoid duplication
+  const serialisedItems: NewsItemCard[] = items
+    .filter((item) => !featuredItem || item.id !== featuredItem.id)
+    .map(serialiseItem);
 
   return (
     <NewsPageClient
-      items={serialised}
+      items={serialisedItems}
+      featuredItem={serialisedFeatured}
       activeCategory={category ?? "all"}
       lastUpdated={lastUpdated?.toISOString() ?? null}
     />
