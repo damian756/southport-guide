@@ -63,23 +63,23 @@ export async function postToSocial(params: {
   const delayMs = (5 + Math.floor(Math.random() * 115)) * 60 * 1000;
   const scheduledAt = new Date(Date.now() + delayMs).toISOString();
 
+  // Facebook type must be "status" — "link" is not a valid Publer type and silently fails.
+  // Including the URL in the status text triggers Facebook's own link card preview via OG tags.
+  const fbTextWithUrl = `${fbText}\n\n${articleUrl}`;
+
   const body = {
     bulk: {
       state: "scheduled",
-      scheduled_at: scheduledAt,
       posts: [
         {
           networks: {
             twitter: { type: "status", text: xText },
-            facebook: {
-              type: "link",
-              text: fbText,
-              url: articleUrl,
-            },
+            facebook: { type: "status", text: fbTextWithUrl },
           },
+          // scheduled_at must be per-account, not at bulk level
           accounts: [
-            { id: X_ACCOUNT_ID },
-            { id: FB_ACCOUNT_ID },
+            { id: X_ACCOUNT_ID, scheduled_at: scheduledAt },
+            { id: FB_ACCOUNT_ID, scheduled_at: scheduledAt },
           ],
         },
       ],
@@ -87,7 +87,7 @@ export async function postToSocial(params: {
   };
 
   try {
-    const res = await fetch(`${PUBLER_API_BASE}/posts/schedule/publish`, {
+    const res = await fetch(`${PUBLER_API_BASE}/posts/schedule`, {
       method: "POST",
       headers: {
         Authorization: `Bearer-API ${apiKey}`,
