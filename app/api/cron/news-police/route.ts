@@ -10,21 +10,7 @@ import { fetchUnsplashImage } from "@/lib/unsplash";
 const FEED_URL =
   "https://news.google.com/rss/search?q=merseyside+police+southport&hl=en-GB&gl=GB&ceid=GB:en";
 
-const SOUTHPORT_KEYWORDS = [
-  "southport",
-  "birkdale",
-  "ainsdale",
-  "churchtown",
-  "formby",
-  "sefton",
-  "pr8",
-  "pr9",
-];
-
-function isLocallyRelevant(text: string): boolean {
-  const lower = text.toLowerCase();
-  return SOUTHPORT_KEYWORDS.some((kw) => lower.includes(kw));
-}
+// Google News query already scopes to Southport so all results are relevant
 
 function extractText(xml: string, tag: string): string {
   const match = xml.match(new RegExp(`<${tag}[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/${tag}>`, "s"));
@@ -82,16 +68,8 @@ export async function GET(request: Request) {
   const items = parseItems(xml);
   let inserted = 0;
   let skipped = 0;
-  let irrelevant = 0;
 
   for (const item of items) {
-    const combined = `${item.title} ${item.description}`;
-
-    if (!isLocallyRelevant(combined)) {
-      irrelevant++;
-      continue;
-    }
-
     const externalId = `police-${item.guid || item.link}`;
 
     const existing = await prisma.newsItem.findUnique({ where: { externalId } });
@@ -126,6 +104,5 @@ export async function GET(request: Request) {
     fetched: items.length,
     inserted,
     skipped,
-    irrelevant,
   });
 }
