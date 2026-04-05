@@ -2,9 +2,9 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Newspaper,
-  ExternalLink,
   Clock,
   AlertTriangle,
   Building2,
@@ -53,6 +53,7 @@ const SOURCE_LABELS: Record<string, string> = {
   "southport-fc": "Southport FC",
   sufs: "Stand Up For Southport",
   visiter: "Southport Visiter",
+  "southport-news": "Southport News",
   "user-submitted": "Community",
 };
 
@@ -107,62 +108,49 @@ function NewsCard({ item }: { item: NewsItemCard }) {
   const timeStr = item.publishedAt ?? item.createdAt;
   const sourceLabel = SOURCE_LABELS[item.source] ?? item.source;
 
-  const cardContent = (
-    <div className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
-      {/* Image */}
-      <div className="relative h-40 bg-gray-50 overflow-hidden flex-shrink-0">
-        {item.imageUrl ? (
-          <Image
-            src={item.imageUrl}
-            alt={item.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        ) : (
-          <FallbackCard category={item.category} />
-        )}
-        <div className="absolute top-2 left-2">
-          <CategoryBadge category={item.category} />
+  return (
+    <Link href={`/news/${item.id}`} className="block h-full">
+      <div className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
+        {/* Image */}
+        <div className="relative h-40 bg-gray-50 overflow-hidden flex-shrink-0">
+          {item.imageUrl ? (
+            <Image
+              src={item.imageUrl}
+              alt={item.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          ) : (
+            <FallbackCard category={item.category} />
+          )}
+          <div className="absolute top-2 left-2">
+            <CategoryBadge category={item.category} />
+          </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="p-4 flex flex-col flex-1">
-        <h2 className="font-semibold text-[#1B2E4B] text-sm leading-snug mb-2 line-clamp-2 group-hover:text-[#C9A84C] transition-colors">
-          {item.title}
-        </h2>
-        <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 flex-1">
-          {item.summary}
-        </p>
-        <div className="mt-3 flex items-center justify-between text-xs text-gray-400">
-          <span className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            {formatTimeAgo(timeStr)}
-          </span>
-          <span className="truncate max-w-[120px]">{sourceLabel}</span>
+        {/* Content */}
+        <div className="p-4 flex flex-col flex-1">
+          <h2 className="font-semibold text-[#1B2E4B] text-sm leading-snug mb-2 line-clamp-2 group-hover:text-[#C9A84C] transition-colors">
+            {item.title}
+          </h2>
+          <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 flex-1">
+            {item.summary}
+          </p>
+          <div className="mt-3 flex items-center justify-between text-xs text-gray-400">
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              {formatTimeAgo(timeStr)}
+            </span>
+            <span className="truncate max-w-[120px]">{sourceLabel}</span>
+          </div>
+          {item.imageCredit && (
+            <p className="mt-1 text-[10px] text-gray-300">{item.imageCredit}</p>
+          )}
         </div>
-        {item.imageCredit && (
-          <p className="mt-1 text-[10px] text-gray-300">{item.imageCredit}</p>
-        )}
       </div>
-    </div>
+    </Link>
   );
-
-  if (item.sourceUrl) {
-    return (
-      <a
-        href={item.sourceUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full"
-      >
-        {cardContent}
-      </a>
-    );
-  }
-
-  return <div className="h-full">{cardContent}</div>;
 }
 
 export default function NewsPageClient({

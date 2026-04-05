@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'maps.googleapis.com' },
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
       { protocol: 'https', hostname: 'streetviewpixels-pa.googleapis.com' },
+      // Unsplash images for news cards
+      { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
   // Security + performance headers
