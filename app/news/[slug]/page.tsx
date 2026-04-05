@@ -69,35 +69,52 @@ function formatDate(dateStr: string): string {
   });
 }
 
+async function getItem(slug: string) {
+  // Accept both slug (new) and UUID (legacy links)
+  return prisma.newsItem.findFirst({
+    where: {
+      status: { in: ["auto_published", "published"] },
+      OR: [{ slug }, { id: slug }],
+    },
+  });
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
-  const item = await prisma.newsItem.findUnique({
-    where: { id },
-    select: { title: true, summary: true, imageUrl: true },
-  });
+  const { slug } = await params;
+  const item = await getItem(slug);
 
   if (!item) return { title: "Not Found" };
 
+  const dateStr = item.publishedAt?.toISOString() ?? item.createdAt.toISOString();
+  const canonical = `https://www.southportguide.co.uk/news/${item.slug ?? item.id}`;
+
   return {
     title: `${item.title} | Southport Live`,
-    description: item.summary.slice(0, 160),
-    alternates: {
-      canonical: `https://www.southportguide.co.uk/news/${id}`,
-    },
+    description: item.summary.slice(0, 160).replace(/\n/g, " "),
+    alternates: { canonical },
     openGraph: {
       type: "article",
       siteName: "SouthportGuide.co.uk",
       locale: "en_GB",
       title: item.title,
-      description: item.summary.slice(0, 160),
-      url: `https://www.southportguide.co.uk/news/${id}`,
+      description: item.summary.slice(0, 160).replace(/\n/g, " "),
+      url: canonical,
+      publishedTime: dateStr,
+      authors: ["https://www.southportguide.co.uk"],
+      tags: [item.category, "Southport", "Merseyside"],
       images: item.imageUrl
         ? [{ url: item.imageUrl, width: 1080, height: 720, alt: item.title }]
         : [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: item.title,
+      description: item.summary.slice(0, 160).replace(/\n/g, " "),
+      images: item.imageUrl ? [item.imageUrl] : ["https://www.southportguide.co.uk/og-default.png"],
     },
   };
 }
@@ -105,13 +122,10 @@ export async function generateMetadata({
 export default async function NewsArticlePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
-
-  const item = await prisma.newsItem.findUnique({
-    where: { id, status: { in: ["auto_published", "published"] } },
-  });
+  const { slug } = await params;
+  const item = await getItem(slug);
 
   if (!item) notFound();
 
@@ -119,15 +133,59 @@ export default async function NewsArticlePage({
   const sourceLabel = SOURCE_LABELS[item.source] ?? item.source;
   const categoryLabel = CATEGORY_LABELS[item.category] ?? item.category;
   const CategoryIcon = CATEGORY_ICONS[item.category] ?? Newspaper;
+  const canonical = `https://www.southportguide.co.uk/news/${item.slug ?? item.id}`;
 
-  // Split summary into paragraphs on double newlines or sentence boundaries
+  // Split on double newlines for paragraphs
   const paragraphs = item.summary
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
 
+  // JSON-LD NewsArticle schema
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: item.title,
+    description: item.summary.slice(0, 160).replace(/\n/g, " "),
+    datePublished: dateStr,
+    dateModified: dateStr,
+    url: canonical,
+    author: {
+      "@type": "Organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.southportguide.co.uk/og-default.png",
+      },
+    },
+    ...(item.imageUrl && {
+      image: {
+        "@type": "ImageObject",
+        url: item.imageUrl,
+        width: 1080,
+        height: 720,
+      },
+    }),
+    articleSection: categoryLabel,
+    keywords: `Southport, Merseyside, ${categoryLabel}`,
+    isAccessibleForFree: true,
+    inLanguage: "en-GB",
+  };
+
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Back nav */}
       <div className="bg-[#1B2E4B]">
         <div className="max-w-3xl mx-auto px-4 py-3 lg:px-8">
@@ -181,8 +239,8 @@ export default async function NewsArticlePage({
           </div>
         )}
 
-        {/* Body */}
-        <div className="prose prose-sm lg:prose-base max-w-none text-gray-700 leading-relaxed space-y-4">
+        {/* Body — multiple paragraphs */}
+        <div className="space-y-4 text-gray-700 leading-relaxed text-base">
           {paragraphs.map((para, i) => (
             <p key={i}>{para}</p>
           ))}
@@ -190,7 +248,7 @@ export default async function NewsArticlePage({
 
         {/* Source link */}
         {item.sourceUrl && (
-          <div className="mt-8 pt-6 border-t border-gray-200">
+          <div className="mt-10 pt-6 border-t border-gray-200">
             <p className="text-xs text-gray-400 mb-2">Original source</p>
             <a
               href={item.sourceUrl}
@@ -198,7 +256,7 @@ export default async function NewsArticlePage({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm text-[#C9A84C] hover:underline"
             >
-              Read the original article on {sourceLabel}
+              Read the original on {sourceLabel}
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

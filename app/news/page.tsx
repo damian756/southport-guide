@@ -30,6 +30,7 @@ export const metadata: Metadata = {
 
 export type NewsItemCard = {
   id: string;
+  slug: string | null;
   title: string;
   summary: string;
   category: string;
@@ -59,6 +60,7 @@ export default async function NewsPage({
     take: 60,
     select: {
       id: true,
+      slug: true,
       title: true,
       summary: true,
       category: true,

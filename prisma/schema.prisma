@@ -535,6 +535,7 @@ model EPCRecord {
 
 model NewsItem {
   id            String    @id @default(uuid())
+  slug          String?   @unique  // URL slug e.g. "aldi-planning-new-southport-store-b12b4f6b"
   title         String
   summary       String    @db.Text
   rawContent    String?   @db.Text  // original scraped text before rewrite
@@ -549,6 +550,7 @@ model NewsItem {
   postedToSocial Boolean  @default(false)
   createdAt     DateTime  @default(now())
 
+  @@index([slug])
   @@index([status])
   @@index([category])
   @@index([source])

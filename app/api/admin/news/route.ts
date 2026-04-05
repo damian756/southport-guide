@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { makeNewsSlug } from "@/lib/slugify";
 
 export async function PATCH(request: Request) {
   const session = await getServerSession(authOptions);
@@ -22,14 +23,17 @@ export async function PATCH(request: Request) {
   }
 
   if (action === "publish") {
+    // Backfill slug if missing (items inserted before slug feature)
+    const slug = item.slug ?? makeNewsSlug(item.title, item.id);
     await prisma.newsItem.update({
       where: { id },
       data: {
         status: "published",
         publishedAt: new Date(),
+        slug,
       },
     });
-    return NextResponse.json({ ok: true, status: "published" });
+    return NextResponse.json({ ok: true, status: "published", slug });
   }
 
   await prisma.newsItem.update({

@@ -109,7 +109,7 @@ function NewsCard({ item }: { item: NewsItemCard }) {
   const sourceLabel = SOURCE_LABELS[item.source] ?? item.source;
 
   return (
-    <Link href={`/news/${item.id}`} className="block h-full">
+      <Link href={`/news/${item.slug ?? item.id}`} className="block h-full">
       <div className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
         {/* Image */}
         <div className="relative h-40 bg-gray-50 overflow-hidden flex-shrink-0">

@@ -1,25 +1,30 @@
 // Rewrites raw scraped news content in Terry's voice using Claude (Anthropic API directly).
-// Used for SUFS and Visiter items before saving as pending_review.
+// Used for all scrapers before saving as pending_review.
 
 const TERRY_SYSTEM_PROMPT = `You are Terry, a 41-year-old Southport local who has lived in Churchtown his whole life.
 You write for SouthportGuide.co.uk — a local directory and news site for Southport, Merseyside.
 
-You write short, honest, practical news items. You get to the point. You name specifics.
-You are warm but never gushing. You are never promotional or brochure-like.
+You write honest, practical, local news. You get to the point. You name specifics where you have them.
+You are warm but never gushing. You are never promotional or brochure-like. You write like you are telling a mate at the pub.
 
 STRICT RULES:
 - Never use em dashes (—). Use a comma, full stop, or colon instead.
 - Never use: hidden gem, nestled, stunning vistas, picturesque, discerning, vibrant, breathtaking, world-class, truly unique, a must-visit, quaint, charming town, unforgettable, iconic (unless genuinely iconic), bustling, foodie paradise.
 - Write in plain British English. Short sentences. No waffle.
 - Do not mention yourself or Terry by name.
-- Output ONLY a JSON object with two fields: "title" (max 80 chars) and "summary" (100-250 words).
+- The "body" field must be 3 to 4 paragraphs. Separate each paragraph with a blank line (\\n\\n). Each paragraph should be 40-70 words. Total 180-280 words.
+- The first paragraph answers the main question: what happened, where, who.
+- The second paragraph gives context or background relevant to Southport locals.
+- The third (and optional fourth) paragraph adds practical detail, reaction, or what happens next.
+- Output ONLY a JSON object with three fields: "title" (max 80 chars), "teaser" (one sentence, max 160 chars, for card previews), and "body" (the full multi-paragraph article text).
 
 Example output format:
-{"title": "New restaurant opens on Lord Street", "summary": "A new Italian restaurant has opened at 45 Lord Street..."}`;
+{"title": "New restaurant opens on Lord Street", "teaser": "A new Italian has taken over the old unit at 45 Lord Street, opening this weekend.", "body": "Paragraph one here.\\n\\nParagraph two here.\\n\\nParagraph three here."}`;
 
 export interface TerryRewrite {
   title: string;
-  summary: string;
+  teaser: string;
+  body: string;
 }
 
 export async function rewriteAsTerry(
@@ -34,9 +39,9 @@ export async function rewriteAsTerry(
 Original headline: ${rawTitle}
 
 Original content:
-${rawContent.slice(0, 2000)}
+${rawContent.slice(0, 2500)}
 
-Return only a JSON object with "title" and "summary" fields. No other text.`;
+Return only a JSON object with "title", "teaser", and "body" fields. No other text. No markdown fences.`;
 
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -48,7 +53,7 @@ Return only a JSON object with "title" and "summary" fields. No other text.`;
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-5",
-        max_tokens: 500,
+        max_tokens: 900,
         system: TERRY_SYSTEM_PROMPT,
         messages: [{ role: "user", content: userMessage }],
       }),
@@ -63,15 +68,25 @@ Return only a JSON object with "title" and "summary" fields. No other text.`;
     const content = data.content?.find((b) => b.type === "text")?.text?.trim();
     if (!content) return null;
 
-    // Strip markdown code fences if present
     const cleaned = content.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
-    const parsed = JSON.parse(cleaned) as { title?: string; summary?: string };
+    const parsed = JSON.parse(cleaned) as {
+      title?: string;
+      teaser?: string;
+      body?: string;
+      // backwards compat: some calls may still return summary
+      summary?: string;
+    };
 
-    if (!parsed.title || !parsed.summary) return null;
+    const title = parsed.title;
+    const teaser = parsed.teaser ?? parsed.summary ?? "";
+    const body = parsed.body ?? parsed.summary ?? "";
+
+    if (!title || !body) return null;
 
     return {
-      title: parsed.title.slice(0, 200),
-      summary: parsed.summary,
+      title: title.slice(0, 200),
+      teaser: teaser.slice(0, 300),
+      body,
     };
   } catch {
     return null;

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { fetchUnsplashImage } from "@/lib/unsplash";
+import { makeNewsSlug } from "@/lib/slugify";
 
 // Runs every 2 hours (configured in vercel.json).
 // Pulls Environment Agency flood warnings for the Sefton/Southport area via their API.
@@ -73,7 +74,7 @@ export async function GET(request: Request) {
     const area = flood.floodArea?.label ?? "Southport area";
     const river = flood.floodArea?.riverOrSea ? ` (${flood.floodArea.riverOrSea})` : "";
 
-    const title = `${label}: ${area}${river}`;
+    const title = `${label}: ${area}${river}`.slice(0, 200);
     const summary =
       flood.message?.trim() ||
       flood.description?.trim() ||
@@ -81,10 +82,14 @@ export async function GET(request: Request) {
 
     const image = await fetchUnsplashImage("community");
     const pubDate = flood.timeRaised ? new Date(flood.timeRaised) : new Date();
+    const id = crypto.randomUUID();
+    const slug = makeNewsSlug(title, id);
 
     await prisma.newsItem.create({
       data: {
-        title: title.slice(0, 200),
+        id,
+        slug,
+        title,
         summary: summary.slice(0, 1000),
         category: "community",
         source: "environment-agency",

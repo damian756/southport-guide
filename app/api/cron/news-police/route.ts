@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { fetchUnsplashImage } from "@/lib/unsplash";
 import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
 import { parseRssItems } from "@/lib/parse-rss";
+import { makeNewsSlug } from "@/lib/slugify";
 
 // Runs every 4 hours (configured in vercel.json).
 // Pulls Merseyside Police / crime news via Google News RSS scoped to Southport.
@@ -50,12 +51,16 @@ export async function GET(request: Request) {
     if (!rewritten) rewriteFailed++;
 
     const image = await fetchUnsplashImage("crime-safety");
-    const pubDate = item.pubDate ? new Date(item.pubDate) : new Date();
+    const title = (rewritten?.title ?? item.title).slice(0, 200);
+    const id = crypto.randomUUID();
+    const slug = makeNewsSlug(title, id);
 
     await prisma.newsItem.create({
       data: {
-        title: (rewritten?.title ?? item.title).slice(0, 200),
-        summary: rewritten?.summary ?? item.description.slice(0, 600),
+        id,
+        slug,
+        title,
+        summary: rewritten?.body ?? rewritten?.teaser ?? item.description.slice(0, 600),
         rawContent: item.description,
         category: "crime-safety",
         source: "merseyside-police",
