@@ -5,11 +5,12 @@ import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
 import { parseRssItems } from "@/lib/parse-rss";
 
 // Runs every 4 hours (configured in vercel.json).
-// Pulls Liverpool Echo Southport RSS feed (Reach PLC — powers southportvisiter.co.uk).
+// Pulls general Southport news via Google News RSS (Liverpool Echo and others block server requests directly).
 // Rewrites each item in Terry's voice via Claude — goes to pending_review for approval.
 // MAX_NEW caps Claude API calls per run to stay within Vercel function timeout.
 
-const FEED_URL = "https://www.liverpoolecho.co.uk/all-about/southport?service=rss";
+const FEED_URL =
+  "https://news.google.com/rss/search?q=southport+merseyside+news&hl=en-GB&gl=GB&ceid=GB:en";
 const MAX_NEW = 6;
 
 const CATEGORY_MAP: Array<{ keywords: string[]; category: string }> = [
@@ -63,7 +64,7 @@ export async function GET(request: Request) {
     if (inserted >= MAX_NEW) break;
     if (!item.title) continue;
 
-    const externalId = `visiter-${item.guid || item.link}`;
+    const externalId = `southport-news-${item.guid || item.link}`;
     if (!item.guid && !item.link) continue;
 
     const existing = await prisma.newsItem.findUnique({ where: { externalId } });
