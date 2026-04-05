@@ -54,10 +54,10 @@ export async function PATCH(request: Request) {
     const rewritten = await rewriteAsTerry(item.title, rawForRewrite);
     const finalCategory = resolveCategory(rewritten?.category, item.category);
 
-    // Fetch Unsplash image with the correct (Claude-determined) category
-    const image = await fetchUnsplashImage(finalCategory);
-
     const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
+
+    // Fetch Unsplash image using article title keywords + category
+    const image = await fetchUnsplashImage(finalCategory, finalTitle);
 
     const slug =
       item.slug ??
@@ -98,9 +98,10 @@ export async function PATCH(request: Request) {
   const rewritten = await rewriteAsTerryFeatured(item.title, richContent);
   const finalCategory = resolveCategory(rewritten?.category, item.category);
 
-  const image = await fetchUnsplashImage(finalCategory);
-
   const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
+
+  // Fetch Unsplash image using article title keywords + category
+  const image = await fetchUnsplashImage(finalCategory, finalTitle);
 
   const slug =
     item.slug ??
