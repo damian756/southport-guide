@@ -82,9 +82,9 @@ export async function PATCH(request: Request) {
       },
     });
 
-    // Fire-and-forget: post to Facebook + X via Publer
+    // Post to Facebook + X via Publer (awaited — void kills the call on Vercel serverless)
     const socialTeaser = rewritten?.teaser ?? finalTitle;
-    void postToSocial({ title: finalTitle, teaser: socialTeaser, slug });
+    await postToSocial({ title: finalTitle, teaser: socialTeaser, slug });
 
     return NextResponse.json({ ok: true, status: "published", category: finalCategory, slug });
   }
@@ -130,9 +130,9 @@ export async function PATCH(request: Request) {
     },
   });
 
-  // Fire-and-forget: post to Facebook + X via Publer
+  // Post to Facebook + X via Publer (awaited — void kills the call on Vercel serverless)
   const featuredTeaser = rewritten?.teaser ?? finalTitle;
-  void postToSocial({ title: finalTitle, teaser: featuredTeaser, slug });
+  await postToSocial({ title: finalTitle, teaser: featuredTeaser, slug });
 
   return NextResponse.json({ ok: true, status: "published", featured: true, category: finalCategory, slug });
 }

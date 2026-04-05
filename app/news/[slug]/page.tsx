@@ -264,34 +264,46 @@ export default async function NewsArticlePage({
 
   const contextualLinks = CONTEXTUAL_LINKS[item.category] ?? [];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: item.title,
-    description: teaser,
-    datePublished: dateStr,
-    dateModified: dateStr,
-    url: canonical,
-    author: {
-      "@type": "Person",
-      name: "Terry",
-      description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk",
-      url: "https://www.southportguide.co.uk/news",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: item.title,
+      description: teaser,
+      datePublished: dateStr,
+      dateModified: dateStr,
+      url: canonical,
+      author: {
+        "@type": "Person",
+        name: "Terry",
+        description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk",
+        url: "https://www.southportguide.co.uk/news",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "SouthportGuide.co.uk",
+        url: "https://www.southportguide.co.uk",
+        logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/og-default.png" },
+      },
+      ...(item.imageUrl && {
+        image: { "@type": "ImageObject", url: item.imageUrl, width: 1080, height: 720 },
+      }),
+      articleSection: categoryLabel,
+      keywords: `Southport, Merseyside, ${categoryLabel}`,
+      isAccessibleForFree: true,
+      inLanguage: "en-GB",
     },
-    publisher: {
-      "@type": "Organization",
-      name: "SouthportGuide.co.uk",
-      url: "https://www.southportguide.co.uk",
-      logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/og-default.png" },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+        { "@type": "ListItem", position: 2, name: "Southport Live", item: "https://www.southportguide.co.uk/news" },
+        { "@type": "ListItem", position: 3, name: categoryLabel, item: `https://www.southportguide.co.uk/news/category/${item.category}` },
+        { "@type": "ListItem", position: 4, name: item.title, item: canonical },
+      ],
     },
-    ...(item.imageUrl && {
-      image: { "@type": "ImageObject", url: item.imageUrl, width: 1080, height: 720 },
-    }),
-    articleSection: categoryLabel,
-    keywords: `Southport, Merseyside, ${categoryLabel}`,
-    isAccessibleForFree: true,
-    inLanguage: "en-GB",
-  };
+  ];
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -300,16 +312,34 @@ export default async function NewsArticlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Back nav */}
+      {/* Back nav + breadcrumbs */}
       <div className="bg-[#1B2E4B]">
         <div className="max-w-3xl mx-auto px-4 py-3 lg:px-8">
-          <Link
-            href="/news"
-            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Back to Southport Live
-          </Link>
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 text-xs text-white/50 flex-wrap">
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-white/30">/</li>
+              <li>
+                <Link href="/news" className="hover:text-white transition-colors">
+                  Southport Live
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-white/30">/</li>
+              <li>
+                <Link href={`/news/category/${item.category}`} className="hover:text-white transition-colors">
+                  {categoryLabel}
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-white/30">/</li>
+              <li className="text-white/70 truncate max-w-[200px]" aria-current="page">
+                {item.title.length > 40 ? `${item.title.slice(0, 40)}...` : item.title}
+              </li>
+            </ol>
+          </nav>
         </div>
       </div>
 
@@ -470,7 +500,7 @@ export default async function NewsArticlePage({
               {upcomingEvents.map((event) => (
                 <Link
                   key={event.id}
-                  href={`/events/${event.slug}`}
+                  href="/events"
                   className="flex items-center justify-between gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-sm transition-all group"
                 >
                   <div className="flex items-center gap-3 min-w-0">
