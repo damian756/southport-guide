@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   CheckCircle,
@@ -12,6 +12,8 @@ import {
   Trash2,
   ChevronLeft,
   ChevronRight,
+  ImagePlus,
+  X,
 } from "lucide-react";
 
 type NewsItem = {
@@ -56,7 +58,7 @@ function formatDate(dateStr: string) {
   });
 }
 
-type Action = "publish" | "reject" | "feature";
+type Action = "publish" | "reject" | "feature" | "delete";
 
 function NewsRow({
   item,
@@ -69,14 +71,41 @@ function NewsRow({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [loading, setLoading] = useState<Action | null>(null);
+  const [customImage, setCustomImage] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setCustomImage(file);
+    setPreviewUrl(URL.createObjectURL(file));
+  }
+
+  function clearCustomImage() {
+    setCustomImage(null);
+    setPreviewUrl(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
 
   async function handleAction(action: Action) {
     setLoading(action);
     try {
+      let customImageUrl: string | undefined;
+
+      // Upload custom image before feature/publish if one was selected
+      if (customImage && (action === "feature" || action === "publish")) {
+        const fd = new FormData();
+        fd.append("file", customImage);
+        const uploadRes = await fetch("/api/admin/news/upload-image", { method: "POST", body: fd });
+        const uploadData = (await uploadRes.json()) as { url?: string };
+        customImageUrl = uploadData.url;
+      }
+
       await fetch("/api/admin/news", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: item.id, action }),
+        body: JSON.stringify({ id: item.id, action, customImageUrl }),
       });
       onAction?.(item.id);
     } finally {
@@ -132,6 +161,38 @@ function NewsRow({
                 <Star className="w-3.5 h-3.5" />
                 {loading === "feature" ? "Writing feature..." : "Feature"}
               </button>
+
+              {/* Custom image upload — replaces Unsplash on publish/feature */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileSelect}
+              />
+              {previewUrl ? (
+                <div className="relative flex-shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={previewUrl} alt="Custom image preview" className="w-8 h-8 rounded object-cover border border-[#C9A84C]" />
+                  <button
+                    onClick={clearCustomImage}
+                    className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white rounded-full flex items-center justify-center"
+                    title="Remove custom image"
+                  >
+                    <X className="w-2.5 h-2.5" />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  title="Upload a custom image (replaces Unsplash)"
+                  className="flex items-center gap-1 px-2.5 py-1.5 bg-gray-50 text-gray-500 text-xs font-medium rounded-lg border border-gray-200 hover:border-gray-300 hover:text-[#1B2E4B]"
+                >
+                  <ImagePlus className="w-3.5 h-3.5" />
+                  Image
+                </button>
+              )}
+
               <button
                 onClick={() => handleAction("reject")}
                 disabled={loading !== null}
@@ -154,6 +215,18 @@ function NewsRow({
               <ExternalLink className="w-3 h-3" />
               View live
             </a>
+          )}
+
+          {/* Delete button — shown on approved tab */}
+          {!showActions && (
+            <button
+              onClick={() => handleAction("delete")}
+              disabled={loading !== null}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-50 text-red-500 text-xs font-medium rounded-lg hover:bg-red-100 disabled:opacity-50 ml-auto"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              {loading === "delete" ? "Deleting..." : "Delete"}
+            </button>
           )}
 
           {item.sourceUrl && (
@@ -248,6 +321,7 @@ export default function NewsReviewClient({
   const router = useRouter();
   const [visibleItems, setVisibleItems] = useState(items);
   const [purging, setPurging] = useState(false);
+  const [purgingAll, setPurgingAll] = useState(false);
   const [purgeResult, setPurgeResult] = useState<string | null>(null);
 
   function handleItemActioned(id: string) {
@@ -261,10 +335,24 @@ export default function NewsReviewClient({
     try {
       const res = await fetch("/api/admin/news/purge-pending", { method: "DELETE" });
       const data = (await res.json()) as { deleted?: number };
-      setPurgeResult(`Deleted ${data.deleted ?? 0} items.`);
+      setPurgeResult(`Deleted ${data.deleted ?? 0} pending items.`);
       setVisibleItems([]);
     } finally {
       setPurging(false);
+    }
+  }
+
+  async function handlePurgeAll() {
+    if (!confirm("Delete EVERY news item (pending AND approved)? This wipes the entire news database. Cannot be undone.")) return;
+    setPurgingAll(true);
+    setPurgeResult(null);
+    try {
+      const res = await fetch("/api/admin/news/purge-all", { method: "DELETE" });
+      const data = (await res.json()) as { deleted?: number };
+      setPurgeResult(`Wiped ${data.deleted ?? 0} items total.`);
+      setVisibleItems([]);
+    } finally {
+      setPurgingAll(false);
     }
   }
 
@@ -304,17 +392,27 @@ export default function NewsReviewClient({
           </button>
         </div>
 
-        {/* Purge button — only on pending tab */}
-        {view === "pending" && pendingCount > 0 && (
+        {/* Purge buttons */}
+        <div className="flex items-center gap-2">
+          {view === "pending" && pendingCount > 0 && (
+            <button
+              onClick={handlePurge}
+              disabled={purging || purgingAll}
+              className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-xs font-medium rounded-lg border border-red-200 hover:bg-red-100 disabled:opacity-50"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              {purging ? "Purging..." : `Purge ${pendingCount} pending`}
+            </button>
+          )}
           <button
-            onClick={handlePurge}
-            disabled={purging}
-            className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-xs font-medium rounded-lg border border-red-200 hover:bg-red-100 disabled:opacity-50"
+            onClick={handlePurgeAll}
+            disabled={purging || purgingAll}
+            className="flex items-center gap-1.5 px-3 py-2 bg-red-600 text-white text-xs font-medium rounded-lg hover:bg-red-700 disabled:opacity-50"
           >
             <Trash2 className="w-3.5 h-3.5" />
-            {purging ? "Purging..." : `Purge all ${pendingCount} pending`}
+            {purgingAll ? "Wiping..." : "Wipe ALL news"}
           </button>
-        )}
+        </div>
       </div>
 
       {purgeResult && (

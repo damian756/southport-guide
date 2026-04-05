@@ -59,9 +59,14 @@ export async function postToSocial(params: {
   const xText = buildXText(params.teaser, articleUrl);
   const fbText = buildFbText(params.teaser, articleUrl);
 
+  // Schedule at a random time 5-120 minutes from now to avoid batch-spam on social feeds
+  const delayMs = (5 + Math.floor(Math.random() * 115)) * 60 * 1000;
+  const scheduledAt = new Date(Date.now() + delayMs).toISOString();
+
   const body = {
     bulk: {
       state: "scheduled",
+      scheduled_at: scheduledAt,
       posts: [
         {
           networks: {
@@ -97,7 +102,7 @@ export async function postToSocial(params: {
     if (!res.ok) {
       console.error("[Publer] API error:", data.errors ?? data);
     } else {
-      console.log("[Publer] Posted to Facebook + X. Job ID:", data?.data?.job_id);
+      console.log(`[Publer] Scheduled Facebook + X post for ${scheduledAt}. Job ID:`, data?.data?.job_id);
     }
   } catch (err) {
     console.error("[Publer] Fetch failed:", err);

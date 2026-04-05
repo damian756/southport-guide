@@ -22,8 +22,8 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = (await request.json()) as { id?: string; action?: Action };
-  const { id, action } = body;
+  const body = (await request.json()) as { id?: string; action?: Action; customImageUrl?: string };
+  const { id, action, customImageUrl } = body;
 
   if (!id || !action || !["publish", "reject", "feature", "delete"].includes(action)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
@@ -56,8 +56,10 @@ export async function PATCH(request: Request) {
 
     const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
 
-    // Fetch Unsplash image using article title keywords + category
-    const image = await fetchUnsplashImage(finalCategory, finalTitle);
+    // Use custom uploaded image if provided, otherwise fall back to Unsplash
+    const image = customImageUrl
+      ? { url: customImageUrl, credit: null }
+      : await fetchUnsplashImage(finalCategory, finalTitle);
 
     const slug =
       item.slug ??
@@ -100,8 +102,10 @@ export async function PATCH(request: Request) {
 
   const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
 
-  // Fetch Unsplash image using article title keywords + category
-  const image = await fetchUnsplashImage(finalCategory, finalTitle);
+  // Use custom uploaded image if provided, otherwise fall back to Unsplash
+  const image = customImageUrl
+    ? { url: customImageUrl, credit: null }
+    : await fetchUnsplashImage(finalCategory, finalTitle);
 
   const slug =
     item.slug ??

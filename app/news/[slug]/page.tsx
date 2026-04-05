@@ -207,7 +207,7 @@ export async function generateMetadata({
       description: teaser,
       url: canonical,
       publishedTime: dateStr,
-      authors: ["https://www.southportguide.co.uk"],
+      authors: ["https://www.southportguide.co.uk/news/author/terry"],
       tags: [item.category, "Southport", "Merseyside"],
       images: item.imageUrl
         ? [{ url: item.imageUrl, width: 1080, height: 720, alt: item.title }]
@@ -215,6 +215,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: "@SouthportGuide",
       title: item.title,
       description: teaser,
       images: item.imageUrl ? [item.imageUrl] : ["https://www.southportguide.co.uk/og-default.png"],
@@ -273,6 +274,23 @@ export default async function NewsArticlePage({
     .slice(0, 6)
     .join(", ");
 
+  const eventSchemas = upcomingEvents.map((event) => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.name,
+    startDate: event.dateStart.toISOString(),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    url: "https://www.southportguide.co.uk/events",
+    location: {
+      "@type": "Place",
+      name: event.venueName ?? "Southport",
+      address: { "@type": "PostalAddress", addressLocality: "Southport", addressRegion: "Merseyside", addressCountry: "GB" },
+    },
+    organizer: { "@type": "Organization", name: "SouthportGuide.co.uk", url: "https://www.southportguide.co.uk" },
+    ...(event.isFree && { isAccessibleForFree: true, offers: { "@type": "Offer", price: 0, priceCurrency: "GBP", availability: "https://schema.org/InStock" } }),
+  }));
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -288,7 +306,7 @@ export default async function NewsArticlePage({
         name: "Terry",
         jobTitle: "Local News Writer",
         description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk Southport Live section.",
-        url: "https://www.southportguide.co.uk/news",
+        url: "https://www.southportguide.co.uk/news/author/terry",
         worksFor: {
           "@type": "Organization",
           name: "SouthportGuide.co.uk",
@@ -329,6 +347,7 @@ export default async function NewsArticlePage({
         { "@type": "ListItem", position: 4, name: item.title, item: canonical },
       ],
     },
+    ...eventSchemas,
   ];
 
   return (
