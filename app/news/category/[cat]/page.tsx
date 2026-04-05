@@ -147,25 +147,48 @@ export default async function CategoryPage({
     },
   });
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: `${category.label} News Southport`,
-    description: category.description,
-    url: `https://www.southportguide.co.uk/news/category/${cat}`,
-    publisher: {
-      "@type": "Organization",
-      name: "SouthportGuide.co.uk",
-      url: "https://www.southportguide.co.uk",
+  const categoryUrl = `https://www.southportguide.co.uk/news/category/${cat}`;
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `${category.label} News Southport`,
+      description: category.description,
+      url: categoryUrl,
+      about: { "@type": "Thing", name: `${category.label} in Southport, Merseyside` },
+      publisher: {
+        "@type": "Organization",
+        name: "SouthportGuide.co.uk",
+        url: "https://www.southportguide.co.uk",
+        logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/favicon-32x32.png", width: 32, height: 32 },
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Churchtown Media",
+          url: "https://churchtownmedia.co.uk",
+        },
+      },
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.southportguide.co.uk" },
+        { "@type": "ListItem", position: 2, name: "Southport Live", item: "https://www.southportguide.co.uk/news" },
+        { "@type": "ListItem", position: 3, name: category.label, item: categoryUrl },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
 
       {/* Header */}
       <div className="bg-[#1B2E4B] text-white">

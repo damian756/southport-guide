@@ -26,6 +26,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@SouthportGuide",
+    title: "Southport News | Southport Live",
+    description: "The latest Southport news: planning applications, local business, Southport FC, community updates and more.",
+    images: ["https://www.southportguide.co.uk/og-default.png"],
+  },
 };
 
 export type NewsItemCard = {
@@ -118,12 +125,39 @@ export default async function NewsPage({
     .filter((item) => !featuredItem || item.id !== featuredItem.id)
     .map(serialiseItem);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Southport Live",
+    description: "The latest Southport news: planning applications, local business, Southport FC, community updates and more.",
+    url: "https://www.southportguide.co.uk/news",
+    ...(lastUpdated && { dateModified: lastUpdated.toISOString() }),
+    publisher: {
+      "@type": "Organization",
+      name: "SouthportGuide.co.uk",
+      url: "https://www.southportguide.co.uk",
+      logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/favicon-32x32.png", width: 32, height: 32 },
+      parentOrganization: {
+        "@type": "Organization",
+        name: "Churchtown Media",
+        url: "https://churchtownmedia.co.uk",
+      },
+    },
+    about: { "@type": "Place", name: "Southport", containedInPlace: { "@type": "Place", name: "Merseyside, England" } },
+  };
+
   return (
-    <NewsPageClient
-      items={serialisedItems}
-      featuredItem={serialisedFeatured}
-      activeCategory={category ?? "all"}
-      lastUpdated={lastUpdated?.toISOString() ?? null}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <NewsPageClient
+        items={serialisedItems}
+        featuredItem={serialisedFeatured}
+        activeCategory={category ?? "all"}
+        lastUpdated={lastUpdated?.toISOString() ?? null}
+      />
+    </>
   );
 }

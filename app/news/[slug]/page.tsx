@@ -264,10 +264,20 @@ export default async function NewsArticlePage({
 
   const contextualLinks = CONTEXTUAL_LINKS[item.category] ?? [];
 
+  const wordCount = item.summary.split(/\s+/).filter(Boolean).length;
+  const titleKeywords = item.title
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 3)
+    .slice(0, 6)
+    .join(", ");
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
+      mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
       headline: item.title,
       description: teaser,
       datePublished: dateStr,
@@ -276,20 +286,36 @@ export default async function NewsArticlePage({
       author: {
         "@type": "Person",
         name: "Terry",
-        description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk",
+        jobTitle: "Local News Writer",
+        description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk Southport Live section.",
         url: "https://www.southportguide.co.uk/news",
+        worksFor: {
+          "@type": "Organization",
+          name: "SouthportGuide.co.uk",
+          url: "https://www.southportguide.co.uk",
+        },
+        sameAs: [
+          "https://www.facebook.com/southportguide/",
+          "https://x.com/SouthportGuide",
+        ],
       },
       publisher: {
         "@type": "Organization",
         name: "SouthportGuide.co.uk",
         url: "https://www.southportguide.co.uk",
-        logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/og-default.png" },
+        logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/favicon-32x32.png", width: 32, height: 32 },
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Churchtown Media",
+          url: "https://churchtownmedia.co.uk",
+        },
       },
       ...(item.imageUrl && {
         image: { "@type": "ImageObject", url: item.imageUrl, width: 1080, height: 720 },
       }),
       articleSection: categoryLabel,
-      keywords: `Southport, Merseyside, ${categoryLabel}`,
+      keywords: `Southport, Merseyside, ${categoryLabel}, ${titleKeywords}`,
+      wordCount,
       isAccessibleForFree: true,
       inLanguage: "en-GB",
     },
@@ -426,17 +452,21 @@ export default async function NewsArticlePage({
         <ShareButtons url={canonical} title={item.title} />
 
         {/* Terry bio */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-full bg-[#1B2E4B] flex items-center justify-center flex-shrink-0 text-white text-lg font-bold select-none">
-              T
+        <div className="mt-10 pt-8 border-t border-gray-100">
+          <div className="flex items-center gap-4 p-5 bg-[#1B2E4B]/[0.03] border border-[#1B2E4B]/10 rounded-2xl">
+            <div className="relative flex-shrink-0">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1B2E4B] to-[#2a4a72] flex items-center justify-center text-white text-xl font-bold font-display select-none shadow-md">
+                T
+              </div>
+              <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-[#C9A84C] rounded-full border-2 border-white" aria-hidden />
             </div>
-            <div>
-              <p className="text-sm font-semibold text-[#1B2E4B]">Written by Terry</p>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <p className="text-sm font-bold text-[#1B2E4B]">Written by Terry</p>
+                <span className="text-[10px] font-semibold px-2 py-0.5 bg-[#C9A84C]/15 text-[#8a6820] rounded-full uppercase tracking-wide">Southport Live</span>
+              </div>
               <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                41-year-old Southport local. Lived in Churchtown his whole life.
-                Writes the Southport Live news section for SouthportGuide.co.uk.
-                He tells it straight.
+                41-year-old Southport local. Lived in Churchtown his whole life. Writes the Southport Live news section. He tells it straight.
               </p>
             </div>
           </div>
