@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { makeNewsSlug } from "@/lib/slugify";
+import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
+import { fetchUnsplashImage } from "@/lib/unsplash";
 
 export async function PATCH(request: Request) {
   const session = await getServerSession(authOptions);
@@ -22,23 +24,37 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  if (action === "publish") {
-    // Backfill slug if missing (items inserted before slug feature)
-    const slug = item.slug ?? makeNewsSlug(item.title, item.id);
+  if (action === "reject") {
     await prisma.newsItem.update({
       where: { id },
-      data: {
-        status: "published",
-        publishedAt: new Date(),
-        slug,
-      },
+      data: { status: "rejected" },
     });
-    return NextResponse.json({ ok: true, status: "published", slug });
+    return NextResponse.json({ ok: true, status: "rejected" });
   }
+
+  // Publish: rewrite with Claude, fetch image, generate slug
+  const rawForRewrite = item.rawContent || item.summary;
+  const [rewritten, image] = await Promise.all([
+    rewriteAsTerry(item.title, rawForRewrite),
+    fetchUnsplashImage(item.category),
+  ]);
+
+  const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
+  const finalSummary = rewritten?.body ?? rewritten?.teaser ?? item.summary;
+  const slug = item.slug ?? makeNewsSlug(finalTitle, item.id);
 
   await prisma.newsItem.update({
     where: { id },
-    data: { status: "rejected" },
+    data: {
+      title: finalTitle,
+      summary: finalSummary,
+      slug,
+      imageUrl: image?.url ?? item.imageUrl ?? null,
+      imageCredit: image?.credit ?? item.imageCredit ?? null,
+      status: "published",
+      publishedAt: new Date(),
+    },
   });
-  return NextResponse.json({ ok: true, status: "rejected" });
+
+  return NextResponse.json({ ok: true, status: "published", slug });
 }

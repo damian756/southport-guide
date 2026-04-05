@@ -1,17 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { fetchUnsplashImage } from "@/lib/unsplash";
-import { rewriteAsTerry } from "@/lib/rewrite-as-terry";
 import { parseRssItems } from "@/lib/parse-rss";
-import { makeNewsSlug } from "@/lib/slugify";
 
 // Runs every 4 hours (configured in vercel.json).
-// Pulls Merseyside Police / crime news via Google News RSS scoped to Southport.
-// Rewrites each item in Terry's voice — goes to pending_review for approval.
+// Stores raw RSS items as pending_review — NO Claude call here.
+// Claude rewrites only when admin approves (saves credits on rejected items).
 
 const FEED_URL =
   "https://news.google.com/rss/search?q=merseyside+police+southport&hl=en-GB&gl=GB&ceid=GB:en";
-const MAX_NEW = 6;
+const MAX_AGE_DAYS = 14;
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -35,39 +32,33 @@ export async function GET(request: Request) {
   const items = parseRssItems(xml);
   let inserted = 0;
   let skipped = 0;
-  let rewriteFailed = 0;
+  let tooOld = 0;
 
   for (const item of items) {
-    if (inserted >= MAX_NEW) break;
     if (!item.title) continue;
-
-    const externalId = `police-${item.guid || item.link}`;
     if (!item.guid && !item.link) continue;
 
+    // Skip articles older than MAX_AGE_DAYS
+    if (item.pubDate) {
+      const ageMs = Date.now() - new Date(item.pubDate).getTime();
+      if (ageMs > MAX_AGE_DAYS * 86400000) { tooOld++; continue; }
+    }
+
+    const externalId = `police-${item.guid || item.link}`;
     const existing = await prisma.newsItem.findUnique({ where: { externalId } });
     if (existing) { skipped++; continue; }
 
-    const rewritten = await rewriteAsTerry(item.title, item.description || item.title);
-    if (!rewritten) rewriteFailed++;
-
-    const image = await fetchUnsplashImage("crime-safety");
-    const title = (rewritten?.title ?? item.title).slice(0, 200);
-    const id = crypto.randomUUID();
-    const slug = makeNewsSlug(title, id);
+    const raw = item.description || item.title;
 
     await prisma.newsItem.create({
       data: {
-        id,
-        slug,
-        title,
-        summary: rewritten?.body ?? rewritten?.teaser ?? item.description.slice(0, 600),
-        rawContent: item.description,
+        title: item.title.slice(0, 200),
+        summary: raw.slice(0, 600),
+        rawContent: raw.slice(0, 2000),
         category: "crime-safety",
         source: "merseyside-police",
         sourceUrl: item.link || null,
         externalId,
-        imageUrl: image?.url ?? null,
-        imageCredit: image?.credit ?? null,
         status: "pending_review",
         publishedAt: null,
       },
@@ -75,5 +66,5 @@ export async function GET(request: Request) {
     inserted++;
   }
 
-  return NextResponse.json({ ok: true, fetched: items.length, inserted, skipped, rewriteFailed });
+  return NextResponse.json({ ok: true, fetched: items.length, inserted, skipped, tooOld });
 }

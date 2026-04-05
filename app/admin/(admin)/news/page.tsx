@@ -40,8 +40,11 @@ export default async function AdminNewsPage() {
       <h1 className="font-display text-2xl font-bold text-[#1B2E4B] mb-1">
         News Review
       </h1>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-gray-500 mb-1">
         {pending.length} item{pending.length !== 1 ? "s" : ""} waiting for approval
+      </p>
+      <p className="text-xs text-gray-400 mb-6">
+        Raw headlines shown. Claude rewrites only on approve — reject freely, no credit cost.
       </p>
       <NewsReviewClient pending={serialise(pending)} recent={serialise(recent)} />
     </div>

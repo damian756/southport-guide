@@ -104,7 +104,7 @@ function NewsRow({
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-green-600 text-white text-xs font-medium rounded-lg hover:bg-green-700 disabled:opacity-50"
               >
                 <CheckCircle className="w-3.5 h-3.5" />
-                {loading === "publish" ? "Publishing..." : "Publish"}
+                {loading === "publish" ? "Rewriting with Claude..." : "Approve & Publish"}
               </button>
               <button
                 onClick={() => handleAction("reject")}
