@@ -301,20 +301,27 @@ export default async function NewsArticlePage({
           </div>
         )}
 
-        {/* Body — with optional mid-article subheading for featured pieces */}
-        <div className="space-y-5 text-gray-700 leading-relaxed text-base">
+        {/* Body */}
+        <div className="text-gray-700">
           {allParagraphs.map((para, i) => (
-            <>
-              <p key={i}>{para}</p>
+            <div key={i}>
+              {/* First paragraph: lede treatment — slightly larger and darker */}
+              {i === 0 ? (
+                <p className="text-[1.0625rem] leading-[1.8] text-gray-800 font-[425] mb-6">
+                  {para}
+                </p>
+              ) : (
+                <p className="text-base leading-[1.85] text-gray-700 mb-6">
+                  {para}
+                </p>
+              )}
+              {/* Mid-article subheading for featured pieces — inserted after para index */}
               {i === insertSubheadingAfter && subheading && (
-                <h2
-                  key={`h2-${i}`}
-                  className="text-xl font-bold text-[#1B2E4B] pt-2"
-                >
+                <h2 className="text-xl font-bold text-[#1B2E4B] mt-2 mb-5 pb-3 border-b border-gray-200">
                   {subheading}
                 </h2>
               )}
-            </>
+            </div>
           ))}
         </div>
 

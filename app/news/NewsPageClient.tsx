@@ -310,13 +310,6 @@ export default function NewsPageClient({
           </>
         )}
 
-        {/* Footer note */}
-        <div className="mt-10 pt-6 border-t border-gray-200">
-          <p className="text-xs text-gray-400 max-w-2xl">
-            Southport Live pulls from public sources including Sefton Council, Merseyside Police, the Environment Agency, and Southport FC.
-            Some items are rewritten in Terry's voice. Unsplash images credited where used.
-          </p>
-        </div>
       </div>
     </div>
   );

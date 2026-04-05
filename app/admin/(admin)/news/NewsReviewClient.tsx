@@ -1,7 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, XCircle, ExternalLink, ChevronDown, ChevronUp, Star } from "lucide-react";
+import { useRouter } from "next/navigation";
+import {
+  CheckCircle,
+  XCircle,
+  ExternalLink,
+  ChevronDown,
+  ChevronUp,
+  Star,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 type NewsItem = {
   id: string;
@@ -14,6 +25,7 @@ type NewsItem = {
   imageUrl: string | null;
   status: string;
   featured: boolean;
+  slug: string | null;
   publishedAt: string | null;
   createdAt: string;
 };
@@ -53,7 +65,7 @@ function NewsRow({
 }: {
   item: NewsItem;
   showActions: boolean;
-  onAction?: (id: string, action: Action) => void;
+  onAction?: (id: string) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [loading, setLoading] = useState<Action | null>(null);
@@ -66,7 +78,7 @@ function NewsRow({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: item.id, action }),
       });
-      onAction?.(item.id, action);
+      onAction?.(item.id);
     } finally {
       setLoading(null);
     }
@@ -78,17 +90,11 @@ function NewsRow({
         <div className="flex items-start gap-3">
           {item.imageUrl && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={item.imageUrl}
-              alt=""
-              className="w-16 h-16 object-cover rounded-lg flex-shrink-0"
-            />
+            <img src={item.imageUrl} alt="" className="w-16 h-16 object-cover rounded-lg flex-shrink-0" />
           )}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span
-                className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLES[item.status] ?? "bg-gray-100 text-gray-600"}`}
-              >
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLES[item.status] ?? "bg-gray-100 text-gray-600"}`}>
                 {item.status.replace("_", " ")}
               </span>
               {item.featured && (
@@ -115,7 +121,7 @@ function NewsRow({
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-green-600 text-white text-xs font-medium rounded-lg hover:bg-green-700 disabled:opacity-50"
               >
                 <CheckCircle className="w-3.5 h-3.5" />
-                {loading === "publish" ? "Rewriting with Claude..." : "Approve & Publish"}
+                {loading === "publish" ? "Rewriting..." : "Approve & Publish"}
               </button>
               <button
                 onClick={() => handleAction("feature")}
@@ -136,6 +142,20 @@ function NewsRow({
               </button>
             </>
           )}
+
+          {/* Live article link for approved items */}
+          {!showActions && item.slug && (
+            <a
+              href={`/news/${item.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs text-[#1B2E4B] hover:text-[#C9A84C]"
+            >
+              <ExternalLink className="w-3 h-3" />
+              View live
+            </a>
+          )}
+
           {item.sourceUrl && (
             <a
               href={item.sourceUrl}
@@ -168,53 +188,165 @@ function NewsRow({
   );
 }
 
-export default function NewsReviewClient({
-  pending,
-  recent,
+function Pagination({
+  page,
+  totalPages,
+  view,
 }: {
-  pending: NewsItem[];
-  recent: NewsItem[];
+  page: number;
+  totalPages: number;
+  view: string;
 }) {
-  const [pendingItems, setPendingItems] = useState(pending);
+  const router = useRouter();
 
-  function handleAction(id: string) {
-    setPendingItems((prev) => prev.filter((item) => item.id !== id));
+  if (totalPages <= 1) return null;
+
+  function goTo(p: number) {
+    router.push(`/admin/news?view=${view}&page=${p}`);
   }
 
   return (
-    <div className="space-y-8">
-      <section>
-        <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
-          Pending Review ({pendingItems.length})
-        </h2>
-        {pendingItems.length === 0 ? (
-          <div className="text-center py-10 text-gray-400 text-sm border border-dashed border-gray-200 rounded-lg">
-            Nothing waiting for review. Good.
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {pendingItems.map((item) => (
-              <NewsRow
-                key={item.id}
-                item={item}
-                showActions
-                onAction={(id) => handleAction(id)}
-              />
-            ))}
-          </div>
-        )}
-      </section>
+    <div className="flex items-center justify-center gap-2 mt-6">
+      <button
+        onClick={() => goTo(page - 1)}
+        disabled={page <= 1}
+        className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:border-gray-300 disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        <ChevronLeft className="w-3.5 h-3.5" />
+        Previous
+      </button>
+      <span className="text-xs text-gray-500">
+        Page {page} of {totalPages}
+      </span>
+      <button
+        onClick={() => goTo(page + 1)}
+        disabled={page >= totalPages}
+        className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:border-gray-300 disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        Next
+        <ChevronRight className="w-3.5 h-3.5" />
+      </button>
+    </div>
+  );
+}
 
-      <section>
-        <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
-          Recent (last 20)
-        </h2>
+export default function NewsReviewClient({
+  items,
+  view,
+  page,
+  totalPages,
+  totalCount,
+  pendingCount,
+}: {
+  items: NewsItem[];
+  view: "pending" | "approved";
+  page: number;
+  totalPages: number;
+  totalCount: number;
+  pendingCount: number;
+}) {
+  const router = useRouter();
+  const [visibleItems, setVisibleItems] = useState(items);
+  const [purging, setPurging] = useState(false);
+  const [purgeResult, setPurgeResult] = useState<string | null>(null);
+
+  function handleItemActioned(id: string) {
+    setVisibleItems((prev) => prev.filter((item) => item.id !== id));
+  }
+
+  async function handlePurge() {
+    if (!confirm(`Delete all ${pendingCount} pending items? This cannot be undone.`)) return;
+    setPurging(true);
+    setPurgeResult(null);
+    try {
+      const res = await fetch("/api/admin/news/purge-pending", { method: "DELETE" });
+      const data = (await res.json()) as { deleted?: number };
+      setPurgeResult(`Deleted ${data.deleted ?? 0} items.`);
+      setVisibleItems([]);
+    } finally {
+      setPurging(false);
+    }
+  }
+
+  function switchView(v: "pending" | "approved") {
+    router.push(`/admin/news?view=${v}&page=1`);
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Tab bar */}
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
+          <button
+            onClick={() => switchView("pending")}
+            className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
+              view === "pending"
+                ? "bg-white text-[#1B2E4B] shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Pending
+            {pendingCount > 0 && (
+              <span className="ml-2 inline-flex items-center justify-center w-5 h-5 bg-amber-500 text-white text-[10px] font-bold rounded-full">
+                {pendingCount > 99 ? "99+" : pendingCount}
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => switchView("approved")}
+            className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
+              view === "approved"
+                ? "bg-white text-[#1B2E4B] shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Approved
+          </button>
+        </div>
+
+        {/* Purge button — only on pending tab */}
+        {view === "pending" && pendingCount > 0 && (
+          <button
+            onClick={handlePurge}
+            disabled={purging}
+            className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-xs font-medium rounded-lg border border-red-200 hover:bg-red-100 disabled:opacity-50"
+          >
+            <Trash2 className="w-3.5 h-3.5" />
+            {purging ? "Purging..." : `Purge all ${pendingCount} pending`}
+          </button>
+        )}
+      </div>
+
+      {purgeResult && (
+        <p className="text-xs text-green-600 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+          {purgeResult}
+        </p>
+      )}
+
+      {/* Count */}
+      <p className="text-xs text-gray-400">
+        {totalCount} item{totalCount !== 1 ? "s" : ""}{totalPages > 1 ? ` · page ${page} of ${totalPages}` : ""}
+      </p>
+
+      {/* List */}
+      {visibleItems.length === 0 ? (
+        <div className="text-center py-10 text-gray-400 text-sm border border-dashed border-gray-200 rounded-lg">
+          {view === "pending" ? "Nothing waiting for review." : "No approved articles yet."}
+        </div>
+      ) : (
         <div className="space-y-2">
-          {recent.map((item) => (
-            <NewsRow key={item.id} item={item} showActions={false} />
+          {visibleItems.map((item) => (
+            <NewsRow
+              key={item.id}
+              item={item}
+              showActions={view === "pending"}
+              onAction={view === "pending" ? handleItemActioned : undefined}
+            />
           ))}
         </div>
-      </section>
+      )}
+
+      <Pagination page={page} totalPages={totalPages} view={view} />
     </div>
   );
 }
