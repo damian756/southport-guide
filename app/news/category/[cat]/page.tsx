@@ -251,8 +251,8 @@ export default async function CategoryPage({
             Browse by category
           </p>
           <div className="flex flex-wrap gap-2">
-            {Object.entries(CATEGORIES).map(([slug, cat]) => {
-              const CatIcon = cat.icon;
+            {Object.entries(CATEGORIES).map(([slug, catData]) => {
+              const CatIcon = catData.icon;
               return (
                 <Link
                   key={slug}
@@ -264,7 +264,7 @@ export default async function CategoryPage({
                   }`}
                 >
                   <CatIcon className="w-3 h-3" />
-                  {cat.label}
+                  {catData.label}
                 </Link>
               );
             })}
