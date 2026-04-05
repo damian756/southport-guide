@@ -307,6 +307,7 @@ export default async function NewsArticlePage({
         jobTitle: "Local News Writer",
         description: "41-year-old Southport local, Churchtown resident, writer for SouthportGuide.co.uk Southport Live section.",
         url: "https://www.southportguide.co.uk/news/author/terry",
+        image: "https://www.southportguide.co.uk/terry.jpg",
         worksFor: {
           "@type": "Organization",
           name: "SouthportGuide.co.uk",
@@ -472,23 +473,29 @@ export default async function NewsArticlePage({
 
         {/* Terry bio */}
         <div className="mt-10 pt-8 border-t border-gray-100">
-          <div className="flex items-center gap-4 p-5 bg-[#1B2E4B]/[0.03] border border-[#1B2E4B]/10 rounded-2xl">
+          <Link href="/news/author/terry" className="flex items-center gap-4 p-5 bg-[#1B2E4B]/[0.03] border border-[#1B2E4B]/10 rounded-2xl hover:border-[#C9A84C]/40 hover:shadow-sm transition-all group">
             <div className="relative flex-shrink-0">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1B2E4B] to-[#2a4a72] flex items-center justify-center text-white text-xl font-bold font-display select-none shadow-md">
-                T
+              <div className="w-14 h-14 rounded-full overflow-hidden shadow-md border border-[#1B2E4B]/10">
+                <Image
+                  src="/terry.jpg"
+                  alt="Terry, Southport Live"
+                  width={56}
+                  height={56}
+                  className="object-cover w-full h-full"
+                />
               </div>
               <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-[#C9A84C] rounded-full border-2 border-white" aria-hidden />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <p className="text-sm font-bold text-[#1B2E4B]">Written by Terry</p>
+                <p className="text-sm font-bold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors">Written by Terry</p>
                 <span className="text-[10px] font-semibold px-2 py-0.5 bg-[#C9A84C]/15 text-[#8a6820] rounded-full uppercase tracking-wide">Southport Live</span>
               </div>
               <p className="text-xs text-gray-500 mt-1 leading-relaxed">
                 41-year-old Southport local. Lived in Churchtown his whole life. Writes the Southport Live news section. He tells it straight.
               </p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Got a story CTA */}

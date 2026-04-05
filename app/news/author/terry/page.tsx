@@ -76,6 +76,7 @@ export default async function TerryAuthorPage() {
     description:
       "41-year-old Southport local. Lived in Churchtown his whole life. Married with four kids. Has a bulldog called Frank. Writes the Southport Live news section on SouthportGuide.co.uk.",
     url: "https://www.southportguide.co.uk/news/author/terry",
+    image: "https://www.southportguide.co.uk/terry.jpg",
     sameAs: [
       "https://www.facebook.com/southportguide/",
       "https://x.com/SouthportGuide",
@@ -126,8 +127,15 @@ export default async function TerryAuthorPage() {
           <div className="bg-white rounded-2xl border border-gray-100 p-8 mb-10 shadow-sm">
             <div className="flex items-start gap-6">
               <div className="relative flex-shrink-0">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#1B2E4B] to-[#2a4a72] flex items-center justify-center text-white text-3xl font-bold font-display select-none shadow-lg">
-                  T
+                <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg border-2 border-[#1B2E4B]/10">
+                  <Image
+                    src="/terry.jpg"
+                    alt="Terry, local news writer for SouthportGuide.co.uk"
+                    width={80}
+                    height={80}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
                 </div>
                 <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#C9A84C] rounded-full border-2 border-white" aria-hidden />
               </div>
