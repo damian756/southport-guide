@@ -46,16 +46,6 @@ const CATEGORY_STYLES: Record<string, { bg: string; text: string; icon: React.El
   transport: { bg: "bg-sky-100", text: "text-sky-800", icon: Train },
 };
 
-const SOURCE_LABELS: Record<string, string> = {
-  "merseyside-police": "Merseyside Police",
-  "sefton-council": "Sefton Council",
-  "environment-agency": "Environment Agency",
-  "southport-fc": "Southport FC",
-  sufs: "Stand Up For Southport",
-  visiter: "Southport Visiter",
-  "southport-news": "Southport News",
-  "user-submitted": "Community",
-};
 
 function formatTimeAgo(dateStr: string): string {
   const date = new Date(dateStr);
@@ -106,7 +96,6 @@ function FallbackCard({ category }: { category: string }) {
 
 function NewsCard({ item }: { item: NewsItemCard }) {
   const timeStr = item.publishedAt ?? item.createdAt;
-  const sourceLabel = SOURCE_LABELS[item.source] ?? item.source;
 
   return (
       <Link href={`/news/${item.slug ?? item.id}`} className="block h-full">
@@ -137,13 +126,12 @@ function NewsCard({ item }: { item: NewsItemCard }) {
           <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 flex-1">
             {item.summary}
           </p>
-          <div className="mt-3 flex items-center justify-between text-xs text-gray-400">
-            <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3" />
-              {formatTimeAgo(timeStr)}
-            </span>
-            <span className="truncate max-w-[120px]">{sourceLabel}</span>
-          </div>
+          <div className="mt-3 flex items-center text-xs text-gray-400">
+          <span className="flex items-center gap-1">
+            <Clock className="w-3 h-3" />
+            {formatTimeAgo(timeStr)}
+          </span>
+        </div>
           {item.imageCredit && (
             <p className="mt-1 text-[10px] text-gray-300">{item.imageCredit}</p>
           )}

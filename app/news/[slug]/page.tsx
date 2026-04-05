@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
   ArrowLeft,
-  ExternalLink,
   Clock,
   Newspaper,
   Gavel,
@@ -48,16 +47,6 @@ const CATEGORY_ICONS: Record<string, React.ElementType> = {
   transport: Train,
 };
 
-const SOURCE_LABELS: Record<string, string> = {
-  "merseyside-police": "Merseyside Police",
-  "sefton-council": "Sefton Council",
-  "environment-agency": "Environment Agency",
-  "southport-fc": "Southport FC",
-  sufs: "Stand Up For Southport",
-  visiter: "Southport Visiter",
-  "southport-news": "Southport News",
-  "user-submitted": "Community",
-};
 
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-GB", {
@@ -130,7 +119,6 @@ export default async function NewsArticlePage({
   if (!item) notFound();
 
   const dateStr = item.publishedAt?.toISOString() ?? item.createdAt.toISOString();
-  const sourceLabel = SOURCE_LABELS[item.source] ?? item.source;
   const categoryLabel = CATEGORY_LABELS[item.category] ?? item.category;
   const CategoryIcon = CATEGORY_ICONS[item.category] ?? Newspaper;
   const canonical = `https://www.southportguide.co.uk/news/${item.slug ?? item.id}`;
@@ -198,13 +186,12 @@ export default async function NewsArticlePage({
       </div>
 
       <article className="max-w-3xl mx-auto px-4 py-8 lg:px-8">
-        {/* Category + source */}
+        {/* Category badge */}
         <div className="flex items-center gap-2 mb-4">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1B2E4B]/10 text-[#1B2E4B]">
             <CategoryIcon className="w-3.5 h-3.5" />
             {categoryLabel}
           </span>
-          <span className="text-gray-400 text-xs">{sourceLabel}</span>
         </div>
 
         {/* Headline */}
@@ -261,21 +248,6 @@ export default async function NewsArticlePage({
           ))}
         </div>
 
-        {/* Source link */}
-        {item.sourceUrl && (
-          <div className="mt-10 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-400 mb-2">Original source</p>
-            <a
-              href={item.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-[#C9A84C] hover:underline"
-            >
-              Read the original on {sourceLabel}
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-        )}
 
         {/* Terry bio */}
         <div className="mt-10 pt-6 border-t border-gray-200">
