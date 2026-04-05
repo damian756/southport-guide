@@ -3,11 +3,17 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { makeUniqueNewsSlug } from "@/lib/slugify";
-import { rewriteAsTerry, rewriteAsTerryFeatured } from "@/lib/rewrite-as-terry";
+import { rewriteAsTerry, rewriteAsTerryFeatured, VALID_CATEGORY_SET } from "@/lib/rewrite-as-terry";
 import { fetchUnsplashImage } from "@/lib/unsplash";
 import { fetchArticleText } from "@/lib/fetch-article-text";
 
 type Action = "publish" | "reject" | "feature";
+
+// Returns Claude's category if valid, else falls back to the existing DB value.
+function resolveCategory(claudeCategory: string | undefined, fallback: string): string {
+  if (claudeCategory && VALID_CATEGORY_SET.has(claudeCategory)) return claudeCategory;
+  return fallback;
+}
 
 export async function PATCH(request: Request) {
   const session = await getServerSession(authOptions);
@@ -35,13 +41,15 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ ok: true, status: "rejected" });
   }
 
-  // Standard publish: 280 word rewrite, Unsplash image
+  // Standard publish: rewrite first (Claude picks category), then fetch image with correct category
   if (action === "publish") {
     const rawForRewrite = item.rawContent || item.summary;
-    const [rewritten, image] = await Promise.all([
-      rewriteAsTerry(item.title, rawForRewrite),
-      fetchUnsplashImage(item.category),
-    ]);
+
+    const rewritten = await rewriteAsTerry(item.title, rawForRewrite);
+    const finalCategory = resolveCategory(rewritten?.category, item.category);
+
+    // Fetch Unsplash image with the correct (Claude-determined) category
+    const image = await fetchUnsplashImage(finalCategory);
 
     const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
 
@@ -58,6 +66,7 @@ export async function PATCH(request: Request) {
         title: finalTitle,
         summary: rewritten?.body ?? rewritten?.teaser ?? item.summary,
         keyFacts: rewritten?.keyFacts ?? [],
+        category: finalCategory,
         slug,
         imageUrl: image?.url ?? item.imageUrl ?? null,
         imageCredit: image?.credit ?? item.imageCredit ?? null,
@@ -67,19 +76,19 @@ export async function PATCH(request: Request) {
       },
     });
 
-    return NextResponse.json({ ok: true, status: "published", slug });
+    return NextResponse.json({ ok: true, status: "published", category: finalCategory, slug });
   }
 
-  // Feature: fetch full article text from sourceUrl + 500+ word expanded rewrite + hero slot
+  // Feature: fetch full article text + 500+ word expanded rewrite + hero slot
   const fullText = item.sourceUrl ? await fetchArticleText(item.sourceUrl) : null;
   const richContent = fullText
     ? `${item.rawContent ?? item.summary}\n\n--- Full article ---\n${fullText}`
     : (item.rawContent ?? item.summary);
 
-  const [rewritten, image] = await Promise.all([
-    rewriteAsTerryFeatured(item.title, richContent),
-    fetchUnsplashImage(item.category),
-  ]);
+  const rewritten = await rewriteAsTerryFeatured(item.title, richContent);
+  const finalCategory = resolveCategory(rewritten?.category, item.category);
+
+  const image = await fetchUnsplashImage(finalCategory);
 
   const finalTitle = (rewritten?.title ?? item.title).slice(0, 200);
 
@@ -90,12 +99,10 @@ export async function PATCH(request: Request) {
       return existing !== null;
     }));
 
-  // Store subheading in keyFacts[0] prefixed with "h2:" so the article page can render it
+  // Store subheading in keyFacts[0] with "h2:" prefix so the article page can render it
   const keyFacts = rewritten?.keyFacts ?? [];
   const subheading = rewritten?.subheading;
-  const keyFactsWithSubheading = subheading
-    ? [`h2:${subheading}`, ...keyFacts]
-    : keyFacts;
+  const keyFactsWithSubheading = subheading ? [`h2:${subheading}`, ...keyFacts] : keyFacts;
 
   await prisma.newsItem.update({
     where: { id },
@@ -103,6 +110,7 @@ export async function PATCH(request: Request) {
       title: finalTitle,
       summary: rewritten?.body ?? rewritten?.teaser ?? item.summary,
       keyFacts: keyFactsWithSubheading,
+      category: finalCategory,
       slug,
       imageUrl: image?.url ?? item.imageUrl ?? null,
       imageCredit: image?.credit ?? item.imageCredit ?? null,
@@ -112,5 +120,5 @@ export async function PATCH(request: Request) {
     },
   });
 
-  return NextResponse.json({ ok: true, status: "published", featured: true, slug });
+  return NextResponse.json({ ok: true, status: "published", featured: true, category: finalCategory, slug });
 }

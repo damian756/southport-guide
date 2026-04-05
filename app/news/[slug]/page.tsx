@@ -18,6 +18,9 @@ import {
   Train,
   CheckCircle2,
   Mail,
+  MapPin,
+  ExternalLink,
+  ParkingCircle,
 } from "lucide-react";
 
 export const revalidate = 60;
@@ -48,6 +51,55 @@ const CATEGORY_ICONS: Record<string, React.ElementType> = {
   transport: Train,
 };
 
+// Contextual guide links shown at the bottom of each article, based on category
+const CONTEXTUAL_LINKS: Record<
+  string,
+  Array<{ label: string; href: string; description: string; icon: React.ElementType }>
+> = {
+  planning: [
+    { label: "Things to Do", href: "/things-to-do", description: "Days out across Southport", icon: MapPin },
+    { label: "Parking in Southport", href: "/parking", description: "Car parks, prices and postcodes", icon: ParkingCircle },
+  ],
+  business: [
+    { label: "Restaurants & Dining", href: "/restaurants", description: "Find somewhere to eat", icon: Utensils },
+    { label: "Things to Do", href: "/things-to-do", description: "Explore Southport", icon: MapPin },
+  ],
+  sport: [
+    { label: "Things to Do", href: "/things-to-do", description: "Make the most of Southport", icon: MapPin },
+    { label: "The Open 2026", href: "/the-open-2026", description: "Royal Birkdale, 12-19 July 2026", icon: Trophy },
+  ],
+  council: [
+    { label: "Parking in Southport", href: "/parking", description: "Car parks and prices", icon: ParkingCircle },
+    { label: "Things to Do", href: "/things-to-do", description: "Explore Southport", icon: MapPin },
+  ],
+  community: [
+    { label: "Things to Do", href: "/things-to-do", description: "Days out for everyone", icon: MapPin },
+    { label: "Southport Beach", href: "/southport-beach", description: "Southport's stretch of coastline", icon: MapPin },
+    { label: "Parking in Southport", href: "/parking", description: "Car parks near the seafront", icon: ParkingCircle },
+  ],
+  events: [
+    { label: "All Events in Southport", href: "/events", description: "Full events calendar", icon: Calendar },
+    { label: "Things to Do", href: "/things-to-do", description: "Make the most of Southport", icon: MapPin },
+    { label: "Parking in Southport", href: "/parking", description: "Get parked up easily", icon: ParkingCircle },
+  ],
+  "food-drink": [
+    { label: "Restaurants in Southport", href: "/restaurants", description: "Full restaurant guide", icon: Utensils },
+    { label: "Birkdale Village", href: "/birkdale-village", description: "Southport's independent dining quarter", icon: MapPin },
+  ],
+  property: [
+    { label: "Southport House Prices", href: "/property", description: "Street-level property data", icon: Home },
+    { label: "Things to Do", href: "/things-to-do", description: "Explore Southport", icon: MapPin },
+  ],
+  "crime-safety": [
+    { label: "Parking in Southport", href: "/parking", description: "Secure town centre car parks", icon: ParkingCircle },
+    { label: "Things to Do", href: "/things-to-do", description: "Explore Southport safely", icon: MapPin },
+  ],
+  transport: [
+    { label: "Parking in Southport", href: "/parking", description: "Car parks, prices and postcodes", icon: ParkingCircle },
+    { label: "Things to Do", href: "/things-to-do", description: "Explore Southport", icon: MapPin },
+  ],
+};
+
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-GB", {
     weekday: "long",
@@ -59,11 +111,20 @@ function formatDate(dateStr: string): string {
   });
 }
 
+function formatEventDate(date: Date): string {
+  return date.toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
+}
+
 function formatTimeAgo(dateStr: string): string {
   const date = new Date(dateStr);
   const diffMs = Date.now() - date.getTime();
   const diffDays = Math.floor(diffMs / 86400000);
-  if (diffDays === 0) return "Today";
+  const diffHours = Math.floor(diffMs / 3600000);
+  if (diffHours < 24) return `${diffHours}h ago`;
   if (diffDays === 1) return "Yesterday";
   if (diffDays < 7) return `${diffDays} days ago`;
   return date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
@@ -96,6 +157,25 @@ async function getRelated(category: string, excludeId: string) {
       category: true,
       publishedAt: true,
       createdAt: true,
+    },
+  });
+}
+
+async function getUpcomingEvents() {
+  return prisma.event.findMany({
+    where: {
+      status: "approved",
+      dateStart: { gte: new Date() },
+    },
+    orderBy: { dateStart: "asc" },
+    take: 3,
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      dateStart: true,
+      isFree: true,
+      venueName: true,
     },
   });
 }
@@ -141,13 +221,10 @@ export async function generateMetadata({
   };
 }
 
-// Extract featured subheading stored as "h2:..." in keyFacts[0]
+// Subheading stored as "h2:..." in keyFacts[0] for featured articles
 function parseKeyFacts(rawKeyFacts: string[]): { subheading: string | null; facts: string[] } {
   if (rawKeyFacts[0]?.startsWith("h2:")) {
-    return {
-      subheading: rawKeyFacts[0].slice(3),
-      facts: rawKeyFacts.slice(1),
-    };
+    return { subheading: rawKeyFacts[0].slice(3), facts: rawKeyFacts.slice(1) };
   }
   return { subheading: null, facts: rawKeyFacts };
 }
@@ -158,7 +235,11 @@ export default async function NewsArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const item = await getItem(slug);
+
+  const [item, upcomingEvents] = await Promise.all([
+    getItem(slug),
+    getUpcomingEvents(),
+  ]);
 
   if (!item) notFound();
 
@@ -172,13 +253,15 @@ export default async function NewsArticlePage({
 
   const { subheading, facts: keyFacts } = parseKeyFacts(item.keyFacts);
 
-  // Split body at subheading insertion point (after 2nd paragraph for featured)
+  // Strip any paragraph that exactly matches the subheading (Claude sometimes includes it in body too)
   const allParagraphs = item.summary
     .split(/\n\n+/)
     .map((p) => p.trim())
-    .filter(Boolean);
+    .filter((p) => p && (!subheading || p !== subheading));
 
   const insertSubheadingAfter = item.featured && subheading ? 2 : -1;
+
+  const contextualLinks = CONTEXTUAL_LINKS[item.category] ?? [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -198,18 +281,10 @@ export default async function NewsArticlePage({
       "@type": "Organization",
       name: "SouthportGuide.co.uk",
       url: "https://www.southportguide.co.uk",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.southportguide.co.uk/og-default.png",
-      },
+      logo: { "@type": "ImageObject", url: "https://www.southportguide.co.uk/og-default.png" },
     },
     ...(item.imageUrl && {
-      image: {
-        "@type": "ImageObject",
-        url: item.imageUrl,
-        width: 1080,
-        height: 720,
-      },
+      image: { "@type": "ImageObject", url: item.imageUrl, width: 1080, height: 720 },
     }),
     articleSection: categoryLabel,
     keywords: `Southport, Merseyside, ${categoryLabel}`,
@@ -301,21 +376,15 @@ export default async function NewsArticlePage({
           </div>
         )}
 
-        {/* Body */}
+        {/* Body — with optional mid-article subheading for featured pieces */}
         <div className="text-gray-700">
           {allParagraphs.map((para, i) => (
             <div key={i}>
-              {/* First paragraph: lede treatment — slightly larger and darker */}
               {i === 0 ? (
-                <p className="text-[1.0625rem] leading-[1.8] text-gray-800 font-[425] mb-6">
-                  {para}
-                </p>
+                <p className="text-[1.0625rem] leading-[1.8] text-gray-800 font-[425] mb-6">{para}</p>
               ) : (
-                <p className="text-base leading-[1.85] text-gray-700 mb-6">
-                  {para}
-                </p>
+                <p className="text-base leading-[1.85] text-gray-700 mb-6">{para}</p>
               )}
-              {/* Mid-article subheading for featured pieces — inserted after para index */}
               {i === insertSubheadingAfter && subheading && (
                 <h2 className="text-xl font-bold text-[#1B2E4B] mt-2 mb-5 pb-3 border-b border-gray-200">
                   {subheading}
@@ -393,13 +462,97 @@ export default async function NewsArticlePage({
             </p>
           </div>
           <a
-            href="mailto:news@southportguide.co.uk?subject=Story tip"
+            href="mailto:hello@seftoncoast.network?subject=Story tip for Southport Live"
             className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2.5 bg-[#C9A84C] text-white font-semibold text-sm rounded-xl hover:bg-[#b8963d] transition-colors"
           >
             <Mail className="w-4 h-4" />
             Get in touch
           </a>
         </div>
+
+        {/* Explore Southport — contextual guide links */}
+        {contextualLinks.length > 0 && (
+          <div className="mt-10">
+            <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+              Explore Southport
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {contextualLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-sm transition-all group"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-[#1B2E4B]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#C9A84C]/10 transition-colors">
+                      <Icon className="w-4 h-4 text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors">
+                        {link.label}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-0.5">{link.description}</p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* What's on in Southport — upcoming events */}
+        {upcomingEvents.length > 0 && (
+          <div className="mt-8">
+            <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+              What&apos;s on in Southport
+            </h2>
+            <div className="space-y-2">
+              {upcomingEvents.map((event) => (
+                <Link
+                  key={event.id}
+                  href={`/events/${event.slug}`}
+                  className="flex items-center justify-between gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-sm transition-all group"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex flex-col items-center justify-center flex-shrink-0 text-[#C9A84C]">
+                      <span className="text-[10px] font-bold uppercase leading-none">
+                        {formatEventDate(event.dateStart).split(" ")[0]}
+                      </span>
+                      <span className="text-sm font-bold leading-none mt-0.5">
+                        {formatEventDate(event.dateStart).split(" ")[1]}
+                      </span>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#1B2E4B] leading-snug group-hover:text-[#C9A84C] transition-colors truncate">
+                        {event.name}
+                      </p>
+                      {event.venueName && (
+                        <p className="text-xs text-gray-400 mt-0.5 truncate">{event.venueName}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    {event.isFree && (
+                      <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-medium">
+                        Free
+                      </span>
+                    )}
+                    <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#C9A84C] transition-colors" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-3">
+              <Link
+                href="/events"
+                className="text-xs font-medium text-[#1B2E4B] hover:text-[#C9A84C] transition-colors"
+              >
+                All events in Southport →
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Related articles */}
         {relatedItems.length > 0 && (
@@ -449,7 +602,7 @@ export default async function NewsArticlePage({
         )}
 
         {/* Back link */}
-        <div className="mt-8">
+        <div className="mt-10">
           <Link
             href="/news"
             className="inline-flex items-center gap-1.5 text-sm text-[#1B2E4B] hover:text-[#C9A84C] transition-colors"

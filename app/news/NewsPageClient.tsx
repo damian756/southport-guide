@@ -198,7 +198,7 @@ function GotAStoryCTA() {
         </p>
       </div>
       <a
-        href="mailto:news@southportguide.co.uk?subject=Story tip"
+        href="mailto:hello@seftoncoast.network?subject=Story tip for Southport Live"
         className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-white font-semibold text-sm rounded-xl hover:bg-[#b8963d] transition-colors"
       >
         <Mail className="w-4 h-4" />

@@ -1,6 +1,39 @@
 // Rewrites raw scraped news content in Terry's voice using Claude (Anthropic API directly).
 // Called at approve time — never at scrape time — to avoid wasting credits on rejected items.
 // Two modes: standard (280 words) and featured (500+ words, deeper treatment).
+// Claude also picks the correct category — faultlessly, with validation fallback.
+
+const VALID_CATEGORIES = [
+  "planning",
+  "business",
+  "sport",
+  "council",
+  "community",
+  "events",
+  "food-drink",
+  "property",
+  "crime-safety",
+  "transport",
+] as const;
+
+export type NewsCategory = (typeof VALID_CATEGORIES)[number];
+
+export const VALID_CATEGORY_SET = new Set<string>(VALID_CATEGORIES);
+
+const CATEGORY_RULES = `- "category": pick exactly one value that best describes this story. You MUST use one of these exact strings (no others):
+  planning | business | sport | council | community | events | food-drink | property | crime-safety | transport
+
+  Category guidance:
+  - planning: planning applications, developments, building approvals
+  - business: new openings, closures, investment, jobs, retail
+  - sport: Southport FC, local sport, results, fixtures
+  - council: Sefton Council decisions, consultations, local government
+  - community: charities, volunteering, rescue services, RNLI, neighbourhood, school, churches
+  - events: festivals, shows, markets, gigs, fairs, exhibitions
+  - food-drink: restaurants, cafes, pubs, food openings/closures, menus
+  - property: house prices, developments, housing decisions
+  - crime-safety: police, crime, anti-social behaviour, safety
+  - transport: roads, rail, buses, parking, closures`;
 
 const TERRY_BASE_RULES = `You are Terry, a 41-year-old Southport local who has lived in Churchtown his whole life.
 You write for SouthportGuide.co.uk — a local directory and news site for Southport, Merseyside.
@@ -16,19 +49,20 @@ STRICT RULES:
 
 const STANDARD_PROMPT = `${TERRY_BASE_RULES}
 
-OUTPUT FORMAT — a JSON object with four fields:
+OUTPUT FORMAT — a JSON object with these fields:
 - "title": max 80 chars, punchy headline in Terry's voice
 - "teaser": one sentence, max 160 chars, for card previews
 - "body": 3 to 4 paragraphs separated by \\n\\n. Each paragraph 40-70 words. Total 180-280 words. First paragraph: what happened, where, who. Second: context relevant to Southport locals. Third/fourth: practical detail, what happens next.
 - "key_facts": array of exactly 3 strings. Each a short punchy sentence (max 15 words). The three most useful facts a local needs to know.
+${CATEGORY_RULES}
 
-Example: {"title": "New café opens on Lord Street", "teaser": "A new Italian has taken over the old unit at 45 Lord Street, opening this weekend.", "body": "Para one.\\n\\nPara two.\\n\\nPara three.", "key_facts": ["Opens Saturday 12 April on Lord Street.", "Booking recommended for weekends.", "Dog-friendly garden at the back."]}`;
+Example: {"title": "New café opens on Lord Street", "teaser": "A new Italian has taken over the old unit at 45 Lord Street, opening this weekend.", "body": "Para one.\\n\\nPara two.\\n\\nPara three.", "key_facts": ["Opens Saturday 12 April on Lord Street.", "Booking recommended for weekends.", "Dog-friendly garden at the back."], "category": "food-drink"}`;
 
 const FEATURED_PROMPT = `${TERRY_BASE_RULES}
 
 This is a FEATURED story — give it a full, in-depth treatment. This will be the lead article on Southport Live.
 
-OUTPUT FORMAT — a JSON object with five fields:
+OUTPUT FORMAT — a JSON object with these fields:
 - "title": max 90 chars, strong headline with local specificity
 - "teaser": one sentence, max 180 chars, compelling hook for social sharing
 - "body": 5 to 7 paragraphs separated by \\n\\n. Each paragraph 50-80 words. Total 380-520 words.
@@ -39,9 +73,10 @@ OUTPUT FORMAT — a JSON object with five fields:
   Para 5: Reaction or next steps — what happens now, who's watching, any official statements.
   Para 6-7 (if material exists): Practical implications for residents, businesses, or visitors.
 - "key_facts": array of exactly 4 strings. Short, punchy, information-dense. The four things every Southport local needs to know.
-- "subheading": a single H2 subheading string (max 60 chars) that would appear mid-article, after para 2. Something that transitions from "what happened" to "why it matters locally".
+- "subheading": a single H2 subheading string (max 60 chars) that appears mid-article, after para 2. Transitions from "what happened" to "why it matters locally". Do NOT repeat this text as a paragraph inside "body".
+${CATEGORY_RULES}
 
-Example: {"title": "...", "teaser": "...", "body": "Para one.\\n\\nPara two.\\n\\nPara three.\\n\\nPara four.\\n\\nPara five.", "key_facts": ["...", "...", "...", "..."], "subheading": "What this means for Southport"}`;
+Example: {"title": "...", "teaser": "...", "body": "Para one.\\n\\nPara two.\\n\\nPara three.\\n\\nPara four.\\n\\nPara five.", "key_facts": ["...", "...", "...", "..."], "subheading": "What this means for Southport", "category": "community"}`;
 
 export interface TerryRewrite {
   title: string;
@@ -49,6 +84,7 @@ export interface TerryRewrite {
   body: string;
   keyFacts: string[];
   subheading?: string;
+  category?: string;
   featured?: boolean;
 }
 
@@ -93,6 +129,7 @@ function parseRewrite(raw: string): TerryRewrite | null {
       body?: string;
       key_facts?: string[];
       subheading?: string;
+      category?: string;
       summary?: string;
     };
 
@@ -100,12 +137,17 @@ function parseRewrite(raw: string): TerryRewrite | null {
     const body = parsed.body ?? parsed.summary ?? "";
     if (!title || !body) return null;
 
+    // Validate category — only accept known values, never trust an arbitrary string
+    const rawCategory = parsed.category?.trim().toLowerCase();
+    const category = rawCategory && VALID_CATEGORY_SET.has(rawCategory) ? rawCategory : undefined;
+
     return {
       title: title.slice(0, 200),
       teaser: (parsed.teaser ?? parsed.summary ?? "").slice(0, 300),
       body,
       keyFacts: Array.isArray(parsed.key_facts) ? parsed.key_facts.slice(0, 5) : [],
       subheading: parsed.subheading ?? undefined,
+      category,
     };
   } catch {
     return null;
@@ -123,9 +165,9 @@ Original headline: ${rawTitle}
 Original content:
 ${rawContent.slice(0, 2500)}
 
-Return only a JSON object with "title", "teaser", "body", and "key_facts" fields. No other text. No markdown fences.`;
+Return only a JSON object with "title", "teaser", "body", "key_facts", and "category" fields. No other text. No markdown fences.`;
 
-  const raw = await callClaude(STANDARD_PROMPT, userMessage, 1100);
+  const raw = await callClaude(STANDARD_PROMPT, userMessage, 1200);
   if (!raw) return null;
   return parseRewrite(raw);
 }
@@ -141,9 +183,10 @@ Original headline: ${rawTitle}
 Source content (may be partial — expand with your knowledge of Southport/Merseyside context where appropriate):
 ${rawContent.slice(0, 5000)}
 
-Return only a JSON object with "title", "teaser", "body", "key_facts", and "subheading" fields. No other text. No markdown fences.`;
+Return only a JSON object with "title", "teaser", "body", "key_facts", "subheading", and "category" fields. No other text. No markdown fences.
+IMPORTANT: Do NOT include the subheading text as a paragraph inside "body". The subheading appears separately between paragraphs.`;
 
-  const raw = await callClaude(FEATURED_PROMPT, userMessage, 1800);
+  const raw = await callClaude(FEATURED_PROMPT, userMessage, 1900);
   if (!raw) return null;
   const result = parseRewrite(raw);
   if (result) result.featured = true;
