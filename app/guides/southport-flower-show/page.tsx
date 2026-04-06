@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/southport-flower-show` },
   openGraph: {
     title: "Southport Flower Show 2026 | 20–23 August · Complete Guide",
-    description: "One of England's most prestigious flower shows. Tickets from £23, celebrity schedule, parking, and what to see at Victoria Park, 20–23 August 2026.",
+    description: "One of England's most prestigious flower shows. Tickets from £25, celebrity schedule, parking, and what to see at Victoria Park, 20–23 August 2026.",
     url: `${BASE_URL}/guides/southport-flower-show`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -85,17 +85,17 @@ const CELEBRITIES = [
 ];
 
 const TICKETS = [
-  { type: "Adult Day Ticket", earlyBird: "£23", gate: "£30", notes: "Book online for early bird price" },
-  { type: "Senior (65+)", earlyBird: "£20", gate: "£27", notes: "ID may be required at gate" },
+  { type: "Adult Day Ticket", earlyBird: "£25", gate: "—", notes: "Early bird online price. Children under 16 free." },
   { type: "Child (under 16)", earlyBird: "Free", gate: "Free", notes: "With a paying adult" },
-  { type: "4-Day Season Pass", earlyBird: "£78", gate: "—", notes: "Online booking only" },
-  { type: "Afternoon Tea Package", earlyBird: "From £55", gate: "—", notes: "Includes entry + catering. Book early." },
+  { type: "4-Day Patron Pass", earlyBird: "£90", gate: "—", notes: "Online only. All four days." },
+  { type: "Afternoon Tea + Entry", earlyBird: "£55", gate: "—", notes: "Includes show entry + catering. Book early." },
+  { type: "VIP Experience", earlyBird: "£120", gate: "—", notes: "Full VIP package. Limited availability." },
 ];
 
 const FAQS = [
   { q: "When is the Southport Flower Show 2026?", a: "The Southport Flower Show 2026 runs from Thursday 20 August to Sunday 23 August 2026. Four days at Victoria Park, Southport. The show typically opens at 9am and closes at 6pm Thursday to Saturday, with an earlier close on Sunday." },
   { q: "Where is the Southport Flower Show?", a: "Victoria Park, Southport. The postcode is PR8 1RX. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station and 10 minutes' walk from Lord Street." },
-  { q: "How much are Southport Flower Show 2026 tickets?", a: "Early bird adult day tickets are £23, rising to £30 at the gate. Children under 16 are free with a paying adult. A 4-day season pass is £78 online. Book at southportflowershow.co.uk for the best prices, gate prices are always higher." },
+  { q: "How much are Southport Flower Show 2026 tickets?", a: "Early bird adult day tickets are £25 online. Children under 16 are free with a paying adult. The 4-day Patron Pass is £90 online. Afternoon Tea packages start at £55 (includes entry). Book at southportflowershow.co.uk via Ticket Quarter." },
   { q: "Is there parking at the Southport Flower Show?", a: "Victoria Park has limited on-site parking (PR8 1RX). Most visitors use park-and-ride services operating during the show from Birkdale Common (PR8 2LX), or park in town centre car parks and walk approximately 10–15 minutes. Full parking details are published at southportflowershow.co.uk before the show." },
   { q: "What is the best day to go to the Southport Flower Show?", a: "Thursday (opening day) is consistently the quietest. Everything is fresh, exhibitors are at their most enthusiastic, and you can take your time in the competitive classes without crowds. First-timers should go Thursday. Saturday is the busiest day, arrive early if that's your only option." },
   { q: "What should I wear to the Southport Flower Show?", a: "Comfortable walking shoes are non-negotiable, the site is large and mostly on grass. August weather in Lancashire can be warm and sunny, cool and rainy, or both on the same day. Bring layers and a waterproof. Sun cream for warm days. Avoid heels on the grass." },
@@ -124,10 +124,10 @@ const PAGE_LD = {
   },
   organizer: { "@type": "Organization", name: "Southport Flower Show" },
   offers: [
-    { "@type": "Offer", name: "Adult Day Ticket", price: "23.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://www.southportflowershow.co.uk" },
-    { "@type": "Offer", name: "Senior Day Ticket (65+)", price: "20.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://www.southportflowershow.co.uk" },
+    { "@type": "Offer", name: "Adult Day Ticket (Early Bird)", price: "25.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://ticketquarter.co.uk/southportflowershow/Online/default.asp" },
     { "@type": "Offer", name: "Child (under 16)", price: "0.00", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
-    { "@type": "Offer", name: "4-Day Season Pass", price: "78.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://www.southportflowershow.co.uk" },
+    { "@type": "Offer", name: "4-Day Patron Pass", price: "90.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://ticketquarter.co.uk/southportflowershow/Online/default.asp" },
+    { "@type": "Offer", name: "Afternoon Tea + Entry", price: "55.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://ticketquarter.co.uk/southportflowershow/Online/default.asp" },
   ],
 };
 
@@ -181,12 +181,12 @@ export default function SouthportFlowerShowGuidePage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://www.southportflowershow.co.uk"
+                href="https://ticketquarter.co.uk/southportflowershow/Online/default.asp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
               >
-                Buy Tickets from £23 →
+                Buy Tickets from £25 →
               </a>
               <a href="#celebrities" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
                 Celebrity Schedule
@@ -203,7 +203,7 @@ export default function SouthportFlowerShowGuidePage() {
             {[
               { icon: CalendarDays, value: "20–23 Aug", label: "When", sub: "Thu–Sun, August 2026" },
               { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
-              { icon: Ticket, value: "From £23", label: "Tickets", sub: "Early bird online" },
+              { icon: Ticket, value: "From £25", label: "Tickets", sub: "Early bird online" },
               { icon: Star, value: "Since 1924", label: "Heritage", sub: "100+ years of shows" },
             ].map((s) => (
               <div key={s.label} className="text-center px-4 py-4">
@@ -412,7 +412,7 @@ export default function SouthportFlowerShowGuidePage() {
             {[
               { icon: MapPin, title: "Venue", items: ["Victoria Park, Southport, PR8 1RX", "10–15 minute walk from Southport town centre (Lord Street)", "15 minute walk from Southport railway station", "Follow show signage from town centre, well posted during show week"] },
               { icon: Car, title: "Parking", items: ["Park-and-ride from Birkdale Common, PR8 2LX, runs during the show", "Town centre car parks: 10–15 min walk to Victoria Park", "Limited on-site parking at PR8 1RX, sold through the website, books fast", "Train to Southport (Merseyrail from Liverpool Central) + 15 min walk is the easiest option"] },
-              { icon: Ticket, title: "Tickets", items: ["Book online at southportflowershow.co.uk, cheaper than gate prices", "Saturday sells out, book early if that&apos;s your day", "Family and group discounts available online", "4-day season pass available for all four days"] },
+              { icon: Ticket, title: "Tickets", items: ["Adult day ticket: £25 early bird online. Children under 16 free.", "4-day Patron Pass: £90 online. Afternoon Tea + entry from £55.", "Saturday sells out. Book early if that&apos;s your day.", "Book via Ticket Quarter at southportflowershow.co.uk"] },
               { icon: Clock, title: "What to Bring", items: ["Comfortable walking shoes, the site is large and mostly grass", "Light waterproof. August in Lancashire, always prepared", "Sun cream for warm days on an open site", "Cash and/or card, most exhibitors accept both", "Bags for purchases, exhibitors often don&apos;t provide them", "A plan, it&apos;s a big show, some people find a rough priority order helpful"] },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
@@ -570,7 +570,7 @@ export default function SouthportFlowerShowGuidePage() {
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Southport Flower Show 2026</p>
           <h2 className="font-display text-3xl font-bold mb-4">Book Early. Saturday Sells Out</h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-            Early bird adult tickets are £23. Gate price is £30. Saturday sells out every year.
+            Early bird adult tickets are £25 online. 4-day Patron Pass £90. Saturday sells out every year.
             Book through the official website for the best prices.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

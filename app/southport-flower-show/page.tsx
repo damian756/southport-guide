@@ -46,7 +46,7 @@ const FAQS = [
   },
   {
     q: "How much are Southport Flower Show tickets?",
-    a: "Adult day tickets are £23 online (early bird) or £30 at the gate. Children under 16 are free with a paying adult. A 4-day season pass is £78 online. Book at southportflowershow.co.uk for the best prices. Gate prices are always higher.",
+    a: "Early bird adult day tickets are £25 online. Children under 16 are free with a paying adult. The 4-day Patron Pass is £90 online. Afternoon Tea packages from £55 (includes entry). Book via Ticket Quarter at southportflowershow.co.uk.",
   },
   {
     q: "Is there parking at the Southport Flower Show?",
@@ -88,6 +88,11 @@ const PAGE_LD = {
     },
   },
   organizer: { "@type": "Organization", name: "Southport Flower Show" },
+  offers: [
+    { "@type": "Offer", name: "Adult Day Ticket (Early Bird)", price: "25.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://ticketquarter.co.uk/southportflowershow/Online/default.asp" },
+    { "@type": "Offer", name: "Child (under 16)", price: "0.00", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "4-Day Patron Pass", price: "90.00", priceCurrency: "GBP", availability: "https://schema.org/InStock", url: "https://ticketquarter.co.uk/southportflowershow/Online/default.asp" },
+  ],
 };
 
 const BREADCRUMB_LD = {
@@ -152,12 +157,12 @@ export default function SouthportFlowerShowPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://www.southportflowershow.co.uk"
+                  href="https://ticketquarter.co.uk/southportflowershow/Online/default.asp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
                 >
-                  Buy Tickets →
+                  Buy Tickets from £25 →
                 </a>
                 <a href="#what-to-see" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
                   What to Expect
@@ -174,7 +179,7 @@ export default function SouthportFlowerShowPage() {
               {[
                 { icon: CalendarDays, value: "August 2026", label: "When", sub: "4 days, third week" },
                 { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
-                { icon: Ticket, value: "From £23", label: "Tickets", sub: "Book online" },
+                { icon: Ticket, value: "From £25", label: "Tickets", sub: "Book online" },
                 { icon: Star, value: "Since 1924", label: "Heritage", sub: "100+ years of shows" },
               ].map((s) => (
                 <div key={s.label} className="text-center px-4 py-4">
@@ -367,11 +372,11 @@ export default function SouthportFlowerShowPage() {
                   icon: Ticket,
                   title: "Tickets",
                   items: [
-                    "Adult day ticket: £23 online (early bird) · £30 at the gate",
-                    "Child (under 16): Free with a paying adult",
-                    "4-day season pass: £78 online only",
-                    "Afternoon Tea Package: from £55 (includes entry + catering)",
-                    "Book at southportflowershow.co.uk — gate prices are always higher",
+                    "Adult day ticket: £25 early bird online. Children under 16 free.",
+                    "4-day Patron Pass: £90 online only",
+                    "Afternoon Tea + entry: from £55",
+                    "VIP Experience: £120",
+                    "Book via Ticket Quarter at southportflowershow.co.uk",
                   ],
                 },
                 {
