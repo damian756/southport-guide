@@ -39,8 +39,8 @@ const FAQS = [
     a: "Southport Pier is 1,108 metres long (3,636 feet). It is England's second longest pier. Southend-on-Sea Pier in Essex takes the top spot at 2,158 metres. Southport Pier stretches out from the seafront over the Irish Sea estuary.",
   },
   {
-    q: "Is Southport Pier free to visit?",
-    a: "Yes, it is free to walk. You can walk the full length of the pier and back without paying anything. There was historically a tram that ran along the pier but this is not currently in operation. The pier itself is open to pedestrians.",
+    q: "Is Southport Pier open?",
+    a: "Southport Pier is currently closed to the public. Check southportpier.co.uk or Sefton Council for the latest updates on reopening. When open, the pier is free to walk.",
   },
   {
     q: "What is the postcode for Southport Pier?",
@@ -142,18 +142,36 @@ export default function SouthportPierPage() {
                 <span className="block text-[#C9A84C]">Pier</span>
               </h1>
               <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
-                1,108 metres of Victorian engineering over the Irish Sea. England&apos;s second longest pier, 
-                free to walk, with views to Wales on a clear day. Allow 40 minutes for the return trip.
+                1,108 metres of Victorian engineering over the Irish Sea. England&apos;s second longest pier.
+                Currently closed to the public. Page kept for information and history.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#history" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
-                  Discover the Pier
+                  History of the Pier
                 </a>
-                <a href="#practical" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
-                  Practical Info →
+                <a
+                  href="https://www.sefton.gov.uk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
+                >
+                  Reopening updates →
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ── Closure Notice ── */}
+        <div className="bg-amber-50 border-b border-amber-200">
+          <div className="container mx-auto px-4 max-w-7xl py-4">
+            <p className="text-amber-800 text-sm font-medium text-center">
+              <strong>Southport Pier is currently closed to the public.</strong> Check{" "}
+              <a href="https://www.sefton.gov.uk" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-900">
+                sefton.gov.uk
+              </a>{" "}
+              for the latest updates on reopening.
+            </p>
           </div>
         </div>
 
@@ -164,7 +182,7 @@ export default function SouthportPierPage() {
               {[
                 { value: "1,108m", label: "Length", sub: "3,636 feet" },
                 { value: "1860", label: "Year Opened", sub: "Over 165 years old" },
-                { value: "Free", label: "Admission", sub: "No charge to walk" },
+                { value: "Closed", label: "Currently", sub: "Check for updates" },
                 { value: "40 min", label: "Return Walk", sub: "Relaxed pace" },
               ].map((s) => (
                 <div key={s.label} className="text-center px-4 py-4">

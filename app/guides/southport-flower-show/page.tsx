@@ -94,9 +94,9 @@ const TICKETS = [
 
 const FAQS = [
   { q: "When is the Southport Flower Show 2026?", a: "The Southport Flower Show 2026 runs from Thursday 20 August to Sunday 23 August 2026. Four days at Victoria Park, Southport. The show typically opens at 9am and closes at 6pm Thursday to Saturday, with an earlier close on Sunday." },
-  { q: "Where is the Southport Flower Show?", a: "Victoria Park, Southport. The postcode is PR8 2LG. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station and 10 minutes' walk from Lord Street." },
+  { q: "Where is the Southport Flower Show?", a: "Victoria Park, Southport. The postcode is PR8 1RX. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station and 10 minutes' walk from Lord Street." },
   { q: "How much are Southport Flower Show 2026 tickets?", a: "Early bird adult day tickets are £23, rising to £30 at the gate. Children under 16 are free with a paying adult. A 4-day season pass is £78 online. Book at southportflowershow.co.uk for the best prices, gate prices are always higher." },
-  { q: "Is there parking at the Southport Flower Show?", a: "Victoria Park has limited on-site parking (PR8 2LG). Most visitors use park-and-ride services operating during the show from Birkdale Common (PR8 2LX), or park in town centre car parks and walk approximately 10–15 minutes. Full parking details are published at southportflowershow.co.uk before the show." },
+  { q: "Is there parking at the Southport Flower Show?", a: "Victoria Park has limited on-site parking (PR8 1RX). Most visitors use park-and-ride services operating during the show from Birkdale Common (PR8 2LX), or park in town centre car parks and walk approximately 10–15 minutes. Full parking details are published at southportflowershow.co.uk before the show." },
   { q: "What is the best day to go to the Southport Flower Show?", a: "Thursday (opening day) is consistently the quietest. Everything is fresh, exhibitors are at their most enthusiastic, and you can take your time in the competitive classes without crowds. First-timers should go Thursday. Saturday is the busiest day, arrive early if that's your only option." },
   { q: "What should I wear to the Southport Flower Show?", a: "Comfortable walking shoes are non-negotiable, the site is large and mostly on grass. August weather in Lancashire can be warm and sunny, cool and rainy, or both on the same day. Bring layers and a waterproof. Sun cream for warm days. Avoid heels on the grass." },
   { q: "How do I get to the Southport Flower Show without a car?", a: "Train to Southport station (Merseyrail from Liverpool Central, approximately 45 minutes), then 15 minutes' walk or a short bus ride to Victoria Park. Shuttle buses usually operate from the town centre during the show. The show also publishes cycling routes from Southport station." },
@@ -118,7 +118,7 @@ const PAGE_LD = {
       "@type": "PostalAddress",
       streetAddress: "Victoria Park",
       addressLocality: "Southport",
-      postalCode: "PR8 2LG",
+      postalCode: "PR8 1RX",
       addressCountry: "GB",
     },
   },
@@ -168,7 +168,7 @@ export default function SouthportFlowerShowGuidePage() {
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
                 20–23 August 2026
               </span>
-              <span className="text-white/50 text-sm font-medium">Victoria Park · Southport · PR8 2LG</span>
+              <span className="text-white/50 text-sm font-medium">Victoria Park · Southport · PR8 1RX</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               Southport
@@ -202,7 +202,7 @@ export default function SouthportFlowerShowGuidePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "20–23 Aug", label: "When", sub: "Thu–Sun, August 2026" },
-              { icon: MapPin, value: "PR8 2LG", label: "Where", sub: "Victoria Park" },
+              { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
               { icon: Ticket, value: "From £23", label: "Tickets", sub: "Early bird online" },
               { icon: Star, value: "Since 1924", label: "Heritage", sub: "100+ years of shows" },
             ].map((s) => (
@@ -410,8 +410,8 @@ export default function SouthportFlowerShowGuidePage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { icon: MapPin, title: "Venue", items: ["Victoria Park, Southport, PR8 2LG", "10–15 minute walk from Southport town centre (Lord Street)", "15 minute walk from Southport railway station", "Follow show signage from town centre, well posted during show week"] },
-              { icon: Car, title: "Parking", items: ["Park-and-ride from Birkdale Common, PR8 2LX, runs during the show", "Town centre car parks: 10–15 min walk to Victoria Park", "Limited on-site parking at PR8 2LG, sold through the website, books fast", "Train to Southport (Merseyrail from Liverpool Central) + 15 min walk is the easiest option"] },
+              { icon: MapPin, title: "Venue", items: ["Victoria Park, Southport, PR8 1RX", "10–15 minute walk from Southport town centre (Lord Street)", "15 minute walk from Southport railway station", "Follow show signage from town centre, well posted during show week"] },
+              { icon: Car, title: "Parking", items: ["Park-and-ride from Birkdale Common, PR8 2LX, runs during the show", "Town centre car parks: 10–15 min walk to Victoria Park", "Limited on-site parking at PR8 1RX, sold through the website, books fast", "Train to Southport (Merseyrail from Liverpool Central) + 15 min walk is the easiest option"] },
               { icon: Ticket, title: "Tickets", items: ["Book online at southportflowershow.co.uk, cheaper than gate prices", "Saturday sells out, book early if that&apos;s your day", "Family and group discounts available online", "4-day season pass available for all four days"] },
               { icon: Clock, title: "What to Bring", items: ["Comfortable walking shoes, the site is large and mostly grass", "Light waterproof. August in Lancashire, always prepared", "Sun cream for warm days on an open site", "Cash and/or card, most exhibitors accept both", "Bags for purchases, exhibitors often don&apos;t provide them", "A plan, it&apos;s a big show, some people find a rough priority order helpful"] },
             ].map((item) => (

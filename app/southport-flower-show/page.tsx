@@ -42,11 +42,11 @@ const FAQS = [
   },
   {
     q: "Where is the Southport Flower Show?",
-    a: "Victoria Park, Southport. The postcode is PR8 2LG. Victoria Park is a large public park on the eastern edge of Southport town centre, about 10 minutes' walk from Lord Street.",
+    a: "Victoria Park, Southport. The postcode is PR8 1RX. Victoria Park is a large public park on the eastern edge of Southport town centre, about 10 minutes' walk from Lord Street.",
   },
   {
     q: "How much are Southport Flower Show tickets?",
-    a: "Ticket prices vary by day and category. Adult day tickets typically range from £18–£25, with reduced prices for seniors and concessions. Children under a certain age are often admitted free with a paying adult. Book online at southportflowershow.co.uk for the best prices, gate prices are usually higher.",
+    a: "Adult day tickets are £23 online (early bird) or £30 at the gate. Children under 16 are free with a paying adult. A 4-day season pass is £78 online. Book at southportflowershow.co.uk for the best prices. Gate prices are always higher.",
   },
   {
     q: "Is there parking at the Southport Flower Show?",
@@ -83,7 +83,7 @@ const PAGE_LD = {
       "@type": "PostalAddress",
       streetAddress: "Victoria Park",
       addressLocality: "Southport",
-      postalCode: "PR8 2LG",
+      postalCode: "PR8 1RX",
       addressCountry: "GB",
     },
   },
@@ -173,8 +173,8 @@ export default function SouthportFlowerShowPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
               {[
                 { icon: CalendarDays, value: "August 2026", label: "When", sub: "4 days, third week" },
-                { icon: MapPin, value: "PR8 2LG", label: "Where", sub: "Victoria Park" },
-                { icon: Ticket, value: "£18–£25", label: "Tickets", sub: "Book online" },
+                { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
+                { icon: Ticket, value: "From £23", label: "Tickets", sub: "Book online" },
                 { icon: Star, value: "Since 1924", label: "Heritage", sub: "100+ years of shows" },
               ].map((s) => (
                 <div key={s.label} className="text-center px-4 py-4">
@@ -367,10 +367,11 @@ export default function SouthportFlowerShowPage() {
                   icon: Ticket,
                   title: "Tickets",
                   items: [
-                    "Book online at southportflowershow.co.uk, cheaper than gate prices",
-                    "Family and group discounts available online",
-                    "Seniors and concession rates available",
-                    "Season tickets available for all four days",
+                    "Adult day ticket: £23 online (early bird) · £30 at the gate",
+                    "Child (under 16): Free with a paying adult",
+                    "4-day season pass: £78 online only",
+                    "Afternoon Tea Package: from £55 (includes entry + catering)",
+                    "Book at southportflowershow.co.uk — gate prices are always higher",
                   ],
                 },
                 {
