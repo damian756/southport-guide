@@ -1,7 +1,22 @@
 // Fetches a source URL and extracts clean body text for the featured rewrite pipeline.
 // Used when admin clicks "Feature" — gives Claude much more to work with than the RSS snippet.
 
+const PRIVATE_IP_RE =
+  /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|::1|0\.0\.0\.0)/i;
+
+function isSafeUrl(raw: string): boolean {
+  try {
+    const u = new URL(raw);
+    if (u.protocol !== "https:") return false;
+    if (PRIVATE_IP_RE.test(u.hostname)) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export async function fetchArticleText(url: string): Promise<string | null> {
+  if (!isSafeUrl(url)) return null;
   try {
     const res = await fetch(url, {
       headers: {
