@@ -606,15 +606,23 @@ export default async function BusinessPage({ params, searchParams }: Props) {
 
                   {/* CTA buttons */}
                   <div className="flex flex-wrap gap-3">
-                    {business.website && (
+                    {business.website && business.claimed && (
                       <a
                         href={trackUrl(business.id, "website", websiteHref(business.website))}
                         target="_blank"
-                        rel={isFeatured ? "noopener noreferrer" : "nofollow noopener noreferrer"}
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full hover:bg-[#2A4A73] transition font-semibold text-sm"
                       >
                         <Globe className="w-4 h-4" /> Visit Website
                       </a>
+                    )}
+                    {business.website && !business.claimed && (
+                      <Link
+                        href={`/claim-listing?id=${business.id}&name=${encodeURIComponent(business.name)}&address=${encodeURIComponent(business.address ?? "")}&postcode=${encodeURIComponent(business.postcode ?? "")}`}
+                        className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#1B2E4B] border border-[#C9A84C]/50 px-5 py-2.5 rounded-full hover:bg-[#C9A84C]/20 transition font-semibold text-sm"
+                      >
+                        <Globe className="w-4 h-4 text-[#C9A84C]" /> Claim listing to add website
+                      </Link>
                     )}
                     {business.phone && (
                       <a
@@ -944,16 +952,26 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                   </InfoRow>
                 )}
 
-                {business.website && (
+                {business.website && business.claimed && (
                   <InfoRow icon={<Globe className="w-4 h-4 text-blue-500" />} label="Website">
                     <a
                       href={trackUrl(business.id, "website", websiteHref(business.website))}
                       target="_blank"
-                      rel={isFeatured ? "noopener noreferrer" : "nofollow noopener noreferrer"}
+                      rel="noopener noreferrer"
                       className="text-blue-600 text-sm hover:underline break-all"
                     >
                       {business.website.replace(/^https?:\/\/(www\.)?/, "").split("/")[0]}
                     </a>
+                  </InfoRow>
+                )}
+                {business.website && !business.claimed && (
+                  <InfoRow icon={<Globe className="w-4 h-4 text-gray-300" />} label="Website">
+                    <Link
+                      href={`/claim-listing?id=${business.id}&name=${encodeURIComponent(business.name)}&address=${encodeURIComponent(business.address ?? "")}&postcode=${encodeURIComponent(business.postcode ?? "")}`}
+                      className="text-[#C9A84C] text-sm hover:underline"
+                    >
+                      Claim listing to unlock
+                    </Link>
                   </InfoRow>
                 )}
 
