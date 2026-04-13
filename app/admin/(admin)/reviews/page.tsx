@@ -42,7 +42,7 @@ export default async function AdminReviewsPage({
         response: true,
       },
       orderBy: { approvedAt: "desc" },
-      take: 50,
+      take: 200,
     }),
   ]);
 
