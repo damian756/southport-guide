@@ -820,8 +820,8 @@ export default function SouthportBeerWeekGuidePage() {
                 Live music festival in a luxury heated marquee at Victoria Park, running over the bank holiday weekend.
                 Part of Southport&apos;s 2026 cultural programme. Victoria Park is 15 minutes walk from the town centre trail.
                 Check{" "}
-                <a href="https://www.visitsouthport.com" target="_blank" rel="nofollow noopener noreferrer" className="text-purple-700 underline">
-                  visitsouthport.com
+                <a href="https://southport2026.com" target="_blank" rel="noopener noreferrer" className="text-purple-700 underline">
+                  southport2026.com
                 </a>{" "}
                 for the full lineup.
               </p>

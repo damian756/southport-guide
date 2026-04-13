@@ -324,15 +324,14 @@ export default function ClaimListingClient() {
                     <div className="flex items-start gap-2">
                       <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                       <p className="text-amber-800 text-sm">
-                        No listings found for &ldquo;{searchName}&rdquo;. Can&apos;t find your
-                        business?
+                        No listings found for &ldquo;{searchName}&rdquo;. Not on the guide yet?
                       </p>
                     </div>
                     <Link
-                      href="/contact"
-                      className="flex-shrink-0 text-xs font-bold text-amber-700 underline hover:text-amber-900"
+                      href="/suggest-listing"
+                      className="flex-shrink-0 text-xs font-bold text-amber-700 underline hover:text-amber-900 whitespace-nowrap"
                     >
-                      Contact us →
+                      Suggest it →
                     </Link>
                   </div>
                 )}

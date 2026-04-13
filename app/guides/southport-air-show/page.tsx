@@ -281,9 +281,7 @@ export default function SouthportAirShowGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Display Programme</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Expected Aircraft</h2>
             <p className="text-gray-500 text-sm mt-3 max-w-2xl leading-relaxed">
-              Based on the 2025 programme and regular Southport performers. The official 2026 line-up will be confirmed at{" "}
-              <a href="https://www.visitsouthport.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline font-medium">visitsouthport.com</a>{" "}
-              typically 6–8 weeks before the show.
+              Based on the 2025 programme and regular Southport performers. The official 2026 line-up will be confirmed typically 6–8 weeks before the show.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

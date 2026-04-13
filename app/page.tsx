@@ -1236,8 +1236,11 @@ export default async function Home() {
               <p className="text-gray-600 leading-relaxed mb-3">
                 I&apos;ve lived in Churchtown my whole life. 41 years. I&apos;ve eaten in most of the restaurants in this town, some of them multiple times a week when the kids were small. I know where Marine Drive car park fills up by 10am on a summer Saturday, and I know which end of Lord Street to park on. I have a bulldog called Frank who has opinions about beer gardens.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-5">
+              <p className="text-gray-600 leading-relaxed mb-3">
                 SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide. Not a reprint of the council website. If something isn&apos;t worth your time, I say so.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-5">
+                Every business in this directory is listed on its own merits. No business pays for its position in search results here. If your business is not listed yet, you can suggest it and we will add it.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -1254,6 +1257,13 @@ export default async function Home() {
                   <Newspaper className="w-4 h-4" />
                   Read the blog
                 </Link>
+                <Link
+                  href="/suggest-listing"
+                  className="inline-flex items-center gap-2 border border-[#1B2E4B]/20 text-[#1B2E4B] hover:bg-[#1B2E4B] hover:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all"
+                >
+                  <Building2 className="w-4 h-4" />
+                  Suggest a business
+                </Link>
               </div>
             </div>
             {/* Trust signals */}
@@ -1264,6 +1274,7 @@ export default async function Home() {
                 { icon: "👨‍👩‍👧‍👦", label: "Family-tested" },
                 { icon: "🔄", label: "Updated daily" },
                 { icon: "🚫", label: "No sponsored rankings" },
+                { icon: "📋", label: "Every business listed" },
               ].map(({ icon, label }) => (
                 <div key={label} className="flex items-center gap-2.5 bg-white rounded-xl px-3 py-2.5 border border-gray-100 shadow-sm">
                   <span className="text-lg flex-none">{icon}</span>

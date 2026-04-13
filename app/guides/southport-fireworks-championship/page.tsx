@@ -138,7 +138,7 @@ export default function FireworksChampionshipPage() {
               to music in a head-to-head championship at Victoria Park. Tickets £12. No gate sales.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="nofollow noopener noreferrer"
                 className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
                 Buy Tickets: £12 →
               </a>
@@ -181,7 +181,7 @@ export default function FireworksChampionshipPage() {
             <p className="text-amber-800 text-sm leading-relaxed">
               Unlike most events, the British Musical Fireworks Championship has <strong>no ticket sales at the venue</strong>.
               You must book online in advance at{" "}
-              <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="noopener noreferrer" className="underline font-medium">visitsouthport.com</a>.
+              <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="nofollow noopener noreferrer" className="underline font-medium">visitsouthport.com</a>.
               Do not turn up hoping to buy on the night.
             </p>
           </div>
@@ -245,8 +245,7 @@ export default function FireworksChampionshipPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">The Competitors</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Previous Champions</h2>
             <p className="text-gray-500 text-sm mt-3 max-w-2xl leading-relaxed">
-              The 2025 show was a Champion of Champions event. The 2026 line-up will be confirmed at{" "}
-              <a href="https://www.visitsouthport.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline font-medium">visitsouthport.com</a>.
+            The 2025 show was a Champion of Champions event. The 2026 line-up will be confirmed closer to the date.
               These are the calibre of companies that compete at Southport.
             </p>
           </div>
@@ -353,9 +352,9 @@ export default function FireworksChampionshipPage() {
             Tickets are £12. There are no gate sales. When it&apos;s sold out, it&apos;s sold out.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.visitsouthport.com/event/british-musical-fireworks-championship/16966101/" target="_blank" rel="nofollow noopener noreferrer"
               className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">
-              Book Tickets, visitsouthport.com
+              Book Tickets
             </a>
             <Link href="/hotels" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">
               Hotels in Southport →
