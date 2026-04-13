@@ -19,12 +19,6 @@
     { "path": "/api/cron/monthly-credits", "schedule": "0 9 1 * *" },
     { "path": "/api/cron/eventbrite-sync", "schedule": "0 6 * * *" },
     { "path": "/api/cron/hash-review-ips", "schedule": "0 3 * * *" },
-    { "path": "/api/cron/crime-sync", "schedule": "0 4 1 * *" },
-    { "path": "/api/cron/news-police", "schedule": "0 */4 * * *" },
-    { "path": "/api/cron/news-flood", "schedule": "0 */2 * * *" },
-    { "path": "/api/cron/news-planning", "schedule": "0 */6 * * *" },
-    { "path": "/api/cron/news-southport-fc", "schedule": "0 */6 * * *" },
-    { "path": "/api/cron/news-sufs", "schedule": "0 */4 * * *" },
-    { "path": "/api/cron/news-visiter", "schedule": "0 */4 * * *" }
+    { "path": "/api/cron/crime-sync", "schedule": "0 4 1 * *" }
   ]
 }
