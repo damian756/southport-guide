@@ -1370,6 +1370,26 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-august-bank-holiday-southport.webp",
     date: "25 Mar 2026",
   },
+  {
+    slug: "gemini-lounge-lord-street",
+    title: "Gemini Lounge, Lord Street: The Old Bank Has a New Purpose",
+    excerpt:
+      "Southport's former NatWest bank on Lord Street is now a cocktail bar and restaurant with serious ambition. I went on a Friday night. Here's the honest take.",
+    categorySlug: "food-drink",
+    image: "/images/blog/gemini-lounge-lord-street.jpg",
+    date: "2 Apr 2026",
+    featured: true,
+  },
+  {
+    slug: "cristal-palace-southport-2026",
+    title: "Cristal Palace in Southport: What It Was Actually Like",
+    excerpt:
+      "36 performers, a 12-metre chandelier, and two nights on Lord Street. I took the kids on Friday. Here's what Cristal Palace was like in person — and why it's the best free event Southport has put on in years.",
+    categorySlug: "events",
+    image: "/images/blog/blog-cristal-palace.webp",
+    date: "5 Apr 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
