@@ -574,7 +574,7 @@ export default function WoodvaleCommunityPage() {
           {[
             { href: "/guides/autism-friendly-southport", label: "Autism Friendly Southport", desc: "Sensory-friendly venues, quiet spaces and honest advice" },
             { href: "/guides/accessible-southport", label: "Accessible Southport", desc: "Wheelchair access, Sunflower venues and disability guide" },
-            { href: "/guides/southport-with-kids", label: "Southport with Kids", desc: "Family-tested guide to days out with children" },
+            { href: "/blog/southport-with-kids-full-guide", label: "Southport with Kids", desc: "Family-tested guide to days out with children" },
           ].map(({ href, label, desc }) => (
             <Link
               key={href}
