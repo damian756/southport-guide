@@ -188,7 +188,17 @@ export default function WoodvaleCommunityPage() {
           </div>
 
           {/* Rec centre */}
-          <div className="bg-[#2d4a2e] rounded-2xl p-6 text-white">
+          <div className="bg-[#2d4a2e] rounded-2xl overflow-hidden text-white">
+            <div className="relative w-full h-44">
+              <Image
+                src="/images/woodvale-community-centre/waca-recreation-centre.webp"
+                alt="WACA Recreation Centre on Orchard Lane, Ainsdale, Southport"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-full bg-[#C9A84C] flex items-center justify-center flex-none">
                 <span className="text-[#1B2E4B] font-bold text-sm">2</span>
@@ -222,6 +232,7 @@ export default function WoodvaleCommunityPage() {
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
+            </div>{/* /p-6 */}
           </div>
         </div>
 
@@ -267,41 +278,82 @@ export default function WoodvaleCommunityPage() {
               <div>
                 <h3 className="font-bold text-[#1B2E4B] mb-1">Craft Group</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Every other Monday, 10:30am to 12:30pm. A sociable session — come for the crafting, stay for the chat and the cuppa. Booking essential; one week advance booking per session.
+                  Every Monday, 10:30am to 12:30pm. A sociable session — come for the crafting, stay for the chat and the cuppa. Booking essential; one week advance booking per session.
                 </p>
-                <p className="text-xs text-gray-400 mt-2 font-medium">Every other Monday · 10:30am–12:30pm · Booking required</p>
+                <p className="text-xs text-gray-400 mt-2 font-medium">Every Monday · 10:30am–12:30pm · Booking required</p>
               </div>
             </div>
           </div>
 
-          {/* Let's Get Digital */}
+          {/* Afternoon Lunch Club */}
           <div className="border border-gray-100 rounded-2xl p-5 bg-white shadow-sm">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center flex-none">
-                <Users className="w-5 h-5 text-purple-600" />
+              <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center flex-none">
+                <Users className="w-5 h-5 text-orange-600" />
               </div>
               <div>
-                <h3 className="font-bold text-[#1B2E4B] mb-1">Let&apos;s Get Digital</h3>
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <h3 className="font-bold text-[#1B2E4B]">Afternoon Lunch Club</h3>
+                  <span className="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full font-medium">Free</span>
+                </div>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Drop-in digital support sessions for adults aged 18 and over. Run at Meadow Lane every Tuesday (except the first Tuesday of each month), 10:30am to 12pm. Good for anyone who wants help with phones, tablets, online banking, or anything digital-related in a friendly and patient setting. No booking needed.
+                  A home-cooked meal, a chance to make new friends, and a relaxed social atmosphere. Run on the first Tuesday of each month. Booking is essential — call the centre in advance.
                 </p>
-                <p className="text-xs text-gray-400 mt-2 font-medium">Adults 18+ · Tuesdays (not first of month) · 10:30am–12pm · Drop-in, Meadow Lane</p>
+                <p className="text-xs text-gray-400 mt-2 font-medium">1st Tuesday of the month · 12:30pm–1:30pm · Free · Booking required</p>
               </div>
             </div>
           </div>
 
-          {/* Tai Chi */}
+          {/* Woodland Project */}
           <div className="border border-gray-100 rounded-2xl p-5 bg-white shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-none">
                 <Heart className="w-5 h-5 text-green-600" />
               </div>
               <div>
-                <h3 className="font-bold text-[#1B2E4B] mb-1">Tai Chi</h3>
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <h3 className="font-bold text-[#1B2E4B]">Woodland Project</h3>
+                  <span className="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full font-medium">Free</span>
+                </div>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Weekly Tai Chi sessions for adults 18 and over. A gentle, low-impact discipline that improves balance, flexibility and calm. Good for all fitness levels.
+                  Hands-on volunteering in the local wooded area. Tasks include laying woodchip on paths, litter picks, and general maintenance. Good outdoor activity with a practical impact on the local environment.
                 </p>
-                <p className="text-xs text-gray-400 mt-2 font-medium">Adults 18+ · Thursdays 1pm–2pm · £5 per session · Community Centre</p>
+                <p className="text-xs text-gray-400 mt-2 font-medium">10am–12pm · Free</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Community Café */}
+          <div className="border border-gray-100 rounded-2xl p-5 bg-white shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center flex-none">
+                <CalendarDays className="w-5 h-5 text-yellow-600" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <h3 className="font-bold text-[#1B2E4B]">Community Café</h3>
+                  <span className="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full font-medium">Free</span>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  A relaxed space for you, friends, and family. Hot drinks and mixed refreshments, no agenda, everyone welcome. A good one if you are new to the area or just want somewhere comfortable to come.
+                </p>
+                <p className="text-xs text-gray-400 mt-2 font-medium">12pm–1:30pm · Free · Everyone welcome</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Course Sessions */}
+          <div className="border border-gray-100 rounded-2xl p-5 bg-white shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center flex-none">
+                <Users className="w-5 h-5 text-purple-600" />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#1B2E4B] mb-1">Course Sessions</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Short courses and varied sessions for adults 18 and over. Subject to funding, so the programme changes — check WACA&apos;s Facebook page for the latest. Past courses have included Origami, Painting, Japanese Arts & Crafts, Cookery, and First Aid. Worth keeping an eye on.
+                </p>
+                <p className="text-xs text-gray-400 mt-2 font-medium">Adults 18+ · 10am–12pm (times may vary) · See Facebook for current schedule</p>
               </div>
             </div>
           </div>
