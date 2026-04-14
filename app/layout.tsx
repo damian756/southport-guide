@@ -161,7 +161,6 @@ function Footer() {
             <p className="text-sm leading-relaxed text-white/60 mb-4 max-w-xs">
               Your definitive guide to eating, staying, and exploring Southport, home of The Open Championship 2026.
             </p>
-            <InstagramCta variant="footer" />
             <div className="flex gap-3 mt-5">
               <a href="https://churchtownmedia.co.uk" className="text-xs text-[#C9A84C] hover:text-[#E8C87A] transition">
                 Built by Churchtown Media ↗
