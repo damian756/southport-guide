@@ -903,6 +903,28 @@ export const GUIDES: Guide[] = [
       "SouthportGuide is now a proud supporter of the Hidden Disabilities Sunflower scheme. Our commitment to accessible Southport, sensory-friendly events, and helping visitors with hidden disabilities.",
   },
 
+  // ── Practical: Woodvale Community Centre ─────────────────────────────────
+  {
+    slug: "woodvale-community-centre",
+    title: "Woodvale Community Centre (WACA)",
+    shortTitle: "Woodvale Centre",
+    description: "Woodvale & Ainsdale Community Association runs two community centres in Woodvale and Ainsdale offering classes, youth sessions, holiday programmes and accessible community spaces.",
+    excerpt:
+      "Woodvale & Ainsdale Community Association (WACA) is a registered charity running two community centres in Woodvale and Ainsdale. Daytime classes, youth sessions, holiday activities and accessible facilities for all ages — here's the complete guide.",
+    category: "practical",
+    heroImage: "/images/woodvale-community-centre/woodvale-centre-front.webp",
+    seoPriority: 0.8,
+    datePublished: "2026-04-14",
+    dateUpdated: "2026-04-14",
+    tags: ["community", "family-friendly", "accessibility", "charity", "activities", "woodvale", "ainsdale", "youth"],
+    status: "published",
+    metaTitle: "Woodvale Community Centre Southport | WACA Guide — Activities, Classes & Facilities",
+    metaDescription:
+      "Woodvale & Ainsdale Community Association (WACA) — two community centres in Woodvale and Ainsdale. Chair Based Exercise, Craft Group, youth sessions, holiday programmes. Registered charity no. 1146522.",
+    relatedSlugs: ["autism-friendly-southport", "accessible-southport", "southport-with-kids"],
+    relatedCollections: ["free-things-to-do-southport", "family-friendly-things-to-do-southport"],
+  },
+
   // ── Practical: Autism and sensory ────────────────────────────────────────
   {
     slug: "autism-friendly-southport",
