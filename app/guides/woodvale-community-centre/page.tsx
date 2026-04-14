@@ -93,6 +93,8 @@ export default function WoodvaleCommunityPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_LD) }}
       />
 
+      <div className="container mx-auto px-4 max-w-5xl py-10">
+
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <div className="relative w-full rounded-2xl overflow-hidden mb-10 shadow-lg" style={{ aspectRatio: "16/9" }}>
         <Image
@@ -585,6 +587,8 @@ export default function WoodvaleCommunityPage() {
           ))}
         </div>
       </section>
+
+      </div>{/* /container */}
     </GuideLayout>
   );
 }
