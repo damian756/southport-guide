@@ -206,10 +206,10 @@ export default function MLECPage() {
             style={{ objectPosition: "center 20%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
 
-        <div className="relative container mx-auto px-4 pb-16 pt-32">
+        <div className="relative container mx-auto px-4 pb-16 pt-32" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">

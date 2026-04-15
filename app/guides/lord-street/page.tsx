@@ -97,9 +97,9 @@ export default function LordStreetGuidePage() {
             className="object-cover opacity-50"
             style={{ objectPosition: "center 40%" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B] via-[#1B2E4B]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 max-w-6xl pb-14 pt-20">
+        <div className="relative container mx-auto px-4 max-w-6xl pb-14 pt-20" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="flex items-center gap-2 text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">
             <ShoppingBag className="w-4 h-4" />
             Areas Guide

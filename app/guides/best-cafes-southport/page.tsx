@@ -126,9 +126,9 @@ export default async function BestCafesSouthportGuidePage() {
             className="object-cover opacity-50"
             style={{ objectPosition: "center 50%" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2C1A10] via-[#2C1A10]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 max-w-6xl pb-14 pt-20">
+        <div className="relative container mx-auto px-4 max-w-6xl pb-14 pt-20" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="flex items-center gap-2 text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">
             <Coffee className="w-4 h-4" />
             Food &amp; Drink Guide

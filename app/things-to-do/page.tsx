@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description:
       "From Formby's red squirrels to Royal Birkdale, Antony Gormley's iron men to England's second-longest pier, the guide the tourism boards don't write.",
     url: `${BASE_URL}/things-to-do`,
-    images: [{ url: `${BASE_URL}/southport-pier.webp`, width: 1200, height: 630, alt: "Things to Do in Southport" }],
+    images: [{ url: `${BASE_URL}/images/things-to-do-hero.webp`, width: 1200, height: 630, alt: "Things to do in Southport" }],
   },
 };
 
@@ -461,8 +461,8 @@ export default function ThingsToDoPage() {
         <div className="relative min-h-[80vh] flex items-end bg-[#1B2E4B] text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/southport-pier.webp"
-              alt="Southport Pier and coastline at dusk"
+              src="/images/things-to-do-hero.webp"
+              alt="Things to do in Southport — visitors enjoying the town"
               fill
               sizes="100vw"
               quality={90}
@@ -470,11 +470,11 @@ export default function ThingsToDoPage() {
               style={{ objectPosition: "center 40%" }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B] via-[#1B2E4B]/60 to-[#1B2E4B]/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/50 to-transparent" />
           </div>
 
-          <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
+          <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-5">
                 <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
@@ -533,7 +533,7 @@ export default function ThingsToDoPage() {
             <Image src="/images/things-to-do/stats-bg.webp" alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-25" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E4B]/80 via-[#1B2E4B]/60 to-[#1B2E4B]/80" />
           </div>
-          <div className="relative container mx-auto px-4 max-w-7xl">
+          <div className="relative container mx-auto px-4 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-white/10">
               {[
                 { value: "22", unit: "miles", label: "of coastline" },
@@ -993,7 +993,7 @@ export default function ThingsToDoPage() {
                     quality={75}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                   <div className="relative p-6">
                     <panel.icon className="w-7 h-7 mb-2 text-[#C9A84C]" />
                     <h3 className="font-display font-bold text-white text-lg mb-1.5 group-hover:text-[#C9A84C] transition-colors">{panel.title}</h3>

@@ -275,17 +275,18 @@ export default async function EventsPage({
       <section className="relative bg-[#1B2E4B] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/southport-pier.webp"
-            alt="Southport"
+            src="/images/events-hero.webp"
+            alt="Southport events — crowds enjoying a summer event in the town"
             fill
             priority
             sizes="100vw"
-            quality={70}
-            className="object-cover object-center opacity-30"
+            quality={85}
+            className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
         </div>
         <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent relative z-10" />
-        <div className="relative z-10 container mx-auto px-4 py-14 md:py-20 max-w-5xl">
+        <div className="relative z-10 container mx-auto px-4 py-14 md:py-20 max-w-5xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm mb-6 transition-colors"

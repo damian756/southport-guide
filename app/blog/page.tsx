@@ -17,7 +17,7 @@ export const metadata = {
     title: "Southport Guide Blog",
     description: "Local guides, tips and Southport stories — written by people who actually live here.",
     url: "https://www.southportguide.co.uk/blog",
-    images: [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630, alt: "SouthportGuide Blog" }],
+    images: [{ url: "https://www.southportguide.co.uk/images/blog-hero-new.webp", width: 1200, height: 630, alt: "Southport Guide Blog — local guides and stories" }],
   },
 };
 
@@ -25,33 +25,33 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
       {/* ── Hero ───────────────────────────────────────────────────── */}
-      <section className="relative h-64 md:h-80 bg-[#1B2E4B] overflow-hidden">
-        <Image
-          src="/images/blog-hero.jpg"
-          alt="Lord Street, Southport"
-          fill
-          priority
-          sizes="100vw"
-          quality={80}
-          className="object-cover"
-          style={{ objectPosition: "center 55%" }}
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/50 via-[#1B2E4B]/30 to-[#1B2E4B]/80" />
+      <section className="relative min-h-[60vh] flex items-end bg-[#1B2E4B] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/blog-hero-new.webp"
+            alt="Southport town centre — local guides, tips and stories"
+            fill
+            priority
+            sizes="100vw"
+            quality={85}
+            className="object-cover object-center"
+          />
+        </div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <div className="flex items-center gap-2 text-[#C9A84C] mb-3">
-            <Newspaper className="w-5 h-5" />
-            <span className="text-sm font-semibold tracking-widest uppercase">Southport Guide Blog</span>
+        <div className="relative w-full pb-16 pt-32 px-4" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center gap-2 text-[#C9A84C] mb-4" style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.9))' }}>
+              <Newspaper className="w-5 h-5" />
+              <span className="text-sm font-semibold tracking-widest uppercase">Southport Guide Blog</span>
+            </div>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
+              Local guides, tips &amp;<br className="hidden sm:block" />
+              <span className="text-[#C9A84C]">Southport stories.</span>
+            </h1>
+            <p className="text-white/90 text-base md:text-lg max-w-xl" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
+              Written by people who live here. Restaurants, events, local knowledge, and things worth knowing before you visit.
+            </p>
           </div>
-          <h1 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight mb-3">
-            Local guides, tips &amp;&nbsp;
-            <br className="hidden sm:block" />
-            Southport stories.
-          </h1>
-          <p className="text-white/70 text-sm md:text-base max-w-md">
-            Written by people who live here. From the best restaurants to hidden gems, events, and local knowledge.
-          </p>
         </div>
       </section>
 

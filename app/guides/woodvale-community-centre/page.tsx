@@ -105,7 +105,7 @@ export default function WoodvaleCommunityPage() {
           priority
           sizes="(max-width: 768px) 100vw, 900px"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-1">Registered Charity No. 1146522</p>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight">

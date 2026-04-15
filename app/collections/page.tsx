@@ -76,7 +76,7 @@ export default async function CollectionsIndexPage() {
             className="object-cover object-center"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/80 via-[#1B2E4B]/70 to-[#1B2E4B]/90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
           <div className="relative py-20 px-4">
             <div className="container mx-auto max-w-4xl">
               <nav className="flex items-center gap-1.5 text-white/40 text-xs mb-6">
@@ -85,7 +85,7 @@ export default async function CollectionsIndexPage() {
                 <span className="text-white/70">Collections</span>
               </nav>
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">SouthportGuide.co.uk</p>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.9)' }}>
                 Southport Collections
               </h1>
               <p className="text-white/70 text-lg leading-relaxed max-w-2xl">

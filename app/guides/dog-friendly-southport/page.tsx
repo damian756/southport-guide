@@ -91,9 +91,9 @@ export default async function DogFriendlySouthportGuidePage() {
             className="object-cover opacity-50"
             style={{ objectPosition: "center 60%" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1B3A2B] via-[#1B3A2B]/55 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 max-w-6xl pb-14 pt-20">
+        <div className="relative container mx-auto px-4 max-w-6xl pb-14 pt-20" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="flex items-center gap-2 text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">
             <PawPrint className="w-4 h-4" />
             Practical Guide
@@ -193,7 +193,7 @@ export default async function DogFriendlySouthportGuidePage() {
               height={450}
               className="w-full h-52 sm:h-64 object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <p className="text-white font-semibold text-sm">RSPB Marshside coastal saltmarsh walk, dogs on leads, Ribble Estuary Special Protection Area</p>
             </div>

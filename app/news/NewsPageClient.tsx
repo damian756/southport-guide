@@ -115,7 +115,7 @@ function FeaturedHero({ item }: { item: NewsItemCard }) {
           ) : (
             <FallbackCard category={item.category} />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
           <div className="absolute top-4 left-4 flex items-center gap-2">
             <span className="flex items-center gap-1 px-2 py-1 bg-[#C9A84C] text-white text-xs font-semibold rounded-full">
               <Star className="w-3 h-3" />

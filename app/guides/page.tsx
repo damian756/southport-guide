@@ -72,15 +72,15 @@ export default function GuidesIndexPage() {
         <section className="relative bg-[#1B2E4B] text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/images/southport-beach.webp"
-              alt="Southport Beach"
+              src="/images/southport-beach-hero.webp"
+              alt="Southport Beach at low tide — wide flat sand stretching to the sea"
               fill
               priority
               sizes="100vw"
               quality={75}
-              className="object-cover object-center opacity-30"
+              className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/50 via-[#1B2E4B]/40 to-[#1B2E4B]/80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
           </div>
           <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent relative z-10" />
           <div className="relative z-10 py-20 px-4">
@@ -98,7 +98,7 @@ export default function GuidesIndexPage() {
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">
                     SouthportGuide.co.uk
                   </p>
-                  <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
+                  <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.9)' }}>
                     The Guides
                   </h1>
                 </div>

@@ -167,7 +167,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                         </span>
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                     <div className="absolute bottom-2 left-3">
                       <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider">
                         {biz.category.name}
@@ -240,7 +240,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                         sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                       <span className="absolute bottom-2 left-3 text-xl">{c.emoji}</span>
                     </div>
                   ) : (
@@ -294,7 +294,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-3">
                       <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-wider">
                         {GUIDE_CATEGORIES[related.category].label}

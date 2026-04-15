@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/autism-friendly-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/southport-beach.webp` }],
+    images: [{ url: `${BASE_URL}/images/autism-friendly-hero.webp`, width: 1200, height: 630, alt: "Autism friendly Southport — calm open spaces for sensory-sensitive visitors" }],
   },
 };
 
@@ -310,8 +310,8 @@ export default function AutismFriendlySouthportPage() {
       <div className="relative min-h-[75vh] flex items-end bg-[#1B2E4B] text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/southport-beach.webp"
-            alt="Southport Beach at low tide — wide open calm space"
+            src="/images/autism-friendly-hero.webp"
+            alt="Southport Beach at low tide — wide open calm space for autistic visitors and families"
             fill
             sizes="100vw"
             quality={85}
@@ -319,9 +319,8 @@ export default function AutismFriendlySouthportPage() {
             style={{ objectPosition: "center 40%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B] via-[#1B2E4B]/60 to-[#1B2E4B]/20" />
         </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
+        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-5">
               <Image
@@ -339,7 +338,7 @@ export default function AutismFriendlySouthportPage() {
               Autism Friendly
               <span className="block text-[#C9A84C]">Southport</span>
             </h1>
-            <p className="text-white/80 text-xl max-w-2xl mb-8 leading-relaxed">
+            <p className="text-white/90 text-xl max-w-2xl mb-8 leading-relaxed" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
               An honest guide for autistic visitors, families with sensory sensitivities, and carers planning a day out in Southport.
               Eight calm venues, an events guide, and the practical information that actually matters.
             </p>

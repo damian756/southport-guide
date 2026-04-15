@@ -169,15 +169,14 @@ export default function DashboardLoginClient() {
       {/* Right — hero image panel, hidden on mobile */}
       <div className="hidden lg:block lg:w-[52%] xl:w-[55%] relative overflow-hidden flex-shrink-0">
         <Image
-          src="/images/dashboard/login-hero.jpg"
+          src="/images/southport-town-hero.webp"
           alt="Lord Street, Southport"
           fill
           sizes="(max-width: 1024px) 0px, 55vw"
-          className="object-cover"
-          quality={75}
+          className="object-cover object-center"
+          quality={85}
         />
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B]/80 via-[#1B2E4B]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         {/* Caption */}
         <div className="absolute bottom-0 left-0 right-0 p-10">
           <p className="font-display text-3xl font-bold text-white leading-snug mb-2">

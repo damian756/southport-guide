@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/southport-air-show`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/southport-air-show.webp` }],
+    images: [{ url: `${BASE_URL}/images/air-show-hero.webp`, width: 1200, height: 630, alt: "Southport Air Show — aircraft over the seafront" }],
   },
 };
 
@@ -157,8 +157,8 @@ export default function SouthportAirShowGuidePage() {
       <div className="relative min-h-[75vh] flex items-end bg-[#0A1B3D] text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/southport-air-show.webp"
-            alt="Dramatic contrails crossing a blue sky at the Southport Air Show"
+            src="/images/air-show-hero.webp"
+            alt="Aircraft flying over Southport seafront at the Southport Air Show"
             fill
             sizes="100vw"
             quality={90}
@@ -166,9 +166,9 @@ export default function SouthportAirShowGuidePage() {
             style={{ objectPosition: "center 30%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B3D] via-[#0A1B3D]/50 to-[#0A1B3D]/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
+        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">

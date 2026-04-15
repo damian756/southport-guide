@@ -650,7 +650,7 @@ export default async function ParkingSlugPage({ params }: Props) {
             </div>
           )}
           {/* Dark gradient for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
           {/* Breadcrumb overlaid on image */}
           <nav className="absolute top-3 left-4 flex items-center gap-1 text-white/60 text-xs">

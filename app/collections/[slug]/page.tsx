@@ -188,12 +188,12 @@ export default async function CollectionPage({ params }: Props) {
                 className="object-cover object-center"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#1B2E4B]/80 via-[#1B2E4B]/70 to-[#1B2E4B]/95" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             </>
           ) : (
             <div className="absolute inset-0 bg-[#1B2E4B]" />
           )}
-          <div className="relative container mx-auto px-4 max-w-6xl py-16 md:py-20">
+          <div className="relative container mx-auto px-4 max-w-6xl py-16 md:py-20" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
             <nav className="flex items-center gap-1.5 text-white/40 text-xs mb-6">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
               <ChevronRight className="w-3 h-3" />
@@ -206,7 +206,7 @@ export default async function CollectionPage({ params }: Props) {
             <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">
               {collection.title}
             </h1>
-            <p className="text-white/70 text-lg max-w-2xl leading-relaxed">
+            <p className="text-white/90 text-lg max-w-2xl leading-relaxed" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
               {collection.intro}
             </p>
 

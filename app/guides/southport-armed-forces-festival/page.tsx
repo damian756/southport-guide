@@ -98,9 +98,9 @@ export default function ArmedForcesFestivalPage() {
             fill sizes="100vw" quality={90} className="object-cover"
             style={{ objectPosition: "center 35%" }} priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1A30] via-[#0D1A30]/50 to-[#0D1A30]/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
+        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">

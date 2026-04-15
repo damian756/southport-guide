@@ -318,9 +318,9 @@ export default function SouthportBeerWeekGuidePage() {
             style={{ objectPosition: "center 40%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1C0D00] via-[#1C0D00]/60 to-[#1C0D00]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
+        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <span className="bg-amber-500 text-[#1C0D00] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">

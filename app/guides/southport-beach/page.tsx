@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/southport-beach`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/southport-beach.webp` }],
+    images: [{ url: `${BASE_URL}/images/southport-beach-hero.webp`, width: 1200, height: 630, alt: "Southport Beach — wide flat sand at low tide" }],
   },
 };
 
@@ -165,8 +165,8 @@ export default async function SouthportBeachGuidePage() {
       <div className="relative min-h-[80vh] flex items-end bg-[#1B2E4B] text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/southport-beach.webp"
-            alt="Southport Beach at low tide — wide flat sand with dunes in the background"
+            src="/images/southport-beach-hero.webp"
+            alt="Southport Beach — wide flat sand stretching to the sea at low tide"
             fill
             sizes="100vw"
             quality={90}
@@ -174,9 +174,9 @@ export default async function SouthportBeachGuidePage() {
             style={{ objectPosition: "center 50%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B] via-[#1B2E4B]/55 to-[#1B2E4B]/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl">
+        <div className="relative container mx-auto px-4 pb-16 pt-32 max-w-7xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
@@ -823,7 +823,7 @@ export default async function SouthportBeachGuidePage() {
                 className="object-cover object-[center_55%] transition-transform duration-700 group-hover:scale-105"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                 <span className="text-xs font-bold bg-[#C9A84C] text-[#1B2E4B] px-2 py-0.5 rounded-full">Best for swimming · Blue Flag</span>
                 <h3 className="font-display font-bold text-white text-2xl mt-3 mb-1">Ainsdale Beach</h3>

@@ -160,7 +160,7 @@ export default function OpenAccessibilityGuidePage() {
               style={{ objectPosition: "center 35%" }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1B2E4B]/60 to-transparent md:bg-gradient-to-l md:from-[#1B2E4B]/40 md:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             {/* Sunflower badge overlay */}
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-2.5 flex items-center gap-2 shadow-lg">
               <Image

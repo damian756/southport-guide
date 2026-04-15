@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Southport Visitor Guide | SouthportGuide.co.uk",
     description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
     url: "https://www.southportguide.co.uk",
-    images: [{ url: "https://www.southportguide.co.uk/southport-pier.webp", width: 1200, height: 630, alt: "SouthportGuide.co.uk" }],
+    images: [{ url: "https://www.southportguide.co.uk/homepage-hero.webp", width: 1200, height: 630, alt: "Southport seafront and pier — SouthportGuide.co.uk" }],
   },
 };
 
@@ -258,8 +258,8 @@ export default async function Home() {
           {/* LEFT: Pier image */}
           <div className="relative w-full h-60 sm:h-72 md:h-auto md:flex-none md:w-[58%] overflow-hidden">
             <Image
-              src="/southport-pier.webp"
-              alt="Southport Pier at sunset"
+              src="/homepage-hero.webp"
+              alt="Southport seafront and pier"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 58vw"

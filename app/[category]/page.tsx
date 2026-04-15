@@ -387,11 +387,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             style={{ objectPosition: theme.heroPos }}
             priority
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-50`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
 
-        <div className="relative container mx-auto px-4 max-w-7xl py-14 md:py-20 lg:py-28">
+        <div className="relative container mx-auto px-4 max-w-7xl py-14 md:py-20 lg:py-28" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <nav className="flex items-center gap-1.5 text-white/50 text-sm mb-6">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -400,7 +399,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
           <div className="flex items-end justify-between gap-6">
             <div>
-              <div className="text-5xl mb-4 drop-shadow-md">{theme.emoji}</div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
                 <strong>{cat.name}</strong>
                 <span className="text-white/50 font-normal"> in Southport</span>

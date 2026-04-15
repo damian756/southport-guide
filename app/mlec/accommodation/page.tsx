@@ -162,9 +162,9 @@ export default function MLECAccommodationPage() {
             style={{ objectPosition: "center 20%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         </div>
-        <div className="relative container mx-auto px-4 pb-12 pt-24">
+        <div className="relative container mx-auto px-4 pb-12 pt-24" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
           <Link
             href="/mlec"
             className="text-amber-400 hover:text-amber-300 text-sm font-medium mb-4 inline-flex items-center gap-1"
