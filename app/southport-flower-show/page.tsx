@@ -132,7 +132,7 @@ export default function SouthportFlowerShowPage() {
               fill
               sizes="100vw"
               quality={90}
-              className="object-cover"
+              className="object-cover object-top"
               style={{ objectPosition: "center 60%" }}
               priority
             />
