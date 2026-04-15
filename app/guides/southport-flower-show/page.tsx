@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/southport-flower-show`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/southport-flower-show.webp` }],
+    images: [{ url: `${BASE_URL}/images/southport-flower-show-hero.webp`, width: 1200, height: 630, alt: "The SFS flower letters at Southport Flower Show, decorated with sunflowers and blue hydrangeas" }],
   },
 };
 
@@ -151,8 +151,8 @@ export default function SouthportFlowerShowGuidePage() {
       <div className="relative min-h-[75vh] flex items-end bg-[#1A4020] text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/southport-flower-show.webp"
-            alt="Southport Flower Show — colourful garden displays at Victoria Park"
+            src="/images/southport-flower-show-hero.webp"
+            alt="The SFS flower letters at Southport Flower Show, decorated with sunflowers and blue hydrangeas at Victoria Park"
             fill
             sizes="100vw"
             quality={90}
