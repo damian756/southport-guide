@@ -124,17 +124,15 @@ export default function SouthportFlowerShowPage() {
       <div className="min-h-screen bg-[#FAF8F5]">
 
         {/* ── Hero ── */}
-        <div className="relative min-h-[75vh] flex items-end bg-[#1A4020] text-white overflow-hidden">
-          <div className="absolute inset-0">
+        <div className="relative min-h-[75vh] flex items-end bg-[#1A4020] text-white overflow-hidden pt-16">
+          <div className="absolute inset-0 top-16">
             <Image
               src="/images/southport-flower-show-hero.webp"
               alt="The SFS flower letters at Southport Flower Show, decorated with sunflowers and blue hydrangeas at Victoria Park"
               fill
               sizes="100vw"
               quality={90}
-              className="object-cover"
-              style={{ objectPosition: '50% 12%' }}
-              style={{ objectPosition: "center 60%" }}
+              className="object-cover object-top"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A4020] via-[#1A4020]/55 to-[#1A4020]/15" />
