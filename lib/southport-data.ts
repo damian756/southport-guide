@@ -1390,6 +1390,24 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "12 Apr 2026",
     featured: true,
   },
+  {
+    slug: "blackpool-or-southport-day-out",
+    title: "Blackpool or Southport for a Day Out? An Honest Answer from Someone Who Lives Here",
+    excerpt:
+      "People ask me this a lot. I've lived in Southport for 41 years and I've been to Blackpool plenty of times. Here's a straight comparison — no promotional fluff, no bias. Just what each place actually does well.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-blackpool-southport-daytrip.jpg",
+    date: "2 Apr 2026",
+  },
+  {
+    slug: "blackpool-open-week-add-southport",
+    title: "Staying Near Blackpool for The Open? Add Southport to the Itinerary",
+    excerpt:
+      "Some Open visitors are staying in Blackpool and driving to Royal Birkdale. Makes sense — accommodation near the course is almost gone. Here's what to do with the rest of your time in the area.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-blackpool-open-southport.jpg",
+    date: "2 Apr 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
