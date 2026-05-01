@@ -136,10 +136,10 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
   ],
   "hotels": [
-    "Southport has a genuine range of hotels and accommodation, from The Bold Hotel on Lord Street (the nicest in town by most accounts) to seafront B&Bs, Victorian guest houses, and the chain hotels near Ocean Plaza. The Scarisbrick Hotel is the historic option with character. Premier Inn operates two Southport locations if you want reliability and a fixed price.",
-    "If you're here for The Open 2026 at Royal Birkdale (12-19 July), accommodation books out months in advance. Get in early. Birkdale village is walking distance from the course and the most practical base, but the whole town fills up during tournament week.",
-    "For a quieter stay, Churchtown is worth considering, it's the old village end of Southport, calmer than the seafront, and only about 10 minutes from the town centre. Lord Street is the best base for shopping, restaurants, and easy access to the pier and beach.",
-    "Budget-wise, Southport is good value compared to most English seaside towns. A decent double room starts around £60-80 per night midweek, rising to £100-150 at weekends and significantly more during Open week and the August events. B&Bs and guest houses on the residential streets off Lord Street offer the best value-for-money.",
+    "Southport has a proper range of hotels. The Bold Hotel on Lord Street is the best in town — boutique, stylish, well-located. The Scarisbrick Hotel is the Victorian option with character; it's been on Lord Street since 1845 and looks the part. The Vincent is another Lord Street option, modern and popular with wedding parties and weekend breaks. For reliability and a fixed price, Premier Inn operates two Southport locations (one near the station, one near Ocean Plaza).",
+    "If you're here for The Open 2026 at Royal Birkdale (12–19 July), book now. The whole town fills up in July and Birkdale accommodation in particular goes first — it's walking distance from the course. If you haven't booked, check Formby and Ormskirk as fallback options, both around 20–30 minutes from the club.",
+    "For a quieter stay, Churchtown is worth looking at — it's the old village end of Southport, calmer than the seafront, about 10 minutes from town by car. Good pubs, a proper village feel, and B&Bs that are better value than the seafront equivalents.",
+    "Prices: a decent double runs £60–80 per night midweek, £100–150 at weekends, and significantly more during Open week (12–19 July) and the August events (Flower Show 20–23 Aug, Air Show 29–30 Aug). If you're visiting in peak season and haven't sorted accommodation, go soon.",
   ],
   "bars-nightlife": [
     "Southport's nightlife is mostly concentrated around Neville Street and the town centre, it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
@@ -241,7 +241,7 @@ const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
   parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days, all on SouthportGuide.",
   attractions: "Browse Southport's attractions. The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
   activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
-  hotels: "Hotels in Southport, from The Vincent and The Bold Hotel on Lord Street to B&Bs in Birkdale and budget chains. Find every hotel with Google ratings, walking times from the beach, and availability. Booking early is essential for The Open 2026.",
+  hotels: "Hotels in Southport — The Bold Hotel on Lord Street, Scarisbrick Hotel, Premier Inn, seafront B&Bs and guest houses in Birkdale. Every option with Google ratings and honest local advice. If you're visiting for The Open 2026 at Royal Birkdale (12–19 July), book immediately.",
   restaurants: "Restaurants in Southport. Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
 };
 
@@ -250,7 +250,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = getCategoryBySlug(category);
   if (!cat) return { title: "Category" };
   const theme = THEMES[category];
-  const title = `${cat.name} in Southport`;
+  const CAT_META_TITLES: Partial<Record<string, string>> = {
+    hotels: "Hotels in Southport | Where to Stay — SouthportGuide",
+    restaurants: "Restaurants in Southport | Where to Eat — SouthportGuide",
+    parking: "Parking in Southport | Car Parks, Postcodes & Free Parking",
+  };
+  const title = CAT_META_TITLES[category] ?? `${cat.name} in Southport`;
   const description = CAT_META_DESCRIPTIONS[category]
     ?? `${theme?.tagline || cat.description}, browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
   const url = `${BASE_URL}/${category}`;

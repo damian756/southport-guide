@@ -96,9 +96,9 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes", "activities", "attractions"],
       tags: ["beach", "seafront"],
     },
-    metaTitle: "Southport Beach | Parking, Dogs, Tide Times & Local Tips",
+    metaTitle: "Southport Beach | Postcode PR8 1RQ · Parking, Dogs & Tide Times",
     metaDescription:
-      "Southport Beach — parking postcode PR8 1RQ (Marine Drive), dogs welcome year-round, tide times, facilities and honest local advice. One of England's widest beaches.",
+      "Southport Beach postcode is PR8 1RQ (Marine Drive car park). Dogs welcome all year, free entry, tide times, facilities and honest local advice. One of England's widest beaches.",
     relatedCollections: ["free-things-to-do-southport", "nature-reserves-southport", "dog-friendly-cafes-southport", "marine-lake-southport"],
   },
   {

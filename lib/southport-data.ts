@@ -1408,6 +1408,52 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-blackpool-open-southport.jpg",
     date: "2 Apr 2026",
   },
+  {
+    slug: "big-top-festival-southport-2026-what-to-expect",
+    title: "Big Top Festival Southport 2026: What to Expect This Weekend",
+    excerpt:
+      "Circa and Gandini Juggling are in town this Bank Holiday weekend. Free outdoor shows and ticketed indoor performances across the town centre. Here's what's on, when, and how to make the most of it.",
+    categorySlug: "events",
+    image: "/images/blog/blog-big-top-festival-2026.jpg",
+    date: "1 May 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-beer-week-2026-guide",
+    title: "Southport Beer Week 2026: The Honest Preview",
+    excerpt:
+      "Six days, 18 pubs, 90+ beers and a free ale trail stamp card. Beer Week runs 20–25 May and it's the best week to visit Southport if you like a proper drink. Here's the breakdown.",
+    categorySlug: "bars-nightlife",
+    image: "/images/blog/blog-beer-week-southport-2026.jpg",
+    date: "1 May 2026",
+  },
+  {
+    slug: "best-hotels-southport-2026",
+    title: "Best Hotels in Southport 2026: Where to Stay and What to Pay",
+    excerpt:
+      "From The Bold Hotel on Lord Street to B&Bs in Birkdale and budget chains near Ocean Plaza. I've covered every decent option with honest advice on what each one is actually like to stay in.",
+    categorySlug: "where-to-stay",
+    image: "/images/blog/blog-hotels-southport-2026.jpg",
+    date: "1 May 2026",
+  },
+  {
+    slug: "the-open-2026-park-and-ride-transport-guide",
+    title: "The Open 2026: Park and Ride, Trains and Getting to Royal Birkdale Without the Stress",
+    excerpt:
+      "Don't drive to the course. There are road closures, no parking near the club, and Birkdale's residential streets are enforcement-controlled all week. Here's the sensible way to get there.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-2026-transport.jpg",
+    date: "1 May 2026",
+  },
+  {
+    slug: "things-to-do-southport-may-2026",
+    title: "Things to Do in Southport in May 2026",
+    excerpt:
+      "Big Top Festival this weekend, Beer Week on the 20th, Food and Drink Festival at the end of the month. May is one of the better months to visit. Here's the full rundown.",
+    categorySlug: "events",
+    image: "/images/blog/blog-southport-may-2026.jpg",
+    date: "1 May 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────

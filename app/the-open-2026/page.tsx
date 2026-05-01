@@ -5,17 +5,17 @@ import { BLOG_POSTS } from "@/lib/southport-data";
 import { LATEROOMS } from "@/lib/affiliate-links";
 
 export const metadata = {
-  title: "The Open 2026 at Royal Birkdale | Hotels, Tickets & Visitor Guide",
+  title: "The Open 2026 Southport | Park & Ride, Tickets, Hotels & Visitor Guide",
   description:
-    "The Open Championship at Royal Birkdale, Southport. 12–19 July 2026. Hotels near the course, how to get there, spectator tips, tickets and restaurants. Plan your visit now.",
-  keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
+    "The Open Championship 2026 at Royal Birkdale, Southport — 12–19 July. Park and ride options, how to get there by train, hotels near the course, tickets and spectator tips. Plan your visit now.",
+  keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open park and ride 2026, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "The Open 2026 at Royal Birkdale | Hotels, Tickets & Visitor Guide",
-    description: "Hotels near Royal Birkdale, getting there, spectator tips and restaurants for The Open Championship 2026, Southport — 12–19 July 2026.",
+    title: "The Open 2026 Southport | Park & Ride, Tickets, Hotels & Visitor Guide",
+    description: "Park and ride, hotels near Royal Birkdale, how to get there, spectator tips and restaurants for The Open Championship 2026, Southport — 12–19 July 2026.",
     url: "https://www.southportguide.co.uk/the-open-2026",
     images: [{ url: "/images/open-2026.webp", width: 1200, height: 630, alt: "The Open 2026 at Royal Birkdale" }],
   },
@@ -313,6 +313,49 @@ export default function TheOpen2026Page() {
               <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> If you can only go once and budget allows, go Saturday. Round 3 (Moving Day) is when the Open truly comes alive. The leaderboard reshapes, pressure builds, and you get atmosphere that doesn&apos;t exist anywhere else in sport.
               If championship tickets are gone, a practice round (Monday–Wednesday) is genuinely excellent value. You can walk the entire course, watch players up close, and experience Royal Birkdale without the championship-day scrum.
             </p>
+          </div>
+        </section>
+
+        {/* ── Getting There & Park and Ride ───────────────────────── */}
+        <section>
+          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Transport</p>
+          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Getting There: Park &amp; Ride and Public Transport</h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">Do not drive to Royal Birkdale on championship days. Road closures cover the streets around the club and residential parking near the course is enforcement-controlled. The R&amp;A operates designated park and ride sites around Southport — these are the sensible option if you&apos;re travelling by car.</p>
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            {[
+              {
+                icon: "🚌",
+                title: "Park & Ride",
+                body: "Official park and ride buses run from designated sites across Southport to the course on all championship days. Specific sites are confirmed by The R&A closer to the event at theopen.com. Book in advance — spaces sell out.",
+              },
+              {
+                icon: "🚆",
+                title: "Train",
+                body: "Birkdale station (Merseyrail Northern line) is a 10–15 minute walk from the Royal Birkdale entrance. Trains run from Southport, Liverpool Central and Wigan. This is the easiest option if you&apos;re not driving.",
+              },
+              {
+                icon: "🚖",
+                title: "Taxi",
+                body: "From Southport town centre to the course is about £8–12. During championship days taxis are busy — book ahead or allow extra time. Uber operates in Southport.",
+              },
+            ].map(({ icon, title, body }) => (
+              <div key={title} className="bg-white rounded-2xl border border-gray-100 p-6">
+                <div className="text-3xl mb-3">{icon}</div>
+                <h3 className="font-display font-bold text-[#1B2E4B] mb-2">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> The train is genuinely the easiest option. Merseyrail runs frequently and Birkdale station puts you 15 minutes from the gate with no parking stress. If you&apos;re driving from outside Southport, use the park and ride — the R&amp;A publishes confirmed sites and booking at{" "}
+              <a href="https://www.theopen.com" target="_blank" rel="noopener noreferrer" className="font-medium text-[#C9A84C] hover:underline">theopen.com</a>.
+            </p>
+          </div>
+          <div className="mt-4">
+            <Link href="/the-open-2026/getting-there" className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold hover:underline text-sm">
+              Full transport and parking guide <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 
