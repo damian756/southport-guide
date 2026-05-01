@@ -214,7 +214,15 @@ export default async function EventsPage({
 
   const filteredMonths = (activeMonth
     ? allMonths.filter((m) => m === activeMonth)
-    : allMonths
+    : allMonths.filter((m) => {
+        // Hide months where the calendar month has fully passed
+        const firstEvent = eventsByMonth[m]?.[0];
+        if (!firstEvent) return false;
+        const d = new Date(firstEvent.isoDate);
+        const monthEnd = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+        monthEnd.setHours(23, 59, 59, 999);
+        return monthEnd >= todayD;
+      })
   ).filter((m) => applyFilters(eventsByMonth[m] ?? []).length > 0);
 
   const allMergedEvents = Object.values(eventsByMonth).flat();
@@ -327,7 +335,7 @@ export default async function EventsPage({
               const events = applyFilters(eventsByMonth[month] ?? []);
               const today = new Date();
               today.setHours(0, 0, 0, 0);
-              const isPast = events.every((e) => new Date(e.isoDate) < today);
+              const isPast = events.every((e) => new Date(e.endIsoDate ?? e.isoDate) < today);
 
               return (
                 <div key={month}>
