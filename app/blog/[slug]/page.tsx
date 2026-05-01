@@ -156,7 +156,7 @@ function renderBlock(block: ContentBlock, i: number) {
       return (
         <blockquote key={i} className="border-l-4 border-[#C9A84C] pl-5 py-1 my-7 italic text-gray-600 text-lg">
           &ldquo;{block.text}&rdquo;
-          {block.attr && <cite className="block text-sm not-italic text-gray-400 mt-2">— {block.attr}</cite>}
+          {block.attr && <cite className="block text-sm not-italic text-gray-400 mt-2">{block.attr}</cite>}
         </blockquote>
       );
     case "cta":
@@ -237,6 +237,36 @@ function renderBlock(block: ContentBlock, i: number) {
       );
     case "hr":
       return <hr key={i} className="my-8 border-gray-200" />;
+    case "table":
+      return (
+        <div key={i} className="my-7 overflow-x-auto rounded-xl border border-gray-200">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="bg-[#1B2E4B] text-white">
+                {block.headers.map((h, j) => (
+                  <th key={j} className="px-4 py-3 font-semibold whitespace-nowrap">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, ri) => (
+                <tr
+                  key={ri}
+                  className={ri % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                >
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="px-4 py-2.5 text-gray-700 align-top">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
     default:
       return null;
   }

@@ -13,7 +13,8 @@ export type ContentBlock =
   | { type: "cta"; text: string; href: string; label: string }
   | { type: "image"; src: string; alt: string; caption?: string; portrait?: boolean; objectPosition?: string }
   | { type: "video"; src: string; poster: string; caption?: string }
-  | { type: "hr" };
+  | { type: "hr" }
+  | { type: "table"; headers: string[]; rows: string[][] };
 
 export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
@@ -672,27 +673,6 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "The honest view" },
     { type: "p", text: "Southport's brunch scene is solid rather than spectacular. There's no single destination brunch restaurant that people travel specifically for — yet. The best brunch experiences here tend to be in independent cafés that do everything competently rather than one thing brilliantly. For most weekends, that's exactly what I want." },
     { type: "cta", text: "Want the full picture on where to eat and drink in Southport? Our eateries guide covers every area, every budget, and every type of meal.", href: "/guides/southport-eateries", label: "Where to eat in Southport →" },
-  ],
-
-  "best-hotels-southport-2026": [
-    { type: "p", text: "I'm asked about hotels in Southport more than almost anything else. Usually it's people visiting for The Open, the Flower Show, or a weekend break who want an honest answer rather than a list of sponsored results. Here's the honest answer." },
-    { type: "h2", text: "The Grand, Lord Street" },
-    { type: "p", text: "The Grand is the obvious starting point. It's Southport's flagship hotel — a beautifully restored Victorian building on Lord Street with proper grandeur, good rooms, and the kind of service that makes you feel like the visit is a special occasion. It books out months in advance for major events, particularly The Open. If you can get a room, it's worth it. If you can't, don't be disappointed — it's usually the last to have availability." },
-    { type: "h2", text: "The Bold Hotel, Birkdale" },
-    { type: "p", text: "The Bold is my personal favourite for what it does differently. Boutique hotel in Birkdale village — individually styled rooms, strong bar, a restaurant that takes the food seriously. It's a five-minute walk from Royal Birkdale, which makes it the single most sought-after accommodation during Open week. The atmosphere of the place suits people who want character over uniformity. Highly recommended." },
-    { type: "h2", text: "The Vincent Hotel, Lord Street" },
-    { type: "p", text: "The Vincent is sleek, modern, and sits right on Lord Street. Good rooms, good bar, good location. It's a more contemporary experience than The Grand, which suits some visitors better. Strong for couples who want something stylish and central without the traditional hotel feel. Decent spa facilities." },
-    { type: "h2", text: "Premier Inn / chain options" },
-    { type: "p", text: "There are several chain hotels in Southport — Premier Inn, Holiday Inn. Reliable, consistent, and considerably cheaper than the independents. If you're visiting for the beach or a family trip rather than an occasion, they do exactly what they're supposed to do. The Premier Inn near Ocean Plaza is the most convenient chain option for the seafront." },
-    { type: "h2", text: "What to know before booking" },
-    { type: "ul", items: [
-      "For Open week (12–19 July): book now. The town is nearly full. Anything decent is going or gone.",
-      "For Flower Show (August): book 3–6 months ahead. Less extreme than Open week but still busy.",
-      "For a regular weekend: most hotels have availability 4–6 weeks out, though the independents fill faster.",
-      "Birkdale and town centre are the best locations — seafront is good but slightly removed.",
-    ]},
-    { type: "callout", emoji: "🏨", text: "The best hotels in Southport are the independents — The Grand, The Bold, and The Vincent. They're more expensive than the chains, but they're also what makes a Southport stay feel like something rather than somewhere you slept." },
-    { type: "cta", text: "Attending The Open? We've ranked hotels specifically by distance to Royal Birkdale.", href: "/the-open-2026/accommodation", label: "Open 2026 accommodation guide →" },
   ],
 
   "southport-pier-guide": [
