@@ -1454,6 +1454,25 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-southport-may-2026.jpg",
     date: "1 May 2026",
   },
+  {
+    slug: "southport-food-and-drink-festival-2026",
+    title: "Southport Food and Drink Festival 2026: What to Expect",
+    excerpt:
+      "Bank Holiday weekend, May 29-31. Victoria Park fills up with food stalls, craft producers and live music. I've been most years. Here's the honest guide to what's actually worth your time and what to skip.",
+    categorySlug: "events",
+    image: "/images/blog/blog-food-festival-southport-2026.jpg",
+    date: "7 May 2026",
+    featured: true,
+  },
+  {
+    slug: "where-to-watch-the-open-2026-southport-pubs",
+    title: "Where to Watch The Open 2026 in Southport: The Best Pubs With Screens",
+    excerpt:
+      "Not everyone has a ticket. The Open runs 12-19 July at Royal Birkdale and if you're in Southport that week you'll want somewhere good to watch the coverage. Here's where to go.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-southport-pubs.jpg",
+    date: "7 May 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
