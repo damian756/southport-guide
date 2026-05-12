@@ -1473,6 +1473,34 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-open-southport-pubs.jpg",
     date: "7 May 2026",
   },
+  {
+    slug: "open-2026-southport-ten-weeks-out",
+    title: "The Open 2026: Ten Weeks Out. What Southport Looks Like Right Now.",
+    excerpt:
+      "The Open Championship is at Royal Birkdale on 12 July. We're ten weeks out and the bookings are flooding in. Here's the honest state of play: what's gone, what's left, and what to expect.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-ten-weeks-southport.jpg",
+    date: "10 May 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-restaurants-open-week-2026",
+    title: "Eating in Southport During Open Week: Book Now or You Won't Eat Well",
+    excerpt:
+      "Open week in Southport means every decent restaurant is full. I've eaten in most of them. Here's the honest guide to where to book, what to expect, and how not to end up with a disappointing meal on the most exciting week this town has had in years.",
+    categorySlug: "restaurants",
+    image: "/images/blog/blog-southport-restaurants-open-week.jpg",
+    date: "11 May 2026",
+  },
+  {
+    slug: "southport-in-may-2026",
+    title: "Southport in May: What the Town Is Like Right Now",
+    excerpt:
+      "May is when Southport properly wakes up. The beach fills out, the events calendar kicks off, and this year there's an extra energy in the town with The Open ten weeks away. Here's what it actually looks like right now.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-southport-may-2026.jpg",
+    date: "12 May 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
