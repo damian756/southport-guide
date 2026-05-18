@@ -174,19 +174,20 @@ export default function SeasonsGuide() {
             <div className="lg:col-span-2 space-y-14">
 
               {/* About */}
-              <section>
-                <div className="prose prose-lg prose-headings:font-display prose-headings:text-[#1B2E4B] prose-p:text-gray-700 prose-p:leading-relaxed max-w-none">
-                  <p className="lead text-xl text-gray-600">
-                    Season opened on King Street in August 2021 and has spent the time since quietly building one of the most loyal customer bases of any independent café in Southport. Michelle runs it. She prepares everything fresh each morning and the team know their regulars by name. That tells you more about a café than any review.
-                  </p>
-                  <p>
-                    It&apos;s on King Street, directly opposite Southport Market, which makes it an obvious stop if you&apos;re spending time around that end of town. The interior is relaxed and unhurried: industrial-meets-rustic, the kind of space where you can actually sit and talk without feeling like you&apos;re being moved on.
-                  </p>
-                  <p>
-                    Everything food-related comes from local independent suppliers. The meat is from Blackhurst Butchers. The coffee is from two independent North West roasters: Django Coffee Co. (based in Manchester, inspired by Melbourne&apos;s specialty scene) and Heart & Graft (from Salford). Micro-lot single-origin beans, rotated seasonally, ground to order. It&apos;s the kind of coffee setup that most Southport visitors don&apos;t expect to find in a town this size.
-                  </p>
-                  <p>
-                    One thing worth knowing before you go: kitchen closes at 3pm. If you arrive at half past three hoping for a burger, you&apos;re getting a coffee and not much else. Plan accordingly.
+              <section className="space-y-6">
+                <p className="text-xl text-gray-600 leading-relaxed border-l-4 border-[#C9A84C] pl-5">
+                  Season opened on King Street in August 2021 and has spent the time since quietly building one of the most loyal customer bases of any independent café in Southport. Michelle runs it. She prepares everything fresh each morning and the team know their regulars by name. That tells you more about a café than any review.
+                </p>
+                <p className="text-base text-gray-700 leading-relaxed">
+                  It&apos;s on King Street, directly opposite Southport Market, which makes it an obvious stop if you&apos;re spending time around that end of town. The interior is relaxed and unhurried: industrial-meets-rustic, the kind of space where you can actually sit and talk without feeling like you&apos;re being moved on.
+                </p>
+                <p className="text-base text-gray-700 leading-relaxed">
+                  Everything food-related comes from local independent suppliers. The meat is from Blackhurst Butchers. The coffee is from two independent North West roasters: Django Coffee Co. (based in Manchester, inspired by Melbourne&apos;s specialty scene) and Heart & Graft (from Salford). Micro-lot single-origin beans, rotated seasonally, ground to order. It&apos;s the kind of coffee setup most Southport visitors don&apos;t expect to find in a town this size.
+                </p>
+                <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4 flex items-start gap-3">
+                  <Clock className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                  <p className="text-sm text-amber-800 leading-relaxed">
+                    <strong>Kitchen closes at 3pm.</strong> Breakfast is served until 1pm. If you arrive at half past three hoping for a burger, you&apos;re getting a coffee and not much else. Plan accordingly.
                   </p>
                 </div>
               </section>
@@ -249,55 +250,65 @@ export default function SeasonsGuide() {
 
               {/* Full Menu */}
               <section id="menu">
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-2 flex items-center gap-3">
-                  <UtensilsCrossed className="w-6 h-6 text-[#C9A84C]" /> The Menu
-                </h2>
-                <p className="text-gray-500 text-sm mb-8">Meat sourced locally from Blackhurst Butchers. Breakfast served until 1pm. Kitchen closes at 3pm. GF options available. Notify staff of allergies.</p>
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] flex items-center gap-3">
+                    <UtensilsCrossed className="w-6 h-6 text-[#C9A84C]" /> The Menu
+                  </h2>
+                </div>
+                <p className="text-gray-500 text-sm mb-6">Meat sourced from Blackhurst Butchers. GF options available. Please notify staff of allergies.</p>
 
-                {/* Breakfast */}
-                <div className="mb-10">
-                  <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-1 pb-2 border-b border-gray-200">Breakfast</h3>
-                  <p className="text-xs text-gray-400 mb-5">Add mushrooms, tomato, beans, hash browns or avocado for 75p. Extra bacon, sausage or black pudding for £1.50.</p>
-                  <div className="space-y-4">
+                <div className="rounded-3xl overflow-hidden border border-[#1B2E4B]/10">
+
+                  {/* Breakfast */}
+                  <div className="bg-[#1B2E4B] px-6 py-4 flex items-center justify-between">
+                    <h3 className="font-display text-lg font-bold text-white tracking-wide uppercase">Breakfast</h3>
+                    <span className="text-white/40 text-xs">Served until 1pm</span>
+                  </div>
+                  <div className="bg-[#FAF8F5] px-5 py-3 border-b border-[#1B2E4B]/10">
+                    <p className="text-xs text-gray-500">Add mushrooms, tomato, beans, hash browns or avocado +75p each. Extra bacon, sausage or black pudding +£1.50 each.</p>
+                  </div>
+                  <div className="bg-white divide-y divide-gray-100">
                     {BREAKFAST.map((item) => (
-                      <div key={item.name} className="flex items-start justify-between gap-4 pb-4 border-b border-gray-100 last:border-0">
+                      <div key={item.name} className="px-6 py-4 flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="font-bold text-[#1B2E4B] text-sm">{item.name}</div>
-                          {item.desc && <div className="text-gray-500 text-sm mt-0.5 leading-relaxed">{item.desc}</div>}
+                          {item.desc && <div className="text-gray-500 text-xs mt-1 leading-relaxed max-w-lg">{item.desc}</div>}
                         </div>
-                        <div className="text-[#C9A84C] font-bold text-sm shrink-0">{item.price}</div>
+                        <div className="text-[#C9A84C] font-black text-sm shrink-0 tabular-nums">{item.price}</div>
                       </div>
                     ))}
                   </div>
-                </div>
 
-                {/* Loaded Fries */}
-                <div className="mb-10">
-                  <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-5 pb-2 border-b border-gray-200">Loaded Fries</h3>
-                  <div className="space-y-3">
+                  {/* Loaded Fries */}
+                  <div className="bg-[#1B2E4B] px-6 py-4">
+                    <h3 className="font-display text-lg font-bold text-white tracking-wide uppercase">Loaded Fries</h3>
+                  </div>
+                  <div className="bg-white divide-y divide-gray-100">
                     {LOADED_FRIES.map((item) => (
-                      <div key={item.name} className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0">
-                        <span className="font-medium text-[#1B2E4B] text-sm">{item.name}</span>
-                        <span className="text-[#C9A84C] font-bold text-sm">{item.price}</span>
+                      <div key={item.name} className="px-6 py-4 flex items-center justify-between gap-4">
+                        <span className="font-bold text-[#1B2E4B] text-sm">{item.name}</span>
+                        <span className="text-[#C9A84C] font-black text-sm tabular-nums">{item.price}</span>
                       </div>
                     ))}
                   </div>
-                </div>
 
-                {/* Lunch */}
-                <div>
-                  <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-5 pb-2 border-b border-gray-200">Lunch</h3>
-                  <div className="space-y-4">
+                  {/* Lunch */}
+                  <div className="bg-[#1B2E4B] px-6 py-4 flex items-center justify-between">
+                    <h3 className="font-display text-lg font-bold text-white tracking-wide uppercase">Lunch</h3>
+                    <span className="text-white/40 text-xs">Kitchen closes 3pm</span>
+                  </div>
+                  <div className="bg-white divide-y divide-gray-100">
                     {LUNCH.map((item) => (
-                      <div key={item.name} className="flex items-start justify-between gap-4 pb-4 border-b border-gray-100 last:border-0">
+                      <div key={item.name} className="px-6 py-4 flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="font-bold text-[#1B2E4B] text-sm">{item.name}</div>
-                          {item.desc && <div className="text-gray-500 text-sm mt-0.5 leading-relaxed">{item.desc}</div>}
+                          {item.desc && <div className="text-gray-500 text-xs mt-1 leading-relaxed max-w-lg">{item.desc}</div>}
                         </div>
-                        <div className="text-[#C9A84C] font-bold text-sm shrink-0">{item.price}</div>
+                        <div className="text-[#C9A84C] font-black text-sm shrink-0 tabular-nums">{item.price}</div>
                       </div>
                     ))}
                   </div>
+
                 </div>
               </section>
 
