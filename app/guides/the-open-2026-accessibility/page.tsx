@@ -73,7 +73,7 @@ const FAQ_LD = {
       name: "Can I get accessible accommodation near Royal Birkdale for The Open?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Accommodation is extremely limited for The Open 2026 — most central Southport hotels are already at capacity. For accessible accommodation, contact hotels directly to discuss specific requirements. The Vincent Hotel (PR9 0AU) and The Bold Hotel (PR9 0AU) on Lord Street are both within a short accessible journey of Royal Birkdale. Birkdale village itself has accommodation within walking distance of the course.",
+        text: "Accommodation is extremely limited for The Open 2026 — most central Southport hotels are already at capacity. For accessible accommodation, contact hotels directly to discuss specific requirements. The Vincent Hotel (PR9 0AU) and The Scarisbrick Hotel (PR8 1NJ) on Lord Street are both within a short accessible journey of Royal Birkdale. Birkdale village itself has accommodation within walking distance of the course.",
       },
     },
     {
@@ -126,8 +126,8 @@ const ACCESSIBLE_SOUTHPORT = [
     detail: "Lord Street, PR9 0AU. Southport's most central hotel — accessible rooms available, modern lift, close to town-centre transport links for shuttle buses.",
   },
   {
-    name: "The Bold Hotel",
-    detail: "Lord Street, PR9 0UA. Victorian hotel on the main boulevard. Accessible rooms. Within shuttle bus distance to Royal Birkdale.",
+    name: "The Scarisbrick Hotel",
+    detail: "Lord Street, PR8 1NJ. Victorian hotel on the main boulevard. Accessible rooms available. Within shuttle bus distance to Royal Birkdale.",
   },
   {
     name: "Southport Market (quiet hour)",

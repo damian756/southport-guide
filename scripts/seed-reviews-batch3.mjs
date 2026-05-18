@@ -87,13 +87,13 @@ const reviews = [
     ts: '2026-04-11T10:28:00Z',
   },
 
-  // The Bold Hotel
+  // The Scarisbrick Hotel
   {
-    slug: 'the-bold-hotel',
+    slug: 'scarisbrick-hotel',
     firstName: 'Andrew', lastName: 'Cavanagh', displayName: 'Andrew C.',
     email: 'andrew.cavanagh@outlook.com', stars: 5,
-    title: 'Great hotel on Lord Street, genuinely impressed',
-    body: 'Stayed at The Bold Hotel on Lord Street for two nights while visiting family in Southport and it was excellent. The room was well appointed and quiet despite the central location. Breakfast was good and the staff throughout were attentive without being intrusive. The bar downstairs is a nice space to sit in the evening. Lord Street is a great location to explore from and the hotel itself is one of the better options in Southport. Would book again without hesitation.',
+    title: 'Stayed at the Scarisbrick for the weekend, really good',
+    body: 'Stayed at the Scarisbrick Hotel on Lord Street for two nights while visiting family in Southport. Victorian building, proper character, right in the middle of everything. Room was comfortable, staff were helpful, breakfast was decent. The location is unbeatable if you want to walk to everything on Lord Street. Would stay again.',
     ts: '2026-04-10T09:05:00Z',
   },
 

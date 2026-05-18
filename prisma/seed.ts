@@ -67,7 +67,7 @@ const BUSINESSES: Array<{
     lng: -3.0152,
   },
   { slug: "prince-of-wales-hotel", name: "Prince of Wales Hotel", categorySlug: "hotels", address: "Lord Street, Southport", postcode: "PR8 1JS", phone: "01704 536688", website: "https://www.princeofwales-southport.co.uk", shortDescription: "Historic hotel on Lord Street with spa and restaurant.", priceRange: "£££" },
-  { slug: "the-bold-hotel", name: "The Bold Hotel", categorySlug: "hotels", address: "601 Lord Street, Southport", postcode: "PR9 0AQ", phone: "01704 533521", shortDescription: "Family-run hotel with bar and restaurant.", priceRange: "££" },
+  { slug: "the-metropole-hotel", name: "The Metropole Hotel", categorySlug: "hotels", address: "Portland Street, Southport", postcode: "PR8 1LL", phone: "01704 536836", website: "https://www.metropole-hotel-southport.co.uk", shortDescription: "Victorian seafront hotel on the Promenade.", priceRange: "££" },
   { slug: "scarisbrick-hotel", name: "Scarisbrick Hotel", categorySlug: "hotels", address: "Lord Street, Southport", postcode: "PR8 1NJ", phone: "01704 534771", shortDescription: "Victorian hotel in the heart of Southport.", priceRange: "£££" },
   { slug: "the-coffee-house-southport", name: "The Coffee House", categorySlug: "cafes", address: "Eastbank Street, Southport", postcode: "PR8 1EJ", shortDescription: "Specialty coffee and light bites.", priceRange: "£" },
   { slug: "palm-court-cafe", name: "Palm Court Café", categorySlug: "cafes", address: "Wayfarers Arcade, Lord Street", postcode: "PR8 1JH", phone: "01704 532123", shortDescription: "Tea room in a Victorian arcade.", priceRange: "£" },

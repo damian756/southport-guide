@@ -86,9 +86,9 @@ const VENUES = [
     badgeColor: "bg-orange-100 text-orange-800",
   },
   {
-    name: "Punch Tarmey's",
-    area: "Town Centre",
-    note: "Long-standing Southport bar. Multiple floors, plenty of space. Gets packed on Friday and Saturday evenings.",
+    name: "Coopers Bar",
+    area: "Lord Street",
+    note: "Lord Street live music venue with a strong craft selection. Gets lively from Thursday onwards. Bigger capacity than it looks from outside.",
     badge: "Large Venue",
     badgeColor: "bg-red-100 text-red-800",
   },
@@ -240,7 +240,7 @@ const FAQS = [
   },
   {
     q: "Where should I stay for Southport Beer Week?",
-    a: "Anywhere in the town centre works. Most of the trail venues are on or near Lord Street. The Bold Hotel on Lord Street is closest to the action. For value, there are several B&Bs and smaller hotels within 10 minutes walk of the main venues. Book early. The bank holiday weekend fills quickly.",
+    a: "Anywhere in the town centre works. Most of the trail venues are on or near Lord Street. The Scarisbrick Hotel is directly on Lord Street and within walking distance of every main venue. For value, there are several B&Bs and smaller hotels within 10 minutes walk of the trail. Book early. The bank holiday weekend fills quickly.",
   },
 ];
 
@@ -672,10 +672,10 @@ export default function SouthportBeerWeekGuidePage() {
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
             {[
               {
-                name: "The Bold Hotel",
+                name: "The Scarisbrick Hotel",
                 area: "Lord Street",
-                desc: "Right on Lord Street, 5 minutes walk from most of the trail. Boutique hotel, good rooms. Book well ahead for bank holiday weekends.",
-                tier: "Boutique",
+                desc: "Right on Lord Street, walking distance from every main venue on the trail. Victorian character hotel. Book well ahead for bank holiday weekends.",
+                tier: "Character",
                 tierColor: "bg-blue-100 text-blue-700",
               },
               {
@@ -765,10 +765,10 @@ export default function SouthportBeerWeekGuidePage() {
                 href: "/guides/southport-market",
               },
               {
-                name: "The Bold Hotel Restaurant",
-                area: "Lord Street",
-                desc: "If you are staying at The Bold, eat there at least once. Good cooking, Lord Street setting. Can be slow on busy evenings.",
-                badge: "Hotel dining",
+                name: "Bistrot Véronique",
+                area: "Birkdale Village",
+                desc: "If you want a proper sit-down meal during Beer Week, Birkdale village is worth the short drive. Bistrot Véronique is the best option. Book ahead.",
+                badge: "Book ahead",
                 badgeColor: "bg-purple-100 text-purple-700",
               },
             ].map((r) => (

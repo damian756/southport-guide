@@ -194,7 +194,7 @@ export default function ContactClient() {
                       type="text"
                       value={form.businessName}
                       onChange={(e) => setForm({ ...form, businessName: e.target.value })}
-                      placeholder="e.g. The Grand Hotel"
+                      placeholder="e.g. The Scarisbrick Hotel"
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition bg-[#FAF8F5]"
                     />
                   </div>

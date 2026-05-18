@@ -136,7 +136,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
   ],
   "hotels": [
-    "Southport has a proper range of hotels. The Bold Hotel on Lord Street is the best in town — boutique, stylish, well-located. The Scarisbrick Hotel is the Victorian option with character; it's been on Lord Street since 1845 and looks the part. The Vincent is another Lord Street option, modern and popular with wedding parties and weekend breaks. For reliability and a fixed price, Premier Inn operates two Southport locations (one near the station, one near Ocean Plaza).",
+    "Southport has a proper range of hotels. The Scarisbrick Hotel is the Victorian option with character — it's been on Lord Street since 1845 and looks the part. The Vincent is the contemporary choice, modern and popular with weekend breaks. The Metropole on the Promenade is a solid mid-range option with sea views. For reliability and a fixed price, Premier Inn operates two Southport locations (one near the station, one near Ocean Plaza).",
     "If you're here for The Open 2026 at Royal Birkdale (12–19 July), book now. The whole town fills up in July and Birkdale accommodation in particular goes first — it's walking distance from the course. If you haven't booked, check Formby and Ormskirk as fallback options, both around 20–30 minutes from the club.",
     "For a quieter stay, Churchtown is worth looking at — it's the old village end of Southport, calmer than the seafront, about 10 minutes from town by car. Good pubs, a proper village feel, and B&Bs that are better value than the seafront equivalents.",
     "Prices: a decent double runs £60–80 per night midweek, £100–150 at weekends, and significantly more during Open week (12–19 July) and the August events (Flower Show 20–23 Aug, Air Show 29–30 Aug). If you're visiting in peak season and haven't sorted accommodation, go soon.",
@@ -172,7 +172,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Cambridge Walks and the side streets off Lord Street are where you'll find most of the boutiques and independents. Hirshmans on Chapel Street has been going for years and is reliable for pharmacy and travel essentials.",
   ],
   "wellness": [
-    "Southport has a decent number of salons, spas and wellness places, mostly dotted around the town centre and Birkdale. If you're staying for a few days, booking a treatment is straightforward. The bigger hotels. The Bold, The Vincent, have spa facilities if you'd rather keep it all in one place.",
+    "Southport has a decent number of salons, spas and wellness places, mostly dotted around the town centre and Birkdale. If you're staying for a few days, booking a treatment is straightforward. The Vincent Hotel has spa facilities if you'd rather keep it all in one place.",
     "Day spas and independent beauty salons are scattered throughout town. This directory lists what's available across all areas so you can find what you need based on where you're staying.",
   ],
   "activities": [
@@ -241,7 +241,7 @@ const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
   parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days, all on SouthportGuide.",
   attractions: "Browse Southport's attractions. The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
   activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
-  hotels: "Hotels in Southport — The Bold Hotel on Lord Street, Scarisbrick Hotel, Premier Inn, seafront B&Bs and guest houses in Birkdale. Every option with Google ratings and honest local advice. If you're visiting for The Open 2026 at Royal Birkdale (12–19 July), book immediately.",
+  hotels: "Hotels in Southport — The Scarisbrick Hotel, The Vincent, The Metropole, Premier Inn, seafront B&Bs and guest houses in Birkdale. Every option with Google ratings and honest local advice. If you're visiting for The Open 2026 at Royal Birkdale (12–19 July), book immediately.",
   restaurants: "Restaurants in Southport. Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
 };
 
@@ -471,7 +471,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               <div className="space-y-4 text-gray-700 leading-relaxed text-[0.95rem]">
                 <p>
                   Southport has more hotel stock than most visitors expect. Lord Street is the obvious base, a mile-long Victorian
-                  boulevard with The Bold Hotel at one end and The Scarisbrick at the other. Both are proper hotels with character,
+                  boulevard with The Scarisbrick and The Vincent as the main character hotels. Both are proper hotels with history,
                   not identikit chains. If you want reliable and predictable, Premier Inn has two Southport locations: one on the
                   seafront (handy for the beach and Marine Lake) and one on the edge of town.
                 </p>
@@ -491,7 +491,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 bg-[#FAF8F5]">
               {[
-                { icon: MapPinIcon, label: "Best for Lord Street", value: "The Bold Hotel, The Scarisbrick" },
+                { icon: MapPinIcon, label: "Best for Lord Street", value: "The Scarisbrick, The Vincent" },
                 { icon: Bed, label: "Best budget", value: "Premier Inn, B&Bs off Lord St" },
                 { icon: CalendarDays, label: "Open 2026 base", value: "Birkdale village" },
                 { icon: PoundSterling, label: "Midweek doubles from", value: "~£60/night" },

@@ -321,7 +321,7 @@ export default function BirkdaleVillagePage() {
                   type: "Pubs & Bars",
                   color: "from-[#7A1A1A] to-[#B02020]",
                   highlights: [
-                    "The Bold Hotel bar is the premium Birkdale drinking option, good cocktails, proper setting",
+                    "The Birkdale Arms is the main pub in the village, proper ale, good atmosphere",
                     "Several traditional pubs within walking distance",
                     "Village pubs tend to welcome dogs, ask on arrival",
                     "Post-round drinks culture strong during Open week",

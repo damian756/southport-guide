@@ -964,7 +964,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-hotels-southport-2026",
     title: "The Best Hotels in Southport 2026",
     excerpt:
-      "From The Grand on Lord Street to boutique options in Birkdale village — the definitive guide to where to stay in Southport, ranked honestly by a local.",
+      "From The Scarisbrick and Vincent on Lord Street to B&Bs and self-catering in Birkdale village. The definitive guide to where to stay in Southport, ranked honestly by a local.",
     categorySlug: "where-to-stay",
     image: "/images/blog/best-hotels-southport-2026.webp",
     date: "19 Feb 2026",
@@ -1059,7 +1059,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "afternoon-tea-southport",
     title: "The Best Afternoon Tea in Southport",
     excerpt:
-      "The Grand, The Vincent, and a few others worth knowing about. Terry's guide to afternoon tea in Southport — what's actually good, what to book ahead for, and what to expect.",
+      "The Scarisbrick, The Vincent, and a few others worth knowing about. Terry's guide to afternoon tea in Southport — what's actually good, what to book ahead for, and what to expect.",
     categorySlug: "food-drink",
     image: "/images/blog/afternoon-tea-southport.webp",
     date: "14 Mar 2026",
@@ -1431,7 +1431,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-hotels-southport-2026",
     title: "Best Hotels in Southport 2026: Where to Stay and What to Pay",
     excerpt:
-      "From The Bold Hotel on Lord Street to B&Bs in Birkdale and budget chains near Ocean Plaza. I've covered every decent option with honest advice on what each one is actually like to stay in.",
+      "From The Scarisbrick and Vincent on Lord Street to B&Bs in Birkdale and budget chains near Ocean Plaza. Every decent option with honest advice on what each one is actually like to stay in.",
     categorySlug: "where-to-stay",
     image: "/images/blog/blog-hotels-southport-2026.jpg",
     date: "1 May 2026",

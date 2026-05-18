@@ -113,7 +113,7 @@ export default function SuggestListingPage() {
               required
               value={fields.businessName}
               onChange={(e) => set("businessName")(e.target.value)}
-              placeholder="e.g. The Bold Hotel"
+              placeholder="e.g. The Scarisbrick Hotel"
               className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#1B2E4B]/20 focus:border-[#1B2E4B]"
             />
           </div>

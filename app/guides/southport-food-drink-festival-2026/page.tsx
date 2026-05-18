@@ -154,7 +154,7 @@ export default function FoodDrinkFestivalPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-7">
               <h3 className="font-display font-bold text-amber-900 text-lg mb-3">Book Accommodation Now</h3>
-              <p className="text-amber-800 text-sm leading-relaxed">The late May Bank Holiday is Southport&apos;s busiest weekend. With the Food Festival and Beer Week simultaneously, hotels book out months in advance. If you are considering staying overnight, check availability now and book immediately. Lord Street hotels are most convenient. Bold Hotel, Vincent Hotel, Premier Inn on the Promenade.</p>
+              <p className="text-amber-800 text-sm leading-relaxed">The late May Bank Holiday is Southport&apos;s busiest weekend. With the Food Festival and Beer Week simultaneously, hotels book out months in advance. If you are considering staying overnight, check availability now and book immediately. Lord Street hotels are most convenient. The Scarisbrick, The Vincent, Premier Inn near the station.</p>
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <MapPin className="w-6 h-6 text-[#C9A84C] mb-4" />

@@ -269,7 +269,7 @@ export default function ClaimListingClient() {
                       value={searchName}
                       onChange={onSearchInput}
                       onFocus={() => suggestions.length > 0 && setShowDropdown(true)}
-                      placeholder="e.g. The Grand Hotel"
+                      placeholder="e.g. The Scarisbrick Hotel"
                       className={inputCls}
                     />
                     {searching && (
