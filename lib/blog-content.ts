@@ -1976,8 +1976,8 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   "southport-fish-and-chips-guide": [
     { type: "p", text: "Fish and chips in Southport is a serious subject. I've lived here 41 years and have strong opinions about this. There are good chip shops in this town and there are disappointing ones. Since we're a seaside town, first-time visitors often just walk into the nearest one. That's a mistake." },
     { type: "p", text: "This is not a sponsored list. These are the places I actually go, and the ones I'd send my parents to if they were visiting." },
-    { type: "h2", text: "Waves Fish Bar, Lord Street" },
-    { type: "p", text: "For a proper sit-down fish supper on Lord Street, Waves is consistently the best option. The fish is fresh, the batter is light, and they don't overcook it. It's a proper fish restaurant rather than a takeaway, so you can eat properly rather than fighting the wind on the seafront. Worth booking on weekends." },
+    { type: "h2", text: "Mr Chips, Churchtown" },
+    { type: "p", text: "If I'm being honest about where I actually go, it's Mr Chips in Churchtown. It's been there for years and it's consistently good. Proper chip shop: battered fish, decent portion sizes, not overpriced. The kind of place locals go rather than the kind that appears on visitor lists. Worth the short drive from the town centre if you're already heading to the Botanic Gardens or the Hesketh Arms." },
     { type: "h2", text: "For a takeaway on the seafront" },
     { type: "p", text: "If you want the full experience of eating chips by the sea, Marine Drive has a couple of decent options. The key is to go for the freshly cooked portion rather than anything sitting under a heat lamp. Ask when they last changed the oil. Any chip shop worth its salt will tell you without looking offended." },
     { type: "p", text: "One thing most visitors get wrong: they buy fish and chips and then walk the full length of the pier to eat them. By the time they get there, the chips are cold and the batter has gone soft. Eat close to where you bought them. Cold chips from a great chip shop are worse than hot chips from a decent one." },
