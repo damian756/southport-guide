@@ -452,13 +452,13 @@ export default async function Home() {
       )}
 
       {/* ══════════════════════════════════════════════════════
-          FEATURED GUIDE — SOUTHPORT MARKET
+          FEATURED GUIDE — SEASON COFFEE
       ══════════════════════════════════════════════════════ */}
       <section className="py-14 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">New Complete Guide</p>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Terry&apos;s Pick</p>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
                 Featured on SouthportGuide
               </h2>
@@ -472,14 +472,14 @@ export default async function Home() {
           </div>
 
           <Link
-            href="/guides/woodvale-community-centre"
+            href="/guides/seasons-southport"
             className="group grid md:grid-cols-[1fr_480px] lg:grid-cols-[1fr_560px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100"
           >
             {/* Image panel */}
             <div className="relative h-72 md:h-full min-h-[340px] overflow-hidden order-first">
               <Image
-                src="/images/woodvale-community-centre/woodvale-centre-front.webp"
-                alt="Woodvale Community Centre on Meadow Lane, Woodvale, Southport"
+                src="/images/guides/seasons-southport/hero.webp"
+                alt="Season Coffee Bar and Kitchen, King Street, Southport"
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 quality={90}
@@ -490,26 +490,26 @@ export default async function Home() {
             {/* Content panel */}
             <div className="bg-[#1B2E4B] p-8 md:p-10 lg:p-12 flex flex-col justify-center">
               <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-5">
-                ✦ Community Guide — 2026
+                ☕ Café Guide · King Street
               </span>
 
               <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                Woodvale Community Centre
+                Season Coffee,<br />Bar & Kitchen
               </h3>
 
               <p className="text-white/65 text-base leading-relaxed mb-6 max-w-md">
-                Woodvale & Ainsdale Community Association has been running classes, youth sessions and holiday
-                programmes in this part of Southport since 1992. Two centres, all ages, registered charity.
-                Meadow Lane · PR8 3RS.
+                Single-origin micro-lot beans from Django Coffee Co. and Heart & Graft, a proper brunch menu,
+                and everything sourced from local independents. Open since 2021. One of Southport&apos;s genuinely
+                good independent cafés. King Street, PR8 1JZ.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-8">
                 {[
-                  "Free sessions available",
-                  "All ages",
-                  "DDA compliant",
-                  "Family-friendly",
-                  "Registered charity",
+                  "Single-origin coffee",
+                  "Local suppliers",
+                  "Full brunch menu",
+                  "Venue hire",
+                  "Tue–Sun 10am–4pm",
                 ].map((tag) => (
                   <span
                     key={tag}

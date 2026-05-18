@@ -51,6 +51,13 @@ const FAQS = [
 
 const CAFES = [
   {
+    name: "Season Coffee, Bar & Kitchen",
+    area: "King Street",
+    bestFor: "Specialty coffee, brunch",
+    notes: "Single-origin micro-lot beans from Django Coffee Co. and Heart & Graft, rotated seasonally and ground to order. Full brunch and lunch menu, all ingredients from local independent suppliers. Opposite Southport Market. Open Tue–Sun 10am–4pm. Kitchen closes 3pm.",
+    href: "/guides/seasons-southport",
+  },
+  {
     name: "Café Niko",
     area: "Lord Street",
     bestFor: "Proper espresso, lunch",
