@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "Birkdale Village. Southport&apos;s independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
   keywords:
     "Birkdale village, Birkdale village shops, Birkdale village restaurants, Birkdale village Southport, Liverpool Road Birkdale, Birkdale cafes",
-  alternates: { canonical: `${BASE_URL}/birkdale-village` },
+  alternates: { canonical: `${BASE_URL}/guides/birkdale-village` },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",

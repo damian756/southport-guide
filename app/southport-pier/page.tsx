@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Southport Pier. 1,108 metres, England's second longest. History, what to see, when to visit, parking, and honest advice from a local. Free to walk.",
   keywords:
     "Southport Pier, Southport pier length, how long is Southport pier, visit Southport pier, Southport pier history, England second longest pier",
-  alternates: { canonical: `${BASE_URL}/southport-pier` },
+  alternates: { canonical: `${BASE_URL}/guides/southport-pier` },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "Southport Air Show 2026, free event on Southport Beach. Dates, best viewing spots, parking, and how to make the most of one of the UK's best air shows. Over 100,000 visitors.",
   keywords:
     "Southport Air Show 2026, Southport Air Show dates, Southport Air Show free, Southport Air Show viewing, Southport airshow parking",
-  alternates: { canonical: `${BASE_URL}/southport-air-show` },
+  alternates: { canonical: `${BASE_URL}/guides/southport-air-show` },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",

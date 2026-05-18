@@ -674,6 +674,8 @@ export interface BlogPost {
   author?: "terry" | "damian";
   /** Pin this post to the homepage blog section. Up to 3 featured posts are shown; extras are ignored. */
   featured?: boolean;
+  /** Override canonical URL — use when a guide page is the authoritative version of this content. */
+  canonicalUrl?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -950,6 +952,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/best-cafes-southport.webp",
     date: "19 Feb 2026",
+    canonicalUrl: "https://www.southportguide.co.uk/guides/best-cafes-southport",
   },
   {
     slug: "best-brunch-southport",
@@ -1265,7 +1268,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Getting to The Open 2026: Transport, Parking, and What Not to Do",
     excerpt: "I live three miles from Royal Birkdale. I've been to Open weeks before. Here's the honest guide to getting there without ruining the day before you even arrive.",
     categorySlug: "golf",
-    image: "/images/blog/blog-open-transport-birkdale.jpg",
+    image: "/images/blog/blog-birkdale-station-real.jpg",
     date: "4 Apr 2026",
     featured: true,
   },

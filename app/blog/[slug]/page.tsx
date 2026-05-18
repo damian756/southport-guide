@@ -27,13 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
   const url = `https://www.southportguide.co.uk/blog/${slug}`;
+  const canonicalUrl = post.canonicalUrl ?? url;
   const imageUrl = post.image
     ? (post.image.startsWith("http") ? post.image : `https://www.southportguide.co.uk${post.image}`)
     : DEFAULT_OG;
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: url },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
       siteName: "SouthportGuide.co.uk",

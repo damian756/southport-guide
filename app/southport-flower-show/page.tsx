@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Southport Flower Show 2026. Victoria Park, August 2026. Tickets, what to see, parking, getting there, and advice from someone who&apos;s been more times than he&apos;d like to admit.",
   keywords:
     "Southport Flower Show 2026, Southport Flower Show tickets, Southport Flower Show dates, Southport Flower Show parking, Victoria Park Southport",
-  alternates: { canonical: `${BASE_URL}/southport-flower-show` },
+  alternates: { canonical: `${BASE_URL}/guides/southport-flower-show` },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",

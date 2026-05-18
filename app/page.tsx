@@ -49,7 +49,8 @@ const NEIGHBOURHOODS = [
     desc: "The historic village at the north end. Georgian streets, the Botanic Gardens, a proper village pub. Where Terry lives.",
     sector: "PR9 9",
     slug: "pr9-9",
-    image: "/images/neighbourhoods/churchtown.webp",
+    guideSlug: "churchtown",
+    image: "/images/blog/churchtown-botanic-white-crocuses.jpg",
     accent: "amber",
     accentClass: "border-amber-400",
   },
@@ -58,6 +59,7 @@ const NEIGHBOURHOODS = [
     desc: "The premium end. Wide tree-lined roads, large Edwardian houses, Royal Birkdale Golf Club. Consistently the highest prices in PR8.",
     sector: "PR8 4",
     slug: "pr8-4",
+    guideSlug: "birkdale-village",
     image: "/images/neighbourhoods/birkdale.webp",
     accent: "gold",
     accentClass: "border-[#C9A84C]",
@@ -67,6 +69,7 @@ const NEIGHBOURHOODS = [
     desc: "National Trust beach and pinewoods on the doorstep. Popular with families who've priced out of Birkdale. Good value coastal living.",
     sector: "PR8 3",
     slug: "pr8-3",
+    guideSlug: null,
     image: "/images/neighbourhoods/ainsdale.webp",
     accent: "sky",
     accentClass: "border-sky-400",
@@ -76,6 +79,7 @@ const NEIGHBOURHOODS = [
     desc: "Lord Street, the seafront, Southport station. Merseyrail direct to Liverpool Central. Flats and terraces: the most affordable entry point.",
     sector: "PR8 1 / PR9 0",
     slug: "pr8-1",
+    guideSlug: null,
     image: "/images/neighbourhoods/town-centre.webp",
     accent: "teal",
     accentClass: "border-teal-400",
@@ -85,6 +89,7 @@ const NEIGHBOURHOODS = [
     desc: "Flat farmland, quiet roads, big skies. Rural living within 15 minutes of town. You get a lot of house for the money out here.",
     sector: "PR9 8",
     slug: "pr9-8",
+    guideSlug: null,
     image: "/images/neighbourhoods/banks-crossens.webp",
     accent: "green",
     accentClass: "border-green-400",
@@ -196,7 +201,7 @@ export default async function Home() {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://www.southportguide.co.uk/restaurants?q={search_term_string}",
+            urlTemplate: "https://www.southportguide.co.uk/search?q={search_term_string}",
           },
           "query-input": "required name=search_term_string",
         },
@@ -223,6 +228,30 @@ export default async function Home() {
           "https://www.linkedin.com/company/churchtownmedia",
           "https://churchtownmedia.co.uk",
         ],
+      },
+      {
+        "@type": ["LocalBusiness", "TouristInformationCenter"],
+        "@id": "https://www.southportguide.co.uk/#business",
+        name: "SouthportGuide.co.uk",
+        description: "Independent visitor guide to Southport, Merseyside. Restaurants, hotels, beaches, events, and house prices — written by locals.",
+        url: "https://www.southportguide.co.uk",
+        image: "https://www.southportguide.co.uk/og-default.png",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Southport",
+          addressRegion: "Merseyside",
+          addressCountry: "GB",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 53.6452,
+          longitude: -3.0056,
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Southport",
+          sameAs: "https://en.wikipedia.org/wiki/Southport",
+        },
       },
       {
         "@type": "WebPage",
@@ -370,7 +399,7 @@ export default async function Home() {
               { icon: "🏖️", label: "Beach parking", value: "PR8 1RQ", href: "/guides/southport-beach" },
               { icon: "🚆", label: "Train station", value: "Southport", href: "/guides/getting-to-southport" },
               { icon: "🅿️", label: "Marine Drive car park", value: "PR8 1RQ", href: "/guides/parking-southport" },
-              { icon: "🛍️", label: "Lord Street", value: "PR8 1PX", href: "/shopping" },
+              { icon: "🛍️", label: "Southport Market", value: "Market Street", href: "/guides/southport-market" },
               { icon: "🎭", label: "The Atkinson", value: "PR8 1DB", href: "/guides/the-atkinson-southport" },
               { icon: "🏠", label: "House prices", value: "PR8 & PR9 data", href: "/property" },
             ].map(({ icon, label, value, href }) => (
@@ -936,7 +965,7 @@ export default async function Home() {
             {NEIGHBOURHOODS.map((n) => (
               <Link
                 key={n.slug}
-                href={`/property/${n.slug}`}
+                href={n.guideSlug ? `/guides/${n.guideSlug}` : `/property/${n.slug}`}
                 className="group relative overflow-hidden rounded-2xl min-h-[220px] flex flex-col card-hover"
               >
                 <Image
@@ -967,6 +996,12 @@ export default async function Home() {
                     <TrendingUp className="w-3 h-3" />
                     House prices &amp; data →
                   </div>
+                  {n.guideSlug && (
+                    <div className="mt-1.5 flex items-center gap-1 text-white/50 hover:text-white/80 text-xs font-medium transition-colors">
+                      <ArrowRight className="w-3 h-3" />
+                      <span>Area guide →</span>
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}
