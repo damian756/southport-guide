@@ -1474,6 +1474,22 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "7 May 2026",
   },
   {
+    slug: "southport-fish-and-chips-guide",
+    title: "Southport Fish and Chips: The Honest Local Guide",
+    excerpt: "I've eaten fish and chips in this town for 41 years. Here's where to go, what to order, and the one thing most visitors get wrong.",
+    categorySlug: "food-drink",
+    image: "/images/blog/blog-fish-chips-southport.jpg",
+    date: "17 May 2026",
+  },
+  {
+    slug: "southport-rainy-day-guide",
+    title: "What to Do in Southport When It Rains: Terry's Honest Plan",
+    excerpt: "It rains in the North West. This is not news. Here's what actually works for a day in Southport when the weather goes wrong.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-rainy-day-southport.jpg",
+    date: "18 May 2026",
+  },
+  {
     slug: "open-2026-southport-ten-weeks-out",
     title: "The Open 2026: Ten Weeks Out. What Southport Looks Like Right Now.",
     excerpt:
