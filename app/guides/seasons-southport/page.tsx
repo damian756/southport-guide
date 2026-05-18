@@ -201,7 +201,7 @@ export default function SeasonsGuide() {
                   {[
                     {
                       roaster: "Django Coffee Co.",
-                      origin: "Kiaro — Rwenzori Mountains, Uganda",
+                      origin: "Kiaro, Rwenzori Mountains, Uganda",
                       notes: "Melbourne-inspired roasting philosophy. 100% traceable from farm to cup. Low environmental impact focus.",
                       href: "https://www.djangocoffeeco.com/",
                     },
@@ -222,7 +222,7 @@ export default function SeasonsGuide() {
                 </div>
                 <div className="mt-5 bg-[#FAF8F5] rounded-2xl border border-gray-100 p-5">
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    <strong className="text-[#1B2E4B]">Current flavour notes:</strong> Blackberry, Cherry, Raspberry, Plum, Caramel, Hazelnut, Pineapple. Beans vary with the season — ask Michelle&apos;s team what&apos;s in right now. They know.
+                    <strong className="text-[#1B2E4B]">Current flavour notes:</strong> Blackberry, Cherry, Raspberry, Plum, Caramel, Hazelnut, Pineapple. Beans vary with the season. Ask Michelle&apos;s team what&apos;s in right now. They know.
                   </p>
                   <p className="text-sm text-gray-500 mt-2">
                     Single-origin means the flavour profile is more defined and sometimes more unexpected than a house blend. Worth trying black first if you&apos;re curious.
