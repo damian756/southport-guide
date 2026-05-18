@@ -1270,7 +1270,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-birkdale-station-real.jpg",
     date: "4 Apr 2026",
-    featured: true,
   },
   {
     slug: "southport-sausage-cider-festival-which-session",
@@ -1500,7 +1499,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-ten-weeks-southport.jpg",
     date: "10 May 2026",
-    featured: true,
   },
   {
     slug: "southport-restaurants-open-week-2026",
@@ -1519,6 +1517,36 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-may-2026.jpg",
     date: "12 May 2026",
+  },
+  {
+    slug: "southport-half-term-may-2026",
+    title: "Southport Half-Term May 2026: What to Do with the Kids",
+    excerpt:
+      "Late May half-term is one of the better weeks to bring the kids to Southport. The beach is accessible, the weather is usually decent, and there's enough going on that you won't hear 'I'm bored' more than twice. Here's what actually works.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-southport-halfterm-may-2026.jpg",
+    date: "18 May 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-food-drink-festival-2026-what-to-know",
+    title: "Southport Food and Drink Festival 2026: Eleven Days to Go",
+    excerpt:
+      "Victoria Park, Bank Holiday weekend, May 29 to 31. This is the one that actually fills up. Here's what to expect, what to book in advance, and how not to spend the whole afternoon queuing for a pulled pork bun.",
+    categorySlug: "events",
+    image: "/images/blog/blog-food-festival-countdown-2026.jpg",
+    date: "19 May 2026",
+    featured: true,
+  },
+  {
+    slug: "the-open-2026-eight-weeks-out",
+    title: "The Open 2026: Eight Weeks Out. What's Still Bookable in Southport.",
+    excerpt:
+      "Royal Birkdale, 12 to 19 July. Eight weeks out and the town is almost fully booked. Here's the honest picture of what accommodation, restaurants and transport options are still available, and what to do if you haven't planned yet.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-8-weeks-2026.jpg",
+    date: "20 May 2026",
+    featured: true,
   },
 ];
 
