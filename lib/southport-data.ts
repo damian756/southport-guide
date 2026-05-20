@@ -1548,6 +1548,16 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "20 May 2026",
     featured: true,
   },
+  {
+    slug: "southport-armed-forces-festival-2026-guide",
+    title: "Southport Armed Forces Festival 2026: What to Expect and Why This One Is Different",
+    excerpt:
+      "27–28 June, free, town-wide. The Armed Forces Festival on the Promenade is genuinely moving. But the 2026 edition carries extra weight. There is a serious community push to turn this into the UK's biggest Armed Forces Day event by 2027. Here's what's happening and why it matters.",
+    categorySlug: "events",
+    image: "/images/blog/blog-armed-forces-southport-vision.jpg",
+    date: "20 May 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────

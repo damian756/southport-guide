@@ -2144,4 +2144,31 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "cta", text: "Everything you need to plan your Open week visit:", href: "/the-open-2026", label: "The Open 2026 Guide →" },
   ],
 
+  "southport-armed-forces-festival-2026-guide": [
+    { type: "p", text: "The Southport Armed Forces Festival takes place on 27–28 June 2026 across the Promenade, King's Gardens, Princes Park, and the wider town centre. Free to attend. Military parade, Drumhead Service, fly-overs, vehicle displays. Two full days." },
+    { type: "p", text: "I've been to previous years. It's a good event. But the 2026 festival carries something extra, and it's worth explaining what that is." },
+    { type: "callout", emoji: "📅", text: "Southport Armed Forces Festival 2026: Saturday 27 and Sunday 28 June. Free entry. Main locations: The Promenade (PR8 1RX), King's Gardens, Princes Park, and The Atkinson on Lord Street." },
+    { type: "h2", text: "What Actually Happens" },
+    { type: "p", text: "The Drumhead Service is the centrepiece. An open-air memorial service conducted by military chaplains with serving personnel, veterans, and cadets assembled on the Promenade. If you've never been to one, it's worth knowing that the atmosphere is not like a regular public event. It's the real thing." },
+    { type: "p", text: "After the service, the military parade along the Promenade. Columns of serving personnel, veterans, and cadets marching with the Irish Sea as a backdrop. Thousands line both sides of the route." },
+    { type: "p", text: "Military fly-overs pass over the seafront during the event. Specific aircraft are confirmed closer to the date. The coastal approach gives clear sky for the passes. The Promenade is the prime viewing location for everything." },
+    { type: "p", text: "Princes Park has the static vehicle displays. Armoured vehicles, trucks, equipment. Military personnel on hand. This is where families with younger children tend to end up, and it's less crowded than the Promenade for most of the day." },
+    { type: "h2", text: "Why 2026 Is Different" },
+    { type: "p", text: "There is a serious push in Southport to turn the Armed Forces Festival into something much larger. Not a two-day event. A full week. Not just the Promenade. The whole town." },
+    { type: "p", text: "The vision, which has growing support from local business owners, community leaders, and armed forces organisations, is for Southport to bid to host the National Armed Forces Day. Combined with the Air Show and spread across the town, this could become one of the biggest Armed Forces Day events in the UK." },
+    { type: "p", text: "The practical case for Southport is strong. The Marine Lake, the wide Promenade, the parks, the town's existing events infrastructure. No tides to navigate. No significant road closures needed. An established hotel and restaurant sector that benefits from the footfall. The Red Arrows over the seafront. A 1940s heritage area telling the real wartime story of this part of Merseyside." },
+    { type: "h2", text: "Southport's Wartime Connection" },
+    { type: "p", text: "This isn't a manufactured connection. Southport has genuine Second World War history. Children were evacuated here from Bootle and Liverpool during the Blitz. RAF Woodvale at Ainsdale was a working RAF base defending the Irish Sea corridor and the Port of Liverpool. Pleasureland itself was commandeered by the Air Ministry during the war." },
+    { type: "p", text: "Families across Southport, Bootle, Seaforth and Merseyside have direct personal connections to that history. Some of those connections are still here in living memory. The stories of service, evacuation, survival, and loss belong to this community specifically, not to some generic wartime heritage narrative. That's what makes the Armed Forces Festival meaningful in Southport in a way it might not be elsewhere." },
+    { type: "h2", text: "Practical Information" },
+    { type: "ul", items: [
+      "The Promenade (PR8 1RX) is the main hub for the parade, Drumhead Service, and fly-overs",
+      "By train: Southport station (Merseyrail from Liverpool Central), 15 min walk to the Promenade",
+      "Marine Drive car park is on the Promenade but fills early on event weekends",
+      "Town centre car parks are 10–15 min walk to King's Gardens and Princes Park",
+      "Full programme and timings published by Sefton Council ahead of the event",
+    ]},
+    { type: "cta", text: "Full guide to the 2026 Armed Forces Festival:", href: "/guides/southport-armed-forces-festival", label: "Armed Forces Festival Guide →" },
+  ],
+
 };
