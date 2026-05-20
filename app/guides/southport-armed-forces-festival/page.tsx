@@ -95,7 +95,7 @@ export default function ArmedForcesFestivalPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-armed-forces-festival.webp"
-            alt="Southport Armed Forces Festival — military parade on the seafront"
+            alt="Southport war memorial — the Grade II* listed monument in King's Gardens, focal point of the Armed Forces Festival"
             fill sizes="100vw" quality={90} className="object-cover"
             style={{ objectPosition: "center 35%" }} priority
           />
