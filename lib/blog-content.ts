@@ -1434,22 +1434,6 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Outside event days, Victoria Park is a well-maintained public park with formal gardens, a Victorian bandstand, and plenty of open space. Free to enter year-round. If you're visiting Southport for any of these events, arrive early — the park is a good place to spend time before the gates open." },
   ],
 
-  "southport-armed-forces-festival-2026-guide": [
-    { type: "p", text: "The Southport Armed Forces Festival on 27–28 June 2026 is a different kind of event to the flower shows and fireworks championships. It's not designed to entertain you in the conventional sense — it's a civic event, a community acknowledgement of military service, that happens to be spectacular." },
-    { type: "callout", emoji: "📍", text: "Southport Armed Forces Festival · 27–28 June 2026 · Free to attend · Town-wide: Promenade, King's Gardens, Princes Park, The Atkinson, town centre" },
-    { type: "h2", text: "The Parade on the Promenade" },
-    { type: "p", text: "The Promenade is the place to be for the military parade. Columns of serving personnel, veterans, and cadets march past with the Irish Sea behind them. It's one of the most impressive settings for a military parade in the North of England — the wide seafront boulevard, the space, the backdrop. Get there early for a good position on the route. Both sides of the Promenade fill up before the march begins." },
-    { type: "h2", text: "The Drumhead Service" },
-    { type: "p", text: "This is the most moving part of the programme. A traditional open-air armed forces memorial service conducted by military chaplains, with serving personnel, veterans, cadets, and members of the public gathered together. If you've never been to one, it's worth knowing about before you arrive — it's not entertainment, it's ceremony, and the atmosphere is quiet and respectful." },
-    { type: "h2", text: "Vehicle Displays at Princes Park" },
-    { type: "p", text: "Military vehicles on static display — armoured vehicles, equipment, trucks, with personnel on hand to explain what you're looking at. If you're coming with children, this section is often the highlight for them. Hands-on, approachable, the kind of thing that a ten-year-old talks about for weeks." },
-    { type: "h2", text: "Fly-Overs" },
-    { type: "p", text: "Military aircraft fly-overs over the Promenade and seafront. Specific aircraft to be confirmed ahead of the event — for the fly-over, the Promenade is prime location. The coastal approach gives clear sky and maximum visibility time." },
-    { type: "h2", text: "Why 2026 is Different" },
-    { type: "p", text: "This isn't just a regular Armed Forces Day. Southport is bidding to host the full National Armed Forces Day in 2027 — one of the UK's largest single-day events. The 2026 festival is the proof-of-concept. The town wants to demonstrate it can do this at scale, and the ambition is to eventually combine it with the Air Show for a major Bank Holiday weekend event." },
-    { type: "cta", text: "Full guide to the Armed Forces Festival — locations, programme, how to get there:", href: "/guides/southport-armed-forces-festival", label: "Armed Forces Festival 2026 Guide →" },
-  ],
-
   "southport-june-2026-guide": [
     { type: "p", text: "June 2026 in Southport is a month that builds to a significant weekend. The Armed Forces Festival on 27–28 June is the biggest event of the month — free, town-wide, genuinely impressive. But the whole of June has plenty to offer if you're coming to the town at any point in the month." },
     { type: "callout", emoji: "📅", text: "June 2026 key date: Armed Forces Festival 27–28 June · Summer solstice 21 June · School summer holidays not yet started — town is quieter than July–August, which is a virtue" },
