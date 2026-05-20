@@ -162,13 +162,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PropertySlugPage({ params }: Props) {
   const { slug } = await params;
-  const { sector, unit } = await getPageData(slug);
+  try {
+    const { sector, unit } = await getPageData(slug);
 
-  if (sector) {
-    return <SectorPage sector={sector} slug={slug} />;
-  }
-  if (unit) {
-    return <UnitPage unit={unit} slug={slug} />;
+    if (sector) {
+      return <SectorPage sector={sector} slug={slug} />;
+    }
+    if (unit) {
+      return <UnitPage unit={unit} slug={slug} />;
+    }
+  } catch {
+    // Specific unit data caused a render error — fall through to notFound
   }
 
   notFound();
