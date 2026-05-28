@@ -1558,6 +1558,26 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "20 May 2026",
     featured: true,
   },
+  {
+    slug: "southport-food-drink-festival-this-weekend-2026",
+    title: "Southport Food and Drink Festival Is On This Weekend: What to Know Before You Go",
+    excerpt:
+      "It starts tomorrow. Victoria Park, May 29 to 31. 150 traders, street food, craft beer, live music. If you're planning to go, here's everything you need to know about parking, what to bring, and what to eat first.",
+    categorySlug: "events",
+    image: "/images/blog/blog-food-festival-this-weekend.jpg",
+    date: "28 May 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-in-june-2026",
+    title: "Southport in June 2026: What's On, What's Worth It, and What to Book Now",
+    excerpt:
+      "June is a solid month in Southport. The Open is six weeks away, the Armed Forces Festival is at the end of the month, and the weather is finally starting to behave. Here's what's worth planning for.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-southport-june-2026.webp",
+    date: "28 May 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
