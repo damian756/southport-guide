@@ -125,7 +125,7 @@ Surface car park adjacent to Southport's Floral Hall and Theatre complex on the 
 Station car park at Ormskirk, where the Merseyrail line from Liverpool terminates. Also serves the Northern Rail services toward Preston. Paid parking. Ormskirk town centre and market are a short walk. Edge Hill University campus is nearby.
 """,
     'the main car park edge hill university': """
-The main staff and visitor car park for Edge Hill University in Ormskirk. Visitor parking is available but spaces can be limited — worth checking with the university before visiting if you're a non-student. Paid parking on site.
+The main car park for Edge Hill University in Ormskirk. Parking is free but the car park operates Automatic Number Plate Recognition (ANPR) since September 2025. All visitors must register their vehicle registration at the tablet at Security, Main Reception, or the Sports Centre on arrival, and have a valid reason for attending. There is a 20-minute grace period for drop-offs and pick-ups, after which a Penalty Charge Notice may apply. Check the Edge Hill University website for full parking policy details before visiting.
 """,
     'sports direct multi-storey car park': """
 Multi-storey car park serving the Sports Direct and Ocean Plaza retail area on the Southport waterfront. Paid parking. Close to the beach, the promenade, and the broader retail park. A useful base if you're spending time at Ocean Plaza or heading to the beach.
