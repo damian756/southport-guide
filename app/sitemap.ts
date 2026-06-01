@@ -20,7 +20,7 @@ function parsePostDate(dateStr: string): Date {
 
 // Stable reference dates — update these when the relevant pages change meaningfully
 const D = {
-  today:    new Date("2026-05-07"), // last deploy / significant update
+  today:    new Date("2026-06-01"), // last deploy / significant update
   feb26:    new Date("2026-02-26"),
   feb20:    new Date("2026-02-20"),
   feb15:    new Date("2026-02-15"),
@@ -76,12 +76,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // ── Blog posts ───────────────────────────────────────────────
-  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
-    url: `${BASE}/blog/${post.slug}`,
-    lastModified: parsePostDate(post.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }));
+  // Exclude posts that point to a guide canonical (avoid sitemap duplication noise)
+  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS
+    .filter((post) => !post.canonicalUrl)
+    .map((post) => ({
+      url: `${BASE}/blog/${post.slug}`,
+      lastModified: parsePostDate(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    }));
 
   // ── Individual business pages ────────────────────────────────
   let businessPages: MetadataRoute.Sitemap = [];

@@ -314,9 +314,9 @@ export const COLLECTIONS: Collection[] = [
   // ── Free / budget-friendly ────────────────────────────────────────────────
   {
     slug: "free-things-to-do-southport",
-    title: "Free Things to Do in Southport",
+    title: "Free Things to Do in Southport: 30+ Attractions That Cost Nothing",
     metaDescription:
-      "Free things to do in Southport — the beach, Botanic Gardens, Southport Pier, Victoria Park, Marine Lake, and 30+ more attractions that cost nothing. Updated local list.",
+      "Southport has 30+ free things to do. The beach, Southport Pier, Botanic Gardens in Churchtown, The Atkinson gallery on Lord Street, Victoria Park, Marine Lake. No entry fees. Updated for 2026.",
     intro:
       "Southport has more free things to do than most seaside towns its size. The beach is free. The pier is free to walk. The Botanic Gardens in Churchtown are free. The Atkinson gallery on Lord Street is free. This list covers the attractions, outdoor spaces, and activities that genuinely cost nothing. Some of the best things in this town are on it.",
     tags: ["free"],

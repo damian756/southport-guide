@@ -64,8 +64,8 @@ const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
   ],
   "hotels": [
+    { href: "/guides/accommodation-southport", label: "Where to Stay in Southport Guide" },
     { href: "/the-open-2026/accommodation", label: "Open 2026 Accommodation Guide" },
-    { href: "/guides/southport-beach", label: "Southport Beach Guide" },
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
     { href: "/things-to-do", label: "Things to Do in Southport" },
     { href: "/guides/parking-southport", label: "Parking in Southport" },
@@ -241,7 +241,7 @@ const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
   parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days, all on SouthportGuide.",
   attractions: "Browse Southport's attractions. The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
   activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
-  hotels: "Hotels in Southport — The Scarisbrick Hotel, The Vincent, The Metropole, Premier Inn, seafront B&Bs and guest houses in Birkdale. Every option with Google ratings and honest local advice. If you're visiting for The Open 2026 at Royal Birkdale (12–19 July), book immediately.",
+  hotels: "Where to stay in Southport. The Scarisbrick Hotel, The Vincent, The Metropole, Premier Inn Southport, seafront B&Bs, Birkdale guest houses and Churchtown village stays. Every option with Google ratings and honest local advice. Visiting for The Open 2026 at Royal Birkdale? Book now.",
   restaurants: "Restaurants in Southport. Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
 };
 
@@ -251,7 +251,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!cat) return { title: "Category" };
   const theme = THEMES[category];
   const CAT_META_TITLES: Partial<Record<string, string>> = {
-    hotels: "Hotels in Southport | Where to Stay — SouthportGuide",
+    hotels: "Hotels in Southport 2026 | Where to Stay, B&Bs & Guest Houses",
     restaurants: "Restaurants in Southport | Where to Eat — SouthportGuide",
     parking: "Parking in Southport | Car Parks, Postcodes & Free Parking",
   };

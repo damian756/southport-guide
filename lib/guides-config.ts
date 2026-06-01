@@ -96,9 +96,9 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes", "activities", "attractions"],
       tags: ["beach", "seafront"],
     },
-    metaTitle: "Southport Beach | Postcode PR8 1RQ · Parking, Dogs & Tide Times",
+    metaTitle: "Southport Beach Guide 2026 | Parking, Dogs, Tides & Honest Advice",
     metaDescription:
-      "Southport Beach postcode is PR8 1RQ (Marine Drive car park). Dogs welcome all year, free entry, tide times, facilities and honest local advice. One of England's widest beaches.",
+      "Everything you need before visiting Southport Beach. Parking postcode PR8 1RQ (Marine Drive), dogs welcome all year, live tide times, what the beach is actually like, and how to get the most out of it. The honest local guide.",
     relatedCollections: ["free-things-to-do-southport", "nature-reserves-southport", "dog-friendly-cafes-southport", "marine-lake-southport"],
   },
   {
@@ -965,6 +965,28 @@ export const GUIDES: Guide[] = [
     },
     relatedSlugs: ["southportguide-sunflower-member", "accessible-southport", "the-open-2026-accessibility", "southport-market"],
     relatedCollections: ["sensory-friendly-southport", "sunflower-friendly-southport", "free-things-to-do-southport", "family-friendly-things-to-do-southport"],
+  },
+
+  // ── Practical: Where to stay / accommodation overview ────────────────────
+  {
+    slug: "accommodation-southport",
+    title: "Where to Stay in Southport",
+    shortTitle: "Southport Accommodation",
+    description: "Hotels, B&Bs, guest houses and self-catering in Southport. The honest local breakdown of where to stay, what to expect, and what to avoid.",
+    excerpt:
+      "The honest guide to accommodation in Southport. Hotels, B&Bs, guest houses and holiday lets by area. Prices, honest assessments, and what to book if you're visiting for The Open 2026 at Royal Birkdale.",
+    category: "practical",
+    heroImage: "/images/southport-lord-street.webp",
+    seoPriority: 0.9,
+    datePublished: "2026-06-01",
+    dateUpdated: "2026-06-01",
+    tags: ["hotels", "accommodation", "where-to-stay", "b&b", "self-catering"],
+    status: "published",
+    metaTitle: "Where to Stay in Southport 2026 | Hotels, B&Bs & Accommodation Guide",
+    metaDescription:
+      "The honest guide to accommodation in Southport. Hotels on Lord Street, seafront B&Bs, Birkdale guest houses near Royal Birkdale, and Churchtown village stays. Prices, honest reviews and booking advice for The Open 2026.",
+    relatedSlugs: ["parking-southport", "southport-beach", "the-open-2026-accessibility"],
+    relatedCollections: ["hotels-with-parking-southport", "hotels-near-royal-birkdale", "budget-hotels-southport"],
   },
 
   // ── Practical: Accessible Southport directory ─────────────────────────────

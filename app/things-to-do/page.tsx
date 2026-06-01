@@ -24,9 +24,9 @@ import type { Metadata } from "next";
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Things to Do in Southport | The Complete Local Guide",
+  title: "Things to Do in Southport 2026 | The Honest Local Guide",
   description:
-    "The definitive guide to things to do in Southport. 22 miles of coastline, England's Golf Coast, red squirrels at Formby, Antony Gormley's Another Place, family attractions, culture, and the UK's biggest events calendar. Written by locals.",
+    "The honest guide to things to do in Southport. Beach and pier. Marine Lake watersports. The Open 2026 at Royal Birkdale. Antony Gormley's iron men at Crosby. Red squirrels at Formby. The best events calendar in the North West. Written by locals who actually live here.",
   keywords:
     "things to do in Southport, things to do Southport, Southport attractions, Southport beaches, Southport with kids, free things to do Southport, things to do in Southport Merseyside",
   alternates: { canonical: `${BASE_URL}/things-to-do` },
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "Things to Do in Southport | The Complete Local Guide",
+    title: "Things to Do in Southport 2026 | The Honest Local Guide",
     description:
-      "From Formby's red squirrels to Royal Birkdale, Antony Gormley's iron men to England's second-longest pier, the guide the tourism boards don't write.",
+      "Beach, pier, Marine Lake, The Open 2026, Antony Gormley's iron men, red squirrels at Formby, and the best events calendar in the North West. The guide the tourism boards don't write.",
     url: `${BASE_URL}/things-to-do`,
     images: [{ url: `${BASE_URL}/images/things-to-do-hero.webp`, width: 1200, height: 630, alt: "Things to do in Southport" }],
   },

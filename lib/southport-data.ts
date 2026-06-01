@@ -1280,6 +1280,7 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-sausage-cider-fun.webp",
     date: "30 Mar 2026",
     featured: true,
+    canonicalUrl: "https://www.southportguide.co.uk/guides/southport-sausage-cider-festival",
   },
   {
     slug: "southport-spring-events-2026",
@@ -1465,6 +1466,7 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-food-festival-southport-2026.jpg",
     date: "7 May 2026",
     featured: true,
+    canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
   {
     slug: "where-to-watch-the-open-2026-southport-pubs",
@@ -1537,6 +1539,7 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-food-festival-countdown-2026.jpg",
     date: "19 May 2026",
     featured: true,
+    canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
   {
     slug: "the-open-2026-eight-weeks-out",
@@ -1567,6 +1570,7 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-food-festival-this-weekend.jpg",
     date: "28 May 2026",
     featured: true,
+    canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
   {
     slug: "southport-in-june-2026",
