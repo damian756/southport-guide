@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { LATEROOMS, CHAMPIONS_TRAVEL } from "@/lib/affiliate-links";
+import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES } from "@/lib/affiliate-links";
 
 // Distance data — measured from Royal Birkdale Golf Club main entrance
 const HOTELS_BY_DISTANCE = [
@@ -101,7 +101,7 @@ const FAQS = [
 
 const TIPS = [
   "Book tonight. Every day you wait, availability decreases and prices rise.",
-  "Self-catering sleeps groups more cheaply than multiple hotel rooms.",
+  "Self-catering sleeps groups more cheaply than multiple hotel rooms. Cottages.com has options across the Sefton Coast.",
   "Check LateRooms and direct hotel websites. Rates differ.",
   "If you want a full golf travel package (hotel, transfers, course access), Champions Travel specialise in exactly this.",
   "Ask your accommodation about parking during Open week. On-site parking is worth its weight.",
@@ -330,6 +330,25 @@ export default async function OpenAccommodationPage() {
               className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
             >
               Search on LateRooms →
+            </a>
+          </div>
+
+          {/* Cottages.com partner CTA */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Self-Catering Partner</p>
+              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Coming with a Group? Try Self-Catering</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Three or four people in a holiday cottage costs less per head than hotel rooms, and you have a base to come back to between sessions. Cottages.com have properties across Southport, Formby, and the Sefton Coast.
+              </p>
+            </div>
+            <a
+              href={COTTAGES.summerSale}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+            >
+              Browse cottages →
             </a>
           </div>
 

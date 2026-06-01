@@ -12,3 +12,8 @@ export const LATEROOMS = {
 export const CHAMPIONS_TRAVEL = {
   homepage: "https://www.awin1.com/cread.php?awinmid=53765&awinaffid=2780822&campaign=Champions+Travel",
 } as const;
+
+// Cottages.com — self-catering and holiday lets (Awin mid 118653)
+export const COTTAGES = {
+  summerSale: "https://www.awin1.com/cread.php?awinmid=118653&awinaffid=2780822&campaign=Summer+sale",
+} as const;
