@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { LATEROOMS } from "@/lib/affiliate-links";
+import { LATEROOMS, CHAMPIONS_TRAVEL } from "@/lib/affiliate-links";
 
 // Distance data — measured from Royal Birkdale Golf Club main entrance
 const HOTELS_BY_DISTANCE = [
@@ -100,9 +100,10 @@ const FAQS = [
 ];
 
 const TIPS = [
-  "Book tonight, every day you wait, availability decreases and prices rise",
-  "Self-catering sleeps groups more cheaply than multiple hotel rooms",
+  "Book tonight. Every day you wait, availability decreases and prices rise.",
+  "Self-catering sleeps groups more cheaply than multiple hotel rooms.",
   "Check LateRooms and direct hotel websites. Rates differ.",
+  "If you want a full golf travel package (hotel, transfers, course access), Champions Travel specialise in exactly this.",
   "Ask your accommodation about parking during Open week. On-site parking is worth its weight.",
   "Some hotels offer shuttle packages. Worth asking when you call.",
   "If your first choice is full, call the hotel directly. Some allocations aren't listed online.",
@@ -329,6 +330,25 @@ export default async function OpenAccommodationPage() {
               className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
             >
               Search on LateRooms →
+            </a>
+          </div>
+
+          {/* Champions Travel partner CTA */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Golf Travel Partner</p>
+              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Want a Full Open Week Package?</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Champions Travel specialise in golf travel packages for major championships. If you want hotel, transfers and course access sorted in one place, they are worth checking before you piece it together yourself.
+              </p>
+            </div>
+            <a
+              href={CHAMPIONS_TRAVEL.homepage}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+            >
+              View packages →
             </a>
           </div>
 
