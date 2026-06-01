@@ -17,3 +17,8 @@ export const CHAMPIONS_TRAVEL = {
 export const COTTAGES = {
   summerSale: "https://www.awin1.com/cread.php?awinmid=118653&awinaffid=2780822&campaign=Summer+sale",
 } as const;
+
+// Go Ape — outdoor adventure activities (Awin mid 3904)
+export const GO_APE = {
+  homepage: "https://www.awin1.com/cread.php?awinmid=3904&awinaffid=2780822&campaign=Go+Ape",
+} as const;

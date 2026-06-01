@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LATEROOMS } from "@/lib/affiliate-links";
+import { LATEROOMS, GO_APE } from "@/lib/affiliate-links";
 import {
   Waves,
   MapPin,
@@ -864,6 +864,26 @@ export default function ThingsToDoPage() {
               ))}
             </div>
           </section>
+
+          {/* Go Ape partner callout */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
+            <div className="text-5xl flex-none">🌳</div>
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Activity Partner</p>
+              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Go Ape: Treetop Adventures Near Southport</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Go Ape run treetop assault courses, zip wires, and outdoor adventure sessions at woodland sites across the UK. The Rivington site in Lancashire is under 45 minutes from Southport and is a solid half-day out for families or groups who want something more physical than the beach.
+              </p>
+            </div>
+            <a
+              href={GO_APE.homepage}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+            >
+              Find a location →
+            </a>
+          </div>
 
           {/* ── Shopping ── */}
           <section id="shopping" className="scroll-mt-28">
