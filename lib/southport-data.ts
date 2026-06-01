@@ -1578,6 +1578,26 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "28 May 2026",
     featured: true,
   },
+  {
+    slug: "best-ice-cream-southport",
+    title: "Best Ice Cream in Southport: Where to Go on a Hot Day",
+    excerpt:
+      "Southport does ice cream properly. From the seafront kiosks to the proper parlours, here is where I actually go when the sun comes out and the kids start asking.",
+    categorySlug: "food-drink",
+    image: "/images/blog/blog-southport-ice-cream.jpg",
+    date: "1 Jun 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-summer-holidays-2026",
+    title: "Southport Summer Holidays 2026: What to Plan For Six Weeks with Kids",
+    excerpt:
+      "Schools break up around 22 July. Six weeks is a long time. Here is the honest guide to keeping kids entertained in Southport through August, from someone who has done it with four of them.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-southport-summer-holidays-kids.jpg",
+    date: "1 Jun 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
