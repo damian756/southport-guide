@@ -24,8 +24,12 @@ export const GO_APE = {
 } as const;
 
 // Sykes Cottages — self-catering holiday lets (Awin mid 3317)
+// Deep link URLs confirmed by Damian 4 Jun 2026 via direct Sykes search
 export const SYKES = {
-  southport:       "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822",
-  southportOpen2026: "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822",
-  seftonCoast:     "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822",
+  southport:
+    "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822&ued=https%3A%2F%2Fwww.sykescottages.co.uk%2Fsearch.html%3Fcountry%3D%26region%3D%26location%3D218324%26location_long%3DSouthport%252C%2BSefton%26locationdist%3D20%26adult%3D%26teenager%3D%26child%3D%26infant%3D%26num_sleeps%3D%26num_pets%3D-1%26startlabel%3D%26start%3D%26periodStart%3D%26periodEnd%3D%26duration%3D7%26fuzziness%3D3%26min_price%3D0%26max_price%3D3000%26coordinates%3D%26sort%3D%26show%3D%26page%3D%26min_offer_value%3D%26max_offer_value%3D",
+  southportOpen2026:
+    "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822&ued=https%3A%2F%2Fwww.sykescottages.co.uk%2Fsearch.html%3Fcountry%3D%26region%3D%26location%3D218324%26polygon%3D%26location_long%3DSouthport%252C%2BSefton%26locationdist%3D20%26adult%3D2%26teenager%3D%26child%3D0%26infant%3D0%26num_sleeps%3D2%26num_pets%3D-1%26startlabel%3D12%252F07%252F2026%26start%3D12%252F07%252F2026%26periodStart%3D%26periodEnd%3D%26duration%3D7%26fuzziness%3D3%26features%3D%26min_price%3D%26max_price%3D%26distance_to_sea%3D-1%26beds_single%3D-1%26property_type_id%3D%26num_bathrooms%3D-1%26rating%3D-1%26coordinates%3D%26sort%3Ddefault%26show%3D20%26page%3D1%26min_offer_value%3D%26max_offer_value%3D",
+  seftonCoast:
+    "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822&ued=https%3A%2F%2Fwww.sykescottages.co.uk%2Fsearch.html%3Fcountry%3D%26region%3D%26location%3D218324%26location_long%3DSouthport%252C%2BSefton%26locationdist%3D20%26adult%3D%26teenager%3D%26child%3D%26infant%3D%26num_sleeps%3D%26num_pets%3D-1%26startlabel%3D%26start%3D%26periodStart%3D%26periodEnd%3D%26duration%3D7%26fuzziness%3D3%26min_price%3D0%26max_price%3D3000%26coordinates%3D%26sort%3D%26show%3D%26page%3D%26min_offer_value%3D%26max_offer_value%3D",
 } as const;
