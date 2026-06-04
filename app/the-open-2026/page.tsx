@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Hotel, Utensils, Car, MapPin, CalendarDays, ArrowRight, ExternalLink, Trophy, ChevronRight, AlertTriangle } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/southport-data";
-import { LATEROOMS, CHAMPIONS_TRAVEL } from "@/lib/affiliate-links";
+import { LATEROOMS, CHAMPIONS_TRAVEL, SYKES } from "@/lib/affiliate-links";
 
 export const metadata = {
   title: "The Open 2026 Southport | Park & Ride, Tickets, Hotels & Visitor Guide",
@@ -546,6 +546,14 @@ export default function TheOpen2026Page() {
                 className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
               >
                 Search LateRooms for Open Week →
+              </a>
+              <a
+                href={SYKES.southportOpen2026}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
+              >
+                Self-catering via Sykes Cottages →
               </a>
               <a
                 href={CHAMPIONS_TRAVEL.homepage}

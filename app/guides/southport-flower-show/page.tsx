@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LATEROOMS } from "@/lib/affiliate-links";
+import { LATEROOMS, SYKES } from "@/lib/affiliate-links";
 import {
   MapPin,
   Car,
@@ -479,9 +479,19 @@ export default function SouthportFlowerShowGuidePage() {
                   Book well ahead if you&apos;re planning to stay. Town centre hotels on Lord Street are the most convenient.
                   Birkdale B&Bs are good value and well located for both the show site and Birkdale&apos;s independent restaurants.
                 </p>
-                <Link href="/hotels" className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:text-[#1B2E4B] transition-colors">
-                  Hotels in Southport <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/hotels" className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:text-[#1B2E4B] transition-colors">
+                    Hotels in Southport <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <a
+                    href={SYKES.southport}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    className="inline-flex items-center gap-1.5 text-[#1B2E4B] font-semibold text-sm hover:text-[#C9A84C] transition-colors"
+                  >
+                    Cottages via Sykes <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -591,6 +601,14 @@ export default function SouthportFlowerShowGuidePage() {
               className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20"
             >
               Compare on LateRooms →
+            </a>
+            <a
+              href={SYKES.southport}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20"
+            >
+              Cottages via Sykes →
             </a>
           </div>
         </section>

@@ -7,7 +7,7 @@ import { ChevronRight, MapPin as MapPinIcon, Bed, CalendarDays, PoundSterling } 
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { COLLECTIONS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
-import { LATEROOMS } from "@/lib/affiliate-links";
+import { LATEROOMS, SYKES } from "@/lib/affiliate-links";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
 import type { MapPin as MapPinType } from "@/components/CategoryMapTypes";
 
@@ -611,21 +611,38 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               )}
 
               {category === "hotels" && (
-                <div className="bg-[#1B2E4B] rounded-2xl p-4 text-center">
-                  <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">Partner</p>
-                  <p className="text-white text-sm font-semibold mb-1">Compare prices on LateRooms</p>
-                  <p className="text-white/60 text-xs leading-relaxed mb-3">
-                    UK&apos;s biggest range of accommodation. Free cancellation on most rooms.
-                  </p>
-                  <a
-                    href={LATEROOMS.southport}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                    className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-4 py-2 rounded-full transition-colors"
-                  >
-                    Search Southport →
-                  </a>
-                </div>
+                <>
+                  <div className="bg-[#1B2E4B] rounded-2xl p-4 text-center">
+                    <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">Partner</p>
+                    <p className="text-white text-sm font-semibold mb-1">Compare prices on LateRooms</p>
+                    <p className="text-white/60 text-xs leading-relaxed mb-3">
+                      UK&apos;s biggest range of accommodation. Free cancellation on most rooms.
+                    </p>
+                    <a
+                      href={LATEROOMS.southport}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-4 py-2 rounded-full transition-colors"
+                    >
+                      Search Southport →
+                    </a>
+                  </div>
+                  <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 text-center">
+                    <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">Self-Catering</p>
+                    <p className="text-[#1B2E4B] text-sm font-semibold mb-1">Cottages &amp; holiday lets</p>
+                    <p className="text-gray-500 text-xs leading-relaxed mb-3">
+                      Visiting for The Open or a longer stay? Sykes have cottages across Southport and the Sefton Coast.
+                    </p>
+                    <a
+                      href={SYKES.southport}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className="inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white text-xs font-bold px-4 py-2 rounded-full transition-colors"
+                    >
+                      Search Sykes →
+                    </a>
+                  </div>
+                </>
               )}
 
               {/* Related Guides */}
