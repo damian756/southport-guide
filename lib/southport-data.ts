@@ -1602,6 +1602,16 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "1 Jun 2026",
     featured: true,
   },
+  {
+    slug: "cottages-near-southport-the-open-2026",
+    title: "Cottages Near Southport for The Open 2026: What's Still Available and Where to Look",
+    excerpt:
+      "Hotels near Royal Birkdale are almost all gone. Self-catering cottages are a different story. If you're coming for The Open (12–19 July) and haven't sorted accommodation yet, this is where to focus your search.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-cottages-sefton.jpg",
+    date: "4 Jun 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────

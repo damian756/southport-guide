@@ -14,7 +14,7 @@ import {
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
-import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES } from "@/lib/affiliate-links";
+import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES, SYKES } from "@/lib/affiliate-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("accommodation-southport");
@@ -297,12 +297,21 @@ export default function AccommodationSouthportPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
+                  href={SYKES.southportOpen2026}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 bg-white text-green-800 font-semibold px-4 py-2 rounded-lg hover:bg-green-50 transition-colors text-sm"
+                >
+                  Sykes Cottages for Open Week
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
                   href={LATEROOMS.southportOpen2026}
                   target="_blank"
                   rel="noopener noreferrer sponsored"
                   className="inline-flex items-center gap-2 bg-white text-green-800 font-semibold px-4 py-2 rounded-lg hover:bg-green-50 transition-colors text-sm"
                 >
-                  Check Open Week Availability
+                  Check Open Week Hotels
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
@@ -333,15 +342,26 @@ export default function AccommodationSouthportPage() {
             more broadly — Formby, Ainsdale, West Lancashire — has more options if you're flexible
             about being a short drive from town.
           </p>
-          <a
-            href={COTTAGES.summerSale}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="inline-flex items-center gap-2 bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-orange-700 transition-colors text-sm"
-          >
-            Browse Self-Catering on Cottages.com
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={SYKES.southport}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="inline-flex items-center gap-2 bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-800 transition-colors text-sm"
+            >
+              Search Sykes Cottages near Southport
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href={COTTAGES.summerSale}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-orange-700 transition-colors text-sm"
+            >
+              Browse on Cottages.com
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </section>
 
         {/* ── B&Bs note ──────────────────────────────────────────────── */}

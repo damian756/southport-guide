@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES } from "@/lib/affiliate-links";
+import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES, SYKES } from "@/lib/affiliate-links";
 
 // Distance data — measured from Royal Birkdale Golf Club main entrance
 const HOTELS_BY_DISTANCE = [
@@ -333,13 +333,32 @@ export default async function OpenAccommodationPage() {
             </a>
           </div>
 
+          {/* Sykes Cottages partner CTA */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Self-Catering Partner</p>
+              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Cottages Near Southport for Open Week</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Hotels near Royal Birkdale are almost all gone. Self-catering in Formby, Ainsdale and Birkdale is a genuinely better option for groups anyway. Sykes have properties across the Sefton Coast with availability for Open week.
+              </p>
+            </div>
+            <a
+              href={SYKES.southportOpen2026}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+            >
+              Search Sykes Cottages →
+            </a>
+          </div>
+
           {/* Cottages.com partner CTA */}
           <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
             <div className="flex-1 text-center sm:text-left">
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Self-Catering Partner</p>
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Coming with a Group? Try Self-Catering</h3>
+              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">More Self-Catering Options</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Three or four people in a holiday cottage costs less per head than hotel rooms, and you have a base to come back to between sessions. Cottages.com have properties across Southport, Formby, and the Sefton Coast.
+                Cottages.com have additional holiday lets across Southport, Formby, and the Sefton Coast. Worth checking if Sykes doesn't have what you need for your dates.
               </p>
             </div>
             <a
