@@ -169,6 +169,7 @@ export default function AccommodationSouthportPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <GuideLayout guide={GUIDE}>
+        <div className="container mx-auto px-4 max-w-4xl py-12">
         {/* ── Hero intro ─────────────────────────────────────────────── */}
         <section className="prose prose-lg max-w-none mb-10">
           <p className="text-xl text-gray-700 leading-relaxed">
@@ -442,6 +443,7 @@ export default function AccommodationSouthportPage() {
             </a>
           </div>
         </section>
+        </div>
       </GuideLayout>
     </>
   );
