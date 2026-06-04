@@ -24,12 +24,8 @@ export const GO_APE = {
 } as const;
 
 // Sykes Cottages — self-catering holiday lets (Awin mid 3317)
-// Deep links to Southport/Sefton searches confirmed via Selina at RevWise — update ued params if URLs change
 export const SYKES = {
-  southport:
-    "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822&campaign=Southport+Self-Catering&ued=https%3A%2F%2Fwww.sykescottages.co.uk%2Fcottages%2Fnorth-west-england%2Flancashire-and-merseyside%2Fsouthport%2F",
-  southportOpen2026:
-    "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822&campaign=Open+2026+Cottages&ued=https%3A%2F%2Fwww.sykescottages.co.uk%2Fcottages%2Fnorth-west-england%2Flancashire-and-merseyside%2Fsouthport%2F%3Farrival%3D2026-07-12%26departure%3D2026-07-19",
-  seftonCoast:
-    "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822&campaign=Sefton+Coast+Cottages&ued=https%3A%2F%2Fwww.sykescottages.co.uk%2Fcottages%2Fnorth-west-england%2Flancashire-and-merseyside%2F",
+  southport:       "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822",
+  southportOpen2026: "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822",
+  seftonCoast:     "https://www.awin1.com/cread.php?awinmid=3317&awinaffid=2780822",
 } as const;
