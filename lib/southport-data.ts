@@ -1612,6 +1612,25 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "4 Jun 2026",
     featured: true,
   },
+  {
+    slug: "birkdale-village-open-week-2026",
+    title: "Birkdale Village During The Open 2026: The Local's Guide",
+    excerpt:
+      "Birkdale village is ten minutes' walk from the Royal Birkdale entrance and most Open visitors barely know it exists. Here's what's there, what to book, and why it's a better base than the town centre.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-birkdale-village-open-week.jpg",
+    date: "5 Jun 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-july-2026-guide",
+    title: "Southport in July 2026: The Open, the Summer and What Else Is On",
+    excerpt:
+      "July 2026 is the biggest month in Southport's recent history. The Open is the headline, but the full month is worth understanding whether you're here for the golf or not.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-southport-july-2026.jpg",
+    date: "5 Jun 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
