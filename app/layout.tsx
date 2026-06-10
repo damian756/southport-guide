@@ -273,6 +273,7 @@ function Footer() {
             <Link href="/privacy" className="hover:text-white/70 transition">Privacy</Link>
             <Link href="/terms" className="hover:text-white/70 transition">Terms</Link>
             <Link href="/contact" className="hover:text-white/70 transition">Contact</Link>
+            <Link href="https://www.siba.digital/disclosure" className="hover:text-white/70 transition">Disclosure</Link>
           </div>
         </div>
       </div>
