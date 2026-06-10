@@ -2296,10 +2296,10 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "fathers-day-southport-2026": [
     { type: "p", text: "Father's Day is Sunday 15 June. That is this Sunday. If you are still looking for something to do in Southport, here is the honest guide: what is worth booking, what is genuinely good, and what I would actually do with my own dad." },
-    { type: "callout", emoji: "📅", text: "Father's Day 2026: Sunday 15 June. Most restaurants take bookings — do it today, not Saturday morning." },
+    { type: "callout", emoji: "📅", text: "Father's Day 2026: Sunday 15 June. Most restaurants take bookings. Do it today, not Saturday morning." },
     { type: "h2", text: "Restaurants Worth Booking" },
-    { type: "p", text: "The Bold Hotel on Lord Street does a proper Sunday lunch and has capacity for larger groups. It books up but not immediately — call today and you will likely get a table. The food is good, the space is comfortable, and it works for a range of ages without being stuffy." },
-    { type: "p", text: "Bistrot Verite on Liverpool Road in Birkdale is genuinely one of the best restaurants in the town. Small, French, excellent. It will be full for Father's Day weekend. If you have not booked, call anyway — cancellations happen." },
+    { type: "p", text: "The Bold Hotel on Lord Street does a proper Sunday lunch and has capacity for larger groups. It books up but not immediately. Call today and you will likely get a table. The food is good, the space is comfortable, and it works for a range of ages without being stuffy." },
+    { type: "p", text: "Bistrot Verite on Liverpool Road in Birkdale is genuinely one of the best restaurants in the town. Small, French, excellent. It will be full for Father's Day weekend. If you have not booked, call anyway. Cancellations happen." },
     { type: "p", text: "The Vincent Hotel on Lord Street has a decent restaurant and the atmosphere is right for a treat. More expensive than some options, but if you want somewhere that feels like a proper occasion it delivers. Book ahead." },
     { type: "p", text: "Southport Market on Market Street is a good fallback if you have left it late. No booking required. Good quality street food, independent traders, relaxed atmosphere. Works well for a more casual approach." },
     { type: "cta", text: "Where to eat in Southport:", href: "/restaurants", label: "Restaurants in Southport →" },
@@ -2314,7 +2314,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "The Atkinson on Lord Street is worth knowing about as a rainy day option. Gallery, theatre programme, and a decent cafe. It is the kind of place that makes you proud to live here. Check what is on before you go." },
     { type: "h2", text: "Practical Notes" },
     { type: "ul", items: [
-      "Call restaurants today — not Saturday",
+      "Call restaurants today. Not Saturday.",
       "Marine Drive car park fills by 10am on a sunny Sunday in June",
       "Town centre car parks off Lord Street are a better bet if you are arriving later",
       "The Bold and Vincent both do Sunday lunch: book for midday to avoid the afternoon rush",
@@ -2333,7 +2333,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "The independent restaurants and pubs make more effort during Open week because the demand forces them to. Birkdale village has a specific buzz to it in the evenings. If you are not going to the course, spending an evening in Birkdale village during Open week is worth doing for its own sake." },
     { type: "p", text: "Southport Market is a good option all week. No booking, high quality food, and it does not feel overwhelmed in the same way the sit-down restaurants do." },
     { type: "h2", text: "Getting Around" },
-    { type: "p", text: "Stay off the A565 between Formby and Southport on championship mornings. The Coastal Road through Ainsdale is a reasonable alternative. Within Southport, the town centre is largely unaffected — the congestion is around the course and the shuttle corridors, not the town itself." },
+    { type: "p", text: "Stay off the A565 between Formby and Southport on championship mornings. The Coastal Road through Ainsdale is a reasonable alternative. Within Southport, the town centre is largely unaffected. The congestion is around the course and the shuttle corridors, not the town itself." },
     { type: "p", text: "If you need to get to Birkdale on a championship day for a genuine reason, go early or after 7pm. The roads clear considerably once the golf is done for the day and the spectator buses have run." },
     { type: "cta", text: "Full transport guide for The Open 2026:", href: "/the-open-2026/getting-there", label: "Getting to the Course →" },
     { type: "h2", text: "Practice Round Days" },
@@ -2341,7 +2341,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "Things Worth Doing During Open Week" },
     { type: "ul", items: [
       "Evening in Birkdale village: restaurants, pubs, the atmosphere from being close to the course",
-      "Practice round tickets from theopen.com — still available and underrated",
+      "Practice round tickets from theopen.com: still available and underrated",
       "Southport Market for a relaxed lunch without the reservation pressure",
       "The Atkinson for an hour away from the golf noise if you need it",
       "Avoid Waterloo Road and the Birkdale residential streets on championship morning",
