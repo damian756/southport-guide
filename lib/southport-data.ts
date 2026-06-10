@@ -1613,6 +1613,25 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: true,
   },
   {
+    slug: "fathers-day-southport-2026",
+    title: "Father's Day in Southport 2026: Where to Go, Where to Eat, and What Not to Leave to Chance",
+    excerpt:
+      "Father's Day is Sunday 15 June. Southport has good options if you plan ahead. Leave it too late and the good tables are gone. Here is what Terry would actually do.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-fathers-day-restaurant.webp",
+    date: "10 Jun 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-open-week-for-locals",
+    title: "The Open 2026 in Southport: A Practical Guide for People Who Live Here",
+    excerpt:
+      "The Open is 32 days away. If you live in Southport, here is what to expect: what changes, what gets better, what gets worse, and how to make the most of the biggest week this town has had in years.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-open-watching-links.webp",
+    date: "10 Jun 2026",
+  },
+  {
     slug: "birkdale-village-open-week-2026",
     title: "Birkdale Village During The Open 2026: The Local's Guide",
     excerpt:
