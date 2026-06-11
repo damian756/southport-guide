@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Clock, Phone, ChevronRight, ArrowRight, Coffee, Star } from "lucide-react";
 import type { Metadata } from "next";
+import GalleryLightbox from "./GalleryLightbox";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 
@@ -305,20 +306,9 @@ export default function RoxyCafeGuide() {
 
               {/* Gallery */}
               <section>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-5">The Food</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  {GALLERY.map((img) => (
-                    <div key={img.src} className="relative aspect-[3/4] rounded-xl overflow-hidden">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        sizes="(max-width: 640px) 50vw, 33vw"
-                        className="object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-2">The Food</h2>
+                <p className="text-gray-500 text-sm mb-5">Tap any image to enlarge.</p>
+                <GalleryLightbox images={GALLERY} />
               </section>
 
               {/* Coffee */}
