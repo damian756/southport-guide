@@ -69,26 +69,94 @@ const FAQ_LD = {
 };
 
 const COFFEE = [
-  { name: "Espresso", price: "£2.25", desc: "Single shot, Julius Meinl beans, Italian style." },
-  { name: "Cappuccino", price: "from £2.75", desc: "Julius Meinl espresso with steamed and foamed milk." },
-  { name: "Pistachio Coffee", price: "£3.95", desc: "The one people come specifically for. Espresso-based with pistachio. Try it." },
-  { name: "Flat White / Latte", price: "from £2.75", desc: "Standard espresso-based drinks, all using Julius Meinl." },
-  { name: "Iced Coffees", price: "from £3.50", desc: "Cold coffee options available depending on season." },
+  { name: "Espresso", price: "£2.50", desc: "Single shot, Julius Meinl beans." },
+  { name: "Macchiato", price: "£2.75", desc: "" },
+  { name: "Double Espresso", price: "£3.25", desc: "" },
+  { name: "Cortado", price: "£3.50", desc: "" },
+  { name: "Americano", price: "£3.25", desc: "" },
+  { name: "White Americano", price: "£3.45", desc: "" },
+  { name: "Cappuccino", price: "£3.75", desc: "Julius Meinl espresso with steamed and foamed milk." },
+  { name: "Flat White", price: "£3.95", desc: "" },
+  { name: "Latte", price: "£4.10", desc: "" },
+  { name: "Flavoured Latte", price: "£4.65", desc: "" },
+  { name: "Pistachio Coffee", price: "£3.95", desc: "The one people make a specific trip for. Order it." },
+  { name: "Mocha", price: "£4.45", desc: "" },
+  { name: "Iced Latte", price: "£4.25", desc: "" },
+  { name: "Hot Chocolate", price: "£4.25", desc: "" },
+  { name: "Luxury Hot Chocolate", price: "£4.95", desc: "" },
+  { name: "Decaffeinated", price: "£3.25", desc: "" },
+  { name: "Tea", price: "£2.45", desc: "" },
+  { name: "Flavoured Tea", price: "£2.75", desc: "" },
 ];
 
-const PASTRIES = [
-  { name: "Plain Croissant", price: "£2.50", desc: "Freshly baked, properly flaky. Not the supermarket kind." },
-  { name: "Ham & Cheese Croissant", price: "£2.50", desc: "Freshly baked croissant with ham and melted cheese." },
-  { name: "Pistachio Croissant", price: "£4.50", desc: "Generously filled with pistachio cream. One of the most-ordered items. Worth the extra." },
-  { name: "Seasonal Flavoured Croissants", price: "from £2.50", desc: "Rotating fillings depending on what Roxy is baking that day." },
+const COFFEE_EXTRAS = [
+  { name: "Go Large", price: "+£0.70" },
+  { name: "Extra Shot", price: "+£0.70" },
+  { name: "Alternative Milk", price: "+£0.50" },
 ];
 
-const FOOD = [
-  { name: "Artisan Panini", price: "from £4.50", desc: "Filled with salty cured Italian meats and proper Italian cheese. Different combinations available." },
-  { name: "Insalata Tonno e Uova", price: "£4.95", desc: "Tuna and egg salad. Fresh, Italian in style, a proper lunch option." },
-  { name: "Insalata di Pollo", price: "£4.95", desc: "Chicken salad with fresh ingredients. Light and well-made." },
-  { name: "Homemade Italian Cakes", price: "varies", desc: "What Roxy is known for. Rotate regularly. Reviewers consistently call them the best cakes in Southport. The cheesecake and the strawberry options are particularly mentioned." },
-  { name: "Coffee & Cake Deal", price: "£7.50", desc: "Any coffee plus a slice of homemade cake. Monday to Friday, all day. Genuinely good value." },
+const MORNING = [
+  { name: "Flavoured Croissant", price: "£2.75", desc: "Nutella, custard, pistachio or apricot. Freshly baked." },
+  { name: "Krapfen", price: "£2.35", desc: "Italian doughnut. Nutella, custard or pistachio filled." },
+  { name: "Toasted Tea Cake", price: "£2.75", desc: "Served with butter." },
+  { name: "Panettone Toasted", price: "£3.50", desc: "Served with butter." },
+  { name: "Ham & Cheese Croissant", price: "£4.95", desc: "Freshly baked." },
+  { name: "Ham & Cheese Toast", price: "£5.95", desc: "" },
+  { name: "Parma Ham Croissant", price: "£5.95", desc: "Lettuce, parma ham, mozzarella and tomatoes." },
+];
+
+const PANINI = [
+  { name: "Caprese (VE)", price: "£7.95", desc: "Ciabatta, tomato, mozzarella, sunblush tomatoes and fresh basil." },
+  { name: "Alpine", price: "£7.95", desc: "Focaccia genovese, ham and emmental." },
+  { name: "Orticella (VE)", price: "£7.95", desc: "Ciabatta, grilled vegetables and mascarpone." },
+  { name: "Tonno", price: "£8.95", desc: "Ciabatta, lettuce, cucumber, tuna, red onions and mayonnaise." },
+  { name: "Ham & Mozzarella", price: "£8.95", desc: "Focaccia, lettuce, ham, mozzarella, tomato, mayonnaise and oregano." },
+  { name: "Piadina Romagna", price: "£8.95", desc: "Flatbread, lettuce, ham, scamorza and tomato." },
+  { name: "Fattorino", price: "£9.95", desc: "Pugliese bread, speck and brie." },
+  { name: "Spianata Calabrese", price: "£9.95", desc: "Filone rustico, spianata calabrese, provolone cheese and bomba pugliese." },
+  { name: "Panino alla Bolognese", price: "£9.95", desc: "Schiacciata romana, mortadella, stracchino and pistachio." },
+  { name: "Schiacciata Romana", price: "£9.95", desc: "Schiacciata romana, cured beef, rocket and parmesan shavings." },
+  { name: "Bufalo", price: "£9.95", desc: "Schiacciata romana, parma ham, mozzarella di bufala and rocket." },
+  { name: "Apollo", price: "£10.50", desc: "Ciabatta, lettuce, breadcrumbed chicken, tomato and mayonnaise." },
+];
+
+const PINSA = [
+  { name: "Parma", price: "£11.95", desc: "Mozzarella, cherry tomatoes, rocket, parma ham and parmesan shavings." },
+  { name: "Calabrese", price: "£11.95", desc: "Tomato, mozzarella, olives, spianata calabrese and bomba pugliese." },
+  { name: "Stracchino", price: "£11.95", desc: "Mortadella, stracchino, pistachio and pesto." },
+  { name: "Speck & Scamorza", price: "£11.95", desc: "Tomato, mozzarella, scamorza and speck." },
+  { name: "Vegetarian", price: "£11.95", desc: "Tomato, mozzarella and grilled vegetables." },
+  { name: "Four Salumi", price: "£12.95", desc: "Tomato, mozzarella and four different salumi." },
+  { name: "Smoked Salmon", price: "£12.95", desc: "Smoked salmon, stracchino, rocket and balsamic." },
+];
+
+const PLATTERS = [
+  { name: "Meat & Cheese for One", price: "£12.95", desc: "Selection of Italian cured meats and cheeses." },
+  { name: "Meat & Cheese for Two", price: "£22.95", desc: "Selection of Italian cured meats and cheeses. Available to take away." },
+  { name: "Cheeseboard", price: "£9.95", desc: "Selection of Italian cheese." },
+];
+
+const DESSERTS = [
+  { name: "Homemade Cake", price: "£5.95", desc: "Changes daily. Ask staff for what is available." },
+  { name: "Italian Gelato — 1 scoop", price: "£3.45", desc: "" },
+  { name: "Italian Gelato — 2 scoops", price: "£4.95", desc: "" },
+  { name: "Italian Gelato — 3 scoops", price: "£6.45", desc: "" },
+  { name: "Coffee & Cake Deal", price: "£7.50", desc: "Any coffee plus a homemade cake. Monday to Friday, all day." },
+];
+
+const GALLERY = [
+  { src: "/images/guides/roxy-cafe-southport/gallery-gelato.jpg", alt: "Italian pistachio gelato with wafer at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-tiramisu.jpg", alt: "Homemade tiramisu and pistachio cake at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-bufalo.jpg", alt: "Bufalo panino: schiacciata romana, parma ham and mozzarella di bufala at Roxy's" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-spianata.jpg", alt: "Spianata Calabrese panino with provolone at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-bolognese.jpg", alt: "Panino alla Bolognese with mortadella and pistachio at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-romana.jpg", alt: "Schiacciata Romana with cured beef and parmesan at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-ham-mozz.jpg", alt: "Ham and mozzarella focaccia panino at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-piadina.jpg", alt: "Piadina Romagna flatbread wrap at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-tonno.jpg", alt: "Tonno ciabatta with tuna and salad at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-caprese.jpg", alt: "Caprese ciabatta with mozzarella and sunblush tomatoes at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-alpine.jpg", alt: "Alpine focaccia with ham and emmental at Roxy's Cafe Southport" },
+  { src: "/images/guides/roxy-cafe-southport/gallery-fattorino.jpg", alt: "Fattorino on pugliese bread with speck and brie at Roxy's Cafe Southport" },
 ];
 
 const HOURS = [
@@ -216,7 +284,7 @@ export default function RoxyCafeGuide() {
                     Roxy spent nearly eight years at Volare before doing this herself. Volare is one of the most respected Italian restaurants in Southport and has been for years. That background matters: this is not someone who decided to open a coffee shop and bought a machine. This is someone who knows Italian food from the inside and built a place around it.
                   </p>
                   <p>
-                    The pistachio coffee has become the thing people make a specific trip for. The pistachio croissant, at £4.50, is the one the regulars go back for. The coffee and cake deal is £7.50, Monday to Friday, all day, and is one of the better value things in this part of town. And the cakes are genuinely excellent.
+                    The pistachio coffee is the thing people make a specific trip for. The panini are proper Italian: named breads, proper fillings, nothing generic about them. The Pinsa Romana is something most people in Southport have not tried before. The coffee and cake deal is £7.50, Monday to Friday, all day, and is one of the better value things in this part of town. And the cakes are genuinely excellent.
                   </p>
                   <p>
                     If you are catching a train, it is right there. If you want a proper Italian coffee and something freshly baked with it, it is the place to go in Southport. I have lived here 41 years. This is the kind of independent that makes a town worth living in.
@@ -235,44 +303,96 @@ export default function RoxyCafeGuide() {
                 </p>
               </section>
 
+              {/* Gallery */}
+              <section>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-5">The Food</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {GALLERY.map((img) => (
+                    <div key={img.src} className="relative aspect-[3/4] rounded-xl overflow-hidden">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 33vw"
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+
               {/* Coffee */}
               <section>
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-5">
                   <Coffee className="w-6 h-6 text-[#C9A84C]" />
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">The Coffee</h2>
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">Hot Drinks</h2>
                 </div>
                 <p className="text-gray-600 mb-5 leading-relaxed">
-                  Roxy uses <strong>Julius Meinl</strong>, an Austrian roaster founded in Vienna in 1862 with a long tradition of Italian-style espresso. The signature red cardinal on the cups is one of the most recognised marks in European coffee. It is a quality product and a deliberate choice.
+                  Roxy uses <strong>Julius Meinl</strong>, a Viennese roaster founded in 1862 with a long Italian-style espresso tradition. The signature red cardinal on the cups is one of the most recognised marks in European coffee.
                 </p>
                 <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
                   {COFFEE.map((item) => (
-                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-4 bg-white hover:bg-[#FAF8F5] transition-colors">
+                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-3.5 bg-white hover:bg-[#FAF8F5] transition-colors">
                       <div>
                         <p className="font-semibold text-[#1B2E4B] text-sm">{item.name}</p>
-                        {item.desc && <p className="text-gray-500 text-xs mt-0.5 leading-relaxed">{item.desc}</p>}
+                        {item.desc && <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>}
                       </div>
                       <span className="text-[#C9A84C] font-bold text-sm whitespace-nowrap shrink-0">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-2 divide-y divide-gray-50 border border-gray-100 rounded-xl overflow-hidden">
+                  {COFFEE_EXTRAS.map((item) => (
+                    <div key={item.name} className="flex items-center justify-between px-5 py-2.5 bg-gray-50 text-xs text-gray-500">
+                      <span>{item.name}</span>
+                      <span className="font-semibold">{item.price}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-900">
                   <Star className="w-4 h-4 text-amber-500 shrink-0" />
-                  <p><strong>Order the pistachio coffee.</strong> Multiple people have walked in having seen it online specifically to try it. At £3.95 it is not expensive. It is the right call.</p>
+                  <p><strong>Order the pistachio coffee.</strong> At £3.95 it is the most recommended item. Multiple people have walked in having seen it online specifically to try it.</p>
                 </div>
               </section>
 
-              {/* Pastries */}
+              {/* Morning Treats */}
               <section>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-6">Pastries</h2>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-5">Morning Treats</h2>
                 <p className="text-gray-600 mb-5 leading-relaxed">
-                  All croissants are freshly baked. The pistachio croissant is the one reviewers come back to specifically. If it is in stock when you arrive, do not overthink it.
+                  Freshly baked every morning. The flavoured croissants rotate: Nutella, custard, pistachio and apricot. The Krapfen (Italian doughnut) is worth trying if you have not had one before.
+                </p>
+                <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden mb-5">
+                  {MORNING.map((item) => (
+                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-3.5 bg-white hover:bg-[#FAF8F5] transition-colors">
+                      <div>
+                        <p className="font-semibold text-[#1B2E4B] text-sm">{item.name}</p>
+                        {item.desc && <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>}
+                      </div>
+                      <span className="text-[#C9A84C] font-bold text-sm whitespace-nowrap shrink-0">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
+                <Image
+                  src="/images/guides/roxy-cafe-southport/menu-morning-treats.jpg"
+                  alt="Roxy's Cafe Southport morning treats menu"
+                  width={700}
+                  height={700}
+                  className="w-full rounded-2xl"
+                />
+              </section>
+
+              {/* Panini */}
+              <section>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-3">Panini & Sandwiches</h2>
+                <p className="text-gray-600 mb-5 leading-relaxed">
+                  All served with a side salad. These are proper Italian sandwiches with named breads: schiacciata romana, pugliese, focaccia genovese, ciabatta. Not the generic deli counter kind.
                 </p>
                 <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
-                  {PASTRIES.map((item) => (
-                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-4 bg-white hover:bg-[#FAF8F5] transition-colors">
+                  {PANINI.map((item) => (
+                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-3.5 bg-white hover:bg-[#FAF8F5] transition-colors">
                       <div>
                         <p className="font-semibold text-[#1B2E4B] text-sm">{item.name}</p>
-                        {item.desc && <p className="text-gray-500 text-xs mt-0.5 leading-relaxed">{item.desc}</p>}
+                        {item.desc && <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>}
                       </div>
                       <span className="text-[#C9A84C] font-bold text-sm whitespace-nowrap shrink-0">{item.price}</span>
                     </div>
@@ -280,22 +400,46 @@ export default function RoxyCafeGuide() {
                 </div>
               </section>
 
-              {/* Food */}
+              {/* Pinsa Romana */}
               <section>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-6">Food & Cakes</h2>
-                <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden mb-6">
-                  {FOOD.map((item) => (
-                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-4 bg-white hover:bg-[#FAF8F5] transition-colors">
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-3">Pinsa Romana</h2>
+                <p className="text-gray-600 mb-5 leading-relaxed">
+                  Pinsa is a Roman-style flatbread: lighter and crispier than conventional pizza, with a high hydration dough that makes it more digestible. This is proper pinsa, not pizza pretending to be something else. Worth ordering if you have not tried it.
+                </p>
+                <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden mb-5">
+                  {PINSA.map((item) => (
+                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-3.5 bg-white hover:bg-[#FAF8F5] transition-colors">
                       <div>
                         <p className="font-semibold text-[#1B2E4B] text-sm">{item.name}</p>
-                        {item.desc && <p className="text-gray-500 text-xs mt-0.5 leading-relaxed">{item.desc}</p>}
+                        {item.desc && <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>}
                       </div>
                       <span className="text-[#C9A84C] font-bold text-sm whitespace-nowrap shrink-0">{item.price}</span>
                     </div>
                   ))}
                 </div>
+                <Image
+                  src="/images/guides/roxy-cafe-southport/menu-pinsa.jpg"
+                  alt="Roxy's Cafe Southport Pinsa Romana menu"
+                  width={700}
+                  height={700}
+                  className="w-full rounded-2xl"
+                />
+              </section>
 
-                {/* Deal image */}
+              {/* Platters & Desserts */}
+              <section>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-5">Platters, Desserts & Gelato</h2>
+                <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden mb-5">
+                  {[...PLATTERS, ...DESSERTS].map((item) => (
+                    <div key={item.name} className="flex items-start justify-between gap-4 px-5 py-3.5 bg-white hover:bg-[#FAF8F5] transition-colors">
+                      <div>
+                        <p className="font-semibold text-[#1B2E4B] text-sm">{item.name}</p>
+                        {item.desc && <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>}
+                      </div>
+                      <span className="text-[#C9A84C] font-bold text-sm whitespace-nowrap shrink-0">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
                 <div className="relative rounded-2xl overflow-hidden">
                   <Image
                     src="/images/guides/roxy-cafe-southport/deal.jpg"
