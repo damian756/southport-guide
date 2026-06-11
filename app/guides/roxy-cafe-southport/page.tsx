@@ -133,37 +133,68 @@ export default function RoxyCafeGuide() {
           </div>
         </div>
 
-        {/* Hero */}
-        <section className="relative overflow-hidden min-h-[480px] md:min-h-[580px] flex items-end">
-          <Image
-            src="/images/guides/roxy-cafe-southport/hero.jpg"
-            alt="Roxy Budoi, owner of Roxy's Cafe Southport, holding a Julius Meinl espresso and freshly baked croissant"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-          <div className="relative container mx-auto px-4 max-w-6xl pb-10 md:pb-14">
-            <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider mb-4">
-              <Coffee className="w-3 h-3" /> Cafe Guide · London Street
-            </span>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
-              Roxy&apos;s Cafe
-            </h1>
-            <p className="text-white/75 text-lg md:text-xl max-w-2xl mb-5">
-              Italian coffee, freshly baked croissants, and homemade cakes right next to Southport train station. The full guide.
-            </p>
-            <div className="flex flex-wrap gap-3 text-sm">
-              <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full">
-                <MapPin className="w-3.5 h-3.5" /> 42 London Street, PR9 0TJ
+        {/* Hero — mobile: full bleed, desktop: split */}
+        <section className="bg-[#1B2E4B]">
+          {/* Mobile: full-bleed image with gradient overlay */}
+          <div className="relative md:hidden overflow-hidden min-h-[480px] flex items-end">
+            <Image
+              src="/images/guides/roxy-cafe-southport/hero.jpg"
+              alt="Roxy Budoi, owner of Roxy's Cafe Southport, holding a Julius Meinl espresso and freshly baked croissant"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+            <div className="relative px-4 pb-10 w-full">
+              <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+                <Coffee className="w-3 h-3" /> Cafe Guide · London Street
               </span>
-              <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full">
-                <Clock className="w-3.5 h-3.5" /> Open from 8am Mon–Fri
+              <h1 className="font-display text-4xl font-bold text-white leading-tight mb-3">Roxy&apos;s Cafe</h1>
+              <p className="text-white/75 text-lg mb-5">Italian coffee, freshly baked croissants, and homemade cakes right next to Southport train station.</p>
+              <div className="flex flex-wrap gap-2 text-sm">
+                <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full"><MapPin className="w-3.5 h-3.5" /> 42 London Street, PR9 0TJ</span>
+                <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full"><Clock className="w-3.5 h-3.5" /> Open from 8am Mon–Fri</span>
+                <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full"><Phone className="w-3.5 h-3.5" /> 0330 912 7361</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop: split — text left, image right */}
+          <div className="hidden md:grid md:grid-cols-2 min-h-[520px]">
+            {/* Left: text panel */}
+            <div className="flex flex-col justify-center px-10 lg:px-16 py-12">
+              <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-6">
+                <Coffee className="w-3 h-3" /> Cafe Guide · London Street
               </span>
-              <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full">
-                <Phone className="w-3.5 h-3.5" /> 0330 912 7361
-              </span>
+              <h1 className="font-display text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                Roxy&apos;s Cafe
+              </h1>
+              <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-md">
+                Italian coffee, freshly baked croissants, and homemade cakes right next to Southport train station. The full guide.
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full">
+                  <MapPin className="w-3.5 h-3.5" /> 42 London Street, PR9 0TJ
+                </span>
+                <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full">
+                  <Clock className="w-3.5 h-3.5" /> Open from 8am Mon–Fri
+                </span>
+                <span className="flex items-center gap-1.5 bg-white/15 border border-white/20 text-white px-3 py-1.5 rounded-full">
+                  <Phone className="w-3.5 h-3.5" /> 0330 912 7361
+                </span>
+              </div>
+            </div>
+            {/* Right: image panel */}
+            <div className="relative overflow-hidden">
+              <Image
+                src="/images/guides/roxy-cafe-southport/hero.jpg"
+                alt="Roxy Budoi, owner of Roxy's Cafe Southport, holding a Julius Meinl espresso and freshly baked croissant"
+                fill
+                priority
+                sizes="50vw"
+                className="object-cover object-center"
+              />
             </div>
           </div>
         </section>
