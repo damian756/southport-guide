@@ -100,6 +100,20 @@ export default function SeasonsGuide() {
 
       <div className="min-h-screen bg-[#FAF8F5]">
 
+        {/* Closed notice */}
+        <div className="bg-amber-50 border-b border-amber-200">
+          <div className="container mx-auto px-4 max-w-6xl py-3">
+            <p className="text-sm text-amber-900 flex items-center gap-2 flex-wrap">
+              <span className="font-bold">Season Coffee has now closed.</span>
+              <span className="text-amber-800">If you are looking for a great independent coffee shop in Southport, we have written a full guide to</span>
+              <Link href="/guides/roxy-cafe-southport" className="font-bold text-amber-900 underline underline-offset-2 hover:text-[#1B2E4B] transition">
+                Roxy&apos;s Cafe on London Street
+              </Link>
+              <span className="text-amber-800">which we would recommend.</span>
+            </p>
+          </div>
+        </div>
+
         {/* Breadcrumb */}
         <div className="bg-white border-b border-gray-100">
           <div className="container mx-auto px-4 max-w-6xl py-3">
