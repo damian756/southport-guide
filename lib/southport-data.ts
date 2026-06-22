@@ -1650,6 +1650,25 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-southport-july-2026.jpg",
     date: "5 Jun 2026",
   },
+  {
+    slug: "the-open-2026-three-weeks-out",
+    title: "The Open 2026: Three Weeks to Go. Here Is What You Still Need to Sort.",
+    excerpt:
+      "Three weeks. If you have tickets but no accommodation, or accommodation but no plan, this is where to start. What is still available, what you can realistically sort in the next fortnight, and what to accept is gone.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-three-weeks.webp",
+    date: "22 Jun 2026",
+    featured: true,
+  },
+  {
+    slug: "southport-marine-lake-summer",
+    title: "Southport Marine Lake in Summer: What to Do and When to Go",
+    excerpt:
+      "Marine Lake is at its best from late June through August. Sailing, paddleboarding, the miniature railway, and the seafront walk. Here is what is there, what it costs, and the honest view on timing.",
+    categorySlug: "outdoors",
+    image: "/images/blog/blog-southport-seafront-summer.webp",
+    date: "22 Jun 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
