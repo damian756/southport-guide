@@ -1669,6 +1669,25 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-southport-seafront-summer.webp",
     date: "22 Jun 2026",
   },
+  {
+    slug: "getting-around-southport-open-week",
+    title: "Getting Around Southport During Open Week: The Practical Guide",
+    excerpt:
+      "Driving into Southport during Open week is a bad idea. Here is what actually works: the shuttle, the train, taxis, and where parking exists if you genuinely need a car.",
+    categorySlug: "getting-around",
+    image: "/images/blog/blog-southport-transport-open.webp",
+    date: "1 Jul 2026",
+    featured: true,
+  },
+  {
+    slug: "lord-street-southport-summer",
+    title: "Lord Street in Summer: What Is There and Why It Is Worth Your Time",
+    excerpt:
+      "Lord Street is the best boulevard in the north of England and most visitors walk one end without seeing the other. Here is what is along it, what to stop at, and what the Victorian glass canopies look like on a good July day.",
+    categorySlug: "things-to-do",
+    image: "/images/blog/blog-lord-street-summer.webp",
+    date: "1 Jul 2026",
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
