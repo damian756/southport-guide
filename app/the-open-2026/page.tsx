@@ -47,7 +47,7 @@ const KEY_DATES = [
 const FAQS = [
   {
     q: "How do I get to Royal Birkdale for The Open 2026?",
-    a: "Do not drive to the course. Road closures around Birkdale make it impractical and parking near the club is reserved for accredited officials only. The best options are Merseyrail from Southport or Liverpool to Birkdale station (10–15 minute walk from the course), or park and ride buses operating from designated sites across Southport. Full transport details are published by The R&A at theopen.com closer to the event.",
+    a: "Do not drive to the course. Road closures around Birkdale make it impractical and parking near the club is reserved for accredited officials only. The best option is Merseyrail from Southport or Liverpool to Hillside station, which is approximately 5 minutes walk from the Royal Birkdale entrance on Waterloo Road. Hillside is the second stop from Southport. Park and ride buses also operate from designated sites across Southport. Full transport details are published by The R&A at theopen.com.",
   },
   {
     q: "Where should I stay for The Open Championship 2026?",
@@ -331,7 +331,7 @@ export default function TheOpen2026Page() {
               {
                 icon: "🚆",
                 title: "Train",
-                body: "Birkdale station (Merseyrail Northern line) is a 10–15 minute walk from the Royal Birkdale entrance. Trains run from Southport, Liverpool Central and Wigan. This is the easiest option if you&apos;re not driving.",
+                body: "Hillside station (Merseyrail Southport line) is the closest station to Royal Birkdale, approximately 5 minutes walk from the course entrance on Waterloo Road. It is the second stop from Southport (Southport → Birkdale → Hillside). Trains run from Liverpool Central and Southport. Do not get off at Birkdale station: it is one stop too early and leaves you an extra 10-15 minutes walk.",
               },
               {
                 icon: "🚖",
@@ -348,7 +348,7 @@ export default function TheOpen2026Page() {
           </div>
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
             <p className="text-sm text-gray-700">
-              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> The train is genuinely the easiest option. Merseyrail runs frequently and Birkdale station puts you 15 minutes from the gate with no parking stress. If you&apos;re driving from outside Southport, use the park and ride — the R&amp;A publishes confirmed sites and booking at{" "}
+              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> The train is genuinely the easiest option. Get off at Hillside station, not Birkdale. Hillside puts you 5 minutes from the gate. Birkdale is one stop too early and costs you 15 minutes of walking in the heat. Merseyrail runs frequently and if you&apos;re driving from outside Southport, use the park and ride — the R&amp;A publishes confirmed sites and booking at{" "}
               <a href="https://www.theopen.com" target="_blank" rel="noopener noreferrer" className="font-medium text-[#C9A84C] hover:underline">theopen.com</a>.
             </p>
           </div>
@@ -449,7 +449,7 @@ export default function TheOpen2026Page() {
               <ul className="space-y-3 text-sm">
                 {[
                   ["Don&apos;t drive to the course", "Road closures and no public parking near the club. This is non-negotiable."],
-                  ["Merseyrail to Birkdale", "Trains from Liverpool Central via Southport line. Birkdale station is a 10–15 min walk from the course."],
+                  ["Merseyrail to Hillside", "Trains from Liverpool Central via Southport line. Alight at Hillside station (NOT Birkdale). Hillside is approx 5 min walk from the course entrance."],
                   ["Park &amp; Ride", "Operating from multiple Southport sites. Shuttle buses run directly to the course entrance."],
                   ["Taxi from town", "Southport town centre to Royal Birkdale: approximately 10 minutes, £8–12."],
                 ].map(([title, detail]) => (

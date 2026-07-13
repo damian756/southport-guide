@@ -91,7 +91,7 @@ const FAQS = [
   },
   {
     q: "How do I get from my hotel to Royal Birkdale during Open week?",
-    a: "Walking is recommended for hotels within 2 miles. Merseyrail trains run to Birkdale station (approximately 10–15 minutes walk from the course entrance). Taxis from Southport town centre take around 10 minutes and cost £8–12 each way. The R&A also operates a park and ride shuttle service.",
+    a: "Walking is recommended for hotels within 2 miles. Merseyrail trains run to Hillside station, which is approximately 5 minutes walk from the course entrance on Waterloo Road. Hillside is the second stop from Southport. Taxis from Southport town centre take around 10 minutes and cost £8–12 each way. The R&A also operates a park and ride shuttle service.",
   },
   {
     q: "What is the closest train station to Royal Birkdale?",

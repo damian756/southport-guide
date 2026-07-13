@@ -34,17 +34,17 @@ const faqLd = {
     {
       "@type": "Question",
       name: "How do I get to Royal Birkdale for The Open 2026?",
-      acceptedAnswer: { "@type": "Answer", text: "Do not drive to the course — road closures around Birkdale make it impractical and parking is reserved for officials only. Take Merseyrail to Birkdale station (10–15 minute walk from the course), or use the R&A park and ride service from sites across Southport." },
+      acceptedAnswer: { "@type": "Answer", text: "Do not drive to the course — road closures around Birkdale make it impractical and parking is reserved for officials only. Take Merseyrail to Hillside station (approximately 5 minutes walk from the course entrance on Waterloo Road), or use the R&A park and ride service from sites across Southport." },
     },
     {
       "@type": "Question",
       name: "Which train station is closest to Royal Birkdale?",
-      acceptedAnswer: { "@type": "Answer", text: "Birkdale station on the Merseyrail Southport line is the closest station, approximately 10–15 minutes walk from the course entrance. Trains run frequently from Liverpool Central and Southport station throughout the day." },
+      acceptedAnswer: { "@type": "Answer", text: "Hillside station on the Merseyrail Southport line is the closest station, approximately 5 minutes walk from the course entrance on Waterloo Road. It is the second stop from Southport (Southport → Birkdale → Hillside). Trains run frequently from Liverpool Central throughout the day." },
     },
     {
       "@type": "Question",
       name: "Is there parking at Royal Birkdale for The Open 2026?",
-      acceptedAnswer: { "@type": "Answer", text: "No public parking is available at or near Royal Birkdale during The Open. All nearby parking is reserved for officials, media, and accredited partners. Use the park and ride sites operated by the R&A from across Southport, or take the train to Birkdale station." },
+      acceptedAnswer: { "@type": "Answer", text: "No public parking is available at or near Royal Birkdale during The Open. All nearby parking is reserved for officials, media, and accredited partners. Use the park and ride sites operated by the R&A from across Southport, or take the train to Hillside station." },
     },
   ],
 };
@@ -97,7 +97,7 @@ export default function OpenGettingTherePage() {
             <h2 className="font-display text-xl font-bold text-[#1B2E4B]">By Train: The Recommended Option</h2>
           </div>
           <p className="text-gray-600 text-sm leading-relaxed mb-5">
-            Merseyrail operates frequent services on the Southport line from Liverpool Central, with a stop at Birkdale station. The station is approximately a 10–15 minute walk from the Royal Birkdale course entrance on Waterloo Road, through Birkdale village.
+            Merseyrail operates frequent services on the Southport line from Liverpool Central. The correct stop for Royal Birkdale is Hillside station, which is approximately a 5-minute walk from the course entrance on Waterloo Road. Hillside is the second stop from Southport (Southport → Birkdale → Hillside). Do not alight at Birkdale station: it is the stop before Hillside and leaves you an extra 10-15 minutes walk.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -110,8 +110,8 @@ export default function OpenGettingTherePage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                <tr><td className="py-3 text-gray-700">Liverpool Central</td><td className="py-3 text-gray-700">Birkdale</td><td className="py-3 font-semibold text-[#1B2E4B]">~40 min</td><td className="py-3 text-gray-600">Every 15 min</td></tr>
-                <tr><td className="py-3 text-gray-700">Southport (town)</td><td className="py-3 text-gray-700">Birkdale</td><td className="py-3 font-semibold text-[#1B2E4B]">~5 min</td><td className="py-3 text-gray-600">Every 15 min</td></tr>
+                <tr><td className="py-3 text-gray-700">Liverpool Central</td><td className="py-3 text-gray-700">Hillside</td><td className="py-3 font-semibold text-[#1B2E4B]">~38 min</td><td className="py-3 text-gray-600">Every 15 min</td></tr>
+                <tr><td className="py-3 text-gray-700">Southport (town)</td><td className="py-3 text-gray-700">Hillside</td><td className="py-3 font-semibold text-[#1B2E4B]">~8 min</td><td className="py-3 text-gray-600">Every 15 min</td></tr>
                 <tr><td className="py-3 text-gray-700">Formby</td><td className="py-3 text-gray-700">Birkdale</td><td className="py-3 font-semibold text-[#1B2E4B]">~15 min</td><td className="py-3 text-gray-600">Every 15 min</td></tr>
               </tbody>
             </table>
