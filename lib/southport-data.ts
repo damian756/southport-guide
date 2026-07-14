@@ -1680,6 +1680,23 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: true,
   },
   {
+    slug: "birkdale-village-restaurants-open-week",
+    title: "Birkdale Village Restaurants: Where to Eat During Open Week",
+    excerpt: "The restaurants in Birkdale village are busier this week than at any other point in the year. Here is what is there, what is worth booking, and the honest view on walk-in chances.",
+    categorySlug: "food-drink",
+    image: "/images/blog/blog-birkdale-restaurants.webp",
+    date: "14 Jul 2026",
+    featured: true,
+  },
+  {
+    slug: "open-2026-southport-local-view",
+    title: "What The Open Does to Southport: A Local's View from the Inside",
+    excerpt: "I have lived in Southport through three Opens at Royal Birkdale. The town changes in ways that are hard to describe to someone who has not seen it. Here is what it actually looks like from the inside.",
+    categorySlug: "local-guides",
+    image: "/images/blog/blog-open-local-view.webp",
+    date: "14 Jul 2026",
+  },
+  {
     slug: "lord-street-southport-summer",
     title: "Lord Street in Summer: What Is There and Why It Is Worth Your Time",
     excerpt:

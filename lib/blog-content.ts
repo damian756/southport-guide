@@ -2473,4 +2473,32 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "cta", text: "Things to do in Southport:", href: "/things-to-do", label: "Things to Do in Southport →" },
   ],
 
+  "birkdale-village-restaurants-open-week": [
+    { type: "p", text: "Birkdale village sits about fifteen minutes walk from the Royal Birkdale entrance. This week it is the most convenient place to eat within walking distance of the course. The restaurants here are busy. Most are full in the evenings. Here is the honest picture." },
+    { type: "h2", text: "The Bold Hotel" },
+    { type: "p", text: "The Bold is on Queens Road in Birkdale village and is the most prominent restaurant in this end of town. It has a proper kitchen, a good wine list, and the kind of atmosphere that suits an Open week evening. Evening tables are essentially gone for the rest of this week without a reservation. Lunch is more achievable if you arrive before noon. Worth trying the bar if the dining room is full: the food is the same and the atmosphere is better." },
+    { type: "h2", text: "Along Liverpool Road" },
+    { type: "p", text: "Liverpool Road through Birkdale village has a handful of cafes and casual dining options that are more walkable than The Bold. These are the options that can absorb walk-ins in a way that the smarter restaurants cannot. Go before 12:30 for lunch and before 6:30 for dinner. After those windows, expect to wait." },
+    { type: "h2", text: "What Is Still Bookable" },
+    { type: "p", text: "If you want a guaranteed table for this evening or tomorrow, call directly rather than using apps. Apps do not always show the real availability and a direct call will get you an honest answer about whether anything is left. Most restaurants in the village will tell you within thirty seconds whether there is anything available and at what time." },
+    { type: "h2", text: "The Alternative: Southport Town Centre" },
+    { type: "p", text: "If Birkdale village is full, Southport town centre is fifteen minutes by shuttle or taxi. Lord Street has more options and slightly more availability than the Birkdale corridor this week, simply because it is further from the course and some visitors do not want to travel that far. Bistrot Verite on Lord Street is good. The Atkinson cafe is reliable for a quick lunch. The Market on Market Street is the best option for a casual meal without a reservation." },
+    { type: "callout", emoji: "📞", text: "Call restaurants directly this week rather than booking apps. Most Birkdale village restaurants are taking phone bookings for same-day and next-day slots that have not reached the apps yet." },
+    { type: "cta", text: "More restaurant options in Southport:", href: "/restaurants", label: "Southport Restaurants →" },
+  ],
+
+  "open-2026-southport-local-view": [
+    { type: "p", text: "I have lived in Southport my whole life. I have seen the Open at Royal Birkdale three times: in 1991, 1998, and 2008. This is the fourth time in my lifetime the championship has come here. The town changes in a specific way when it happens and it is difficult to describe to someone who has not been here for it." },
+    { type: "h2", text: "What Happens to Lord Street" },
+    { type: "p", text: "Lord Street on a normal Tuesday in July is a pleasant shopping street with the Victorian canopies and a reasonable number of people. Lord Street during Open week is something different. It fills up from mid-morning with people who have come off the course or who are killing time before their session starts. The restaurants that are normally bookable on the day start requiring reservations. The pubs have the golf on every screen." },
+    { type: "p", text: "The nationalities mix is the thing I always notice first. American accents, Australian accents, Japanese visitors with proper cameras, people from places you would not normally associate with Southport on a Tuesday morning. The Open brings a genuinely international crowd and they spread through the town in a way that transforms the atmosphere." },
+    { type: "h2", text: "Birkdale Village" },
+    { type: "p", text: "Birkdale village is the part of Southport that changes most dramatically. It is ten minutes walk from the Royal Birkdale entrance and in a normal year it is a quiet residential area with a handful of good restaurants. This week it is the closest thing Southport has to a tournament hub. The pavement cafes are full by mid-morning. The restaurants are booking days in advance. Even the Co-op on Liverpool Road is noticeably busier." },
+    { type: "h2", text: "The Traffic" },
+    { type: "p", text: "Do not drive around Birkdale this week. The roads around the course are either closed or so congested that they are not worth attempting. The people who learn this lesson on Monday morning do not repeat the mistake on Tuesday. Use the shuttle from town or walk from Hillside station. Everyone who has been here before knows this. Everyone who has not finds out the hard way on the first day." },
+    { type: "h2", text: "What It Means to Live Here" },
+    { type: "p", text: "I will be honest: the week is genuinely brilliant. The town has a different energy. It is louder, busier, more expensive, and more chaotic than normal. It is also more alive than at any other point in the year. Southport is a town that has had a complicated couple of decades and The Open, when it comes, reminds the place and its people what it is actually capable of. I am glad it is here." },
+    { type: "cta", text: "Everything about The Open 2026 in Southport:", href: "/the-open-2026", label: "The Open 2026 Guide →" },
+  ],
+
 };
