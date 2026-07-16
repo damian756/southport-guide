@@ -1680,6 +1680,15 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: true,
   },
   {
+    slug: "open-2026-round-1-southport",
+    title: "The Open 2026: Round 1 Has Started. Here Is What Royal Birkdale Is Like Right Now.",
+    excerpt: "Round 1 of the 154th Open Championship began this morning at 6:35am. I have been here for three Opens at Royal Birkdale. This is what the town and the course look like when it actually happens.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-round1-southport.webp",
+    date: "16 Jul 2026",
+    featured: true,
+  },
+  {
     slug: "birkdale-village-restaurants-open-week",
     title: "Birkdale Village Restaurants: Where to Eat During Open Week",
     excerpt: "The restaurants in Birkdale village are busier this week than at any other point in the year. Here is what is there, what is worth booking, and the honest view on walk-in chances.",

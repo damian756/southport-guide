@@ -5,9 +5,9 @@ import { BLOG_POSTS } from "@/lib/southport-data";
 import { LATEROOMS, CHAMPIONS_TRAVEL, SYKES } from "@/lib/affiliate-links";
 
 export const metadata = {
-  title: "The Open 2026 Southport | Park & Ride, Tickets, Hotels & Visitor Guide",
+  title: "The Open 2026 Southport | Live Now at Royal Birkdale — Visitor Guide",
   description:
-    "The Open Championship 2026 at Royal Birkdale, Southport — 12–19 July. Park and ride options, how to get there by train, hotels near the course, tickets and spectator tips. Plan your visit now.",
+    "The Open Championship 2026 at Royal Birkdale is live. Championship rounds 16–19 July. Park and ride, how to get there by train (Hillside station), restaurants, accommodation and spectator tips.",
   keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open park and ride 2026, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026" },
   openGraph: {
@@ -202,9 +202,9 @@ export default function TheOpen2026Page() {
       {/* ── Quick nav cards ───────────────────────────────────────── */}
       <section className="bg-[#1B2E4B] border-t border-white/10">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-white/10">
+          <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10">
             {[
-              { href: "/the-open-2026/accommodation", icon: Hotel, label: "Where to Stay", sub: "Hotels ranked by distance" },
+              { href: "/the-open-2026/accommodation", icon: Hotel, label: "Where to Stay", sub: "Hotels & cottages" },
               { href: "/the-open-2026/restaurants", icon: Utensils, label: "Eat & Drink", sub: "Restaurants and pubs" },
               { href: "/the-open-2026/pubs", icon: MapPin, label: "Pubs", sub: "Near the course" },
               { href: "/the-open-2026/getting-there", icon: Car, label: "Getting There", sub: "Transport and parking" },
@@ -220,6 +220,19 @@ export default function TheOpen2026Page() {
                 <p className="text-white/40 text-xs mt-0.5 hidden sm:block">{sub}</p>
               </Link>
             ))}
+            <a
+              href="https://www.theopen.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center text-center px-4 py-6 hover:bg-white/5 transition-colors"
+            >
+              <ExternalLink className="w-6 h-6 text-green-400 mb-2 group-hover:scale-110 transition-transform" />
+              <p className="font-bold text-white text-sm flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                Live Scores
+              </p>
+              <p className="text-white/40 text-xs mt-0.5 hidden sm:block">theopen.com</p>
+            </a>
           </div>
         </div>
       </section>
@@ -228,6 +241,51 @@ export default function TheOpen2026Page() {
       <div className="h-12 bg-gradient-to-b from-[#1B2E4B] to-[#FAF8F5]" />
 
       <div className="container mx-auto px-4 max-w-6xl pb-24 pt-8 space-y-20">
+
+        {/* ── Live now ─────────────────────────────────────────────── */}
+        <section className="bg-[#1B2E4B] rounded-2xl p-8 md:p-10">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-3 h-3 rounded-full bg-green-400 animate-pulse flex-none" />
+            <p className="text-green-400 font-bold text-sm uppercase tracking-wider">Round 1 Underway — Thursday 16 July</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h2 className="font-display text-2xl font-bold text-white mb-4">What is happening at Royal Birkdale right now</h2>
+              <p className="text-white/65 text-sm leading-relaxed mb-4">
+                The 154th Open Championship began this morning at 6:35am. Championship rounds run Thursday to Sunday, 16 to 19 July. The weather this week is unusually warm: temperatures touching 26°C with firm, fast fairways. The rough has burned out. Ball-strikers with precise iron play have the advantage.
+              </p>
+              <p className="text-white/65 text-sm leading-relaxed mb-6">
+                For live scores as they happen, the official leaderboard is updated in real time at theopen.com. For television coverage, Sky Sports Golf is showing all four rounds live.
+              </p>
+              <a
+                href="https://www.theopen.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold px-5 py-2.5 rounded-lg text-sm transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Leaderboard at theopen.com
+              </a>
+            </div>
+            <div>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">Players to watch</p>
+              <div className="space-y-3">
+                {[
+                  { name: "Scottie Scheffler", note: "World No.1. Defending Open champion. Firm and fast conditions suit his precise ball-striking perfectly." },
+                  { name: "Rory McIlroy", note: "Reigning Masters champion. Overdue a links major. His ability to shape shots both ways is a significant asset at Birkdale." },
+                  { name: "Jordan Spieth", note: "Won The Open at Royal Birkdale in 2017. Knows the course. The sentimental pick and a genuine contender." },
+                  { name: "Tommy Fleetwood", note: "The home crowd favourite. Has contended at Opens before and knows links golf better than almost anyone in the field." },
+                  { name: "Viktor Hovland", note: "A links specialist. Finished runner-up at The Open in 2023. Thrives in firm, fast conditions." },
+                ].map(({ name, note }) => (
+                  <div key={name} className="border-l-2 border-[#C9A84C]/40 pl-4">
+                    <p className="font-bold text-white text-sm">{name}</p>
+                    <p className="text-white/50 text-xs leading-relaxed mt-0.5">{note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ── About Royal Birkdale ─────────────────────────────────── */}
         <section>
@@ -514,17 +572,16 @@ export default function TheOpen2026Page() {
         <section className="bg-[#1B2E4B] rounded-2xl p-8 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/5 rounded-full translate-x-16 -translate-y-16 blur-3xl pointer-events-none" />
           <div className="relative">
-            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">⚠️ Urgent</p>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">Book Accommodation Now</h2>
+            <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-3">⛳ The Open is Live</p>
+            <h2 className="font-display text-3xl font-bold text-white mb-4">Still Need Accommodation for the Final Rounds?</h2>
             <p className="text-white/70 leading-relaxed mb-4 max-w-2xl">
-              The Open brings 250,000 spectators to Southport over seven days. Hotels in Birkdale and the town centre were significantly booked up within weeks of the fixture being confirmed. If you haven&apos;t booked yet, act immediately.
+              Championship rounds run Thursday to Sunday. If you are arriving for Saturday or Sunday and have not yet sorted somewhere to stay, self-catering is your best option. Hotels in Birkdale and Southport are gone for the duration. Cottages and holiday lets within 20 miles still have availability.
             </p>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl">
-              Self-catering cottages within 20 miles of Royal Birkdale are your best remaining option.{" "}
               <a href={SYKES.southportOpen2026} target="_blank" rel="noopener noreferrer sponsored" className="text-[#C9A84C] font-semibold underline hover:text-[#E8C87A]">
-                Sykes Cottages has properties available near Southport and Formby
+                Sykes Cottages has last-minute availability near Southport and Formby
               </a>{" "}
-              with flexible dates. Formby is 10 minutes by train to Hillside station. Ormskirk is 20 minutes by road. Both are viable bases if Birkdale is gone.
+              with flexible dates. Formby is 10 minutes by train to Hillside station. Ormskirk is 20 minutes by road.
             </p>
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
               {[

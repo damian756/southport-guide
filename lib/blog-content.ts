@@ -2490,6 +2490,28 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "cta", text: "More restaurant options in Southport:", href: "/restaurants", label: "Southport Restaurants →" },
   ],
 
+  "open-2026-round-1-southport": [
+    { type: "p", text: "Round 1 of the 154th Open Championship began at Royal Birkdale this morning at 6:35am. The championship rounds are Thursday to Sunday, July 16 to 19. I have been here for three Open Championships at this course. This is what it actually looks like when it starts." },
+    { type: "h2", text: "The Conditions This Week" },
+    { type: "p", text: "Nobody expected this weather. Royal Birkdale in mid-July is usually cool with a westerly wind that can be brutal. This week it is 26 degrees Celsius and mostly clear. The rough that was supposed to be the course's main defence has burned out in the summer heat. The fairways are running fast. The ball is going further than the players planned for." },
+    { type: "p", text: "This matters. It changes the course from what it normally is and it changes who the course suits. The players who strike the ball cleanly and control it precisely are at an advantage on firm, fast links. You cannot muscle the ball into a firm green from outside 180 yards and expect it to stop. This week rewards accuracy over power in a way that a soft, wet Birkdale does not." },
+    { type: "h2", text: "Who to Watch" },
+    { type: "p", text: "Scottie Scheffler arrives as world number one and defending Open champion. He is the favourite for good reason: his ball-striking is the best in the game and firm, fast links conditions suit his game precisely." },
+    { type: "p", text: "Rory McIlroy arrives as the reigning Masters champion with something to prove at a links major. He has finished second at The Open enough times that a first win is overdue. Royal Birkdale in these conditions is a course that suits a player who can shape the ball both ways." },
+    { type: "p", text: "Jordan Spieth won The Open the last time it was played at Royal Birkdale, in 2017. He knows the course. The sentimental argument for Spieth at Birkdale is strong. Whether it translates to a second Claret Jug here depends on how his putting holds up over four days." },
+    { type: "p", text: "Viktor Hovland, Tommy Fleetwood, and Tyrrell Hatton are all in the mix as players who thrive on links conditions. Fleetwood is the local favourite in the sense that the northwest golf crowd knows him and he has a history of contending at Opens." },
+    { type: "h2", text: "Live Leaderboard" },
+    { type: "p", text: "Round 1 is in progress right now. For live scores as they happen, the official leaderboard is at theopen.com. Sky Sports Golf has continuous coverage. The scoring is moving and checking the official source gives you the most accurate and fastest update." },
+    { type: "callout", emoji: "⛳", text: "Live leaderboard and tee times: theopen.com/leaderboard", href: "https://www.theopen.com", label: "Live Scores at theopen.com →" },
+    { type: "h2", text: "What the Town Looks Like" },
+    { type: "p", text: "Birkdale village is busier than at any other point in the year. The pubs are full from lunchtime. Restaurants that were bookable on Monday are not bookable tonight. The Hillside station approach to the course, which was corrected from the original Birkdale station advice, is working well. The trains from Liverpool are running frequently and Hillside puts you five minutes from the gate." },
+    { type: "p", text: "If you are here for the final rounds on Saturday and Sunday and have not booked dinner, book now by calling restaurants directly. Walk-in availability in Birkdale village in the evening this week is essentially zero." },
+    { type: "h2", text: "The Weekend Rounds" },
+    { type: "p", text: "Saturday is moving day. The leaderboard tightens, the atmosphere intensifies, and the course plays its most dramatic golf. Sunday is the final round and the 18th at Birkdale is one of the great finishing holes in championship golf. If you have tickets for Saturday or Sunday and are not yet at the course, the time to get there is early. The crowds build through the morning and the best vantage points fill quickly." },
+    { type: "cta", text: "Transport and getting to the course:", href: "/the-open-2026/getting-there", label: "Getting to Royal Birkdale →" },
+    { type: "cta", text: "The full Open 2026 guide:", href: "/the-open-2026", label: "Open 2026 Complete Guide →" },
+  ],
+
   "open-2026-southport-local-view": [
     { type: "p", text: "I have lived in Southport my whole life. I have seen the Open at Royal Birkdale three times: in 1991, 1998, and 2008. This is the fourth time in my lifetime the championship has come here. The town changes in a specific way when it happens and it is difficult to describe to someone who has not been here for it." },
     { type: "h2", text: "What Happens to Lord Street" },
