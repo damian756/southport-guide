@@ -228,7 +228,7 @@ export default function AdvertisePage() {
         <div className="text-center mb-10">
           <p className="text-xs font-bold tracking-widest uppercase text-[#c9a84c] mb-3">Display Advertising</p>
           <h2 className="text-3xl font-bold text-[#0d1b2a]">Network packages</h2>
-          <p className="text-gray-500 mt-3 text-sm">All packages are six months, paid in full on agreement. Category exclusivity included.</p>
+          <p className="text-gray-500 mt-3 text-sm">All packages are six-month minimum contracts. Category exclusivity included.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -293,7 +293,7 @@ export default function AdvertisePage() {
                   <span className="text-3xl font-extrabold text-[#0d1b2a]">{pkg.price}</span>
                   <span className="text-gray-400 text-sm"> / month</span>
                 </div>
-                <p className="text-xs text-gray-400 mb-4">{pkg.total} paid upfront on agreement</p>
+                <p className="text-xs text-gray-400 mb-4">{pkg.total} · 6-month minimum contract</p>
                 <ul className="space-y-2 mb-5">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-xs text-gray-600">
