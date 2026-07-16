@@ -182,7 +182,9 @@ export default async function Home() {
   function formatEventLabel(event: { isoDate: string; dayLabel: string }) {
     return event.isoDate === todayISO ? "Today" : event.dayLabel;
   }
-  const openDays = Math.ceil(
+  const openStarted = today >= new Date("2026-07-12");
+  const openEnded = today > new Date("2026-07-19");
+  const openDays = openStarted ? 0 : Math.ceil(
     (new Date("2026-07-12").getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
   );
 
@@ -323,16 +325,49 @@ export default async function Home() {
               href="/the-open-2026"
               className="group bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#C9A84C]/40 rounded-2xl p-4 mb-5 flex items-center gap-4 transition-all self-start w-full max-w-xs"
             >
-              <div className="text-center flex-none">
-                <div className="font-display text-4xl font-bold text-[#C9A84C] leading-none">{openDays}</div>
-                <div className="text-white/40 text-[9px] uppercase tracking-widest mt-1">days</div>
-              </div>
-              <div className="w-px h-10 bg-white/10 flex-none" />
-              <div className="min-w-0">
-                <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open Championship</div>
-                <div className="text-white/50 text-xs mt-0.5">⛳ Royal Birkdale · July 2026</div>
-                <div className="text-[#C9A84C] text-xs mt-1.5">Plan your visit →</div>
-              </div>
+              {openStarted && !openEnded ? (
+                <>
+                  <div className="text-center flex-none">
+                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
+                      <span className="text-[#1B2E4B] text-lg">⛳</span>
+                    </div>
+                  </div>
+                  <div className="w-px h-10 bg-white/10 flex-none" />
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-none" />
+                      <span className="text-green-400 font-bold text-xs uppercase tracking-wider">Live Now</span>
+                    </div>
+                    <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open Championship</div>
+                    <div className="text-white/50 text-xs mt-0.5">Royal Birkdale · Ends 19 Jul</div>
+                  </div>
+                </>
+              ) : openEnded ? (
+                <>
+                  <div className="text-center flex-none">
+                    <div className="font-display text-4xl font-bold text-[#C9A84C] leading-none">⛳</div>
+                  </div>
+                  <div className="w-px h-10 bg-white/10 flex-none" />
+                  <div className="min-w-0">
+                    <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open 2026</div>
+                    <div className="text-white/50 text-xs mt-0.5">Royal Birkdale · July 2026</div>
+                    <div className="text-[#C9A84C] text-xs mt-1.5">View coverage →</div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="text-center flex-none">
+                    <div className="font-display text-4xl font-bold text-[#C9A84C] leading-none">{openDays}</div>
+                    <div className="text-white/40 text-[9px] uppercase tracking-widest mt-1">days</div>
+                  </div>
+                  <div className="w-px h-10 bg-white/10 flex-none" />
+                  <div className="min-w-0">
+                    <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open Championship</div>
+                    <div className="text-white/50 text-xs mt-0.5">⛳ Royal Birkdale · July 2026</div>
+                    <div className="text-[#C9A84C] text-xs mt-1.5">Plan your visit →</div>
+                  </div>
+                </>
+              )}
             </Link>
 
             {/* Next 2 upcoming events */}
