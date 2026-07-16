@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Train, Car, Bus, MapPin, AlertTriangle, Clock } from "lucide-react";
+import { SYKES } from "@/lib/affiliate-links";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -209,6 +210,22 @@ export default function OpenGettingTherePage() {
           </ul>
         </div>
 
+        {/* Sykes accommodation nudge */}
+        <div className="bg-[#1B2E4B] rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p className="font-bold text-white text-sm mb-1">Still need somewhere to stay?</p>
+            <p className="text-white/60 text-xs leading-relaxed">Self-catering cottages and holiday lets within 20 miles of Royal Birkdale. Last-minute availability via Sykes Cottages.</p>
+          </div>
+          <a
+            href={SYKES.southportOpen2026}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="flex-shrink-0 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold px-5 py-2.5 rounded-lg text-sm transition-colors whitespace-nowrap"
+          >
+            Find a cottage on Sykes →
+          </a>
+        </div>
+
         {/* Footer links */}
         <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
           <Link href="/the-open-2026" className="text-sm font-semibold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
@@ -222,6 +239,21 @@ export default function OpenGettingTherePage() {
           </Link>
         </div>
       </div>
+    </div>
+
+    {/* Sticky bar — mobile bottom, desktop bottom-right */}
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#1B2E4B] border-t border-[#C9A84C]/30 py-3 px-4 flex items-center justify-between gap-3 md:left-auto md:right-4 md:bottom-4 md:rounded-xl md:border md:shadow-2xl md:max-w-sm">
+      <p className="text-white text-xs font-semibold leading-tight">
+        Need accommodation near Royal Birkdale?
+      </p>
+      <a
+        href={SYKES.southportOpen2026}
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        className="flex-shrink-0 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold px-4 py-2 rounded-lg text-xs transition-colors whitespace-nowrap"
+      >
+        Sykes Cottages →
+      </a>
     </div>
     </>
   );

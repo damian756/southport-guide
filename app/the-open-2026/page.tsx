@@ -516,8 +516,15 @@ export default function TheOpen2026Page() {
           <div className="relative">
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">⚠️ Urgent</p>
             <h2 className="font-display text-3xl font-bold text-white mb-4">Book Accommodation Now</h2>
+            <p className="text-white/70 leading-relaxed mb-4 max-w-2xl">
+              The Open brings 250,000 spectators to Southport over seven days. Hotels in Birkdale and the town centre were significantly booked up within weeks of the fixture being confirmed. If you haven&apos;t booked yet, act immediately.
+            </p>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl">
-              The Open brings 250,000 spectators to Southport over seven days. Hotels in Birkdale and the town centre were significantly booked up within weeks of the fixture being confirmed. If you haven&apos;t booked yet, act immediately. Self-catering properties and B&Bs in Formby and Ormskirk may still have availability.
+              Self-catering cottages within 20 miles of Royal Birkdale are your best remaining option.{" "}
+              <a href={SYKES.southportOpen2026} target="_blank" rel="noopener noreferrer sponsored" className="text-[#C9A84C] font-semibold underline hover:text-[#E8C87A]">
+                Sykes Cottages has properties available near Southport and Formby
+              </a>{" "}
+              with flexible dates. Formby is 10 minutes by train to Hillside station. Ormskirk is 20 minutes by road. Both are viable bases if Birkdale is gone.
             </p>
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
               {[
