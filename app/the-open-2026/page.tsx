@@ -1,21 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Hotel, Utensils, Car, MapPin, CalendarDays, ArrowRight, ExternalLink, Trophy, ChevronRight, AlertTriangle } from "lucide-react";
+import { Hotel, Utensils, Car, MapPin, CalendarDays, ArrowRight, ExternalLink, Trophy, ChevronRight } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/southport-data";
-import { LATEROOMS, CHAMPIONS_TRAVEL, SYKES } from "@/lib/affiliate-links";
+import { SYKES } from "@/lib/affiliate-links";
 
 export const metadata = {
-  title: "The Open 2026 Southport | Live Now at Royal Birkdale — Visitor Guide",
+  title: "The Open 2026 Southport | Ryan Fox Wins at Royal Birkdale: Results and Review",
   description:
-    "The Open Championship 2026 at Royal Birkdale is live. Championship rounds 16–19 July. Park and ride, how to get there by train (Hillside station), restaurants, accommodation and spectator tips.",
-  keywords: "The Open 2026, Royal Birkdale, Open Championship Southport, The Open park and ride 2026, The Open tickets 2026, where to stay Open Championship, Royal Birkdale accommodation, Southport Open 2026",
+    "The 154th Open Championship at Royal Birkdale is over. Ryan Fox of New Zealand won the Claret Jug with a birdie on the 72nd hole. Full results, review, and your guide to Southport and the Sefton Coast.",
+  keywords: "The Open 2026 result, Ryan Fox winner, Royal Birkdale 2026, Open Championship Southport, The Open 2026 winner, Ryan Fox Claret Jug, Southport Open 2026",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "The Open 2026 Southport | Park & Ride, Tickets, Hotels & Visitor Guide",
-    description: "Park and ride, hotels near Royal Birkdale, how to get there, spectator tips and restaurants for The Open Championship 2026, Southport — 12–19 July 2026.",
+    title: "The Open 2026 Southport | Ryan Fox Wins at Royal Birkdale",
+    description: "Ryan Fox wins The 154th Open Championship at Royal Birkdale. Full results, review and Southport visitor guide for the Sefton Coast's greatest sporting week.",
     url: "https://www.southportguide.co.uk/the-open-2026",
     images: [{ url: "/images/open-2026.webp", width: 1200, height: 630, alt: "The Open 2026 at Royal Birkdale" }],
   },
@@ -87,7 +87,7 @@ const EVENT_LD = {
   name: "The 154th Open Championship",
   startDate: "2026-07-12",
   endDate: "2026-07-19",
-  eventStatus: "https://schema.org/EventScheduled",
+  eventStatus: "https://schema.org/EventCompleted",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   location: {
     "@type": "Place",
@@ -102,7 +102,7 @@ const EVENT_LD = {
     geo: { "@type": "GeoCoordinates", latitude: 53.6267, longitude: -3.0450 },
   },
   organizer: { "@type": "Organization", name: "The R&A", url: "https://www.theopen.com" },
-  description: "The 154th Open Championship at Royal Birkdale, Southport — 12–19 July 2026. Practice rounds Monday to Wednesday, championship rounds Thursday to Sunday.",
+  description: "The 154th Open Championship at Royal Birkdale, Southport, 12-19 July 2026. Ryan Fox of New Zealand won the Claret Jug with a birdie on the 72nd hole, finishing 10-under par.",
   image: "https://www.southportguide.co.uk/images/open-2026.webp",
   url: "https://www.southportguide.co.uk/the-open-2026",
 };
@@ -140,7 +140,7 @@ export default function TheOpen2026Page() {
       <section className="relative flex items-end bg-[#1B2E4B] overflow-hidden" style={{ minHeight: "calc(100vh - 4rem)" }}>
         <Image
           src="/images/open-2026.webp"
-          alt="Royal Birkdale Golf Club, Southport — host of The 154th Open Championship 2026"
+          alt="Royal Birkdale Golf Club, Southport, host of The 154th Open Championship 2026"
           fill
           priority
           sizes="100vw"
@@ -155,7 +155,7 @@ export default function TheOpen2026Page() {
           {/* Championship badge */}
           <div className="flex items-center gap-2 mb-5">
             <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
-              12–19 July 2026
+              Completed 19 July 2026
             </span>
             <span className="text-white/50 text-xs font-medium uppercase tracking-widest">Royal Birkdale, Southport</span>
           </div>
@@ -165,35 +165,29 @@ export default function TheOpen2026Page() {
             <span className="text-[#C9A84C]">Open Championship</span>
           </h1>
           <p className="text-white/70 text-xl max-w-2xl mb-8 leading-relaxed">
-            Golf&apos;s oldest major returns to Royal Birkdale. Your complete guide to tickets, accommodation, transport, and everything else you need to know.
+            Ryan Fox of New Zealand wins the Claret Jug at Royal Birkdale. A 12-foot birdie on the 72nd hole sealed a one-shot victory over Cameron Young.
           </p>
 
-          {/* Urgency flag */}
-          <div className="flex items-center gap-2 mb-8 bg-amber-500/15 border border-amber-400/30 rounded-xl px-4 py-3 max-w-lg">
-            <AlertTriangle className="w-4 h-4 text-amber-400 flex-none" />
-            <p className="text-amber-200 text-sm font-medium">Accommodation is almost gone. If you haven't booked, do it today.</p>
+          {/* Result flag */}
+          <div className="flex items-center gap-2 mb-8 bg-[#C9A84C]/15 border border-[#C9A84C]/30 rounded-xl px-4 py-3 max-w-lg">
+            <Trophy className="w-4 h-4 text-[#C9A84C] flex-none" />
+            <p className="text-[#C9A84C] text-sm font-medium">Ryan Fox, New Zealand. 10-under par. Champion Golfer of the Year 2026.</p>
           </div>
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/the-open-2026/accommodation"
+              href="/blog/open-2026-ryan-fox-wins-southport"
               className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors flex items-center gap-2 shadow-lg"
             >
-              <Hotel className="w-4 h-4" /> Find Accommodation
-            </Link>
-            <Link
-              href="/the-open-2026/getting-there"
-              className="bg-white/10 hover:bg-white/20 text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors flex items-center gap-2 border border-white/20"
-            >
-              <Car className="w-4 h-4" /> Getting There
+              <Trophy className="w-4 h-4" /> Read the Southport Review
             </Link>
             <a
-              href="https://www.theopen.com/tickets"
+              href="https://www.theopen.com"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 hover:bg-white/20 text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors flex items-center gap-2 border border-white/20"
             >
-              <ExternalLink className="w-4 h-4" /> Buy Tickets (R&A)
+              <ExternalLink className="w-4 h-4" /> Official Results (R&A)
             </a>
           </div>
         </div>
@@ -221,17 +215,14 @@ export default function TheOpen2026Page() {
               </Link>
             ))}
             <a
-              href="https://www.theopen.com"
+              href="https://www.theopen.com/latest/ryan-fox-wins-the-open-day-four-report"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center text-center px-4 py-6 hover:bg-white/5 transition-colors"
             >
-              <ExternalLink className="w-6 h-6 text-green-400 mb-2 group-hover:scale-110 transition-transform" />
-              <p className="font-bold text-white text-sm flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
-                Live Scores
-              </p>
-              <p className="text-white/40 text-xs mt-0.5 hidden sm:block">theopen.com</p>
+              <Trophy className="w-6 h-6 text-[#C9A84C] mb-2 group-hover:scale-110 transition-transform" />
+              <p className="font-bold text-white text-sm">Results</p>
+              <p className="text-white/40 text-xs mt-0.5 hidden sm:block">Final leaderboard</p>
             </a>
           </div>
         </div>
@@ -242,47 +233,60 @@ export default function TheOpen2026Page() {
 
       <div className="container mx-auto px-4 max-w-6xl pb-24 pt-8 space-y-20">
 
-        {/* ── Live now ─────────────────────────────────────────────── */}
+        {/* ── Result ───────────────────────────────────────────────── */}
         <section className="bg-[#1B2E4B] rounded-2xl p-8 md:p-10">
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-3 h-3 rounded-full bg-green-400 animate-pulse flex-none" />
-            <p className="text-green-400 font-bold text-sm uppercase tracking-wider">Round 1 Underway — Thursday 16 July</p>
+            <Trophy className="w-5 h-5 text-[#C9A84C] flex-none" />
+            <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wider">The 154th Open Championship: Final Result</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h2 className="font-display text-2xl font-bold text-white mb-4">What is happening at Royal Birkdale right now</h2>
+              <h2 className="font-display text-2xl font-bold text-white mb-4">Ryan Fox wins the Claret Jug at Royal Birkdale</h2>
               <p className="text-white/65 text-sm leading-relaxed mb-4">
-                The 154th Open Championship began this morning at 6:35am. Championship rounds run Thursday to Sunday, 16 to 19 July. The weather this week is unusually warm: temperatures touching 26°C with firm, fast fairways. The rough has burned out. Ball-strikers with precise iron play have the advantage.
+                Ryan Fox of New Zealand sank a 12-foot birdie on the 72nd hole on Sunday 19 July to win The 154th Open Championship by one stroke. He finished 10-under par, edging Cameron Young who had posted a superb 64 earlier in the day and waited on the practice range.
+              </p>
+              <p className="text-white/65 text-sm leading-relaxed mb-4">
+                Fox, 39, had never finished in the top 10 at a major before this week. He came from T52 after Friday to lift the Claret Jug. It is the largest 36-hole comeback by position in men&apos;s major history. Tommy Fleetwood, the home crowd favourite, finished tied fourth and received a tremendous reception from the Southport galleries.
               </p>
               <p className="text-white/65 text-sm leading-relaxed mb-6">
-                For live scores as they happen, the official leaderboard is updated in real time at theopen.com. For television coverage, Sky Sports Golf is showing all four rounds live.
+                Final leaderboard: Fox -10, Cameron Young -9, Sam Burns -8, Scottie Scheffler -7, Tommy Fleetwood -7.
               </p>
               <a
-                href="https://www.theopen.com"
+                href="https://www.theopen.com/latest/ryan-fox-wins-the-open-day-four-report"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold px-5 py-2.5 rounded-lg text-sm transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />
-                Live Leaderboard at theopen.com
+                Full report at theopen.com
               </a>
             </div>
             <div>
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">Players to watch</p>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">Final Leaderboard</p>
               <div className="space-y-3">
                 {[
-                  { name: "Scottie Scheffler", note: "World No.1. Defending Open champion. Firm and fast conditions suit his precise ball-striking perfectly." },
-                  { name: "Rory McIlroy", note: "Reigning Masters champion. Overdue a links major. His ability to shape shots both ways is a significant asset at Birkdale." },
-                  { name: "Jordan Spieth", note: "Won The Open at Royal Birkdale in 2017. Knows the course. The sentimental pick and a genuine contender." },
-                  { name: "Tommy Fleetwood", note: "The home crowd favourite. Has contended at Opens before and knows links golf better than almost anyone in the field." },
-                  { name: "Viktor Hovland", note: "A links specialist. Finished runner-up at The Open in 2023. Thrives in firm, fast conditions." },
-                ].map(({ name, note }) => (
-                  <div key={name} className="border-l-2 border-[#C9A84C]/40 pl-4">
-                    <p className="font-bold text-white text-sm">{name}</p>
-                    <p className="text-white/50 text-xs leading-relaxed mt-0.5">{note}</p>
+                  { pos: "1st", name: "Ryan Fox", country: "New Zealand", score: "-10" },
+                  { pos: "2nd", name: "Cameron Young", country: "USA", score: "-9" },
+                  { pos: "3rd", name: "Sam Burns", country: "USA", score: "-8" },
+                  { pos: "T4th", name: "Scottie Scheffler", country: "USA", score: "-7" },
+                  { pos: "T4th", name: "Tommy Fleetwood", country: "England", score: "-7" },
+                ].map(({ pos, name, country, score }) => (
+                  <div key={name} className="flex items-center gap-4 border-l-2 border-[#C9A84C]/40 pl-4">
+                    <span className="text-white/40 text-xs w-8 flex-none">{pos}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-white text-sm">{name}</p>
+                      <p className="text-white/50 text-xs mt-0.5">{country}</p>
+                    </div>
+                    <span className="font-bold text-[#C9A84C] text-sm">{score}</span>
                   </div>
                 ))}
               </div>
+              <Link
+                href="/blog/open-2026-ryan-fox-wins-southport"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#C9A84C] hover:text-[#E8C87A] transition-colors"
+              >
+                Read the Southport review <ChevronRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>
@@ -378,13 +382,13 @@ export default function TheOpen2026Page() {
         <section>
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Transport</p>
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Getting There: Park &amp; Ride and Public Transport</h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">Do not drive to Royal Birkdale on championship days. Road closures cover the streets around the club and residential parking near the course is enforcement-controlled. The R&amp;A operates designated park and ride sites around Southport — these are the sensible option if you&apos;re travelling by car.</p>
+          <p className="text-gray-600 mb-6 leading-relaxed">Do not drive to Royal Birkdale on championship days. Road closures cover the streets around the club and residential parking near the course is enforcement-controlled. The R&amp;A operates designated park and ride sites around Southport. These are the sensible option if you&apos;re travelling by car.</p>
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             {[
               {
                 icon: "🚌",
                 title: "Park & Ride",
-                body: "Official park and ride buses run from designated sites across Southport to the course on all championship days. Specific sites are confirmed by The R&A closer to the event at theopen.com. Book in advance — spaces sell out.",
+                body: "Official park and ride buses run from designated sites across Southport to the course on all championship days. Specific sites are confirmed by The R&A closer to the event at theopen.com. Book in advance. Spaces sell out.",
               },
               {
                 icon: "🚆",
@@ -394,7 +398,7 @@ export default function TheOpen2026Page() {
               {
                 icon: "🚖",
                 title: "Taxi",
-                body: "From Southport town centre to the course is about £8–12. During championship days taxis are busy — book ahead or allow extra time. Uber operates in Southport.",
+                body: "From Southport town centre to the course is about £8–12. During championship days taxis are busy. Book ahead or allow extra time. Uber operates in Southport.",
               },
             ].map(({ icon, title, body }) => (
               <div key={title} className="bg-white rounded-2xl border border-gray-100 p-6">
@@ -406,7 +410,7 @@ export default function TheOpen2026Page() {
           </div>
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
             <p className="text-sm text-gray-700">
-              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> The train is genuinely the easiest option. Get off at Hillside station, not Birkdale. Hillside puts you 5 minutes from the gate. Birkdale is one stop too early and costs you 15 minutes of walking in the heat. Merseyrail runs frequently and if you&apos;re driving from outside Southport, use the park and ride — the R&amp;A publishes confirmed sites and booking at{" "}
+              <span className="font-semibold text-[#1B2E4B]">Terry&apos;s tip:</span> The train is genuinely the easiest option. Get off at Hillside station, not Birkdale. Hillside puts you 5 minutes from the gate. Birkdale is one stop too early and costs you 15 minutes of walking in the heat. Merseyrail runs frequently and if you&apos;re driving from outside Southport, use the park and ride. The R&amp;A publishes confirmed sites and booking at{" "}
               <a href="https://www.theopen.com" target="_blank" rel="noopener noreferrer" className="font-medium text-[#C9A84C] hover:underline">theopen.com</a>.
             </p>
           </div>
@@ -554,65 +558,45 @@ export default function TheOpen2026Page() {
                       <td className="px-6 py-3.5 text-gray-500">{flag} {country}</td>
                     </tr>
                   ))}
-                  <tr className="bg-[#C9A84C]/5 border-t-2 border-[#C9A84C]/30">
+                  <tr className="bg-[#C9A84C]/10 border-t-2 border-[#C9A84C]/50">
                     <td className="px-6 py-3.5 font-bold text-[#C9A84C]">2026</td>
-                    <td className="px-6 py-3.5 font-semibold text-[#1B2E4B]">To be decided…</td>
-                    <td className="px-6 py-3.5 text-gray-400 italic">Will you be there?</td>
+                    <td className="px-6 py-3.5 font-bold text-[#1B2E4B]">Ryan Fox</td>
+                    <td className="px-6 py-3.5 text-gray-600">🇳🇿 New Zealand</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <p className="text-sm text-gray-500 mt-4 leading-relaxed">
-            Royal Birkdale has hosted ten Open Championships since 1954, producing some of the most memorable moments in golf history: Arnold Palmer&apos;s raw power in 1961, Lee Trevino&apos;s brilliance in 1971, Tom Watson&apos;s artistry in 1983, and Jordan Spieth&apos;s dramatic come-from-behind victory in 2017. The 2026 champion joins that list. History is made here.
+            Royal Birkdale has now hosted eleven Open Championships since 1954. Arnold Palmer&apos;s raw power in 1961, Lee Trevino&apos;s brilliance in 1971, Tom Watson&apos;s artistry in 1983, Jordan Spieth&apos;s wire-to-wire win in 2017. And now Ryan Fox&apos;s birdie on the 72nd hole. Southport witnessed another chapter of major championship history.
           </p>
         </section>
 
-        {/* ── Accommodation urgency ────────────────────────────────── */}
+        {/* ── Post-event Southport visit ────────────────────────────── */}
         <section className="bg-[#1B2E4B] rounded-2xl p-8 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/5 rounded-full translate-x-16 -translate-y-16 blur-3xl pointer-events-none" />
           <div className="relative">
-            <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-3">⛳ The Open is Live</p>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">Still Need Accommodation for the Final Rounds?</h2>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Planning a Sefton Coast Visit</p>
+            <h2 className="font-display text-3xl font-bold text-white mb-4">The Open is over. Southport is still here.</h2>
             <p className="text-white/70 leading-relaxed mb-4 max-w-2xl">
-              Championship rounds run Thursday to Sunday. If you are arriving for Saturday or Sunday and have not yet sorted somewhere to stay, self-catering is your best option. Hotels in Birkdale and Southport are gone for the duration. Cottages and holiday lets within 20 miles still have availability.
+              The week is done. But if The Open brought you to Southport for the first time, the town is worth coming back to. Royal Birkdale takes visitor tee times outside championship setup weeks. Hillside, right next door, is one of England&apos;s finest links courses and significantly easier to book.
             </p>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl">
-              <a href={SYKES.southportOpen2026} target="_blank" rel="noopener noreferrer sponsored" className="text-[#C9A84C] font-semibold underline hover:text-[#E8C87A]">
-                Sykes Cottages has last-minute availability near Southport and Formby
+              Summer availability in Southport and Formby is much better outside Open week.{" "}
+              <a href={SYKES.southport} target="_blank" rel="noopener noreferrer sponsored" className="text-[#C9A84C] font-semibold underline hover:text-[#E8C87A]">
+                Sykes Cottages has self-catering options near Southport and Formby
               </a>{" "}
-              with flexible dates. Formby is 10 minutes by train to Hillside station. Ormskirk is 20 minutes by road.
+              from a weekend break to a full week on the Sefton Coast.
             </p>
-            <div className="grid sm:grid-cols-3 gap-4 mb-8">
-              {[
-                { area: "Birkdale village", dist: "Walking distance to course", status: "Almost gone" },
-                { area: "Southport town", dist: "10 min drive / shuttle", status: "Limited" },
-                { area: "Formby / Ormskirk", dist: "20–30 min drive", status: "Check now" },
-              ].map(({ area, dist, status }) => (
-                <div key={area} className="bg-white/5 border border-white/10 rounded-xl p-4">
-                  <p className="font-bold text-white text-sm">{area}</p>
-                  <p className="text-white/50 text-xs mt-1">{dist}</p>
-                  <p className="text-[#C9A84C] text-xs font-bold mt-2">{status}</p>
-                </div>
-              ))}
-            </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/the-open-2026/accommodation"
+                href="/hotels"
                 className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
               >
-                View accommodation options <ArrowRight className="w-4 h-4" />
+                Southport hotels <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={LATEROOMS.southportOpen2026}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
-              >
-                Search LateRooms for Open Week →
-              </a>
-              <a
-                href={SYKES.southportOpen2026}
+                href={SYKES.southport}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
@@ -620,12 +604,12 @@ export default function TheOpen2026Page() {
                 Self-catering via Sykes Cottages →
               </a>
               <a
-                href={CHAMPIONS_TRAVEL.homepage}
+                href="https://www.seftonlinks.com/courses/royal-birkdale"
                 target="_blank"
-                rel="noopener noreferrer sponsored"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
               >
-                Golf packages via Champions Travel →
+                Play Royal Birkdale →
               </a>
             </div>
           </div>
@@ -733,10 +717,10 @@ export default function TheOpen2026Page() {
         <section className="bg-white rounded-2xl border border-[#C9A84C]/20 p-8 md:p-12 text-center">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">For Businesses</p>
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-4">
-            Reach 250,000 Open Visitors
+            Feature Your Business on SouthportGuide
           </h2>
           <p className="text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
-            Hotels, restaurants, transport companies, and attractions. Feature your business on SouthportGuide during The Open week. Limited placements available. Championship packages start from £199.
+            The Open is over but the Sefton Coast remains open for business year-round. Feature your restaurant, hotel, or attraction on SouthportGuide and reach visitors planning a return trip.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

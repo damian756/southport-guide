@@ -1680,6 +1680,15 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: true,
   },
   {
+    slug: "open-2026-ryan-fox-wins-southport",
+    title: "Ryan Fox Wins The Open 2026 at Royal Birkdale: What Happened and What It Meant for Southport",
+    excerpt: "A 39-year-old New Zealander nobody had down as the favourite sank a 12-foot birdie on the 72nd hole to lift the Claret Jug. Here is what the week was like from the inside.",
+    categorySlug: "golf",
+    image: "/images/blog/blog-open-2026-ryan-fox.webp",
+    date: "19 Jul 2026",
+    featured: true,
+  },
+  {
     slug: "open-2026-round-1-southport",
     title: "The Open 2026: Round 1 Has Started. Here Is What Royal Birkdale Is Like Right Now.",
     excerpt: "Round 1 of the 154th Open Championship began this morning at 6:35am. I have been here for three Opens at Royal Birkdale. This is what the town and the course look like when it actually happens.",

@@ -20,7 +20,7 @@ function parsePostDate(dateStr: string): Date {
 
 // Stable reference dates — update these when the relevant pages change meaningfully
 const D = {
-  today:    new Date("2026-07-16"), // last deploy / significant update
+  today:    new Date("2026-07-23"), // last deploy / significant update
   feb26:    new Date("2026-02-26"),
   feb20:    new Date("2026-02-20"),
   feb15:    new Date("2026-02-15"),
@@ -36,16 +36,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/blog`,                 lastModified: D.today,  changeFrequency: "weekly",   priority: 0.9 },
     { url: `${BASE}/things-to-do`,         lastModified: D.today,  changeFrequency: "monthly",  priority: 0.95 },
     { url: `${BASE}/attractions/another-place-crosby`, lastModified: D.feb01, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE}/the-open-2026`,        lastModified: D.today,  changeFrequency: "daily",    priority: 0.99 },
+    { url: `${BASE}/the-open-2026`,        lastModified: D.today,  changeFrequency: "weekly",   priority: 0.95 },
     { url: `${BASE}/mlec`,                 lastModified: D.feb20,  changeFrequency: "weekly",   priority: 0.9  },
     { url: `${BASE}/claim-listing`,        lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.8  },
     { url: `${BASE}/advertise`,            lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.75 },
     { url: `${BASE}/pricing`,              lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.75 },
-    { url: `${BASE}/the-open-2026/accommodation`, lastModified: D.today, changeFrequency: "daily",   priority: 0.95 },
-    { url: `${BASE}/the-open-2026/restaurants`,   lastModified: D.today, changeFrequency: "daily",   priority: 0.85 },
-    { url: `${BASE}/the-open-2026/getting-there`, lastModified: D.today, changeFrequency: "daily",   priority: 0.9  },
-    { url: `${BASE}/the-open-2026/pubs`,          lastModified: D.today, changeFrequency: "daily",   priority: 0.8  },
-    { url: `${BASE}/the-open-2026/things-to-do`,  lastModified: D.today, changeFrequency: "daily",   priority: 0.8  },
+    { url: `${BASE}/the-open-2026/accommodation`, lastModified: D.today, changeFrequency: "monthly",  priority: 0.8  },
+    { url: `${BASE}/the-open-2026/restaurants`,   lastModified: D.today, changeFrequency: "monthly",  priority: 0.75 },
+    { url: `${BASE}/the-open-2026/getting-there`, lastModified: D.today, changeFrequency: "monthly",  priority: 0.8  },
+    { url: `${BASE}/the-open-2026/pubs`,          lastModified: D.today, changeFrequency: "monthly",  priority: 0.75 },
+    { url: `${BASE}/the-open-2026/things-to-do`,  lastModified: D.today, changeFrequency: "monthly",  priority: 0.75 },
     { url: `${BASE}/mlec/accommodation`,   lastModified: D.feb15,  changeFrequency: "monthly",  priority: 0.7  },
     { url: `${BASE}/mlec/restaurants`,     lastModified: D.feb15,  changeFrequency: "monthly",  priority: 0.7  },
     { url: `${BASE}/mlec/getting-there`,   lastModified: D.feb01,  changeFrequency: "monthly",  priority: 0.6  },
