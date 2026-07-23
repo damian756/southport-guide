@@ -123,15 +123,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let propertyPages: MetadataRoute.Sitemap = [];
   try {
     const { prisma } = await import("@/lib/prisma");
-    const { sectorToSlug, postcodeToSlug } = await import("@/lib/property-config");
+    const { sectorToSlug } = await import("@/lib/property-config");
     const sectors = await prisma.postcodeSector.findMany({
       where: { published: true },
       select: { sector: true, updatedAt: true },
     });
-    const units = await prisma.postcodeUnit.findMany({
-      where: { published: true },
-      select: { postcode: true, updatedAt: true },
-    });
+    // Unit-level postcode pages (/property/pr84aa etc.) are excluded from the sitemap.
+    // Google crawled 139 of them and declined to index all of them (thin data-only pages).
+    // The 10 sector-level pages have real editorial content and are retained.
     propertyPages = [
       { url: `${BASE}/property`, lastModified: D.today, changeFrequency: "weekly" as const, priority: 0.85 },
       ...sectors.map((s) => ({
@@ -139,12 +138,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: s.updatedAt,
         changeFrequency: "monthly" as const,
         priority: 0.7,
-      })),
-      ...units.map((u) => ({
-        url: `${BASE}/property/${postcodeToSlug(u.postcode)}`,
-        lastModified: u.updatedAt,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
       })),
     ];
   } catch {

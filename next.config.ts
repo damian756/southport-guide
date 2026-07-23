@@ -116,6 +116,26 @@ const nextConfig: NextConfig = {
       { source: "/categories",                     destination: "/things-to-do",                    permanent: true },
       // Old /news/* slugs → blog (if individual article slugs were indexed before the section existed)
       { source: "/news/:slug",                     destination: "/blog/:slug",                      permanent: true },
+
+      // Old guides URL for The Open (moved to root-level /the-open-2026)
+      { source: "/guides/the-open-2026",           destination: "/the-open-2026",                  permanent: true },
+
+      // Dead coordinate-based parking slugs (old GPS lat/lon slug format, all return 404)
+      // Format was: parking-car-park-53-XXXX-X-XXXX-X (Southport latitude 53.xx)
+      { source: "/parking/parking-car-park-53-:coords(.*)", destination: "/parking", permanent: true },
+
+      // Named parking slugs that no longer exist
+      { source: "/parking/parking-ainsdale",                                                          destination: "/parking", permanent: true },
+      { source: "/parking/parking-southport",                                                         destination: "/parking", permanent: true },
+      { source: "/parking/parking-nhs-parking",                                                       destination: "/parking", permanent: true },
+      { source: "/parking/parking-driving-test-candidates",                                           destination: "/parking", permanent: true },
+      { source: "/parking/parking-staff-car-park-southport-hospital",                                 destination: "/parking", permanent: true },
+      { source: "/parking/parking-smedley-hydro-staff-car-park-entrance",                             destination: "/parking", permanent: true },
+      { source: "/parking/parking-uk-parking-control-ltd-on-behalf-of-mwlth-nhs-trust-parking",       destination: "/parking", permanent: true },
+      { source: "/parking/parking-drop-off-pick-up",                                                  destination: "/parking", permanent: true },
+      { source: "/parking/parking-freshfield-station-car-park",                                       destination: "/parking", permanent: true },
+      { source: "/parking/parking-bushby-s-park",                                                     destination: "/parking", permanent: true },
+      { source: "/parking/parking-formby",                                                            destination: "/parking", permanent: true },
     ];
   },
 };

@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
           "/admin/",
           "/_next/static/",
           "/manifest.json",
+          "/claim-listing",
         ],
       },
       // Disallow AI training crawlers (allow AI search indexers like GPTBot which we want)
