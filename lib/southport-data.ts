@@ -1723,6 +1723,24 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/blog/blog-lord-street-summer.webp",
     date: "1 Jul 2026",
   },
+  {
+    slug: "hesketh-arms-southport",
+    title: "The Hesketh Arms Southport: The Pub Worth Knowing",
+    excerpt: "If you ask me where to go for a proper pint in Southport, The Hesketh Arms in Churchtown is the honest answer. Low ceilings, real ale, a beer garden Frank approves of, and none of the things that ruin a pub.",
+    categorySlug: "food-drink",
+    image: "/images/blog/blog-hesketh-arms-southport.webp",
+    date: "21 Aug 2026",
+    featured: true,
+  },
+  {
+    slug: "autumn-walks-southport",
+    title: "Autumn Walks in Southport: The Best Routes as the Season Changes",
+    excerpt: "Late August is when Southport starts to change. The crowds thin, the light softens, and the walks that were too busy in July become genuinely peaceful. Here is where to go and what to expect.",
+    categorySlug: "outdoors",
+    image: "/images/blog/blog-autumn-walks-southport.webp",
+    date: "21 Aug 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────
