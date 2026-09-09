@@ -14,16 +14,16 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: { absolute: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk" },
-  description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here. Your complete guide to visiting Southport, Merseyside.",
+  description: "The independent guide to Southport: restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here. Your complete guide to visiting Southport, Merseyside.",
   alternates: { canonical: "https://www.southportguide.co.uk" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
     title: "Southport Visitor Guide | SouthportGuide.co.uk",
-    description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
+    description: "The independent guide to Southport: restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
     url: "https://www.southportguide.co.uk",
-    images: [{ url: "https://www.southportguide.co.uk/homepage-hero.webp", width: 1200, height: 630, alt: "Southport seafront and pier — SouthportGuide.co.uk" }],
+    images: [{ url: "https://www.southportguide.co.uk/homepage-hero.webp", width: 1200, height: 630, alt: "Southport seafront and pier, SouthportGuide.co.uk" }],
   },
 };
 
@@ -182,11 +182,11 @@ export default async function Home() {
   function formatEventLabel(event: { isoDate: string; dayLabel: string }) {
     return event.isoDate === todayISO ? "Today" : event.dayLabel;
   }
-  const openStarted = today >= new Date("2026-07-12");
-  const openEnded = today > new Date("2026-07-19");
-  const openDays = openStarted ? 0 : Math.ceil(
-    (new Date("2026-07-12").getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
-  );
+  // Comedy Festival: 2-18 October 2026
+  const comedyFestStart = new Date("2026-10-02");
+  const comedyFestEnd = new Date("2026-10-18");
+  const comedyFestLive = today >= comedyFestStart && today <= comedyFestEnd;
+  const comedyFestDays = Math.max(0, Math.ceil((comedyFestStart.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
 
   const orgJsonLd = {
     "@context": "https://schema.org",
@@ -196,7 +196,7 @@ export default async function Home() {
         "@id": "https://www.southportguide.co.uk/#website",
         url: "https://www.southportguide.co.uk",
         name: "SouthportGuide.co.uk",
-        description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
+        description: "The independent guide to Southport: restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
         publisher: { "@id": "https://www.southportguide.co.uk/#organization" },
         inLanguage: "en-GB",
         potentialAction: {
@@ -235,7 +235,7 @@ export default async function Home() {
         "@type": ["LocalBusiness", "TouristInformationCenter"],
         "@id": "https://www.southportguide.co.uk/#business",
         name: "SouthportGuide.co.uk",
-        description: "Independent visitor guide to Southport, Merseyside. Restaurants, hotels, beaches, events, and house prices — written by locals.",
+        description: "Independent visitor guide to Southport, Merseyside. Restaurants, hotels, beaches, events, and house prices. Written by locals.",
         url: "https://www.southportguide.co.uk",
         image: "https://www.southportguide.co.uk/og-default.png",
         address: {
@@ -260,7 +260,7 @@ export default async function Home() {
         "@id": "https://www.southportguide.co.uk/#webpage",
         url: "https://www.southportguide.co.uk",
         name: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk",
-        description: "The independent guide to Southport — restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here.",
+        description: "The independent guide to Southport: restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here.",
         isPartOf: { "@id": "https://www.southportguide.co.uk/#website" },
         about: {
           "@type": "City",
@@ -320,54 +320,35 @@ export default async function Home() {
               {" "}Written by locals who actually live here.
             </p>
 
-            {/* Open countdown card */}
+            {/* Comedy Festival card */}
             <Link
-              href="/the-open-2026"
+              href="/guides/southport-comedy-festival"
               className="group bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#C9A84C]/40 rounded-2xl p-4 mb-5 flex items-center gap-4 transition-all self-start w-full max-w-xs"
             >
-              {openStarted && !openEnded ? (
-                <>
-                  <div className="text-center flex-none">
-                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
-                      <span className="text-[#1B2E4B] text-lg">⛳</span>
-                    </div>
+              <div className="text-center flex-none">
+                {comedyFestLive ? (
+                  <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
+                    <span className="text-[#1B2E4B] text-lg">🎤</span>
                   </div>
-                  <div className="w-px h-10 bg-white/10 flex-none" />
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-none" />
-                      <span className="text-green-400 font-bold text-xs uppercase tracking-wider">Live Now</span>
-                    </div>
-                    <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open Championship</div>
-                    <div className="text-white/50 text-xs mt-0.5">Royal Birkdale · Ends 19 Jul</div>
+                ) : (
+                  <div className="text-center">
+                    <div className="font-display text-3xl font-bold text-[#C9A84C] leading-none">{comedyFestDays}</div>
+                    <div className="text-white/40 text-[9px] uppercase tracking-widest mt-0.5">days</div>
                   </div>
-                </>
-              ) : openEnded ? (
-                <>
-                  <div className="text-center flex-none">
-                    <div className="font-display text-4xl font-bold text-[#C9A84C] leading-none">⛳</div>
+                )}
+              </div>
+              <div className="w-px h-10 bg-white/10 flex-none" />
+              <div className="min-w-0">
+                {comedyFestLive && (
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-none" />
+                    <span className="text-green-400 font-bold text-xs uppercase tracking-wider">On Now</span>
                   </div>
-                  <div className="w-px h-10 bg-white/10 flex-none" />
-                  <div className="min-w-0">
-                    <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open 2026</div>
-                    <div className="text-white/50 text-xs mt-0.5">Royal Birkdale · July 2026</div>
-                    <div className="text-[#C9A84C] text-xs mt-1.5">View coverage →</div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="text-center flex-none">
-                    <div className="font-display text-4xl font-bold text-[#C9A84C] leading-none">{openDays}</div>
-                    <div className="text-white/40 text-[9px] uppercase tracking-widest mt-1">days</div>
-                  </div>
-                  <div className="w-px h-10 bg-white/10 flex-none" />
-                  <div className="min-w-0">
-                    <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">The Open Championship</div>
-                    <div className="text-white/50 text-xs mt-0.5">⛳ Royal Birkdale · July 2026</div>
-                    <div className="text-[#C9A84C] text-xs mt-1.5">Plan your visit →</div>
-                  </div>
-                </>
-              )}
+                )}
+                <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">Southport Comedy Festival</div>
+                <div className="text-white/50 text-xs mt-0.5">🎤 Victoria Park · 2–18 October</div>
+                <div className="text-[#C9A84C] text-xs mt-1.5">{comedyFestLive ? "What's on tonight →" : "Book tickets →"}</div>
+              </div>
             </Link>
 
             {/* Next 2 upcoming events */}
@@ -516,7 +497,7 @@ export default async function Home() {
       )}
 
       {/* ══════════════════════════════════════════════════════
-          FEATURED GUIDE — SEASON COFFEE
+          FEATURED GUIDE — ROXY'S CAFE
       ══════════════════════════════════════════════════════ */}
       <section className="py-14 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -593,48 +574,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          FEATURED GUIDE — SUNFLOWER MEMBERSHIP
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-12 bg-[#FAF8F5]">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <Link
-            href="/guides/southportguide-sunflower-member"
-            className="group grid md:grid-cols-[200px_1fr] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-[#1C3A20]/20"
-          >
-            {/* Badge panel */}
-            <div className="bg-white flex items-center justify-center p-8 md:p-10 min-h-[180px]">
-              <Image
-                src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-                alt="Hidden Disabilities Sunflower — SouthportGuide is a proud member"
-                width={160}
-                height={160}
-                className="object-contain w-full max-w-[140px]"
-              />
-            </div>
-            {/* Content panel */}
-            <div className="bg-[#1C3A20] px-8 py-8 md:px-10 md:py-10 flex flex-col justify-center">
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
-                  New — 2 Apr 2026
-                </span>
-                <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Accessibility</span>
-              </div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-white leading-snug mb-3">
-                SouthportGuide has joined the Hidden Disabilities Sunflower scheme
-              </h3>
-              <p className="text-white/65 text-sm leading-relaxed mb-5 max-w-2xl">
-                We are now a Sunflower member. Our commitment to sensory-friendly event coverage, accessible content across
-                the site, and why it matters to us — written by a Southport local with a 17-year-old autistic son at Southport College.
-              </p>
-              <div className="flex items-center gap-2 text-[#C9A84C] font-bold text-sm group-hover:gap-3 transition-all">
-                <span>Read the announcement</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════════
           LATEST FROM THE BLOG
@@ -1351,6 +1290,19 @@ export default async function Home() {
                   <span className="text-xs font-semibold text-[#1B2E4B]">{label}</span>
                 </div>
               ))}
+              <Link
+                href="/guides/southportguide-sunflower-member"
+                className="flex items-center gap-2.5 bg-[#1C3A20] rounded-xl px-3 py-2.5 border border-[#1C3A20] shadow-sm hover:bg-[#245730] transition-colors"
+              >
+                <Image
+                  src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
+                  alt="Hidden Disabilities Sunflower member"
+                  width={28}
+                  height={28}
+                  className="object-contain flex-none rounded"
+                />
+                <span className="text-xs font-semibold text-white leading-tight">Sunflower<br/>member</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -1416,27 +1368,35 @@ export default async function Home() {
       <section className="py-16 bg-[#FAF8F5]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-10">
-            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Coming to Southport</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Big Events</h2>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Autumn &amp; beyond</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">What&apos;s Coming Up</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {/* The Open */}
-            <Link href="/the-open-2026" className="group relative overflow-hidden rounded-2xl bg-[#1A4020] p-8 hover:shadow-2xl transition-all duration-300">
+            {/* Comedy Festival */}
+            <Link href="/guides/southport-comedy-festival" className="group relative overflow-hidden rounded-2xl bg-[#1A1A35] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
-                <Image src="/images/open-2026.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1A4020]/60 to-[#2E6830]/40" />
+                <Image src="/images/southport-comedy-festival.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A35]/75 to-[#3D1A5C]/50" />
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
-                <span className="inline-block text-4xl mb-4">⛳</span>
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Royal Birkdale · 2026</p>
-                <h3 className="font-display text-3xl font-bold text-white mb-3">The Open Championship</h3>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="inline-block text-4xl">🎤</span>
+                  {comedyFestLive && (
+                    <span className="flex items-center gap-1.5 bg-green-500/20 border border-green-400/30 text-green-400 text-xs font-bold px-2.5 py-1 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                      On now
+                    </span>
+                  )}
+                </div>
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Victoria Park · 2–18 October 2026</p>
+                <h3 className="font-display text-3xl font-bold text-white mb-3">Southport Comedy Festival</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-5">
-                  Golf&apos;s oldest major returns to Royal Birkdale. Book accommodation early. Southport fills up fast.
+                  15th annual comedy festival. 17 nights in a luxury heated marquee. Henning Wehn, Gary Delaney and more. Tickets required.
                 </p>
                 <span className="inline-flex items-center gap-2 bg-[#C9A84C] text-white text-sm font-semibold px-5 py-2.5 rounded-full group-hover:bg-[#E8C87A] transition-colors">
-                  Plan your visit <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  {comedyFestLive ? "What's on tonight" : "Book tickets"} <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </div>
             </Link>
