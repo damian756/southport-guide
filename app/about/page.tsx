@@ -57,7 +57,7 @@ const schemaData = [
     jobTitle: "Founder, Churchtown Media",
     url: "https://www.churchtownmedia.co.uk/about",
     sameAs: [
-      "https://www.linkedin.com/in/damian-roche-7ba8293a5/",
+      "https://www.linkedin.com/in/damian-roche/",
       "https://find-and-update.company-information.service.gov.uk/company/16960442",
     ],
   },
@@ -310,7 +310,7 @@ export default function AboutPage() {
                   . Four independent editorial guides covering Southport, Formby, links golf, and coastal wildlife.
                 </p>
                 <a
-                  href="https://www.linkedin.com/in/damian-roche-7ba8293a5/"
+                  href="https://www.linkedin.com/in/damian-roche/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 mt-6 text-sm font-bold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors"

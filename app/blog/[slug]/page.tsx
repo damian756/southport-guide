@@ -304,7 +304,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           name: "Damian Roche",
           jobTitle: "Founder, Churchtown Media",
           url: "https://www.churchtownmedia.co.uk/about",
-          sameAs: ["https://www.linkedin.com/in/damian-roche-7ba8293a5/"],
+          sameAs: ["https://www.linkedin.com/in/damian-roche/"],
         }
       : {
           "@type": "Person",
