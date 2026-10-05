@@ -45,7 +45,7 @@ export default function DisclosurePage() {
           <section>
             <h2 className={h2}>Who publishes this guide</h2>
             <p className={p}>
-              SouthportGuide.co.uk is published by <strong>Churchtown Media Ltd</strong>, a company registered in England and Wales (Company No. 16960442). Damian Roche is its director. He lives in Southport.
+              SouthportGuide.co.uk is published by <strong>Churchtown Media Ltd</strong>, a company registered in England and Wales (Company No. 16960442). Registered office: Suite RA01, 195-197 Wood Street, London, E17 3NU. Damian Roche is its director. He lives in Southport.
             </p>
           </section>
 

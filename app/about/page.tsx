@@ -292,6 +292,9 @@ export default function AboutPage() {
                     </a>{" "}
                     (Co. No. 16960442)
                   </p>
+                  <p className="text-gray-500 text-sm">
+                    Registered office: Suite RA01, 195-197 Wood Street, London, E17 3NU.
+                  </p>
                 </div>
                 <p className="text-gray-600 leading-relaxed mb-3">
                   Damian is a 20-year web and SEO professional based in Churchtown, Southport. He built SouthportGuide because he could not find a genuinely useful, editorially independent visitor guide to his own town.
