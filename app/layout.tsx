@@ -172,7 +172,7 @@ function Footer() {
             >
               <Image
                 src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-                alt="Hidden Disabilities Sunflower — Proud to Support UK"
+                alt="Hidden Disabilities Sunflower: Proud to Support UK"
                 width={44}
                 height={44}
                 className="rounded-lg flex-none"
@@ -273,7 +273,7 @@ function Footer() {
             <Link href="/privacy" className="hover:text-white/70 transition">Privacy</Link>
             <Link href="/terms" className="hover:text-white/70 transition">Terms</Link>
             <Link href="/contact" className="hover:text-white/70 transition">Contact</Link>
-            <Link href="https://www.siba.digital/disclosure" className="hover:text-white/70 transition">Disclosure</Link>
+            <Link href="/disclosure" className="hover:text-white/70 transition">Disclosure</Link>
           </div>
         </div>
       </div>

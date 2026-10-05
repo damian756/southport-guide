@@ -61,7 +61,7 @@ if (existingBiz.rowCount > 0) {
     ) VALUES (
       $1, 'the-sandgrounder', 'The Sandgrounder', $2,
       '12 Lord Street, Southport', 'PR8 1QJ',
-      '01704 555 123', 'hello@thesandgrounder.co.uk', 'https://thesandgrounder.co.uk',
+      '01704 555 123', 'damian@churchtownmedia.co.uk', null,
       'A proper Southport gastropub serving local ales, seasonal small plates and Sunday roasts worth writing home about. Named after the locals — we are proud of it.',
       'Southport gastropub — local ales, small plates, Sunday roasts.',
       '££', 'free', true, 'pro',

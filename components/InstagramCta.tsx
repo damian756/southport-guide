@@ -53,7 +53,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on Instagram (@southportguide) — opens in a new tab"
+          aria-label="SouthportGuide on Instagram (@southportguide), opens in a new tab"
           className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/80 transition hover:border-[#C9A84C]/50 hover:bg-white/[0.12] hover:text-[#E8C87A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C]"
         >
           <Instagram className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden />
@@ -62,7 +62,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={FACEBOOK_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on Facebook — opens in a new tab"
+          aria-label="SouthportGuide on Facebook, opens in a new tab"
           className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/80 transition hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:text-[#4fa3ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877F2]"
         >
           <FacebookIcon className="h-[18px] w-[18px]" />
@@ -71,7 +71,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={X_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on X (Twitter) — opens in a new tab"
+          aria-label="SouthportGuide on X (Twitter), opens in a new tab"
           className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/80 transition hover:border-white/40 hover:bg-white/[0.12] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <XIcon className="h-[16px] w-[16px]" />
@@ -88,7 +88,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on Instagram — opens in a new tab"
+          aria-label="SouthportGuide on Instagram, opens in a new tab"
           className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:border-[#C9A84C]/35 hover:shadow-md"
         >
           <span
@@ -113,7 +113,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={FACEBOOK_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on Facebook — opens in a new tab"
+          aria-label="SouthportGuide on Facebook, opens in a new tab"
           className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:border-[#1877F2]/30 hover:shadow-md"
         >
           <span
@@ -138,7 +138,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={X_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on X (Twitter) — opens in a new tab"
+          aria-label="SouthportGuide on X (Twitter), opens in a new tab"
           className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:border-gray-400/40 hover:shadow-md"
         >
           <span
@@ -171,7 +171,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on Instagram (@southportguide) — opens in a new tab"
+          aria-label="SouthportGuide on Instagram (@southportguide), opens in a new tab"
           className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-4 shadow-lg shadow-black/25 transition duration-300 hover:border-[#C9A84C]/45 hover:from-white/[0.11] hover:to-white/[0.05] hover:shadow-xl hover:shadow-[#C9A84C]/[0.07] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C]"
         >
           <span
@@ -196,7 +196,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={FACEBOOK_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on Facebook — opens in a new tab"
+          aria-label="SouthportGuide on Facebook, opens in a new tab"
           className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-4 shadow-lg shadow-black/25 transition duration-300 hover:border-[#1877F2]/40 hover:from-white/[0.11] hover:to-white/[0.05] hover:shadow-xl hover:shadow-[#1877F2]/[0.07] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877F2]"
         >
           <span
@@ -221,7 +221,7 @@ export function SocialLinks({ variant }: { variant: Variant }) {
           href={X_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="SouthportGuide on X (@SouthportGuide) — opens in a new tab"
+          aria-label="SouthportGuide on X (@SouthportGuide), opens in a new tab"
           className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-4 shadow-lg shadow-black/25 transition duration-300 hover:border-white/25 hover:from-white/[0.11] hover:to-white/[0.05] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <span

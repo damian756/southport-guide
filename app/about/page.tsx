@@ -471,10 +471,10 @@ export default function AboutPage() {
                 We may also earn affiliate commissions from some booking links. These are disclosed where they appear.
               </p>
               <p>
-                Full disclosure of all commercial interests held by Damian Roche and Churchtown Media Ltd, including the relationship between SouthportGuide and the SIBA Digital investigation platform, is published at{" "}
-                <a href="https://www.siba.digital/disclosure" className="text-[#C9A84C] hover:underline font-medium">
-                  siba.digital/disclosure
-                </a>
+                The commercial interests of Damian Roche and Churchtown Media Ltd are listed on our{" "}
+                <Link href="/disclosure" className="text-[#C9A84C] hover:underline font-medium">
+                  disclosure page
+                </Link>
                 .
               </p>
             </div>
