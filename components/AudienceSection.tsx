@@ -1,6 +1,6 @@
 import { AUDIENCE_STATS, type Point } from "@/lib/audience-stats";
 
-// "The audience is growing" on /advertise. Renders nothing while the figures
+// "Search visibility and clicks" on /advertise. Renders nothing while the figures
 // in lib/audience-stats.ts are marked provisional.
 
 const fmt = (n: number) => n.toLocaleString("en-GB");
@@ -95,10 +95,12 @@ export default function AudienceSection() {
   return (
     <section className="container mx-auto px-4 max-w-6xl pt-14" aria-labelledby="audience-heading">
       <h2 id="audience-heading" className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">
-        The audience is growing
+        Search visibility and clicks
       </h2>
       <p className="text-gray-500 text-sm mb-8 max-w-2xl">
-        The visit and search figures are estimates by Semrush, not our own count. The clicks through to businesses are our own count.
+        Semrush estimates our visits from search grew from about {fmt(first.value)} a month in late May to about{" "}
+        {fmt(last.value)} in early November 2026. The visit and search-term figures are Semrush estimates, not our own
+        count. The clicks are our own count of clicks on our listings, not filtered for bots.
       </p>
 
       <div className="grid lg:grid-cols-5 gap-6">
@@ -125,15 +127,16 @@ export default function AudienceSection() {
           <div className="bg-[#1B2E4B] text-white rounded-2xl p-5">
             <p className="font-display text-3xl font-bold">{fmt(c.total)}</p>
             <p className="text-sm text-white/80 mt-1">
-              clicks from Southport Guide through to local businesses, {c.period}: {fmt(c.directions)} for directions,{" "}
-              {fmt(c.googleReviews)} to read Google reviews and {fmt(c.websites)} to business websites.
+              clicks on directions, Google reviews and website links on our listings, {c.period} (our own count, not
+              filtered for bots): {fmt(c.directions)} for directions, {fmt(c.googleReviews)} to read Google reviews and{" "}
+              {fmt(c.websites)} to business websites.
             </p>
             <p className="text-sm text-white/80 mt-3">
               Busiest categories, {c.period}: {c.topCategories.map((t) => `${t.name} ${fmt(t.clicks)}`).join(", ")}.
             </p>
-            <p className="text-xs text-white/50 mt-3">Our own count of clicks on listings. July is the busiest month.</p>
+            <p className="text-xs text-white/50 mt-3">Our own count of clicks on listings, not filtered for bots. July is the busiest month.</p>
             <table className="sr-only">
-              <caption>Clicks from listings through to businesses, by month, {c.period}</caption>
+              <caption>Clicks on our listings by month, {c.period} (our own count, not filtered for bots)</caption>
               <thead>
                 <tr>
                   <th scope="col">Month</th>

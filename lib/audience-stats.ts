@@ -2,7 +2,7 @@
 // Every number here carries its source and the date it was read. Nothing is
 // computed from the database at run time.
 //
-// While `provisional` is true, the "The audience is growing" section on
+// While `provisional` is true, the "Search visibility and clicks" section on
 // /advertise renders nothing. Damian approved publishing on 11 Nov 2026.
 //
 // Every Semrush figure below is a reading off the tool's six-month chart on
