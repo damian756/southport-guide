@@ -45,7 +45,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Should I book accommodation in advance for MLEC events?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. For major concerts and sell-out events, book accommodation the day tickets go on sale. Southport hotels fill quickly for large events, particularly those at the 2,400-capacity exhibition hall or the 1,500-seat theatre. Flexible cancellation rates are worth the small premium for events booked far in advance." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. For major concerts and sell-out events, book accommodation the day tickets go on sale. Southport hotels fill quickly for large events. Flexible cancellation rates are worth the small premium for events booked far in advance." },
     },
     {
       "@type": "Question",
@@ -67,11 +67,11 @@ const AREAS = [
     badge: "Closest",
     badgeColor: "bg-green-100 text-green-800",
     description:
-      "Right on the doorstep of MLEC. Staying on the Promenade means you can walk to the venue in minutes, ideal for shows that finish late, or if you want to catch The Light Fantastic water show before heading back to your room. A handful of hotels sit directly on the seafront with views across Marine Lake.",
+      "Right on the doorstep of MLEC. Staying on the Promenade means you can walk to the venue in minutes, ideal for shows that finish late. A handful of hotels sit directly on the seafront with views across Marine Lake.",
     tips: [
       "Best choice for late-night events, no transport needed",
       "Walk home along the illuminated Promenade",
-      "Watch The Light Fantastic from your hotel (select rooms)",
+
       "Book very early, limited stock at this proximity",
     ],
   },
@@ -138,7 +138,7 @@ const BOOKING_TIPS = [
   {
     icon: Waves,
     title: "Ask for Lake Views",
-    body: "Promenade hotels with lake-facing rooms will have views of The Light Fantastic water show directly from the window. Worth asking when booking, it turns a good stay into a memorable one.",
+    body: "Some Promenade hotels have rooms that face Marine Lake, where a water and light show is planned. Ask when booking.",
   },
 ];
 

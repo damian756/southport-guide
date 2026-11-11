@@ -582,7 +582,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "marine-lake-events-centre-southport",
     title: "The Marine Lake Events Centre (MLEC): What Southport is Building",
     excerpt:
-      "A new waterfront events venue on the Marine Lake, now expected to open in early 2029. Here's what MLEC is, when it opens, and what it means for the town.",
+      "A £106m events centre on Marine Lake, due to be built by winter 2028, with an intended opening in spring 2029. What MLEC is and where the build stands.",
     categorySlug: "local-guides",
     image: "/images/blog/mlec-southport.webp",
     date: "16 Mar 2026",

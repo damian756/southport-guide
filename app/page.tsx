@@ -1316,10 +1316,10 @@ export default async function Home() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
                 <span className="inline-block text-4xl mb-4"><Music className="w-10 h-10 text-[#C9A84C]" /></span>
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Expected early 2029</p>
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Due by winter 2028</p>
                 <h3 className="font-display text-3xl font-bold text-white mb-3">Marine Lake Events Centre</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-5">
-                  Southport&apos;s new events and entertainment venue on the Marine Lake. Sefton Council expects it to open in early 2029.
+                  Southport&apos;s new events centre on Marine Lake. The building is due by winter 2028, with an intended opening in spring 2029.
                 </p>
                 <span className="inline-flex items-center gap-2 bg-[#C9A84C] text-white text-sm font-semibold px-5 py-2.5 rounded-full group-hover:bg-[#E8C87A] transition-colors">
                   Find out more <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

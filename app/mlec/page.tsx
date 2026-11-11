@@ -8,21 +8,16 @@ import {
   ArrowRight,
   ChevronRight,
   Waves,
-  Music,
   Building2,
-  Users,
   TrendingUp,
   Clock,
   Star,
-  Zap,
-  Coffee,
-  Sparkles,
 } from "lucide-react";
 
 export const metadata = {
   title: "Marine Lake Events Centre (MLEC) Southport | Visitor Guide",
   description:
-    "Everything you need to know about Southport's new £106m Marine Lake Events Centre, which Sefton Council plans to complete by winter 2028. Venue details, The Light Fantastic water show, where to stay, how to get there, and what's on.",
+    "Southport's £106m Marine Lake Events Centre, a multipurpose events centre due to be built by winter 2028. What it is for, the planned Light Fantastic water show, where to stay and how to get there.",
   keywords:
     "Marine Lake Events Centre, MLEC Southport, Light Fantastic Southport, Marine Lake, Southport events venue, Southport Town Deal",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec" },
@@ -32,7 +27,7 @@ export const metadata = {
     locale: "en_GB",
     title: "Marine Lake Events Centre (MLEC) | Southport's New £106m Venue",
     description:
-      "Your complete guide to MLEC. 1,500-seat theatre, 2,400-capacity exhibition hall, The Light Fantastic water show, and more. Due for completion by winter 2028.",
+      "A £106m multipurpose events centre on Marine Lake. Vinci Construction is carrying out the main works to deliver the building by winter 2028.",
     url: "https://www.southportguide.co.uk/mlec",
     images: [{ url: "/images/mlec.webp", width: 1200, height: 630, alt: "Marine Lake Events Centre Southport" }],
   },
@@ -41,75 +36,56 @@ export const metadata = {
 const QUICK_LINKS = [
   { href: "#venue", label: "The Venue", icon: Building2 },
   { href: "#light-fantastic", label: "Light Fantastic", icon: Waves },
-  { href: "#timeline", label: "Build Timeline", icon: Clock },
+  { href: "#timeline", label: "Build Progress", icon: Clock },
   { href: "#plan-visit", label: "Plan Your Visit", icon: MapPin },
-  { href: "#impact", label: "Economic Impact", icon: TrendingUp },
+  { href: "#impact", label: "The Bigger Picture", icon: TrendingUp },
   { href: "#faq", label: "FAQs", icon: Star },
 ];
 
 const STATS = [
-  { label: "Capacity (Theatre)", value: "1,500", sub: "flexible auditorium seats", icon: Music },
-  { label: "Exhibition Hall", value: "2,400", sub: "capacity (3 subdivisions)", icon: Users },
-  { label: "Additional Visitors", value: "515k", sub: "projected per year", icon: TrendingUp },
-  { label: "Economic Boost", value: "£18m", sub: "annually to Southport", icon: TrendingUp },
-  { label: "New Jobs Created", value: "300", sub: "permanent positions", icon: Users },
-  { label: "Total Investment", value: "£106m", sub: "Sefton Council", icon: Building2 },
+  { label: "Total Cost", value: "£106m", sub: "multipurpose events centre" },
+  { label: "Main Works", value: "Under way", sub: "by Vinci Construction" },
+  { label: "Building Due", value: "Winter 2028", sub: "operator fit-out to follow" },
 ];
 
+// Sefton Council's MLEC page and its FAQs, checked 11 Nov 2026. Only what those pages say.
 const TIMELINE = [
   {
-    date: "March 2020",
-    event: "Southport Theatre Closes",
-    detail:
-      "The former Southport Theatre and Convention Centre holds its last show after 50+ years. The site is assessed and deemed no longer fit for purpose.",
-    status: "done",
-  },
-  {
-    date: "Spring 2024",
-    event: "Demolition Begins",
-    detail:
-      "DSM Group appointed to demolish the old theatre. Historical heritage items, including original projectors, carefully removed and preserved for display in the new MLEC.",
-    status: "done",
-  },
-  {
-    date: "April 2024",
-    event: "Construction Starts",
-    detail:
-      "John Graham Construction begins work. Access road to the Promenade hotel formed (9 weeks). Substructure works begin (29 weeks).",
-    status: "done",
-  },
-  {
-    date: "September 2024",
-    event: "Superstructure Rising",
-    detail:
-      "Permanent site establishment complete. Superstructure (the main frame of the building) begins. 44 weeks of work above ground level.",
-    status: "done",
+    date: "Now",
+    event: "Main Works Under Way",
+    detail: "Vinci Construction is carrying out the main works on the site of the former Southport Theatre and Convention Centre.",
+    status: "active",
   },
   {
     date: "Winter 2028",
     event: "Building Due",
-    detail:
-      "Sefton Council: Vinci Construction is carrying out the main works to deliver the building by winter 2028, with a fit-out of several months by the operator to follow.",
+    detail: "The main works are to deliver the building by winter 2028.",
     status: "target",
+  },
+  {
+    date: "Spring 2029",
+    event: "Intended Opening",
+    detail: "A fit-out of several months by the operator follows. The council's FAQs give an intended opening in spring 2029, subject to construction progress and commissioning.",
+    status: "pending",
   },
 ];
 
 const FAQS = [
   {
     q: "When does the Marine Lake Events Centre open?",
-    a: "Sefton Council says Vinci Construction is carrying out the main works to deliver the building by winter 2028, with a fit-out of several months by the operator to follow. Opening events will be announced nearer the time.",
+    a: "Sefton Council says Vinci Construction is carrying out the main works to deliver the building by winter 2028, with a fit-out of several months by the operator to follow. The council's FAQs give an intended opening in spring 2029, subject to construction progress and commissioning.",
   },
   {
     q: "What kind of events will MLEC host?",
-    a: "The MLEC is designed for everything: concerts, comedy nights, theatre productions, ballet, West End touring shows, conferences, exhibitions, award ceremonies, weddings, banquets, and sports events. With a 1,500-seat theatre and a separate 2,400-capacity exhibition hall, it can handle multiple events simultaneously.",
+    a: "The council describes the MLEC as a multipurpose events centre for entertainment shows, touring theatre acts, conferences and exhibitions. Seating and room details have not been published yet.",
   },
   {
     q: "Where exactly is the Marine Lake Events Centre?",
-    a: "MLEC is located on Marine Drive / the Promenade in Southport, on the site of the former Southport Theatre and Convention Centre. It sits directly on the shore of Marine Lake, which is why you'll also get The Light Fantastic water and light show just outside the front doors.",
+    a: "MLEC is being built on the Promenade in Southport, on the site of the former Southport Theatre and Convention Centre and the former Floral Hall car park, on the shore of Marine Lake.",
   },
   {
     q: "What is The Light Fantastic?",
-    a: "The Light Fantastic is a £3.3m water and light show on Marine Lake, the UK's first attraction of its kind. It features 106 jet fountains (including a 30m giant jet), six laser systems, three water projection screens, and 8-minute shows running seven days a week until 10:30pm. Themes include the History of Southport, Wildlife & Nature, Sport, Music, and Culture.",
+    a: "The Light Fantastic is a planned water, light and sound show on Marine Lake, the first of its kind in the UK. It has not been built yet, and no show times have been published.",
   },
   {
     q: "Who is managing the MLEC?",
@@ -133,7 +109,7 @@ const MLEC_EVENT_LD = {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   name: "Marine Lake Events Centre (MLEC)",
-  description: "Southport's new £106m Marine Lake Events Centre: 1,500-seat theatre, 2,400-capacity exhibition hall, and The Light Fantastic water show. Due for completion by winter 2028.",
+  description: "Southport's £106m Marine Lake Events Centre, a multipurpose events centre on Marine Lake. The building is due by winter 2028, with an operator fit-out to follow.",
   url: "https://www.southportguide.co.uk/mlec",
   image: "https://www.southportguide.co.uk/images/mlec.webp",
   address: {
@@ -201,8 +177,8 @@ export default function MLECPage() {
               <span className="text-amber-400">Events Centre</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 mb-6 max-w-2xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-              Southport's landmark £106m cultural venue. 1,500-seat theatre, 2,400-capacity exhibition hall,
-              and the UK's first water and light show, right on Marine Lake.
+              Southport&apos;s £106m multipurpose events centre on Marine Lake, with a water and light show
+              planned on the lake, the first of its kind in the UK.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -243,7 +219,7 @@ export default function MLECPage() {
       {/* ── Stats Banner ── */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center p-4">
                 <div className="text-3xl font-extrabold text-amber-400 mb-1">{stat.value}</div>
@@ -270,15 +246,12 @@ export default function MLECPage() {
                 what's coming to replace it is genuinely extraordinary.
               </p>
               <p>
-                The Marine Lake Events Centre isn't just a new venue. It's a statement. A £106 million statement, funded by the
-                Southport Town Deal, that says this town is serious about its future. A 1,500-seat theatre with a Liberty sprung
-                dance floor. A 2,400-capacity exhibition hall that can be split three ways. A signature restaurant. A lakeside
-                café with 180-degree views. And right outside the front doors, the UK's first water and light show:
-                106 fountains, six lasers, projections on the lake itself, seven nights a week.
+                The Marine Lake Events Centre isn't just a new venue. It's a statement. A £106 million statement, part of the
+                Southport Town Deal, that says this town is serious about its future. A venue for shows, touring theatre,
+                conferences and exhibitions. And out on the lake, a planned water and light show, the first of its kind in the UK.
               </p>
               <p>
-                Half a million additional visitors a year. Three hundred new jobs. Eighteen million pounds flowing into the
-                local economy annually. If that doesn't get you excited about Southport's future, I don't know what will.
+                If that doesn't get you excited about Southport's future, I don't know what will.
               </p>
             </div>
           </div>
@@ -288,153 +261,38 @@ export default function MLECPage() {
         <section id="venue" className="scroll-mt-16">
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-2">Inside the Building</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">The Venue in Detail</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">The Venue</h2>
             <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-lg">
-              103,000 sq ft designed for world-class performance, conferencing, and events. All with views across Marine Lake.
+              The council&apos;s MLEC page describes a multipurpose events centre for entertainment shows, touring
+              theatre acts, conferences and exhibitions.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Music,
-                title: "Flexible Theatre & Auditorium",
-                highlight: "Up to 1,500 seats",
-                detail:
-                  "The heart of MLEC. A state-of-the-art flexible auditorium capable of hosting West End touring productions, concerts, comedy, ballet, opera, and cinema-scale screenings. Leading digital AV technology throughout.",
-              },
-              {
-                icon: Building2,
-                title: "Exhibition Hall",
-                highlight: "2,400 capacity",
-                detail:
-                  "A vast, column-free exhibition space that subdivides into three independent halls. Perfect for trade shows, banquets, sports events, wedding receptions, and corporate conferences. All three can be used simultaneously.",
-              },
-              {
-                icon: Sparkles,
-                title: "Liberty Sprung Dance Floor",
-                highlight: "'Strictly Come Dancing' spec",
-                detail:
-                  "The same movable sprung dance floor used on the BBC's Strictly Come Dancing. One of only a handful installed in a UK venue. Ideal for galas, dance competitions, and ballroom events.",
-              },
-              {
-                icon: Utensils,
-                title: "Signature Restaurant",
-                highlight: "Lake & coastline views",
-                detail:
-                  "A full-service restaurant built into the MLEC, offering 180-degree views across Marine Lake and the coast. Bookable independently of events. A destination dining experience in its own right.",
-              },
-              {
-                icon: Coffee,
-                title: "Lakeside Café & Bistro",
-                highlight: "Open all year round",
-                detail:
-                  "Coffee and lunch by day, tapas and cocktails by night. The lakeside café space is open to the public year-round, independently of any events programme. A new social hub for Southport.",
-              },
-              {
-                icon: Star,
-                title: "VIP & Hospitality Suites",
-                highlight: "Flexible event spaces",
-                detail:
-                  "Multiple VIP areas, breakout rooms, and dedicated hospitality suites. Whether you're hosting a product launch, private dining event, or awards ceremony, MLEC can be configured around you.",
-              },
-              {
-                icon: Zap,
-                title: "Professional AV & Production",
-                highlight: "Leading digital technology",
-                detail:
-                  "Built to the technical spec demanded by touring productions and major concerts. Full fly tower, professional rigging infrastructure, broadcast-quality sound and lighting systems.",
-              },
-              {
-                icon: Building2,
-                title: "Production & Back-of-House",
-                highlight: "Professional touring spec",
-                detail:
-                  "Dedicated loading bays, production offices, green rooms, dressing rooms, and technical support spaces. Everything a touring company or conference organiser needs, without compromises.",
-              },
-              {
-                icon: Users,
-                title: "Meeting Rooms & Offices",
-                highlight: "Flexible configurations",
-                detail:
-                  "Smaller meeting rooms and office spaces for events that need quieter, separate breakout areas. Suitable for interviews, press junkets, sponsor activations, and ancillary event management.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition"
-              >
-                <item.icon className="w-9 h-9 text-amber-500 mb-3" />
-                <h3 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h3>
-                <p className="text-amber-600 text-sm font-semibold mb-2">{item.highlight}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.detail}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-gray-700 leading-relaxed">
+            <p>
+              Seating, room and restaurant details have not been published on the council&apos;s pages yet. We will
+              add them here when they are.
+            </p>
           </div>
         </section>
 
         {/* ── The Light Fantastic ── */}
         <section id="light-fantastic" className="scroll-mt-16">
           <div className="bg-gradient-to-br from-slate-900 to-blue-950 rounded-2xl overflow-hidden text-white">
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="p-8 md:p-12">
-                <p className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">
-                  Included with MLEC
-                </p>
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-                  The Light Fantastic
-                  <span className="block text-blue-300 text-xl font-semibold mt-1">
-                    The UK's First Water & Light Show
-                  </span>
-                </h2>
-                <p className="text-slate-300 text-lg mb-6">
-                  Directly in front of MLEC, Marine Lake becomes a performance space in its own right.
-                  A £3.3m show running every night of the year, free to watch from the Promenade.
-                </p>
-                <div className="space-y-3 text-sm">
-                  {[
-                    "Shows run 7 days a week, up to 10:30pm nightly",
-                    "8-minute performances: daytime fountain shows and nighttime multimedia",
-                    "106 jet fountains including a 30-metre giant centrepiece",
-                    "Six laser systems and three 30m water projection screens",
-                    "Themes: History of Southport, Wildlife, Sport, Music, Culture, Technology",
-                    "Seasonal shows for holidays, custom shows for special events",
-                    "Created by LCI Productions, world-leading entertainment specialists",
-                    "All systems on floating barges. No impact on water sports on the lake.",
-                  ].map((fact) => (
-                    <div key={fact} className="flex items-start gap-2">
-                      <Waves className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
-                      <span className="text-slate-300">{fact}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-slate-800/50 p-8 md:p-12 flex flex-col justify-center">
-                <h3 className="text-xl font-bold text-white mb-6">Show System Specification</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { count: "94", label: "Straight Jet Fountains", sub: "15m height" },
-                    { count: "11", label: "Swing Jet Fountains", sub: "15m height, choreographed" },
-                    { count: "1", label: "Giant Jet Fountain", sub: "30m centrepiece" },
-                    { count: "3", label: "Water Projection Screens", sub: "30m each" },
-                    { count: "6", label: "Laser Systems", sub: "Night-time only" },
-                    { count: "12", label: "Moving Lights", sub: "Choreographed" },
-                    { count: "3", label: "Video Projection Systems", sub: "Synchronized" },
-                    { count: "31", label: "Floating Barges", sub: "Anchored on Marine Lake" },
-                  ].map((item) => (
-                    <div key={item.label} className="bg-slate-700/60 rounded-lg p-3 text-center">
-                      <div className="text-2xl font-extrabold text-amber-400">{item.count}</div>
-                      <div className="text-xs font-semibold text-white mt-0.5">{item.label}</div>
-                      <div className="text-xs text-slate-400">{item.sub}</div>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-slate-400 text-xs mt-6">
-                  All show equipment installed on 31 floating barges anchored on Marine Lake.
-                  A 60m clear channel maintained at all times for water sports.
-                  Laser operation approved by the Civil Aviation Authority.
-                </p>
-              </div>
+            <div className="p-8 md:p-12 max-w-3xl">
+              <p className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">
+                Planned on Marine Lake
+              </p>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+                The Light Fantastic
+                <span className="block text-blue-300 text-xl font-semibold mt-1">
+                  A Planned Water and Light Show
+                </span>
+              </h2>
+              <p className="text-slate-300 text-lg">
+                A water, light and sound show is planned on Marine Lake, beside the MLEC. The council&apos;s pages
+                say it will be the first of its kind in the UK. It has not been built yet, and no show times have
+                been published.
+              </p>
             </div>
           </div>
         </section>
@@ -442,10 +300,10 @@ export default function MLECPage() {
         {/* ── Construction Timeline ── */}
         <section id="timeline" className="scroll-mt-16">
           <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-2">From Demolition to Opening</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Construction Timeline</h2>
+            <p className="text-xs uppercase tracking-widest text-amber-600 font-bold mb-2">Where the Build Stands</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Build Progress</h2>
             <p className="text-gray-600 mt-3 max-w-xl mx-auto">
-              Three years of work, one extraordinary result.
+              From the council&apos;s MLEC page and FAQs, November 2026.
             </p>
           </div>
           <div className="max-w-3xl mx-auto">
@@ -491,7 +349,7 @@ export default function MLECPage() {
                         )}
                         {item.status === "target" && (
                           <span className="text-xs bg-slate-900 text-white font-semibold px-2 py-0.5 rounded-full">
-                            Target Open
+                            Target
                           </span>
                         )}
                       </div>
@@ -520,7 +378,7 @@ export default function MLECPage() {
                 icon: Hotel,
                 title: "Where to Stay",
                 description:
-                  "Hotels, B&Bs and self-catering near MLEC. From the Promenade to Lord Street, we've mapped the best options by distance and price.",
+                  "Hotels, B&Bs and self-catering near MLEC, from the Promenade to Lord Street, listed by distance and price.",
                 cta: "Find accommodation →",
                 color: "blue",
               },
@@ -585,11 +443,6 @@ export default function MLECPage() {
                   regeneration money coming to Southport, but it's the most visible. When those doors open,
                   they'll open onto a town that has also seen investment in Lord Street, the seafront, and the
                   wider cultural offer.
-                </p>
-                <p>
-                  Half a million extra visitors a year don't just go to the venue. They stay in our hotels, eat in our
-                  restaurants, drink in our bars, and shop on Lord Street. The ripple effect for local businesses is
-                  enormous. The businesses that position themselves now will be the ones that benefit most.
                 </p>
               </div>
             </div>
@@ -683,7 +536,7 @@ export default function MLECPage() {
             <p className="text-xs font-bold uppercase tracking-widest text-[#C9A84C] mb-1">Property Data</p>
             <h3 className="font-bold text-slate-900 text-lg mb-2">Town Centre Property: What MLEC Means for PR9 0 &amp; PR8 1</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              The Marine Lake Events Centre sits on the PR9 0 / PR8 1 boundary. 515,000 additional visitors per year is a material change to the local economy. If you&apos;re considering a town centre purchase, the full data on sold prices, schools, crime, and flood risk is on our postcode guides.
+              The Marine Lake Events Centre sits on the PR9 0 and PR8 1 boundary. If you&apos;re considering a town centre purchase, the full data on sold prices, schools, crime, and flood risk is on our postcode guides.
             </p>
           </div>
           <div className="flex flex-col gap-2 flex-shrink-0">
@@ -707,8 +560,8 @@ export default function MLECPage() {
           <p className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Be Ready</p>
           <h2 className="text-3xl font-extrabold mb-4">Get Listed Before the Crowds Arrive</h2>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
-            MLEC is projected to bring 515,000 extra visitors to Southport every year. Is your accommodation,
-            restaurant, or attraction in front of them? Get listed on SouthportGuide.co.uk now.
+            Is your accommodation, restaurant or attraction near the Promenade? Get listed on
+            SouthportGuide.co.uk, free.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

@@ -233,7 +233,7 @@ export default function AboutPage() {
               Southport has never had a visitor guide with real editorial depth. Tourism bodies produce brochure copy. TripAdvisor has no local knowledge. The council site answers different questions entirely.
             </p>
             <p>
-              SouthportGuide is the answer to that gap. A guide with the data depth, editorial quality and technical foundation that a town hosting The Open Championship and opening a 4,000-capacity events venue actually needs. Not a site that exists for a single season. Something built to rank, built to last, and genuinely useful to the people who visit and the businesses who serve them.
+              SouthportGuide is the answer to that gap. A guide with the data depth, editorial quality and technical foundation that a town that hosted The Open Championship in 2026 and has a new events centre due by winter 2028 actually needs. Not a site that exists for a single season. Something built to rank, built to last, and genuinely useful to the people who visit and the businesses who serve them.
             </p>
           </div>
         </div>

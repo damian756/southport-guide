@@ -307,8 +307,8 @@ export default function YearOfCulturePage() {
                 <p>Funded by Sefton Council, the Liverpool City Region Combined Authority, and Culture Liverpool, the same organisation behind Liverpool&apos;s major cultural events. This isn&apos;t a local authority hobby project.</p>
               </div>
               <div>
-                <p className="text-[#C9A84C] font-bold text-base mb-2">MLEC is coming in 2027</p>
-                <p>The Marine Lake Events Centre opens next year. 515,000 additional visitors per year projected. The 2026 cultural programme is part of repositioning Southport ahead of that opening. The town is building its case as a cultural destination.</p>
+                <p className="text-[#C9A84C] font-bold text-base mb-2">MLEC is due by winter 2028</p>
+                <p>The Marine Lake Events Centre is due to be built by winter 2028, with an operator fit-out to follow. The 2026 cultural programme is part of repositioning Southport ahead of that opening. The town is building its case as a cultural destination.</p>
               </div>
               <div>
                 <p className="text-[#C9A84C] font-bold text-base mb-2">The Open in the same year</p>

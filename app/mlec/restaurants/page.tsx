@@ -28,7 +28,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Where should I eat before a show at MLEC?",
-      acceptedAnswer: { "@type": "Answer", text: "Lord Street in Southport town centre is the best pre-show dining option. It has the widest range of restaurants from independent bistros to cocktail bars, and is a pleasant 10–15 minute walk along the Promenade to MLEC. Book in advance for any show night, especially weekends. The Promenade itself will have MLEC's own lakeside café and signature restaurant from 2027." },
+      acceptedAnswer: { "@type": "Answer", text: "Lord Street in Southport town centre is the best pre-show dining option. It has the widest range of restaurants from independent bistros to cocktail bars, and is a pleasant 10–15 minute walk along the Promenade to MLEC. Book in advance for any show night, especially weekends. The MLEC building is due by winter 2028, with an operator fit-out to follow." },
     },
     {
       "@type": "Question",
@@ -123,7 +123,7 @@ const PRE_SHOW_TIPS = [
   {
     icon: Star,
     title: "The Promenade Walk at Night",
-    body: "Post-MLEC opening, the Promenade at night will have The Light Fantastic water show as a backdrop. Even if you're just grabbing a coffee on the way home, it's worth stopping. Factor this into your evening, it's free to watch.",
+    body: "A water and light show, the Light Fantastic, is planned on Marine Lake beside the MLEC. It has not been built yet, and no show times have been published.",
   },
 ];
 

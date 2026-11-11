@@ -234,7 +234,7 @@ export default async function PropertyLandingPage() {
                 What I find missing from the national property portals is the context. Knowing a house sold for £220,000 doesn&apos;t tell you whether the nearest primary school is Outstanding or Requires Improvement, whether the street floods, or how long it takes to get to Liverpool Central on a Tuesday morning. That&apos;s what we&apos;ve tried to build here: one place with all of it.
               </p>
               <p>
-                The timing matters too. The Open Championship returns to Royal Birkdale in July 2026 and the Marine Lake Events Centre opens in 2027. Both will change the volume of visitors to Southport. Whether that flows through to property prices is speculative, but the logic is there: more footfall, more hospitality spend, more infrastructure. Worth factoring in if you&apos;re thinking long-term.
+                The timing matters too. The Open Championship returns to Royal Birkdale in July 2026 and the Marine Lake Events Centre is due to be built by winter 2028, with an operator fit-out to follow. Both will change the volume of visitors to Southport. Whether that flows through to property prices is speculative, but the logic is there: more footfall, more hospitality spend, more infrastructure. Worth factoring in if you&apos;re thinking long-term.
               </p>
             </div>
           </section>
@@ -371,9 +371,9 @@ export default async function PropertyLandingPage() {
             </div>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
               <div className="text-2xl mb-3">🏗️</div>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">MLEC: Opening 2027</h3>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">MLEC: Due by Winter 2028</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                The Marine Lake Events Centre, a 4,000-capacity arena on the seafront, opens in 2027 with projections of 515,000 additional visitors annually. Relevant context for anyone looking at PR9 0 (Town Centre & Promenade) or PR8 1 sectors.
+                The Marine Lake Events Centre, a new events centre on the seafront, is due to be built by winter 2028, with an operator fit-out to follow. Relevant context for anyone looking at PR9 0 (Town Centre & Promenade) or PR8 1 sectors.
               </p>
               <Link href="/mlec" className="text-[#C9A84C] text-sm font-semibold hover:text-[#1B2E4B] transition-colors flex items-center gap-1">
                 MLEC guide <ArrowRight className="w-3.5 h-3.5" />
@@ -438,7 +438,7 @@ export default async function PropertyLandingPage() {
                 { href: "/guides/churchtown", label: "Churchtown Guide", desc: "The historic village at the north end." },
                 { href: "/guides/lord-street", label: "Lord Street", desc: "The Victorian boulevard at the heart of Southport." },
                 { href: "/the-open-2026", label: "The Open 2026", desc: "Royal Birkdale, July 2026." },
-                { href: "/mlec", label: "MLEC", desc: "The 4,000-cap venue opening 2027." },
+                { href: "/mlec", label: "MLEC", desc: "The events centre due by winter 2028." },
                 { href: "/blog/southport-house-prices-by-postcode", label: "House Prices Blog Post", desc: "Terry's honest breakdown of what each area is really like." },
               ].map(({ href, label, desc }) => (
                 <Link key={href} href={href} className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
