@@ -659,7 +659,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "easter-things-to-do-southport-2026",
     title: "Easter in Southport 2026: What's Worth Your Time",
     excerpt:
-      "Easter weekend in Southport means the season is starting. The beach is back, the pier is busy, the Botanic Gardens have the crocuses out, and the town actually feels alive again. Here's what to do with the bank holiday.",
+      "Easter weekend in Southport means the season is starting. The beach is back, the pier is closed for restoration, the Botanic Gardens have the crocuses out, and the town actually feels alive again. Here's what to do with the bank holiday.",
     categorySlug: "events",
     image: "/images/blog/easter-southport.jpg",
     date: "18 Mar 2026",

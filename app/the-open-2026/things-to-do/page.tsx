@@ -24,7 +24,7 @@ const THINGS = [
     category: "Beaches & Coast",
     emoji: "🏖️",
     items: [
-      { name: "Southport Beach & Pier", desc: "One of England's longest piers and a wide, family-friendly beach. The pier stretches 1,108 metres into the sea, a proper Southport institution worth walking on a clear morning." },
+      { name: "Southport Beach & Pier", desc: "One of England's longest piers and a wide, family-friendly beach. The pier stretches 1,108 metres into the sea, a proper Southport institution. Closed for restoration; see it from the Promenade." },
       { name: "Ainsdale Beach & Sand Dunes", desc: "A short drive south, Ainsdale's extensive dunes and open beach are excellent for a morning walk. The dune system is a National Nature Reserve and the beach itself has more space than anywhere else in the area." },
       { name: "Formby Beach & Red Squirrel Reserve", desc: "Twenty minutes south of Southport, the National Trust's Formby reserve has red squirrels, ancient pine woodland, and one of the best stretches of beach in the North West. A perfect half-day if you're not at the course." },
     ],

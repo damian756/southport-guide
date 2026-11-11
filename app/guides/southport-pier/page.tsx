@@ -40,12 +40,12 @@ export const metadata: Metadata = {
 const FAQS = [
   { q: "How long is Southport Pier?", a: "Southport Pier is 1,108 metres long (3,636 feet). It is England's second longest pier. Southend-on-Sea Pier in Essex takes the top spot at 2,158 metres. Southport Pier stretches out from the seafront over the Irish Sea estuary." },
   { q: "Is Southport Pier open?", a: "No. Sefton Council closed the pier in December 2022 on the advice of structural engineers. A £20 million restoration, funded by the Government's Growth Mission Fund, was approved in March 2026, and the pier stays closed until the work is finished. Sefton Council's pier page (sefton.gov.uk/southportpier) has the background and FAQs, last updated in January 2026; later progress reports are on the council's MySefton News pages." },
-  { q: "What is the postcode for Southport Pier?", a: "The postcode for the pier entrance is PR8 1QP, on the Promenade near the seafront. Park along Marine Drive (PR8 1RX) or use nearby seafront car parks and walk to the pier, it's on the Promenade, easy to find." },
-  { q: "Can you see Wales from Southport Pier?", a: "On a clear day, yes. From the end of the pier you can see across the Ribble Estuary and the Irish Sea. The Welsh hills of Snowdonia are visible on exceptionally clear days, particularly in winter when visibility is best." },
+  { q: "What is the postcode for Southport Pier?", a: "No postcode is published for the pier. The entrance is on the Promenade near the seafront. Park along Marine Drive (PR8 1RX) or use nearby seafront car parks and walk to the pier, it's on the Promenade, easy to find." },
+  { q: "Can you see Wales from Southport Pier?", a: "The pier is closed while it is restored. When it was open, on a clear day you could see across the Ribble Estuary and the Irish Sea from the end, and the Welsh hills of Snowdonia on exceptionally clear days, particularly in winter." },
   { q: "When was Southport Pier built?", a: "Southport Pier opened in 1860, making it one of the oldest seaside piers in England. It has been extended, restored, and renovated several times since, including a major restoration in the early 2000s that brought it back to its current state." },
-  { q: "How long does it take to walk Southport Pier?", a: "The pier is closed while it is restored. When it was open, the walk took about 15–20 minutes each way at a relaxed pace. The full return walk takes approximately 35–40 minutes. There is no rushing required, the views change as you walk further out, and the end of the pier has the best panoramic views over the estuary." },
-  { q: "Is Southport Pier accessible for wheelchairs?", a: "The pier has a flat, level surface and is generally accessible for wheelchairs and pushchairs, though the decking surface may be uneven in places. The Promenade approach to the pier is fully accessible." },
-  { q: "What is at the end of Southport Pier?", a: "A shelter and seating at the pierhead, along with the best views available from Southport, a 360-degree panorama across the Irish Sea estuary, the coastline north towards Blackpool, and south towards Formby. On a clear day the Welsh mountains are visible to the south-west." },
+  { q: "How long does it take to walk Southport Pier?", a: "The pier is closed while it is restored. When it was open, the walk took about 15–20 minutes each way at a relaxed pace. The full return walk took approximately 35–40 minutes, and the views widened as you walked further out over the estuary." },
+  { q: "Is Southport Pier accessible for wheelchairs?", a: "The pier is closed while it is restored. When it was open, it had a flat, level surface that most wheelchairs and pushchairs could use, though the decking was uneven in places. The Promenade beside the pier is fully accessible." },
+  { q: "What is at the end of Southport Pier?", a: "A shelter and seating at the pierhead, with a 360-degree panorama across the Irish Sea estuary, the coastline north towards Blackpool, and south towards Formby. The pier is closed while it is restored, so the pierhead cannot be reached for now." },
 ];
 
 const PAGE_LD = {
@@ -59,10 +59,8 @@ const PAGE_LD = {
     "@type": "PostalAddress",
     streetAddress: "The Promenade",
     addressLocality: "Southport",
-    postalCode: "PR8 1QP",
     addressCountry: "GB",
   },
-  isAccessibleForFree: true,
 };
 
 const FAQ_LD = {
@@ -250,9 +248,9 @@ export default function SouthportPierGuidePage() {
         <section>
           <div className="mb-8">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">The Experience</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The Walk Out</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The Walk, as It Was</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-              The pier is best understood in three sections, what you see at the start, halfway out, and at the end.
+              Before it closed in December 2022, the walk fell into three sections: the start, halfway out, and the end.
             </p>
           </div>
 
@@ -263,21 +261,21 @@ export default function SouthportPierGuidePage() {
                 distance: "0–200m",
                 emoji: "🏛️",
                 color: "bg-[#1B2E4B]",
-                detail: "The pier entrance is on the Promenade, right alongside the seafront. The first section is over the beach, at low tide you're walking above sand, at high tide above water. The views back to the town and along the Promenade begin immediately. King's Gardens and Marine Lake are visible on your left.",
+                detail: "The pier entrance is on the Promenade, right alongside the seafront. The first section ran over the beach: at low tide you walked above sand, at high tide above water. The views back to the town and along the Promenade began straight away, with King's Gardens and Marine Lake on your left.",
               },
               {
                 section: "The Middle",
                 distance: "200–800m",
                 emoji: "🌊",
                 color: "bg-[#1A5C7A]",
-                detail: "Halfway out, the pier crosses over the water regardless of tide. The wind picks up here, take a layer even in summer, it's noticeably cooler over open water than on the Promenade. The views widen. Formby and the dunes are visible to the south. The coast curves away in both directions.",
+                detail: "Halfway out, the pier crossed over the water whatever the tide. The wind picked up there, and it was noticeably cooler over open water than on the Promenade. The views widened, with Formby and the dunes to the south and the coast curving away in both directions.",
               },
               {
                 section: "The Pierhead",
                 distance: "800–1,108m",
                 emoji: "🔭",
                 color: "bg-[#1A4020]",
-                detail: "The end of the pier. A shelter, seating, and the best views in Southport. 360-degree panorama, the Irish Sea to the west, the Lancashire coast to the north, the Welsh hills on a clear day to the south-west, and the town of Southport behind you. Worth every step. Stay for a few minutes.",
+                detail: "The end of the pier, with a shelter and seating. A 360-degree panorama: the Irish Sea to the west, the Lancashire coast to the north, the Welsh hills on a clear day to the south-west, and the town of Southport behind you.",
               },
             ].map((item) => (
               <div key={item.section} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -309,7 +307,7 @@ export default function SouthportPierGuidePage() {
                 icon: MapPin,
                 title: "Getting There",
                 content: [
-                  "Postcode: PR8 1QP (Promenade entrance)",
+                  "Entrance: on the Promenade (no postcode is published)",
                   "From the station: 12-minute walk along Lord Street and the Promenade",
                   "From Marine Drive parking: 5-minute walk along the seafront",
                   "Bus: multiple routes stop on the Promenade",
@@ -340,8 +338,7 @@ export default function SouthportPierGuidePage() {
                 content: [
                   "Best light: golden hour before sunset, the pier becomes a silhouette",
                   "Best tide: low to mid, maximum sand visible below",
-                  "From the pierhead: face west at sunset for the best shot",
-                  "Looking back to town: the pier makes a strong leading line shot from the end",
+
                 ],
               },
             ].map((item) => (
@@ -365,10 +362,10 @@ export default function SouthportPierGuidePage() {
         <section>
           <div className="bg-gradient-to-r from-[#1B2E4B] to-[#2A4A73] rounded-2xl p-8 md:p-12 text-white">
             <Waves className="w-8 h-8 text-[#C9A84C] mb-5" />
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">What You Can See from the End</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">What You Could See from the End</h2>
             <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-2xl">
-              The view from the pierhead is the whole point of the walk. On a clear day it covers an enormous stretch
-              of the North West coastline.
+              Before the pier closed, the view from the pierhead on a clear day covered a long stretch of the North
+              West coastline.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
@@ -392,7 +389,7 @@ export default function SouthportPierGuidePage() {
           <div className="mb-8">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">In Context</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">England&apos;s Longest Piers</h2>
-            <p className="text-gray-600 mt-2 max-w-xl text-base">Where Southport Pier ranks, and why it&apos;s the more interesting walk.</p>
+            <p className="text-gray-600 mt-2 max-w-xl text-base">Where Southport Pier sits among England&apos;s longest piers.</p>
           </div>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="overflow-x-auto">
@@ -408,8 +405,8 @@ export default function SouthportPierGuidePage() {
                 <tbody className="divide-y divide-gray-100">
                   {[
                     { rank: "1st", pier: "Southend-on-Sea", length: "2,158m", notes: "Requires its own railway train, purely a length competition" },
-                    { rank: "2nd", pier: "Southport", length: "1,108m", notes: "Better walk, better views, better town", highlight: true },
-                    { rank: "3rd", pier: "Herne Bay", length: "1,068m", notes: "Kent. Less interesting views." },
+                    { rank: "2nd", pier: "Southport", length: "1,108m", notes: "Closed for restoration since December 2022", highlight: true },
+                    { rank: "3rd", pier: "Herne Bay", length: "1,068m", notes: "Kent" },
                     { rank: "4th", pier: "Ryde (Isle of Wight)", length: "700m", notes: "Ferry pier, not primarily a pleasure pier" },
                   ].map((row) => (
                     <tr key={row.pier} className={row.highlight ? "bg-[#C9A84C]/10" : "hover:bg-gray-50 transition-colors"}>
