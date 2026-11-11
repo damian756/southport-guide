@@ -1301,6 +1301,7 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "",
     date: "11 Nov 2026",
     featured: true,
+    eventEndDate: "2027-04-18",
   },
 ];
 
