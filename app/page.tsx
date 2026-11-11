@@ -475,14 +475,22 @@ export default async function Home() {
               href={HOME_PICK.href}
               className="group grid md:grid-cols-[1fr_480px] lg:grid-cols-[1fr_560px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100"
             >
-              <div className="relative h-72 md:h-full min-h-[340px] overflow-hidden order-first">
+              <div
+                className="relative h-72 md:h-full min-h-[340px] overflow-hidden order-first"
+                style={HOME_PICK.imageBackground ? { backgroundColor: HOME_PICK.imageBackground } : undefined}
+              >
                 <Image
                   src={HOME_PICK.image}
                   alt={HOME_PICK.imageAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, 60vw"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className={`${HOME_PICK.imageFit === "contain" ? "object-contain p-8 md:p-6 lg:p-10" : "object-cover object-top"} transition-transform duration-700 group-hover:scale-105`}
                 />
+                {HOME_PICK.imageCredit && (
+                  <span className="absolute bottom-2 right-3 text-[11px] leading-none text-gray-600">
+                    {HOME_PICK.imageCredit}
+                  </span>
+                )}
               </div>
               <div className="bg-[#1B2E4B] p-8 md:p-10 lg:p-12 flex flex-col justify-center">
                 <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-5">
@@ -492,16 +500,18 @@ export default async function Home() {
                   {HOME_PICK.title}
                 </h3>
                 <p className="text-white/65 text-base leading-relaxed mb-6 max-w-md">{HOME_PICK.description}</p>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {HOME_PICK.chips.map((chip) => (
-                    <span
-                      key={chip}
-                      className="bg-white/10 border border-white/15 text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full"
-                    >
-                      {chip}
-                    </span>
-                  ))}
-                </div>
+                {HOME_PICK.chips.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {HOME_PICK.chips.map((chip) => (
+                      <span
+                        key={chip}
+                        className="bg-white/10 border border-white/15 text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full"
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className="flex items-center gap-2 text-[#C9A84C] font-bold text-sm group-hover:gap-3 transition-all">
                   <span>{HOME_PICK.cta}</span>
                   <ArrowRight className="w-4 h-4" />
