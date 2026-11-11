@@ -4,8 +4,9 @@ import type { Metadata } from "next";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
-  title: "Southport News | Southport Live | SouthportGuide.co.uk",
+const META: Metadata = {
+  // The template adds " | SouthportGuide.co.uk"
+  title: "Southport News | Southport Live",
   description:
     "The latest Southport news: planning applications, local business, Southport FC, community updates and more. Updated throughout the day.",
   alternates: { canonical: "https://www.southportguide.co.uk/news" },
@@ -34,6 +35,18 @@ export const metadata: Metadata = {
     images: ["https://www.southportguide.co.uk/og-default.png"],
   },
 };
+
+// While no news item is published the page says "No news yet", so it stays out of
+// the index (and the sitemap) until there is some; its links are still followed.
+export async function generateMetadata(): Promise<Metadata> {
+  let empty = false;
+  try {
+    empty = (await prisma.newsItem.count({ where: { status: { in: ["auto_published", "published"] } } })) === 0;
+  } catch {
+    // DB unavailable: leave the default
+  }
+  return empty ? { ...META, robots: { index: false, follow: true } } : META;
+}
 
 export type NewsItemCard = {
   id: string;

@@ -252,16 +252,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const theme = THEMES[category];
   const CAT_META_TITLES: Partial<Record<string, string>> = {
     hotels: "Hotels in Southport | Where to Stay, B&Bs & Guest Houses",
-    restaurants: "Restaurants in Southport | Where to Eat | SouthportGuide",
+    restaurants: "Restaurants in Southport | Where to Eat",
     parking: "Parking in Southport | Car Parks, Postcodes & Free Parking",
   };
   const title = CAT_META_TITLES[category] ?? `${cat.name} in Southport`;
   const description = CAT_META_DESCRIPTIONS[category]
     ?? `${theme?.tagline || cat.description}, browse all listings with Google ratings, food hygiene scores and contact details on SouthportGuide.co.uk`;
   const url = `${BASE_URL}/${category}`;
+  // A category with no listings yet ("No listings yet") is kept out of the index
+  // until it has some; its links are still followed.
+  let empty = false;
+  try {
+    const record = await getCategoryRecord(category);
+    empty = !record || (await prisma.business.count({
+      where: { OR: [{ categoryId: record.id }, { secondaryCategoryIds: { has: record.id } }] },
+    })) === 0;
+  } catch {
+    // DB unavailable: leave the default
+  }
   return {
     title, description,
     alternates: { canonical: url },
+    ...(empty ? { robots: { index: false, follow: true } } : {}),
     openGraph: { title, description, url, type: "website", siteName: "SouthportGuide.co.uk" },
     twitter: { card: "summary", title, description },
   };
@@ -391,8 +403,19 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     })),
   } : null;
 
+  // The trail the hero shows: Home > category
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: cat.name, item: `${BASE_URL}/${category}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {itemListLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       )}

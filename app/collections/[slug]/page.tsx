@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { ChevronRight, Star, MapPin, ArrowRight } from "lucide-react";
-import { getCollection, COLLECTIONS, MIN_LISTINGS } from "@/lib/collections-config";
+import { getCollection, COLLECTIONS, MIN_LISTINGS, collectionWhere } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
 
 // Revalidate every hour so new tags appear without a code push
@@ -23,10 +23,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!collection) return { title: "Not Found" };
 
   const url = `${BASE_URL}/collections/${slug}`;
+  // Under MIN_LISTINGS places the page is too thin to index; its links are still
+  // followed. Set here so the page has one robots tag, not this and the site default.
+  let indexable = true;
+  try {
+    indexable = (await prisma.business.count({ where: collectionWhere(collection) })) >= MIN_LISTINGS;
+  } catch {
+    // DB unavailable: leave the default
+  }
   return {
     title: collection.title,
     description: collection.metaDescription,
     alternates: { canonical: url },
+    ...(indexable ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       title: collection.title,
       description: collection.metaDescription,
@@ -81,10 +90,7 @@ export default async function CollectionPage({ params }: Props) {
 
   try {
     const rawResults = await prisma.business.findMany({
-      where: {
-        category: { slug: { in: collection.categorySlugs } },
-        tags: { hasEvery: collection.tags },
-      },
+      where: collectionWhere(collection),
       select: {
         id: true,
         slug: true,
@@ -161,11 +167,6 @@ export default async function CollectionPage({ params }: Props) {
 
   return (
     <>
-      {/* noindex for thin pages */}
-      {!isIndexable && (
-        <meta name="robots" content="noindex, nofollow" />
-      )}
-
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 

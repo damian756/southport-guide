@@ -1,9 +1,18 @@
 // ── Collection Pages Config ───────────────────────────────────────────────────
 // Programmatic tag-filtered listing pages at /collections/[slug].
 // Each entry queries the DB for businesses matching the given tags + categories.
-// Pages with fewer than MIN_LISTINGS results are served noindex automatically.
+// Pages with fewer than MIN_LISTINGS results are served noindex automatically,
+// and the sitemap leaves them out by the same count (app/sitemap.ts).
 
 export const MIN_LISTINGS = 4;
+
+/** The listings a collection shows: in one of its categories, with all of its tags. */
+export function collectionWhere(c: Pick<Collection, "categorySlugs" | "tags">) {
+  return {
+    category: { slug: { in: c.categorySlugs } },
+    tags: { hasEvery: c.tags },
+  };
+}
 
 export interface Collection {
   slug: string;
@@ -13,8 +22,6 @@ export interface Collection {
   metaDescription: string;
   /** Terry-voice intro — 60–100 words, shown above the listings */
   intro: string;
-  /** Exclude from sitemap (e.g. pages that render noindex due to thin content) */
-  sitemapExclude?: boolean;
   /** Tags to match (business must have ALL of these) */
   tags: string[];
   /** Category slugs to filter by (business must be in ONE of these) */
@@ -156,7 +163,7 @@ export const COLLECTIONS: Collection[] = [
   // ── Dining style ─────────────────────────────────────────────────────────
   {
     slug: "afternoon-tea-southport",
-    title: "Afternoon Tea in Southport",
+    title: "Places for Afternoon Tea in Southport",
     metaDescription:
       "Afternoon tea in Southport: hotels and independent tea rooms serving afternoon tea, and when to book ahead.",
     intro:
@@ -178,7 +185,6 @@ export const COLLECTIONS: Collection[] = [
     categorySlugs: ["restaurants", "bars-nightlife"],
     emoji: "🥂",
     priority: 0.72,
-    sitemapExclude: true,
   },
 
   // ── Hotels ───────────────────────────────────────────────────────────────
@@ -225,7 +231,6 @@ export const COLLECTIONS: Collection[] = [
   // ── Sunflower-friendly ───────────────────────────────────────────────────
   {
     slug: "sunflower-friendly-southport",
-    sitemapExclude: true, // renders noindex (too few listings)
     title: "Sunflower-Friendly Venues in Southport",
     metaDescription:
       "Sunflower-friendly venues in Southport: businesses and attractions registered with the Hidden Disabilities Sunflower scheme, where staff recognise the lanyard and offer support.",
@@ -285,7 +290,6 @@ export const COLLECTIONS: Collection[] = [
   // ── Botanic Gardens ───────────────────────────────────────────────────────
   {
     slug: "botanic-gardens-southport",
-    sitemapExclude: true, // renders noindex (too few listings)
     title: "Botanic Gardens Southport",
     metaDescription:
       "Botanic Gardens Southport: the Victorian walled garden in Churchtown. Fernery, aviaries, cafe, and free entry. A Southport institution since 1874.",
