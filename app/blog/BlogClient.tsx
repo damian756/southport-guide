@@ -12,6 +12,8 @@ function PostImage({ src, alt, sizes, quality, className }: {
   src: string; alt: string; sizes?: string; quality?: number; className?: string;
 }) {
   const [imgSrc, setImgSrc] = useState(src);
+  // A post with no photo shows a plain panel
+  if (!imgSrc) return <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />;
   return (
     <Image
       src={imgSrc}

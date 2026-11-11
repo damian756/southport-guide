@@ -319,9 +319,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    image: post.image.startsWith("http")
-      ? post.image
-      : `https://www.southportguide.co.uk${post.image}`,
+    ...(post.image
+      ? { image: post.image.startsWith("http") ? post.image : `https://www.southportguide.co.uk${post.image}` }
+      : {}),
     datePublished: isoDate,
     dateModified: isoDate,
     url: canonicalUrl,
@@ -370,16 +370,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <div className="min-h-screen bg-[#FAF8F5]">
       {/* Hero image */}
       <div className="relative h-72 md:h-[26rem] bg-[#1B2E4B]">
-        <Image
-          src={post.image}
-          alt={post.heroAlt ?? post.title}
-          fill
-          priority
-          sizes="100vw"
-          quality={80}
-          className="object-cover"
-          style={{ objectPosition: "center 35%" }}
-        />
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.heroAlt ?? post.title}
+            fill
+            priority
+            sizes="100vw"
+            quality={80}
+            className="object-cover"
+            style={{ objectPosition: "center 35%" }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-3xl mx-auto">
           <Link
@@ -549,7 +551,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
                     >
                       <div className="relative w-24 flex-none overflow-hidden">
-                        <Image src={related.image} alt={related.title} fill sizes="96px" quality={60} className="object-cover" />
+                        {related.image ? <Image src={related.image} alt={related.title} fill sizes="96px" quality={60} className="object-cover" /> : <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />}
                       </div>
                       <div className="p-4 flex flex-col justify-center">
                         <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>{relatedCat?.label}</span>
@@ -578,7 +580,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-md transition-all flex"
                 >
                   <div className="relative w-24 flex-none overflow-hidden">
-                    <Image src={related.image} alt={related.title} fill sizes="96px" quality={60} className="object-cover" />
+                    {related.image ? <Image src={related.image} alt={related.title} fill sizes="96px" quality={60} className="object-cover" /> : <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />}
                   </div>
                   <div className="p-4 flex flex-col justify-center">
                     <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: relatedCat?.color }}>{relatedCat?.label}</span>

@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { ViewTracker } from "@/components/ViewTracker";
 import ReviewSection from "@/components/ReviewSection";
 import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
+import { postsForListing } from "@/lib/listing-posts";
 
 type Props = {
   params: Promise<{ category: string; slug: string }>;
@@ -647,6 +648,16 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                   </div>
                 </div>
               )}
+
+              {/* Read more: our posts about this place (lib/listing-posts.ts) */}
+              {postsForListing(slug).map((post) => (
+                <p key={post.slug} className="bg-white rounded-xl shadow-sm border border-gray-100 px-6 py-4 text-sm text-gray-700">
+                  Read more:{" "}
+                  <Link href={`/blog/${post.slug}`} className="font-semibold text-[#1B2E4B] underline underline-offset-2 hover:text-[#C9A84C]">
+                    {post.title}
+                  </Link>
+                </p>
+              ))}
 
               {/* ── Reviews ─────────────────────────────────────────────── */}
               <ReviewSection

@@ -558,14 +558,16 @@ export default async function Home() {
                     className="group md:col-span-2 bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-xl transition-all flex flex-col"
                   >
                     <div className="relative h-52 md:h-64 overflow-hidden flex-none">
-                      <Image
-                        src={featPost.image}
-                        alt={featPost.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 66vw"
-                        quality={85}
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      {featPost.image ? (
+                        <Image
+                          src={featPost.image}
+                          alt={featPost.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 66vw"
+                          quality={85}
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                       <div className="absolute top-3 left-3 flex items-center gap-2">
                         <span className="bg-[#1B2E4B] text-[#C9A84C] text-[11px] font-bold px-3 py-1.5 rounded-full shadow">
@@ -606,14 +608,16 @@ export default async function Home() {
                         className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all flex flex-col flex-1"
                       >
                         <div className="relative h-36 overflow-hidden flex-none">
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            quality={75}
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
+                          {post.image ? (
+                            <Image
+                              src={post.image}
+                              alt={post.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                              quality={75}
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                           {cat && (
                             <span
@@ -651,14 +655,16 @@ export default async function Home() {
                         className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all flex flex-col"
                       >
                         <div className="relative h-40 overflow-hidden flex-none">
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            quality={75}
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
+                          {post.image ? (
+                            <Image
+                              src={post.image}
+                              alt={post.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                              quality={75}
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                           {cat && (
                             <span
@@ -696,14 +702,16 @@ export default async function Home() {
                         className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg transition-all flex flex-col"
                       >
                         <div className="relative h-40 overflow-hidden flex-none">
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            quality={75}
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
+                          {post.image ? (
+                            <Image
+                              src={post.image}
+                              alt={post.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                              quality={75}
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : <div className="absolute inset-0 bg-[#1B2E4B]" aria-hidden />}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                           {cat && (
                             <span

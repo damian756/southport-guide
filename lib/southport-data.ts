@@ -1226,6 +1226,20 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "11 Nov 2026",
     featured: true,
   },
+  {
+    // Sources (11 Nov 2026): southportagriculturalshow.co.uk home, /aboutus/, /tickets/, /whats-on/;
+    // ticketquarter.co.uk/Online/article/Southport-Agricultural-Show; victoriaparkevents.co.uk;
+    // merseyrail.org station pages (Southport, Birkdale); visitsouthport.com (Sefton) fireworks page.
+    // No photo: the repo holds no Victoria Park photo with a known source.
+    slug: "southport-agricultural-show-2027",
+    title: "Southport Agricultural Show 2027: Dates, Tickets and What's On",
+    excerpt:
+      "A new agricultural show comes to Victoria Park, Southport, on 17 and 18 April 2027. What the organisers have announced so far, including Llamapalooza, plus tickets and getting there.",
+    categorySlug: "events",
+    image: "",
+    date: "11 Nov 2026",
+    featured: true,
+  },
 ];
 
 // ── Blog helper functions ──────────────────────────────────────────────────

@@ -2743,5 +2743,43 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "To make a longer walk of it, our [autumn walks guide](/blog/autumn-walks-southport) covers routes through Churchtown and round the Marine Lake as well as Hesketh Park, and the [Churchtown guide](/guides/churchtown) covers the old village end of Southport." },
     { type: "cta", text: "Parks, beaches and green spaces across Southport:", href: "/beaches-parks", label: "Browse Southport Beaches and Parks →" },
   ],
+  "southport-agricultural-show-2027": [
+    { type: "p", text: "Southport Agricultural Show is a new two-day show at Victoria Park, Southport, on Saturday 17 and Sunday 18 April 2027. The organisers call it the very first Southport Agricultural Show, and say it will bring agriculture, animals, local producers, independent businesses, entertainment and family activities together for one weekend." },
+    { type: "ul", items: [
+      "When: Saturday 17 and Sunday 18 April 2027",
+      "Where: Victoria Park, Southport, PR8 1RX",
+      "Opening times: not yet confirmed by the show",
+      "Tickets: online from Ticket Quarter",
+    ]},
+    { type: "h2", text: "What is on" },
+    { type: "p", text: "The show's website groups the weekend into three parts:" },
+    { type: "ul", items: [
+      "Animals and agriculture: animals, rural businesses and more",
+      "Food, drink and shopping: producers, makers, traders and independent businesses from Southport and beyond",
+      "Family entertainment: entertainment and activities for visitors of all ages",
+    ]},
+    { type: "p", text: "Ticket Quarter, which sells the tickets, also lists children's activities, animals, food and drink, machinery, homeware and clothing. The show says more will be announced on its [What's On page](https://southportagriculturalshow.co.uk/whats-on/) as the weekend gets closer." },
+    { type: "h2", text: "Llamapalooza" },
+    { type: "p", text: "The first attraction the show has named is Llamapalooza, a llama showing competition open to llamas of all breeds. Llamas and their handlers compete in three classes:" },
+    { type: "ul", items: [
+      "Fleece and Conformation: judged on each llama's quality, structure, movement, breed type and conformation",
+      "Presentation: judged on presentation, preparation, confidence and calm handling",
+      "Showmanship Challenge: a timed, points-based obstacle course",
+    ]},
+    { type: "p", text: "Points from the three classes are collected across the weekend, and an Overall Grand Champion Llama is crowned at the end. The judge is Jose Berdejo, an international judge." },
+    { type: "h2", text: "Tickets" },
+    { type: "p", text: "Tickets are sold online by [Ticket Quarter](https://ticketquarter.co.uk/Online/article/Southport-Agricultural-Show). When we checked its page on 11 November 2026, it did not show ticket prices. For personal assistant tickets, Ticket Quarter asks you to call its box office on 0344 8000 410, Monday to Friday, 9am to 5pm, except bank holidays." },
+    { type: "p", text: "The show's own [tickets page](https://southportagriculturalshow.co.uk/tickets/) lists the opening times as still to be confirmed, and says parking, accessibility and other information for the day will be added there before the show." },
+    { type: "h2", text: "Getting there" },
+    { type: "ul", items: [
+      "By train: Southport station (PR8 1BE) and Birkdale station (Liverpool Road, PR8 4AF) are both on Merseyrail's Northern line, and Merseyrail rates both A for step-free access",
+      "On foot from the station: for other events at Victoria Park, Visit Southport, Sefton Council's visitor website, gives both stations as about a 15-minute walk from the park",
+      "Parking: the show has not yet published parking details; they are due on its tickets page before the show",
+    ]},
+    { type: "h2", text: "Trading at the show" },
+    { type: "p", text: "The show is taking applications from businesses that want a trade stand at Victoria Park across the weekend. Details and the application form are on the [show's website](https://southportagriculturalshow.co.uk/)." },
+    { type: "p", text: "The show has a listing in our [attractions directory](/attractions/southport-agricultural-show), and its dates are on our [events calendar](/events) with the other dates coming up in Southport." },
+    { type: "cta", text: "More dates for the months ahead:", href: "/events", label: "See what's on in Southport →" },
+  ],
 
 };
