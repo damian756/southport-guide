@@ -27,7 +27,7 @@ const FAQS = [
   { q: "When is the Southport Food and Drink Festival 2026?", a: "The Southport Food and Drink Festival 2026 runs from Friday 29 May to Sunday 31 May 2026, the Bank Holiday weekend. This is one of the busiest weekends in Southport's events calendar." },
   { q: "Is the Southport Food and Drink Festival free?", a: "Entry to the Food and Drink Festival is free. There is no charge to attend. You pay for food and drink from the traders." },
   { q: "How many traders are at the Southport Food and Drink Festival?", a: "The festival typically features 100+ food and drink traders. The mix includes street food, artisan food producers, local restaurants serving festival portions, international cuisine, and drinks specialists." },
-  { q: "Where is the Southport Food and Drink Festival?", a: "The festival takes place in Southport town centre, typically across Lord Street, the town square, and surrounding streets. The exact layout varies each year. The whole area is given over to the festival for the three days." },
+  { q: "Where is the Southport Food and Drink Festival?", a: "The 2026 festival was held in Victoria Park, Southport (PR8 1RX), from Friday 29 to Sunday 31 May." },
   { q: "Is the Southport Food and Drink Festival family friendly?", a: "Yes. The festival is a family event, there is live entertainment alongside the food traders, and the open outdoor setting is good for families. There is also live music and other entertainment across the three days." },
   { q: "Can I stay overnight for the Southport Food and Drink Festival?", a: "Yes, but book early. The Bank Holiday weekend of 29–31 May is one of Southport's busiest weekends, with the Food and Drink Festival plus the final days of Beer Week (20–25 May). Hotels fill up. Book accommodation as far in advance as possible." },
   { q: "What else is on in Southport at the same time as the Food Festival?", a: "Beer Week runs from 20–25 May, so the early part overlaps with the Food and Drink Festival weekend. The Big Top Festival is 2–3 May. May is Southport's busiest month for events in 2026." },
@@ -39,7 +39,7 @@ const PAGE_LD = {
   name: "Southport Food and Drink Festival 2026",
   startDate: "2026-05-29",
   endDate: "2026-05-31",
-  description: "Three-day food and drink festival in Southport town centre over the Bank Holiday weekend. Free entry, 100+ traders, live entertainment.",
+  description: "Three-day food and drink festival in Victoria Park, Southport, over the Bank Holiday weekend. Free entry, 100+ traders, live entertainment.",
   url: `${BASE_URL}/guides/southport-food-drink-festival-2026`,
   image: `${BASE_URL}/images/guides/southport-food-drink-festival-2026.jpg`,
   isAccessibleForFree: true,
@@ -47,8 +47,8 @@ const PAGE_LD = {
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   location: {
     "@type": "Place",
-    name: "Southport Town Centre",
-    address: { "@type": "PostalAddress", addressLocality: "Southport", addressRegion: "Merseyside", addressCountry: "GB" },
+    name: "Victoria Park",
+    address: { "@type": "PostalAddress", addressLocality: "Southport", postalCode: "PR8 1RX", addressRegion: "Merseyside", addressCountry: "GB" },
   },
 };
 
@@ -69,19 +69,19 @@ export default function FoodDrinkFestivalPage() {
         <div className="flex flex-col md:flex-row md:min-h-[72vh]">
           {/* Poster */}
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
-            <Image src="/images/guides/southport-food-drink-festival-2026.jpg" alt="Southport Food and Drink Festival 2026: Bank Holiday weekend town centre event" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+            <Image src="/images/guides/southport-food-drink-festival-2026.jpg" alt="Southport Food and Drink Festival 2026: Bank Holiday weekend event in Victoria Park" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
           </div>
           {/* Text */}
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">29–31 May 2026</span>
-              <span className="text-white/50 text-sm font-medium">Town Centre · Free Entry · Bank Holiday</span>
+              <span className="text-white/50 text-sm font-medium">Victoria Park · Free Entry · Bank Holiday</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               Southport Food
               <span className="block text-[#C9A84C]">&amp; Drink Festival</span>
             </h1>
-            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">100+ food and drink traders across Southport town centre. Three days over the Bank Holiday weekend. Free entry, live entertainment.</p>
+            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">100+ food and drink traders in Victoria Park. Three days over the Bank Holiday weekend. Free entry, live entertainment.</p>
             <div className="flex flex-wrap gap-3">
               <a href="#what" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">What&apos;s There</a>
               <a href="#practical" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">Hotels &amp; Parking</a>
@@ -95,7 +95,7 @@ export default function FoodDrinkFestivalPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "29–31 May", label: "When", sub: "Bank Holiday weekend" },
-              { icon: MapPin, value: "Town Centre", label: "Where", sub: "Lord Street & surrounding" },
+              { icon: MapPin, value: "Victoria Park", label: "Where", sub: "PR8 1RX" },
               { icon: Clock, value: "3 Days", label: "Duration", sub: "Fri, Sat, Sun" },
               { icon: MapPin, value: "Free", label: "Entry", sub: "No admission charge" },
             ].map((s) => (
@@ -116,7 +116,7 @@ export default function FoodDrinkFestivalPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">The Best Weekend to Visit Southport in 2026</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>The late May Bank Holiday is when Southport is at its best. The Food and Drink Festival turns the town centre into something genuinely worth visiting. 100+ traders, the town buzzing, weather that has a reasonable chance of cooperating. The combination of the festival and a Bank Holiday weekend makes it worth travelling for.</p>
+              <p>The late May Bank Holiday is when Southport is at its best. The Food and Drink Festival fills Victoria Park. 100+ traders, the town buzzing, weather that has a reasonable chance of cooperating. The combination of the festival and a Bank Holiday weekend makes it worth travelling for.</p>
               <p>The quality of the food traders varies, as it does at any festival of this size. The better producers tend to be the local and regional ones rather than the national festival circuit operators. Worth arriving early on Saturday when it is quieter and the choice is better.</p>
               <p>One warning: accommodation sells out. If you are thinking about staying over for this weekend, book now. This is not a drill. The Bank Holiday weekend with the Food Festival plus the final weekend of Beer Week means every hotel in town has been pre-booked for months.</p>
             </div>

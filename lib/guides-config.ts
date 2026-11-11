@@ -609,9 +609,9 @@ export const GUIDES: Guide[] = [
     slug: "southport-food-drink-festival-2026",
     title: "Southport Food and Drink Festival 2026",
     shortTitle: "Food & Drink Festival",
-    description: "Bank Holiday weekend food festival in the town centre. 29–31 May 2026. Free entry. 100+ traders.",
+    description: "Bank Holiday weekend food festival in Victoria Park. 29–31 May 2026. Free entry. 100+ traders.",
     excerpt:
-      "Southport Food and Drink Festival 2026: three days across the Bank Holiday weekend, 29–31 May. Free entry, 100+ food and drink traders, live entertainment, and the town centre buzzing. The complete visitor guide.",
+      "Southport Food and Drink Festival 2026: three days across the Bank Holiday weekend, 29–31 May, in Victoria Park. Free entry, 100+ food and drink traders and live entertainment.",
     category: "events",
     heroImage: "/images/guides/southport-food-drink-festival-2026.jpg",
     seoPriority: 0.82,
@@ -625,7 +625,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Southport Food and Drink Festival 2026 | 29–31 May · Bank Holiday Weekend Guide",
     metaDescription:
-      "Southport Food and Drink Festival 2026: 29–31 May, Bank Holiday weekend. Free entry, 100+ traders, live entertainment. Parking, hotels, and what to expect from one of the town's biggest weekends.",
+      "Southport Food and Drink Festival 2026: 29–31 May, Bank Holiday weekend, Victoria Park. Free entry, 100+ traders, live entertainment. Parking, hotels, and what to expect.",
   },
   {
     slug: "summer-solstice-southport-2026",
