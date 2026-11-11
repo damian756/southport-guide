@@ -87,10 +87,9 @@ export async function POST(req: Request) {
     });
     userId = newUser.id;
   } else {
-    await prisma.user.update({
-      where: { id: existingUser.id },
-      data: { name: parsed.data.name, password: tempPassword },
-    });
+    // Never change an existing account from a public form: overwriting its name and
+    // password let anyone lock out the owner of that email (including an admin login).
+    // The account owner gets a set-password link only if the claim is approved.
     userId = existingUser.id;
   }
 
