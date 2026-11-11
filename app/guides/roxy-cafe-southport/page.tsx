@@ -62,6 +62,18 @@ const PAGE_LD = {
   },
 };
 
+// The trail the breadcrumb shows: Home > Guides > Cafes > Roxy's Cafe
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "Guides", item: `${BASE_URL}/guides` },
+    { "@type": "ListItem", position: 3, name: "Cafes", item: `${BASE_URL}/cafes` },
+    { "@type": "ListItem", position: 4, name: "Roxy's Cafe", item: `${BASE_URL}/guides/roxy-cafe-southport` },
+  ],
+};
+
 const FAQ_LD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -190,6 +202,7 @@ export default function RoxyCafeGuide() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
 
       <div className="min-h-screen bg-[#FAF8F5]">
 

@@ -94,6 +94,16 @@ const FAQ_LD = {
   })),
 };
 
+// The trail the hero shows: Home > House Prices
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "House Prices", item: `${BASE_URL}/property` },
+  ],
+};
+
 const DATASET_LD = {
   "@context": "https://schema.org",
   "@type": "Dataset",
@@ -157,6 +167,7 @@ export default async function PropertyLandingPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(DATASET_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
 
       <div className="min-h-screen bg-[#FAF8F5]">
 

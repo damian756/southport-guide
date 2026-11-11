@@ -4,14 +4,14 @@ import PricingFAQ from "./PricingFAQ";
 import { getBoostTypes, formatPrice } from "@/lib/boost-config";
 
 export const metadata = {
-  title: "Pricing | List Your Business on SouthportGuide",
+  title: "Pricing | List Your Business in Southport",
   description:
     "Pricing for business listings on SouthportGuide.co.uk. Free and Pro plans, plus category boosts.",
   alternates: { canonical: "https://www.southportguide.co.uk/pricing" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    title: "Pricing | List Your Business on SouthportGuide",
+    title: "Pricing | List Your Business in Southport",
     description: "Pricing for business listings on SouthportGuide.co.uk. Free and Pro plans, plus category boosts.",
     url: "https://www.southportguide.co.uk/pricing",
   },

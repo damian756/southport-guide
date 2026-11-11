@@ -10,14 +10,14 @@ import OpenListingCard from "@/components/OpenListingCard";
 export const metadata: Metadata = {
   title: "Hotels Near Royal Birkdale Golf Club | The Open 2026",
   description:
-    "Hotels near Royal Birkdale for The Open 2026, every Southport hotel listed by walking distance from the course. Birkdale B&Bs book out first. Compare options before they go.",
+    "Hotels near Royal Birkdale, from the guide written for The Open 2026: every Southport hotel listed by walking distance from the course.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/accommodation" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
     title: "Hotels Near Royal Birkdale Golf Club | The Open 2026",
-    description: "Every Southport hotel listed by distance from Royal Birkdale: walking times, prices and availability for The Open Championship 2026. Birkdale books out first.",
+    description: "Every Southport hotel listed by distance from Royal Birkdale, from the guide written for The Open Championship 2026.",
     url: "https://www.southportguide.co.uk/the-open-2026/accommodation",
     images: [{ url: "/images/categories/hotels.webp", width: 1200, height: 630, alt: "Hotels near Royal Birkdale Golf Club" }],
   },

@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Getting to Royal Birkdale | Transport Guide for The Open 2026",
   description:
-    "How to get to Royal Birkdale for The Open Championship 2026. Merseyrail trains, park and ride, taxis, road closures and walking routes, everything you need for Open week in Southport.",
+    "Getting to Royal Birkdale by Merseyrail, park and ride, taxi and on foot, from the transport guide written for The Open Championship 2026.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/getting-there" },
   openGraph: {
     type: "website",

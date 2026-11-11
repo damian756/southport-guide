@@ -43,6 +43,18 @@ const PAGE_LD = {
   sameAs: ["https://www.seasonsouthport.com"],
 };
 
+// The trail the breadcrumb shows: Home > Guides > Cafés > Season Coffee
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "Guides", item: `${BASE_URL}/guides` },
+    { "@type": "ListItem", position: 3, name: "Cafés", item: `${BASE_URL}/cafes` },
+    { "@type": "ListItem", position: 4, name: "Season Coffee", item: `${BASE_URL}/guides/seasons-southport` },
+  ],
+};
+
 const FAQ_LD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -94,6 +106,7 @@ export default function SeasonsGuide() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_LD) }} />
 
       <div className="min-h-screen bg-[#FAF8F5]">
 

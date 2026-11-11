@@ -78,8 +78,22 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
   const categoryLabel = GUIDE_CATEGORIES[guide.category].label;
   const notice = eventNotice(guide, todayISO());
 
+  // The trail the breadcrumb strip shows: Home > Guides > category > this guide
+  const base = "https://www.southportguide.co.uk";
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: base },
+      { "@type": "ListItem", position: 2, name: "Guides", item: `${base}/guides` },
+      { "@type": "ListItem", position: 3, name: categoryLabel, item: `${base}/guides?category=${guide.category}` },
+      { "@type": "ListItem", position: 4, name: guide.title, item: `${base}/guides/${guide.slug}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       {/* ── Breadcrumb strip ── */}
       <nav
