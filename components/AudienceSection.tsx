@@ -62,7 +62,8 @@ function SearchChart({ points }: { points: readonly Point[] }) {
         ))}
       </svg>
       <figcaption className="text-xs text-gray-400 mt-3">{AUDIENCE_STATS.searchVisits.caption}</figcaption>
-      <table className="sr-only">
+      {/* sr-only does not shrink a table, so the wrapper hides it (it made /advertise wider than the screen) */}
+      <div className="sr-only"><table>
         <caption>{AUDIENCE_STATS.searchVisits.caption}</caption>
         <thead>
           <tr>
@@ -78,7 +79,7 @@ function SearchChart({ points }: { points: readonly Point[] }) {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table></div>
     </figure>
   );
 }
@@ -135,7 +136,7 @@ export default function AudienceSection() {
               Busiest categories, {c.period}: {c.topCategories.map((t) => `${t.name} ${fmt(t.clicks)}`).join(", ")}.
             </p>
             <p className="text-xs text-white/50 mt-3">Our own count of clicks on listings, not filtered for bots. July is the busiest month.</p>
-            <table className="sr-only">
+            <div className="sr-only"><table>
               <caption>Clicks on our listings by month, {c.period} (our own count, not filtered for bots)</caption>
               <thead>
                 <tr>
@@ -151,7 +152,7 @@ export default function AudienceSection() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           </div>
         </div>
       </div>
