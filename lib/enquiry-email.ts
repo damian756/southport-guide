@@ -216,6 +216,8 @@ export type ClaimNotice = {
   claimantEmail: string;
   message?: string | null;
   reviewUrl: string;
+  /** Listing(s) this email already manages, if any: the admin decides. */
+  alreadyManages?: string | null;
 };
 
 /** The admin notice of a new claim request, to the delivery inbox. */
@@ -226,6 +228,7 @@ export function buildClaimNotice(c: ClaimNotice, addr: Addresses): Email {
     rowHtml({ label: "Category", value: c.category }),
     rowHtml({ label: "Claimant", value: c.claimantName }),
     rowHtml({ label: "Email", value: c.claimantEmail, kind: "email" }),
+    ...(c.alreadyManages ? [rowHtml({ label: "Note", value: `This email already manages: ${c.alreadyManages}` })] : []),
   ].join("");
   const review = safeHttpUrl(c.reviewUrl);
   const html = layout(

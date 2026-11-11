@@ -73,15 +73,13 @@ export async function POST(req: Request) {
 
   const existingUser = await prisma.user.findUnique({
     where: { email: parsed.data.email },
-    include: { businesses: { select: { id: true } } },
+    include: { businesses: { select: { id: true, name: true } } },
   });
 
-  if (existingUser && existingUser.businesses.length > 0) {
-    return NextResponse.json(
-      { error: "An account with this email already manages a listing." },
-      { status: 400 }
-    );
-  }
+  // The same answer whatever the email: an email that already manages a listing is not
+  // refused (that told anyone which emails own listings). The claim is stored for the
+  // admin to decide, and the admin notice says which listing the email already manages.
+  const alreadyManages = existingUser?.businesses.map((b) => b.name).join(", ") || null;
 
   const tempPassword = await bcrypt.hash(randomPassword(), 12);
   let userId: string;
@@ -159,6 +157,7 @@ export async function POST(req: Request) {
       claimantEmail: parsed.data.email,
       message,
       reviewUrl: `${BASE_URL}/admin/claims`,
+      alreadyManages,
     },
     { from: FROM_EMAIL, to: ADMIN_EMAIL, replyTo: plainAddress(parsed.data.email) },
   );
