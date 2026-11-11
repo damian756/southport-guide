@@ -56,7 +56,7 @@ export default function GuidesClient({ guides }: Props) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search guides — beach, parking, dog-friendly..."
+            placeholder="Search guides: beach, parking, dog-friendly..."
             className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 text-sm text-[#1B2E4B] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/30 focus:border-[#C9A84C] transition-all bg-[#FAF8F5]"
           />
           {query && (

@@ -13,11 +13,11 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Collections | Curated Lists of Southport Businesses",
   description:
-    "Curated collections of Southport businesses, dog-friendly restaurants, hotels with parking, live music bars, and more. Filtered, local, and honest.",
+    "Curated collections of Southport businesses: dog-friendly restaurants, hotels with parking, live music bars, and more. Filtered, local, and honest.",
   alternates: { canonical: `${BASE_URL}/collections` },
   openGraph: {
     title: "Collections | SouthportGuide.co.uk",
-    description: "Curated Southport business collections — dog-friendly, family-friendly, outdoor seating, late night, and more.",
+    description: "Curated Southport business collections: dog-friendly, family-friendly, outdoor seating, late night, and more.",
     url: `${BASE_URL}/collections`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -28,7 +28,7 @@ const COLLECTION_LD = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Southport Collections",
-  description: "Curated collections of Southport businesses — dog-friendly restaurants, hotels with parking, live music bars, and more.",
+  description: "Curated collections of Southport businesses: dog-friendly restaurants, hotels with parking, live music bars, and more.",
   url: `${BASE_URL}/collections`,
   publisher: { "@type": "Organization", name: "SouthportGuide.co.uk", url: BASE_URL },
 };

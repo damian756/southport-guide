@@ -49,7 +49,7 @@ const COMMITMENTS = [
   {
     icon: CheckCircle,
     title: "Accessibility woven into every guide",
-    body: "Our venue and area guides will carry sensory and accessibility information as standard — not buried in a footnote. Parking close to entrances, indoor vs outdoor noise levels, predictable layouts. The stuff that actually helps families plan.",
+    body: "Our venue and area guides will carry sensory and accessibility information as standard, not buried in a footnote. Parking close to entrances, indoor vs outdoor noise levels, predictable layouts. The stuff that actually helps families plan.",
   },
   {
     icon: Building2,
@@ -65,11 +65,11 @@ const FAQS = [
   },
   {
     q: "Where can I get a Sunflower lanyard in Southport?",
-    a: "Sunflower lanyards are available free at Southport train station and a number of registered venues in the town centre. You can also order them directly from the Hidden Disabilities Sunflower website — they are free and no proof of disability is required.",
+    a: "Sunflower lanyards are available free at Southport train station and a number of registered venues in the town centre. You can also order them directly from the Hidden Disabilities Sunflower website, they are free and no proof of disability is required.",
   },
   {
     q: "Which Southport venues recognise the Sunflower lanyard?",
-    a: "Southport train station, The Atkinson on Lord Street, and a growing number of town centre businesses recognise the Sunflower lanyard. Awareness is still growing — it is worth contacting specific venues in advance for important visits. We are working to increase and document registered venues across the town.",
+    a: "Southport train station, The Atkinson on Lord Street, and a growing number of town centre businesses recognise the Sunflower lanyard. Awareness is still growing. It is worth contacting specific venues in advance for important visits. We are working to increase and document registered venues across the town.",
   },
   {
     q: "Does SouthportGuide have an autism-friendly visitor guide?",
@@ -102,7 +102,7 @@ export default function SunflowerMemberPage() {
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[42%] flex items-center justify-center bg-white order-first md:order-last p-10 md:p-16">
             <Image
               src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-              alt="Hidden Disabilities Sunflower — Proud to Support UK member badge"
+              alt="Hidden Disabilities Sunflower: Proud to Support UK member badge"
               width={400}
               height={400}
               sizes="(max-width: 768px) 80vw, 42vw"
@@ -245,7 +245,7 @@ export default function SunflowerMemberPage() {
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Already happening</p>
               <h3 className="font-display text-2xl font-bold text-white mb-3">Southport Market quiet hour</h3>
               <p className="text-white/70 leading-relaxed text-[15px] mb-4">
-                Southport Market on King Street runs a sensory-friendly hour on Saturday mornings — reduced music and lighting,
+                Southport Market on King Street runs a sensory-friendly hour on Saturday mornings: reduced music and lighting,
                 staff briefed, a calm start to the day before the weekend crowds arrive. It is one of the better examples
                 of what accessible retail looks like in practice. Our full guide covers the details.
               </p>
@@ -284,7 +284,7 @@ export default function SunflowerMemberPage() {
                 >
                   hiddendisabilitiesstore.com
                 </a>
-                {" "}— free, no minimum commitment, training included.
+                {": "}free, no minimum commitment, training included.
               </p>
             </div>
           </div>
@@ -295,7 +295,7 @@ export default function SunflowerMemberPage() {
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">How to get a Sunflower lanyard</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-[1.05rem]">
             Lanyards are available free of charge at Southport train station and a number of registered venues in the town centre.
-            You can also order them directly from the Hidden Disabilities Sunflower website — delivery is free and you do not
+            You can also order them directly from the Hidden Disabilities Sunflower website. Delivery is free and you do not
             need to explain or prove your disability.
           </p>
           <p className="text-gray-700 leading-relaxed text-[1.05rem]">

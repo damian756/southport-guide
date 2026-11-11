@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Accessible Southport — Wheelchair Access, Hidden Disabilities & Sunflower-Friendly Venues",
+  headline: "Accessible Southport: Wheelchair Access, Hidden Disabilities & Sunflower-Friendly Venues",
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/accessible-southport`,
   datePublished: "2026-04-02",
@@ -57,7 +57,7 @@ const VENUES = [
     sunflower: false,
     wheelchair: true,
     quietHour: true,
-    notes: "Saturday quiet hour runs 9–10am: reduced music, no PA announcements, lower sensory load. Level access throughout on the ground floor. Plenty of space between traders. A genuine quiet hour — not just turned down slightly.",
+    notes: "Saturday quiet hour runs 9–10am: reduced music, no PA announcements, lower sensory load. Level access throughout on the ground floor. Plenty of space between traders. A genuine quiet hour, not just turned down slightly.",
     bestFor: "Food, family visits, quiet hour Saturdays",
     noiseLevel: "Moderate (Low during quiet hour)",
   },
@@ -93,7 +93,7 @@ const VENUES = [
     sunflower: false,
     wheelchair: true,
     quietHour: false,
-    notes: "The beach itself is level sand, manageable for wheelchair users in dry conditions. The Promenade is fully paved and flat. Very early morning is the quietest time — before 9am in summer you can have the beach nearly to yourself. Wind and natural sound provides white noise that some find helpful.",
+    notes: "The beach itself is level sand, manageable for wheelchair users in dry conditions. The Promenade is fully paved and flat. Very early morning is the quietest time: before 9am in summer you can have the beach nearly to yourself. Wind and natural sound provides white noise that some find helpful.",
     bestFor: "Open space, early morning, dogs",
     noiseLevel: "Natural (varies with wind)",
   },
@@ -130,7 +130,7 @@ const PRACTICAL = [
   {
     icon: Clock,
     title: "Best times to visit",
-    body: "Weekday mornings before 11am are the quietest. Southport is a popular day-trip destination at weekends and in summer. If crowd density is a concern, aim for a weekday. During major events (Air Show, Open Championship, Flower Show) the town is significantly busier — plan around them or use them intentionally.",
+    body: "Weekday mornings before 11am are the quietest. Southport is a popular day-trip destination at weekends and in summer. If crowd density is a concern, aim for a weekday. During major events (Air Show, Open Championship, Flower Show) the town is significantly busier, plan around them or use them intentionally.",
   },
   {
     icon: Volume2,
@@ -139,7 +139,7 @@ const PRACTICAL = [
   },
   {
     icon: Users,
-    title: "SAFE — Southport Access For Everyone",
+    title: "SAFE: Southport Access For Everyone",
     body: "SAFE (Southport Access For Everyone) is the local disability access charity. They maintain accessibility data for venues across Southport and are a valuable resource if you have specific access requirements beyond what this guide covers.",
   },
 ];
@@ -147,23 +147,23 @@ const PRACTICAL = [
 const FAQS = [
   {
     q: "Is Southport accessible for wheelchair users?",
-    a: "The town centre — particularly Lord Street and the Promenade — is flat and largely accessible. The main car parks have designated blue badge spaces. The beach is accessible from the Promenade hardstanding, though sand is more challenging beyond the initial flat area. The Atkinson and Southport Market both have full wheelchair access.",
+    a: "The town centre, particularly Lord Street and the Promenade, is flat and largely accessible. The main car parks have designated blue badge spaces. The beach is accessible from the Promenade hardstanding, though sand is more challenging beyond the initial flat area. The Atkinson and Southport Market both have full wheelchair access.",
   },
   {
     q: "Does Southport recognise the Sunflower lanyard?",
-    a: "Southport train station and The Atkinson are confirmed Sunflower-registered venues. SouthportGuide is a Sunflower member and we are actively encouraging more venues to register. Awareness is growing but is not universal — it is worth contacting specific venues ahead of important visits.",
+    a: "Southport train station and The Atkinson are confirmed Sunflower-registered venues. SouthportGuide is a Sunflower member and we are actively encouraging more venues to register. Awareness is growing but is not universal. It is worth contacting specific venues ahead of important visits.",
   },
   {
     q: "Where can I get a Sunflower lanyard in Southport?",
-    a: "Free Sunflower lanyards are available at Southport train station. No proof of disability required. You can also order from hiddendisabilitiesstore.com — they are free and delivered to your door.",
+    a: "Free Sunflower lanyards are available at Southport train station. No proof of disability required. You can also order from hiddendisabilitiesstore.com. They are free and delivered to your door.",
   },
   {
     q: "Is there anywhere in Southport with a quiet hour?",
-    a: "Southport Market runs a quiet hour on Saturday mornings from 9am to 10am — reduced music and no PA announcements. This is currently the only confirmed regular quiet hour in the town. We are encouraging other venues and events to introduce similar provision.",
+    a: "Southport Market runs a quiet hour on Saturday mornings from 9am to 10am: reduced music and no PA announcements. This is currently the only confirmed regular quiet hour in the town. We are encouraging other venues and events to introduce similar provision.",
   },
   {
     q: "Is Southport a good option for visitors with autism?",
-    a: "We have a dedicated guide to autism and sensory-friendly Southport which covers this in full. The short answer: yes, with the right planning. The beach, Churchtown, The Atkinson, and Southport Market on a quiet Saturday morning are all manageable. The town is busy during summer weekends and major events — plan accordingly.",
+    a: "We have a dedicated guide to autism and sensory-friendly Southport which covers this in full. The short answer: yes, with the right planning. The beach, Churchtown, The Atkinson, and Southport Market on a quiet Saturday morning are all manageable. The town is busy during summer weekends and major events, plan accordingly.",
   },
 ];
 
@@ -180,7 +180,7 @@ export default function AccessibleSouthportPage() {
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[42%] order-first md:order-last flex items-center justify-center bg-white p-10 md:p-16">
             <Image
               src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-              alt="Hidden Disabilities Sunflower — SouthportGuide is a proud member"
+              alt="Hidden Disabilities Sunflower: SouthportGuide is a proud member"
               width={400}
               height={400}
               sizes="(max-width: 768px) 80vw, 42vw"

@@ -73,7 +73,7 @@ export default function GuidesIndexPage() {
           <div className="absolute inset-0">
             <Image
               src="/images/southport-beach-hero.webp"
-              alt="Southport Beach at low tide — wide flat sand stretching to the sea"
+              alt="Southport Beach at low tide: wide flat sand stretching to the sea"
               fill
               priority
               sizes="100vw"

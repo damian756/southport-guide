@@ -134,7 +134,7 @@ export default function YearOfCulturePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-year-of-culture-2026.webp"
-            alt="Southport 2026 Elegantly Eccentric — Cristal Palace flying chandelier on Lord Street"
+            alt="Southport 2026 Elegantly Eccentric: Cristal Palace flying chandelier on Lord Street"
             fill sizes="100vw" quality={90} className="object-cover"
             style={{ objectPosition: "center 40%" }} priority
           />

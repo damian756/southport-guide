@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 const ARTICLE_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Woodvale Community Centre (WACA) — Complete Guide",
+  headline: "Woodvale Community Centre (WACA): Complete Guide",
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/woodvale-community-centre`,
   datePublished: "2026-04-14",
@@ -134,7 +134,7 @@ export default function WoodvaleCommunityPage() {
       {/* ── Intro ─────────────────────────────────────────────────────────── */}
       <section className="mb-10">
         <p className="text-gray-700 leading-relaxed text-lg mb-4">
-          Woodvale & Ainsdale Community Association — WACA — is one of those organisations that does genuinely important work without making much noise about it. They have been running community activities in this part of Southport since 1992. The community centre on Meadow Lane was purpose-built in 1999 after local residents persuaded the council to build it. The recreation centre on Orchard Lane came later. Between the two sites, they cover pretty much everything from chair-based fitness classes to youth sessions to school holiday programmes.
+          Woodvale & Ainsdale Community Association, WACA, is one of those organisations that does genuinely important work without making much noise about it. They have been running community activities in this part of Southport since 1992. The community centre on Meadow Lane was purpose-built in 1999 after local residents persuaded the council to build it. The recreation centre on Orchard Lane came later. Between the two sites, they cover pretty much everything from chair-based fitness classes to youth sessions to school holiday programmes.
         </p>
         <p className="text-gray-700 leading-relaxed mb-4">
           If you live in Woodvale or Ainsdale and have not connected with WACA, it is worth knowing what they offer. If you are visiting and have family in the area, this is the kind of place that keeps a community working. Run as a registered charity, not commercially driven, staffed by people who care about the area. That comes through in everything they do.
@@ -246,7 +246,7 @@ export default function WoodvaleCommunityPage() {
         <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">What Goes On</p>
         <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-4">Activities and Classes</h2>
         <p className="text-gray-700 leading-relaxed mb-6">
-          WACA runs a full programme of daytime and evening activities. The timetable changes across the year — the activities below are those running currently, but contact the centre to confirm dates and book ahead where required.
+          WACA runs a full programme of daytime and evening activities. The timetable changes across the year. The activities below are those running currently, but contact the centre to confirm dates and book ahead where required.
         </p>
 
         <div className="space-y-4">
@@ -264,7 +264,7 @@ export default function WoodvaleCommunityPage() {
                 <p className="text-sm text-gray-600 leading-relaxed">
                   One of WACA's most popular classes. A bubbly, social session that improves mobility, balance and confidence. Booking is essential and must be made one week in advance. Teas and coffees after the class. Good for anyone looking to get moving in a friendly, no-pressure environment.
                 </p>
-                <p className="text-xs text-gray-400 mt-2 font-medium">Booking essential — 01704 573084</p>
+                <p className="text-xs text-gray-400 mt-2 font-medium">Booking essential: 01704 573084</p>
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@ export default function WoodvaleCommunityPage() {
               <div>
                 <h3 className="font-bold text-[#1B2E4B] mb-1">Craft Group</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Every Monday, 10:30am to 12:30pm. A sociable session — come for the crafting, stay for the chat and the cuppa. Booking essential; one week advance booking per session.
+                  Every Monday, 10:30am to 12:30pm. A sociable session: come for the crafting, stay for the chat and the cuppa. Booking essential; one week advance booking per session.
                 </p>
                 <p className="text-xs text-gray-400 mt-2 font-medium">Every Monday · 10:30am–12:30pm · Booking required</p>
               </div>
@@ -297,7 +297,7 @@ export default function WoodvaleCommunityPage() {
                   <span className="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full font-medium">Free</span>
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  A home-cooked meal, a chance to make new friends, and a relaxed social atmosphere. Run on the first Tuesday of each month. Booking is essential — call the centre in advance.
+                  A home-cooked meal, a chance to make new friends, and a relaxed social atmosphere. Run on the first Tuesday of each month. Booking is essential: call the centre in advance.
                 </p>
                 <p className="text-xs text-gray-400 mt-2 font-medium">1st Tuesday of the month · 12:30pm–1:30pm · Free · Booking required</p>
               </div>
@@ -351,7 +351,7 @@ export default function WoodvaleCommunityPage() {
               <div>
                 <h3 className="font-bold text-[#1B2E4B] mb-1">Course Sessions</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Short courses and varied sessions for adults 18 and over. Subject to funding, so the programme changes — check WACA&apos;s Facebook page for the latest. Past courses have included Origami, Painting, Japanese Arts & Crafts, Cookery, and First Aid. Worth keeping an eye on.
+                  Short courses and varied sessions for adults 18 and over. Subject to funding, so the programme changes. Check WACA&apos;s Facebook page for the latest. Past courses have included Origami, Painting, Japanese Arts & Crafts, Cookery, and First Aid. Worth keeping an eye on.
                 </p>
                 <p className="text-xs text-gray-400 mt-2 font-medium">Adults 18+ · 10am–12pm (times may vary) · See Facebook for current schedule</p>
               </div>
@@ -367,7 +367,7 @@ export default function WoodvaleCommunityPage() {
               <div>
                 <h3 className="font-bold text-[#1B2E4B] mb-1">Youth Sessions</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Evening youth activities run on Mondays and Tuesdays from 5pm to 7pm. Activities, skills, and programmes for young people in the local area. For details of the current youth programme, contact the centre directly — the schedule changes across the year.
+                  Evening youth activities run on Mondays and Tuesdays from 5pm to 7pm. Activities, skills, and programmes for young people in the local area. For details of the current youth programme, contact the centre directly, the schedule changes across the year.
                 </p>
                 <p className="text-xs text-gray-400 mt-2 font-medium">Mon–Tue evenings · 5pm–7pm · Contact for current programme</p>
               </div>
@@ -615,7 +615,7 @@ export default function WoodvaleCommunityPage() {
           <p className="text-gray-700 leading-relaxed">
             The Let&apos;s Get Digital sessions are worth flagging specifically. If you have an elderly relative in the area who is struggling with their phone or iPad, those Tuesday morning drop-ins are free, no-pressure, and run by people who actually want to help. That is harder to find than you might think.
           </p>
-          <p className="mt-3 text-sm text-gray-500">Terry, Chief Editor — SouthportGuide</p>
+          <p className="mt-3 text-sm text-gray-500">Terry, Chief Editor, SouthportGuide</p>
         </div>
       </section>
 

@@ -70,7 +70,7 @@ export default function ThirtyNineStepsPage() {
         <div className="flex flex-col md:flex-row md:min-h-[72vh]">
           {/* Poster */}
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
-            <Image src="/images/guides/39-steps-southport-2026.jpg" alt="The 39 Steps at Southport Little Theatre 2026 — Southport Dramatic Club" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+            <Image src="/images/guides/39-steps-southport-2026.jpg" alt="The 39 Steps at Southport Little Theatre 2026: Southport Dramatic Club" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
           </div>
           {/* Text */}
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">

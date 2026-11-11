@@ -28,17 +28,17 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "How do I get to the Marine Lake Events Centre by train?",
-      acceptedAnswer: { "@type": "Answer", text: "Take the Merseyrail Southport Line to Southport Station — the northern terminus. From the station, turn right onto Lord Street, walk toward the seafront (10 minutes), then turn right onto the Promenade. MLEC is on your left after 5 minutes. Total walking time from the station is approximately 15 minutes. Trains run from Liverpool Central (50 min), Formby (20 min), and other stops on the Southport Line." },
+      acceptedAnswer: { "@type": "Answer", text: "Take the Merseyrail Southport Line to Southport Station, the northern terminus. From the station, turn right onto Lord Street, walk toward the seafront (10 minutes), then turn right onto the Promenade. MLEC is on your left after 5 minutes. Total walking time from the station is approximately 15 minutes. Trains run from Liverpool Central (50 min), Formby (20 min), and other stops on the Southport Line." },
     },
     {
       "@type": "Question",
       name: "Is there parking at the Marine Lake Events Centre?",
-      acceptedAnswer: { "@type": "Answer", text: "MLEC does not have its own dedicated multi-storey car park. The closest parking is the Promenade surface car parks (1–3 min walk, pay and display), King's Gardens car park (5–8 min walk), and town centre multi-storey options on Chapel Street and Mornington Road (12–15 min walk). For major events, parking fills quickly — arrive at least 60 minutes early or use the train." },
+      acceptedAnswer: { "@type": "Answer", text: "MLEC does not have its own dedicated multi-storey car park. The closest parking is the Promenade surface car parks (1–3 min walk, pay and display), King's Gardens car park (5–8 min walk), and town centre multi-storey options on Chapel Street and Mornington Road (12–15 min walk). For major events, parking fills quickly, arrive at least 60 minutes early or use the train." },
     },
     {
       "@type": "Question",
       name: "What is the best way to get to MLEC?",
-      acceptedAnswer: { "@type": "Answer", text: "The train is the recommended option. Southport is the end of the Merseyrail Southport Line so you cannot miss your stop, the walk from the station to MLEC is flat and straightforward, and you avoid all parking and traffic issues. If driving, park in the town centre car parks and walk down — the Promenade route is pleasant and only 10–15 minutes." },
+      acceptedAnswer: { "@type": "Answer", text: "The train is the recommended option. Southport is the end of the Merseyrail Southport Line so you cannot miss your stop. The walk from the station to MLEC is flat and straightforward, and you avoid all parking and traffic issues. If driving, park in the town centre car parks and walk down, the Promenade route is pleasant and only 10–15 minutes." },
     },
     {
       "@type": "Question",
@@ -48,7 +48,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Can I get a taxi to and from MLEC?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — taxis and ride-share apps (Uber, Bolt) operate in Southport. For major events, pre-booking your return taxi is strongly advised as demand rises sharply after shows finish. Taxi ranks on Lord Street and Cambridge Road serve the town. For disabled-adapted vehicles, pre-book directly with a local specialist firm." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Taxis and ride-share apps (Uber, Bolt) operate in Southport. For major events, pre-booking your return taxi is strongly advised as demand rises sharply after shows finish. Taxi ranks on Lord Street and Cambridge Road serve the town. For disabled-adapted vehicles, pre-book directly with a local specialist firm." },
     },
   ],
 };
@@ -186,7 +186,7 @@ export default function MLECGettingTherePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/mlec.webp"
-            alt="Marine Lake Events Centre — Getting There"
+            alt="Marine Lake Events Centre: Getting There"
             fill
             sizes="100vw"
             quality={80}

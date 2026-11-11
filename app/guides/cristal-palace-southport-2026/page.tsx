@@ -116,7 +116,7 @@ export default function CristalPalacePage() {
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
             <Image
               src="/images/guides/cristal-palace-southport-2026.jpg"
-              alt="Cristal Palace Southport 2026 — free aerial street theatre by Transe Express on Lord Street"
+              alt="Cristal Palace Southport 2026: free aerial street theatre by Transe Express on Lord Street"
               fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain"
               priority
             />

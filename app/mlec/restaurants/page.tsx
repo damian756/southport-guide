@@ -28,12 +28,12 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Where should I eat before a show at MLEC?",
-      acceptedAnswer: { "@type": "Answer", text: "Lord Street in Southport town centre is the best pre-show dining option — it has the widest range of restaurants from independent bistros to cocktail bars, and is a pleasant 10–15 minute walk along the Promenade to MLEC. Book in advance for any show night, especially weekends. The Promenade itself will have MLEC's own lakeside café and signature restaurant from 2027." },
+      acceptedAnswer: { "@type": "Answer", text: "Lord Street in Southport town centre is the best pre-show dining option. It has the widest range of restaurants from independent bistros to cocktail bars, and is a pleasant 10–15 minute walk along the Promenade to MLEC. Book in advance for any show night, especially weekends. The Promenade itself will have MLEC's own lakeside café and signature restaurant from 2027." },
     },
     {
       "@type": "Question",
       name: "Does MLEC have its own restaurant?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both are due to open with the venue in April 2027. The signature restaurant is expected to be a popular pre-show dining option — book ahead for event nights." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both are due to open with the venue in April 2027. The signature restaurant is expected to be a popular pre-show dining option, book ahead for event nights." },
     },
     {
       "@type": "Question",
@@ -43,7 +43,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Are restaurants near MLEC busy on event nights?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — when MLEC opens for major events, Lord Street restaurants will fill up quickly from around 5:30–6pm. Always book a table in advance for show nights, particularly for Saturday events or high-profile concerts. Walk-in dining on event evenings is not reliable." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. When MLEC opens for major events, Lord Street restaurants will fill up quickly from around 5:30–6pm. Always book a table in advance for show nights, particularly for Saturday events or high-profile concerts. Walk-in dining on event evenings is not reliable." },
     },
     {
       "@type": "Question",

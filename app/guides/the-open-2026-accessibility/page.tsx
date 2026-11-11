@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "The Open 2026 Accessibility Guide — Hidden Disabilities, Wheelchair Access & Sensory Zones",
+  headline: "The Open 2026 Accessibility Guide: Hidden Disabilities, Wheelchair Access & Sensory Zones",
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/the-open-2026-accessibility`,
   datePublished: "2026-04-02",
@@ -49,7 +49,7 @@ const FAQ_LD = {
       name: "Is the Sunflower lanyard recognised at The Open 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The R&A's official 2026 accessibility guide explicitly recommends the Hidden Disabilities Sunflower scheme. Staff at Royal Birkdale will be trained to recognise the lanyard and offer additional support where needed. Lanyards are available free at Southport train station and from hiddendisabilitiesstore.com — no proof of disability required.",
+        text: "Yes. The R&A's official 2026 accessibility guide explicitly recommends the Hidden Disabilities Sunflower scheme. Staff at Royal Birkdale will be trained to recognise the lanyard and offer additional support where needed. Lanyards are available free at Southport train station and from hiddendisabilitiesstore.com, no proof of disability required.",
       },
     },
     {
@@ -73,7 +73,7 @@ const FAQ_LD = {
       name: "Can I get accessible accommodation near Royal Birkdale for The Open?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Accommodation is extremely limited for The Open 2026 — most central Southport hotels are already at capacity. For accessible accommodation, contact hotels directly to discuss specific requirements. The Vincent Hotel (PR9 0AU) and The Scarisbrick Hotel (PR8 1NJ) on Lord Street are both within a short accessible journey of Royal Birkdale. Birkdale village itself has accommodation within walking distance of the course.",
+        text: "Accommodation is extremely limited for The Open 2026. Most central Southport hotels are already at capacity. For accessible accommodation, contact hotels directly to discuss specific requirements. The Vincent Hotel (PR9 0AU) and The Scarisbrick Hotel (PR8 1NJ) on Lord Street are both within a short accessible journey of Royal Birkdale. Birkdale village itself has accommodation within walking distance of the course.",
       },
     },
     {
@@ -91,7 +91,7 @@ const SENSORY_TIPS = [
   {
     icon: MapPin,
     title: "Sensory Zone at Spectator Village 4",
-    body: "The R&A has designated a sensory zone at Spectator Village 4 specifically for visitors with autism or sensory processing disorders. This is a quieter, calmer area away from the main crowd concentrations. Make a note of where it is on arrival — it is your base if things get overwhelming.",
+    body: "The R&A has designated a sensory zone at Spectator Village 4 specifically for visitors with autism or sensory processing disorders. This is a quieter, calmer area away from the main crowd concentrations. Make a note of where it is on arrival, it is your base if things get overwhelming.",
   },
   {
     icon: Flower2,
@@ -123,7 +123,7 @@ const SENSORY_TIPS = [
 const ACCESSIBLE_SOUTHPORT = [
   {
     name: "The Vincent Hotel",
-    detail: "Lord Street, PR9 0AU. Southport's most central hotel — accessible rooms available, modern lift, close to town-centre transport links for shuttle buses.",
+    detail: "Lord Street, PR9 0AU. Southport's most central hotel: accessible rooms available, modern lift, close to town-centre transport links for shuttle buses.",
   },
   {
     name: "The Scarisbrick Hotel",
@@ -153,7 +153,7 @@ export default function OpenAccessibilityGuidePage() {
           <div className="relative min-h-[260px] sm:min-h-[340px] md:min-h-0 md:w-[45%] order-first md:order-last">
             <Image
               src="/images/open-2026.webp"
-              alt="Royal Birkdale Golf Club — host of The Open Championship 2026"
+              alt="Royal Birkdale Golf Club: host of The Open Championship 2026"
               fill
               sizes="(max-width: 768px) 100vw, 45vw"
               className="object-cover"
@@ -165,7 +165,7 @@ export default function OpenAccessibilityGuidePage() {
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-2.5 flex items-center gap-2 shadow-lg">
               <Image
                 src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-                alt="Hidden Disabilities Sunflower — Proud to Support"
+                alt="Hidden Disabilities Sunflower: Proud to Support"
                 width={36}
                 height={36}
                 className="object-contain"
@@ -295,7 +295,7 @@ export default function OpenAccessibilityGuidePage() {
               {
                 emoji: "🎫",
                 title: "Carer ticket provision",
-                detail: "Carers accompanying a disabled guest can access a complimentary ticket. Contact the R&A ticketing team directly — this is not available through the standard booking flow.",
+                detail: "Carers accompanying a disabled guest can access a complimentary ticket. Contact the R&A ticketing team directly. This is not available through the standard booking flow.",
               },
               {
                 emoji: "🚌",
@@ -520,7 +520,7 @@ export default function OpenAccessibilityGuidePage() {
           >
             <h3 className="font-bold text-[#1B2E4B] text-base mb-1.5">Full Open 2026 guide</h3>
             <p className="text-gray-600 text-sm leading-relaxed mb-3">
-              The complete guide to The Open Championship 2026 at Royal Birkdale — tickets, accommodation,
+              The complete guide to The Open Championship 2026 at Royal Birkdale: tickets, accommodation,
               restaurants, transport, and everything else.
             </p>
             <span className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">

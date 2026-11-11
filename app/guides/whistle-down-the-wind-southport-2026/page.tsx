@@ -71,7 +71,7 @@ export default function WhistleDownTheWindPage() {
         <div className="flex flex-col md:flex-row md:min-h-[72vh]">
           {/* Poster */}
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
-            <Image src="/images/guides/whistle-down-the-wind-southport-2026.jpg" alt="Whistle Down the Wind at The Atkinson Southport 2026 — SONG Productions musical theatre" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+            <Image src="/images/guides/whistle-down-the-wind-southport-2026.jpg" alt="Whistle Down the Wind at The Atkinson Southport 2026: SONG Productions musical theatre" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
           </div>
           {/* Text */}
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">

@@ -95,7 +95,7 @@ export default function ComedyFestivalPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-comedy-festival.webp"
-            alt="Southport Comedy Festival — packed luxury marquee at Victoria Park"
+            alt="Southport Comedy Festival: packed luxury marquee at Victoria Park"
             fill sizes="100vw" quality={90} className="object-cover"
             style={{ objectPosition: "center 45%" }} priority
           />
@@ -270,7 +270,7 @@ export default function ComedyFestivalPage() {
           noiseLevel="high"
           noiseLevelNote="Amplified live comedy in an enclosed marquee. Audience laughter, PA system, occasional music between acts."
           crowdDensity="moderate"
-          crowdDensityNote="Fixed seating venue with defined capacity. Predictable environment. Seats are allocated — you know where you will be."
+          crowdDensityNote="Fixed seating venue with defined capacity. Predictable environment. Seats are allocated, so you know where you will be."
           quietSpace="Outside the marquee between shows. Victoria Park itself is calm. The foyer area is quieter than inside the main tent."
           sensoryTriggers={["Indoor enclosed space with amplified sound", "Unexpected audience laughter and applause", "Darkness during performances", "Sudden punchlines causing crowd noise peaks", "Crowded bar area before shows"]}
           sunflowerNote="Contact southportcomedyfestival.com ahead of your visit for accessibility requirements. Fixed seating means a predictable and manageable environment."

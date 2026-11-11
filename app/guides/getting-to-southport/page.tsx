@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/getting-to-southport` },
   openGraph: {
     title: "Getting to Southport | Train, Car, Bus & Bike Routes",
-    description: "Merseyrail from Liverpool takes 35 minutes. Full guide to every way to reach Southport — train, car, coach, and bike.",
+    description: "Merseyrail from Liverpool takes 35 minutes. Full guide to every way to reach Southport: train, car, coach and bike.",
     url: `${BASE_URL}/guides/getting-to-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -54,7 +54,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "How do I get to Southport from Manchester?",
-      acceptedAnswer: { "@type": "Answer", text: "From Manchester, the easiest route by car is via the M60 and M58, approximately 50 to 60 miles and around 60 to 80 minutes depending on traffic. By train, change at Liverpool Central or Wigan for Merseyrail services to Southport — allow around 90 minutes total." },
+      acceptedAnswer: { "@type": "Answer", text: "From Manchester, the easiest route by car is via the M60 and M58, approximately 50 to 60 miles and around 60 to 80 minutes depending on traffic. By train, change at Liverpool Central or Wigan for Merseyrail services to Southport, allow around 90 minutes total." },
     },
     {
       "@type": "Question",
@@ -131,7 +131,7 @@ export default function GettingToSouthportPage() {
               <span className="block text-[#C9A84C]">Southport</span>
             </h1>
             <p className="text-white/75 text-lg max-w-xl mb-7 leading-relaxed">
-              Train from Liverpool in 50 minutes. Car from Manchester in 90. Here is every way to get here — with postcodes, timings, and no filler.
+              Train from Liverpool in 50 minutes. Car from Manchester in 90. Here is every way to get here, with postcodes, timings, and no filler.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#by-train" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm transition-colors">By Train</a>
@@ -195,7 +195,7 @@ export default function GettingToSouthportPage() {
               <strong>From Manchester:</strong> You have two options. Via Wigan Wallgate (change to Merseyrail, total around 90 minutes) or via Liverpool Central (change at Liverpool, total around 100 minutes). Check National Rail for the best connection on your travel date.
             </p>
             <p>
-              <strong>From Preston:</strong> Change at Wigan Wallgate for Merseyrail to Southport. Some direct services exist — check the timetable.
+              <strong>From Preston:</strong> Change at Wigan Wallgate for Merseyrail to Southport. Some direct services exist. Check the timetable.
             </p>
             <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/25 rounded-xl p-4 not-prose">
               <p className="text-sm text-[#1B2E4B] font-medium">

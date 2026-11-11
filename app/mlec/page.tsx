@@ -154,7 +154,7 @@ const MLEC_EVENT_LD = {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   name: "Marine Lake Events Centre (MLEC)",
-  description: "Southport's new £73m Marine Lake Events Centre — 1,500-seat theatre, 2,400-capacity exhibition hall, and The Light Fantastic water show. Opening April 2027.",
+  description: "Southport's new £73m Marine Lake Events Centre: 1,500-seat theatre, 2,400-capacity exhibition hall, and The Light Fantastic water show. Opening April 2027.",
   url: "https://www.southportguide.co.uk/mlec",
   image: "https://www.southportguide.co.uk/images/mlec.webp",
   address: {

@@ -29,7 +29,7 @@ const breadcrumbLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
     { "@type": "ListItem", position: 2, name: "Attractions", item: `${BASE_URL}/attractions` },
-    { "@type": "ListItem", position: 3, name: "Another Place — Crosby Beach", item: `${BASE_URL}/attractions/another-place-crosby` },
+    { "@type": "ListItem", position: 3, name: "Another Place: Crosby Beach", item: `${BASE_URL}/attractions/another-place-crosby` },
   ],
 };
 

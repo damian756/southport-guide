@@ -85,7 +85,7 @@ export default function SausageCiderFestivalPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-sausage-cider-festival.webp"
-            alt="Sausage and Cider Festival at Victoria Park Southport — Bavarian food festival"
+            alt="Sausage and Cider Festival at Victoria Park Southport: Bavarian food festival"
             fill sizes="100vw" quality={90} className="object-cover"
             style={{ objectPosition: "center 50%" }} priority
           />

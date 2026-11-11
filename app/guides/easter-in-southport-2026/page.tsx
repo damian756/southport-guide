@@ -149,7 +149,7 @@ export default function EasterSouthportPage() {
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
             <Image
               src="/images/guides/easter-in-southport-2026.jpg"
-              alt="Easter in Southport 2026 — family events across the Easter holidays"
+              alt="Easter in Southport 2026: family events across the Easter holidays"
               fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain"
               priority
             />
