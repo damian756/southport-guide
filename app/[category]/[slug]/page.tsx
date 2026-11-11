@@ -765,20 +765,6 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                     <address className="text-gray-700 not-italic leading-relaxed text-sm">
                       {formattedAddress}
                     </address>
-                    {business.lat && business.lng && (
-                      <a
-                        href={trackUrl(
-                          business.id,
-                          "directions",
-                          `https://www.google.com/maps/dir/?api=1&destination=${business.lat},${business.lng}`
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-3 text-blue-600 text-sm hover:underline font-medium"
-                      >
-                        Get directions →
-                      </a>
-                    )}
                   </div>
 
                   {business.openingHours != null && typeof business.openingHours === "object" && (
