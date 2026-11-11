@@ -534,7 +534,6 @@ export default async function ParkingSlugPage({ params }: Props) {
   if (!business) notFound();
 
   const heroImage   = business.images?.[0] ?? null;
-  const mapsKey     = process.env.GOOGLE_PLACES_API_KEY;
   const tags        = business.tags ?? [];
   const ptype       = parkingType(tags);
   const free        = isFree(tags, business.priceRange);
@@ -547,7 +546,7 @@ export default async function ParkingSlugPage({ params }: Props) {
 
   // Map: an OpenStreetMap map on the stored coordinates. A car park with no
   // coordinates but a Google place id gets a click-to-load Google map instead
-  // (the embed needs mapsKey, read on the server). No location is guessed.
+  // (Google's keyless embed, by name and address). No location is guessed.
   const coords = business.lat != null && business.lng != null
     ? { lat: business.lat, lng: business.lng }
     : null;
@@ -557,8 +556,8 @@ export default async function ParkingSlugPage({ params }: Props) {
     : placeIdParam
       ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${business.name}, ${formattedAddress}`)}&query_place_id=${placeIdParam}`
       : null;
-  const clickToLoad = !coords && business.placeId && mapsKey
-    ? { placeId: business.placeId, apiKey: mapsKey }
+  const clickToLoad = !coords && business.placeId
+    ? { query: `${business.name}, ${formattedAddress}` }
     : null;
 
   // Schema.org — ParkingFacility entity
@@ -918,7 +917,7 @@ export default async function ParkingSlugPage({ params }: Props) {
                     {coords ? (
                       <ListingMapLazy lat={coords.lat} lng={coords.lng} name={business.name} />
                     ) : clickToLoad ? (
-                      <GoogleMapClickToLoad placeId={clickToLoad.placeId} apiKey={clickToLoad.apiKey} name={business.name} />
+                      <GoogleMapClickToLoad query={clickToLoad.query} name={business.name} />
                     ) : null}
                     <noscript>
                       <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 px-6 text-center text-sm text-gray-600">
@@ -955,7 +954,7 @@ export default async function ParkingSlugPage({ params }: Props) {
                     {coords ? (
                       <ListingMapLazy lat={coords.lat} lng={coords.lng} name={business.name} />
                     ) : clickToLoad ? (
-                      <GoogleMapClickToLoad placeId={clickToLoad.placeId} apiKey={clickToLoad.apiKey} name={business.name} />
+                      <GoogleMapClickToLoad query={clickToLoad.query} name={business.name} />
                     ) : null}
                     <noscript>
                       <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 px-6 text-center text-sm text-gray-600">

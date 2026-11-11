@@ -77,7 +77,8 @@ test("no iframe anywhere on the site except in the click-to-load component", () 
 
 test("the click-to-load component builds the embed and renders no iframe before a click", () => {
   const src = read(CLICK_TO_LOAD);
-  assert.match(src, /google\.com\/maps\/embed\/v1\/place\?/, "embed URL lives here");
+  assert.match(src, /google\.com\/maps\?q=\$\{encodeURIComponent\(query\)\}[^`]*&output=embed/, "the keyless embed URL lives here");
+  assert.doesNotMatch(src, /apiKey|[?&]key=|AIza/, "no API key in the component");
   assert.equal((src.match(/<iframe\b/g) || []).length, 1, "exactly one iframe in the component");
   assert.equal((src.match(/embedUrl\(/g) || []).length, 2, "embedUrl is defined once and called once");
 
@@ -125,10 +126,27 @@ test("the click-to-load component, rendered as the server sends it, has a button
   const React = require("react");
   const { renderToString } = require("react-dom/server");
   const html = renderToString(
-    React.createElement(Component, { placeId: "TEST_PLACE_ID_123", apiKey: "TEST_API_KEY_456", name: "Test" }),
+    React.createElement(Component, { query: "TEST_QUERY_123, Lord Street", name: "Test" }),
   );
   assert.match(html, /<button[^>]*>[\s\S]*Show map \(Google Maps\)[\s\S]*<\/button>/);
-  assert.doesNotMatch(html, /<iframe|<embed|<object|src=|google\.com|TEST_PLACE_ID_123|TEST_API_KEY_456/i, "nothing from Google, and not the key, before the click");
+  assert.doesNotMatch(html, /<iframe|<embed|<object|src=|google\.com|TEST_QUERY_123/i, "nothing from Google before the click");
+});
+
+// Recheck, 11 Nov 2026: a client component's props are serialised into the page, so a
+// key passed to one ships in the HTML. The Google key stays on the server (the
+// review-check cron); no page or component reads it or passes a key to the map.
+test("no Google API key is read by a page or component, or passed to the map", () => {
+  const hits = siteFiles()
+    .filter((f) => !posix(f).startsWith("app/api/"))
+    .filter((f) => /GOOGLE_[A-Z_]*KEY|apiKey=\{|AIza[0-9A-Za-z_-]{20,}/.test(read(f)));
+  assert.deepEqual(hits.map(posix), []);
+  for (const [f, uses] of [[LISTING_PAGE, 1], [PARKING_PAGE, 2]]) {
+    const tags = [...read(f).matchAll(/<GoogleMapClickToLoad\b[^>]*\/>/g)].map((m) => m[0]);
+    assert.equal(tags.length, uses, `${posix(f)} renders the map ${uses} time(s)`);
+    for (const tag of tags) {
+      assert.match(tag, /^<GoogleMapClickToLoad query=\{clickToLoad\.query\} name=\{business\.name\} \/>$/, `${posix(f)}: only the name-and-address query and the name`);
+    }
+  }
 });
 
 test("the listing page: OpenStreetMap map with coordinates, click-to-load without, plain links", () => {
