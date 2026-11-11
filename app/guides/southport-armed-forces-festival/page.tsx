@@ -45,7 +45,7 @@ const FAQS = [
   { q: "Is the Southport Armed Forces Festival free?", a: "Yes. The Armed Forces Festival is a free town-wide event. There is no entry charge to attend the parades, fly-overs, vehicle displays, or entertainment across the Promenade, King's Gardens, Princes Park, and the town centre." },
   { q: "What happens at the Southport Armed Forces Festival?", a: "The festival includes a Drumhead Service, military parades on the Promenade, fly-overs, static vehicle and equipment displays, live entertainment, cadet displays, and community events. It spans multiple locations across the town over two full days." },
   { q: "Is the Armed Forces Festival just for veterans?", a: "Not at all. It is a community event for everyone. Veterans, service families, cadets, and members of the public are all welcome. It is a family-friendly event and many people attend purely for the spectacle of the parade and fly-overs." },
-  { q: "Why is the 2026 festival significant?", a: "The 2026 Armed Forces Festival is a proof-of-concept event supporting Southport's bid to host the full National Armed Forces Day in 2027. If the 2026 festival demonstrates the town can deliver a major event at scale, Southport hopes to host one of the UK's largest Armed Forces Day celebrations the following year, potentially combined with the Air Show." },
+  { q: "Why was the 2026 festival significant?", a: "The 2026 Armed Forces Festival was held while Southport was making its case to host the national Armed Forces Day. Southport has since been announced as the host: the national Armed Forces Day is on Saturday 26 June 2027." },
   { q: "Will there be a fly-over at the Southport Armed Forces Festival?", a: "Military fly-overs are part of the planned programme. The specific aircraft will be confirmed closer to the event. The Promenade is the best viewing location as the aircraft pass over the coast." },
   { q: "What is the connection between Southport and the Second World War?", a: "Southport has genuine wartime significance. Children were evacuated here from Bootle and Liverpool during the Blitz. RAF Woodvale at Ainsdale helped defend the Irish Sea and Liverpool. Pleasureland was taken over by the Air Ministry during the war. Families across Southport, Bootle, Seaforth and Merseyside have direct personal connections to that history." },
   { q: "Where should I go for the Armed Forces Festival?", a: "For the parade, the Promenade is the main location. For military vehicles and family-friendly interactive displays, Princes Park is the key area. For the Drumhead Service and memorial events, King's Gardens. The Atkinson on Lord Street also hosts related events. The full programme with timings will be published by Sefton Council ahead of the event." },
@@ -286,14 +286,14 @@ export default function ArmedForcesFestivalPage() {
           <div className="bg-[#0D1A30] rounded-2xl p-8 md:p-12 text-white">
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">The Bigger Picture</p>
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-5">
-              Could Southport Host the UK&apos;s Biggest Armed Forces Day?
+              Southport Hosts Armed Forces Day 2027
             </h2>
             <div className="space-y-4 text-white/75 leading-relaxed max-w-3xl mb-8">
               <p>
-                There is a serious and growing conversation in Southport about taking the Armed Forces
-                Festival well beyond its current two-day format. The vision, which has support from local
-                business owners, community leaders, and armed forces organisations, is for a full week of
-                events spread across the entire town.
+                Southport hosts the national Armed Forces Day on Saturday 26 June 2027. Before the
+                announcement, there was a growing conversation in Southport about taking the Armed Forces
+                Festival well beyond its two-day format, with a vision of a full week of events spread
+                across the town.
               </p>
               <p>
                 The practical case for Southport is strong. The Marine Lake, the Promenade, the parks, the
@@ -302,7 +302,7 @@ export default function ArmedForcesFestivalPage() {
                 on tides or close significant roads to host events at scale.
               </p>
               <p>
-                The vision includes elements that would be genuinely distinctive: a 1940s heritage area
+                The vision included elements that would be genuinely distinctive: a 1940s heritage area
                 covering the wartime story of the region, a Marine Lake spectacle, the Red Arrows over the
                 seafront, simulators and interactive displays for young people, cadet challenges, and an
                 event that honours veterans from all eras rather than just recent conflicts. Combine it
@@ -327,11 +327,11 @@ export default function ArmedForcesFestivalPage() {
               ))}
             </div>
             <p className="text-white/50 text-sm italic mb-5">
-              The 2026 festival is the proof of concept. The town is watching. So, by all accounts, is the Ministry of Defence.
+              The 2026 festival came first. The national Armed Forces Day follows on Saturday 26 June 2027.
             </p>
             <Link href="/guides/southport-air-show"
               className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm hover:text-white transition-colors">
-              Southport Air Show 2026: also August Bank Holiday weekend <ArrowRight className="w-4 h-4" />
+              Southport Air Show guide <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </section>
