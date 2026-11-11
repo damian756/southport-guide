@@ -138,7 +138,7 @@ export default function PrivacyPage() {
               {[
                 { name: "Ahrefs (Analytics)", detail: "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored." },
                 { name: "Stripe", detail: "Payment processing for paid business listings. Subject to Stripe's own privacy policy." },
-                { name: "Vercel", detail: "Hosts the website. Pages are served from Vercel's network, and the site's server code, including the forms and the Business Hub, runs in Vercel's iad1 region in Washington, D.C., USA." },
+                { name: "Vercel", detail: "Hosts the website. Pages are served from Vercel's network, and the site's server code, including the forms and the Business Hub, runs in Vercel's lhr1 region in London, UK." },
               ].map(({ name, detail }) => (
                 <div key={name} className="bg-[#FAF8F5] rounded-xl p-4">
                   <p className="font-semibold text-[#1B2E4B] text-sm mb-1">{name}</p>
