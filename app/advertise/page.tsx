@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import type { Metadata } from "next";
 import { AD_OPTIONS, NETWORK_BUNDLE, describeSpace, enquiryHref, AD_SLOTS, type AdOption } from "@/lib/ad-slots";
 import { DISPLAY_EMAIL } from "@/lib/contact";
+import AudienceSection from "@/components/AudienceSection";
 
 const PAGE_URL = "https://www.southportguide.co.uk/advertise";
 const DESCRIPTION =
@@ -116,6 +117,9 @@ export default async function AdvertisePage({ searchParams }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── Audience figures (lib/audience-stats.ts; hidden while provisional) ── */}
+      <AudienceSection />
 
       {/* ── Ways to advertise ── */}
       <section className="container mx-auto px-4 max-w-6xl py-14">
