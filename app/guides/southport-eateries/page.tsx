@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: GUIDE.metaTitle,
   description: GUIDE.metaDescription,
   keywords:
-    "Southport eateries, where to eat Southport, restaurants Southport, Southport food, eating out Southport, Southport dining, best food Southport, Southport restaurants Lord Street",
+    "Southport eateries, where to eat Southport, restaurants Southport, Southport food, eating out Southport, Southport dining, Southport restaurants Lord Street",
   alternates: { canonical: `${BASE_URL}/guides/southport-eateries` },
   openGraph: {
     title: "Southport Eateries | Where to Eat in Southport | Local Guide",
@@ -575,7 +575,7 @@ export default async function SouthportEateriesGuidePage() {
         {/* ── Budget Eats ── */}
         <section id="budget" className="scroll-mt-28">
           <div className="mb-8">
-            <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Good food, sensible prices</p>
+            <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Affordable options</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Budget Eats in Southport</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
               Southport is not an expensive town to eat in, most mid-range places are very reasonable.

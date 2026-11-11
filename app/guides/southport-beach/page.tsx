@@ -682,7 +682,7 @@ export default async function SouthportBeachGuidePage() {
                 emoji: "🌊",
                 name: "Splash World",
                 sub: "Indoor water park · All weather",
-                detail: "The indoor option for when the beach weather turns. Water slides, pools, and activities under cover. The back-up plan that turns out to be a highlight.",
+                detail: "The indoor option for when the beach weather turns. Water slides, pools, and activities under cover.",
                 href: "/activities",
               },
               {

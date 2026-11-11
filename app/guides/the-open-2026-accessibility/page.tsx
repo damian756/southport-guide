@@ -123,7 +123,7 @@ const SENSORY_TIPS = [
 const ACCESSIBLE_SOUTHPORT = [
   {
     name: "The Vincent Hotel",
-    detail: "Lord Street, PR9 0AU. Southport's most central hotel: accessible rooms available, modern lift, close to town-centre transport links for shuttle buses.",
+    detail: "Lord Street, PR9 0AU. Accessible rooms available, modern lift, close to town-centre transport links for shuttle buses.",
   },
   {
     name: "The Scarisbrick Hotel",
@@ -135,7 +135,7 @@ const ACCESSIBLE_SOUTHPORT = [
   },
   {
     name: "The Atkinson",
-    detail: "Lord Street, PR8 1DB. Gallery, café, and theatre complex. Fully accessible with lift access. Quiet environment. Recognises the Sunflower lanyard. A good base for anyone who needs calm time mid-visit.",
+    detail: "Lord Street, PR8 1DB. Gallery, café, and theatre complex. Fully accessible with lift access. Quiet environment. Recognises the Sunflower lanyard.",
   },
 ];
 
@@ -507,7 +507,7 @@ export default function OpenAccessibilityGuidePage() {
             <Heart className="w-6 h-6 text-[#C9A84C] mb-3" />
             <h3 className="font-bold text-white text-base mb-1.5">Autism and sensory-friendly Southport</h3>
             <p className="text-white/65 text-sm leading-relaxed mb-3">
-              The eight calmest venues in Southport, honest event guidance, and practical advice for visitors
+              Eight calm venues in Southport, event guidance, and practical advice for visitors
               with autism and sensory processing differences.
             </p>
             <span className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">

@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "What is there to do on Lord Street?",
-    a: "Lord Street is best as a walking and browsing destination, independent boutiques, cafés, restaurants, and the glass-canopied arcade stretch. The Wayfarers Arcade (off Lord Street) is worth a detour for independent shops and a coffee stop. The Atkinson arts centre is at the northern end. Most visitors combine shopping with lunch or dinner.",
+    a: "Lord Street is best as a walking and browsing destination, independent boutiques, cafés, restaurants, and the glass-canopied arcade stretch. The Wayfarers Arcade (off Lord Street) has independent shops and cafés. The Atkinson arts centre is at the northern end. Most visitors combine shopping with lunch or dinner.",
   },
   {
     q: "Where can I park for Lord Street?",
@@ -48,7 +48,7 @@ const FAQS = [
   },
   {
     q: "What is Wayfarers Arcade?",
-    a: "Wayfarers Arcade is a Victorian indoor arcade running off Lord Street. It's covered, heated, and has a mix of independent shops, cafés, and a relaxed atmosphere. It's a good rainy-day option and genuinely different from a standard shopping centre.",
+    a: "Wayfarers Arcade is a Victorian indoor arcade running off Lord Street. It's covered and heated, with a mix of independent shops and cafés.",
   },
 ];
 
@@ -156,7 +156,7 @@ export default function LordStreetGuidePage() {
             The street was laid out in the early 19th century and developed through the Victorian era as Southport grew into one of England&apos;s most fashionable seaside resorts. The glass canopies over the pavement were added later and are now the defining visual feature, they&apos;re functional as well as attractive, which in Lancashire is always the right priority.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The mix on Lord Street today is mostly independent, boutiques, cafés, restaurants, jewellers, gift shops, with some nationals mixed in. The southern end toward Birkdale has the better independent concentration. The northern end, near The Atkinson, is more mixed but includes Wayfarers Arcade (worth visiting).
+            The mix on Lord Street today is mostly independent, boutiques, cafés, restaurants, jewellers, gift shops, with some nationals mixed in. The southern end toward Birkdale has the better independent concentration. The northern end, near The Atkinson, is more mixed and includes Wayfarers Arcade.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
@@ -194,12 +194,12 @@ export default function LordStreetGuidePage() {
               {
                 icon: Coffee,
                 title: "Wayfarers Arcade",
-                body: "A Victorian indoor arcade just off Lord Street. Covered, independently run, with cafés and smaller shops inside. Good rainy-day option and genuinely unlike a shopping centre.",
+                body: "A Victorian indoor arcade just off Lord Street. Covered, independently run, with cafés and smaller shops inside.",
               },
               {
                 icon: Star,
                 title: "The Atkinson",
-                body: "Southport's arts centre at the northern end of Lord Street, gallery, theatre, café, museum. Free entry to the gallery. Regular exhibitions and a solid events programme. Worth 45 minutes even if you don't plan to.",
+                body: "Southport's arts centre at the northern end of Lord Street, gallery, theatre, café, museum. Free entry to the gallery. Regular exhibitions and an events programme.",
               },
               {
                 icon: Utensils,

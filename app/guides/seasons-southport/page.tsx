@@ -86,7 +86,7 @@ const FAQS = [
   { q: "What makes Season's coffee different?", a: "They use micro-lot single-origin beans from two local independent roasters: Django Coffee Co. and Heart & Graft. The beans change with the seasons and are ground to order." },
   { q: "Is there a veggie or vegan option?", a: "Yes. The Veggie Special is a full cooked breakfast. The Season Stack has a veggie version. The Build Your Own lets you mix and match. The beef burger has a vegan 'no beef' alternative." },
   { q: "Does Season do venue hire?", a: "Yes. Private events: birthdays, baby showers, wine and cheese evenings, corporate. Call 01704 535372." },
-  { q: "Is Season dog-friendly?", a: "Based on the relaxed atmosphere and size, it's worth ringing ahead to confirm. It's an independent run by a team who know their regulars, so they're usually practical about it." },
+  { q: "Is Season dog-friendly?", a: "It's worth ringing ahead to confirm." },
 ];
 
 export default function SeasonsGuide() {
@@ -146,8 +146,8 @@ export default function SeasonsGuide() {
                 <span className="text-[#C9A84C]">Bar & Kitchen</span>
               </h1>
               <p className="text-white/75 text-lg leading-relaxed mb-8 max-w-xl">
-                King Street&apos;s independent coffee shop doing single-origin beans, a proper brunch menu, and everything sourced from local independents.
-                Open since 2021. One of the genuinely good ones.
+                King Street&apos;s independent coffee shop doing single-origin beans, a brunch menu, and everything sourced from local independents.
+                Open since 2021.
               </p>
               <div className="flex flex-wrap gap-4 text-sm text-white/80">
                 <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#C9A84C]" /> 14-16 King Street, PR8 1JZ</div>
@@ -186,13 +186,13 @@ export default function SeasonsGuide() {
               {/* About */}
               <section className="space-y-6">
                 <p className="text-xl text-gray-600 leading-relaxed border-l-4 border-[#C9A84C] pl-5">
-                  Season opened on King Street in August 2021 and has spent the time since building a loyal customer base. Michelle runs it. She prepares everything fresh each morning and the team know their regulars by name. That tells you more about a café than any review.
+                  Season opened on King Street in August 2021. Michelle runs it. She prepares everything fresh each morning.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed">
-                  It&apos;s on King Street, directly opposite Southport Market, which makes it a handy stop if you&apos;re spending time around that end of town. The interior is relaxed and unhurried: industrial-meets-rustic, the kind of space where you can actually sit and talk without feeling like you&apos;re being moved on.
+                  It&apos;s on King Street, directly opposite Southport Market, which makes it a handy stop if you&apos;re spending time around that end of town. The interior is industrial-meets-rustic.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed">
-                  Everything food-related comes from local independent suppliers. The meat is from Blackhurst Butchers. The coffee is from two independent North West roasters: Django Coffee Co. (based in Manchester, inspired by Melbourne&apos;s specialty scene) and Heart & Graft (from Salford). Micro-lot single-origin beans, rotated seasonally, ground to order. It&apos;s the kind of coffee setup most Southport visitors don&apos;t expect to find in a town this size.
+                  Everything food-related comes from local independent suppliers. The meat is from Blackhurst Butchers. The coffee is from two independent North West roasters: Django Coffee Co. (based in Manchester, inspired by Melbourne&apos;s specialty scene) and Heart & Graft (from Salford). Micro-lot single-origin beans, rotated seasonally, ground to order.
                 </p>
                 <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4 flex items-start gap-3">
                   <Clock className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
@@ -218,7 +218,7 @@ export default function SeasonsGuide() {
                     {
                       roaster: "Heart & Graft",
                       origin: "Barnraiser + Serendipia blends",
-                      notes: "Started in a Salford co-op space for artists. Now a serious independent roaster. Distinctive character.",
+                      notes: "Started in a Salford co-op space for artists. Now an independent roaster.",
                       href: "https://heartandgraft.co.uk/",
                     },
                   ].map((r) => (
@@ -329,7 +329,7 @@ export default function SeasonsGuide() {
                   <div>
                     <h2 className="font-display text-xl font-bold text-white mb-3">Venue Hire & Private Events</h2>
                     <p className="text-white/70 text-sm leading-relaxed mb-4">
-                      Season hires out the space for private events: birthdays, baby showers, wine and cheese evenings, motivational talks, and other occasions. Michelle&apos;s background is in teaching, which shows in how the space is run. It&apos;s inclusive, well-organised, and the team go the extra mile.
+                      Season hires out the space for private events: birthdays, baby showers, wine and cheese evenings, motivational talks, and other occasions. Michelle&apos;s background is in teaching.
                     </p>
                     <a href="tel:01704535372" className="inline-flex items-center gap-2 bg-[#C9A84C] text-[#1B2E4B] font-bold text-sm px-5 py-2.5 rounded-full hover:bg-[#E8C87A] transition-colors">
                       <Phone className="w-3.5 h-3.5" /> 01704 535372

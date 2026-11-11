@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 };
 
 const CONFIRMED_ACTS = [
-  { name: "Henning Wehn", desc: "German Comedy Ambassador to the UK. Regular Mock the Week, Would I Lie to You, QI. Consistently one of the strongest live acts on the circuit." },
-  { name: "Gary Delaney", desc: "BAFTA-nominated. The UK's best one-liner comedian. Every sentence is a punchline. Not for people who like build-up jokes." },
-  { name: "Scott Bennett", desc: "Northern comic. Clean, sharp, family-friendly, but funny. Won Best Show at multiple festivals. One of the most consistent live performers around." },
-  { name: "Laura Smyth", desc: "Stand-up comedian and writer. Fresh, sharp material. One of the breakout acts of the past few years on the UK circuit." },
+  { name: "Henning Wehn", desc: "German Comedy Ambassador to the UK. Regular Mock the Week, Would I Lie to You, QI." },
+  { name: "Gary Delaney", desc: "BAFTA-nominated. One-liner comedian. Every sentence is a punchline. Not for people who like build-up jokes." },
+  { name: "Scott Bennett", desc: "Northern comic. Clean, family-friendly material." },
+  { name: "Laura Smyth", desc: "Stand-up comedian and writer." },
 ];
 
 const FAQS = [

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: GUIDE.metaTitle,
   description: GUIDE.metaDescription,
   keywords:
-    "best cafes Southport, coffee shops Southport, independent cafes Southport, Southport coffee, where to have coffee Southport, tea rooms Southport",
+    "cafes Southport, coffee shops Southport, independent cafes Southport, Southport coffee, where to have coffee Southport, tea rooms Southport",
   alternates: { canonical: `${BASE_URL}/guides/best-cafes-southport` },
   openGraph: {
     title: "Cafés in Southport: A Guide by Area | SouthportGuide",
@@ -54,7 +54,7 @@ const CAFES = [
     name: "Café Niko",
     area: "Lord Street",
     bestFor: "Espresso, lunch",
-    notes: "Independent café on or near Lord Street, serving coffee and food. Popular for weekend brunch.",
+    notes: "Independent café on or near Lord Street, serving coffee and food, with brunch at weekends.",
   },
   {
     name: "Southport Market café area",
@@ -84,7 +84,7 @@ const CAFES = [
     name: "Birkdale Village independents",
     area: "Liverpool Road, Birkdale",
     bestFor: "Neighbourhood feel, less busy",
-    notes: "A few good independent cafés along Liverpool Road in Birkdale Village. More relaxed than the town centre. Worth the short drive or train ride.",
+    notes: "A few independent cafés along Liverpool Road in Birkdale Village.",
   },
 ];
 
@@ -240,7 +240,7 @@ export default async function BestCafesSouthportGuidePage() {
             If coffee shops aren&apos;t the goal and you want a proper pot of tea with something to eat, there are a handful of more traditional options in Southport. The Churchtown area around the Botanic Gardens is the most appropriate setting for this, slower, quieter, and genuinely pleasant.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            Wayfarers Arcade also has a relaxed café that doesn&apos;t feel rushed. Good for a mid-afternoon sit-down without the pressure of a busy lunch service.
+            Wayfarers Arcade also has a café.
           </p>
         </section>
 

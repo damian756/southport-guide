@@ -27,7 +27,7 @@ const FAQS = [
   { q: "When is The 39 Steps at Southport Little Theatre?", a: "The 39 Steps runs at Southport Little Theatre from Friday 10 April to Saturday 18 April 2026. This is a nine-night run. Evening performances are typically at 7:30pm. Check the Little Theatre website for the complete schedule and any matinee performances." },
   { q: "Where is Southport Little Theatre?", a: "Southport Little Theatre is on Hoghton Street, Southport, PR9 0PA. It is approximately 10 minutes' walk from Southport railway station and 15 minutes from the Lord Street town centre." },
   { q: "What is The 39 Steps play?", a: "The 39 Steps is a stage adaptation of John Buchan's 1915 spy novel, made famous by Alfred Hitchcock's 1935 film. The comedic stage version, adapted by Patrick Barlow, uses four actors to play all 150 characters and is known for its inventive staging and physical comedy. It is a fast-paced, entertaining thriller." },
-  { q: "How do I book tickets for The 39 Steps at the Little Theatre?", a: "Book directly through Southport Little Theatre's website. The Little Theatre is a community theatre with a loyal audience, so early booking is recommended, particularly for weekend performances." },
+  { q: "How do I book tickets for The 39 Steps at the Little Theatre?", a: "Book directly through Southport Little Theatre's website. The Little Theatre is a community theatre, and early booking is recommended, particularly for weekend performances." },
   { q: "Is Southport Little Theatre accessible?", a: "Contact the Little Theatre directly to discuss access requirements. The venue is a traditional community theatre and access arrangements vary, it is best to call ahead if you have specific needs." },
   { q: "Is there parking near Southport Little Theatre?", a: "Hoghton Street is in the town centre area, close to several pay-and-display car parks. The nearest are on King Street and the multi-storey on Tulketh Street (PR8 1EW). Street parking is limited in the immediate area. Arriving by train is a good option. Southport station is 10 min walk." },
 ];
@@ -138,7 +138,7 @@ export default function ThirtyNineStepsPage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <div className="text-3xl mb-3">🎭</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">Southport Little Theatre</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">The Little Theatre on Hoghton Street is one of Southport&apos;s independent cultural venues. It is a proper theatre, raked seating, a real stage, technical lighting, and a bar. Southport Dramatic Club have been performing here for decades. It is the kind of venue that sustains a town&apos;s cultural life over the long term.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">The Little Theatre on Hoghton Street is one of Southport&apos;s independent cultural venues. It has raked seating, a stage, technical lighting and a bar. Southport Dramatic Club have been performing here for decades.</p>
             </div>
           </div>
         </section>

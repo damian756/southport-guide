@@ -208,7 +208,7 @@ export default function ArmedForcesFestivalPage() {
               {
                 emoji: "🎡",
                 title: "Pleasureland and the War Effort",
-                body: "Southport&apos;s famous Pleasureland amusements were taken over by the Air Ministry during the Second World War. Fairground operators and entertainment businesses across the region contributed to the war effort in ways that are part of local family histories. Some of those families still have businesses and connections in Southport today.",
+                body: "Southport&apos;s Pleasureland amusements were taken over by the Air Ministry during the Second World War. Fairground operators and entertainment businesses across the region contributed to the war effort in ways that are part of local family histories. Some of those families still have businesses and connections in Southport today.",
               },
               {
                 emoji: "🔥",

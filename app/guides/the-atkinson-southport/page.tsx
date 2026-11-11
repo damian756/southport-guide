@@ -81,7 +81,7 @@ export default function TheAtkinsonPage() {
               The Atkinson
               <span className="block text-[#C9A84C]">Southport</span>
             </h1>
-            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">Gallery, theatre, café, and library in a Victorian building on Lord Street. Free gallery entry. The cultural heart of Southport, and one of the best reasons to visit the town.</p>
+            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">Gallery, theatre, café, and library in a Victorian building on Lord Street. Free gallery entry.</p>
             <div className="flex flex-wrap gap-3">
               <a href="#whats-there" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">What&apos;s Inside</a>
               <a href="https://www.theatkinson.co.uk" target="_blank" rel="noopener noreferrer" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">Atkinson Website</a>
@@ -132,8 +132,8 @@ export default function TheAtkinsonPage() {
             {[
               { emoji: "🖼️", title: "The Gallery", detail: "Rotating exhibitions across multiple gallery floors plus a permanent collection. Covers fine art, ceramics, decorative arts, and local history. Free entry. Currently featuring the Sefton Open 2026 (2 Apr–13 Jun)." },
               { emoji: "🎭", title: "The Theatre", detail: "Main theatre and intimate studio theatre. Professional touring productions, local companies (SONG Productions, Southport Dramatic Club), comedy, and music. Book through the Atkinson box office." },
-              { emoji: "☕", title: "The Café", detail: "Ground floor café serving coffee, light lunches, and cakes. Open to all visitors, you do not need to be visiting the gallery or theatre. Good for a break from Lord Street shopping." },
-              { emoji: "📚", title: "Southport Library", detail: "The main Southport Library is housed within the Atkinson building. Free to use, good facilities. Worth knowing if you need reference resources or internet access." },
+              { emoji: "☕", title: "The Café", detail: "Ground floor café serving coffee, light lunches, and cakes. Open to all visitors, you do not need to be visiting the gallery or theatre." },
+              { emoji: "📚", title: "Southport Library", detail: "The main Southport Library is housed within the Atkinson building. Free to use. Worth knowing if you need reference resources or internet access." },
               { emoji: "🎨", title: "Make It! Workshops", detail: "Hands-on art and craft workshops for children and families, running regularly including in school holidays. Book through the Atkinson website, they fill up during peak periods." },
               { emoji: "🗓️", title: "Regular Events", detail: "Story and Rhyme Time (under-5s), drawing classes, evening talks, film screenings, and more. The full programme is on the Atkinson website and worth checking each month." },
             ].map((item) => (

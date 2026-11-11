@@ -55,7 +55,7 @@ const FAQS = [
   },
   {
     q: "What is the away end like at Haig Avenue?",
-    a: "Away supporters are in the Blowick End, an open terrace at the south end of the ground. It is uncovered. The Irish Sea wind is a real factor at Haig Avenue, particularly on the exposed terrace. Dress accordingly: waterproof, layers, and do not underestimate how cold a March afternoon on an open terrace can be. The views of the pitch are fine.",
+    a: "Away supporters are in the Blowick End, an open terrace at the south end of the ground. It is uncovered. The Irish Sea wind is a real factor at Haig Avenue, particularly on the exposed terrace. Dress accordingly: waterproof, layers, and do not underestimate how cold a March afternoon on an open terrace can be.",
   },
   {
     q: "How much are tickets for the FA Trophy semi-final?",
@@ -434,9 +434,9 @@ export default function FATrophySemiFinalGuidePage() {
                 name: "Tap and Bottles",
                 location: "Town centre",
                 type: "Craft beer",
-                badge: "CAMRA award",
+                badge: "Town centre",
                 badgeColor: "bg-amber-600 text-white",
-                detail: "Luke Randles (of the Southport BID) ran this for years. A CAMRA-award-winning pub in the town centre, about 20–25 minutes walk from the ground, if you are arriving 2+ hours early.",
+                detail: "Luke Randles (of the Southport BID) ran this for years. A pub in the town centre, about 20–25 minutes walk from the ground, if you are arriving 2+ hours early.",
                 tip: "For an early arrival.",
               },
               {
@@ -445,7 +445,7 @@ export default function FATrophySemiFinalGuidePage() {
                 type: "Pub",
                 badge: "Town centre",
                 badgeColor: "bg-purple-700 text-white",
-                detail: "A popular town centre pub that gets mentioned by away fans researching the area. Central location. Bus the mile and a half to the ground from here when you are ready.",
+                detail: "A town centre pub. Central location. Bus the mile and a half to the ground from here when you are ready.",
                 tip: "Get the bus back, don't rush.",
               },
               {
@@ -500,7 +500,6 @@ export default function FATrophySemiFinalGuidePage() {
                   "Away supporters are in the Blowick End, the open terrace at the south end of the ground.",
                   "It is uncovered. The wind comes in off the Irish Sea and it can be bitter on an exposed terrace in March. Do not underestimate this.",
                   "Wear a waterproof and proper layers. A matchday that starts mild can turn cold quickly in an open terrace.",
-                  "The sightlines are fine, this is a decent lower-league ground. The atmosphere can be good for a game with this kind of stakes.",
                 ],
               },
               {
@@ -510,8 +509,8 @@ export default function FATrophySemiFinalGuidePage() {
                 items: [
                   "Practical sell-out capacity of around 5,400. The registered figure is 6,008 but restricted-view seats and hospitality use reduce the available total.",
                   "The Jack Carr Stand (west) is the main home terrace. The Grandstand (east) has the seating and hospitality.",
-                  "Haig Avenue was built in 1905. It is a traditional lower-league football ground, not modern but with genuine character.",
-                  "Hospitality packages are available via the club, the club pushes this and it is decent value for the level. Check southportfc.net.",
+                  "Haig Avenue was built in 1905. It is a traditional lower-league football ground.",
+                  "Hospitality packages are available via the club. Check southportfc.net.",
                 ],
               },
             ].map((item) => (
@@ -559,13 +558,13 @@ export default function FATrophySemiFinalGuidePage() {
                 },
                 {
                   title: "Southport Market",
-                  desc: "Street food, independent traders, and a good atmosphere. On Market Street in the town centre. Good option for lunch before the match if you are in town early.",
+                  desc: "Street food and independent traders. On Market Street in the town centre.",
                   href: "/attractions",
                   emoji: "🍜",
                 },
                 {
                   title: "The Atkinson",
-                  desc: "Lord Street arts centre, gallery, theatre, café. If you are in town with time to spare and the weather is poor, this is genuinely excellent.",
+                  desc: "Lord Street arts centre, gallery, theatre, café.",
                   href: "/attractions",
                   emoji: "🎨",
                 },

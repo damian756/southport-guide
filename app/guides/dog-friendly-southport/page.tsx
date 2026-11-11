@@ -45,7 +45,7 @@ const FAQS = [
   },
   {
     q: "Are there dog-friendly pubs in Southport?",
-    a: "Yes, several Southport pubs welcome dogs, particularly those with outdoor seating areas or a more traditional pub character. The Hesketh Arms in Churchtown is a classic dog-welcoming village pub. Most pubs along the seafront are generally accommodating. Always worth phoning ahead for evening visits.",
+    a: "Yes, several Southport pubs welcome dogs, particularly those with outdoor seating areas or a more traditional pub character. The Hesketh Arms in Churchtown is a village pub that welcomes dogs. Most pubs along the seafront are generally accommodating. Always worth phoning ahead for evening visits.",
   },
   {
     q: "Where can I walk my dog near Southport?",
@@ -300,7 +300,7 @@ export default async function DogFriendlySouthportGuidePage() {
             The better independent cafés in Southport tend to be more dog-friendly than the chains. Look for a water bowl outside, that&apos;s usually the signal. Several on Lord Street and in Birkdale Village welcome dogs, particularly those with outdoor seating.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            The Botanic Gardens café in Churchtown is dog-friendly (the gardens themselves are dog-friendly on leads). Good for a post-walk coffee with the dog.
+            The Botanic Gardens café in Churchtown is dog-friendly (the gardens themselves are dog-friendly on leads).
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">

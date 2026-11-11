@@ -53,15 +53,15 @@ const FAQS = [
   },
   {
     q: "What is the away end like at Haig Avenue?",
-    a: "Away supporters are in the Blowick End, an open, uncovered terrace at the south end of the ground. The Irish Sea wind can be significant on an exposed terrace. Dress in layers and bring a waterproof regardless of the forecast. The sightlines are fine.",
+    a: "Away supporters are in the Blowick End, an open, uncovered terrace at the south end of the ground. The Irish Sea wind can be significant on an exposed terrace. Dress in layers and bring a waterproof regardless of the forecast.",
   },
   {
     q: "How much are tickets at Southport FC?",
-    a: "Adult standing tickets are typically around £13–£15, with seated options in the Grandstand at a slight premium. Hospitality packages are also available and are good value for the level. Check southportfc.net for confirmed prices, they vary by fixture and competition.",
+    a: "Adult standing tickets are typically around £13–£15, with seated options in the Grandstand at a slight premium. Hospitality packages are also available. Check southportfc.net for confirmed prices, they vary by fixture and competition.",
   },
   {
     q: "What is there to do in Southport before or after the match?",
-    a: "More than most people expect. Lord Street is a genuinely impressive Victorian boulevard with independent shops and restaurants, about a 20-minute walk or short bus ride from Haig Avenue. Southport Market is good for lunch. The beach and pier are worth seeing if you arrive early enough. If the weather is poor, The Atkinson on Lord Street (arts centre, gallery, café) is one of the better rainy-day options in the North West.",
+    a: "More than most people expect. Lord Street is a genuinely impressive Victorian boulevard with independent shops and restaurants, about a 20-minute walk or short bus ride from Haig Avenue. Southport Market has street food. The beach and pier are worth seeing if you arrive early enough. If the weather is poor, there is The Atkinson on Lord Street (arts centre, gallery, café).",
   },
   {
     q: "Is Southport FC in the National League?",
@@ -361,8 +361,8 @@ export default function SouthportFCMatchdayGuidePage() {
               </p>
               <div className="grid sm:grid-cols-3 gap-4">
                 {[
-                  { name: "Tap and Bottles", desc: "CAMRA award-winning real ale pub." },
-                  { name: "The Guest House", desc: "Popular town centre pub, for a pre-match drink if you are in the area." },
+                  { name: "Tap and Bottles", desc: "Real ale pub." },
+                  { name: "The Guest House", desc: "Town centre pub, for a pre-match drink if you are in the area." },
                   { name: "Inn Beer Shop", desc: "Independent bottle shop and bar, for beer enthusiasts." },
                 ].map((pub) => (
                   <div key={pub.name} className="bg-[#FAF8F5] rounded-xl p-4">
@@ -430,8 +430,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-3">Tickets</h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Adult standing tickets are typically around £13–£15. Seated options in the Grandstand
-                  are available at a small premium. Hospitality packages (the club pushes these and they are
-                  decent value for the level, around £47 per person) include catering and a reserved seat.
+                  are available at a small premium. Hospitality packages (around £47 per person) include catering and a reserved seat.
                   Check the official Southport FC website for confirmed prices and availability for each fixture,
                   as cup games and high-profile visitors may be priced differently.
                 </p>
@@ -473,7 +472,7 @@ export default function SouthportFCMatchdayGuidePage() {
                 },
                 {
                   title: "Southport Market",
-                  desc: "Street food and independents on Market Street in the town centre. Good for lunch if you are arriving early.",
+                  desc: "Street food and independents on Market Street in the town centre.",
                   href: "/guides/southport-market",
                   emoji: "🍜",
                 },

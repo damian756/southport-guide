@@ -306,9 +306,8 @@ export default function CristalPalacePage() {
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-4">Where to Eat on Lord Street Beforehand</h3>
               <div className="space-y-2">
                 {[
-                  "La Lanterna, Lord Street. Italian, good pre-theatre menu, book ahead",
-                  "La Lanterna, Lord Street. Italian, reliable, books up on event nights",
-                  "Bettys Bar & Restaurant, casual, good value, no booking needed usually",
+                  "La Lanterna, Lord Street. Italian, pre-theatre menu, book ahead",
+                  "Bettys Bar & Restaurant, casual, no booking needed usually",
                   "Southport Market, Market Street, street food, no booking, 10 min walk",
                   "Most Lord Street restaurants are full on event nights, book in advance",
                 ].map((line) => (

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/birkdale-village` },
   openGraph: {
     title: "Birkdale Village | Southport's Independent Quarter",
-    description: "Independent boutiques, excellent restaurants, and proper coffee. Birkdale Village is where Southport locals actually shop and eat.",
+    description: "Independent boutiques, restaurants and cafés on Liverpool Road in Birkdale Village, Southport.",
     url: `${BASE_URL}/guides/birkdale-village`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "Where is Birkdale Village?", a: "Birkdale Village is centred on Liverpool Road, Birkdale, Southport, postcode PR8 4AR. It is approximately 2 miles south of Southport town centre, and about 2 minutes' drive (or 10 minutes' walk) from Royal Birkdale Golf Club." },
-  { q: "What is Birkdale Village like?", a: "Birkdale Village has the feel of a proper neighbourhood high street, independent boutiques, decent restaurants, good cafés, a butcher, an off-licence, and the general sense that you're somewhere that people actually live and use. It's quieter and more residential than Southport town centre, and that's the point." },
+  { q: "What is Birkdale Village like?", a: "Birkdale Village has the feel of a proper neighbourhood high street, independent boutiques, restaurants, cafés, a butcher, an off-licence, and the general sense that you're somewhere that people actually live and use. It's quieter and more residential than Southport town centre, and that's the point." },
   { q: "Is there parking in Birkdale Village?", a: "Yes, there's on-street parking along Liverpool Road and side streets. It fills up on busy weekend mornings but isn't usually a problem on weekday visits. The village is also walkable from Birkdale train station (about 5 minutes on foot)." },
   { q: "How do I get to Birkdale Village by train?", a: "Birkdale station is on the Merseyrail Northern Line, the same line as Southport, one stop south. From Liverpool Central, trains run direct to Birkdale approximately every 20–30 minutes. The village is about a 5-minute walk from the station." },
   { q: "What shops are in Birkdale Village?", a: "Birkdale Village has a strong concentration of independent shops, fashion boutiques, homeware, gifts, jewellery, artisan food shops, and services. The absence of chain stores is one of its main attractions. The exact mix changes over time, walking the length of Liverpool Road gives you the full picture." },
-  { q: "Is Birkdale Village good for dinner?", a: "Yes. Birkdale Village has a quality dining offer relative to its size. Several independent restaurants along Liverpool Road, ranging from relaxed bistro dining to more formal options. Booking ahead is recommended for Friday and Saturday evenings, particularly during The Open Championship week when the village gets very busy." },
+  { q: "Are there restaurants in Birkdale Village?", a: "Yes. There are several independent restaurants along Liverpool Road, ranging from relaxed bistro dining to more formal options. Booking ahead is recommended for Friday and Saturday evenings, particularly during The Open Championship week when the village gets very busy." },
   { q: "How far is Birkdale Village from Royal Birkdale Golf Club?", a: "Royal Birkdale Golf Club is approximately 10 minutes' walk from Birkdale Village. The club entrance is on Waterloo Road, just behind the village. During Open week, the village restaurants and cafés become the obvious pre- and post-round options for spectators." },
-  { q: "Is Birkdale Village worth visiting if I'm staying in Southport?", a: "Yes, it's a completely different character to the town centre and worth the short journey. Best for an afternoon's browsing combined with lunch or dinner. The pace is slower, the quality is high, and it gives you a sense of how Southport's residents actually live rather than the tourism-facing version of the town." },
+  { q: "Is Birkdale Village worth visiting if I'm staying in Southport?", a: "Yes, it's a completely different character to the town centre and worth the short journey. Best for an afternoon's browsing combined with lunch or dinner. The pace is slower, and it gives you a sense of how Southport's residents actually live rather than the tourism-facing version of the town." },
 ];
 
 const PAGE_LD = {
@@ -105,8 +105,8 @@ export default function BirkdaleVillageGuidePage() {
               <span className="block text-[#C9A84C]">Village</span>
             </h1>
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
-              The locals&apos; preference. Independent boutiques, proper restaurants, and decent coffee on Liverpool Road,
-              two minutes from Royal Birkdale Golf Club, and entirely worth the short detour from the town centre.
+              Independent boutiques, restaurants and cafés on Liverpool Road,
+              two minutes from Royal Birkdale Golf Club.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#shopping" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
@@ -178,18 +178,18 @@ export default function BirkdaleVillageGuidePage() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Shopping in Birkdale</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
               Liverpool Road and its surrounding streets have one of the highest concentrations of independent shops
-              in the Southport area. No chains. All worth browsing.
+              in the Southport area. No chains.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "👗", category: "Fashion & Clothing", detail: "Independent fashion boutiques with a quality-over-quantity approach. Mix of women&apos;s fashion, accessories, and lifestyle clothing that you won&apos;t find in any department store. The buyers for these shops generally know what they&apos;re doing." },
-              { emoji: "🏡", category: "Homeware & Gifts", detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present, rather than standard high street gift fare. Several have strong local maker representation." },
-              { emoji: "💎", category: "Jewellery", detail: "Independent jewellers with own-design ranges and quality vintage pieces. Better range and more interesting pieces than typical high street jewellers, at prices that are often more reasonable than you&apos;d expect." },
-              { emoji: "🥩", category: "Food & Artisan Produce", detail: "A proper butcher, a bakery, and specialist food shops. The butcher in particular has a following, the kind of place where the staff know where the meat comes from and will tell you if you ask. Worth the visit even if you&apos;re not buying clothes." },
-              { emoji: "📚", category: "Books & Stationery", detail: "A small but well-curated independent bookshop. The kind of place where the stock reflects genuine editorial choices rather than algorithms. Worth spending time in." },
-              { emoji: "🌿", category: "Beauty & Wellness", detail: "Independent beauty and wellness shops with a focus on quality ingredients. Smaller specialist retailers that tend to be more interesting than chain equivalents. Good for gifts." },
+              { emoji: "👗", category: "Fashion & Clothing", detail: "Independent fashion boutiques. Mix of women&apos;s fashion, accessories, and lifestyle clothing." },
+              { emoji: "🏡", category: "Homeware & Gifts", detail: "Interiors shops and gift retailers. Several stock work by local makers." },
+              { emoji: "💎", category: "Jewellery", detail: "Independent jewellers with own-design ranges and vintage pieces." },
+              { emoji: "🥩", category: "Food & Artisan Produce", detail: "A butcher, a bakery, and specialist food shops." },
+              { emoji: "📚", category: "Books & Stationery", detail: "A small independent bookshop." },
+              { emoji: "🌿", category: "Beauty & Wellness", detail: "Independent beauty and wellness shops and smaller specialist retailers." },
             ].map((item) => (
               <div key={item.category} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>
@@ -221,15 +221,14 @@ export default function BirkdaleVillageGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Food &amp; Drink</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Eating &amp; Drinking</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-              Birkdale Village&apos;s eating and drinking offer is compact but consistently good.
-              Locals rate it over the town centre for a relaxed meal.
+              Birkdale Village has a compact choice of restaurants, cafés and pubs.
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-5">
             {[
               { icon: Utensils, type: "Restaurants", color: "from-[#1B2E4B] to-[#2A4A73]", highlights: ["Independent bistro dining, the village avoids chains", "Book ahead for Friday and Saturday evenings", "Open week (The Open Championship, July) gets very busy, essential to book", "Cuisine mix: modern European, Italian, and international", "Most restaurants are smaller (30–60 covers), book early for groups"] },
-              { icon: Coffee, type: "Cafés & Coffee", color: "from-[#1A4020] to-[#2E6830]", highlights: ["The village has several quality independent cafés", "Morning coffee stop before exploring the village is a well-worn routine", "Proper flat whites, not supermarket-style espresso machines", "Food menus lean toward quality over volume, good scones, good lunch", "Generally quieter and easier to get a table than Lord Street equivalents"] },
-              { icon: Flag, type: "Pubs & Bars", color: "from-[#7A1A1A] to-[#B02020]", highlights: ["The Birkdale Arms is a traditional pub in the village, serving ale", "Several traditional pubs within walking distance", "Village pubs tend to welcome dogs, ask on arrival", "Post-round drinks culture strong during Open week", "Pre-dinner drinks are better here than town centre for a quieter start"] },
+              { icon: Coffee, type: "Cafés & Coffee", color: "from-[#1A4020] to-[#2E6830]", highlights: ["The village has several independent cafés", "Morning coffee stop before exploring the village is a well-worn routine", "Food menus with scones and lunch", "Generally quieter and easier to get a table than Lord Street equivalents"] },
+              { icon: Flag, type: "Pubs & Bars", color: "from-[#7A1A1A] to-[#B02020]", highlights: ["The Birkdale Arms is a traditional pub in the village, serving ale", "Several traditional pubs within walking distance", "Village pubs tend to welcome dogs, ask on arrival", "Post-round drinks culture strong during Open week", "A quieter option than the town centre for pre-dinner drinks"] },
             ].map((item) => (
               <div key={item.type} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className={`bg-gradient-to-r ${item.color} px-6 py-5 flex items-center gap-3`}>
@@ -352,11 +351,11 @@ export default function BirkdaleVillageGuidePage() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {[
-                    { want: "Independent shops", birkdale: "Excellent, the whole point", lord: "Good, strong independents" },
+                    { want: "Independent shops", birkdale: "Independents, no chains", lord: "Independents and chains" },
                     { want: "A quiet browse", birkdale: "✅ Easier to move around", lord: "Busier, more footfall" },
                     { want: "Wider choice", birkdale: "Smaller, more curated", lord: "✅ More shops overall" },
                     { want: "Easy parking", birkdale: "✅ On-street, usually fine", lord: "Pay and display, busier" },
-                    { want: "Good dinner", birkdale: "✅ Excellent independents", lord: "Good, wider choice" },
+                    { want: "Dinner", birkdale: "Independent restaurants", lord: "Wider choice" },
                     { want: "Near Royal Birkdale", birkdale: "✅ 10 min walk", lord: "20–25 min drive" },
                     { want: "Victorian architecture", birkdale: "Charming neighbourhood", lord: "✅ Spectacular" },
                     { want: "Relaxed atmosphere", birkdale: "✅ Village pace", lord: "Town centre pace" },

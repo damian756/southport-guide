@@ -252,7 +252,7 @@ export default function ParkingSouthportGuidePage() {
               </thead>
               <tbody className="divide-y divide-gray-100 bg-white">
                 {[
-                  { name: "NCP London Street", postcode: "PR8 1QU", notes: "Multi-storey town centre. Most reliable for EV in the centre." },
+                  { name: "NCP London Street", postcode: "PR8 1QU", notes: "Multi-storey town centre." },
                   { name: "Morrisons, Meols Cop Road", postcode: "PR8 6AF", notes: "Supermarket car park. Free to use while shopping." },
                   { name: "Southport Holiday Inn", postcode: "PR8 1RE", notes: "Hotel car park. Check availability if not a guest." },
                   { name: "Pontins Southport", postcode: "PR8 3JS", notes: "Holiday park. Primarily for guests but publicly accessible chargers." },
@@ -276,7 +276,7 @@ export default function ParkingSouthportGuidePage() {
             </p>
           </div>
           <p className="text-gray-700 leading-relaxed text-sm">
-            The Marine Drive beach car park and most of the smaller town centre surface car parks do not currently have EV points. If you need a charge during a beach day, the NCP on London Street is your most reliable option and is a 15-minute walk from the seafront.
+            The Marine Drive beach car park and most of the smaller town centre surface car parks do not currently have EV points. If you need a charge during a beach day, the NCP on London Street has EV points and is a 15-minute walk from the seafront.
           </p>
         </section>
 

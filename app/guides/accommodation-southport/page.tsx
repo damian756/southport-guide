@@ -41,7 +41,7 @@ const HOTELS = [
     type: "Boutique / Heritage",
     priceRange: "£££",
     description:
-      "The Victorian option. On Lord Street since 1845, in a central location. Popular with weddings and events, and has a bar.",
+      "The Victorian option. On Lord Street since 1845, in a central location. Hosts weddings and events, and has a bar.",
     bestFor: "Character, central location, Lord Street access",
     postcode: "",
   },
@@ -51,7 +51,7 @@ const HOTELS = [
     type: "Contemporary",
     priceRange: "£££",
     description:
-      "A contemporary hotel, popular with couples and weekend breaks. Spa facilities on site, and a restaurant.",
+      "A contemporary hotel. Spa facilities on site, and a restaurant.",
     bestFor: "Modern comfort, spa, couples, weekend breaks",
     postcode: "PR8 1LW",
   },
@@ -61,8 +61,8 @@ const HOTELS = [
     type: "Traditional",
     priceRange: "££",
     description:
-      "Mid-range hotel on the Promenade with sea views. Popular with families and groups. Right on the seafront for beach access.",
-    bestFor: "Sea views, beach proximity, families, value",
+      "Mid-range hotel on the Promenade with sea views. Right on the seafront for beach access.",
+    bestFor: "Sea views, beach proximity, families",
     postcode: "PR9 0JD",
   },
   {
@@ -115,7 +115,7 @@ const AREAS = [
   {
     name: "Churchtown",
     description:
-      "The old village at the north end of Southport, where I live. Quieter, greener, and better value than the seafront. A few good B&Bs. Excellent pubs. The Botanic Gardens are here. About 10 minutes from town by car. Worth looking at if you want calm over convenience.",
+      "The old village at the north end of Southport, where I live. Quieter, greener, and better value than the seafront. A few B&Bs and some pubs. The Botanic Gardens are here. About 10 minutes from town by car. Worth looking at if you want calm over convenience.",
     walkToBeach: "Not walking distance. Short drive.",
     walkToStation: "Not practical on foot. Car or taxi.",
     parkingNotes: "Residential, plenty of street parking.",
@@ -185,7 +185,7 @@ export default function AccommodationSouthportPage() {
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           {[
             { icon: PoundSterling, label: "Budget hotels", value: "From £60/night" },
-            { icon: Star, label: "Best rated area", value: "Birkdale / Lord St" },
+            { icon: Star, label: "Main areas", value: "Birkdale / Lord St" },
             { icon: Car, label: "Free parking", value: "Premier Inn South" },
             { icon: CalendarDays, label: "Peak: avoid booking late", value: "Jul & Aug" },
           ].map(({ icon: Icon, label, value }) => (

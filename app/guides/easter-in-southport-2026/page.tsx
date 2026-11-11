@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "Where is the Wayfarers Arcade Easter Egg Hunt?",
-    a: "Wayfarers Arcade on Lord Street, Southport (PR8 1LQ). The arcade runs an Easter trail across the shops and the arcade itself. It is free to participate. Wayfarers is one of Southport's Victorian covered arcades and worth a visit in its own right.",
+    a: "Wayfarers Arcade on Lord Street, Southport (PR8 1LQ). The arcade runs an Easter trail across the shops and the arcade itself. It is free to participate. Wayfarers is one of Southport's Victorian covered arcades.",
   },
   {
     q: "Is there parking near the Easter events in Southport?",
@@ -44,7 +44,7 @@ const FAQS = [
   },
   {
     q: "Are there indoor Easter activities in Southport for rainy days?",
-    a: "Yes. The Atkinson on Lord Street runs Make It! craft workshops during the Easter holidays, book through the Atkinson website. Southport Market on Market Street has indoor food stalls and events. Wayfarers Arcade is covered. The Bijou Cinema on Post Office Avenue runs regular screenings that are good for a wet afternoon.",
+    a: "Yes. The Atkinson on Lord Street runs Make It! craft workshops during the Easter holidays, book through the Atkinson website. Southport Market on Market Street has indoor food stalls and events. Wayfarers Arcade is covered. The Bijou Cinema on Post Office Avenue runs regular screenings.",
   },
   {
     q: "When does the Easter school holiday run in 2026?",
@@ -274,7 +274,7 @@ export default function EasterSouthportPage() {
               { emoji: "🎭", title: "Whistle Down the Wind", date: "9–11 April · Ticketed", desc: "Andrew Lloyd Webber's musical at The Atkinson. SONG Productions. Booking essential.", href: "/guides/whistle-down-the-wind-southport-2026" },
               { emoji: "🎨", title: "Make It! Craft Workshop", date: "2 & 9 April · Book ahead", desc: "Hands-on craft workshops for children at The Atkinson on Lord Street. Book directly through the Atkinson.", href: "/guides/the-atkinson-southport" },
               { emoji: "🛍️", title: "Southport Artisan Market", date: "3 April · Free", desc: "50+ independent makers at Southport Market on Good Friday. Free entry, food stalls, handmade gifts.", href: "/guides/southport-artisan-market" },
-              { emoji: "🍜", title: "Southport Market", date: "Open daily · Free entry", desc: "Nine independent food traders and the Market Bar under one roof. Best option for lunch or a sit-down meal during Easter week. No booking needed.", href: "/guides/southport-market" },
+              { emoji: "🍜", title: "Southport Market", date: "Open daily · Free entry", desc: "Nine independent food traders and the Market Bar under one roof, for lunch or a sit-down meal during Easter week. No booking needed.", href: "/guides/southport-market" },
               { emoji: "🖼️", title: "Sefton Open 2026", date: "2 Apr – 13 Jun · Free", desc: "The annual open art exhibition opens at The Atkinson. Free gallery entry. Worth a look on a wet afternoon.", href: "/guides/sefton-open-2026" },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

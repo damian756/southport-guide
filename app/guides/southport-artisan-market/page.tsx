@@ -69,7 +69,7 @@ export default function SouthportArtisanMarketPage() {
             </h1>
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
               50+ independent makers, artists, and food producers in the heart of Southport Market.
-              Monthly, free to browse, and genuinely worth the trip.
+              Monthly and free to browse.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#what" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">What&apos;s There</a>
@@ -121,11 +121,11 @@ export default function SouthportArtisanMarketPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { emoji: "🎨", title: "Art & Prints", detail: "Original paintings, limited edition prints, photography, and illustrations from local and regional artists. Mix of established sellers and newer makers." },
-              { emoji: "🏺", title: "Ceramics & Pottery", detail: "Handmade ceramics from independent potters. Everything from mugs and bowls to decorative pieces. Some of the best stalls at the market." },
-              { emoji: "💍", title: "Jewellery & Accessories", detail: "Handmade jewellery, silver, semi-precious stones, repurposed materials. Not the mass-produced kind you find in high street markets." },
-              { emoji: "🕯️", title: "Candles, Soaps & Wellbeing", detail: "Local makers doing scented candles, artisan soaps, and wellness products. The quality here is generally well above average." },
+              { emoji: "🏺", title: "Ceramics & Pottery", detail: "Handmade ceramics from independent potters. Everything from mugs and bowls to decorative pieces." },
+              { emoji: "💍", title: "Jewellery & Accessories", detail: "Handmade jewellery, silver, semi-precious stones, repurposed materials." },
+              { emoji: "🕯️", title: "Candles, Soaps & Wellbeing", detail: "Local makers doing scented candles, artisan soaps, and wellness products." },
               { emoji: "🍞", title: "Food & Drink Producers", detail: "Artisan food producers alongside the main craft stalls. Cheese, bread, preserves, honey, and speciality food from local and regional makers." },
-              { emoji: "☕", title: "Southport Market Food Hall", detail: "The permanent food hall runs every day the market is open, not just artisan market days. Coffee, street food, and dessert operators. Worth combining your market visit with lunch here." },
+              { emoji: "☕", title: "Southport Market Food Hall", detail: "The permanent food hall runs every day the market is open, not just artisan market days. Coffee, street food, and dessert operators." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <div className="text-3xl mb-3">{item.emoji}</div>

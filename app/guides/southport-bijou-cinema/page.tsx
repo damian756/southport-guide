@@ -25,11 +25,11 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "Where is the Bijou Cinema in Southport?", a: "The Bijou Cinema is on Post Office Avenue, Southport, PR9 0AG. It is just off Lord Street in the town centre, approximately 10 minutes' walk from Southport railway station." },
-  { q: "What is the Bijou Cinema?", a: "The Bijou is Southport's independent community cinema, a small, characterful venue showing a mix of current releases, classics, and specialist programming. It is the alternative to the Vue multiplex, with a more personal atmosphere and a programme that reflects what a local independent cinema should show." },
+  { q: "What is the Bijou Cinema?", a: "The Bijou is Southport's independent community cinema, a small venue showing a mix of current releases, classics, and specialist programming. It is the alternative to the Vue multiplex." },
   { q: "What is Screen Club at the Bijou?", a: "Screen Club is the Bijou's Tuesday evening film school, a regular weekly screening with a focus on film education and discussion. It covers film history, genres, and techniques, and is aimed at people who want to understand cinema rather than just watch it." },
   { q: "Does the Bijou Cinema show live music?", a: "Yes, the Bijou hosts regular live gig nights in addition to film screenings. It functions as a music venue as well as a cinema, which gives it a different feel to standard multiplexes. Check the Bijou's website or social media for upcoming gig dates." },
   { q: "How do I book tickets for the Bijou Cinema?", a: "Book through the Bijou Cinema's website or social media pages. You can also turn up on the night for most screenings, but popular events and Screen Club sessions benefit from advance booking." },
-  { q: "How does the Bijou compare to Vue Cinema in Southport?", a: "Vue on London Square shows mainstream releases. The Bijou shows a wider range, including arthouse, foreign language, classics, and specialist programming. They serve different needs. If you want the latest blockbuster, Vue. If you want something different, more personal, or more interesting, the Bijou." },
+  { q: "How does the Bijou compare to Vue Cinema in Southport?", a: "Vue on London Square shows mainstream releases. The Bijou shows arthouse, foreign language, classics, and specialist programming. They serve different needs." },
 ];
 
 const PAGE_LD = {
@@ -120,11 +120,11 @@ export default function BijouCinemaPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { emoji: "🎬", title: "Film Screenings", detail: "Regular film programme covering current releases, recent films, and classics. The selection is broader and more interesting than a standard multiplex. Check the website for the current schedule." },
-              { emoji: "🎓", title: "Screen Club", detail: "Tuesday evening film school, a dedicated session focused on film as art and craft. Covers film history, technique, and genre. Run by people who take cinema seriously." },
+              { emoji: "🎬", title: "Film Screenings", detail: "Regular film programme covering current releases, recent films, and classics. Check the website for the current schedule." },
+              { emoji: "🎓", title: "Screen Club", detail: "Tuesday evening film school, a dedicated session focused on film as art and craft. Covers film history, technique, and genre." },
               { emoji: "🎸", title: "Live Gig Nights", detail: "Regular live music events in the cinema space. The intimate setting works well for smaller gigs. Mix of local acts and touring musicians. Check social media for upcoming dates." },
-              { emoji: "🏛️", title: "The Venue", detail: "Post Office Avenue, just off Lord Street. An older building with the kind of character that new multiplex cinemas do not have. Not the biggest or most technically advanced, but a proper cinema." },
-              { emoji: "🆚", title: "vs Vue Cinema", detail: "Vue on London Square is the mainstream option for blockbusters. The Bijou is the alternative, smaller, more personal, different programme. They serve different audiences and different moods." },
+              { emoji: "🏛️", title: "The Venue", detail: "Post Office Avenue, just off Lord Street. An older building." },
+              { emoji: "🆚", title: "vs Vue Cinema", detail: "Vue on London Square is the mainstream option for blockbusters. The Bijou is smaller, with a different programme. They serve different audiences and different moods." },
               { emoji: "📅", title: "How to Book", detail: "Check the Bijou website and social media for the current schedule. Most screenings allow walk-ins, but Screen Club and popular events benefit from advance booking." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

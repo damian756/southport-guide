@@ -29,11 +29,11 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "What is Splash World Southport?",
-    a: "Splash World is an indoor waterpark in Southport, one of the UK's largest. It has slides, pools, wave machine, and facilities for all ages. Located in Southport Pleasureland on Marine Drive. Tickets should be booked in advance online; it gets busy in school holidays and wet weather.",
+    a: "Splash World is an indoor waterpark in Southport. It has slides, pools, wave machine, and facilities for all ages. Located in Southport Pleasureland on Marine Drive. Tickets should be booked in advance online; it gets busy in school holidays and wet weather.",
   },
   {
     q: "Is The Atkinson free?",
-    a: "The Atkinson is Southport's arts and cultural centre on Lord Street. Gallery entry is free. Theatre performances and ticketed events are paid. The café is open to everyone. It's worth 30–45 minutes even without a specific exhibition in mind.",
+    a: "The Atkinson is Southport's arts and cultural centre on Lord Street. Gallery entry is free. Theatre performances and ticketed events are paid. The café is open to everyone.",
   },
   {
     q: "What is Wayfarers Arcade?",
@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: "What can kids do in Southport on a rainy day?",
-    a: "Splash World is the main dedicated option for families with children, and it's very popular. Beyond that, the Pleasureland indoor attractions, The Atkinson (family-friendly gallery and activities), and Southport Market are all good. Bowling is available at Southport Superbowl near the seafront.",
+    a: "Splash World is the main dedicated option for families with children. Beyond that, there are the Pleasureland indoor attractions, The Atkinson (family-friendly gallery and activities) and Southport Market. Bowling is available at Southport Superbowl near the seafront.",
   },
 ];
 
@@ -60,7 +60,7 @@ const INDOOR_OPTIONS = [
     postcode: "PR8 1RX",
     cost: "Paid (book online)",
     bestFor: "Families, groups",
-    notes: "One of the UK's largest indoor waterparks. Book ahead, fills up. Right on Marine Drive.",
+    notes: "Indoor waterpark. Book ahead, fills up. Right on Marine Drive.",
   },
   {
     name: "The Atkinson",
@@ -68,7 +68,7 @@ const INDOOR_OPTIONS = [
     postcode: "PR8 1DB",
     cost: "Gallery free / Theatre paid",
     bestFor: "Adults, couples",
-    notes: "Gallery, museum, theatre, café. On Lord Street. Worth an hour at minimum.",
+    notes: "Gallery, museum, theatre, café. On Lord Street.",
   },
   {
     name: "Southport Market",
@@ -76,7 +76,7 @@ const INDOOR_OPTIONS = [
     postcode: "PR8 1HH",
     cost: "Free entry",
     bestFor: "Everyone",
-    notes: "Indoor market with food traders, street food, café. Good for lunch.",
+    notes: "Indoor market with food traders, street food, café.",
   },
   {
     name: "Wayfarers Arcade",
@@ -84,7 +84,7 @@ const INDOOR_OPTIONS = [
     postcode: "PR8 1QN",
     cost: "Free entry",
     bestFor: "Everyone",
-    notes: "Victorian covered arcade off Lord Street. Shops and a café. Good for a browse.",
+    notes: "Victorian covered arcade off Lord Street. Shops and a café.",
   },
   {
     name: "Vue Cinema",
@@ -178,7 +178,7 @@ export default async function RainyDaySouthportGuidePage() {
             Southport on a sunny day is genuinely excellent. On a rainy Tuesday in November it&apos;s a different proposition, but not a hopeless one. The town has enough indoor options to salvage a wet day, provided you know where they are.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The main event for families is Splash World, an indoor waterpark that most people either don&apos;t know about or don&apos;t associate with Southport. It&apos;s one of the UK&apos;s largest and it&apos;s good. For adults without children, The Atkinson and Southport Market are the more useful options. Wayfarers Arcade takes care of the browsing instinct when Lord Street feels too exposed.
+            The main event for families is Splash World, an indoor waterpark that most people either don&apos;t know about or don&apos;t associate with Southport. For adults without children, there are The Atkinson and Southport Market. Wayfarers Arcade takes care of the browsing instinct when Lord Street feels too exposed.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
@@ -242,10 +242,10 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Atkinson</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Atkinson is Southport&apos;s arts centre, at the northern end of Lord Street. It has a gallery (free entry), a museum covering local history, a theatre, and a café. The gallery runs changing exhibitions, the quality varies but the building itself is good and the café is a solid rainy-day stop.
+            The Atkinson is Southport&apos;s arts centre, at the northern end of Lord Street. It has a gallery (free entry), a museum covering local history, a theatre, and a café. The gallery runs changing exhibitions.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Postcode: <strong>PR8 1DB</strong>. Check theatkinson.co.uk for current exhibitions and what&apos;s on. Even without a specific draw, it&apos;s worth 30–45 minutes and the café is decent.
+            Postcode: <strong>PR8 1DB</strong>. Check theatkinson.co.uk for current exhibitions and what&apos;s on.
           </p>
         </section>
 
@@ -253,7 +253,7 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Southport Market &amp; Wayfarers Arcade</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            <strong>Southport Market</strong> is a covered indoor market hall in the town centre (postcode PR8 1HH). It has independent food stalls, street food traders, a café, and craft vendors. A good lunch option and pleasant to browse for an hour without spending anything. See our <Link href="/guides/southport-market" className="text-[#C9A84C] font-semibold hover:underline">complete Southport Market guide</Link> for every trader, opening times, and what to order.
+            <strong>Southport Market</strong> is a covered indoor market hall in the town centre (postcode PR8 1HH). It has independent food stalls, street food traders, a café, and craft vendors. See our <Link href="/guides/southport-market" className="text-[#C9A84C] font-semibold hover:underline">complete Southport Market guide</Link> for every trader, opening times, and what to order.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             <strong>Wayfarers Arcade</strong> is a Victorian arcade just off Lord Street (PR8 1QN). Covered and independent, with a café inside: an alternative to walking in the rain, in a Victorian building.
@@ -266,7 +266,7 @@ export default async function RainyDaySouthportGuidePage() {
           <ul className="space-y-4">
             {[
               { title: "Vue Cinema", desc: "Mainstream multiplex on The Esplanade (PR8 1QS). Check vue.com for listings.", },
-              { title: "Southport Superbowl", desc: "Ten-pin bowling near the seafront. Good for groups and families. Has an arcade games section. Book online at peak times." },
+              { title: "Southport Superbowl", desc: "Ten-pin bowling near the seafront. Has an arcade games section. Book online at peak times." },
               { title: "Southport Pleasureland", desc: "Some indoor attractions within the Pleasureland complex on Marine Drive alongside Splash World. Check what's open seasonally." },
             ].map(({ title, desc }) => (
               <div key={title} className="bg-white rounded-2xl border border-gray-100 p-5">

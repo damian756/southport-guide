@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const FAQS = [
   { q: "When is Whistle Down the Wind at The Atkinson?", a: "Whistle Down the Wind runs at The Atkinson on Thursday 9, Friday 10, and Saturday 11 April 2026. Check The Atkinson's website for specific performance times, evening shows plus possible matinees on the Saturday." },
   { q: "What is Whistle Down the Wind?", a: "Whistle Down the Wind is a musical by Andrew Lloyd Webber with lyrics by Jim Steinman, based on the novel by Mary Hayley Bell. It tells the story of children in the American Deep South who believe a stranger hiding in their barn is Jesus Christ. It contains powerful Lloyd Webber ballads and is considered one of his most affecting works." },
-  { q: "Who is performing Whistle Down the Wind at The Atkinson?", a: "The Southport performance is by SONG Productions. SONG (Southport) are a local theatre company who produce regular musical theatre productions at The Atkinson. They have a strong track record of quality local theatre productions." },
+  { q: "Who is performing Whistle Down the Wind at The Atkinson?", a: "The Southport performance is by SONG Productions. SONG (Southport) are a local theatre company who produce regular musical theatre productions at The Atkinson." },
   { q: "How do I book tickets for Whistle Down the Wind at The Atkinson?", a: "Book directly through The Atkinson's website at atkinson.co.uk or call the box office. Booking in advance is essential. The Atkinson's studio theatre is intimate and the run is only three nights." },
   { q: "Where is The Atkinson Southport?", a: "The Atkinson is on Lord Street, Southport, PR8 1DB. It is in the centre of town on the main boulevard. Parking is available at the nearby Tulketh Street multi-storey (PR8 1EW, 5 min walk)." },
   { q: "Is there somewhere to eat near The Atkinson before the show?", a: "Yes. Lord Street has numerous restaurants within a few minutes' walk of The Atkinson. La Lanterna (Italian), The Warehouse Brasserie, and several cafés and casual dining options are all close. Book ahead for a pre-show meal, midweek evenings in April can be busy." },
@@ -139,7 +139,7 @@ export default function WhistleDownTheWindPage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <div className="text-3xl mb-3">🎪</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">SONG Productions</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">SONG (Southport) is a local theatrical company producing regular musical theatre at The Atkinson. They have produced productions including Chicago, Grease, and other major musicals to a consistently high standard. A Southport institution worth supporting.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">SONG (Southport) is a local theatrical company producing regular musical theatre at The Atkinson. They have produced productions including Chicago, Grease, and other major musicals.</p>
             </div>
           </div>
         </section>

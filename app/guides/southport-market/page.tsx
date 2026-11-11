@@ -124,7 +124,7 @@ const FAQ_LD = {
       name: "Is there gluten-free food at Southport Market?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Pitamu has a dedicated gluten-free fryer and is the safest option for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and others also have gluten-free options. Talk to traders directly at the counter about allergens.",
+        text: "Yes. Pitamu has a dedicated gluten-free fryer. Brunch N' Bagel, Pasta 51 Express, and others also have gluten-free options. Talk to traders directly at the counter about allergens.",
       },
     },
     {
@@ -468,7 +468,7 @@ const FAQS = [
   },
   {
     q: "Is there gluten-free food at Southport Market?",
-    a: "Yes. Pitamu has a dedicated gluten-free fryer and is the safest choice for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and other traders also offer GF options. Talk directly to the trader at the counter about allergens. The open-counter format makes this straightforward.",
+    a: "Yes. Pitamu has a dedicated gluten-free fryer. Brunch N' Bagel, Pasta 51 Express, and other traders also offer GF options. Talk directly to the trader at the counter about allergens. The open-counter format makes this straightforward.",
   },
   {
     q: "Is Southport Market wheelchair accessible?",
@@ -594,7 +594,7 @@ export default function SouthportMarketPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { icon: UtensilsCrossed, label: "Traders", value: "9 independents", sub: "plus the Market Bar" },
-              { icon: Star, label: "Bar of the Year", value: "Won it twice", sub: "public vote, two years running" },
+              { icon: Star, label: "Market Bar", value: "Central bar", sub: "cocktails, ales, gin, coffee" },
               { icon: Users, label: "Meals per year", value: "Nearly 500,000", sub: "meals and drinks" },
               { icon: Heart, label: "No reservations", value: "Walk-in only", sub: "every day it is open" },
             ].map((item) => (
@@ -751,7 +751,7 @@ export default function SouthportMarketPage() {
             >
               <div className="absolute bottom-4 left-5 pointer-events-none">
                 <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
-                  Bar of the Year, twice
+                  The Market Bar
                 </span>
               </div>
             </ImageLightbox>
@@ -762,13 +762,11 @@ export default function SouthportMarketPage() {
               <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed mb-6">
                 <p>
                   The carousel-inspired bar in the middle of the building is the visual centrepiece and the
-                  social anchor. It won the Southport BID Bar of the Year Award two years in a row. Voted by the
-                  public, not a panel.
+                  social anchor.
                 </p>
                 <p>
-                  Cocktails, locally brewed cask ales, a serious gin selection, and flat whites made with
-                  Crosby Coffee beans. The kind of coffee offer that suggests someone thought about it rather
-                  than just ticking a box.
+                  Cocktails, locally brewed cask ales, a gin selection, and flat whites made with
+                  Crosby Coffee beans.
                 </p>
                 <p>
                   If you are here with a group and everyone wants something different to eat, the bar is where
@@ -867,8 +865,7 @@ export default function SouthportMarketPage() {
                 <div className="space-y-4">
                   <p className="text-gray-700 leading-relaxed text-[15px]">
                     Southport Market is not a quiet venue by design. On a Friday evening it is loud, busy, and full
-                    of energy. But if you know when to visit and what to expect, it is one of the more accessible food
-                    halls in the region.
+                    of energy. But if you know when to visit and what to expect, you can plan around it.
                   </p>
                   <p className="text-gray-700 leading-relaxed text-[15px]">
                     The open-plan layout is important. There are no narrow corridors, no cramped entries, no
@@ -876,8 +873,8 @@ export default function SouthportMarketPage() {
                     unpredictable environments difficult, this matters.
                   </p>
                   <p className="text-gray-700 leading-relaxed text-[15px]">
-                    The Changing Places toilet has been specifically praised for its facilities. It includes a hoist,
-                    adult-sized changing bench, curtains for privacy, and dedicated carer space. This is not standard.
+                    The Changing Places toilet includes a hoist, adult-sized changing bench, curtains for privacy,
+                    and dedicated carer space.
                   </p>
                 </div>
 
@@ -944,10 +941,9 @@ export default function SouthportMarketPage() {
                 <p className="font-bold text-[#1B2E4B] text-sm mb-2">Dietary and allergen support</p>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Pitamu (Unit 04) has a dedicated gluten-free fryer and staff trained specifically on allergen
-                  management. It is the safest choice for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and
+                  management. Check allergens at the counter. Brunch N&apos; Bagel, Pasta 51 Express, and
                   Little Korean Kitchen all have vegan and vegetarian options clearly available. Because the format
-                  is open-counter, you can have a direct conversation with the person making your food. That is
-                  genuinely easier than managing allergens in a full restaurant.
+                  is open-counter, you can have a direct conversation with the person making your food.
                 </p>
               </div>
 
@@ -1062,9 +1058,7 @@ export default function SouthportMarketPage() {
               The Philly Cheese Has Landed.
             </h3>
             <p className="text-white/70 text-[15px] leading-relaxed mb-4">
-              Thin-cut ribeye, griddled onions and peppers, melted cheese, loaded into a proper hoagie roll.
-              Brunch N&apos; Bagel have form for doing this: they take a classic and they nail it.
-              This is the kind of thing that sells out before most people know it&apos;s on the menu.
+              Thin-cut ribeye, griddled onions and peppers, melted cheese, loaded into a hoagie roll.
             </p>
             <p className="text-white/50 text-sm">
               Unit 03 · Southport Market · King Street · PR8 1LA · Wednesday to Sunday
@@ -1096,7 +1090,7 @@ export default function SouthportMarketPage() {
                 },
                 {
                   title: "The supply chain",
-                  body: "Blackhurst Butchers supplies fresh meat to Lennys Smashport and to Brunch N' Bagel. Three separate businesses, one supply chain, all inside the same building. Tony Blackhurst started here as a Saturday boy at twelve. His father opened the shop in 1963. The last butcher in Southport town centre, supplying two of the town's most talked-about new food traders.",
+                  body: "Blackhurst Butchers supplies fresh meat to Lennys Smashport and to Brunch N' Bagel. Three separate businesses, one supply chain, all inside the same building. Tony Blackhurst started here as a Saturday boy at twelve. His father opened the shop in 1963. The last butcher in Southport town centre.",
                 },
               ].map(({ title, body }) => (
                 <div key={title} className="bg-white rounded-xl p-6 border border-gray-100">
@@ -1151,8 +1145,7 @@ export default function SouthportMarketPage() {
               </p>
               <p>
                 The new-look Southport Market opened on 22 July 2021. Nearly 500,000 meals and drinks served in
-                a single year. Named in the UK&apos;s top ten seaside markets. The Market Bar won Southport Bar
-                of the Year two years running.
+                a single year.
               </p>
               <p>
                 The regeneration impact spread beyond the building. The McDonald&apos;s unit that had been empty
@@ -1231,7 +1224,7 @@ export default function SouthportMarketPage() {
                 <p className="text-white/70 text-[15px] leading-relaxed mb-5">
                   The multi-purpose function room handles weddings, birthday parties, corporate events,
                   conferences, networking, buffets, live bands, and performance shows. Smaller function rooms
-                  are also available for meetings. The room is better than it sounds.
+                  are also available for meetings.
                 </p>
               </div>
               <ImageLightbox

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: GUIDE.metaTitle,
   description: GUIDE.metaDescription,
   keywords:
-    "best restaurants Southport, restaurants in Southport, where to eat Southport, Southport dining, Bistrot Veronique Southport, V-Cafe Southport, restaurants Lord Street Southport",
+    "restaurants Southport, restaurants in Southport, where to eat Southport, Southport dining, Bistrot Veronique Southport, V-Cafe Southport, restaurants Lord Street Southport",
   alternates: { canonical: `${BASE_URL}/guides/best-restaurants-southport` },
   openGraph: {
     title: "Restaurants in Southport: A Guide by Area | SouthportGuide",

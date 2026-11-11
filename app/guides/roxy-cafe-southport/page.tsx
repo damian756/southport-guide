@@ -8,12 +8,12 @@ const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
   title: "Roxy's Cafe Southport | Italian Coffee, Croissants and Cakes on London Street",
-  description: "Roxy's Cafe on London Street, Southport. Authentic Italian coffee with Julius Meinl beans, freshly baked croissants, pistachio coffee, artisan paninis and homemade cakes. Right next to Southport train station. Open from 8am Monday to Friday.",
+  description: "Roxy's Cafe on London Street, Southport. Italian coffee with Julius Meinl beans, freshly baked croissants, pistachio coffee, paninis and homemade cakes. Right next to Southport train station. Open from 8am Monday to Friday.",
   keywords: "Roxy's Cafe Southport, Italian cafe Southport, coffee near Southport train station, London Street cafe Southport, pistachio coffee Southport, Julius Meinl Southport, Italian coffee shop Southport",
   alternates: { canonical: `${BASE_URL}/guides/roxy-cafe-southport` },
   openGraph: {
     title: "Roxy's Cafe Southport | Italian Coffee, Croissants and Cakes",
-    description: "Authentic Italian coffee, freshly baked croissants and homemade cakes on London Street, right next to Southport train station. The full guide.",
+    description: "Italian coffee, freshly baked croissants and homemade cakes on London Street, right next to Southport train station. The full guide.",
     url: `${BASE_URL}/guides/roxy-cafe-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -26,7 +26,7 @@ const PAGE_LD = {
   "@type": "CafeOrCoffeeShop",
   name: "Roxy's Cafe",
   alternateName: "Roxy's Italian Coffee Shop",
-  description: "Authentic Italian-inspired cafe on London Street, Southport. Julius Meinl coffee, freshly baked croissants, artisan paninis and traditional Italian cakes. Founded by Roxana Budoi in February 2025.",
+  description: "Italian-inspired cafe on London Street, Southport. Julius Meinl coffee, freshly baked croissants, paninis and traditional Italian cakes. Founded by Roxana Budoi in February 2025.",
   url: "https://www.instagram.com/roxycaffe2024",
   image: `${BASE_URL}/images/guides/roxy-cafe-southport/hero.jpg`,
   address: {
@@ -62,9 +62,9 @@ const FAQ_LD = {
   mainEntity: [
     { "@type": "Question", name: "Where is Roxy's Cafe in Southport?", acceptedAnswer: { "@type": "Answer", text: "Roxy's Cafe is at 42 London Street, Southport, PR9 0TJ. It is right next to Southport train station: less than a minute's walk from the main entrance." } },
     { "@type": "Question", name: "What are Roxy's Cafe opening hours?", acceptedAnswer: { "@type": "Answer", text: "Monday to Friday: 8am to 4pm. Saturday: 9am to 5pm. Sunday: 10:30am to 3:30pm." } },
-    { "@type": "Question", name: "What coffee does Roxy's Cafe serve?", acceptedAnswer: { "@type": "Answer", text: "Roxy's uses Julius Meinl coffee, an Austrian roaster with a long tradition of Italian-style espresso. Drinks include espresso, cappuccino, flat white, and the popular pistachio coffee at £3.95." } },
+    { "@type": "Question", name: "What coffee does Roxy's Cafe serve?", acceptedAnswer: { "@type": "Answer", text: "Roxy's uses Julius Meinl coffee, an Austrian roaster with a long tradition of Italian-style espresso. Drinks include espresso, cappuccino, flat white, and a pistachio coffee at £3.95." } },
     { "@type": "Question", name: "What is the pistachio coffee at Roxy's?", acceptedAnswer: { "@type": "Answer", text: "The pistachio coffee at Roxy's Cafe in Southport costs £3.95. It is an espresso-based drink with pistachio flavouring." } },
-    { "@type": "Question", name: "Does Roxy's Cafe do a coffee and cake deal?", acceptedAnswer: { "@type": "Answer", text: "Yes. Coffee and cake for £7.50, available all day Monday to Friday. The homemade Italian cakes rotate and are frequently highlighted in reviews." } },
+    { "@type": "Question", name: "Does Roxy's Cafe do a coffee and cake deal?", acceptedAnswer: { "@type": "Answer", text: "Yes. Coffee and cake for £7.50, available all day Monday to Friday. The homemade Italian cakes rotate." } },
     { "@type": "Question", name: "Who owns Roxy's Cafe Southport?", acceptedAnswer: { "@type": "Answer", text: "Roxy's Cafe is owned by Roxana Budoi, known as Roxy. She is Romanian-born, a former Italian resident, and spent nearly eight years at Volare restaurant in Southport before opening her own place in February 2025." } },
   ],
 };
@@ -80,7 +80,7 @@ const COFFEE = [
   { name: "Flat White", price: "£3.95", desc: "" },
   { name: "Latte", price: "£4.10", desc: "" },
   { name: "Flavoured Latte", price: "£4.65", desc: "" },
-  { name: "Pistachio Coffee", price: "£3.95", desc: "The one people make a specific trip for. Order it." },
+  { name: "Pistachio Coffee", price: "£3.95", desc: "Espresso-based, with pistachio flavouring." },
   { name: "Mocha", price: "£4.45", desc: "" },
   { name: "Iced Latte", price: "£4.25", desc: "" },
   { name: "Hot Chocolate", price: "£4.25", desc: "" },
@@ -172,10 +172,10 @@ const HOURS = [
 
 const FAQS = [
   { q: "Where exactly is it?", a: "42 London Street, PR9 0TJ. Right next to Southport train station. If you are arriving by train from Liverpool or Manchester, you walk out of the station and it is in front of you. Useful to know." },
-  { q: "What is the pistachio coffee?", a: "The pistachio coffee costs £3.95. It is espresso-based with pistachio flavouring. More than one person has specifically made the trip after seeing it posted online." },
+  { q: "What is the pistachio coffee?", a: "The pistachio coffee costs £3.95. It is espresso-based with pistachio flavouring." },
   { q: "What coffee brand does Roxy's use?", a: "Julius Meinl. A Viennese roaster with a 160-year history and a strong Italian-style espresso tradition. The red cardinal logo is on the cups. It is a deliberate choice by Roxy." },
   { q: "Is it good for a quick stop before a train?", a: "It is right next to the station. That is the point. Takeaway is available. In the time it takes to walk from the platform to the street, you can have a coffee in your hand. Several reviewers mention using it exactly this way." },
-  { q: "Are the cakes actually homemade?", a: "Yes. The Italian cakes are made by Roxy. They rotate. The cheesecake versions are the ones most mentioned in reviews. Multiple reviewers use the phrase 'to die for' which, for Southport, is high praise." },
+  { q: "Are the cakes actually homemade?", a: "Yes. The Italian cakes are made by Roxy. They rotate." },
   { q: "Is there a deal?", a: "Coffee and any cake for £7.50, Monday to Friday, all day." },
 ];
 
@@ -285,7 +285,7 @@ export default function RoxyCafeGuide() {
                     Roxy spent nearly eight years at Volare, the Italian restaurant, before doing this herself, and she built this place around Italian food.
                   </p>
                   <p>
-                    The pistachio coffee is the thing people make a specific trip for. The panini are Italian, made with named breads. The Pinsa Romana is something most people in Southport have not tried before. The coffee and cake deal is £7.50, Monday to Friday, all day.
+                    There is a pistachio coffee at £3.95. The panini are Italian, made with named breads. The Pinsa Romana is something most people in Southport have not tried before. The coffee and cake deal is £7.50, Monday to Friday, all day.
                   </p>
                   <p>
                     If you are catching a train, it is right there, for an Italian coffee and something freshly baked.
@@ -297,10 +297,10 @@ export default function RoxyCafeGuide() {
               <section className="bg-[#1B2E4B] rounded-2xl p-7 md:p-9 text-white">
                 <h2 className="font-display text-2xl font-bold mb-4">Who is Roxy?</h2>
                 <p className="text-white/75 leading-relaxed mb-3">
-                  Roxana Budoi, known as Roxy, was born in Romania and spent years living in Italy before coming to Southport. She brought eight years of experience at Volare, one of Southport&apos;s most respected Italian restaurants, to her own venture. Roxy&apos;s Cafe, named as a tribute to her two daughters, opened on 24 February 2025 on London Street.
+                  Roxana Budoi, known as Roxy, was born in Romania and spent years living in Italy before coming to Southport. She brought eight years of experience at Volare, an Italian restaurant in Southport, to her own venture. Roxy&apos;s Cafe, named as a tribute to her two daughters, opened on 24 February 2025 on London Street.
                 </p>
                 <p className="text-white/75 leading-relaxed">
-                  She describes it as her dream: a welcoming space where people feel the same warmth they get at Volare, but for a coffee and a croissant rather than a full evening meal. Based on the reviews, she has delivered it.
+                  She describes it as her dream: a welcoming space where people feel the same warmth they get at Volare, but for a coffee and a croissant rather than a full evening meal.
                 </p>
               </section>
 
@@ -318,7 +318,7 @@ export default function RoxyCafeGuide() {
                   <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">Hot Drinks</h2>
                 </div>
                 <p className="text-gray-600 mb-5 leading-relaxed">
-                  Roxy uses <strong>Julius Meinl</strong>, a Viennese roaster founded in 1862 with a long Italian-style espresso tradition. The signature red cardinal on the cups is one of the most recognised marks in European coffee.
+                  Roxy uses <strong>Julius Meinl</strong>, a Viennese roaster founded in 1862 with a long Italian-style espresso tradition. The signature red cardinal is on the cups.
                 </p>
                 <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
                   {COFFEE.map((item) => (
@@ -341,7 +341,7 @@ export default function RoxyCafeGuide() {
                 </div>
                 <div className="mt-4 flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-900">
                   <Star className="w-4 h-4 text-amber-500 shrink-0" />
-                  <p><strong>The pistachio coffee</strong> is £3.95. Multiple people have walked in having seen it online specifically to try it.</p>
+                  <p><strong>The pistachio coffee</strong> is £3.95.</p>
                 </div>
               </section>
 
@@ -349,7 +349,7 @@ export default function RoxyCafeGuide() {
               <section>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-5">Morning Treats</h2>
                 <p className="text-gray-600 mb-5 leading-relaxed">
-                  Freshly baked every morning. The flavoured croissants rotate: Nutella, custard, pistachio and apricot. The Krapfen (Italian doughnut) is worth trying if you have not had one before.
+                  Freshly baked every morning. The flavoured croissants rotate: Nutella, custard, pistachio and apricot. The Krapfen is an Italian doughnut.
                 </p>
                 <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden mb-5">
                   {MORNING.map((item) => (
@@ -375,7 +375,7 @@ export default function RoxyCafeGuide() {
               <section>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-3">Panini & Sandwiches</h2>
                 <p className="text-gray-600 mb-5 leading-relaxed">
-                  All served with a side salad. These are proper Italian sandwiches with named breads: schiacciata romana, pugliese, focaccia genovese, ciabatta. Not the generic deli counter kind.
+                  All served with a side salad. These are Italian sandwiches with named breads: schiacciata romana, pugliese, focaccia genovese, ciabatta.
                 </p>
                 <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
                   {PANINI.map((item) => (
@@ -394,7 +394,7 @@ export default function RoxyCafeGuide() {
               <section>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-3">Pinsa Romana</h2>
                 <p className="text-gray-600 mb-5 leading-relaxed">
-                  Pinsa is a Roman-style flatbread: lighter and crispier than conventional pizza, with a high hydration dough that makes it more digestible. This is proper pinsa, not pizza pretending to be something else. Worth ordering if you have not tried it.
+                  Pinsa is a Roman-style flatbread: lighter and crispier than conventional pizza, with a high hydration dough that makes it more digestible.
                 </p>
                 <div className="divide-y divide-gray-100 border border-gray-100 rounded-2xl overflow-hidden mb-5">
                   {PINSA.map((item) => (

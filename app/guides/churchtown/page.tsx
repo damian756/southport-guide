@@ -173,7 +173,7 @@ export default function ChurchtownGuidePage() {
             </p>
           </div>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Victorian glasshouses are the visual highlight, well maintained and stocked with tropical and subtropical plants. There&apos;s also a formal rose garden, a lake, children&apos;s play area, and a small museum covering local history. The café does decent coffee and straightforward food.
+            The Victorian glasshouses are the visual highlight, well maintained and stocked with tropical and subtropical plants. There&apos;s also a formal rose garden, a lake, children&apos;s play area, and a small museum covering local history. The café serves coffee and food.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Best visited on a weekday morning if you want to avoid families at weekends. In summer, the gardens are at their best. In winter, they&apos;re quieter but still worth the trip for the glasshouses alone.
@@ -206,13 +206,13 @@ export default function ChurchtownGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Where to Eat and Drink in Churchtown</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Churchtown has a handful of good local pubs and cafés centred on the village. The pace is slower than the town centre, these are places where locals come for a proper lunch, not tourist-facing operations.
+            Churchtown has a handful of local pubs and cafés centred on the village. The pace is slower than the town centre.
           </p>
           <ul className="space-y-3 mb-4">
             {[
               "The Hesketh Arms, traditional village pub serving lunch. On the main village road.",
               "The Bold Arms, another local pub in the village.",
-              "Botanic Gardens Café, good for coffee and a bite while you're in the gardens. Nothing fancy but fine.",
+              "Botanic Gardens Café, for coffee and a bite while you're in the gardens.",
             ].map((item) => (
               <li key={item} className="flex gap-3 text-gray-700">
                 <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>

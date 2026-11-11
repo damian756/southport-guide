@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/big-top-festival-southport-2026` },
   openGraph: {
     title: "Big Top Festival Southport 2026 | 2–3 May · Circus Arts",
-    description: "Big Top Festival Southport 2026, two days of world-class circus arts. Circa and Gandini Juggling. 2–3 May. Free outdoor events and ticketed shows.",
+    description: "Big Top Festival Southport 2026, two days of circus arts. Circa and Gandini Juggling. 2–3 May. Free outdoor events and ticketed shows.",
     url: `${BASE_URL}/guides/big-top-festival-southport-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "When is Big Top Festival in Southport 2026?", a: "Big Top Festival Southport 2026 takes place on Saturday 2 and Sunday 3 May 2026. It is part of the Bank Holiday weekend that also coincides with Southport Beer Week." },
-  { q: "What is the Big Top Festival in Southport?", a: "Big Top Festival is a circus and street arts festival in Southport town centre, part of the Southport 2026: Elegantly Eccentric cultural programme. It features world-class circus companies including Circa (Australia) and Gandini Juggling (UK), with a mix of free outdoor performances and ticketed indoor shows." },
+  { q: "What is the Big Top Festival in Southport?", a: "Big Top Festival is a circus and street arts festival in Southport town centre, part of the Southport 2026: Elegantly Eccentric cultural programme. It features circus companies including Circa (Australia) and Gandini Juggling (UK), with a mix of free outdoor performances and ticketed indoor shows." },
   { q: "Is Big Top Festival free?", a: "Some elements are free, outdoor performances in the town centre are free to watch. Some ticketed indoor shows require tickets. Check the Southport 2026 website for the specific programme and which performances are free versus ticketed." },
-  { q: "Who is performing at Big Top Festival 2026?", a: "Confirmed performers include Circa, an acclaimed Australian physical theatre and circus company, and Gandini Juggling, one of the world's leading contemporary juggling companies. Both are internationally touring companies of the highest quality." },
+  { q: "Who is performing at Big Top Festival 2026?", a: "Confirmed performers include Circa, an Australian physical theatre and circus company, and Gandini Juggling, a contemporary juggling company based in the UK. Both are internationally touring companies." },
   { q: "Where does Big Top Festival take place in Southport?", a: "Big Top Festival takes place across Southport town centre, on Lord Street, in the town's public spaces, and at The Atkinson. Some performances may be in Victoria Park. The outdoor performances typically move through the town centre over the two days." },
   { q: "Is Big Top Festival family friendly?", a: "Yes. Circus and street arts are inherently accessible and engaging for all ages. The outdoor performances are particularly suitable for families. It is one of the best events of the year for bringing children into town." },
   { q: "Can I combine Big Top Festival with Southport Beer Week?", a: "Yes. Southport Beer Week runs 20–25 May across 18 town-centre pubs, and the Big Top Festival falls at the start of that period. The Bank Holiday weekend of 2–3 May is one of the busiest weekends of Southport's year. Plan accommodation well in advance if you are staying over." },
@@ -82,7 +82,7 @@ export default function BigTopFestivalPage() {
               Big Top Festival
               <span className="block text-[#C9A84C]">Southport 2026</span>
             </h1>
-            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">World-class circus arts across Southport town centre. Circa and Gandini Juggling. Two days. Free outdoor shows and ticketed performances. Bank Holiday weekend.</p>
+            <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">Circus arts across Southport town centre. Circa and Gandini Juggling. Two days. Free outdoor shows and ticketed performances. Bank Holiday weekend.</p>
             <div className="flex flex-wrap gap-3">
               <a href="#what" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">What&apos;s On</a>
               <Link href="/guides/southport-year-of-culture-2026" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">Southport 2026 Programme</Link>
@@ -133,12 +133,12 @@ export default function BigTopFestivalPage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <div className="text-3xl mb-3">🎪</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-3">Circa</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">Australian physical theatre and circus company. Circa blend acrobatics, dance, and theatre into performances that are as much about emotion as technical skill. They have performed at major arts festivals worldwide. Their outdoor work is designed to stop crowds in their tracks.</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">Australian physical theatre and circus company. Circa blend acrobatics, dance, and theatre in their performances. They have performed at major arts festivals worldwide.</p>
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">
               <div className="text-3xl mb-3">🤹</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-3">Gandini Juggling</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">One of the world&apos;s leading contemporary juggling companies, based in the UK. Gandini&apos;s work transcends what most people think of when they hear &quot;juggling&quot;, it is choreographed, musical, and genuinely theatrical. Multiple Edinburgh Festival Fringe appearances and international touring.</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">Contemporary juggling company based in the UK. Gandini&apos;s work is choreographed, musical and theatrical. Multiple Edinburgh Festival Fringe appearances and international touring.</p>
             </div>
           </div>
         </section>
@@ -163,7 +163,7 @@ export default function BigTopFestivalPage() {
         <section className="bg-[#5C1A1A] rounded-2xl p-8 md:p-12 text-center text-white">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Big Top Festival · 2–3 May 2026</p>
           <h2 className="font-display text-3xl font-bold mb-4">Bank Holiday Circus in Southport Town Centre</h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">Free outdoor shows. Ticketed performances at The Atkinson. World-class companies. Book accommodation early.</p>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">Free outdoor shows. Ticketed performances at The Atkinson. Book accommodation early.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/guides/southport-year-of-culture-2026" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">Southport 2026 Programme</Link>
             <Link href="/guides/southport-beer-week-2026" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">Beer Week (May) →</Link>

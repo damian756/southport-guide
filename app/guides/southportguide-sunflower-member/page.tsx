@@ -73,7 +73,7 @@ const FAQS = [
   },
   {
     q: "Does SouthportGuide have an autism-friendly visitor guide?",
-    a: "Yes. Our autism and sensory-friendly Southport guide covers the eight calmest venues in the town, an honest events guide (including which events to avoid and which work well), practical tips on best visiting times, parking close to entrances, and the Sunflower scheme in Southport.",
+    a: "Yes. Our autism and sensory-friendly Southport guide covers eight calm venues in the town, an events guide, practical tips on visiting times, parking close to entrances, and the Sunflower scheme in Southport.",
   },
 ];
 
@@ -246,8 +246,7 @@ export default function SunflowerMemberPage() {
               <h3 className="font-display text-2xl font-bold text-white mb-3">Southport Market quiet hour</h3>
               <p className="text-white/70 leading-relaxed text-[15px] mb-4">
                 Southport Market on King Street runs a sensory-friendly hour on Saturday mornings: reduced music and lighting,
-                staff briefed, a calm start to the day before the weekend crowds arrive. It is one of the better examples
-                of what accessible retail looks like in practice. Our full guide covers the details.
+                staff briefed, a calm start to the day before the weekend crowds arrive. Our full guide covers the details.
               </p>
               <Link
                 href="/guides/southport-market"
@@ -323,8 +322,7 @@ export default function SunflowerMemberPage() {
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Keep exploring</p>
             <h3 className="font-display text-2xl font-bold text-white mb-2">Autism and sensory-friendly Southport</h3>
             <p className="text-white/70 text-[15px] leading-relaxed">
-              Eight calm venues, an honest events guide, practical tips for visiting with hidden disabilities,
-              and the straight picture of what works in this town.
+              Eight calm venues, an events guide, and practical tips for visiting with hidden disabilities.
             </p>
           </div>
           <Link
