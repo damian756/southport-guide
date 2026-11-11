@@ -282,7 +282,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "royal-birkdale-guide-the-open",
     title: "Royal Birkdale: What to Know Before The Open 2026",
     excerpt:
-      "The 154th Open Championship returns to Royal Birkdale in July 2026. Here's your complete guide to the course, tickets, and planning your visit.",
+      "Royal Birkdale hosted the 154th Open Championship in July 2026. Our guide to the course, tickets and planning a visit, kept for reference.",
     categorySlug: "golf",
     image: "/images/open-2026.webp",
     date: "7 Feb 2026",

@@ -212,7 +212,7 @@ export default function YearOfCulturePage() {
                 fills half-term in a way Southport has never really had before.
               </p>
               <p>
-                This sits alongside the Open Championship in July, the Flower Show in August, the Air Show on
+                This sat alongside the Open Championship in July, the Flower Show in August, the Air Show on
                 the Bank Holiday, and the Fireworks in September. I&apos;ve lived here 41 years and I&apos;ve never
                 seen a year as packed as 2026. The council description, &apos;look back in 50 years and tell your
                 grandchildren I was there&apos;, is a stretch, but it&apos;s not nothing.
@@ -312,7 +312,7 @@ export default function YearOfCulturePage() {
               </div>
               <div>
                 <p className="text-[#C9A84C] font-bold text-base mb-2">The Open in the same year</p>
-                <p>The 154th Open Championship at Royal Birkdale in July 2026 brings international attention to Southport. The cultural events give visitors more reason to come beyond golf and stay beyond the week.</p>
+                <p>The 154th Open Championship at Royal Birkdale in July 2026 brought international attention to Southport. The cultural events give visitors more reason to come beyond golf and stay beyond the week.</p>
               </div>
             </div>
           </div>
