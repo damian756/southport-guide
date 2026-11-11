@@ -132,7 +132,7 @@ const VENUES = [
     distance: "Seafront",
     entry: "Free",
     why: "At low tide on a quiet weekday morning, Southport Beach is one of the most open, uncrowded natural spaces in the North West. The sea retreats over a kilometre. Flat, reflective, vast. Very few people before 10am outside summer weekends. Excellent for children who need space to move freely with no unexpected obstacles.",
-    practical: "Free parking along Marine Drive. Check tide times before you go. Mid-tide gives more visual interest than full low tide. Avoid summer weekend afternoons. Dogs welcome all year. Postcode: PR8 1RX.",
+    practical: "Free parking along Marine Drive. Check tide times before you go. Mid-tide gives more visual interest than full low tide. Avoid summer weekend afternoons. Dogs welcome outside the summer exclusion zone (no dogs for 555m south of the pier, 1 May to 30 September). Postcode: PR8 1RX.",
     tags: ["Free", "Outdoor", "Space to move"],
     tagColor: "bg-amber-100 text-amber-800",
   },
@@ -251,7 +251,7 @@ const PRACTICAL_TIPS = [
   {
     icon: Sun,
     title: "Bringing a dog",
-    body: "Dogs welcome at Botanic Gardens (on leads), Hesketh Park, Marine Lake and King's Gardens (on leads), Southport Beach (year-round), and RSPB Marshside. The Atkinson does not allow dogs inside. Most outdoor venues are dog-friendly.",
+    body: "Dogs welcome at Botanic Gardens (on leads), Hesketh Park, Marine Lake and King's Gardens (on leads), Southport Beach (outside the summer exclusion zone south of the pier, 1 May to 30 September), and RSPB Marshside. The Atkinson does not allow dogs inside. Most outdoor venues are dog-friendly.",
   },
 ];
 

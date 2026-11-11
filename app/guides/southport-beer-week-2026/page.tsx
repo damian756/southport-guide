@@ -907,7 +907,7 @@ export default function SouthportBeerWeekGuidePage() {
                   "The Windmill and The Lakeside Inn both welcome dogs",
                   "Check individual venues before turning up on a busy evening",
                   "Most pubs will have water available if you ask at the bar",
-                  "Southport Beach is dog-friendly year-round",
+                  "Dogs are welcome on Southport Beach outside the summer exclusion zone south of the pier",
                 ],
               },
               {

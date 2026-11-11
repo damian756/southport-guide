@@ -29,15 +29,15 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "Are dogs allowed on Southport Beach?",
-    a: "Yes, but with seasonal restrictions. Dogs are welcome year-round on the northern section of Southport Beach (north of the funfair, toward Ainsdale). On the central section near the funfair and promenade, dogs are restricted between May 1 and September 30 during certain hours. The northern end is essentially always dog-friendly and has more space. Check signs on the day for the current restrictions.",
+    a: "Yes, outside two summer exclusion zones. From 1 May to 30 September dogs are not allowed on Southport beach for 555m from the pier south towards Pleasureland, or at Ainsdale within 200m either side of the main beach entrance, down to the tide line. Elsewhere dogs are welcome all year; keep yours on a lead if you cannot control it. Both zones are signed in summer.",
   },
   {
     q: "Can dogs be off-lead at Southport Beach?",
-    a: "Dogs can be off-lead on the unrestricted sections of the beach, particularly the northern end and Ainsdale beach just south of Southport. The beach is wide and there's space to run. Be aware of other beach users and any specific byelaws posted on site.",
+    a: "Outside the summer exclusion zones, yes, as long as your dog is under close control; if you cannot control it, keep it on a lead. The beach is wide and there's space to run. Keep dogs out of the pools in the dunes and away from flocks of birds on the beach.",
   },
   {
     q: "Is Ainsdale beach dog-friendly?",
-    a: "Ainsdale beach, just south of Southport, is very dog-friendly and popular with dog owners precisely because it has fewer restrictions than the central Southport beach section. It's a National Nature Reserve, dogs must be kept under control near the dunes and nature reserve areas. Good parking at Ainsdale-on-Sea (PR8 2PZ).",
+    a: "Ainsdale beach, just south of Southport, is popular with dog owners. From 1 May to 30 September dogs are not allowed within 200m either side of the main beach entrance, down to the tide line; elsewhere on the beach they are welcome all year. It's a National Nature Reserve, dogs must be kept under control near the dunes and nature reserve areas. Good parking at Ainsdale-on-Sea (PR8 2PZ).",
   },
   {
     q: "Are dogs allowed in Southport town centre?",
@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: "Where can I walk my dog near Southport?",
-    a: "Best options: Southport Beach (northern end, year-round), Ainsdale Beach and Dunes (great off-lead space), Hesketh Park in Churchtown (well-maintained park, popular with dog walkers), the Marine Drive Promenade (the full length is dog-friendly and gives excellent sea views), and the RSPB Marshside coastal saltmarsh path on Redshank Road, flat, exposed, tidal pools, dogs on leads, five minutes from Churchtown.",
+    a: "Best options: Southport Beach (north of the pier, all year), Ainsdale Beach and Dunes (great off-lead space), Hesketh Park in Churchtown (well-maintained park, popular with dog walkers), the Marine Drive Promenade (the full length is dog-friendly and gives excellent sea views), and the RSPB Marshside coastal saltmarsh path on Redshank Road, flat, exposed, tidal pools, dogs on leads, five minutes from Churchtown.",
   },
 ];
 
@@ -108,7 +108,7 @@ export default async function DogFriendlySouthportGuidePage() {
           <div className="flex flex-wrap gap-3 text-sm">
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <MapPin className="w-4 h-4 text-[#C9A84C]" />
-              <span>Beach (north end): dogs welcome year-round</span>
+              <span>Beach north of the pier: dogs welcome all year</span>
             </div>
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <AlertCircle className="w-4 h-4 text-[#C9A84C]" />
@@ -123,8 +123,8 @@ export default async function DogFriendlySouthportGuidePage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {[
-              { label: "Beach (north end)", value: "Dogs welcome always" },
-              { label: "Central beach", value: "Restricted May–Sept" },
+              { label: "North of the pier", value: "Dogs welcome all year" },
+              { label: "555m south of the pier", value: "No dogs May to Sept" },
               { label: "Promenade", value: "Fully dog-friendly" },
               { label: "Ainsdale beach", value: "Excellent off-lead" },
             ].map(({ label, value }) => (
@@ -143,16 +143,16 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Dogs on Southport Beach</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport Beach is one of the widest in England, there&apos;s genuinely room for everyone, including dogs. The restrictions that do exist are limited to a specific central section and specific seasonal hours. For most visitors with dogs, the northern end of the beach is the practical answer.
+            Southport Beach is one of the widest in England, there&apos;s genuinely room for everyone, including dogs. The restrictions that do exist are two summer exclusion zones, from 1 May to 30 September. For most visitors with dogs, the beach north of the pier is the practical answer.
           </p>
 
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6">
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-amber-600 flex-none mt-0.5" />
               <div>
-                <p className="font-semibold text-amber-900 text-sm mb-1">Seasonal restrictions, central beach section</p>
+                <p className="font-semibold text-amber-900 text-sm mb-1">Summer exclusion zones, 1 May to 30 September</p>
                 <p className="text-amber-800 text-sm leading-relaxed">
-                  Between May 1 and September 30, dogs are restricted on the central section of Southport Beach (the area near the funfair and main promenade) during certain hours. The northern section, past the funfair, toward Ainsdale, has no restrictions. Signs on site show the current boundaries.
+                  From 1 May to 30 September dogs are not allowed on Southport beach for 555m from the pier south towards Pleasureland, or at Ainsdale within 200m either side of the main beach entrance, down to the tide line. Elsewhere dogs are welcome all year; keep yours on a lead if you cannot control it. Both zones are signed in summer.
                 </p>
               </div>
             </div>
@@ -170,13 +170,13 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Ainsdale Beach and Dunes</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Ainsdale beach is a 5-minute drive south of Southport and is one of the best dog-walking destinations on the Sefton coast. It&apos;s a National Nature Reserve, so dogs must be kept under control near the dunes and designated areas, but the beach itself has excellent off-lead space.
+            Ainsdale beach is a 5-minute drive south of Southport and is one of the best dog-walking destinations on the Sefton coast. It&apos;s a National Nature Reserve, so dogs must be kept under control near the dunes and designated areas. From 1 May to 30 September dogs are not allowed within 200m either side of the main beach entrance, down to the tide line; the rest of the beach has off-lead space all year.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Parking at Ainsdale-on-Sea: postcode <strong>PR8 2PZ</strong>. Paid car park. The beach is a short walk from the car park through the dunes.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            Quieter than Southport Beach in summer and very popular with local dog owners. Worth the short drive if the central Southport beach is restricted.
+            Quieter than Southport Beach in summer and very popular with local dog owners. In summer, walk well clear of the main entrance before letting your dog off.
           </p>
         </section>
 
@@ -204,7 +204,7 @@ export default async function DogFriendlySouthportGuidePage() {
               {
                 name: "Southport Beach (north end)",
                 postcode: "PR8 1RL",
-                notes: "Year-round, no restrictions on the northern stretch. Wide and flat, good for any dog.",
+                notes: "North of the pier, dogs are welcome all year. From 1 May to 30 September there are no dogs for 555m south of the pier. Wide and flat, good for any dog.",
               },
               {
                 name: "Marine Drive Promenade",
@@ -214,7 +214,7 @@ export default async function DogFriendlySouthportGuidePage() {
               {
                 name: "Ainsdale Beach and Dunes",
                 postcode: "PR8 2PZ",
-                notes: "NNR, dogs under control near dunes. Excellent open beach for off-lead running.",
+                notes: "NNR, dogs under control near dunes. No dogs within 200m either side of the main entrance from 1 May to 30 September; open beach for off-lead running elsewhere.",
               },
               {
                 name: "RSPB Marshside, coastal saltmarsh walk",

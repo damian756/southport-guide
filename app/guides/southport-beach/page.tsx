@@ -100,7 +100,7 @@ const FAQS = [
   },
   {
     q: "Are dogs allowed on Southport Beach?",
-    a: "Yes, dogs are welcome year-round on the main sections of Southport Beach and along the Promenade. Seasonal restrictions may apply to certain sections during peak summer months (typically June–September). Follow the signage on-site. Dogs must be kept on leads in King's Gardens.",
+    a: "Yes, outside the summer exclusion zone. From 1 May to 30 September dogs are not allowed on Southport beach for 555m from the pier south towards Pleasureland, or at Ainsdale within 200m either side of the main beach entrance, down to the tide line. Elsewhere dogs are welcome all year; keep yours on a lead if you cannot control it. Dogs must be kept on leads in King's Gardens.",
   },
   {
     q: "How far out does the tide go at Southport Beach?",
@@ -129,7 +129,7 @@ const PAGE_LD = {
   "@type": "Beach",
   name: "Southport Beach",
   description:
-    "Southport Beach, one of the widest beaches in England, on the Lancashire coast. Adjacent to Marine Lake and King's Gardens. Dogs welcome year-round.",
+    "Southport Beach, one of the widest beaches in England, on the Lancashire coast. Adjacent to Marine Lake and King's Gardens. Dogs welcome outside the summer exclusion zones.",
   url: `${BASE_URL}/guides/southport-beach`,
   geo: { "@type": "GeoCoordinates", latitude: 53.6435, longitude: -3.009 },
   address: {
@@ -240,7 +240,7 @@ export default async function SouthportBeachGuidePage() {
             {[
               { icon: MapPin, label: "Parking", value: "Marine Drive", sub: "Pay and display" },
               { icon: Car, label: "Parking", value: "Pay & display", sub: "Marine Drive" },
-              { icon: Dog, label: "Dogs", value: "Welcome", sub: "Year-round" },
+              { icon: Dog, label: "Dogs", value: "Welcome", sub: "Outside summer zones" },
               { icon: Waves, label: "Swimming", value: "Caution", sub: "Check tides first" },
               { icon: Clock, label: "Open", value: "Always", sub: "No entry fee" },
               { icon: Sun, label: "Best time", value: "Sunset", sub: "Any season" },
@@ -487,12 +487,12 @@ export default async function SouthportBeachGuidePage() {
                   <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
                     <Dog className="w-5 h-5 text-green-700" />
                   </div>
-                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg">Year-Round Access</h3>
+                  <h3 className="font-display font-bold text-[#1B2E4B] text-lg">Where Dogs Can Go</h3>
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                  Dogs are welcome on Southport Beach all year. The main beach, the wide expanse you access from Marine Drive,
-                  has no permanent dog restrictions. Seasonal restrictions may apply to certain sections during peak summer
-                  months: follow the signs on-site, which are clearly posted.
+                  From 1 May to 30 September dogs are not allowed on Southport beach for 555m from the pier south towards
+                  Pleasureland, or at Ainsdale within 200m either side of the main beach entrance, down to the tide line.
+                  Elsewhere dogs are welcome all year; keep yours on a lead if you cannot control it.
                 </p>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   The sheer size of the beach means there&apos;s always plenty of room, even on a busy Saturday in August,

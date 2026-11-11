@@ -21,7 +21,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   "beachcombing-ainsdale-winter": [
     { type: "p", text: "I went out to Ainsdale beach this morning with the dog and no particular plan. Cold, clear blue sky, low tide. Took a flask. Wasn't expecting anything unusual. I do this walk fairly regularly and sometimes it's just driftwood and an old crisp packet." },
     { type: "p", text: "Not today. In about an hour on the sand, we found a mermaid's purse, two species of jellyfish, a whelk egg mass, a razor clam shell, and enough interesting stuff that I came home and immediately started googling. Here's what it all was." },
-    { type: "callout", emoji: "📍", text: "Ainsdale Beach, Southport · Free to walk · Dogs welcome year-round · Sefton Council's beach parking runs 1 April to 30 September · Ainsdale station is within easy walking distance." },
+    { type: "callout", emoji: "📍", text: "Ainsdale Beach, Southport · Free to walk · No dogs within 200m either side of the main entrance, 1 May to 30 September · Sefton Council's beach parking runs 1 April to 30 September · Ainsdale station is within easy walking distance." },
     { type: "video", src: "/videos/ainsdale-beach-panorama.mp4", poster: "/images/blog/ainsdale/ainsdale-dunes-pinewoods-panorama.webp", caption: "Ainsdale Beach in early March: wide, flat, and almost completely empty." },
     { type: "image", src: "/images/blog/ainsdale/ainsdale-beach-dunes-sea-view.webp", alt: "Ainsdale beach: dune grass in the foreground with the Irish Sea behind, person walking in the distance", caption: "Ainsdale at low tide on a clear winter morning. Almost nobody here on a Tuesday in March.", objectPosition: "center 55%" },
     { type: "h2", text: "The Mermaid's Purse" },
@@ -2583,7 +2583,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "ul", items: [
       "Ainsdale parking: Sefton Council's beach parking runs from 1 April to 30 September (£10 a day), and can be made smaller or closed because of the tide or bad weather. The beach is within easy walking distance of Ainsdale station on Merseyrail.",
       "Walk time: 45 minutes to the Southport boundary and back, longer if you go further.",
-      "Dogs: welcome year-round at Ainsdale. Keep clear of any fenced areas around nesting bird zones.",
+      "Dogs: welcome at Ainsdale outside the summer exclusion zone (no dogs within 200m either side of the main entrance, 1 May to 30 September). Keep clear of any fenced areas around nesting bird zones.",
       "Best for: late afternoon in September when the light comes in low from the west.",
     ]},
     { type: "h2", text: "Churchtown and the Botanic Gardens loop" },

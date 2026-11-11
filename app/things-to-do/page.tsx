@@ -86,7 +86,7 @@ const BEACHES = [
       "Access via Marine Drive / the Promenade. Postcode PR8 1RX.",
       "Free parking along Marine Drive bays.",
       "Best at low to mid-tide for walking; check tide times before you go.",
-      "Dog-friendly year-round on most sections.",
+      "Dogs welcome outside the summer exclusion zone: no dogs for 555m south of the pier, 1 May to 30 September.",
       "10-minute walk from Southport town centre and train station.",
     ],
     gradient: "from-[#1A5C7A] to-[#1E8AB0]",
@@ -101,7 +101,7 @@ const BEACHES = [
       "Two miles south of Southport, Ainsdale is backed by one of north-west Europe's most important dune systems, a Site of Special Scientific Interest home to natterjack toads, sand lizards, and great crested newts. Blue Flag awarded. Noticeably quieter than Southport Beach, with a more natural feel. The beach here is genuinely wide even at higher tide, making it the best choice when you want sand underfoot rather than a hike across the flats.",
     practical: [
       "Car park on Shore Road, Ainsdale. Pay and display.",
-      "Dog-friendly year-round.",
+      "Dogs welcome outside the summer exclusion zone: no dogs within 200m either side of the main entrance, 1 May to 30 September.",
       "Blue Flag beach. High water quality.",
       "4 miles from Southport town centre; direct train to Ainsdale station.",
       "Café and facilities in the car park area.",
@@ -405,7 +405,7 @@ const FAQS = [
   },
   {
     q: "Are dogs allowed on Southport Beach?",
-    a: "Yes. Dogs are welcome year-round on most sections of Southport Beach and on Ainsdale Beach. There are seasonal restrictions on some sections during peak summer months. Follow the signage on site. At Formby, dogs must be on leads in the red squirrel reserve but can run on the beach itself.",
+    a: "Yes, outside two summer exclusion zones. From 1 May to 30 September dogs are not allowed on Southport beach for 555m from the pier south towards Pleasureland, or at Ainsdale within 200m either side of the main beach entrance, down to the tide line. Elsewhere dogs are welcome all year. At Formby, dogs must be on leads in the red squirrel reserve but can run on the beach itself.",
   },
 ];
 
