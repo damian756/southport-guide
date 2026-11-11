@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement | SouthportGuide.co.uk",
+  title: "Accessibility Statement", // the layout adds " | SouthportGuide.co.uk"
   description:
     "SouthportGuide's accessibility commitments: web accessibility standards, Hidden Disabilities Sunflower membership, content standards, and how to contact us with accessibility feedback.",
   alternates: { canonical: "https://www.southportguide.co.uk/accessibility" },
