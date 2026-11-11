@@ -87,6 +87,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
   // ── Individual business pages ────────────────────────────────
+  // Listing URLs that next.config.ts redirects elsewhere stay out of the
+  // sitemap (keep this list in step with the redirects there).
+  const REDIRECTED_LISTINGS = new Set([
+    "/hotels/another-place",
+    "/parking/parking-ainsdale",
+    "/parking/parking-southport",
+    "/parking/parking-nhs-parking",
+    "/parking/parking-driving-test-candidates",
+    "/parking/parking-staff-car-park-southport-hospital",
+    "/parking/parking-smedley-hydro-staff-car-park-entrance",
+    "/parking/parking-uk-parking-control-ltd-on-behalf-of-mwlth-nhs-trust-parking",
+    "/parking/parking-drop-off-pick-up",
+    "/parking/parking-freshfield-station-car-park",
+    "/parking/parking-bushby-s-park",
+    "/parking/parking-formby",
+  ]);
   let businessPages: MetadataRoute.Sitemap = [];
   try {
     const { prisma } = await import("@/lib/prisma");
@@ -98,7 +114,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
       orderBy: { updatedAt: "desc" },
     });
-    businessPages = businesses.map((b) => ({
+    businessPages = businesses.filter((b) => !REDIRECTED_LISTINGS.has(`/${b.category.slug}/${b.slug}`)).map((b) => ({
       url: `${BASE}/${b.category.slug}/${b.slug}`,
       lastModified: b.updatedAt,
       changeFrequency: "weekly" as const,

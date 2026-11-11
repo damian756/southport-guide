@@ -37,10 +37,7 @@ const PAGE_LD = {
     addressCountry: "GB",
   },
   telephone: "01704 535372",
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], opens: "10:00", closes: "16:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "00:00", closes: "00:00" },
-  ],
+
   servesCuisine: ["Coffee", "Breakfast", "Brunch", "Lunch"],
   priceRange: "££",
   sameAs: ["https://www.seasonsouthport.com"],
@@ -51,7 +48,7 @@ const FAQ_LD = {
   "@type": "FAQPage",
   mainEntity: [
     { "@type": "Question", name: "Where is Season Coffee in Southport?", acceptedAnswer: { "@type": "Answer", text: "Season Coffee, Bar & Kitchen is at 14-16 King Street, Southport, PR8 1JZ, directly opposite Southport Market." } },
-    { "@type": "Question", name: "What are Season Coffee's opening hours?", acceptedAnswer: { "@type": "Answer", text: "Season is open Tuesday to Sunday, 10am to 4pm. Closed on Mondays. Breakfast is served until 1pm and the kitchen closes at 3pm." } },
+    { "@type": "Question", name: "What are Season Coffee's opening hours?", acceptedAnswer: { "@type": "Answer", text: "Season Coffee has closed. When it was open, it opened Tuesday to Sunday, 10am to 4pm, and was closed on Mondays." } },
     { "@type": "Question", name: "What coffee does Season Southport serve?", acceptedAnswer: { "@type": "Answer", text: "Season uses micro-lot single-origin beans from two local roasters: Django Coffee Co. and Heart & Graft. Beans rotate seasonally and are ground to order. Current options include Ethiopian, Colombian, and Guatemalan varieties." } },
     { "@type": "Question", name: "What food does Season Coffee Southport serve?", acceptedAnswer: { "@type": "Answer", text: "Season serves a full breakfast and lunch menu. Breakfast includes The Season Special, Veggie Special, Smashed Avo, French Toast, and the Season Stack. Lunch includes sandwiches, burgers, loaded fries, and ciabattas. Kitchen closes at 3pm, breakfast served until 1pm." } },
     { "@type": "Question", name: "Does Season Southport do venue hire?", acceptedAnswer: { "@type": "Answer", text: "Yes. Season hires out the venue for private events including birthday parties, baby showers, wine and cheese evenings, and motivational talks. Call 01704 535372 to enquire." } },
@@ -85,7 +82,7 @@ const LUNCH = [
 
 const FAQS = [
   { q: "Where is Season Coffee in Southport?", a: "14-16 King Street, PR8 1JZ, directly opposite Southport Market. It's an easy five-minute walk from Lord Street." },
-  { q: "What are the opening hours?", a: "Tuesday to Sunday, 10am to 4pm. Closed Monday. Breakfast is served until 1pm. The kitchen closes at 3pm, so if you want food, don't arrive at 2:45." },
+  { q: "What are the opening hours?", a: "Season Coffee has closed. When it was open, it opened Tuesday to Sunday, 10am to 4pm, and was closed on Mondays." },
   { q: "What makes Season's coffee different?", a: "They use micro-lot single-origin beans from two local independent roasters: Django Coffee Co. and Heart & Graft. The beans change with the seasons and are ground to order." },
   { q: "Is there a veggie or vegan option?", a: "Yes. The Veggie Special is a full cooked breakfast. The Season Stack has a veggie version. The Build Your Own lets you mix and match. The beef burger has a vegan 'no beef' alternative." },
   { q: "Does Season do venue hire?", a: "Yes. Private events: birthdays, baby showers, wine and cheese evenings, corporate. Call 01704 535372." },
@@ -142,7 +139,7 @@ export default function SeasonsGuide() {
           <div className="relative container mx-auto px-4 max-w-6xl py-14 md:py-20">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider mb-5">
-                <Coffee className="w-3.5 h-3.5" /> Terry&apos;s Pick · Café Guide
+                <Coffee className="w-3.5 h-3.5" /> Terry&apos;s Pick · Café Guide (Closed)
               </div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 Season Coffee,<br />
@@ -168,8 +165,8 @@ export default function SeasonsGuide() {
               {[
                 { label: "Address", value: "14-16 King Street" },
                 { label: "Postcode", value: "PR8 1JZ" },
-                { label: "Open", value: "Tue–Sun, 10am–4pm" },
-                { label: "Closed", value: "Monday" },
+                { label: "Status", value: "Closed" },
+                { label: "Was open", value: "Tue–Sun, 10am–4pm" },
               ].map(({ label, value }) => (
                 <div key={label} className="px-5 py-4 text-center">
                   <div className="text-[#C9A84C] font-bold text-sm md:text-base">{value}</div>
@@ -373,7 +370,7 @@ export default function SeasonsGuide() {
                   <div className="border-t border-gray-50 pt-4 flex items-start gap-3">
                     <Clock className="w-4 h-4 text-[#C9A84C] shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Opening Hours</p>
+                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Opening Hours (before it closed)</p>
                       <div className="space-y-1 text-sm">
                         <div className="flex justify-between"><span className="text-[#1B2E4B] font-medium">Mon</span><span className="text-red-500 font-semibold">Closed</span></div>
                         <div className="flex justify-between"><span className="text-[#1B2E4B] font-medium">Tue–Sun</span><span className="text-gray-600">10am–4pm</span></div>

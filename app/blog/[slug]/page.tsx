@@ -541,7 +541,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* More in same category */}
         {cat && (() => {
           const sameCategory = BLOG_POSTS.filter(
-            (p) => p.categorySlug === post.categorySlug && p.slug !== slug
+            (p) => p.categorySlug === post.categorySlug && p.slug !== slug && !(p.eventEndDate && p.eventEndDate < todayISO())
           ).slice(0, 2);
           if (sameCategory.length === 0) return null;
           return (
@@ -579,7 +579,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Other posts */}
         <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-5">More from the blog</h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-14">
-          {BLOG_POSTS.filter((p) => p.featured && p.slug !== slug && p.categorySlug !== post.categorySlug)
+          {BLOG_POSTS.filter((p) => p.featured && p.slug !== slug && p.categorySlug !== post.categorySlug && !(p.eventEndDate && p.eventEndDate < todayISO()))
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
             .slice(0, 4)
             .map((related) => {

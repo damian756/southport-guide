@@ -63,7 +63,7 @@ const BEACHES = [
   {
     name: "Formby Beach",
     tag: "National Trust · Red Squirrels",
-    highlight: "22,200 searches/mo. The region's most searched beach.",
+    highlight: "National Trust beach and pinewoods.",
     description:
       "Seven miles of sand backed by pine woodland where native red squirrels still survive, one of only twelve refuges left in Britain. Walk the Lifeboat Road pinewood trails at dawn in spring or autumn and you'll see them. The beach itself is vast and backed by dramatic dunes; at low tide, prehistoric footprints from 8,000 BC occasionally emerge from the sand. One of the genuinely extraordinary days out within reach of Southport.",
     practical: [
@@ -80,7 +80,7 @@ const BEACHES = [
   {
     name: "Southport Beach",
     tag: "Town Centre · Marine Lake",
-    highlight: "9,900 searches/mo. Southport's famous main beach.",
+    highlight: "Southport's main beach.",
     description:
       "Southport Beach is enormous, one of the widest in England. At low tide the sea can be a kilometre away, making it a landscape to walk through rather than a swim spot (though the tide does come in). The best time to visit is at sunset, when the light across the flats is genuinely spectacular. The beach sits alongside Marine Lake, Adventure Coast, and King's Gardens. You can easily make a full day of it without touching the sea at all.",
     practical: [
@@ -97,7 +97,7 @@ const BEACHES = [
   {
     name: "Ainsdale Beach",
     tag: "Nature Reserve · Dog-Friendly",
-    highlight: "6,600 searches/mo. The local's quieter choice.",
+    highlight: "A quieter beach south of Southport.",
     description:
       "Two miles south of Southport, Ainsdale is backed by one of north-west Europe's most important dune systems, a Site of Special Scientific Interest home to natterjack toads, sand lizards, and great crested newts. Blue Flag awarded. Noticeably quieter than Southport Beach, with a more natural feel. The beach here is genuinely wide even at higher tide, making it the best choice when you want sand underfoot rather than a hike across the flats.",
     practical: [
@@ -114,7 +114,7 @@ const BEACHES = [
   {
     name: "Crosby Beach",
     tag: "Antony Gormley · Another Place",
-    highlight: "18,100 searches/mo. The art installation that stops people in their tracks.",
+    highlight: "Home of Antony Gormley's Another Place.",
     description:
       "One hundred cast-iron figures, each weighing 650 kilos, spread across three kilometres of tidal beach, all facing out to sea. Antony Gormley's *Another Place* is one of the most quietly powerful pieces of public art in England. Each figure is a cast of Gormley's own body. They're most visible at low tide, at their most dramatic at sunset. Technically 14 miles south of Southport, but an obvious pairing for any visit to the area.",
     practical: [

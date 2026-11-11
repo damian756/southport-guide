@@ -225,6 +225,7 @@ export const COLLECTIONS: Collection[] = [
   // ── Sunflower-friendly ───────────────────────────────────────────────────
   {
     slug: "sunflower-friendly-southport",
+    sitemapExclude: true, // renders noindex (too few listings)
     title: "Sunflower-Friendly Venues in Southport",
     metaDescription:
       "Sunflower-friendly venues in Southport: businesses and attractions registered with the Hidden Disabilities Sunflower scheme, where staff recognise the lanyard and offer support.",
@@ -284,6 +285,7 @@ export const COLLECTIONS: Collection[] = [
   // ── Botanic Gardens ───────────────────────────────────────────────────────
   {
     slug: "botanic-gardens-southport",
+    sitemapExclude: true, // renders noindex (too few listings)
     title: "Botanic Gardens Southport",
     metaDescription:
       "Botanic Gardens Southport: the Victorian walled garden in Churchtown. Fernery, aviaries, cafe, and free entry. A Southport institution since 1874.",
