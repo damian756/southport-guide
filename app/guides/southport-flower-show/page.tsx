@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/southport-flower-show` },
   openGraph: {
     title: "Southport Flower Show 2026 | 20–23 August · Complete Guide",
-    description: "One of England's most prestigious flower shows. Tickets from £25, celebrity schedule, parking, and what to see at Victoria Park, 20–23 August 2026.",
+    description: "One of England's most prestigious flower shows. Tickets, celebrity schedule, parking, and what to see at Victoria Park, 20–23 August 2026.",
     url: `${BASE_URL}/guides/southport-flower-show`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -188,7 +188,7 @@ export default function SouthportFlowerShowGuidePage() {
                 rel="noopener noreferrer"
                 className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors"
               >
-                Buy Tickets from £25 →
+                Buy 2027 Tickets →
               </a>
               <a href="#celebrities" className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
                 Celebrity Schedule
@@ -205,7 +205,7 @@ export default function SouthportFlowerShowGuidePage() {
             {[
               { icon: CalendarDays, value: "20–23 Aug", label: "When", sub: "Thu–Sun, August 2026" },
               { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
-              { icon: Ticket, value: "From £25", label: "Tickets", sub: "Early bird online" },
+              { icon: Ticket, value: "2027", label: "Tickets", sub: "On sale from the show" },
               { icon: Star, value: "Since 1924", label: "Heritage", sub: "100+ years of shows" },
             ].map((s) => (
               <div key={s.label} className="text-center px-4 py-4">

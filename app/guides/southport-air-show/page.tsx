@@ -503,12 +503,12 @@ export default function SouthportAirShowGuidePage() {
         {/* ── Other Events ── */}
         <section>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">Other Major Southport Events in 2026</h2>
+            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">Other Southport Events</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { name: "The Open 2026", month: "12–19 July 2026", desc: "The 154th Open Championship at Royal Birkdale. Southport&apos;s biggest sporting event ever.", href: "/the-open-2026" },
-                { name: "Southport Flower Show", month: "20–23 August 2026", desc: "One of England&apos;s most prestigious horticultural shows. Victoria Park. Tickets from £23 early bird.", href: "/guides/southport-flower-show" },
-                { name: "Full Events Calendar", month: "All of 2026", desc: "10 major events. Lightport, Comedy Festival, Fireworks Championship and more.", href: "/events" },
+                { name: "What&apos;s on in Southport", month: "Coming up", desc: "Theatre, Christmas events, markets and shows, with links to each organiser.", href: "/events" },
+                { name: "Southport Flower Show", month: "19–22 August 2027", desc: "Victoria Park. 2027 tickets are on sale from the show.", href: "/guides/southport-flower-show" },
+                { name: "The Open 2026", month: "July 2026", desc: "The 154th Open Championship at Royal Birkdale. Our visitor guide, kept for reference.", href: "/the-open-2026" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">{item.month}</p>
