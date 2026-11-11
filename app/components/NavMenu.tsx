@@ -11,6 +11,7 @@ import {
 import { INSTAGRAM_URL, FACEBOOK_URL } from "@/components/InstagramCta";
 import { GUIDES, GUIDE_CATEGORIES, type GuideCategory, getGuide, currentEventGuides, isPastEventGuide } from "@/lib/guides-config";
 import { getUpcomingEvents, type SouthportEvent } from "@/lib/events-data";
+import { ukToday } from "@/lib/uk-date";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -87,7 +88,7 @@ const subscribeNever = () => () => {};
 function useToday(): string | null {
   return useSyncExternalStore(
     subscribeNever,
-    () => new Date().toISOString().slice(0, 10),
+    () => ukToday(),
     () => null,
   );
 }

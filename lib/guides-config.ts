@@ -3,6 +3,8 @@
 // Adding a new guide: add one entry here + create app/guides/[slug]/page.tsx.
 // Drives: /guides/ index, sitemap, related guides, dynamic listings, nav.
 
+import { ukToday } from "./uk-date";
+
 export type GuideCategory =
   | "beaches-coast"
   | "events"
@@ -1122,9 +1124,9 @@ export const GUIDES: Guide[] = [
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 
-/** Today's date as YYYY-MM-DD (UTC, as on the server). */
+/** Today's date as YYYY-MM-DD in the UK (lib/uk-date.ts). */
 export function todayISO(): string {
-  return new Date().toISOString().slice(0, 10);
+  return ukToday();
 }
 
 /** Last day (YYYY-MM-DD) of the event a guide covers, or null for a guide with no event date. */

@@ -23,7 +23,8 @@ import AdSlot from "@/components/AdSlot";
 import { getUpcomingEvents } from "@/lib/events-data";
 
 // Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
-export const revalidate = 86400;
+// Hourly, so the "next ten events" list drops a finished event the same day
+export const revalidate = 3600;
 
 const BASE_URL = "https://www.southportguide.co.uk";
 

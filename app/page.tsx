@@ -172,12 +172,12 @@ export default async function Home() {
     Object.fromEntries(CATEGORIES.map((c) => [c.slug, { gradient: c.gradient, light: c.light, emoji: c.emoji }]));
 
   const upcomingEvents = getUpcomingEvents(12);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  // Today on the UK calendar, whatever the server's time zone
+  const todayISO = guideTodayISO();
+  const [todayY, todayM, todayDay] = todayISO.split("-").map(Number);
 
   const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  const todayLabel = `${today.getDate()} ${MONTHS[today.getMonth()]} ${today.getFullYear()}`;
-  const todayISO = today.toISOString().slice(0, 10);
+  const todayLabel = `${todayDay} ${MONTHS[todayM - 1]} ${todayY}`;
 
   function formatPostDate(dateStr: string) {
     return dateStr === todayLabel ? "Today" : dateStr;

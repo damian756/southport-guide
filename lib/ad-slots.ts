@@ -23,6 +23,8 @@
 // "best of" guides, about, privacy, terms, disclosure, contact, claim-listing,
 // the advertise page, the 404 page, the dashboard, admin or property pages.
 
+import { ukToday } from "./uk-date";
+
 export type Sponsor = {
   name: string;
   url: string;
@@ -238,10 +240,6 @@ export function getAdOption(id: string): AdOption | undefined {
   return AD_OPTIONS.find((o) => o.id === id);
 }
 
-/** Today's date in the UK as "YYYY-MM-DD". */
-function ukToday(): string {
-  return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London" }).format(new Date());
-}
 
 /** The slot's sponsor if one is set and its `until` date has not passed. */
 export function activeSponsor(slot: AdSlotDef): Sponsor | null {

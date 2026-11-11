@@ -4,9 +4,12 @@ import { MapPin, CalendarDays, ChevronRight, ArrowRight, Clock } from "lucide-re
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import { getUpcomingEvents } from "@/lib/events-data";
+import { ukToday } from "@/lib/uk-date";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("the-atkinson-southport");
+
 
 export const metadata: Metadata = {
   title: GUIDE.metaTitle,
@@ -52,6 +55,10 @@ const FAQ_LD = {
 };
 
 export default function TheAtkinsonPage() {
+  // Rebuilt daily (app/guides/layout.tsx), so a finished event drops off.
+  const ATKINSON_NOW = getUpcomingEvents(undefined, ukToday())
+    .filter((e) => e.venue.includes("Atkinson") && e.link)
+    .slice(0, 4);
   return (
     <GuideLayout guide={GUIDE}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PAGE_LD) }} />
@@ -145,17 +152,19 @@ export default function TheAtkinsonPage() {
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">This Winter</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
-            {/* Checked on theatkinson.co.uk, 11 Nov 2026. Past dates drop off with the events calendar. */}
-            <a href="https://theatkinson.co.uk/exhibition/artist-rooms-gilbert-george/" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">7 November 2026 to 20 February 2027</p>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">ARTIST ROOMS Gilbert &amp; George <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Exhibition in the galleries. Free entry, Monday to Saturday, 10am to 4pm.</p>
-            </a>
-            <a href="https://theatkinson.co.uk/events/cinderella-panto-2026/" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">4 to 31 December 2026</p>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">Cinderella: Christmas Pantomime <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
-              <p className="text-gray-600 text-sm leading-relaxed">The Atkinson&apos;s family pantomime in the theatre. Tickets from The Atkinson.</p>
-            </a>
+            {/* From the events calendar (lib/events-data.ts, each entry checked on theatkinson.co.uk): an entry drops off the day after it ends. */}
+            {ATKINSON_NOW.map((ev) => (
+              <a key={ev.title} href={ev.link} target="_blank" rel="noopener noreferrer" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">{ev.dayLabel}</p>
+                <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">{ev.title} <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{ev.description}</p>
+              </a>
+            ))}
+            {ATKINSON_NOW.length === 0 && (
+              <p className="text-gray-600 text-sm leading-relaxed">
+                See <Link href="/events" className="text-[#C9A84C] font-semibold hover:underline">what&apos;s on in Southport</Link> for the next events at The Atkinson.
+              </p>
+            )}
           </div>
         </section>
 

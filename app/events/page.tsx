@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, ArrowLeft, ExternalLink } from "lucide-react";
 import { getEventsByMonth, isEventCurrent } from "@/lib/events-data";
+import { ukToday } from "@/lib/uk-date";
 import { prisma } from "@/lib/prisma";
 import { Suspense } from "react";
 import MonthFilter from "./MonthFilter";
@@ -44,7 +45,7 @@ function categoryClass(cat: string) {
 }
 
 function getTodayISO() {
-  return new Date().toISOString().slice(0, 10);
+  return ukToday();
 }
 
 function eventDayLabel(event: { isoDate: string; dayLabel: string }) {
@@ -171,10 +172,11 @@ export default async function EventsPage({
     (e) => isEventCurrent(e, getTodayISO())
   ).length;
 
-  // Compute "when" date range
-  const todayD = new Date();
-  todayD.setHours(0, 0, 0, 0);
-  const todayISO = todayD.toISOString().slice(0, 10);
+  // Compute "when" date range, on UK calendar days (date arithmetic in UTC on
+  // the UK date, so the server's own time zone does not matter)
+  const todayISO = getTodayISO();
+  const todayD = new Date(`${todayISO}T00:00:00Z`);
+  const addDays = (d: Date, n: number) => new Date(d.getTime() + n * 86400000);
   let whenFrom: string | null = null;
   let whenTo: string | null = null;
   if (activeWhen === "today") {
@@ -182,16 +184,12 @@ export default async function EventsPage({
     whenTo = todayISO;
   } else if (activeWhen === "this-week") {
     whenFrom = todayISO;
-    const nextWeek = new Date(todayD);
-    nextWeek.setDate(nextWeek.getDate() + 7);
-    whenTo = nextWeek.toISOString().slice(0, 10);
+    whenTo = addDays(todayD, 7).toISOString().slice(0, 10);
   } else if (activeWhen === "this-weekend") {
-    const day = todayD.getDay();
+    const day = todayD.getUTCDay();
     const daysToSat = day === 6 ? 0 : (6 - day);
-    const sat = new Date(todayD);
-    sat.setDate(sat.getDate() + daysToSat);
-    const sun = new Date(sat);
-    sun.setDate(sun.getDate() + 1);
+    const sat = addDays(todayD, daysToSat);
+    const sun = addDays(sat, 1);
     whenFrom = sat.toISOString().slice(0, 10);
     whenTo = sun.toISOString().slice(0, 10);
   }
@@ -213,15 +211,11 @@ export default async function EventsPage({
 
   const filteredMonths = (activeMonth
     ? allMonths.filter((m) => m === activeMonth)
-    : allMonths.filter((m) => {
-        // Hide months where the calendar month has fully passed
-        const firstEvent = eventsByMonth[m]?.[0];
-        if (!firstEvent) return false;
-        const d = new Date(firstEvent.isoDate);
-        const monthEnd = new Date(d.getFullYear(), d.getMonth() + 1, 0);
-        monthEnd.setHours(23, 59, 59, 999);
-        return monthEnd >= todayD;
-      })
+    : allMonths.filter((m) =>
+        // A month stays while any event in it is still on (groups are keyed by
+        // start month, so a long run that started last month keeps its group)
+        (eventsByMonth[m] ?? []).some((e) => isEventCurrent(e, todayISO))
+      )
   ).filter((m) => applyFilters(eventsByMonth[m] ?? []).length > 0);
 
   const allMergedEvents = Object.values(eventsByMonth).flat();

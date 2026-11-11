@@ -6,6 +6,8 @@
 // them, with the page they came from in `source`. Do not guess dates.
 // Approved events from the database (Eventbrite sync) are merged in on /events.
 
+import { ukToday } from "./uk-date";
+
 export interface SouthportEvent {
   title: string;
   /** ISO date string (YYYY-MM-DD) used for sorting / filtering */
@@ -743,7 +745,7 @@ export function isEventCurrent(event: Pick<SouthportEvent, "isoDate" | "endIsoDa
 }
 
 function todayISO(): string {
-  return new Date().toISOString().slice(0, 10);
+  return ukToday();
 }
 
 /** Events that have not yet ended, soonest first */
