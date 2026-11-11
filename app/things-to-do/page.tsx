@@ -26,7 +26,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Things to Do in Southport 2026 | The Honest Local Guide",
   description:
-    "The honest guide to things to do in Southport. Beach and pier. Marine Lake watersports. The Open 2026 at Royal Birkdale. Antony Gormley's iron men at Crosby. Red squirrels at Formby. The best events calendar in the North West. Written by locals who actually live here.",
+    "Things to do in Southport: the beach, Marine Lake watersports, Lord Street, the parks, Antony Gormley's iron men at Crosby and the events calendar. Written by people who live here.",
   keywords:
     "things to do in Southport, things to do Southport, Southport attractions, Southport beaches, Southport with kids, free things to do Southport, things to do in Southport Merseyside",
   alternates: { canonical: `${BASE_URL}/things-to-do` },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     title: "Things to Do in Southport 2026 | The Honest Local Guide",
     description:
-      "Beach, pier, Marine Lake, The Open 2026, Antony Gormley's iron men, red squirrels at Formby, and the best events calendar in the North West. The guide the tourism boards don't write.",
+      "Beach, Marine Lake, Lord Street, parks, Antony Gormley's iron men at Crosby and the events calendar, from a local guide.",
     url: `${BASE_URL}/things-to-do`,
     images: [{ url: `${BASE_URL}/images/things-to-do-hero.webp`, width: 1200, height: 630, alt: "Things to do in Southport" }],
   },
@@ -62,7 +62,7 @@ const BEACHES = [
     description:
       "Seven miles of sand backed by pine woodland where native red squirrels still survive, one of only twelve refuges left in Britain. Walk the Lifeboat Road pinewood trails at dawn in spring or autumn and you'll see them. The beach itself is vast and backed by dramatic dunes; at low tide, prehistoric footprints from 8,000 BC occasionally emerge from the sand. One of the genuinely extraordinary days out within reach of Southport.",
     practical: [
-      "Parking: Lifeboat Road car park, L37. £8.50 per car. Victoria Road car park currently closed for conservation works.",
+      "Parking: National Trust car parks at Lifeboat Road (L37 2EB) and Victoria Road (L37 1LJ). £9 per car, free for National Trust members.",
       "Go early on weekdays to avoid queues in summer.",
       "Squirrel nuts available from the Warden's Office on-site.",
       "7 miles south of Southport. 15 minutes by car or train (Formby station).",
@@ -262,7 +262,7 @@ const CULTURE = [
     name: "Southport Pier",
     tag: "England's second longest · 1,108 metres",
     detail:
-      "The second longest pier in England (Southend takes the title, but requires a train). Victorian, restored, and worth the walk. From the end you get a proper sense of the scale of this coastline: the estuary, the dunes, the wide sky over the Irish Sea. On a clear day you can see Wales. Allow 40 minutes for a relaxed return walk.",
+      "Closed to the public since December 2022 on structural engineers' advice. A £20 million restoration is under way and the pier stays closed until the work is finished.",
     href: "/guides/southport-pier",
     emoji: "🌊",
   },
@@ -398,15 +398,15 @@ const FAQS = [
   },
   {
     q: "How far is Formby from Southport?",
-    a: "About 7 miles south of Southport town centre, approximately 15 minutes by car, or you can take the Merseyrail Northern Line direct to Formby station, then a short walk to the beach. The National Trust red squirrel reserve is accessed via the Lifeboat Road car park (currently the main car park while Victoria Road is closed for conservation works).",
+    a: "About 7 miles south of Southport town centre, approximately 15 minutes by car, or you can take the Merseyrail Northern Line direct to Formby station, then a short walk to the beach. The National Trust red squirrel reserve is reached from the Lifeboat Road or Victoria Road car parks.",
   },
   {
     q: "What is free to do in Southport?",
-    a: "Quite a lot. King's Gardens (free), Southport Beach (free), Ainsdale Beach (free), Crosby Beach and Another Place (free), The Atkinson gallery and museum (free), Botanic Gardens in Churchtown (free), walking the Sefton Coastal Path (free), walking Southport Pier (free entry, though there may be charges for the tram), and the 2026 events Lightport, Cristal Palace, Big Top Festival, Food & Drink Festival, and the Air Show are all free to attend.",
+    a: "Quite a lot. King's Gardens (free), Southport Beach (free), Ainsdale Beach (free), Crosby Beach and Another Place (free), The Atkinson gallery and museum (free), Botanic Gardens in Churchtown (free), and walking the Sefton Coastal Path (free). Some of the big outdoor events are free to attend too; check the events calendar.",
   },
   {
-    q: "How long does it take to walk Southport Pier?",
-    a: "About 20 minutes each way at a relaxed pace, making the return trip roughly 40 minutes total. The pier is 1,108 metres long. A tram used to run its length but currently walking is the main option. The views from the end are the reward. On a clear day you can see Wales across the estuary.",
+    q: "Can you walk on Southport Pier?",
+    a: "Not at the moment. Sefton Council closed the pier in December 2022 on structural engineers' advice, and it stays closed while a £20 million restoration is carried out. The council posts progress updates at sefton.gov.uk/southportpier.",
   },
   {
     q: "What is the best time to visit Southport?",
@@ -462,7 +462,7 @@ export default function ThingsToDoPage() {
           <div className="absolute inset-0">
             <Image
               src="/images/things-to-do-hero.webp"
-              alt="Things to do in Southport — visitors enjoying the town"
+              alt="Things to do in Southport: visitors enjoying the town"
               fill
               sizes="100vw"
               quality={90}

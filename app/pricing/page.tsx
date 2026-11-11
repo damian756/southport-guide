@@ -55,7 +55,7 @@ export default function PricingPage() {
             Simple, transparent pricing
           </h1>
           <p className="text-white/60 max-w-xl">
-            Join hundreds of Southport businesses. Choose Free or Pro, then add
+            List your Southport business. Choose Free or Pro, then add
             boosts when you need extra visibility.
           </p>
         </div>

@@ -15,9 +15,9 @@ export const metadata = {
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
     title: "Southport Guide Blog",
-    description: "Local guides, tips and Southport stories — written by people who actually live here.",
+    description: "Local guides, tips and Southport stories, written by people who live here.",
     url: "https://www.southportguide.co.uk/blog",
-    images: [{ url: "https://www.southportguide.co.uk/images/blog-hero-new.webp", width: 1200, height: 630, alt: "Southport Guide Blog — local guides and stories" }],
+    images: [{ url: "https://www.southportguide.co.uk/images/blog-hero-new.webp", width: 1200, height: 630, alt: "Southport Guide Blog: local guides and stories" }],
   },
 };
 
@@ -29,7 +29,7 @@ export default function BlogPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/blog-hero-new.webp"
-            alt="Southport town centre — local guides, tips and stories"
+            alt="Southport town centre: local guides, tips and stories"
             fill
             priority
             sizes="100vw"
@@ -81,7 +81,7 @@ export default function BlogPage() {
       {/* ── Footer CTA ──────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 pb-16 text-center border-t border-gray-100 pt-12">
         <p className="text-gray-400 text-sm max-w-sm mx-auto mb-5">
-          New guides added every week. Open 2026, local food, what&rsquo;s on, and everything in between.
+          Local food, what&rsquo;s on, days out and practical guides to the town.
         </p>
         <div className="flex justify-center gap-4">
           <a

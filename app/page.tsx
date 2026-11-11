@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag,
-  Waves, Dumbbell, Car, Sparkles, ArrowRight, Music, CalendarDays,
+  Waves, Dumbbell, Car, Sparkles, ArrowRight, Music, CalendarDays, Mic,
   Newspaper, TrendingUp, Building2, Train, Shield, Users,
 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
@@ -186,6 +186,7 @@ export default async function Home() {
   const comedyFestStart = new Date("2026-10-02");
   const comedyFestEnd = new Date("2026-10-18");
   const comedyFestLive = today >= comedyFestStart && today <= comedyFestEnd;
+  const comedyFestOver = today > new Date("2026-10-19");
   const comedyFestDays = Math.max(0, Math.ceil((comedyFestStart.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
 
   const orgJsonLd = {
@@ -304,11 +305,6 @@ export default async function Home() {
           {/* RIGHT: Live pulse panel */}
           <div className="flex-1 flex flex-col justify-center px-6 py-10 md:px-10 md:py-12">
 
-            <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-3 py-1.5 rounded-full border border-emerald-400/25 mb-5 self-start">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
-              Updated Daily
-            </div>
-
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight">
               Your Local Guide<br />
               <span className="text-[#C9A84C]">to Southport.</span>
@@ -317,10 +313,11 @@ export default async function Home() {
             <p className="text-white/60 text-sm md:text-base mb-7 leading-relaxed max-w-sm">
               Restaurants, hotels, beaches, and{" "}
               <Link href="/property" className="text-white/80 hover:text-[#C9A84C] underline underline-offset-2 transition-colors">house prices</Link>
-              {" "}Written by locals who actually live here.
+              . Written by people who live here.
             </p>
 
-            {/* Comedy Festival card */}
+            {/* Comedy Festival card (hidden once the festival has finished) */}
+            {!comedyFestOver && (
             <Link
               href="/guides/southport-comedy-festival"
               className="group bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#C9A84C]/40 rounded-2xl p-4 mb-5 flex items-center gap-4 transition-all self-start w-full max-w-xs"
@@ -328,7 +325,7 @@ export default async function Home() {
               <div className="text-center flex-none">
                 {comedyFestLive ? (
                   <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
-                    <span className="text-[#1B2E4B] text-lg">🎤</span>
+                    <Mic className="w-5 h-5 text-[#1B2E4B]" />
                   </div>
                 ) : (
                   <div className="text-center">
@@ -346,10 +343,11 @@ export default async function Home() {
                   </div>
                 )}
                 <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">Southport Comedy Festival</div>
-                <div className="text-white/50 text-xs mt-0.5">🎤 Victoria Park · 2–18 October</div>
+                <div className="text-white/50 text-xs mt-0.5">Victoria Park · 2–18 October</div>
                 <div className="text-[#C9A84C] text-xs mt-1.5">{comedyFestLive ? "What's on tonight →" : "Book tickets →"}</div>
               </div>
             </Link>
+            )}
 
             {/* Next 2 upcoming events */}
             <div className="mb-6 w-full max-w-xs">
@@ -366,7 +364,6 @@ export default async function Home() {
                     rel={eventExternal ? "noopener noreferrer" : undefined}
                     className="flex items-center gap-3 bg-white/5 hover:bg-white/10 rounded-xl px-3 py-2.5 transition-colors group"
                   >
-                    <span className="text-lg flex-none">{event.emoji}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-sm font-semibold truncate group-hover:text-[#C9A84C] transition-colors">{event.title}</p>
                       <p className="text-white/40 text-xs">{formatEventLabel(event)} · {event.venue}</p>
@@ -377,7 +374,7 @@ export default async function Home() {
                 })}
               </div>
               <Link href="/events" className="text-xs text-white/35 hover:text-[#C9A84C] transition-colors mt-2 inline-block">
-                View full 2026 calendar →
+                View the full events calendar →
               </Link>
             </div>
 
@@ -389,7 +386,7 @@ export default async function Home() {
                   href={`/${cat.slug}`}
                   className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/70 hover:text-white text-xs px-3 py-1.5 rounded-full transition-all"
                 >
-                  <span>{cat.emoji}</span> {cat.label}
+                  <cat.icon className="w-3.5 h-3.5" /> {cat.label}
                 </Link>
               ))}
             </div>
@@ -412,19 +409,18 @@ export default async function Home() {
           <div className="flex flex-wrap items-center gap-2 py-3">
             <span className="text-[10px] font-bold text-[#1B2E4B]/40 uppercase tracking-widest mr-1 hidden sm:inline">Quick answers:</span>
             {[
-              { icon: "🏖️", label: "Beach parking", value: "PR8 1RQ", href: "/guides/southport-beach" },
-              { icon: "🚆", label: "Train station", value: "Southport", href: "/guides/getting-to-southport" },
-              { icon: "🅿️", label: "Marine Drive car park", value: "PR8 1RQ", href: "/guides/parking-southport" },
-              { icon: "🛍️", label: "Southport Market", value: "Market Street", href: "/guides/southport-market" },
-              { icon: "🎭", label: "The Atkinson", value: "PR8 1DB", href: "/guides/the-atkinson-southport" },
-              { icon: "🏠", label: "House prices", value: "PR8 & PR9 data", href: "/property" },
-            ].map(({ icon, label, value, href }) => (
+              { label: "Beach parking", value: "PR8 1RQ", href: "/guides/southport-beach" },
+              { label: "Train station", value: "Southport", href: "/guides/getting-to-southport" },
+              { label: "Marine Drive car park", value: "PR8 1RQ", href: "/guides/parking-southport" },
+              { label: "Southport Market", value: "Market Street", href: "/guides/southport-market" },
+              { label: "The Atkinson", value: "PR8 1DB", href: "/guides/the-atkinson-southport" },
+              { label: "House prices", value: "PR8 & PR9 data", href: "/property" },
+            ].map(({ label, value, href }) => (
               <Link
                 key={label}
                 href={href}
                 className="flex items-center gap-1.5 bg-white hover:bg-[#1B2E4B] border border-gray-200 hover:border-[#1B2E4B] text-[#1B2E4B] hover:text-white text-xs px-3 py-2 rounded-full transition-all group whitespace-nowrap"
               >
-                <span className="text-sm">{icon}</span>
                 <span className="font-semibold">{label}:</span>
                 <span className="text-[#C9A84C] group-hover:text-[#E8C87A] font-bold">{value}</span>
               </Link>
@@ -465,7 +461,6 @@ export default async function Home() {
                   className="flex-none w-44 snap-start bg-white rounded-2xl p-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all group cursor-pointer"
                 >
                   <div className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest mb-2">{formatEventLabel(event)}</div>
-                  <div className="text-2xl mb-2">{event.emoji}</div>
                   <h3 className="font-bold text-[#1B2E4B] text-sm leading-tight mb-1 group-hover:text-[#C9A84C] transition-colors line-clamp-2">{event.title}</h3>
                   <p className="text-gray-400 text-xs mb-3 line-clamp-1">{event.venue}</p>
                   <div className="flex items-center justify-between">
@@ -484,13 +479,13 @@ export default async function Home() {
                 className="flex-none w-44 snap-start bg-[#1B2E4B] rounded-2xl p-4 flex flex-col items-center justify-center text-center group hover:bg-[#C9A84C] transition-colors"
               >
                 <CalendarDays className="w-8 h-8 text-[#C9A84C] group-hover:text-white mb-3 transition-colors" />
-                <span className="font-bold text-white text-sm">Full 2026 Calendar</span>
+                <span className="font-bold text-white text-sm">Full Events Calendar</span>
                 <span className="text-white/50 group-hover:text-white/80 text-xs mt-1 transition-colors">All events →</span>
               </Link>
             </div>
 
             <Link href="/events" className="mt-4 text-sm text-[#C9A84C] font-semibold sm:hidden block text-center">
-              View full 2026 calendar →
+              View the full events calendar →
             </Link>
           </div>
         </section>
@@ -535,7 +530,7 @@ export default async function Home() {
             {/* Content panel */}
             <div className="bg-[#1B2E4B] p-8 md:p-10 lg:p-12 flex flex-col justify-center">
               <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-5">
-                ☕ Café Guide · London Street
+                Café Guide · London Street
               </span>
 
               <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
@@ -1089,7 +1084,7 @@ export default async function Home() {
                     <div className="relative p-7 flex flex-col justify-end h-full min-h-[260px]">
                       <div className="mt-auto">
                         <span className="text-white/60 text-xs uppercase tracking-wider">
-                          {theme?.emoji} {b.category.slug.replace("-", " ")} · {area}
+                          {b.category.slug.replace("-", " ")} · {area}
                         </span>
                         <h3 className="font-display text-2xl md:text-3xl font-bold text-white mt-1 mb-2 group-hover:text-[#C9A84C] transition-colors">
                           {b.name}
@@ -1144,7 +1139,7 @@ export default async function Home() {
                       </div>
                       <div className="relative p-5 flex flex-col justify-end min-h-[118px]">
                         <div className="mt-auto">
-                          <span className="text-white/50 text-xs">{theme?.emoji} {area}</span>
+                          <span className="text-white/50 text-xs">{area}</span>
                           <h3 className="font-display font-bold text-white text-lg leading-tight group-hover:text-[#C9A84C] transition-colors line-clamp-1">
                             {b.name}
                           </h3>
@@ -1193,7 +1188,7 @@ export default async function Home() {
                             className="text-xs font-bold px-2.5 py-1 rounded-full"
                             style={{ backgroundColor: theme?.light || "#EEF1F7", color: "#1B2E4B" }}
                           >
-                            {theme?.emoji} {b.category.slug.replace(/-/g, " ")}
+                            {b.category.slug.replace(/-/g, " ")}
                           </span>
                           <span className="text-[#C9A84C] text-xs font-bold">#{i + 4}</span>
                         </div>
@@ -1203,7 +1198,7 @@ export default async function Home() {
                           className="inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-2"
                           style={{ backgroundColor: theme?.light || "#EEF1F7", color: "#1B2E4B" }}
                         >
-                          {theme?.emoji} {b.category.slug.replace(/-/g, " ")}
+                          {b.category.slug.replace(/-/g, " ")}
                         </span>
                       )}
                       <h3 className="font-display font-bold text-[#1B2E4B] text-base group-hover:text-[#C9A84C] transition-colors mb-1 line-clamp-2">
@@ -1232,8 +1227,8 @@ export default async function Home() {
           <div className="bg-[#FAF8F5] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-start gap-8">
             {/* Avatar/icon */}
             <div className="flex-none">
-              <div className="w-20 h-20 rounded-2xl bg-[#1B2E4B] flex items-center justify-center text-4xl shadow-lg">
-                🏡
+              <div className="w-20 h-20 rounded-2xl bg-[#1B2E4B] flex items-center justify-center shadow-lg">
+                <MapPin className="w-9 h-9 text-[#C9A84C]" />
               </div>
             </div>
             {/* Content */}
@@ -1278,15 +1273,14 @@ export default async function Home() {
             {/* Trust signals */}
             <div className="flex-none md:w-48 flex flex-col gap-3">
               {[
-                { icon: "📍", label: "Based in Churchtown" },
-                { icon: "🐾", label: "Dog-friendly tested" },
-                { icon: "👨‍👩‍👧‍👦", label: "Family-tested" },
-                { icon: "🔄", label: "Updated daily" },
-                { icon: "🚫", label: "No sponsored rankings" },
-                { icon: "📋", label: "Every business listed" },
-              ].map(({ icon, label }) => (
+                { label: "Based in Churchtown" },
+                { label: "Dog-friendly tested" },
+                { label: "Family-tested" },
+                { label: "Updated daily" },
+                { label: "No sponsored rankings" },
+                { label: "Every business listed" },
+              ].map(({ label }) => (
                 <div key={label} className="flex items-center gap-2.5 bg-white rounded-xl px-3 py-2.5 border border-gray-100 shadow-sm">
-                  <span className="text-lg flex-none">{icon}</span>
                   <span className="text-xs font-semibold text-[#1B2E4B]">{label}</span>
                 </div>
               ))}
@@ -1368,12 +1362,13 @@ export default async function Home() {
       <section className="py-16 bg-[#FAF8F5]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-10">
-            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Autumn &amp; beyond</p>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Looking ahead</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">What&apos;s Coming Up</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {/* Comedy Festival */}
+            {/* Comedy Festival (hidden once the festival has finished) */}
+            {!comedyFestOver && (
             <Link href="/guides/southport-comedy-festival" className="group relative overflow-hidden rounded-2xl bg-[#1A1A35] p-8 hover:shadow-2xl transition-all duration-300">
               <div className="absolute inset-0">
                 <Image src="/images/southport-comedy-festival.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
@@ -1382,7 +1377,7 @@ export default async function Home() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="inline-block text-4xl">🎤</span>
+                  <Mic className="w-10 h-10 text-[#C9A84C]" />
                   {comedyFestLive && (
                     <span className="flex items-center gap-1.5 bg-green-500/20 border border-green-400/30 text-green-400 text-xs font-bold px-2.5 py-1 rounded-full">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
@@ -1400,9 +1395,10 @@ export default async function Home() {
                 </span>
               </div>
             </Link>
+            )}
 
             {/* MLEC */}
-            <Link href="/mlec" className="group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300">
+            <Link href="/mlec" className={`group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300 ${comedyFestOver ? "md:col-span-2" : ""}`}>
               <div className="absolute inset-0">
                 <Image src="/images/mlec.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/60 to-[#6B3AA0]/40" />
@@ -1410,10 +1406,10 @@ export default async function Home() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
               <div className="relative">
                 <span className="inline-block text-4xl mb-4"><Music className="w-10 h-10 text-[#C9A84C]" /></span>
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Opening April 2027</p>
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Expected early 2029</p>
                 <h3 className="font-display text-3xl font-bold text-white mb-3">Marine Lake Events Centre</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-5">
-                  Southport&apos;s new 4,000-capacity events and entertainment venue on the Marine Lake. Opening 2027.
+                  Southport&apos;s new events and entertainment venue on the Marine Lake. Sefton Council expects it to open in early 2029.
                 </p>
                 <span className="inline-flex items-center gap-2 bg-[#C9A84C] text-white text-sm font-semibold px-5 py-2.5 rounded-full group-hover:bg-[#E8C87A] transition-colors">
                   Find out more <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -1424,34 +1420,12 @@ export default async function Home() {
 
           {/* Additional events row — dynamic from guides config */}
           {(() => {
-            const HOMEPAGE_GUIDE_EMOJIS: Record<string, string> = {
-              "southport-flower-show": "🌸",
-              "southport-air-show": "✈️",
-              "southport-fireworks-championship": "🎆",
-              "southport-comedy-festival": "🎤",
-              "southport-armed-forces-festival": "🎖️",
-              "southport-sausage-cider-festival": "🌭",
-              "southport-beer-week-2026": "🍺",
-              "southport-year-of-culture-2026": "🎪",
-              "cristal-palace-southport-2026": "🎪",
-              "easter-in-southport-2026": "🐣",
-              "southport-artisan-market": "🎨",
-              "kc-artisan-party-in-the-park-southport-2026": "🎵",
-              "comedy-pub-crawl-southport-2026": "😂",
-              "whistle-down-the-wind-southport-2026": "🎭",
-              "39-steps-southport-2026": "🕵️",
-              "the-atkinson-southport": "🎭",
-              "southport-bijou-cinema": "🎬",
-              "live-music-southport": "🎵",
-              "big-top-festival-southport-2026": "🎡",
-              "southport-food-drink-festival-2026": "🍴",
-              "summer-solstice-southport-2026": "☀️",
-              "sefton-open-2026": "🖼️",
-              "books-alive-southport-2026": "📚",
-            };
             const todayStr = new Date().toISOString().slice(0, 10);
+            // Drop event guides whose start date is more than 30 days past
+            const cutoffStr = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
             const eventGuides = GUIDES
               .filter((g) => g.status === "published" && g.category === "events" && g.slug !== "southport-year-of-culture-2026")
+              .filter((g) => !g.eventDate || g.eventDate >= cutoffStr)
               .sort((a, b) => {
                 const aDate = a.eventDate ?? "9999-12-31";
                 const bDate = b.eventDate ?? "9999-12-31";
@@ -1480,7 +1454,7 @@ export default async function Home() {
                       href={`/guides/${g.slug}`}
                       className="group bg-white rounded-2xl px-4 py-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all flex items-center gap-3"
                     >
-                      <span className="text-2xl flex-none">{HOMEPAGE_GUIDE_EMOJIS[g.slug] ?? "📅"}</span>
+                      <CalendarDays className="w-5 h-5 text-[#C9A84C] flex-none" />
                       <div>
                         <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#C9A84C] transition-colors">{g.shortTitle ?? g.title}</p>
                         <p className="text-gray-400 text-xs">{dateLabel}</p>
@@ -1492,9 +1466,9 @@ export default async function Home() {
                   href="/events"
                   className="group bg-white rounded-2xl px-4 py-4 border border-gray-100 hover:border-[#C9A84C]/40 hover:shadow-md transition-all flex items-center gap-3"
                 >
-                  <span className="text-2xl flex-none">📅</span>
+                  <CalendarDays className="w-5 h-5 text-[#C9A84C] flex-none" />
                   <div>
-                    <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#C9A84C] transition-colors">All 2026 Events</p>
+                    <p className="font-bold text-[#1B2E4B] text-sm group-hover:text-[#C9A84C] transition-colors">All Events</p>
                     <p className="text-gray-400 text-xs">Full calendar</p>
                   </div>
                 </Link>

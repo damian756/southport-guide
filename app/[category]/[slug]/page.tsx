@@ -101,11 +101,11 @@ function formatAddress(address: string, postcode: string): string {
 const LISTING_META_OVERRIDES: Record<string, { title?: string; description?: string }> = {
   "restaurants/roberto-s-italian": {
     title: "Roberto's Italian, Southport. Restaurant on Lord Street",
-    description: "Roberto's Italian is one of Southport's most visited restaurants — classic Italian food, good portions, relaxed atmosphere. Opening hours, contact details and directions on SouthportGuide.",
+    description: "Roberto's Italian is one of Southport's most visited restaurants: classic Italian food, good portions, relaxed atmosphere. Opening hours, contact details and directions on SouthportGuide.",
   },
   "restaurants/limoncello": {
     title: "Limoncello, Birkdale. Italian Restaurant in Southport",
-    description: "Limoncello is a popular Italian restaurant in Birkdale Village, Southport. See Google rating, opening hours, contact details and directions — all in one place on SouthportGuide.",
+    description: "Limoncello is a popular Italian restaurant in Birkdale Village, Southport. See Google rating, opening hours, contact details and directions, all in one place on SouthportGuide.",
   },
 };
 
@@ -136,13 +136,13 @@ function buildTitle(name: string, catSlug: string, area: string): string {
     : (SHORT_CAT[catSlug] ?? catSlug);
   const location  = area === "Southport" ? "Southport" : `${area}, Southport`;
 
-  const withBoth = `${cleanName} — ${catLabel}, ${location}`;
+  const withBoth = `${cleanName}: ${catLabel}, ${location}`;
   if (withBoth.length <= 47) return withBoth;
 
-  const catOnly = `${cleanName} — ${catLabel}`;
+  const catOnly = `${cleanName}: ${catLabel}`;
   if (catOnly.length <= 47) return catOnly;
 
-  const locOnly = `${cleanName} — ${location}`;
+  const locOnly = `${cleanName}: ${location}`;
   if (locOnly.length <= 47) return locOnly;
 
   return cleanName.length <= 44 ? cleanName : cleanName.slice(0, 44) + "…";
@@ -1374,7 +1374,7 @@ function getParkingBusyGuide(name: string, tags: string[], postcode: string): {
         { label: "Summer weekday", level: "medium" },
         { label: "Winter weekend", level: "low" },
       ],
-      note: "Fills early on sunny weekends, often full by 10am in July and August. Book via the NT app in advance. Victoria Road car park is a good overflow if Lifeboat Road is full.",
+      note: "Fills early on sunny weekends, often full by 10am in July and August. Both NT car parks are ticketless: pay at the machine or with the JustPark app. Victoria Road car park is a good overflow if Lifeboat Road is full.",
     };
   }
 

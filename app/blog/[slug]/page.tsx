@@ -107,17 +107,18 @@ function renderBlock(block: ContentBlock, i: number) {
       return (
         <ul key={i} className="mb-6 space-y-2.5">
           {block.items.map((item, j) => {
-            const dashIdx = item.indexOf(" — ");
-            const hasLead = dashIdx !== -1;
+            // A short lead before the first ": " is shown in bold ("Parking: Shore Road...")
+            const sepIdx = item.indexOf(": ");
+            const hasLead = sepIdx > 0 && sepIdx <= 60 && !item.slice(0, sepIdx).includes(". ");
             return (
               <li key={j} className="flex gap-3 text-gray-700 text-[1.0625rem]">
                 <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>
                 <span>
                   {hasLead ? (
                     <>
-                      <strong className="text-[#1B2E4B]">{item.slice(0, dashIdx)}</strong>
-                      {" — "}
-                      {item.slice(dashIdx + 3)}
+                      <strong className="text-[#1B2E4B]">{item.slice(0, sepIdx)}</strong>
+                      {": "}
+                      {item.slice(sepIdx + 2)}
                     </>
                   ) : item}
                 </span>
@@ -503,7 +504,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Other posts */}
         <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-5">More from the blog</h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-14">
-          {BLOG_POSTS.filter((p) => p.slug !== slug && p.categorySlug !== post.categorySlug)
+          {BLOG_POSTS.filter((p) => p.featured && p.slug !== slug && p.categorySlug !== post.categorySlug)
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
             .slice(0, 4)
             .map((related) => {
               const relatedCat = getBlogPostCategory(related);

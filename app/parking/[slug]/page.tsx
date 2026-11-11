@@ -82,7 +82,7 @@ function getBusyGuide(name: string, tags: string[], postcode: string): BusyGuide
         { label: "Summer weekdays", level: "medium" },
         { label: "Winter", level: "low" },
       ],
-      note: "Often full by 10am on sunny summer weekends. Book via the NT app before you arrive, signal in the car park is patchy. Victoria Road is the overflow if Lifeboat Road is full.",
+      note: "Often full by 10am on sunny summer weekends. Both NT car parks are ticketless: pay at the machine or with the JustPark app. Victoria Road is the overflow if Lifeboat Road is full.",
     };
   }
   if (n.includes("marine drive") || n.includes("esplanade") || n.includes("promenade") || n.includes("seafront")) {
@@ -267,25 +267,25 @@ function buildParkingTitle(
   // Coordinate-named listings — swap for a descriptive title
   if (isCoordinateName(cleanName)) {
     return pc
-      ? `${prefix}, ${loc} — ${pc} | SouthportGuide.co.uk`
+      ? `${prefix}, ${loc}, ${pc} | SouthportGuide.co.uk`
       : `${prefix}, ${loc} | SouthportGuide.co.uk`;
   }
 
   // Generic area-only names (e.g. listing literally named "Southport") — prefix with Car Park
   if (isGenericAreaName(cleanName)) {
     return pc
-      ? `${prefix} — ${loc}, ${pc} | SouthportGuide.co.uk`
-      : `${prefix} — ${loc} | SouthportGuide.co.uk`;
+      ? `${prefix}, ${loc}, ${pc} | SouthportGuide.co.uk`
+      : `${prefix}, ${loc} | SouthportGuide.co.uk`;
   }
 
   // Generic type-only names ("Car Park", "Parking", "Pay and Display" etc.)
   // — meaningless as a title; use street name + postcode to differentiate.
   if (isGenericTypeName(cleanName)) {
     const street = extractStreetName(address);
-    if (street && pc) return `${prefix}, ${street} — ${pc} | SouthportGuide.co.uk`;
+    if (street && pc) return `${prefix}, ${street}, ${pc} | SouthportGuide.co.uk`;
     if (street)       return `${prefix}, ${street}, ${loc} | SouthportGuide.co.uk`;
-    if (pc)           return `${prefix} — ${loc}, ${pc} | SouthportGuide.co.uk`;
-    return `${prefix} — ${loc} | SouthportGuide.co.uk`;
+    if (pc)           return `${prefix}, ${loc}, ${pc} | SouthportGuide.co.uk`;
+    return `${prefix}, ${loc} | SouthportGuide.co.uk`;
   }
 
   // Named car park. Avoid "X — Parking in Southport" when name already contains area.
@@ -295,7 +295,7 @@ function buildParkingTitle(
 
   if (nameContainsLoc) {
     // Name has location baked in — just add parking signal and postcode
-    const withPc  = pc ? `${cleanName} — ${pc} | SouthportGuide.co.uk` : `${cleanName}. Parking | SouthportGuide.co.uk`;
+    const withPc  = pc ? `${cleanName}, ${pc} | SouthportGuide.co.uk` : `${cleanName}. Parking | SouthportGuide.co.uk`;
     if (withPc.length <= 70) return withPc;
     return `${cleanName} | SouthportGuide.co.uk`;
   }
@@ -309,7 +309,7 @@ function buildParkingTitle(
   const shorter = `${cleanName}. Parking, ${loc} | SouthportGuide.co.uk`;
   if (shorter.length <= 70) return shorter;
 
-  return `${cleanName} — ${loc} Parking | SouthportGuide.co.uk`;
+  return `${cleanName}, ${loc} Parking | SouthportGuide.co.uk`;
 }
 
 function buildParkingMetaDesc(
@@ -909,7 +909,7 @@ export default async function ParkingSlugPage({ params }: Props) {
                     src={mapSrc}
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`Map — ${business.name}`}
+                    title={`Map of ${business.name}`}
                   />
                 </div>
               )}
@@ -927,7 +927,7 @@ export default async function ParkingSlugPage({ params }: Props) {
                     src={mapSrc}
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`Map — ${business.name}`}
+                    title={`Map of ${business.name}`}
                   />
                   <div className="p-4">
                     <a

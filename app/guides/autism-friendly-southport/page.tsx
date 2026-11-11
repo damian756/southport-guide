@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/autism-friendly-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/autism-friendly-hero.webp`, width: 1200, height: 630, alt: "Autism friendly Southport — calm open spaces for sensory-sensitive visitors" }],
+    images: [{ url: `${BASE_URL}/images/autism-friendly-hero.webp`, width: 1200, height: 630, alt: "Autism friendly Southport: calm open spaces for sensory-sensitive visitors" }],
   },
 };
 
@@ -142,7 +142,7 @@ const VENUES = [
     distance: "Town centre",
     entry: "Free to enter",
     why: "Victorian covered arcade off Lord Street. Quieter than the main boulevard, particularly on weekday mornings. Clear linear layout with a defined entrance and exit point. Independent shops, lower footfall than the main shopping streets. Good as a short, structured walk-through with clear escape routes.",
-    practical: "Free to walk through. Short and linear — easy to manage and easy to exit. Busier on Saturdays. Off Lord Street, PR8 1NT.",
+    practical: "Free to walk through. Short and linear, easy to manage and easy to exit. Busier on Saturdays. Off Lord Street, PR8 1NT.",
     tags: ["Indoor", "Clear layout", "Short visit"],
     tagColor: "bg-purple-100 text-purple-800",
   },
@@ -250,7 +250,7 @@ const PRACTICAL_TIPS = [
   {
     icon: Heart,
     title: "Hidden Disabilities Sunflower",
-    body: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. The Sunflower lanyard is accepted at Southport station, The Atkinson, and a growing number of businesses. Lanyards are free — available at the station or via hiddendisabilitiesstore.com. No proof of disability required.",
+    body: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. The Sunflower lanyard is accepted at Southport station, The Atkinson, and a growing number of businesses. Lanyards are free, available at the station or via hiddendisabilitiesstore.com. No proof of disability required.",
   },
   {
     icon: Users,
@@ -276,7 +276,7 @@ const FAQS = [
   },
   {
     q: "What are the best sensory-friendly places to visit in Southport?",
-    a: "Botanic Gardens in Churchtown (free, open, calm, postcode PR9 7NB), The Atkinson on Lord Street (gallery and museum, quiet, accessible, free entry), Marine Lake and King's Gardens on the seafront (open outdoor space, free, predictable layout), Hesketh Park in the south of town (large Victorian park, rarely crowded), and Southport Library on Princes Street (calm, free, accessible). Southport Beach on a quiet weekday morning is also excellent — enormous, flat, and virtually empty before 10am.",
+    a: "Botanic Gardens in Churchtown (free, open, calm, postcode PR9 7NB), The Atkinson on Lord Street (gallery and museum, quiet, accessible, free entry), Marine Lake and King's Gardens on the seafront (open outdoor space, free, predictable layout), Hesketh Park in the north-east of town (large Victorian park, rarely crowded), and Southport Library on Princes Street (calm, free, accessible). Southport Beach on a quiet weekday morning is also excellent: enormous, flat, and virtually empty before 10am.",
   },
   {
     q: "Which Southport events should be avoided for sensory reasons?",
@@ -296,7 +296,7 @@ const FAQS = [
   },
   {
     q: "Are there hidden disability lanyards available in Southport?",
-    a: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. Sunflower lanyards are available free at Southport train station and from hiddendisabilitiesstore.com — no proof of disability required. The Atkinson, Southport station, and a growing number of town-centre businesses recognise the lanyard. We are actively working to increase awareness and the number of registered venues across Southport.",
+    a: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. Sunflower lanyards are available free at Southport train station and from hiddendisabilitiesstore.com. No proof of disability required. The Atkinson, Southport station, and a growing number of town-centre businesses recognise the lanyard. We are actively working to increase awareness and the number of registered venues across Southport.",
   },
 ];
 
@@ -311,7 +311,7 @@ export default function AutismFriendlySouthportPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/autism-friendly-hero.webp"
-            alt="Southport Beach at low tide — wide open calm space for autistic visitors and families"
+            alt="Southport Beach at low tide: wide open calm space for autistic visitors and families"
             fill
             sizes="100vw"
             quality={85}
@@ -583,7 +583,7 @@ export default function AutismFriendlySouthportPage() {
           <div className="bg-[#1C3A20] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6">
             <Image
               src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-              alt="Hidden Disabilities Sunflower — SouthportGuide is a proud member"
+              alt="Hidden Disabilities Sunflower: SouthportGuide is a proud member"
               width={100}
               height={100}
               className="flex-shrink-0 rounded-xl bg-white p-2"

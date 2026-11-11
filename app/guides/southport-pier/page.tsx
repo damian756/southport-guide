@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/guides/southport-pier` },
   openGraph: {
     title: "Southport Pier | England's Second Longest",
-    description: "1,108 metres of Victorian engineering over the Irish Sea. Free to walk. Views to Wales on a clear day.",
+    description: "England's second longest pier, closed since December 2022 while a £20 million restoration is carried out.",
     url: `${BASE_URL}/guides/southport-pier`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "How long is Southport Pier?", a: "Southport Pier is 1,108 metres long (3,636 feet). It is England's second longest pier. Southend-on-Sea Pier in Essex takes the top spot at 2,158 metres. Southport Pier stretches out from the seafront over the Irish Sea estuary." },
-  { q: "Is Southport Pier free to visit?", a: "Yes, it is free to walk. You can walk the full length of the pier and back without paying anything. There was historically a tram that ran along the pier but this is not currently in operation. The pier itself is open to pedestrians." },
+  { q: "Is Southport Pier open?", a: "No. Sefton Council closed the pier in December 2022 on the advice of structural engineers. A £20 million restoration, funded by the Government's Growth Mission Fund, was approved in March 2026, and the pier stays closed until the work is finished. Progress updates are posted at sefton.gov.uk/southportpier." },
   { q: "What is the postcode for Southport Pier?", a: "The postcode for the pier entrance is PR8 1QP, on the Promenade near the seafront. Park along Marine Drive (PR8 1RX) or use nearby seafront car parks and walk to the pier, it's on the Promenade, easy to find." },
   { q: "Can you see Wales from Southport Pier?", a: "On a clear day, yes. From the end of the pier you can see across the Ribble Estuary and the Irish Sea. The Welsh hills. Snowdonia, are visible on exceptionally clear days, particularly in winter when visibility is best." },
   { q: "When was Southport Pier built?", a: "Southport Pier opened in 1860, making it one of the oldest seaside piers in England. It has been extended, restored, and renovated several times since, including a major restoration in the early 2000s that brought it back to its current state." },
-  { q: "How long does it take to walk Southport Pier?", a: "About 15–20 minutes each way at a relaxed pace. The full return walk takes approximately 35–40 minutes. There is no rushing required, the views change as you walk further out, and the end of the pier has the best panoramic views over the estuary." },
+  { q: "How long does it take to walk Southport Pier?", a: "The pier is closed while it is restored. When it was open, the walk took about 15–20 minutes each way at a relaxed pace. The full return walk takes approximately 35–40 minutes. There is no rushing required, the views change as you walk further out, and the end of the pier has the best panoramic views over the estuary." },
   { q: "Is Southport Pier accessible for wheelchairs?", a: "The pier has a flat, level surface and is generally accessible for wheelchairs and pushchairs, though the decking surface may be uneven in places. The Promenade approach to the pier is fully accessible." },
   { q: "What is at the end of Southport Pier?", a: "A shelter and seating at the pierhead, along with the best views available from Southport, a 360-degree panorama across the Irish Sea estuary, the coastline north towards Blackpool, and south towards Formby. On a clear day the Welsh mountains are visible to the south-west." },
 ];
@@ -48,7 +48,7 @@ const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
   name: "Southport Pier",
-  description: "Southport Pier. 1,108 metres long, England's second longest pier. Victorian, restored, free to walk. Views over the Irish Sea estuary from the pierhead.",
+  description: "Southport Pier. 1,108 metres long, England's second longest pier. Closed since December 2022 while a £20 million restoration is carried out.",
   url: `${BASE_URL}/guides/southport-pier`,
   geo: { "@type": "GeoCoordinates", latitude: 53.6475, longitude: -3.0155 },
   address: {
@@ -106,7 +106,7 @@ export default function SouthportPierGuidePage() {
             </h1>
             <p className="text-white/75 text-xl max-w-2xl mb-8 leading-relaxed">
               1,108 metres of Victorian engineering over the Irish Sea. England&apos;s second longest pier,
-              free to walk, with views to Wales on a clear day. Allow 40 minutes for the return trip.
+              closed to the public since December 2022 while a &pound;20 million restoration is carried out.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#history" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
@@ -127,8 +127,8 @@ export default function SouthportPierGuidePage() {
             {[
               { value: "1,108m", label: "Length", sub: "3,636 feet" },
               { value: "1860", label: "Year Opened", sub: "Over 165 years old" },
-              { value: "Free", label: "Admission", sub: "No charge to walk" },
-              { value: "40 min", label: "Return Walk", sub: "Relaxed pace" },
+              { value: "Closed", label: "Status", sub: "Restoration under way" },
+              { value: "Dec 2022", label: "Closed Since", sub: "Safety grounds" },
             ].map((s) => (
               <div key={s.label} className="text-center px-4 py-4">
                 <div className="text-2xl font-extrabold text-[#C9A84C]">{s.value}</div>
@@ -141,6 +141,19 @@ export default function SouthportPierGuidePage() {
       </div>
 
       <div className="container mx-auto px-4 py-16 max-w-7xl space-y-20">
+
+        {/* Closure notice */}
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 md:p-8 max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-3">The pier is closed for restoration</h2>
+          <p className="text-gray-700 leading-relaxed">
+            Sefton Council closed the pier in December 2022 on the advice of structural engineers. A &pound;20 million
+            restoration, funded by the Government&apos;s Growth Mission Fund, was approved in March 2026, and the pier
+            stays closed until the work is finished. The rest of this guide describes the pier as it was before it closed.
+          </p>
+          <a href="https://www.sefton.gov.uk/southportpier" className="inline-block mt-4 text-sm font-semibold text-[#1B2E4B] underline underline-offset-2 hover:text-[#C9A84C]">
+            Restoration updates from Sefton Council
+          </a>
+        </div>
 
         {/* ── Terry's Take ── */}
         <section>
@@ -193,8 +206,8 @@ export default function SouthportPierGuidePage() {
                 </p>
                 <p>
                   Significant restoration works in the late 1990s and early 2000s brought the pier back from
-                  a state of considerable disrepair. The current pier is well-maintained, fully open to pedestrians,
-                  and expected to be around for a good while longer.
+                  a state of considerable disrepair. Sefton Council closed the pier in December 2022 after structural
+                  engineers advised it was unsafe, and a &pound;20 million restoration was approved in March 2026.
                 </p>
               </div>
             </div>
@@ -303,7 +316,7 @@ export default function SouthportPierGuidePage() {
                 icon: Clock,
                 title: "When to Visit",
                 content: [
-                  "Open year-round, no entry times, pedestrian access at all hours",
+                  "Closed to the public while the restoration is carried out",
                   "Sunset walks are exceptional, the pier faces west over the Irish Sea",
                   "Winter mornings: often the pier to yourself, views at their clearest",
                   "Summer afternoons: busiest period, still manageable, the pier is long",

@@ -1,17 +1,17 @@
 import Link from "next/link";
-import { Mail, BarChart2, Star, Shield, Users, Globe, TrendingUp } from "lucide-react";
+import { Mail, BarChart2, Shield, Users } from "lucide-react";
 
 export const metadata = {
   title: "Advertise on SouthportGuide | Sefton Coast Network",
   description:
-    "Reach Southport visitors, local residents, and Open Championship guests. Featured business listings and display advertising across the Sefton Coast Network.",
+    "Reach Southport visitors and local residents. Featured business listings and display advertising across the Sefton Coast Network.",
   alternates: { canonical: "https://www.southportguide.co.uk/advertise" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     title: "Advertise on SouthportGuide | Sefton Coast Network",
     description:
-      "Reach Southport visitors, local residents, and Open Championship guests. Featured listings and display advertising across the Sefton Coast Network.",
+      "Reach Southport visitors and local residents. Featured listings and display advertising across the Sefton Coast Network.",
     url: "https://www.southportguide.co.uk/advertise",
   },
 };
@@ -28,10 +28,10 @@ export default function AdvertisePage() {
           </p>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
             Reach the Sefton Coast audience.<br />
-            <span className="text-[#c9a84c]">The only independent guide network</span> covering this coast.
+            <span className="text-[#c9a84c]">Four local guides</span> covering this coast.
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mb-10 leading-relaxed">
-            SouthportGuide is part of the Sefton Coast Network: four editorial sites covering Southport, Formby, and the links golf corridor. No tourist board. No aggregator content. Trusted local guides written for the people who actually use them.
+            SouthportGuide is part of the Sefton Coast Network: four editorial sites covering Southport, Formby, and the links golf corridor. No tourist board. No aggregator content. Local guides written for the people who use them.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
@@ -53,35 +53,17 @@ export default function AdvertisePage() {
 
       {/* ── Stats band ── */}
       <div className="bg-[#0d1b2a] border-t border-white/10 px-4 pb-10">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 pt-2">
+        <div className="max-w-4xl mx-auto grid grid-cols-3 gap-6 pt-2">
           {[
             { stat: "4", label: "Editorial sites" },
-            { stat: "20", label: "Languages on SeftonLinks" },
+            { stat: "18", label: "Languages on SeftonLinks" },
             { stat: "500+", label: "Business listings" },
-            { stat: "Jul 12", label: "The Open 2026 starts" },
           ].map((item) => (
             <div key={item.label} className="text-center py-6">
               <div className="text-3xl font-extrabold text-[#c9a84c] mb-1">{item.stat}</div>
               <div className="text-sm text-white/50 font-medium">{item.label}</div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* ── The Open callout ── */}
-      <div className="bg-[#1a3050] text-white px-4 py-12">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start gap-8">
-          <div className="flex-shrink-0 bg-[#c9a84c] rounded-xl px-6 py-4 text-center min-w-[100px]">
-            <div className="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">July</div>
-            <div className="text-3xl font-extrabold leading-none">12-19</div>
-            <div className="text-xs opacity-80 mt-1">2026</div>
-          </div>
-          <div>
-            <h2 className="text-xl font-bold mb-2">The Open Championship 2026 is at Royal Birkdale</h2>
-            <p className="text-white/70 leading-relaxed text-sm">
-              SouthportGuide is receiving its highest traffic since launch throughout June and July as visitors plan trips around The Open. Advertisers joining the network now reach that audience at peak. SeftonLinks, our specialist golf site, is available in 20 languages and is drawing international visitors to the coast. This is the best moment to establish a presence here.
-            </p>
-          </div>
         </div>
       </div>
 
@@ -109,8 +91,8 @@ export default function AdvertisePage() {
                   "Priority position in category listings",
                   "Featured badge and enhanced profile",
                   "Photos, description, website link",
-                  "Appears in homepage category highlights",
-                  "Monthly click and view reporting",
+                  "Homepage placement by arrangement",
+                  "Click and view analytics in the Business Hub dashboard",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
                     <span className="w-4 h-4 rounded-full bg-[#2E6B3E] flex-shrink-0 mt-0.5" />
@@ -143,13 +125,12 @@ export default function AdvertisePage() {
             </div>
             <div className="p-6">
               <p className="text-gray-600 text-sm leading-relaxed mb-5">
-                Sidebar, homepage, and in-feed placements across SouthportGuide, FormbyGuide, and SeftonLinks. Category exclusivity included. One relationship, one invoice, cross-site reach across the Sefton Coast's most affluent audience.
+                Display placements on SouthportGuide, FormbyGuide and SeftonLinks, with positions agreed by arrangement. Category exclusivity included. One relationship and one invoice across the network.
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "Sidebar placements on category and guide pages",
-                  "Homepage sponsored panel",
-                  "In-feed blog placement on SeftonLinks",
+                  "Placement positions agreed by arrangement",
+                  "Placement on SeftonLinks by arrangement",
                   "Category exclusivity for contract term",
                   "Monthly performance reporting",
                 ].map((item) => (
@@ -176,9 +157,9 @@ export default function AdvertisePage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-widest uppercase text-[#c9a84c] mb-3">The Network</p>
-            <h2 className="text-3xl font-bold text-[#0d1b2a] mb-3">Three sites. One audience.</h2>
+            <h2 className="text-3xl font-bold text-[#0d1b2a] mb-3">The sites</h2>
             <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              Display advertising packages can cover one site or all three. The Premium package covers SouthportGuide, FormbyGuide, and SeftonLinks: the full Sefton Coast professional and visitor demographic.
+              Display advertising packages can cover one site or several. The Premium package covers SouthportGuide, FormbyGuide and SeftonLinks.
             </p>
           </div>
 
@@ -187,20 +168,20 @@ export default function AdvertisePage() {
               {
                 name: "SouthportGuide.co.uk",
                 color: "bg-[#0d1b2a]",
-                desc: "The main visitor guide to Southport. Hotels, restaurants, things to do, events, The Open 2026. Reaches local residents and visitors planning trips.",
-                tags: ["Southport residents", "Visitors", "Families", "Open guests"],
+                desc: "The main visitor guide to Southport: hotels, restaurants, things to do and events, for local residents and visitors planning trips.",
+                tags: ["Southport residents", "Visitors", "Families"],
               },
               {
                 name: "FormbyGuide.co.uk",
                 color: "bg-[#2E6B3E]",
-                desc: "The only dedicated guide to Formby. National Trust beach, pinewoods, village restaurants. Affluent village demographic with strong professional residential base.",
+                desc: "A guide to Formby: the National Trust beach, the pinewoods and the village restaurants.",
                 tags: ["Formby residents", "Liverpool day trippers", "Village diners", "NT visitors"],
               },
               {
                 name: "SeftonLinks.com",
                 color: "bg-[#1a3820]",
-                desc: "Specialist links golf guide to the Sefton Coast. Royal Birkdale, Hillside, Formby Golf Club and more. Available in 20 languages. High-value golf and business audience.",
-                tags: ["Golf visitors", "Business golfers", "Open fans", "International"],
+                desc: "Specialist links golf guide to the Sefton Coast: Royal Birkdale, Hillside, Formby Golf Club and more. Available in 18 languages.",
+                tags: ["Golf visitors", "International"],
               },
             ].map((site) => (
               <div key={site.name} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -240,8 +221,7 @@ export default function AdvertisePage() {
               total: "£2,700",
               featured: false,
               features: [
-                "Sidebar on category and guide pages",
-                "Homepage sponsored panel",
+                "Placement positions on both sites by arrangement",
                 "Category exclusivity",
                 "Monthly reporting",
               ],
@@ -254,7 +234,7 @@ export default function AdvertisePage() {
               featured: true,
               features: [
                 "All Core placements",
-                "SeftonLinks sidebar and in-feed placement",
+                "SeftonLinks placement by arrangement",
                 "Category exclusivity across all three sites",
                 "Monthly reporting",
                 "Up to 2 creative updates per month",
@@ -269,7 +249,6 @@ export default function AdvertisePage() {
               features: [
                 "All Premium placements",
                 "SeftonCoastWildlife included",
-                "Maximum network reach",
                 "Quarterly review call",
                 "Monthly reporting",
               ],
@@ -331,19 +310,9 @@ export default function AdvertisePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: <Globe className="w-6 h-6 text-[#c9a84c]" />,
-                title: "No competitor exists",
-                body: "There is no other independent editorial guide network covering the Sefton Coast. The first advertiser in a category has it to themselves.",
-              },
-              {
                 icon: <Users className="w-6 h-6 text-[#c9a84c]" />,
                 title: "Trusted editorial",
-                body: "The network is independent. No tourist board, no paid content, no aggregator copy. Readers trust these guides because they are genuinely useful.",
-              },
-              {
-                icon: <TrendingUp className="w-6 h-6 text-[#c9a84c]" />,
-                title: "Growing traffic",
-                body: "All four sites are growing. The Open 2026 is bringing the highest traffic the network has seen. There is no better time to establish a presence.",
+                body: "The network is independent. No tourist board and no aggregator copy.",
               },
               {
                 icon: <Shield className="w-6 h-6 text-[#c9a84c]" />,
@@ -351,14 +320,9 @@ export default function AdvertisePage() {
                 body: "No competitor in your category will appear on the same site during your contract. That is a firm commitment, not a best-efforts clause.",
               },
               {
-                icon: <Star className="w-6 h-6 text-[#c9a84c]" />,
-                title: "Affluent audience",
-                body: "Churchtown, Birkdale, Formby. The Sefton Coast residential audience skews professional, older, and with disposable income. So does the golf audience on SeftonLinks.",
-              },
-              {
                 icon: <BarChart2 className="w-6 h-6 text-[#c9a84c]" />,
                 title: "Simple and transparent",
-                body: "Static image ads, one invoice, monthly reporting. No ad tech, no tracking scripts, no complexity. It works and you can see that it works.",
+                body: "Static image ads and one invoice. No ad tech and no tracking scripts.",
               },
             ].map((item) => (
               <div key={item.title} className="bg-white border border-gray-200 rounded-xl p-5">

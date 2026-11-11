@@ -136,10 +136,9 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
   ],
   "hotels": [
-    "Southport has a proper range of hotels. The Scarisbrick Hotel is the Victorian option with character — it's been on Lord Street since 1845 and looks the part. The Vincent is the contemporary choice, modern and popular with weekend breaks. The Metropole on the Promenade is a solid mid-range option with sea views. For reliability and a fixed price, Premier Inn operates two Southport locations (one near the station, one near Ocean Plaza).",
-    "If you're here for The Open 2026 at Royal Birkdale (12–19 July), book now. The whole town fills up in July and Birkdale accommodation in particular goes first — it's walking distance from the course. If you haven't booked, check Formby and Ormskirk as fallback options, both around 20–30 minutes from the club.",
-    "For a quieter stay, Churchtown is worth looking at — it's the old village end of Southport, calmer than the seafront, about 10 minutes from town by car. Good pubs, a proper village feel, and B&Bs that are better value than the seafront equivalents.",
-    "Prices: a decent double runs £60–80 per night midweek, £100–150 at weekends, and significantly more during Open week (12–19 July) and the August events (Flower Show 20–23 Aug, Air Show 29–30 Aug). If you're visiting in peak season and haven't sorted accommodation, go soon.",
+    "Southport has a proper range of hotels. The Scarisbrick Hotel is the Victorian option with character. It's been on Lord Street since 1845 and looks the part. The Vincent is the contemporary choice, modern and popular with weekend breaks. The Metropole on the Promenade is a solid mid-range option with sea views. For reliability and a fixed price, Premier Inn operates two Southport locations (one near the station, one near Ocean Plaza).",
+    "For a quieter stay, Churchtown is worth looking at. It's the old village end of Southport, calmer than the seafront, about 10 minutes from town by car. Good pubs, a proper village feel, and B&Bs that are better value than the seafront equivalents.",
+    "Prices: a decent double runs £60–80 per night midweek, £100–150 at weekends, and significantly more during the big summer events such as the Flower Show and the Air Show. If you're visiting in peak season and haven't sorted accommodation, go soon.",
   ],
   "bars-nightlife": [
     "Southport's nightlife is mostly concentrated around Neville Street and the town centre, it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
@@ -188,7 +187,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
   "parking": [
     "Parking in Southport is mostly paid and can get busy in summer, especially on the seafront and near Pleasureland. The Esplanade car park (Sefton Council) on the seafront is the main one. The NCP on London Street is useful for the town centre. There's also on-street parking off Lord Street if you're lucky with timing.",
     "For the beach, the Marine Drive car parks are the most practical. They fill up early on hot Saturdays, arrive before 10am if you want a spot close to the sand. The Southport Marine Drive Car Park has pay-and-display all day.",
-    "Over in Formby, the National Trust car parks at Victoria Road (L37 1YH) and Lifeboat Road (L37 2EB) are the main options for the pinewoods and beach. Book via the NT app, the signal in the car park is patchy and there's no paper ticket option. Formby Station Park & Ride on Duke Street is a good alternative if the NT car parks are full.",
+    "Over in Formby, the National Trust car parks at Victoria Road (L37 1LJ) and Lifeboat Road (L37 2EB) are the main options for the pinewoods and beach. Both are ticketless with number-plate recognition: pay at the machine or with the JustPark app, and National Trust members park free. Formby Station Park & Ride on Duke Street is a good alternative if the NT car parks are full.",
   ],
 };
 
@@ -251,8 +250,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!cat) return { title: "Category" };
   const theme = THEMES[category];
   const CAT_META_TITLES: Partial<Record<string, string>> = {
-    hotels: "Hotels in Southport 2026 | Where to Stay, B&Bs & Guest Houses",
-    restaurants: "Restaurants in Southport | Where to Eat — SouthportGuide",
+    hotels: "Hotels in Southport | Where to Stay, B&Bs & Guest Houses",
+    restaurants: "Restaurants in Southport | Where to Eat | SouthportGuide",
     parking: "Parking in Southport | Car Parks, Postcodes & Free Parking",
   };
   const title = CAT_META_TITLES[category] ?? `${cat.name} in Southport`;

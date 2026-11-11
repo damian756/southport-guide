@@ -38,7 +38,7 @@ export const EVENTS: SouthportEvent[] = [
     time: "All day",
   },
   {
-    title: "Make It! Craft Workshop — Atkinson",
+    title: "Make It! Craft Workshop: Atkinson",
     isoDate: "2026-04-02",
     dayLabel: "Thu 2 Apr",
     venue: "The Atkinson",
@@ -47,7 +47,7 @@ export const EVENTS: SouthportEvent[] = [
     free: false,
     link: "https://www.theatkinson.co.uk",
     guideSlug: "the-atkinson-southport",
-    description: "Hands-on craft workshop for children at The Atkinson. Book ahead — sessions fill up.",
+    description: "Hands-on craft workshop for children at The Atkinson. Book ahead. Sessions fill up.",
     time: "Check website",
   },
   {
@@ -62,7 +62,7 @@ export const EVENTS: SouthportEvent[] = [
     description: "Interactive performance for toddlers and young children. Tickets required.",
   },
   {
-    title: "Sefton Open 2026 — Exhibition Opens",
+    title: "Sefton Open 2026: Exhibition Opens",
     isoDate: "2026-04-02",
     endIsoDate: "2026-06-13",
     dayLabel: "2 Apr – 13 Jun",
@@ -72,11 +72,11 @@ export const EVENTS: SouthportEvent[] = [
     free: true,
     link: "https://www.theatkinson.co.uk",
     guideSlug: "sefton-open-2026",
-    description: "Annual open art exhibition at The Atkinson — painting, sculpture, print, and mixed media. Free entry for the full 10-week run.",
+    description: "Annual open art exhibition at The Atkinson: painting, sculpture, print, and mixed media. Free entry for the full 10-week run.",
     time: "Tue–Sat 10am–5pm",
   },
   {
-    title: "Cristal Palace — Street Theatre",
+    title: "Cristal Palace: Street Theatre",
     isoDate: "2026-04-03",
     endIsoDate: "2026-04-04",
     dayLabel: "3–4 Apr",
@@ -86,7 +86,7 @@ export const EVENTS: SouthportEvent[] = [
     free: true,
     link: "https://www.southport2026.com/",
     guideSlug: "cristal-palace-southport-2026",
-    description: "Transe Express bring a 12-metre chandelier to Lord Street. 36 performers, 90-minute aerial spectacle. One of the events of the year — free, both nights.",
+    description: "Transe Express bring a 12-metre chandelier to Lord Street. 36 performers, 90-minute aerial spectacle. One of the events of the year. Free, both nights.",
     time: "7:30pm (Doors 6pm)",
   },
   {
@@ -162,7 +162,7 @@ export const EVENTS: SouthportEvent[] = [
     description: "Hands-on slime making workshop for children. Tickets required.",
   },
   {
-    title: "Make It! Craft Workshop — Atkinson",
+    title: "Make It! Craft Workshop: Atkinson",
     isoDate: "2026-04-09",
     dayLabel: "Thu 9 Apr",
     venue: "The Atkinson",
@@ -185,7 +185,7 @@ export const EVENTS: SouthportEvent[] = [
     free: false,
     link: "https://www.theatkinson.co.uk",
     guideSlug: "whistle-down-the-wind-southport-2026",
-    description: "Andrew Lloyd Webber's powerful musical performed by SONG Productions at The Atkinson. Three nights only — book ahead.",
+    description: "Andrew Lloyd Webber's powerful musical performed by SONG Productions at The Atkinson. Three nights only. Book ahead.",
     time: "7:30pm",
   },
   {
@@ -200,7 +200,7 @@ export const EVENTS: SouthportEvent[] = [
     description: "Inflatable fun for children over Easter. Tickets required.",
   },
   {
-    title: "The 39 Steps — Little Theatre",
+    title: "The 39 Steps: Little Theatre",
     isoDate: "2026-04-10",
     endIsoDate: "2026-04-18",
     dayLabel: "10–18 Apr",
@@ -417,7 +417,7 @@ export const EVENTS: SouthportEvent[] = [
     emoji: "⛳",
     free: false,
     link: "/the-open-2026",
-    description: "The Open Championship returns to Royal Birkdale. The biggest sporting event in Southport in decades. Accommodation is scarce — book immediately.",
+    description: "The Open Championship returns to Royal Birkdale. The biggest sporting event in Southport in decades. Accommodation is scarce. Book immediately.",
   },
   // ── August 2026 ──────────────────────────────────────────────────────────
   {
@@ -445,12 +445,12 @@ export const EVENTS: SouthportEvent[] = [
     free: true,
     link: "https://www.visitsouthport.com/",
     guideSlug: "southport-air-show",
-    description: "One of the UK's largest free air shows. 100,000+ visitors over two days on Southport Beach. Marine Drive fills by 9am — go early.",
+    description: "One of the UK's largest free air shows. 100,000+ visitors over two days on Southport Beach. Marine Drive fills by 9am. Go early.",
     time: "Displays from 12pm",
   },
   // ── September 2026 ──────────────────────────────────────────────────────
   {
-    title: "Marine Lake Yacht Race — 24 Hours",
+    title: "Marine Lake Yacht Race: 24 Hours",
     isoDate: "2026-09-12",
     endIsoDate: "2026-09-13",
     dayLabel: "12–13 Sep",
@@ -472,7 +472,7 @@ export const EVENTS: SouthportEvent[] = [
     free: false,
     link: "https://www.visitsouthport.com/",
     guideSlug: "southport-fireworks-championship",
-    description: "Pyrotechnics choreographed to music. Two nights at Victoria Park. Drone show, street food, bars. Tickets from £12 — no gate sales.",
+    description: "Pyrotechnics choreographed to music. Two nights at Victoria Park. Drone show, street food, bars. Tickets from £12. No gate sales.",
     time: "Evening",
   },
   // ── October 2026 ──────────────────────────────────────────────────────────
@@ -596,7 +596,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     label: "Golf",
     color: "#1A4020",
     emoji: "⛳",
-    description: "Golf courses, news, and guides — including The Open 2026.",
+    description: "Golf courses, news, and guides, including The Open 2026.",
     siteCategory: "golf",
   },
   {
@@ -650,14 +650,14 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     label: "For Business",
     color: "#1A5C3A",
     emoji: "📊",
-    description: "The SouthportGuide Business Hub — tools, news, and updates for Southport businesses.",
+    description: "The SouthportGuide Business Hub: tools, news, and updates for Southport businesses.",
   },
   {
     slug: "history",
     label: "History",
     color: "#5C3A1A",
     emoji: "🏛️",
-    description: "The history of Southport and its villages — from Viking settlements and medieval churches to Victorian seaside ambition.",
+    description: "The history of Southport and its villages, from Viking settlements and medieval churches to Victorian seaside ambition.",
   },
 ];
 
@@ -703,7 +703,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "where-to-stay-open-championship-2026",
     title: "Where to Stay for The Open Championship 2026",
     excerpt:
-      "Royal Birkdale hosts golf's greatest major this July. Our guide to the best hotels and accommodation — and why you need to book now.",
+      "Royal Birkdale hosts golf's greatest major this July. Our guide to the best hotels and accommodation, and why you need to book now.",
     categorySlug: "where-to-stay",
     image: "/images/blog-hero.jpg",
     date: "10 Feb 2026",
@@ -722,7 +722,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "things-to-do-rainy-day-southport",
     title: "Things to Do in Southport on a Rainy Day",
     excerpt:
-      "The British weather doesn't always cooperate, but Southport has plenty to offer indoors — from the Atkinson to Silcock's Funland.",
+      "The British weather doesn't always cooperate, but Southport has plenty to offer indoors, from the Atkinson to Silcock's Funland.",
     categorySlug: "things-to-do",
     image: "/images/categories/attractions.webp",
     date: "5 Feb 2026",
@@ -731,7 +731,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-with-kids-full-guide",
     title: "Southport with Kids: The Complete Family Guide",
     excerpt:
-      "Southport is one of the best seaside destinations for families. Here's everything you need to know — beaches, rides, parks, and where to eat.",
+      "Southport is one of the best seaside destinations for families. Here's everything you need to know: beaches, rides, parks, and where to eat.",
     categorySlug: "things-to-do",
     image: "/images/categories/activities.webp",
     date: "3 Feb 2026",
@@ -757,7 +757,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "beachcombing-ainsdale-winter",
-    title: "Beachcombing at Ainsdale — What We Found on a Winter Morning",
+    title: "Beachcombing at Ainsdale: What We Found on a Winter Morning",
     excerpt:
       "Mermaid's purses, two species of jellyfish, a whelk egg mass, and a razor clam. One winter morning at Ainsdale beach. Here's what it all was.",
     categorySlug: "outdoors",
@@ -769,7 +769,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "pubs-near-royal-birkdale-open-2026",
     title: "Best Pubs Near Royal Birkdale for The Open 2026",
     excerpt:
-      "Where to drink during Open week — from Birkdale village classics to town centre options that won't drive you mad with queues. A local's honest guide.",
+      "Where to drink during Open week: from Birkdale village classics to town centre options that won't drive you mad with queues. A local's honest guide.",
     categorySlug: "food-drink",
     image: "/images/blog-pubs.jpg",
     date: "17 Feb 2026",
@@ -778,7 +778,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "getting-to-royal-birkdale-open-2026",
     title: "Getting to Royal Birkdale for The Open 2026: Full Transport Guide",
     excerpt:
-      "Don't drive. Seriously. Here's how to get to Royal Birkdale by train, shuttle, taxi, and on foot — everything you need to arrive without the stress.",
+      "Don't drive. Seriously. Here's how to get to Royal Birkdale by train, shuttle, taxi, and on foot. Everything you need to arrive without the stress.",
     categorySlug: "getting-around",
     image: "/images/categories/transport.webp",
     date: "18 Feb 2026",
@@ -796,7 +796,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-golf-courses-southport",
     title: "The Best Golf Courses Near Southport",
     excerpt:
-      "Southport is one of England's premier golfing destinations. From Royal Birkdale to Hillside and Southport & Ainsdale — here's your guide.",
+      "Southport is one of England's premier golfing destinations. From Royal Birkdale to Hillside and Southport & Ainsdale. Here's your guide.",
     categorySlug: "golf",
     image: "/images/categories/golf.webp",
     date: "2 Feb 2026",
@@ -816,7 +816,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-bars-southport-lord-street",
     title: "The Best Bars on Lord Street Southport",
     excerpt:
-      "Lord Street isn't just for shopping — Southport's main boulevard is home to some of the town's finest bars. Here's where locals actually drink.",
+      "Lord Street isn't just for shopping: Southport's main boulevard is home to some of the town's finest bars. Here's where locals actually drink.",
     categorySlug: "bars-nightlife",
     image: "/images/blog-pubs.jpg",
     date: "11 Feb 2026",
@@ -836,7 +836,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "marine-lake-water-sports-southport",
     title: "Water Sports and Activities on Southport's Marine Lake",
     excerpt:
-      "Marine Lake is one of the UK's largest man-made lakes — and it's right in the heart of Southport. Here's how to make the most of it.",
+      "Marine Lake is one of the UK's largest man-made lakes, and it's right in the heart of Southport. Here's how to make the most of it.",
     categorySlug: "activities",
     image: "/images/categories/beaches-parks.webp",
     date: "9 Feb 2026",
@@ -846,7 +846,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-house-prices-by-postcode",
     title: "Southport House Prices by Postcode: What's Actually Selling and What It Costs",
     excerpt:
-      "We've mapped every Land Registry sale in PR8 and PR9 over the last three years — 10 postcode sectors, hundreds of transactions, real prices. Here's what Southport property actually looks like.",
+      "We've mapped every Land Registry sale in PR8 and PR9 over the last three years: 10 postcode sectors, hundreds of transactions, real prices. Here's what Southport property actually looks like.",
     categorySlug: "local-guides",
     image: "/images/blog/southport-house-prices.webp",
     date: "19 Mar 2026",
@@ -857,7 +857,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-parking-directory-2026",
     title: "We've Mapped 106 Car Parks Across Southport and the Sefton Coast",
     excerpt:
-      "106 verified car parks within 12km of Southport town centre — official, unofficial, free, paid, and a few that surprised us. Here's what we found.",
+      "106 verified car parks within 12km of Southport town centre: official, unofficial, free, paid, and a few that surprised us. Here's what we found.",
     categorySlug: "getting-around",
     image: "/images/categories/parking.webp",
     date: "5 Mar 2026",
@@ -878,7 +878,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "perfect-weekend-southport",
     title: "The Perfect Weekend in Southport: A Local's Itinerary",
     excerpt:
-      "If you only have a weekend in Southport, here's exactly how to spend it — from Friday night dinner to Sunday afternoon on the beach.",
+      "If you only have a weekend in Southport, here's exactly how to spend it, from Friday night dinner to Sunday afternoon on the beach.",
     categorySlug: "local-guides",
     image: "/southport-pier.webp",
     date: "14 Feb 2026",
@@ -889,7 +889,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-events-guide-2026",
     title: "Southport 2026: The Complete Events Guide",
     excerpt:
-      "From Lightport to The Open Championship and the Flower Show — 2026 is the biggest year in Southport's recent history. Here's everything in your diary.",
+      "From Lightport to The Open Championship and the Flower Show: 2026 is the biggest year in Southport's recent history. Here's everything in your diary.",
     categorySlug: "events",
     image: "/images/mlec.webp",
     date: "16 Feb 2026",
@@ -900,7 +900,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "open-championship-2026-tickets-guide",
     title: "How to Get Tickets for The Open Championship 2026",
     excerpt:
-      "Practice rounds, championship days, hospitality packages — everything you need to know about buying Open 2026 tickets, what they cost, and what you get for your money.",
+      "Practice rounds, championship days, hospitality packages: everything you need to know about buying Open 2026 tickets, what they cost, and what you get for your money.",
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-tickets-guide.webp",
     date: "19 Feb 2026",
@@ -918,11 +918,10 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "open-championship-2026-spectator-guide",
     title: "First-Timer's Guide to Watching The Open Championship",
     excerpt:
-      "Never been to The Open before? Here's everything you need — how the day works, where to stand, how to follow the action, and how not to make a fool of yourself.",
+      "Never been to The Open before? Here's everything you need: how the day works, where to stand, how to follow the action, and how not to make a fool of yourself.",
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-spectator-guide.webp",
     date: "19 Feb 2026",
-    featured: true,
   },
   {
     slug: "restaurants-open-week-southport-2026",
@@ -937,7 +936,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "open-championship-2026-day-by-day",
     title: "The Open 2026: What's On Each Day at Royal Birkdale",
     excerpt:
-      "A day-by-day breakdown — practice rounds Monday to Wednesday, championship rounds Thursday to Sunday, what to expect from each day, and which is worth attending most.",
+      "A day-by-day breakdown: practice rounds Monday to Wednesday, championship rounds Thursday to Sunday, what to expect from each day, and which is worth attending most.",
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-day-by-day.webp",
     date: "19 Feb 2026",
@@ -958,18 +957,9 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-brunch-southport",
     title: "Best Brunch Spots in Southport",
     excerpt:
-      "Weekend brunch in Southport has improved considerably. Here's where to go — and where to avoid — for the best eggs, toast, and flat whites in town.",
+      "Weekend brunch in Southport has improved considerably. Here's where to go, and where to avoid, for the best eggs, toast, and flat whites in town.",
     categorySlug: "food-drink",
     image: "/images/blog/best-brunch-southport.webp",
-    date: "19 Feb 2026",
-  },
-  {
-    slug: "best-hotels-southport-2026",
-    title: "The Best Hotels in Southport 2026",
-    excerpt:
-      "From The Scarisbrick and Vincent on Lord Street to B&Bs and self-catering in Birkdale village. The definitive guide to where to stay in Southport, ranked honestly by a local.",
-    categorySlug: "where-to-stay",
-    image: "/images/blog/best-hotels-southport-2026.webp",
     date: "19 Feb 2026",
   },
   {
@@ -1003,7 +993,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-vs-blackpool",
     title: "Southport vs Blackpool: Which Should You Visit?",
     excerpt:
-      "Both Lancashire seaside towns. Very different experiences. Terry gives the honest comparison — and has a clear view on which one wins.",
+      "Both Lancashire seaside towns. Very different experiences. Terry gives the honest comparison, and has a clear view on which one wins.",
     categorySlug: "local-guides",
     image: "/images/blog/southport-vs-blackpool.webp",
     date: "19 Feb 2026",
@@ -1014,7 +1004,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-indian-restaurants-southport",
     title: "The Best Indian Restaurants in Southport",
     excerpt:
-      "Southport has a proper curry scene — most of it clustered around the town centre and Lord Street. Terry's honest guide to where to actually go.",
+      "Southport has a proper curry scene, most of it clustered around the town centre and Lord Street. Terry's honest guide to where to actually go.",
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "19 Feb 2026",
@@ -1032,7 +1022,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "watersports-southport",
     title: "Watersports in Southport: The Complete Guide",
     excerpt:
-      "Marine Lake, the Sefton Coast, and Crosby Lakeside — Southport's watersports scene is better than most people expect. Wakeboarding, sailing, kayaking, and more.",
+      "Marine Lake, the Sefton Coast, and Crosby Lakeside: Southport's watersports scene is better than most people expect. Wakeboarding, sailing, kayaking, and more.",
     categorySlug: "activities",
     image: "/images/categories/beaches-parks.webp",
     date: "19 Feb 2026",
@@ -1041,7 +1031,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "cocktail-bars-southport",
     title: "The Best Cocktail Bars in Southport",
     excerpt:
-      "Southport's cocktail scene has quietly improved. Here's where to go for a proper drink on Lord Street and beyond — from craft cocktails to classic pours.",
+      "Southport's cocktail scene has quietly improved. Here's where to go for a proper drink on Lord Street and beyond, from craft cocktails to classic pours.",
     categorySlug: "bars-nightlife",
     image: "/images/categories/bars-nightlife.webp",
     date: "19 Feb 2026",
@@ -1062,7 +1052,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "afternoon-tea-southport",
     title: "The Best Afternoon Tea in Southport",
     excerpt:
-      "The Scarisbrick, The Vincent, and a few others worth knowing about. Terry's guide to afternoon tea in Southport — what's actually good, what to book ahead for, and what to expect.",
+      "The Scarisbrick, The Vincent, and a few others worth knowing about. Terry's guide to afternoon tea in Southport: what's actually good, what to book ahead for, and what to expect.",
     categorySlug: "food-drink",
     image: "/images/blog/afternoon-tea-southport.webp",
     date: "14 Mar 2026",
@@ -1071,7 +1061,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "splash-world-southport",
     title: "Splash World Southport: What to Expect",
     excerpt:
-      "Indoor waterpark, wave machine, flumes, and a toddler pool — Splash World is Southport's all-weather family option. What's actually there, prices, and when to go.",
+      "Indoor waterpark, wave machine, flumes, and a toddler pool: Splash World is Southport's all-weather family option. What's actually there, prices, and when to go.",
     categorySlug: "things-to-do",
     image: "/images/blog/splash-world-southport.webp",
     date: "14 Mar 2026",
@@ -1089,7 +1079,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "marine-lake-events-centre-southport",
     title: "The Marine Lake Events Centre (MLEC): What Southport is Building",
     excerpt:
-      "A 4,000-capacity waterfront arena opening in 2027. 515,000 extra visitors projected. Here's what MLEC is, when it opens, and what it means for the town.",
+      "A new waterfront events venue on the Marine Lake, now expected to open in early 2029. Here's what MLEC is, when it opens, and what it means for the town.",
     categorySlug: "local-guides",
     image: "/images/blog/mlec-southport.webp",
     date: "16 Mar 2026",
@@ -1100,7 +1090,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "living-in-birkdale-southport",
     title: "Living in Birkdale, Southport: What PR8 4 Is Actually Like",
     excerpt:
-      "House prices, schools, commute times, what to eat and where to drink — a genuinely honest look at what it's like to live in Birkdale. One of Southport's most sought-after postcodes, and for good reason.",
+      "House prices, schools, commute times, what to eat and where to drink. A genuinely honest look at what it's like to live in Birkdale. One of Southport's most sought-after postcodes, and for good reason.",
     categorySlug: "local-guides",
     image: "/images/neighbourhoods/birkdale.webp",
     date: "19 Mar 2026",
@@ -1109,7 +1099,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "living-in-churchtown-southport",
     title: "Living in Churchtown, Southport: An Honest Guide to PR9 9",
     excerpt:
-      "Churchtown is the old village at the north end of Southport — and it's the bit most people don't know about. Quiet streets, Botanic Gardens, a handful of good pubs, and house prices that still feel reasonable. Here's what it's actually like.",
+      "Churchtown is the old village at the north end of Southport, and it's the bit most people don't know about. Quiet streets, Botanic Gardens, a handful of good pubs, and house prices that still feel reasonable. Here's what it's actually like.",
     categorySlug: "local-guides",
     image: "/images/neighbourhoods/churchtown.webp",
     date: "19 Mar 2026",
@@ -1118,7 +1108,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "living-in-ainsdale-southport",
     title: "Living in Ainsdale, Southport: What You Need to Know About PR8 3",
     excerpt:
-      "Ainsdale sits between Southport and Formby — its own village feel, a decent beach, National Trust land, and a commuter-friendly train line. House prices and everything else you'd want to know before you move.",
+      "Ainsdale sits between Southport and Formby: its own village feel, a decent beach, National Trust land, and a commuter-friendly train line. House prices and everything else you'd want to know before you move.",
     categorySlug: "local-guides",
     image: "/images/neighbourhoods/ainsdale.webp",
     date: "19 Mar 2026",
@@ -1127,7 +1117,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "should-i-buy-in-southport-2026",
     title: "Should I Buy in Southport in 2026? An Honest Assessment",
     excerpt:
-      "The Open is coming. MLEC opens in 2027. House prices are moving. Here's a straightforward, data-backed look at whether buying in Southport right now makes sense — and which postcodes are worth watching.",
+      "MLEC is on the way. House prices are moving. Here's a straightforward, data-backed look at whether buying in Southport right now makes sense, and which postcodes are worth watching.",
     categorySlug: "local-guides",
     image: "/images/blog/southport-house-prices.webp",
     date: "19 Mar 2026",
@@ -1145,7 +1135,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // For Business
   {
     slug: "southport-business-hub-launch",
-    title: "The SouthportGuide Business Hub Is in Final Testing — Here Is What It Means for You",
+    title: "The SouthportGuide Business Hub Is in Final Testing. Here Is What It Means for You",
     excerpt:
       "A free business dashboard for every Southport business. Real analytics, a weekly performance email, and full listing control. Try the demo today and register to claim your spot.",
     categorySlug: "for-business",
@@ -1157,14 +1147,14 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-market-guide",
     title: "Southport Market: The Honest Guide to Market Street",
     excerpt:
-      "Southport Market on Market Street is genuinely one of the better things in this town — street food, independent traders, a decent coffee, and a proper atmosphere. Here's what it is, how it works, and when to go.",
+      "Southport Market on Market Street is genuinely one of the better things in this town: street food, independent traders, a decent coffee, and a proper atmosphere. Here's what it is, how it works, and when to go.",
     categorySlug: "local-guides",
     image: "/images/blog/southport-market-guide.jpg",
     date: "17 Mar 2026",
   },
   {
     slug: "easter-things-to-do-southport-2026",
-    title: "Easter in Southport 2026 — What's Worth Your Time",
+    title: "Easter in Southport 2026: What's Worth Your Time",
     excerpt:
       "Easter weekend in Southport means the season is starting. The beach is back, the pier is busy, the Botanic Gardens have the crocuses out, and the town actually feels alive again. Here's what to do with the bank holiday.",
     categorySlug: "events",
@@ -1173,9 +1163,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-sunday-lunch-southport",
-    title: "Best Sunday Lunch in Southport — Where to Actually Go",
+    title: "Best Sunday Lunch in Southport: Where to Actually Go",
     excerpt:
-      "Sunday lunch in Southport is worth doing properly. The town has a handful of pubs and restaurants that take it seriously — proper roasts, decent gravy, no microwave involved. I've eaten at most of them. Here's the honest breakdown.",
+      "Sunday lunch in Southport is worth doing properly. The town has a handful of pubs and restaurants that take it seriously: proper roasts, decent gravy, no microwave involved. I've eaten at most of them. Here's the honest breakdown.",
     categorySlug: "food-drink",
     image: "/images/blog/sunday-lunch-southport.jpg",
     date: "19 Mar 2026",
@@ -1186,7 +1176,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Fireworks Championship
   {
     slug: "southport-fireworks-championship-explained",
-    title: "How the British Musical Fireworks Championship Works — It's Not Just a Display",
+    title: "How the British Musical Fireworks Championship Works. It's Not Just a Display",
     excerpt:
       "Most people don't realise the Southport fireworks is a competition. Teams are judged. Every burst is choreographed. Once you understand the format, you watch it completely differently.",
     categorySlug: "events",
@@ -1195,7 +1185,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-september-2026-events",
-    title: "Southport in September 2026 — What's On and What to Book Now",
+    title: "Southport in September 2026: What's On and What to Book Now",
     excerpt:
       "September is quieter than summer but it has the best event of the year: the British Musical Fireworks Championship. Here's the full picture of what's happening in Southport this September.",
     categorySlug: "events",
@@ -1206,7 +1196,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Comedy Festival
   {
     slug: "southport-comedy-festival-2026-lineup",
-    title: "Southport Comedy Festival 2026 — Lineup, Why It Sells Out, and How to Book",
+    title: "Southport Comedy Festival 2026: Lineup, Why It Sells Out, and How to Book",
     excerpt:
       "15th year. 17 nights. A luxury heated marquee in Victoria Park. In 2025, nine shows sold out. Here's who's confirmed for 2026 and how to get tickets before the good nights are gone.",
     categorySlug: "events",
@@ -1215,7 +1205,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "victoria-park-southport-events-2026",
-    title: "Victoria Park Southport — Every Major Event Happening There in 2026",
+    title: "Victoria Park Southport: Every Major Event Happening There in 2026",
     excerpt:
       "Flower Show, Fireworks Championship, Comedy Festival, Sausage & Cider Festival. More major events happen in Victoria Park than most people realise. Here's the full 2026 calendar.",
     categorySlug: "events",
@@ -1225,17 +1215,8 @@ export const BLOG_POSTS: BlogPost[] = [
 
   // Armed Forces Festival
   {
-    slug: "southport-armed-forces-festival-2026-guide",
-    title: "Southport Armed Forces Festival 2026 — What to See and Where to Be",
-    excerpt:
-      "27–28 June. Free. Town-wide. Parade on the Promenade, Drumhead Service, fly-overs, vehicle displays at Princes Park. Everything you need to plan your day.",
-    categorySlug: "events",
-    image: "/images/blog/blog-armed-forces-day.webp",
-    date: "26 Mar 2026",
-  },
-  {
     slug: "southport-june-2026-guide",
-    title: "Southport in June 2026 — Armed Forces Weekend and Everything Else",
+    title: "Southport in June 2026: Armed Forces Weekend and Everything Else",
     excerpt:
       "June 2026 is a big month in Southport. The Armed Forces Festival on 27–28 June is the headline act, but the whole month has plenty going on. Here's how to make the most of it.",
     categorySlug: "local-guides",
@@ -1252,7 +1233,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-easter-southport.jpg",
     date: "3 Apr 2026",
-    featured: true,
   },
   {
     slug: "southport-marine-lake-seafront-walk",
@@ -1273,40 +1253,37 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-sausage-cider-festival-which-session",
-    title: "Southport Sausage & Cider Festival 2026 — Afternoon or Evening Session?",
+    title: "Southport Sausage & Cider Festival 2026: Afternoon or Evening Session?",
     excerpt:
       "The festival runs in two sessions on 18 April. The afternoon is better for food and families. The evening is livelier. I'll tell you which one to book and what to expect from each.",
     categorySlug: "events",
     image: "/images/blog/blog-sausage-cider-fun.webp",
     date: "30 Mar 2026",
-    featured: true,
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-sausage-cider-festival",
   },
   {
     slug: "southport-spring-events-2026",
-    title: "Things to Do in Southport in Spring 2026 — April and May Events",
+    title: "Things to Do in Southport in Spring 2026: April and May Events",
     excerpt:
       "Spring 2026 is unexpectedly packed. Cristal Palace on Lord Street in April. Big Top Festival in May. Sausage & Cider Festival. Easter. Here's how the season shapes up.",
     categorySlug: "events",
     image: "/images/blog/blog-southport-spring-april.webp",
     date: "26 Mar 2026",
-    featured: true,
   },
 
   // Year of Culture
   {
     slug: "cristal-palace-lord-street-southport-2026",
-    title: "Cristal Palace on Lord Street — What to Expect from Southport's Most Spectacular Event",
+    title: "Cristal Palace on Lord Street: What to Expect from Southport's Most Spectacular Event",
     excerpt:
-      "A 15-metre flying chandelier. Lord Street as an open-air ballroom. Aerial performers, live music, thousands watching from the pavement. This is Cristal Palace by Transe Express — 3–4 April 2026.",
+      "A 15-metre flying chandelier. Lord Street as an open-air ballroom. Aerial performers, live music, thousands watching from the pavement. This is Cristal Palace by Transe Express: 3–4 April 2026.",
     categorySlug: "events",
     image: "/images/blog/blog-cristal-palace.webp",
     date: "26 Mar 2026",
-    featured: true,
   },
   {
     slug: "southport-2026-elegantly-eccentric-explained",
-    title: "Southport 2026: Elegantly Eccentric — What Is It and Why Does It Matter?",
+    title: "Southport 2026: Elegantly Eccentric. What Is It and Why Does It Matter?",
     excerpt:
       "The biggest year of culture in Southport's recent history. Four brand-new events backed by the Liverpool City Region. Here's what's happening, when, and why it matters for the town's future.",
     categorySlug: "events",
@@ -1317,7 +1294,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Open Championship
   {
     slug: "open-2026-southport-day-by-day",
-    title: "Open Week in Southport 2026 — A Day-by-Day Visitor Guide",
+    title: "Open Week in Southport 2026: A Day-by-Day Visitor Guide",
     excerpt:
       "If you're visiting Southport during Open week, you need a plan. The town is genuinely transformed. Here's how to make the most of every day from Tuesday 14 to Sunday 19 July.",
     categorySlug: "golf",
@@ -1326,7 +1303,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "open-2026-southport-without-tickets",
-    title: "The Open 2026 in Southport — What to Do If You Don't Have Tickets",
+    title: "The Open 2026 in Southport: What to Do If You Don't Have Tickets",
     excerpt:
       "Tickets are scarce and the town fills up anyway. Here's what you can actually do in Southport during Open week without setting foot inside Royal Birkdale.",
     categorySlug: "golf",
@@ -1337,7 +1314,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Flower Show
   {
     slug: "southport-flower-show-first-timers-guide-2026",
-    title: "Southport Flower Show 2026 — First Timer's Complete Guide",
+    title: "Southport Flower Show 2026: First Timer's Complete Guide",
     excerpt:
       "Never been to Southport Flower Show before? Here's exactly what to expect: which gate to use, what order to do it in, how to avoid the queues, and what's actually worth your time.",
     categorySlug: "events",
@@ -1346,7 +1323,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-august-2026-guide",
-    title: "August in Southport 2026 — Flower Show, Air Show and the Most Events in a Single Month",
+    title: "August in Southport 2026: Flower Show, Air Show and the Most Events in a Single Month",
     excerpt:
       "Flower Show 20–23 August. Air Show 29–30 August. They're 9 days apart. I've lived here 41 years and 2026 is going to be the busiest August in Southport's recent memory. Here's how to plan it.",
     categorySlug: "events",
@@ -1357,16 +1334,16 @@ export const BLOG_POSTS: BlogPost[] = [
   // Air Show
   {
     slug: "southport-air-show-best-viewing-spots-2026",
-    title: "Best Viewing Spots for Southport Air Show 2026 — Where to Actually Stand",
+    title: "Best Viewing Spots for Southport Air Show 2026: Where to Actually Stand",
     excerpt:
-      "100,000+ people turn up for the Southport Air Show. Some will stand in the wrong place and see half the display. Here's where the locals go — including the spots most visitors miss.",
+      "100,000+ people turn up for the Southport Air Show. Some will stand in the wrong place and see half the display. Here's where the locals go, including the spots most visitors miss.",
     categorySlug: "events",
     image: "/images/blog/blog-airshow-crowds.webp",
     date: "29 Mar 2026",
   },
   {
     slug: "southport-august-bank-holiday-2026",
-    title: "Southport Bank Holiday Weekend August 2026 — How to Do It Properly",
+    title: "Southport Bank Holiday Weekend August 2026: How to Do It Properly",
     excerpt:
       "The August Bank Holiday this year is Air Show weekend. If you haven't planned ahead, parking will be a nightmare and the seafront will be rammed. Here's how to do it without the stress.",
     categorySlug: "events",
@@ -1387,17 +1364,16 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "cristal-palace-southport-2026",
     title: "Cristal Palace in Southport: What It Was Actually Like",
     excerpt:
-      "36 performers, a 12-metre chandelier, and two nights on Lord Street. I took the kids on Friday. Here's what Cristal Palace was like in person — and why it's the best free event Southport has put on in years.",
+      "36 performers, a 12-metre chandelier, and two nights on Lord Street. I took the kids on Friday. Here's what Cristal Palace was like in person, and why it's the best free event Southport has put on in years.",
     categorySlug: "events",
     image: "/images/blog/blog-cristal-palace.webp",
     date: "12 Apr 2026",
-    featured: true,
   },
   {
     slug: "blackpool-or-southport-day-out",
     title: "Blackpool or Southport for a Day Out? An Honest Answer from Someone Who Lives Here",
     excerpt:
-      "People ask me this a lot. I've lived in Southport for 41 years and I've been to Blackpool plenty of times. Here's a straight comparison — no promotional fluff, no bias. Just what each place actually does well.",
+      "People ask me this a lot. I've lived in Southport for 41 years and I've been to Blackpool plenty of times. Here's a straight comparison. No promotional fluff, no bias. Just what each place actually does well.",
     categorySlug: "local-guides",
     image: "/images/blog/blog-blackpool-southport-daytrip.jpg",
     date: "2 Apr 2026",
@@ -1406,7 +1382,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "blackpool-open-week-add-southport",
     title: "Staying Near Blackpool for The Open? Add Southport to the Itinerary",
     excerpt:
-      "Some Open visitors are staying in Blackpool and driving to Royal Birkdale. Makes sense — accommodation near the course is almost gone. Here's what to do with the rest of your time in the area.",
+      "Some Open visitors are staying in Blackpool and driving to Royal Birkdale. Makes sense. Accommodation near the course is almost gone. Here's what to do with the rest of your time in the area.",
     categorySlug: "golf",
     image: "/images/blog/blog-blackpool-open-southport.jpg",
     date: "2 Apr 2026",
@@ -1419,7 +1395,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-big-top-festival-2026.jpg",
     date: "1 May 2026",
-    featured: true,
   },
   {
     slug: "southport-beer-week-2026-guide",
@@ -1465,7 +1440,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-southport-2026.jpg",
     date: "7 May 2026",
-    featured: true,
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
   {
@@ -1528,7 +1502,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-halfterm-may-2026.jpg",
     date: "18 May 2026",
-    featured: true,
   },
   {
     slug: "southport-food-drink-festival-2026-what-to-know",
@@ -1538,7 +1511,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-countdown-2026.jpg",
     date: "19 May 2026",
-    featured: true,
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
   {
@@ -1549,7 +1521,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-8-weeks-2026.jpg",
     date: "20 May 2026",
-    featured: true,
   },
   {
     slug: "southport-armed-forces-festival-2026-guide",
@@ -1559,7 +1530,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-armed-forces-day-flag.jpg",
     date: "20 May 2026",
-    featured: true,
   },
   {
     slug: "southport-food-drink-festival-this-weekend-2026",
@@ -1569,7 +1539,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-this-weekend.jpg",
     date: "28 May 2026",
-    featured: true,
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
   {
@@ -1580,7 +1549,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-june-2026.webp",
     date: "28 May 2026",
-    featured: true,
   },
   {
     slug: "best-ice-cream-southport",
@@ -1600,7 +1568,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-summer-holidays-kids.jpg",
     date: "1 Jun 2026",
-    featured: true,
   },
   {
     slug: "cottages-near-southport-the-open-2026",
@@ -1610,7 +1577,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-cottages-sefton.jpg",
     date: "4 Jun 2026",
-    featured: true,
   },
   {
     slug: "fathers-day-southport-2026",
@@ -1620,7 +1586,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-fathers-day-restaurant.webp",
     date: "10 Jun 2026",
-    featured: true,
   },
   {
     slug: "southport-open-week-for-locals",
@@ -1639,7 +1604,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-birkdale-village-open-week.jpg",
     date: "5 Jun 2026",
-    featured: true,
   },
   {
     slug: "southport-july-2026-guide",
@@ -1658,7 +1622,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-three-weeks.webp",
     date: "22 Jun 2026",
-    featured: true,
   },
   {
     slug: "southport-marine-lake-summer",
@@ -1677,7 +1640,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "getting-around",
     image: "/images/blog/blog-southport-transport-open.webp",
     date: "1 Jul 2026",
-    featured: true,
   },
   {
     slug: "open-2026-ryan-fox-wins-southport",
@@ -1686,7 +1648,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-2026-ryan-fox.webp",
     date: "19 Jul 2026",
-    featured: true,
   },
   {
     slug: "open-2026-round-1-southport",
@@ -1695,7 +1656,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-round1-southport.webp",
     date: "16 Jul 2026",
-    featured: true,
   },
   {
     slug: "birkdale-village-restaurants-open-week",
@@ -1704,7 +1664,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/blog-birkdale-restaurants.webp",
     date: "14 Jul 2026",
-    featured: true,
   },
   {
     slug: "open-2026-southport-local-view",
@@ -1739,7 +1698,6 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "family",
     image: "/images/blog/blog-southport-october-half-term.webp",
     date: "9 Sep 2026",
-    featured: true,
   },
   {
     slug: "hesketh-arms-southport",
@@ -1757,6 +1715,25 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/blog/blog-autumn-walks-southport.webp",
     date: "21 Aug 2026",
+  },
+  {
+    slug: "southport-pier-closure-restoration",
+    title: "Is Southport Pier Open? The Closure and £20m Restoration",
+    excerpt:
+      "Southport Pier has been closed since December 2022. Why it shut, what the £20 million restoration involves, how far the work has got and where to check for updates.",
+    categorySlug: "things-to-do",
+    image: "/southport-pier.webp",
+    date: "11 Nov 2026",
+    featured: true,
+  },
+  {
+    slug: "hesketh-park-southport",
+    title: "Hesketh Park, Southport: Lake, Gardens and Observatory",
+    excerpt:
+      "A 12-hectare Victorian park north-east of the town centre, with a lake, a floral clock, a listed conservatory and an observatory. How it came about, what to look for and how to get there.",
+    categorySlug: "outdoors",
+    image: "/images/blog/blog-autumn-walks-southport.webp",
+    date: "11 Nov 2026",
     featured: true,
   },
 ];

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | SouthportGuide.co.uk",
   },
   description:
-    "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide, home of The Open Championship 2026.",
+    "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
   keywords:
     "Southport, restaurants Southport, hotels Southport, things to do Southport, The Open 2026, Royal Birkdale, visitor guide, Southport Guide",
   authors: [{ name: "Churchtown Media", url: "https://churchtownmedia.co.uk" }],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "SouthportGuide.co.uk",
     title: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
     description:
-      "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide, home of The Open Championship 2026.",
+      "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
     images: [
       {
         url: `${BASE_URL}/og-default.png`,
@@ -159,7 +159,7 @@ function Footer() {
               <span className="text-white/40 text-sm font-normal ml-1">.co.uk</span>
             </div>
             <p className="text-sm leading-relaxed text-white/60 mb-4 max-w-xs">
-              Your definitive guide to eating, staying, and exploring Southport, home of The Open Championship 2026.
+              A local guide to eating, staying and exploring Southport.
             </p>
             <div className="flex gap-3 mt-5">
               <a href="https://churchtownmedia.co.uk" className="text-xs text-[#C9A84C] hover:text-[#E8C87A] transition">
@@ -233,7 +233,6 @@ function Footer() {
                 ["Pricing", "/pricing"],
                 ["Advertise With Us", "/advertise"],
                 ["Business Dashboard", "/dashboard"],
-                ["The Open 2026", "/the-open-2026"],
                 ["MLEC", "/mlec"],
                 ["Accessibility", "/accessibility"],
               ].map(([label, href]) => (
