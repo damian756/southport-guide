@@ -43,6 +43,28 @@ export interface Guide {
   metaDescription?: string;
   /** ISO date (YYYY-MM-DD) for event guides — enables chronological sorting in nav and homepage */
   eventDate?: string;
+  /**
+   * ISO date (YYYY-MM-DD) the event ends; omit for a one-day event. The nav and
+   * home page drop the guide the day after this date, and the guide page then
+   * shows a notice that the event has finished (see `eventNotice`).
+   */
+  eventEndDate?: string;
+  /** True for an event that comes back every year: the past-event notice then gives the next dates. */
+  annual?: boolean;
+  /**
+   * The next edition of an annual event, as published on the organiser's (or
+   * Sefton Council's) own page. Leave unset until it is announced; the notice
+   * then says the next year's dates are not yet announced. Next year's update
+   * is a data change here: new `eventDate`, `eventEndDate` and `nextEdition`.
+   */
+  nextEdition?: {
+    /** e.g. "19 to 22 August 2027" */
+    dates: string;
+    /** Organiser's booking or information page */
+    link: string;
+    /** Where the dates were checked, and when (not shown) */
+    source: string;
+  };
   /** Explicit related guide slugs — overrides the automatic tag/category scoring when present */
   relatedSlugs?: string[];
   /** Collection slugs to surface at the bottom of this guide page */
@@ -178,6 +200,13 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/southport-flower-show.webp",
     seoPriority: 0.92,
     eventDate: "2026-08-20",
+    eventEndDate: "2026-08-23",
+    annual: true,
+    nextEdition: {
+      dates: "19 to 22 August 2027",
+      link: "https://www.southportflowershow.co.uk/",
+      source: 'southportflowershow.co.uk home page, checked 11 Nov 2026: "19th - 22nd August 2027"',
+    },
     datePublished: "2026-02-27",
     dateUpdated: "2026-03-19",
     tags: ["flower-show", "events", "august", "tickets", "victoria-park"],
@@ -199,6 +228,8 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/southport-air-show.webp",
     seoPriority: 0.92,
     eventDate: "2026-08-29",
+    eventEndDate: "2026-08-30",
+    annual: true,
     datePublished: "2026-02-27",
     dateUpdated: "2026-03-19",
     tags: ["air-show", "events", "free", "beach", "summer"],
@@ -222,6 +253,8 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/southport-fireworks-championship.webp",
     seoPriority: 0.88,
     eventDate: "2026-09-26",
+    eventEndDate: "2026-09-27",
+    annual: true,
     datePublished: "2026-03-19",
     dateUpdated: "2026-03-19",
     tags: ["fireworks", "events", "september", "victoria-park", "tickets"],
@@ -242,6 +275,8 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/southport-comedy-festival.webp",
     seoPriority: 0.88,
     eventDate: "2026-10-02",
+    eventEndDate: "2026-10-18",
+    annual: true,
     datePublished: "2026-03-19",
     dateUpdated: "2026-03-19",
     tags: ["comedy", "events", "october", "victoria-park", "tickets", "entertainment"],
@@ -262,6 +297,13 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/southport-armed-forces-festival.webp",
     seoPriority: 0.85,
     eventDate: "2026-06-27",
+    eventEndDate: "2026-06-28",
+    annual: true,
+    nextEdition: {
+      dates: "Armed Forces Day, Saturday 26 June 2027, when Southport hosts the national event",
+      link: "https://www.sefton.gov.uk/mysefton-news/latest-news/sefton-celebrates-national-recognition-as-southport-chosen-to-host-armed-forces-day-2027/",
+      source: 'Sefton Council news, checked 11 Nov 2026: "Southport will host the flagship Armed Forces Day celebrations on Saturday 26 June 2027"',
+    },
     datePublished: "2026-03-19",
     dateUpdated: "2026-03-19",
     tags: ["armed-forces", "events", "june", "free", "military", "promenade"],
@@ -282,6 +324,7 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/southport-sausage-cider-festival.webp",
     seoPriority: 0.82,
     eventDate: "2026-04-18",
+    annual: true,
     datePublished: "2026-03-19",
     dateUpdated: "2026-03-19",
     tags: ["food-festival", "events", "april", "victoria-park", "tickets", "food-drink"],
@@ -302,6 +345,8 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/beer-week.webp",
     seoPriority: 0.9,
     eventDate: "2026-05-20",
+    eventEndDate: "2026-05-25",
+    annual: true,
     datePublished: "2026-03-26",
     dateUpdated: "2026-03-26",
     tags: ["beer-week", "events", "may", "bars-nightlife", "free", "ale-trail", "bank-holiday"],
@@ -323,6 +368,7 @@ export const GUIDES: Guide[] = [
     seoPriority: 0.90,
     datePublished: "2026-03-19",
     dateUpdated: "2026-03-19",
+    eventEndDate: "2026-12-31",
     tags: ["culture", "events", "2026", "lord-street", "street-theatre", "circus", "free"],
     status: "published",
     listingFilter: { categorySlugs: ["hotels", "restaurants", "attractions"] },
@@ -345,6 +391,7 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-04-03",
+    eventEndDate: "2026-04-04",
     tags: ["street-theatre", "events", "april", "free", "lord-street", "arts-culture"],
     status: "published",
     listingFilter: { categorySlugs: ["restaurants", "bars-nightlife", "parking"] },
@@ -365,6 +412,7 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-04-01",
+    eventEndDate: "2026-04-06",
     tags: ["easter", "events", "april", "families", "kids", "free"],
     status: "published",
     listingFilter: { categorySlugs: ["restaurants", "cafes", "activities", "attractions"] },
@@ -404,6 +452,7 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-04-11",
+    eventEndDate: "2026-04-12",
     tags: ["artisan-market", "events", "april", "free", "victoria-park", "live-music", "families"],
     status: "published",
     listingFilter: { categorySlugs: ["restaurants", "parking"] },
@@ -444,6 +493,7 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-04-09",
+    eventEndDate: "2026-04-11",
     tags: ["theatre", "events", "april", "atkinson", "musical", "tickets"],
     status: "published",
     listingFilter: { categorySlugs: ["restaurants", "parking"] },
@@ -464,6 +514,7 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-04-10",
+    eventEndDate: "2026-04-18",
     tags: ["theatre", "events", "april", "little-theatre", "drama", "tickets"],
     status: "published",
     listingFilter: { categorySlugs: ["restaurants", "bars-nightlife"] },
@@ -541,6 +592,7 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-05-02",
+    eventEndDate: "2026-05-03",
     tags: ["circus", "events", "may", "free", "street-arts", "entertainment"],
     status: "published",
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
@@ -561,6 +613,8 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-05-29",
+    eventEndDate: "2026-05-31",
+    annual: true,
     tags: ["food-festival", "events", "may", "free", "bank-holiday", "food-drink"],
     status: "published",
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
@@ -592,21 +646,23 @@ export const GUIDES: Guide[] = [
     slug: "sefton-open-2026",
     title: "Sefton Open 2026",
     shortTitle: "Sefton Open",
-    description: "Annual open art exhibition at The Atkinson. Painting, sculpture, print, and mixed media. 2 April – 13 June 2026.",
+    description: "Annual open art exhibition at The Atkinson. Painting, sculpture, print, and mixed media. 28 March to 30 May 2026.",
     excerpt:
-      "Sefton Open 2026 at The Atkinson on Lord Street: the annual open art exhibition showcasing work from local and regional artists. Painting, sculpture, print, and mixed media. 2 April to 13 June. Free to visit.",
+      "Sefton Open 2026 at The Atkinson on Lord Street: the annual open art exhibition showcasing work from local and regional artists. Painting, sculpture, print, and mixed media. 28 March to 30 May. Free to visit.",
     category: "events",
     heroImage: "/images/guides/sefton-open-2026.jpg",
     seoPriority: 0.75,
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
-    eventDate: "2026-04-02",
+    eventDate: "2026-03-28",
+    eventEndDate: "2026-05-30",
+    annual: true,
     tags: ["art", "exhibition", "events", "april", "atkinson", "free", "arts-culture"],
     status: "published",
     listingFilter: { categorySlugs: ["cafes", "restaurants"] },
-    metaTitle: "Sefton Open 2026 | The Atkinson · 2 April–13 June · Free Art Exhibition",
+    metaTitle: "Sefton Open 2026 | The Atkinson · 28 March to 30 May · Free Art Exhibition",
     metaDescription:
-      "Sefton Open 2026 at The Atkinson, Lord Street, Southport: annual open art exhibition. Painting, sculpture, print, mixed media. 2 April to 13 June. Free entry. Opening times and visitor info.",
+      "Sefton Open 2026 at The Atkinson, Lord Street, Southport: annual open art exhibition. Painting, sculpture, print, mixed media. 28 March to 30 May. Free entry. Opening times and visitor info.",
   },
   {
     slug: "books-alive-southport-2026",
@@ -621,6 +677,8 @@ export const GUIDES: Guide[] = [
     datePublished: "2026-03-31",
     dateUpdated: "2026-03-31",
     eventDate: "2026-10-24",
+    eventEndDate: "2026-10-31",
+    annual: true,
     tags: ["books", "literature", "events", "october", "half-term", "families", "free"],
     status: "published",
     listingFilter: { categorySlugs: ["restaurants", "cafes", "activities"] },
@@ -1043,6 +1101,7 @@ export const GUIDES: Guide[] = [
     heroImage: "/images/open-2026.webp",
     seoPriority: 0.9,
     eventDate: "2026-07-12",
+    eventEndDate: "2026-07-19",
     datePublished: "2026-04-02",
     dateUpdated: "2026-04-02",
     tags: ["the-open", "accessibility", "sunflower", "hidden-disabilities", "sensory-friendly", "royal-birkdale", "wheelchair"],
@@ -1056,6 +1115,74 @@ export const GUIDES: Guide[] = [
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────
+
+/** Today's date as YYYY-MM-DD (UTC, as on the server). */
+export function todayISO(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/** Last day (YYYY-MM-DD) of the event a guide covers, or null for a guide with no event date. */
+export function eventGuideEnd(guide: Pick<Guide, "eventDate" | "eventEndDate">): string | null {
+  return guide.eventEndDate ?? guide.eventDate ?? null;
+}
+
+/** True once the day after the guide's event has begun. `today` is YYYY-MM-DD. */
+export function isPastEventGuide(guide: Pick<Guide, "eventDate" | "eventEndDate">, today: string): boolean {
+  const end = eventGuideEnd(guide);
+  return end !== null && end < today;
+}
+
+/**
+ * Event guides for the nav and home page: guides with no date (venues, regular
+ * nights) and events that have not yet finished, upcoming first. A guide drops
+ * off the day after its event ends.
+ */
+export function currentEventGuides(guides: Guide[], today: string): Guide[] {
+  return guides
+    .filter((g) => g.status === "published" && g.category === "events" && g.slug !== "southport-year-of-culture-2026")
+    .filter((g) => !isPastEventGuide(g, today))
+    .sort((a, b) => {
+      const aDate = a.eventDate ?? "9999-12-31";
+      const bDate = b.eventDate ?? "9999-12-31";
+      if (aDate !== bDate) return aDate.localeCompare(bDate);
+      return b.seoPriority - a.seoPriority;
+    });
+}
+
+const MONTHS_LONG = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/** "20 to 23 August 2026", "3 April 2026", "28 March to 30 May 2026" */
+export function formatEventRange(start: string, end?: string): string {
+  const [sy, sm, sd] = start.split("-").map(Number);
+  const s = `${sd} ${MONTHS_LONG[sm - 1]}`;
+  if (!end || end === start) return `${s} ${sy}`;
+  const [ey, em, ed] = end.split("-").map(Number);
+  if (sy !== ey) return `${s} ${sy} to ${ed} ${MONTHS_LONG[em - 1]} ${ey}`;
+  if (sm !== em) return `${s} to ${ed} ${MONTHS_LONG[em - 1]} ${ey}`;
+  return `${sd} to ${ed} ${MONTHS_LONG[em - 1]} ${ey}`;
+}
+
+/**
+ * The notice an event guide shows once its event has finished, or null while
+ * the event is still to come (or the guide has no event date).
+ */
+export function eventNotice(guide: Guide, today: string): { text: string; next?: { label: string; href: string } } | null {
+  if (!guide.eventDate || !isPastEventGuide(guide, today)) return null;
+  const range = formatEventRange(guide.eventDate, guide.eventEndDate);
+  const oneDay = !guide.eventEndDate || guide.eventEndDate === guide.eventDate;
+  const when = oneDay ? `took place on ${range}` : `ran from ${range}`;
+  const year = Number(guide.eventDate.slice(0, 4));
+  if (!guide.annual) {
+    return { text: `This event ${when}. The guide is kept here for reference.` };
+  }
+  if (guide.nextEdition) {
+    return {
+      text: `The ${year} event ${when}. Next: ${guide.nextEdition.dates}.`,
+      next: { label: "Details from the organiser", href: guide.nextEdition.link },
+    };
+  }
+  return { text: `The ${year} event ${when}. ${year + 1} dates not yet announced.` };
+}
 
 /** Get a single guide by slug. Throws if not found. */
 export function getGuide(slug: string): Guide {

@@ -9,7 +9,8 @@ import {
   Flower2, Wind, BookOpen, ListFilter,
 } from "lucide-react";
 import { INSTAGRAM_URL, FACEBOOK_URL } from "@/components/InstagramCta";
-import { GUIDES, GUIDE_CATEGORIES, type GuideCategory } from "@/lib/guides-config";
+import { GUIDES, GUIDE_CATEGORIES, type GuideCategory, getGuide, currentEventGuides, isPastEventGuide } from "@/lib/guides-config";
+import { getUpcomingEvents, type SouthportEvent } from "@/lib/events-data";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -91,25 +92,38 @@ function useToday(): string | null {
   );
 }
 
-type PublishedGuide = (typeof GUIDES)[number];
+const YEAR_OF_CULTURE = getGuide("southport-year-of-culture-2026");
 
-/** Event guides less than 30 days past their date, upcoming first. Empty until `today` is known. */
-function currentEventGuides(guides: PublishedGuide[], today: string | null): PublishedGuide[] {
-  if (!today) return [];
-  const cutoffDate = new Date(today);
-  cutoffDate.setUTCDate(cutoffDate.getUTCDate() - 30);
-  const cutoff = cutoffDate.toISOString().slice(0, 10);
-  return guides
-    .filter((g) => g.category === "events" && g.slug !== "southport-year-of-culture-2026" && (!g.eventDate || g.eventDate >= cutoff))
-    .sort((a, b) => {
-      const aDate = a.eventDate ?? "9999-12-31";
-      const bDate = b.eventDate ?? "9999-12-31";
-      const aUpcoming = aDate >= today;
-      const bUpcoming = bDate >= today;
-      if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
-      if (aDate !== bDate) return aDate.localeCompare(bDate);
-      return b.seoPriority - a.seoPriority;
-    });
+function eventHref(ev: SouthportEvent): { href: string; external: boolean } {
+  if (ev.guideSlug) return { href: `/guides/${ev.guideSlug}`, external: false };
+  return { href: ev.link, external: ev.link.startsWith("http") };
+}
+
+/** The next few calendar events, as a compact list */
+function UpcomingList({ events, onPick }: { events: SouthportEvent[]; onPick: () => void }) {
+  if (events.length === 0) return null;
+  return (
+    <div className="mb-3">
+      <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400 mb-1.5 px-1">Coming up</p>
+      <div className="space-y-0.5">
+        {events.map((ev) => {
+          const { href, external } = eventHref(ev);
+          const cls = "flex items-baseline gap-3 px-2.5 py-1.5 rounded-lg hover:bg-[#FAF8F5] transition-colors group";
+          const inner = (
+            <>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A84C] w-28 flex-none">{ev.dayLabel}</span>
+              <span className="text-xs font-semibold text-[#1B2E4B] group-hover:text-[#C9A84C] transition-colors truncate">{ev.title}</span>
+            </>
+          );
+          return external ? (
+            <a key={ev.title + ev.isoDate} href={href} target="_blank" rel="noopener noreferrer" onClick={onPick} className={cls}>{inner}</a>
+          ) : (
+            <Link key={ev.title + ev.isoDate} href={href} onClick={onPick} className={cls}>{inner}</Link>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 // Shared nav link style — uppercase editorial feel
@@ -123,7 +137,10 @@ export default function NavMenu() {
 
   const publishedGuides = GUIDES.filter((g) => g.status === "published");
   const today = useToday();
-  const eventGuides = currentEventGuides(publishedGuides, today);
+  // Date-dependent lists stay empty until the browser's date is known (see useToday)
+  const eventGuides = today ? currentEventGuides(publishedGuides, today) : [];
+  const upcoming = today ? getUpcomingEvents(3, today) : [];
+  const showYearOfCulture = today !== null && !isPastEventGuide(YEAR_OF_CULTURE, today);
 
   return (
     <>
@@ -260,7 +277,7 @@ export default function NavMenu() {
           </div>
         </div>
 
-        {/* 2026 EVENTS dropdown */}
+        {/* EVENTS dropdown */}
         <div className="w-px h-4 bg-gray-200 mx-2" />
         <div
           className="relative"
@@ -278,6 +295,10 @@ export default function NavMenu() {
             const eventGuidesShown = eventGuides.slice(0, 9);
             return (
               <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[520px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+                <UpcomingList events={upcoming} onPick={() => setEventsOpen(false)} />
+                {eventGuidesShown.length > 0 && (
+                  <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400 mb-1.5 px-1">Event guides</p>
+                )}
                 <div className="grid grid-cols-3 gap-2">
                   {eventGuidesShown.map((g) => (
                     <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setEventsOpen(false)}
@@ -289,10 +310,12 @@ export default function NavMenu() {
                   ))}
                 </div>
                 <div className="mt-2 pt-2 border-t border-gray-100 flex justify-between items-center">
-                  <Link href="/guides/southport-year-of-culture-2026" onClick={() => setEventsOpen(false)}
-                    className="text-[10px] font-bold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
-                    🎪 Southport 2026: Elegantly Eccentric →
-                  </Link>
+                  {showYearOfCulture ? (
+                    <Link href="/guides/southport-year-of-culture-2026" onClick={() => setEventsOpen(false)}
+                      className="text-[10px] font-bold text-[#1B2E4B] hover:text-[#C9A84C] transition-colors">
+                      🎪 Southport 2026: Elegantly Eccentric →
+                    </Link>
+                  ) : <span />}
                   <Link href="/events" onClick={() => setEventsOpen(false)}
                     className="text-[10px] font-bold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors">
                     All events →
@@ -376,6 +399,7 @@ export default function NavMenu() {
                 🏠 House Prices
               </Link>
             </div>
+            <UpcomingList events={upcoming} onPick={() => setMobileOpen(false)} />
             <div className="grid grid-cols-2 gap-1.5">
               {(() => {
                 return eventGuides
@@ -390,10 +414,12 @@ export default function NavMenu() {
                   ));
               })()}
             </div>
-            <Link href="/guides/southport-year-of-culture-2026" onClick={() => setMobileOpen(false)}
-              className="flex items-center gap-2 px-4 py-3 rounded-xl bg-purple-50 text-purple-800 text-sm font-bold">
-              🎪 Southport 2026: Elegantly Eccentric
-            </Link>
+            {showYearOfCulture && (
+              <Link href="/guides/southport-year-of-culture-2026" onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-purple-50 text-purple-800 text-sm font-bold">
+                🎪 Southport 2026: Elegantly Eccentric
+              </Link>
+            )}
           </div>
 
           {/* Categories */}

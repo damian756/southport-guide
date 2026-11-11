@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   keywords: "Sefton Open 2026, Sefton Open exhibition Southport, The Atkinson art exhibition 2026, open art exhibition Southport",
   alternates: { canonical: `${BASE_URL}/guides/sefton-open-2026` },
   openGraph: {
-    title: "Sefton Open 2026 | The Atkinson 2 April–13 June · Free Exhibition",
-    description: "Sefton Open 2026 at The Atkinson, Lord Street, Southport. Annual open art exhibition. 2 April to 13 June. Free entry.",
+    title: "Sefton Open 2026 | The Atkinson, 28 March to 30 May · Free Exhibition",
+    description: "Sefton Open 2026 at The Atkinson, Lord Street, Southport. Annual open art exhibition. 28 March to 30 May 2026. Free entry.",
     url: `${BASE_URL}/guides/sefton-open-2026`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "What is the Sefton Open?", a: "The Sefton Open is an annual open art exhibition held at The Atkinson on Lord Street, Southport. It is an open submission exhibition where artists from across Sefton and the wider region submit work to be selected and displayed. Categories typically include painting, drawing, sculpture, print, photography, and mixed media." },
-  { q: "When is the Sefton Open 2026?", a: "The Sefton Open 2026 runs from Thursday 2 April to Saturday 13 June 2026 at The Atkinson, Lord Street, Southport (PR8 1DB). It is open during normal Atkinson gallery hours." },
+  { q: "When is the Sefton Open 2026?", a: "The Sefton Open 2026 ran from Saturday 28 March to Saturday 30 May 2026 at The Atkinson, Lord Street, Southport (PR8 1DB)." },
   { q: "How much does it cost to see the Sefton Open?", a: "Entry to the Sefton Open is free. The Atkinson gallery is free to visit. No tickets or booking is required." },
   { q: "Can I buy work from the Sefton Open?", a: "Yes, work in the Sefton Open is generally for sale. Prices and purchase arrangements are handled through The Atkinson. Speak to the gallery staff if you are interested in buying a piece." },
   { q: "How do I get to The Atkinson for the Sefton Open?", a: "The Atkinson is on Lord Street, Southport, PR8 1DB. Parking at Tulketh Street multi-storey (PR8 1EW, 5 min walk) or Eastbank Street car park. Train: Southport station is 10 min walk via Lord Street." },
@@ -69,7 +69,7 @@ export default function SeftonOpenPage() {
         <div className="flex flex-col md:flex-row md:min-h-[72vh]">
           {/* Poster */}
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
-            <Image src="/images/guides/sefton-open-2026.jpg" alt="Sefton Open 2026 at The Atkinson Southport — free art exhibition" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+            <Image src="/images/guides/sefton-open-2026.jpg" alt="Sefton Open 2026 at The Atkinson, Southport: free art exhibition" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
           </div>
           {/* Text */}
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
@@ -164,7 +164,7 @@ export default function SeftonOpenPage() {
         </section>
 
         <section className="bg-[#0A2E3D] rounded-2xl p-8 md:p-12 text-center text-white">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Sefton Open 2026 · 2 April – 13 June</p>
+          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Sefton Open 2026 · 28 March to 30 May</p>
           <h2 className="font-display text-3xl font-bold mb-4">Free. The Atkinson. Ten Weeks.</h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">No booking required. Free entry. Check The Atkinson website for opening times.</p>
           <div className="flex flex-wrap gap-4 justify-center">

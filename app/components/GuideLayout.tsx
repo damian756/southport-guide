@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, ArrowRight, MapPin } from "lucide-react";
+import { ChevronRight, ArrowRight, MapPin, CalendarDays } from "lucide-react";
 import type { Guide } from "@/lib/guides-config";
-import { getRelatedGuides, getRelatedCollections, GUIDE_CATEGORIES } from "@/lib/guides-config";
+import { getRelatedGuides, getRelatedCollections, GUIDE_CATEGORIES, eventNotice, todayISO } from "@/lib/guides-config";
 import { COLLECTIONS } from "@/lib/collections-config";
 
 interface BusinessCard {
@@ -74,6 +74,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
     .filter((c): c is (typeof COLLECTIONS)[number] => c !== undefined);
 
   const categoryLabel = GUIDE_CATEGORIES[guide.category].label;
+  const notice = eventNotice(guide, todayISO());
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
@@ -110,6 +111,29 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
           </ol>
         </div>
       </nav>
+
+      {/* ── Past-event notice: shown from the day after the event ends (lib/guides-config.ts) ── */}
+      {notice && (
+        <div role="note" className="bg-amber-50 border-b border-amber-200">
+          <div className="container mx-auto px-4 max-w-7xl py-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[#1B2E4B]">
+            <CalendarDays className="w-4 h-4 text-[#B8972A] flex-none" aria-hidden />
+            <p className="font-semibold">{notice.text}</p>
+            {notice.next && (
+              <a
+                href={notice.next.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#8a6d1f] underline underline-offset-2 hover:text-[#1B2E4B]"
+              >
+                {notice.next.label}
+              </a>
+            )}
+            <Link href="/events" className="text-[#8a6d1f] underline underline-offset-2 hover:text-[#1B2E4B]">
+              What&apos;s on in Southport now
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* ── Bespoke page content ── */}
       {children}

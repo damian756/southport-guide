@@ -3,12 +3,13 @@ import { HOME_PICK } from "@/lib/home-pick";
 import Image from "next/image";
 import {
   Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag,
-  Waves, Dumbbell, Car, Sparkles, ArrowRight, Music, CalendarDays, Mic,
+  Waves, Dumbbell, Car, Sparkles, ArrowRight, Music, CalendarDays,
   Newspaper, TrendingUp, Building2, Train, Shield, Users,
 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { BLOG_POSTS, getBlogPostCategory, getUpcomingEvents } from "@/lib/southport-data";
-import { GUIDES } from "@/lib/guides-config";
+import { BLOG_POSTS, getBlogPostCategory } from "@/lib/southport-data";
+import { getUpcomingEvents } from "@/lib/events-data";
+import { GUIDES, currentEventGuides, todayISO as guideTodayISO } from "@/lib/guides-config";
 import type { Metadata } from "next";
 import AdSlot from "@/components/AdSlot";
 
@@ -184,12 +185,6 @@ export default async function Home() {
   function formatEventLabel(event: { isoDate: string; dayLabel: string }) {
     return event.isoDate === todayISO ? "Today" : event.dayLabel;
   }
-  // Comedy Festival: 2-18 October 2026
-  const comedyFestStart = new Date("2026-10-02");
-  const comedyFestEnd = new Date("2026-10-18");
-  const comedyFestLive = today >= comedyFestStart && today <= comedyFestEnd;
-  const comedyFestOver = today > new Date("2026-10-19");
-  const comedyFestDays = Math.max(0, Math.ceil((comedyFestStart.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
 
   const orgJsonLd = {
     "@context": "https://schema.org",
@@ -318,39 +313,6 @@ export default async function Home() {
               . Written by people who live here.
             </p>
 
-            {/* Comedy Festival card (hidden once the festival has finished) */}
-            {!comedyFestOver && (
-            <Link
-              href="/guides/southport-comedy-festival"
-              className="group bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#C9A84C]/40 rounded-2xl p-4 mb-5 flex items-center gap-4 transition-all self-start w-full max-w-xs"
-            >
-              <div className="text-center flex-none">
-                {comedyFestLive ? (
-                  <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
-                    <Mic className="w-5 h-5 text-[#1B2E4B]" />
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    <div className="font-display text-3xl font-bold text-[#C9A84C] leading-none">{comedyFestDays}</div>
-                    <div className="text-white/40 text-[9px] uppercase tracking-widest mt-0.5">days</div>
-                  </div>
-                )}
-              </div>
-              <div className="w-px h-10 bg-white/10 flex-none" />
-              <div className="min-w-0">
-                {comedyFestLive && (
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-none" />
-                    <span className="text-green-400 font-bold text-xs uppercase tracking-wider">On Now</span>
-                  </div>
-                )}
-                <div className="text-white font-bold text-sm group-hover:text-[#C9A84C] transition-colors">Southport Comedy Festival</div>
-                <div className="text-white/50 text-xs mt-0.5">Victoria Park · 2–18 October</div>
-                <div className="text-[#C9A84C] text-xs mt-1.5">{comedyFestLive ? "What's on tonight →" : "Book tickets →"}</div>
-              </div>
-            </Link>
-            )}
-
             {/* Next 2 upcoming events */}
             <div className="mb-6 w-full max-w-xs">
               <p className="text-white/35 text-[10px] uppercase tracking-widest mb-2">Coming up</p>
@@ -439,7 +401,7 @@ export default async function Home() {
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="flex items-end justify-between mb-6">
               <div>
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Updated weekly</p>
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Coming up</p>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] flex items-center gap-2">
                   <CalendarDays className="w-6 h-6 text-[#C9A84C]" />
                   What&apos;s On in Southport
@@ -467,10 +429,8 @@ export default async function Home() {
                   <p className="text-gray-400 text-xs mb-3 line-clamp-1">{event.venue}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] text-gray-500">{event.category}</span>
-                    {event.free
-                      ? <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Free</span>
-                      : <span className="text-[10px] font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2 py-0.5 rounded-full">Tickets</span>
-                    }
+                    {event.free === true && <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Free</span>}
+                    {event.free === false && <span className="text-[10px] font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2 py-0.5 rounded-full">Tickets</span>}
                   </div>
                 </a>
                 );
@@ -1353,38 +1313,8 @@ export default async function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {/* Comedy Festival (hidden once the festival has finished) */}
-            {!comedyFestOver && (
-            <Link href="/guides/southport-comedy-festival" className="group relative overflow-hidden rounded-2xl bg-[#1A1A35] p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="absolute inset-0">
-                <Image src="/images/southport-comedy-festival.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A35]/75 to-[#3D1A5C]/50" />
-              </div>
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
-              <div className="relative">
-                <div className="flex items-center gap-2 mb-4">
-                  <Mic className="w-10 h-10 text-[#C9A84C]" />
-                  {comedyFestLive && (
-                    <span className="flex items-center gap-1.5 bg-green-500/20 border border-green-400/30 text-green-400 text-xs font-bold px-2.5 py-1 rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
-                      On now
-                    </span>
-                  )}
-                </div>
-                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Victoria Park · 2–18 October 2026</p>
-                <h3 className="font-display text-3xl font-bold text-white mb-3">Southport Comedy Festival</h3>
-                <p className="text-white/60 text-sm leading-relaxed mb-5">
-                  15th annual comedy festival. 17 nights in a luxury heated marquee. Henning Wehn, Gary Delaney and more. Tickets required.
-                </p>
-                <span className="inline-flex items-center gap-2 bg-[#C9A84C] text-white text-sm font-semibold px-5 py-2.5 rounded-full group-hover:bg-[#E8C87A] transition-colors">
-                  {comedyFestLive ? "What's on tonight" : "Book tickets"} <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </span>
-              </div>
-            </Link>
-            )}
-
             {/* MLEC */}
-            <Link href="/mlec" className={`group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300 ${comedyFestOver ? "md:col-span-2" : ""}`}>
+            <Link href="/mlec" className="group relative overflow-hidden rounded-2xl bg-[#3D1A5C] p-8 hover:shadow-2xl transition-all duration-300 md:col-span-2">
               <div className="absolute inset-0">
                 <Image src="/images/mlec.webp" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" quality={80} className="object-cover object-center" />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#3D1A5C]/60 to-[#6B3AA0]/40" />
@@ -1404,24 +1334,9 @@ export default async function Home() {
             </Link>
           </div>
 
-          {/* Additional events row — dynamic from guides config */}
+          {/* Event guides row: guides whose event has ended drop off the day after (lib/guides-config.ts) */}
           {(() => {
-            const todayStr = new Date().toISOString().slice(0, 10);
-            // Drop event guides whose start date is more than 30 days past
-            const cutoffStr = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
-            const eventGuides = GUIDES
-              .filter((g) => g.status === "published" && g.category === "events" && g.slug !== "southport-year-of-culture-2026")
-              .filter((g) => !g.eventDate || g.eventDate >= cutoffStr)
-              .sort((a, b) => {
-                const aDate = a.eventDate ?? "9999-12-31";
-                const bDate = b.eventDate ?? "9999-12-31";
-                const aUpcoming = aDate >= todayStr;
-                const bUpcoming = bDate >= todayStr;
-                if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
-                if (aDate !== bDate) return aDate.localeCompare(bDate);
-                return b.seoPriority - a.seoPriority;
-              })
-              .slice(0, 7);
+            const eventGuides = currentEventGuides(GUIDES, guideTodayISO()).slice(0, 7);
             return (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                 {eventGuides.map((g) => {

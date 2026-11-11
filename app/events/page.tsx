@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, ArrowLeft, ExternalLink } from "lucide-react";
-import { getEventsByMonth } from "@/lib/southport-data";
+import { getEventsByMonth, isEventCurrent } from "@/lib/events-data";
 import { prisma } from "@/lib/prisma";
 import { Suspense } from "react";
 import MonthFilter from "./MonthFilter";
@@ -9,18 +9,18 @@ import MonthFilter from "./MonthFilter";
 export const revalidate = 3600; // Refresh hourly so Eventbrite sync appears
 
 export const metadata = {
-  title: "Southport Events 2026 | What's On This Weekend & All Year",
+  title: "What's On in Southport | Events Calendar",
   description:
-    "The full Southport events calendar for 2026 — The Open Championship, Flower Show, Air Show, Comedy Festival and more. Updated weekly by locals.",
+    "Upcoming events in Southport: dates, venues and links to each organiser's own page. Theatre, Christmas events, markets, shows and festivals.",
   alternates: { canonical: "https://www.southportguide.co.uk/events" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "Southport Events 2026 | What's On This Weekend & All Year",
-    description: "The full Southport events calendar for 2026 — The Open Championship, Flower Show, Air Show, Comedy Festival and more. Updated weekly by locals.",
+    title: "What's On in Southport | Events Calendar",
+    description: "Upcoming events in Southport: dates, venues and links to each organiser's own page.",
     url: "https://www.southportguide.co.uk/events",
-    images: [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630, alt: "Southport Events Calendar 2026" }],
+    images: [{ url: "https://www.southportguide.co.uk/og-default.png", width: 1200, height: 630, alt: "Southport events calendar" }],
   },
 };
 
@@ -44,9 +44,7 @@ function categoryClass(cat: string) {
 }
 
 function getTodayISO() {
-  const d = new Date();
-  d.setHours(0, 0, 0, 0);
-  return d.toISOString().slice(0, 10);
+  return new Date().toISOString().slice(0, 10);
 }
 
 function eventDayLabel(event: { isoDate: string; dayLabel: string }) {
@@ -71,7 +69,7 @@ type MergedEvent = {
   venue: string;
   category: string;
   emoji: string;
-  free: boolean;
+  free?: boolean;
   link: string;
   guideSlug?: string;
   description?: string;
@@ -103,6 +101,7 @@ function normaliseCategory(raw: string | null): string {
 }
 
 async function getMergedEventsByMonth(): Promise<Record<string, MergedEvent[]>> {
+  // Static events that have not yet ended (each drops off the day after it ends)
   const staticByMonth = getEventsByMonth();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -169,7 +168,7 @@ export default async function EventsPage({
     return firstDate(a) - firstDate(b);
   });
   const upcomingCount = Object.values(eventsByMonth).flat().filter(
-    (e) => new Date(e.endIsoDate ?? e.isoDate) >= new Date(new Date().setHours(0, 0, 0, 0))
+    (e) => isEventCurrent(e, getTodayISO())
   ).length;
 
   // Compute "when" date range
@@ -229,8 +228,8 @@ export default async function EventsPage({
   const eventsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Southport Events 2026",
-    description: "The complete guide to events in Southport in 2026 — from The Open Championship to the Flower Show, Comedy Festival and more.",
+    name: "Upcoming events in Southport",
+    description: "Upcoming events in Southport, with dates, venues and links to each organiser's page.",
     url: "https://www.southportguide.co.uk/events",
     numberOfItems: allMergedEvents.length,
     itemListElement: allMergedEvents.map((event, i) => ({
@@ -254,7 +253,7 @@ export default async function EventsPage({
               addressCountry: "GB",
             },
           },
-          isAccessibleForFree: event.free,
+          ...(event.free !== undefined ? { isAccessibleForFree: event.free } : {}),
           offers: {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
@@ -266,11 +265,6 @@ export default async function EventsPage({
           url: event.guideSlug
             ? `https://www.southportguide.co.uk/guides/${event.guideSlug}`
             : event.link.startsWith("http") ? event.link : `https://www.southportguide.co.uk${event.link}`,
-          organizer: {
-            "@type": "Organization",
-            name: "SouthportGuide.co.uk",
-            url: "https://www.southportguide.co.uk",
-          },
         },
     })),
   };
@@ -284,7 +278,7 @@ export default async function EventsPage({
         <div className="absolute inset-0">
           <Image
             src="/images/events-hero.webp"
-            alt="Southport events — crowds enjoying a summer event in the town"
+            alt="Crowds at a summer event in Southport"
             fill
             priority
             sizes="100vw"
@@ -303,14 +297,13 @@ export default async function EventsPage({
           </Link>
           <div className="flex items-center gap-3 mb-4">
             <CalendarDays className="w-8 h-8 text-[#C9A84C]" />
-            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">Updated weekly</p>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">Events calendar</p>
           </div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            What&apos;s On in Southport<br />
-            <span className="text-[#C9A84C]">2026 Events Calendar</span>
+            What&apos;s On in Southport
           </h1>
           <p className="text-white/60 text-lg max-w-xl">
-            {upcomingCount} upcoming events across the year, from free community events to world-class festivals. Updated regularly by locals.
+            {upcomingCount} upcoming events, each with a link to the organiser&apos;s own page. Dates can change, so check the link before you travel.
           </p>
         </div>
       </section>
@@ -388,11 +381,11 @@ export default async function EventsPage({
                                 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
                                   Free
                                 </span>
-                              ) : (
+                              ) : event.free === false ? (
                                 <span className="text-xs font-semibold text-[#1B2E4B]/50 bg-gray-100 px-2.5 py-1 rounded-full">
                                   Tickets
                                 </span>
-                              )}
+                              ) : null}
                             </div>
                           </div>
 
@@ -426,7 +419,7 @@ export default async function EventsPage({
         <div className="mt-16 bg-[#1B2E4B] rounded-3xl p-8 text-center">
           <h3 className="font-display text-2xl font-bold text-white mb-2">Got an event to add?</h3>
           <p className="text-white/60 mb-6">
-            We update this calendar weekly. If you run a Southport event that&apos;s not listed, get in touch.
+            If you run a Southport event that&apos;s not listed, get in touch.
           </p>
           <Link
             href="/contact"
