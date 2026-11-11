@@ -362,12 +362,49 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     },
   };
 
+  // A post about one dated event also describes the event (BlogPost.event)
+  const ev = post.event;
+  const eventLd = ev
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: ev.name,
+        ...(ev.description ? { description: ev.description } : {}),
+        startDate: ev.startDate,
+        endDate: ev.endDate,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: {
+          "@type": "Place",
+          name: `${ev.venue}, ${ev.locality}`,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: ev.locality,
+            postalCode: ev.postalCode,
+            addressCountry: "GB",
+          },
+        },
+        organizer: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
+        url: ev.url,
+        ...(post.image
+          ? { image: post.image.startsWith("http") ? post.image : `https://www.southportguide.co.uk${post.image}` }
+          : {}),
+        ...(ev.ticketUrl ? { offers: { "@type": "Offer", url: ev.ticketUrl } } : {}),
+      }
+    : null;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
+      {eventLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventLd) }}
+        />
+      )}
     <div className="min-h-screen bg-[#FAF8F5]">
       {/* Hero image */}
       <div className="relative h-72 md:h-[26rem] bg-[#1B2E4B]">

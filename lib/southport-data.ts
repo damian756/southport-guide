@@ -163,6 +163,24 @@ export interface BlogPost {
    */
   eventEndDate?: string;
   /**
+   * For a post about one dated event: the post page adds Event JSON-LD built
+   * from these facts, next to its Article JSON-LD. Dates are YYYY-MM-DD.
+   */
+  event?: {
+    name: string;
+    /** What the event is, in plain words (not a summary of the post). */
+    description?: string;
+    startDate: string;
+    endDate: string;
+    venue: string;
+    locality: string;
+    postalCode: string;
+    organizer: { name: string; url: string };
+    url: string;
+    /** Only when a ticket page exists. */
+    ticketUrl?: string;
+  };
+  /**
    * Set only for a paid, sponsored article (see /advertise). The post is then
    * labelled Sponsored, bylined "Sponsored by <name>" instead of Terry, has no
    * persona bio, and links to the sponsor carry rel="sponsored noopener".
@@ -1289,19 +1307,37 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: true,
   },
   {
-    // Sources (11 Nov 2026): southportagriculturalshow.co.uk home, /aboutus/, /tickets/, /whats-on/;
-    // ticketquarter.co.uk/Online/article/Southport-Agricultural-Show; victoriaparkevents.co.uk;
-    // merseyrail.org station pages (Southport, Birkdale); visitsouthport.com (Sefton) fireworks page.
-    // No photo: the repo holds no Victoria Park photo with a known source.
+    // Sources (11 Nov 2026): the organisers' email to us that evening; southportagriculturalshow.co.uk
+    // home, /aboutus/, /tickets/, /whats-on/; ticketquarter.co.uk/Online/article/Southport-Agricultural-Show
+    // (venue postcode PR8 1RX); merseyrail.org station pages (Southport, Birkdale); walking distances
+    // measured on OpenStreetMap's walking route planner (routing.openstreetmap.de).
+    // Images: the show's own logo and Llamapalooza artwork from southportagriculturalshow.co.uk
+    // (home page), fetched 11 Nov 2026, resized; credited on the page.
     slug: "southport-agricultural-show-2027",
-    title: "Southport Agricultural Show 2027: Dates, Tickets and What's On",
+    title: "Southport Agricultural Show 2027: Dates and What's On",
     excerpt:
-      "A new agricultural show comes to Victoria Park, Southport, on 17 and 18 April 2027. What the organisers have announced so far, including Llamapalooza, plus tickets and getting there.",
+      "The first Southport Agricultural Show, 17 and 18 April 2027 at Victoria Park: livestock, local produce and machinery, plus tickets and how to get there.",
     categorySlug: "events",
-    image: "",
+    image: "/images/agshow/southport-agricultural-show-logo-header.webp",
+    heroAlt:
+      "The Southport Agricultural Show logo in white on dark blue: an ear of wheat above curved fields in a circle, with the words Southport Agricultural Show, Est. 2027",
+    heroCaption: "The show's logo. Image: Southport Agricultural Show",
     date: "11 Nov 2026",
     featured: true,
     eventEndDate: "2027-04-18",
+    event: {
+      name: "Southport Agricultural Show",
+      description:
+        "The first Southport Agricultural Show: local produce, modern and vintage machinery, livestock and other animals, demonstrations, exhibits and entertainment over two days at Victoria Park, Southport.",
+      startDate: "2027-04-17",
+      endDate: "2027-04-18",
+      venue: "Victoria Park",
+      locality: "Southport",
+      postalCode: "PR8 1RX",
+      organizer: { name: "Southport Agricultural Show", url: "https://southportagriculturalshow.co.uk" },
+      url: "https://southportagriculturalshow.co.uk",
+      ticketUrl: "https://ticketquarter.co.uk/Online/article/Southport-Agricultural-Show",
+    },
   },
 ];
 

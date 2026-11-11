@@ -697,8 +697,8 @@ export const EVENTS: SouthportEvent[] = [
     free: false,
     // Links to our post about the show, which links on to the show's own site
     link: "/blog/southport-agricultural-show-2027",
-    description: "The first Southport Agricultural Show: agriculture, animals, local producers, food and family activities over two days at Victoria Park.",
-    source: "southportagriculturalshow.co.uk home and tickets pages, ticketquarter.co.uk, 11 Nov 2026",
+    description: "The first Southport Agricultural Show: local produce, modern and vintage machinery, livestock, demonstrations and entertainment over two days at Victoria Park.",
+    source: "organisers' email to us, southportagriculturalshow.co.uk home and tickets pages, ticketquarter.co.uk, 11 Nov 2026",
   },
   {
     title: "Sense and Sensibility",
