@@ -224,7 +224,7 @@ export default function LiveMusicPage() {
             <div className="grid sm:grid-cols-3 gap-4">
               {[
                 { name: "What's on in Southport", month: "Coming up", desc: "Theatre, Christmas events, markets and shows, with links to each organiser.", href: "/events" },
-                { name: "Southport Comedy Festival", month: "Annual", desc: "Comedy at Victoria Park. 2027 festival dates not yet announced.", href: "/guides/southport-comedy-festival" },
+                { name: "Southport Comedy Festival", month: "Annual", desc: "Comedy in the Festival Marquee, Victoria Park. The first 2027 shows are on 9, 12, 13 and 14 October 2027.", href: "/guides/southport-comedy-festival" },
                 { name: "Southport Bijou Cinema", month: "Year-round", desc: "Gig nights at Southport's independent cinema. Different to a pub night.", href: "/guides/southport-bijou-cinema" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">

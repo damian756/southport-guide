@@ -277,6 +277,11 @@ export const GUIDES: Guide[] = [
     eventDate: "2026-10-02",
     eventEndDate: "2026-10-18",
     annual: true,
+    nextEdition: {
+      dates: "the 2027 festival in the Festival Marquee at Victoria Park, with the first shows on 9, 12, 13 and 14 October 2027",
+      link: "https://southportcomedyfestival.com/whats-on",
+      source: 'southportcomedyfestival.com/whats-on, checked 11 Nov 2026: "Saturday 9th October 2027", "Tuesday 12th October 2027", "Wednesday 13th October 2027", "Thursday 14th October 2027", each "Venue: Festival Marquee, Victoria Park"',
+    },
     datePublished: "2026-03-19",
     dateUpdated: "2026-03-19",
     tags: ["comedy", "events", "october", "victoria-park", "tickets", "entertainment"],
