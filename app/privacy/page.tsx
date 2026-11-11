@@ -138,6 +138,7 @@ export default function PrivacyPage() {
               {[
                 { name: "Ahrefs (Analytics)", detail: "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored." },
                 { name: "Stripe", detail: "Payment processing for paid business listings. Subject to Stripe's own privacy policy." },
+                { name: "OpenStreetMap (maps)", detail: "Maps are drawn with OpenStreetMap tiles, which your browser loads from the OpenStreetMap Foundation's servers; they receive your IP address, browser type, our site's address and the map area you view. On listings without a map pin, Google Maps loads only if you click Show map." },
                 { name: "Vercel", detail: "Hosts the website. Pages are served from Vercel's network, and the site's server code, including the forms and the Business Hub, runs in Vercel's lhr1 region in London, UK." },
               ].map(({ name, detail }) => (
                 <div key={name} className="bg-[#FAF8F5] rounded-xl p-4">
