@@ -172,7 +172,7 @@ export function buildAutoReply(addr: Addresses): Email {
   const html = layout(
     "Thanks for getting in touch",
     `<p style="color: #1B2E4B; font-size: 16px;">Hello,</p>
-  <p style="color: #555; line-height: 1.7;">Thanks for getting in touch. We have received your message and will get back to you within one or two working days.</p>
+  <p style="color: #555; line-height: 1.7;">Thanks for getting in touch. We have received your message. We reply within one working day.</p>
   <p style="color: #555; line-height: 1.7;">In the meantime, the guide is at <a href="https://www.southportguide.co.uk" style="color: #C9A84C;">southportguide.co.uk</a>.</p>
   <p style="color: #1B2E4B; margin-top: 24px;">The SouthportGuide team</p>`,
   );

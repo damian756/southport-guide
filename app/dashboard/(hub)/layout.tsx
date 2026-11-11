@@ -39,7 +39,7 @@ export default async function HubLayout({
           No listing linked to your account
         </h1>
         <p className="text-gray-500 text-center max-w-md mb-8">
-          If you&apos;ve just claimed your listing, it can take up to 24 hours to link it to your account.
+          If you&apos;ve just claimed your listing: we reply within one working day, and link it to your account once the claim is approved.
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
           <Link

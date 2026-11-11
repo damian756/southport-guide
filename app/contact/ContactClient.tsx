@@ -90,7 +90,7 @@ export default function ContactClient({ initialSubject, initialMessage }: { init
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-0.5">Response time</p>
-                    <p className="text-[#1B2E4B] text-sm font-medium">1–2 business days</p>
+                    <p className="text-[#1B2E4B] text-sm font-medium">We reply within one working day.</p>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function ContactClient({ initialSubject, initialMessage }: { init
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 </div>
                 <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-2">Message sent!</h2>
-                <p className="text-gray-500 mb-6">We&apos;ll be in touch within 1–2 business days. Check your inbox for a confirmation.</p>
+                <p className="text-gray-500 mb-6">We reply within one working day. Check your inbox for a confirmation.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <button
                     onClick={() => { setForm(EMPTY); setStatus("idle"); }}
