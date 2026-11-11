@@ -49,7 +49,7 @@ export default function TermsPage() {
               SouthportGuide.co.uk is a visitor guide and local business directory for Southport, Merseyside, operated by <strong>Churchtown Media</strong>. The Site provides information about local businesses, events, and attractions for the benefit of visitors and residents.
             </p>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Contact: <a href="mailto:hello@churchtownmedia.co.uk" className="text-[#C9A84C] hover:underline">hello@churchtownmedia.co.uk</a>
+              Contact: <a href="mailto:hello@seftoncoast.network" className="text-[#C9A84C] hover:underline">hello@seftoncoast.network</a>
             </p>
           </section>
 
