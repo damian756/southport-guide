@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
+import { logSendError } from "@/lib/enquiry-email";
 import { getClaimRejectionHtml, FROM_EMAIL } from "@/lib/email-templates/claim-approval";
 import { authOptions } from "@/lib/auth";
 
@@ -43,15 +44,22 @@ export async function POST(
     },
   });
 
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: claim.email,
-    subject: "Update on your listing claim: SouthportGuide",
-    html: getClaimRejectionHtml({
-      name: claim.name,
-      businessName: claim.business.name,
-    }),
-  });
+  // Check Resend's answer: a refused send is logged (name and message only),
+  // not silent. The decision is already stored.
+  try {
+    const { error } = await resend.emails.send({
+      from: FROM_EMAIL,
+      to: claim.email,
+      subject: "Update on your listing claim: SouthportGuide",
+      html: getClaimRejectionHtml({
+        name: claim.name,
+        businessName: claim.business.name,
+      }),
+    });
+    if (error) logSendError("claims", "rejection", error);
+  } catch (err) {
+    logSendError("claims", "rejection", err);
+  }
 
   return NextResponse.json({ ok: true });
 }

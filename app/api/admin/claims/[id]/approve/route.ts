@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
+import { logSendError } from "@/lib/enquiry-email";
 import { getClaimApprovalHtml, FROM_EMAIL, BASE_URL } from "@/lib/email-templates/claim-approval";
 import { authOptions } from "@/lib/auth";
 
@@ -64,16 +65,23 @@ export async function POST(
 
   const activateUrl = `${BASE_URL}/claim-listing/activate?token=${token}`;
 
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: claim.user.email,
-    subject: `Your claim for ${claim.business.name} has been approved: SouthportGuide`,
-    html: getClaimApprovalHtml({
-      name: claim.name,
-      businessName: claim.business.name,
-      activateUrl,
-    }),
-  });
+  // Check Resend's answer: a refused send is logged (name and message only),
+  // not silent. The decision is already stored.
+  try {
+    const { error } = await resend.emails.send({
+      from: FROM_EMAIL,
+      to: claim.user.email,
+      subject: `Your claim for ${claim.business.name} has been approved: SouthportGuide`,
+      html: getClaimApprovalHtml({
+        name: claim.name,
+        businessName: claim.business.name,
+        activateUrl,
+      }),
+    });
+    if (error) logSendError("claims", "approval and set-password link", error);
+  } catch (err) {
+    logSendError("claims", "approval and set-password link", err);
+  }
 
   const webhookUrl = process.env.COMMAND_CENTRE_WEBHOOK_URL;
   const webhookSecret = process.env.COMMAND_CENTRE_WEBHOOK_SECRET;
