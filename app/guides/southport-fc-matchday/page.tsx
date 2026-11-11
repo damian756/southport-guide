@@ -61,7 +61,7 @@ const FAQS = [
   },
   {
     q: "What is there to do in Southport before or after the match?",
-    a: "More than most people expect. Lord Street is a genuinely impressive Victorian boulevard with independent shops and restaurants, about a 20-minute walk or short bus ride from Haig Avenue. Southport Market has street food. The beach and pier are worth seeing if you arrive early enough. If the weather is poor, there is The Atkinson on Lord Street (arts centre, gallery, café).",
+    a: "More than most people expect. Lord Street is a genuinely impressive Victorian boulevard with independent shops and restaurants, about a 20-minute walk or short bus ride from Haig Avenue. Southport Market has street food. The beach is a short walk away if you arrive early enough; the pier is closed for restoration. If the weather is poor, there is The Atkinson on Lord Street (arts centre, gallery, café).",
   },
   {
     q: "Is Southport FC in the National League?",

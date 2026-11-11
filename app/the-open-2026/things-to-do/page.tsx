@@ -45,7 +45,7 @@ const THINGS = [
     items: [
       { name: "Pleasureland Southport", desc: "A traditional seaside amusement park on the seafront. Rides, attractions, and food all in one site." },
       { name: "Southport Model Railway Village", desc: "A scale model railway exhibition." },
-      { name: "Botanic Gardens & Museum", desc: "Southport's botanic gardens in Churchtown are beautiful in July. The adjacent Atkinson arts centre runs exhibitions. A peaceful morning option if you want something away from the Open buzz." },
+      { name: "Botanic Gardens & Museum", desc: "Southport's botanic gardens in Churchtown are beautiful in July. The Atkinson arts centre on Lord Street runs exhibitions. A peaceful morning option if you want something away from the Open buzz." },
     ],
   },
   {
