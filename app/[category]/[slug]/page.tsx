@@ -9,6 +9,7 @@ import { ViewTracker } from "@/components/ViewTracker";
 import ReviewSection from "@/components/ReviewSection";
 import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
 import { postsForListing } from "@/lib/listing-posts";
+import { PRO_BADGE } from "@/lib/listing-order";
 
 type Props = {
   params: Promise<{ category: string; slug: string }>;
@@ -266,6 +267,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     description: string | null;
     shortDescription: string | null;
     listingTier: string;
+    hubTier: string;
     priceRange: string | null;
     openingHours: unknown;
     images: string[];
@@ -307,7 +309,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
         select: {
           id: true, name: true, address: true, postcode: true, lat: true, lng: true,
           phone: true, website: true, description: true, shortDescription: true,
-          listingTier: true, priceRange: true, openingHours: true, images: true,
+          listingTier: true, hubTier: true, priceRange: true, openingHours: true, images: true,
           claimed: true, rating: true, reviewCount: true, placeId: true,
           hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
           updatedAt: true, secondaryCategoryIds: true, tags: true,
@@ -537,6 +539,9 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                 <div className="p-6">
                   {/* Badges row */}
                   <div className="flex flex-wrap items-center gap-2 mb-3">
+                    {business.hubTier === "pro" && (
+                      <span className="bg-[#C9A84C]/10 text-[#8a6d1f] text-xs font-bold px-3 py-1 rounded-full border border-[#C9A84C]/30">{PRO_BADGE}</span>
+                    )}
                     <Link href={`/${category}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{cat.name}</Link>
                     {secondaryCategories.map((sc) => (
                       <Link key={sc.slug} href={`/${sc.slug}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{sc.name}</Link>

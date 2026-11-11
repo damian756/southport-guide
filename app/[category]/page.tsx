@@ -11,6 +11,7 @@ import { COLLECTIONS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
 import type { MapPin as MapPinType } from "@/components/CategoryMapTypes";
+import { orderListings, isPaidFeatured } from "@/lib/listing-order";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -278,6 +279,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const isFoodCat = FOOD_CATS.has(category);
   let businesses: BrowserBusiness[] = [];
   let boostedIds: string[] = [];
+  let paidFeaturedIds: string[] = [];
 
   try {
     const categoryRecord = await getCategoryRecord(category);
@@ -289,7 +291,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           ? prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage"
+                     images[1] AS "firstImage", "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY name ASC`
@@ -297,7 +299,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           ? prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage"
+                     images[1] AS "firstImage", "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
@@ -307,7 +309,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           ? prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage"
+                     images[1] AS "firstImage", "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
@@ -315,7 +317,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           : prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage"
+                     images[1] AS "firstImage", "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
@@ -324,13 +326,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       businesses = rawBusinesses;
       boostedIds = activeBoosts.map((b) => b.businessId);
 
-      const boostedSet = new Set(boostedIds);
-      if (boostedSet.size > 0 && sort !== "alpha" && sort !== "hygiene") {
-        businesses = [
-          ...businesses.filter((b) => boostedSet.has(b.id)),
-          ...businesses.filter((b) => !boostedSet.has(b.id)),
-        ];
+      // Paid places first in the default and Google orders: active boosts, then
+      // Pro listings in their primary category (lib/listing-order.ts).
+      if (sort !== "alpha" && sort !== "hygiene") {
+        businesses = orderListings(businesses, { categoryId: catId, boostedIds });
       }
+      paidFeaturedIds = businesses.filter((b) => isPaidFeatured(b, catId)).map((b) => b.id);
     }
   } catch { /* DB unavailable — page renders with empty listings */ }
 
@@ -339,10 +340,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ? businesses.filter((b) => matchesArea(b.address ?? "", b.postcode ?? "", area))
     : businesses;
 
-  // Paid Featured places showing (boosted). The admin-set listingTier is not
-  // paid for, so it does not count. Below two, the page shows one empty card
+  // Paid Featured places showing (boosted, or Pro in this primary category).
+  // The admin-set listingTier is not paid for, so it does not count. Below two, the page shows one empty card
   // pointing to Pro and boosts.
-  const featuredShowing = filteredBusinesses.filter((b) => boostedIds.includes(b.id)).length;
+  const featuredShowing = filteredBusinesses.filter(
+    (b) => boostedIds.includes(b.id) || paidFeaturedIds.includes(b.id)
+  ).length;
   const showFeaturedCard = FEATURED_CATEGORIES.includes(category) && featuredShowing < 2;
 
   // Map pins (only geolocated businesses)
@@ -351,6 +354,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     .map((b) => ({
       slug: b.slug, name: b.name, lat: b.lat!, lng: b.lng!,
       rating: b.rating, reviewCount: b.reviewCount, priceRange: b.priceRange,
+      featured: paidFeaturedIds.includes(b.id),
       address: b.address, category,
     }));
 
@@ -714,6 +718,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               currentSort={sort}
               currentArea={area}
               boostedBusinessIds={boostedIds}
+              featuredBusinessIds={paidFeaturedIds}
             />
 
           </div>

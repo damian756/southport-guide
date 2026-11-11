@@ -33,6 +33,9 @@ export type BrowserBusiness = {
   lat: number | null;
   lng: number | null;
   firstImage: string | null;
+  /** "pro" while a Pro subscription is active (Stripe sets "free" when it lapses or is cancelled) */
+  hubTier?: string | null;
+  categoryId?: string | null;
 };
 
 type SortOption = { key: string; label: string };
@@ -413,23 +416,14 @@ export default function CategoryBrowser({
                       <span className="text-5xl opacity-30 select-none">{emoji}</span>
                     </div>
                   )}
-                  {(isStandardFeatured || isBoosted) && (
+                  {(isBoosted || isFeatured) && (
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                      {isStandardFeatured && (
-                        <span className="text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                          ✦ Featured
-                        </span>
-                      )}
-                      {isBoosted && !isStandardFeatured && (
-                        <>
-                          <span className="text-[10px] font-semibold bg-white/90 text-[#1B2E4B] px-2.5 py-1 rounded-full shadow-sm">
-                            Featured This Week
-                          </span>
-                          <span className="text-[10px] font-medium bg-[#1B2E4B]/80 text-white px-2 py-1 rounded-full shadow-sm">
-                            Paid placement
-                          </span>
-                        </>
-                      )}
+                      <span className="text-[10px] font-semibold bg-white/90 text-[#1B2E4B] px-2.5 py-1 rounded-full shadow-sm">
+                        {isBoosted ? "Featured This Week" : "Featured"}
+                      </span>
+                      <span className="text-[10px] font-medium bg-[#1B2E4B]/80 text-white px-2 py-1 rounded-full shadow-sm">
+                        Paid placement
+                      </span>
                     </div>
                   )}
                 </div>
