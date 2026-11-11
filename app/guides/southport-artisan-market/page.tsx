@@ -32,7 +32,7 @@ const FAQS = [
   { q: "What is sold at the Southport Artisan Market?", a: "The market typically features 50+ stalls selling handmade crafts, artwork, jewellery, ceramics, candles, food and drink producers, plants, vintage items, and local artisan goods. The mix of stalls changes each month. Expect to spend time browsing, it is not a quick visit." },
   { q: "Is the Southport Artisan Market dog friendly?", a: "Dogs on leads are welcome at the outdoor sections of the market. The indoor Southport Market hall has its own rules on dogs, check with individual vendors. Generally, well-behaved dogs on leads are tolerated in the outdoor areas." },
   { q: "Where can I park for the Southport Artisan Market?", a: "Southport Market is just off Lord Street in the town centre. The nearest car parks are Tulketh Street multi-storey (PR8 1EW, 5 min walk) and Eastbank Street (PR8 1DQ, 7 min walk). Lord Street itself has some on-street parking. Arrive early on busy market days as town centre parking fills up." },
-  { q: "Where can I eat at or near the Southport Artisan Market?", a: "Southport Market itself has a permanent food hall with several independent food operators including coffee, street food, and dessert traders. These run every day the market is open, not just on artisan market days. After browsing the artisan stalls, the food hall is the obvious choice." },
+  { q: "Where can I eat at or near the Southport Artisan Market?", a: "Southport Market itself has a permanent food hall with several independent food operators including coffee, street food, and dessert traders. These run every day the market is open, not just on artisan market days. After browsing the artisan stalls, the food hall is next door." },
 ];
 
 const FAQ_LD = {
@@ -55,7 +55,7 @@ export default function SouthportArtisanMarketPage() {
         <div className="flex flex-col md:flex-row md:min-h-[72vh]">
           {/* Poster */}
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
-            <Image src="/images/guides/southport-artisan-market.jpg" alt="Southport Artisan Market — 50+ independent makers at Southport Market" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+            <Image src="/images/guides/southport-artisan-market.jpg" alt="Southport Artisan Market: 50+ independent makers at Southport Market" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
           </div>
           {/* Text */}
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">

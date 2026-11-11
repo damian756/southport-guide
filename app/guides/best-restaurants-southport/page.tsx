@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, ChevronRight, ArrowRight, Utensils, Star, Clock } from "lucide-react";
+import { MapPin, ChevronRight, ArrowRight, Utensils, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     "best restaurants Southport, restaurants in Southport, where to eat Southport, Southport dining, Bistrot Veronique Southport, V-Cafe Southport, restaurants Lord Street Southport",
   alternates: { canonical: `${BASE_URL}/guides/best-restaurants-southport` },
   openGraph: {
-    title: "Best Restaurants in Southport 2026 | Honest Local Guide | SouthportGuide",
+    title: "Restaurants in Southport: A Guide by Area | SouthportGuide",
     description:
-      "The best restaurants in Southport. Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
+      "Restaurants in Southport by area: Lord Street, the town centre, Birkdale Village, the seafront and Churchtown, with booking tips for busy weekends.",
     url: `${BASE_URL}/guides/best-restaurants-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -28,20 +28,20 @@ export const metadata: Metadata = {
 
 const FAQS = [
   {
-    q: "What is the best restaurant in Southport?",
-    a: "Bistrot Véronique on Scarisbrick New Road is consistently the most discussed fine dining option in Southport. French bistro cooking, proper wine list, booking essential. For a less formal option that still delivers, V-Café on Lord Street has a loyal following. The restaurant scene in Birkdale Village has also improved significantly over the last few years.",
+    q: "What kinds of restaurants are there in Southport?",
+    a: "Southport has French, Italian, Thai and modern European restaurants, hotel dining rooms, pubs and casual seafront food. Bistrot Véronique on Scarisbrick New Road is a French bistro with a wine list, and booking is essential. V-Café on Lord Street serves modern European food. Birkdale Village has its own cluster of restaurants on Liverpool Road.",
   },
   {
     q: "Do I need to book restaurants in Southport?",
-    a: "For the better restaurants, yes, especially Friday and Saturday evenings. Bistrot Véronique in particular books up well in advance at weekends. During Open week (July) and Flower Show weekend (August), the entire town's restaurant capacity gets stretched, book as early as possible for those dates.",
+    a: "For many restaurants, yes, especially Friday and Saturday evenings. Bistrot Véronique in particular books up well in advance at weekends. During Open week (July) and Flower Show weekend (August), the entire town's restaurant capacity gets stretched, book as early as possible for those dates.",
   },
   {
-    q: "Is Southport good for dining?",
-    a: "Better than its reputation suggests. The top end is genuinely good. Bistrot Véronique competes with anything in Liverpool. The mid-range has improved considerably in the last decade, particularly in Birkdale Village. The weakest area is the area immediately around the seafront, which skews more toward casual eating.",
+    q: "Where are most of Southport's restaurants?",
+    a: "Most are on or near Lord Street and in the town centre, with another cluster on Liverpool Road in Birkdale Village. The area immediately around the seafront leans toward casual eating: beach cafés, fish and chips and pub food.",
   },
   {
     q: "Where should I eat near Southport Beach?",
-    a: "The seafront has more casual options, beach cafés, fish and chips, and a few pub-grills. For a proper meal, head inland to Lord Street or Birkdale Village. It's 15–20 minutes' walk from the beach to the better restaurants. If you're combining beach and dinner, factor in the walk or a short drive.",
+    a: "The seafront has more casual options, beach cafés, fish and chips, and a few pub-grills. For a sit-down meal, head inland to Lord Street or Birkdale Village. It's 15–20 minutes' walk from the beach to the Lord Street restaurants. If you're combining beach and dinner, factor in the walk or a short drive.",
   },
   {
     q: "Are there good Indian restaurants in Southport?",
@@ -49,26 +49,18 @@ const FAQS = [
   },
   {
     q: "Are there restaurants suitable for children in Southport?",
-    a: "Most of Southport's restaurants are family-friendly, particularly at lunch. The more formal end (Bistrot Véronique, for example) is better as an adult evening option. Pizza and pasta options, the seafront casual dining spots, and the Birkdale Village end of the market all work well with children.",
+    a: "Most of Southport's restaurants are family-friendly, particularly at lunch. The more formal end (Bistrot Véronique, for example) suits an adult evening out. Pizza and pasta options, the seafront casual dining spots, and the Birkdale Village end of the market all work well with children.",
   },
 ];
 
 const RESTAURANTS = [
   {
-    name: "Bistrot Véronique",
-    area: "Town Centre",
-    style: "French Bistro",
-    price: "££££",
-    bookAhead: true,
-    notes: "The best fine dining option in Southport. Proper French bistro cooking, serious wine list. On Scarisbrick New Road. Book at least a week ahead for weekend evenings.",
-  },
-  {
-    name: "V-Café",
+    name: "Don Luigi",
     area: "Lord Street",
-    style: "Modern European",
-    price: "£££",
-    bookAhead: true,
-    notes: "A Lord Street institution with a loyal following. Good for a proper lunch or dinner. Smart casual. Booking recommended for evenings.",
+    style: "Italian",
+    price: "££",
+    bookAhead: false,
+    notes: "Italian restaurant on Lord Street, for a family dinner or a casual evening.",
   },
   {
     name: "The Vincent Hotel Restaurant",
@@ -76,7 +68,23 @@ const RESTAURANTS = [
     style: "Hotel Restaurant / Contemporary",
     price: "£££",
     bookAhead: false,
-    notes: "The restaurant in The Vincent Hotel on Lord Street. Good quality, reliable execution. Works well for business meals and special occasions.",
+    notes: "The restaurant in The Vincent Hotel on Lord Street. Suits business meals and special occasions.",
+  },
+  {
+    name: "V-Café",
+    area: "Lord Street",
+    style: "Modern European",
+    price: "£££",
+    bookAhead: true,
+    notes: "Modern European restaurant on Lord Street, serving lunch and dinner. Smart casual. Booking advised for evenings.",
+  },
+  {
+    name: "Bistrot Véronique",
+    area: "Town Centre",
+    style: "French Bistro",
+    price: "££££",
+    bookAhead: true,
+    notes: "French bistro cooking and a wine list, on Scarisbrick New Road. Book at least a week ahead for weekend evenings.",
   },
   {
     name: "Thai Terrace",
@@ -84,7 +92,7 @@ const RESTAURANTS = [
     style: "Thai",
     price: "££",
     bookAhead: true,
-    notes: "Consistently good Thai cooking in Southport. Popular and gets busy, worth booking. Good value relative to the quality.",
+    notes: "Thai restaurant in the town centre. It gets busy, so booking is advised.",
   },
   {
     name: "Birkdale Village restaurants",
@@ -92,24 +100,16 @@ const RESTAURANTS = [
     style: "Various",
     price: "££–£££",
     bookAhead: true,
-    notes: "The village has a growing restaurant scene, check what's current on Liverpool Road. The mix changes but quality has been improving. Booking advised for Friday and Saturday evenings.",
-  },
-  {
-    name: "Don Luigi",
-    area: "Lord Street",
-    style: "Italian",
-    price: "££",
-    bookAhead: false,
-    notes: "Reliable Italian on Lord Street. Good for a family dinner or casual evening. Consistent over the years.",
+    notes: "The village has its own restaurants on Liverpool Road, and the mix changes, so check what's current. Booking advised for Friday and Saturday evenings.",
   },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Best Restaurants in Southport. Honest Local Guide",
+  name: "Restaurants in Southport: A Guide by Area",
   description:
-    "The best restaurants in Southport, ranked honestly by locals. Lord Street, Birkdale Village, and the places most visitors never find.",
+    "A guide to restaurants in Southport by area: Lord Street, the town centre, Birkdale Village, the seafront and Churchtown.",
   url: `${BASE_URL}/guides/best-restaurants-southport`,
 };
 
@@ -135,7 +135,7 @@ export default async function BestRestaurantsSouthportGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/categories/restaurants.webp"
-            alt="Best restaurants in Southport"
+            alt="Restaurants in Southport"
             fill
             priority
             sizes="100vw"
@@ -150,16 +150,16 @@ export default async function BestRestaurantsSouthportGuidePage() {
             Food &amp; Drink Guide
           </div>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-4 max-w-3xl">
-            Best Restaurants in Southport
+            Restaurants in Southport: A Guide by Area
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-            Terry&apos;s honest guide. No sponsored placements. Lord Street, Birkdale Village,
-            and the places most visitors never find.
+            Where to eat by area: Lord Street, the town centre, Birkdale Village,
+            the seafront and Churchtown.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-              <Star className="w-4 h-4 text-[#C9A84C]" />
-              <span>Top pick: Bistrot Véronique</span>
+              <MapPin className="w-4 h-4 text-[#C9A84C]" />
+              <span>Lord Street, town centre, Birkdale</span>
             </div>
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <Clock className="w-4 h-4 text-[#C9A84C]" />
@@ -173,12 +173,12 @@ export default async function BestRestaurantsSouthportGuidePage() {
       <div className="container mx-auto px-4 max-w-4xl py-14">
 
         <section className="mb-14">
-          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Honest Assessment</h2>
+          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Restaurant Scene</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport&apos;s restaurant scene is better than its reputation. The top end competes with anything in Liverpool. The mid-range has improved significantly over the last decade. The weakest area is the zone immediately around the seafront, which skews heavily toward casual eating and pub food.
+            Southport has restaurants at every level, from fine dining to casual seafront food. Most of the sit-down restaurants are on or near Lord Street and in Birkdale Village. The area immediately around the seafront leans toward casual eating and pub food.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The places worth knowing about are mostly on or near Lord Street, in Birkdale Village, or on the side streets running off the main drag. They don&apos;t advertise much. Some have been here for decades. Most visitors stumble on them or don&apos;t find them at all.
+            As well as Lord Street itself, look along the side streets running off the main drag. Some of the restaurants there have been open for decades.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
@@ -190,16 +190,15 @@ export default async function BestRestaurantsSouthportGuidePage() {
 
         {/* Restaurant table */}
         <section className="mb-14">
-          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Restaurants Worth Knowing</h2>
+          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Restaurants Around Town</h2>
           <div className="space-y-4">
-            {RESTAURANTS.map((r, i) => {
+            {RESTAURANTS.map((r) => {
               const biz = bizLinks[r.name];
               return (
               <div key={r.name} className="bg-white rounded-2xl border border-gray-100 p-6">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[#C9A84C] font-black text-sm">#{i + 1}</span>
                       {biz ? (
                         <Link href={bizHref(biz)} className="font-display font-bold text-[#1B2E4B] text-lg hover:text-[#C9A84C] transition-colors underline underline-offset-2 decoration-[#C9A84C]/40">
                           {r.name}
@@ -229,7 +228,7 @@ export default async function BestRestaurantsSouthportGuidePage() {
             {[
               {
                 area: "Lord Street & Town Centre",
-                notes: "The main concentration of restaurants. Mix of quality, the better independents are on or just off Lord Street. Best for an evening out. Walk the length first and see what appeals.",
+                notes: "The main concentration of restaurants, with independents on or just off Lord Street. Walk the length first and see what appeals.",
               },
               {
                 area: "Birkdale Village",
@@ -294,7 +293,7 @@ export default async function BestRestaurantsSouthportGuidePage() {
           <div className="flex flex-wrap gap-3">
             {[
               { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
-              { href: "/guides/best-cafes-southport", label: "Best Cafés" },
+              { href: "/guides/best-cafes-southport", label: "Cafés in Southport" },
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
               { href: "/guides/lord-street", label: "Lord Street" },
               { href: "/restaurants", label: "Restaurant Listings" },

@@ -301,7 +301,7 @@ export default function LordStreetGuidePage() {
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
               { href: "/guides/churchtown", label: "Churchtown" },
               { href: "/guides/parking-southport", label: "Parking Guide" },
-              { href: "/guides/best-restaurants-southport", label: "Best Restaurants" },
+              { href: "/guides/best-restaurants-southport", label: "Restaurants in Southport" },
               { href: "/property", label: "Southport House Prices" },
             ].map(({ href, label }) => (
               <Link

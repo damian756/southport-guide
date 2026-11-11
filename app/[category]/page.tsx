@@ -20,7 +20,7 @@ type Props = {
 // ── Category config ──────────────────────────────────────────────────────────
 
 const THEMES: Record<string, { gradient: string; accent: string; emoji: string; tagline: string; heroPos: string }> = {
-  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", accent: "#C94B3B", emoji: "🍽️", tagline: "The best places to eat in Southport", heroPos: "center 75%" },
+  restaurants:      { gradient: "from-[#8B2635] to-[#C94B3B]", accent: "#C94B3B", emoji: "🍽️", tagline: "Places to eat in Southport", heroPos: "center 75%" },
   hotels:           { gradient: "from-[#1B2E4B] to-[#2A4A73]", accent: "#1B2E4B", emoji: "🏨", tagline: "Where to stay in Southport", heroPos: "center" },
   "bars-nightlife": { gradient: "from-[#3D1A5C] to-[#6B3AA0]", accent: "#5B2D8A", emoji: "🍺", tagline: "Pubs, bars and nightlife in Southport", heroPos: "center 5%" },
   cafes:            { gradient: "from-[#6B3A1F] to-[#A06040]", accent: "#8B5E3C", emoji: "☕", tagline: "Great coffee, cafes and tea rooms", heroPos: "center 35%" },
@@ -43,11 +43,11 @@ const CAT_ORDER = [
 const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
   "restaurants": [
     { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
-    { href: "/guides/best-restaurants-southport", label: "Best Restaurants Guide" },
+    { href: "/guides/best-restaurants-southport", label: "Restaurants by Area" },
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
   ],
   "cafes": [
-    { href: "/guides/best-cafes-southport", label: "Best Cafés Guide" },
+    { href: "/guides/best-cafes-southport", label: "Cafés by Area" },
     { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
     { href: "/guides/lord-street", label: "Lord Street" },
   ],
@@ -131,29 +131,29 @@ const CATEGORY_COLLECTIONS: Record<string, string[]> = {
 
 const CATEGORY_CONTENT: Record<string, string[]> = {
   "restaurants": [
-    "Lord Street is the obvious starting point for eating out in Southport, it runs through the town centre and has a good mix of options at most price points. Bistrot Verite in Birkdale is the one that gets mentioned most when people want a proper meal, and it's worth booking ahead. Bistro Bar Med and The Vincent are solid choices if you want something central.",
+    "Lord Street runs through the town centre and has restaurants at most price points, and Birkdale Village has more on Liverpool Road.",
     "The town has more independent restaurants than you'd expect, particularly on and around Lord Street and Chapel Street. If you're after Indian or Asian food, you've got a decent range and most places are very reasonably priced.",
     "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
   ],
   "hotels": [
-    "Southport has a proper range of hotels. The Scarisbrick Hotel is the Victorian option with character. It's been on Lord Street since 1845 and looks the part. The Vincent is the contemporary choice, modern and popular with weekend breaks. The Metropole on the Promenade is a solid mid-range option with sea views. For reliability and a fixed price, Premier Inn operates two Southport locations (one near the station, one near Ocean Plaza).",
+    "Southport has a range of places to stay: hotels on Lord Street and the Promenade, B&Bs and guest houses, and budget chain hotels. The listings below show where each one is.",
     "For a quieter stay, Churchtown is worth looking at. It's the old village end of Southport, calmer than the seafront, about 10 minutes from town by car. Good pubs, a proper village feel, and B&Bs that are better value than the seafront equivalents.",
     "Prices: a decent double runs £60–80 per night midweek, £100–150 at weekends, and significantly more during the big summer events such as the Flower Show and the Air Show. If you're visiting in peak season and haven't sorted accommodation, go soon.",
   ],
   "bars-nightlife": [
-    "Southport's nightlife is mostly concentrated around Neville Street and the town centre, it's a proper night-out town when it gets going. Sinclairs is one of the long-standing locals' favourites. Thatch and Thistle is popular too, particularly earlier in the evening.",
+    "Southport's nightlife is mostly around Neville Street and the town centre, and it gets busy at weekends.",
     "Lord Street has a good run of bars and restaurants that work well for a lower-key evening, cocktails and food rather than clubs. If you want to keep going later, the town centre has options.",
     "Worth knowing: weekend nights in Southport get properly busy in summer. If you're visiting in peak season and want somewhere specific, arrive early or book where you can.",
   ],
   "cafes": [
-    "Southport does good coffee. There are independent cafes along Lord Street and in the side streets around it, worth exploring if you're spending a day in town. Cibo on Lord Street comes up regularly as a local favourite.",
-    "Over at the seafront end, there are plenty of spots to grab a coffee with a sea view, quality varies but the setting makes up for a lot.",
+    "Southport does good coffee. There are independent cafes along Lord Street and in the side streets around it, worth exploring if you're spending a day in town.",
+    "Over at the seafront end, there are places to get a coffee with a sea view.",
     "For tea rooms and a slower pace, Churchtown village is worth the short drive, it's got that quieter, more village feel that can be hard to find in the town centre on a busy day.",
   ],
   "attractions": [
     "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier, the second longest in England, is closed while a £20 million restoration is carried out, but the Promenade and Marine Lake around it are free to walk.",
-    "Adventure Coast Southport (formerly Pleasureland) is the obvious family draw, fairground rides, free entry with pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
-    "The Atkinson on Lord Street is the arts centre and local museum, free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
+    "Adventure Coast Southport (formerly Pleasureland) has fairground rides, with free entry and pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
+    "The Atkinson on Lord Street is the arts centre and local museum, with free entry to the galleries and a café.",
   ],
   "beaches-parks": [
     "Southport Beach is broad, sandy, and free, you can drive onto part of it, which is very useful if you've got kids and a lot of kit. The sea goes out a long way at low tide; it's not always swimmable, but as a beach for walking and messing about on, it's brilliant.",
@@ -161,14 +161,14 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "The Marine Lake is a calmer alternative to the open beach, separated from the sea by the promenade, much flatter water. Good for paddleboarding and kayaking; the Watersports Centre is based there.",
   ],
   "golf": [
-    "Southport is one of the best places to play golf in England, no exaggeration. Royal Birkdale is the headline act, one of the Open Championship venues, and hosted The Open again in July 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
-    "Formby Golf Club is about 15 minutes south and considered one of the finest heathland links courses in the country, slightly more straightforward to book as a visitor than Royal Birkdale. Southport Old Links, Hillside Golf Club, and Southport & Ainsdale are all nearby and all serious courses.",
+    "Royal Birkdale is one of The Open Championship's venues and hosted The Open in July 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
+    "Formby Golf Club is about 15 minutes south. Southport Old Links, Hillside Golf Club and Southport & Ainsdale are all nearby.",
     "If you're a golfer visiting the area, this stretch of the Sefton Coast is genuinely exceptional and underrated by most people outside the golfing community. Plan a few days and work your way around them.",
   ],
   "shopping": [
     "Lord Street is the main shopping strip, a long Victorian boulevard with covered arcades, a mix of independents and some chains. It's one of the nicest high streets in the north west, worth a stroll even if you're not buying anything.",
-    "The Wayfarers Arcade is the best of the covered arcades, independent shops, antiques, a bit eclectic. Worth a browse on a rainy afternoon. The Market is useful for fresh food and local produce.",
-    "Cambridge Walks and the side streets off Lord Street are where you'll find most of the boutiques and independents. Hirshmans on Chapel Street has been going for years and is reliable for pharmacy and travel essentials.",
+    "Wayfarers Arcade is one of the covered arcades, with independent shops. The Market is useful for fresh food and local produce.",
+    "Cambridge Walks and the side streets off Lord Street are where you'll find most of the boutiques and independents.",
   ],
   "wellness": [
     "Southport has a decent number of salons, spas and wellness places, mostly dotted around the town centre and Birkdale. If you're staying for a few days, booking a treatment is straightforward. The Vincent Hotel has spa facilities if you'd rather keep it all in one place.",
@@ -488,17 +488,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 </p>
                 <p>
                   B&amp;Bs and guest houses are scattered across the residential streets between Lord Street and the seafront.
-                  They&apos;re often better value than the hotels, typically £60-80 per night midweek. Some are excellent,
-                  some are tired. Check reviews carefully and look for recent ones.
+                  They&apos;re often better value than the hotels, typically £60-80 per night midweek. Check recent reviews before you book.
                 </p>
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 bg-[#FAF8F5]">
               {[
-                { icon: MapPinIcon, label: "Best for Lord Street", value: "The Scarisbrick, The Vincent" },
-                { icon: Bed, label: "Best budget", value: "Premier Inn, B&Bs off Lord St" },
-                { icon: CalendarDays, label: "Best for golfers", value: "Birkdale village" },
+                { icon: MapPinIcon, label: "On Lord Street", value: "The Scarisbrick, The Vincent" },
+                { icon: Bed, label: "Budget", value: "Premier Inn, B&Bs off Lord St" },
+                { icon: CalendarDays, label: "For golfers", value: "Birkdale village" },
                 { icon: PoundSterling, label: "Midweek doubles from", value: "~£60/night" },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="px-5 py-4 text-center">

@@ -82,7 +82,7 @@ export default function BirkdaleVillageGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/birkdale-village.webp"
-            alt="Birkdale Village — independent boutique shopfronts with hanging flower baskets"
+            alt="Birkdale Village: independent boutique shopfronts with hanging flower baskets"
             fill
             sizes="100vw"
             quality={90}
@@ -185,7 +185,7 @@ export default function BirkdaleVillageGuidePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { emoji: "👗", category: "Fashion & Clothing", detail: "Independent fashion boutiques with a quality-over-quantity approach. Mix of women&apos;s fashion, accessories, and lifestyle clothing that you won&apos;t find in any department store. The buyers for these shops generally know what they&apos;re doing." },
-              { emoji: "🏡", category: "Homeware & Gifts", detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present, not the standard Waterstones-adjacent gift shop fare. Several have strong local maker representation." },
+              { emoji: "🏡", category: "Homeware & Gifts", detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present, rather than standard high street gift fare. Several have strong local maker representation." },
               { emoji: "💎", category: "Jewellery", detail: "Independent jewellers with own-design ranges and quality vintage pieces. Better range and more interesting pieces than typical high street jewellers, at prices that are often more reasonable than you&apos;d expect." },
               { emoji: "🥩", category: "Food & Artisan Produce", detail: "A proper butcher, a bakery, and specialist food shops. The butcher in particular has a following, the kind of place where the staff know where the meat comes from and will tell you if you ask. Worth the visit even if you&apos;re not buying clothes." },
               { emoji: "📚", category: "Books & Stationery", detail: "A small but well-curated independent bookshop. The kind of place where the stock reflects genuine editorial choices rather than algorithms. Worth spending time in." },
@@ -229,7 +229,7 @@ export default function BirkdaleVillageGuidePage() {
             {[
               { icon: Utensils, type: "Restaurants", color: "from-[#1B2E4B] to-[#2A4A73]", highlights: ["Independent bistro dining, the village avoids chains", "Book ahead for Friday and Saturday evenings", "Open week (The Open Championship, July) gets very busy, essential to book", "Cuisine mix: modern European, Italian, and international", "Most restaurants are smaller (30–60 covers), book early for groups"] },
               { icon: Coffee, type: "Cafés & Coffee", color: "from-[#1A4020] to-[#2E6830]", highlights: ["The village has several quality independent cafés", "Morning coffee stop before exploring the village is a well-worn routine", "Proper flat whites, not supermarket-style espresso machines", "Food menus lean toward quality over volume, good scones, good lunch", "Generally quieter and easier to get a table than Lord Street equivalents"] },
-              { icon: Flag, type: "Pubs & Bars", color: "from-[#7A1A1A] to-[#B02020]", highlights: ["The Birkdale Arms is the main pub in the village, proper ale, no pretensions", "Several traditional pubs within walking distance", "Village pubs tend to welcome dogs, ask on arrival", "Post-round drinks culture strong during Open week", "Pre-dinner drinks are better here than town centre for a quieter start"] },
+              { icon: Flag, type: "Pubs & Bars", color: "from-[#7A1A1A] to-[#B02020]", highlights: ["The Birkdale Arms is a traditional pub in the village, serving ale", "Several traditional pubs within walking distance", "Village pubs tend to welcome dogs, ask on arrival", "Post-round drinks culture strong during Open week", "Pre-dinner drinks are better here than town centre for a quieter start"] },
             ].map((item) => (
               <div key={item.type} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className={`bg-gradient-to-r ${item.color} px-6 py-5 flex items-center gap-3`}>
@@ -264,7 +264,7 @@ export default function BirkdaleVillageGuidePage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-white/70 text-base leading-relaxed mb-4">
-                  Royal Birkdale Golf Club, one of the finest links courses in England, host of The Open Championship
+                  Royal Birkdale Golf Club, host of The Open Championship
                   eleven times, is approximately 10 minutes&apos; walk from the village centre. The two are neighbours
                   in the most literal sense.
                 </p>
@@ -277,7 +277,6 @@ export default function BirkdaleVillageGuidePage() {
               <div className="space-y-4">
                 {[
                   { label: "Walking distance to club", value: "10 minutes" },
-                  { label: "Royal Birkdale ranking", value: "World Top 25" },
                   { label: "Open Championships hosted", value: "11 times" },
                   { label: "Next Open at Birkdale", value: "July 2026" },
                 ].map((item) => (

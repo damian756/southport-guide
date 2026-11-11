@@ -74,7 +74,7 @@ const FAQS = [
   },
   {
     q: "Will restaurants and pubs in Southport be busy during Open week?",
-    a: "Yes. Extremely busy. Book restaurants in advance, particularly in Birkdale village and along Lord Street. Evening bookings from Thursday onwards are the hardest to secure. See our restaurants guide for the best options, and book now.",
+    a: "Yes. Extremely busy. Book restaurants in advance, particularly in Birkdale village and along Lord Street. Evening bookings from Thursday onwards are the hardest to secure. See our restaurants guide for options, and book now.",
   },
 ];
 
@@ -299,7 +299,7 @@ export default function TheOpen2026Page() {
                 Royal Birkdale: One of the World&apos;s Great Links Courses
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Royal Birkdale Golf Club sits in the sand dunes of Southport, Merseyside, less than two miles from the town centre. Founded in 1889 and awarded its Royal charter in 1951, it is consistently ranked among the finest links courses on the planet, and has hosted The Open Championship more times than almost any other venue.
+                Royal Birkdale Golf Club sits in the sand dunes of Southport, Merseyside, less than two miles from the town centre. Founded in 1889 and awarded its Royal charter in 1951, it has hosted The Open Championship more times than almost any other venue.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
                 What makes Birkdale distinctive is its layout. Unlike many links courses, the fairways run through the valleys between the dunes rather than over the tops of them. The result is a course where the wind matters enormously, natural hollows shape every shot, and the rough (thick, punishing willow scrub) demands precision from the first tee to the 72nd hole.
@@ -578,7 +578,7 @@ export default function TheOpen2026Page() {
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Planning a Sefton Coast Visit</p>
             <h2 className="font-display text-3xl font-bold text-white mb-4">The Open is over. Southport is still here.</h2>
             <p className="text-white/70 leading-relaxed mb-4 max-w-2xl">
-              The week is done. But if The Open brought you to Southport for the first time, the town is worth coming back to. Royal Birkdale takes visitor tee times outside championship setup weeks. Hillside, right next door, is one of England&apos;s finest links courses and significantly easier to book.
+              The week is done. But if The Open brought you to Southport for the first time, the town is worth coming back to. Royal Birkdale takes visitor tee times outside championship setup weeks. Hillside, right next door, is also a links course and is often easier to book.
             </p>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl">
               Summer availability in Southport and Formby is much better outside Open week, from a weekend break

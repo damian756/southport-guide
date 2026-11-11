@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, ChevronRight, ArrowRight, Coffee, Clock, Star } from "lucide-react";
+import { MapPin, ChevronRight, ArrowRight, Coffee, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     "best cafes Southport, coffee shops Southport, independent cafes Southport, Southport coffee, where to have coffee Southport, tea rooms Southport",
   alternates: { canonical: `${BASE_URL}/guides/best-cafes-southport` },
   openGraph: {
-    title: "Best Cafés in Southport 2026 | Independent Coffee Guide | SouthportGuide",
+    title: "Cafés in Southport: A Guide by Area | SouthportGuide",
     description:
-      "The best independent cafés in Southport, proper coffee, food worth ordering, and the places locals actually use. Terry's guide.",
+      "Cafés and coffee shops in Southport by area: Lord Street, King Street, the market, Churchtown and Birkdale Village, with tips for brunch, laptops, dogs and children.",
     url: `${BASE_URL}/guides/best-cafes-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -28,58 +28,57 @@ export const metadata: Metadata = {
 
 const FAQS = [
   {
-    q: "Where is the best coffee in Southport?",
-    a: "The best independent coffee in Southport is found in the cafés on or around Lord Street and in Birkdale Village. The independent places consistently outperform the chains for espresso quality and atmosphere. Several have been here for years and have their own loyal customer base.",
+    q: "Where are the independent cafés in Southport?",
+    a: "Most are on or around Lord Street and in Birkdale Village, with others on King Street, in Southport Market and in Churchtown. Several have been here for years and have their own regular customers.",
   },
   {
     q: "Are there dog-friendly cafés in Southport?",
-    a: "Yes, several of the better independent cafés in Southport welcome dogs, particularly those with outdoor seating. Look for a water bowl outside the door, that's the usual sign. The Botanic Gardens café in Churchtown is dog-friendly in the outdoor area. Birkdale Village cafés tend to be more relaxed about dogs than the town centre.",
+    a: "Yes, several independent cafés in Southport welcome dogs, particularly those with outdoor seating. Look for a water bowl outside the door, that's the usual sign. The Botanic Gardens café in Churchtown is dog-friendly in the outdoor area. Birkdale Village cafés tend to be more relaxed about dogs than the town centre.",
   },
   {
     q: "Is there a good café near Southport beach?",
-    a: "There are beach cafés on Marine Drive near the Promenade, mostly catering to beach visitors with the usual ice cream, snacks, and basic hot drinks. For a proper independent café with good espresso, you'll need to walk 10–15 minutes to Lord Street or the town centre.",
+    a: "There are beach cafés on Marine Drive near the Promenade, mostly catering to beach visitors with ice cream, snacks and hot drinks. For an independent café, it's a 10–15 minute walk to Lord Street or the town centre.",
   },
   {
-    q: "What are the best cafés on Lord Street Southport?",
-    a: "Lord Street has several café options, a mix of independents and small chains. The better independent ones are usually on the side streets immediately off Lord Street rather than the main drag. Walk the area and look for the places without laminated menus in the window.",
+    q: "What cafés are there on Lord Street Southport?",
+    a: "Lord Street has several café options, a mix of independents and small chains. Many of the independents are on the side streets immediately off Lord Street rather than the main drag. Walk the area and look for the places without laminated menus in the window.",
   },
   {
     q: "Where can I work from a café in Southport?",
-    a: "Several of Southport's independent cafés have decent wifi and enough space for laptop use, particularly on weekday mornings. The Atkinson arts centre café on Lord Street is one of the more comfortable options for a longer stay. Avoid trying to camp in the smaller cafés at peak lunch times.",
+    a: "Several of Southport's independent cafés have decent wifi and enough space for laptop use, particularly on weekday mornings. The Atkinson arts centre café on Lord Street has space for a longer stay. Avoid trying to camp in the smaller cafés at peak lunch times.",
   },
 ];
 
 const CAFES = [
   {
-    name: "Season Coffee, Bar & Kitchen",
-    area: "King Street",
-    bestFor: "Specialty coffee, brunch",
-    notes: "Single-origin micro-lot beans from Django Coffee Co. and Heart & Graft, rotated seasonally and ground to order. Full brunch and lunch menu, all ingredients from local independent suppliers. Opposite Southport Market. Open Tue–Sun 10am–4pm. Kitchen closes 3pm.",
-    href: "/guides/seasons-southport",
-  },
-  {
     name: "Café Niko",
     area: "Lord Street",
-    bestFor: "Proper espresso, lunch",
-    notes: "One of Southport's best-regarded independent cafés. Good coffee, food worth ordering. Popular for weekend brunch. On or near Lord Street.",
+    bestFor: "Espresso, lunch",
+    notes: "Independent café on or near Lord Street, serving coffee and food. Popular for weekend brunch.",
+  },
+  {
+    name: "Southport Market café area",
+    area: "Town Centre Market",
+    bestFor: "Lunch, casual coffee",
+    notes: "The market hall has a café area with coffee and food from the market traders. Busier and livelier than a standalone café. Handy for a weekday lunch stop.",
   },
   {
     name: "The Atkinson Café",
     area: "Lord Street (in arts centre)",
     bestFor: "Longer stays, working, rainy days",
-    notes: "Inside The Atkinson arts centre. More space than most. Decent coffee, straightforward food. Good wifi. Open during arts centre hours.",
+    notes: "Inside The Atkinson arts centre, with space to sit, coffee, food and wifi. Open during arts centre hours.",
   },
   {
     name: "Wayfarers Arcade Café",
     area: "Off Lord Street",
     bestFor: "Browsing stop, wet days",
-    notes: "Small café inside Wayfarers Arcade. Good for a coffee stop while exploring the arcade. Covered and comfortable.",
+    notes: "Small café inside Wayfarers Arcade, for a coffee stop while exploring the arcade. Covered.",
   },
   {
     name: "Botanic Gardens Café",
     area: "Churchtown",
     bestFor: "Post-walk, dogs welcome",
-    notes: "Inside the Botanic Gardens, free entry to the gardens. Outdoor seating. Good for coffee and a straightforward bite after the gardens. Dog-friendly outside.",
+    notes: "Inside the Botanic Gardens, free entry to the gardens. Outdoor seating. Coffee and a bite to eat after the gardens. Dog-friendly outside.",
   },
   {
     name: "Birkdale Village independents",
@@ -87,20 +86,14 @@ const CAFES = [
     bestFor: "Neighbourhood feel, less busy",
     notes: "A few good independent cafés along Liverpool Road in Birkdale Village. More relaxed than the town centre. Worth the short drive or train ride.",
   },
-  {
-    name: "Southport Market café area",
-    area: "Town Centre Market",
-    bestFor: "Lunch, casual coffee",
-    notes: "The market hall has a café area with coffee and food from the market traders. More atmosphere than a standalone café. Good for a weekday lunch stop.",
-  },
 ];
 
 const PAGE_LD = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Best Cafés in Southport. Independent Coffee Guide",
+  name: "Cafés in Southport: A Guide by Area",
   description:
-    "The best independent cafés and coffee shops in Southport, where locals actually go. Terry's honest guide.",
+    "A guide to cafés and coffee shops in Southport by area, from Lord Street and King Street to Churchtown and Birkdale Village.",
   url: `${BASE_URL}/guides/best-cafes-southport`,
 };
 
@@ -126,7 +119,7 @@ export default async function BestCafesSouthportGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/categories/cafes.webp"
-            alt="Best cafés in Southport"
+            alt="Cafés in Southport"
             fill
             priority
             sizes="100vw"
@@ -141,16 +134,16 @@ export default async function BestCafesSouthportGuidePage() {
             Food &amp; Drink Guide
           </div>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-4 max-w-3xl">
-            Best Cafés in Southport
+            Cafés in Southport: A Guide by Area
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-            Independent coffee shops and the places locals actually go.
-            Proper espresso, food worth ordering, no chains.
+            Independent coffee shops, tea rooms and café stops around Southport,
+            from Lord Street to Churchtown and Birkdale Village.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-              <Star className="w-4 h-4 text-[#C9A84C]" />
-              <span>Best: Café Niko, Lord Street</span>
+              <MapPin className="w-4 h-4 text-[#C9A84C]" />
+              <span>Lord Street, Churchtown, Birkdale</span>
             </div>
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <Clock className="w-4 h-4 text-[#C9A84C]" />
@@ -164,33 +157,32 @@ export default async function BestCafesSouthportGuidePage() {
       <div className="container mx-auto px-4 max-w-4xl py-14">
 
         <section className="mb-14">
-          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Honest Assessment</h2>
+          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Café Scene</h2>
           <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-            Southport has a decent independent café scene, better than you&apos;d expect from a town this size, worse than Liverpool&apos;s Northern Quarter. The best places are independents that have been around long enough to know what they&apos;re doing. The chains are where you end up when you can&apos;t find anywhere else.
+            Southport has an independent café scene, with places that have been around for years alongside newer openings and the high street chains.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            The concentration of good cafés is on and around Lord Street and in Birkdale Village. A few are in less obvious spots. Churchtown and the Atkinson are worth knowing about for a different pace.
+            Most of the cafés are on and around Lord Street and in Birkdale Village, with a few in less obvious spots. Churchtown and the Atkinson offer a different pace.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
               <span className="mr-2">☕</span>
-              If you want good espresso and a nice room to sit in, the independents on the Lord Street side streets and in Birkdale Village are the answer. Weekday mornings before the lunch rush are the best time to visit.
+              If you want espresso and a room to sit in, look at the independents on the Lord Street side streets and in Birkdale Village. Weekday mornings before the lunch rush are the best time to visit.
             </p>
           </div>
         </section>
 
         {/* Café list */}
         <section className="mb-14">
-          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">The Cafés Worth Knowing</h2>
+          <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Cafés Around Town</h2>
           <div className="space-y-4">
-            {CAFES.map((c, i) => {
+            {CAFES.map((c) => {
               const biz = bizLinks[c.name];
               return (
               <div key={c.name} className="bg-white rounded-2xl border border-gray-100 p-6">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[#C9A84C] font-black text-sm">#{i + 1}</span>
                       {biz ? (
                         <Link href={bizHref(biz)} className="font-display font-bold text-[#1B2E4B] text-lg hover:text-[#C9A84C] transition-colors underline underline-offset-2 decoration-[#C9A84C]/40">
                           {c.name}
@@ -218,11 +210,11 @@ export default async function BestCafesSouthportGuidePage() {
             {[
               {
                 title: "For brunch",
-                notes: "Café Niko and the better Lord Street independents do proper brunch at weekends. Expect a wait on sunny Saturday mornings. Worth it.",
+                notes: "Café Niko and other Lord Street independents do brunch at weekends. Expect a wait on sunny Saturday mornings.",
               },
               {
                 title: "With a laptop",
-                notes: "The Atkinson café is the most comfortable for longer stays, space, wifi, and nobody rushing you. Avoid peak lunch times.",
+                notes: "The Atkinson café has space and wifi for longer stays. Avoid peak lunch times.",
               },
               {
                 title: "With a dog",
@@ -275,7 +267,7 @@ export default async function BestCafesSouthportGuidePage() {
           <div className="flex flex-wrap gap-3">
             {[
               { href: "/guides/southport-eateries", label: "Where to Eat in Southport" },
-              { href: "/guides/best-restaurants-southport", label: "Best Restaurants" },
+              { href: "/guides/best-restaurants-southport", label: "Restaurants in Southport" },
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
               { href: "/guides/dog-friendly-southport", label: "Dog-Friendly Guide" },
               { href: "/cafes", label: "Café Listings" },

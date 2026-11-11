@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: "Which pubs near Haig Avenue are good for away fans?",
-    a: "The Thatch and Thistle at the bottom of Haig Avenue (at the Norwood Road junction) is the closest option, straightforward pub with Sky Sports. The Richmond on Scarisbrick New Road is a short walk and slightly more relaxed. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission supporters. If you have more time, Southport town centre has significantly better options, a mile and a half away, worth it if you arrive 2+ hours early.",
+    a: "The Thatch and Thistle at the bottom of Haig Avenue (at the Norwood Road junction) is the closest option, a pub with Sky Sports. The Richmond on Scarisbrick New Road is a short walk away. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission supporters. If you have more time, Southport town centre has more pubs, a mile and a half away, if you arrive 2+ hours early.",
   },
   {
     q: "What is the away end like at Haig Avenue?",
@@ -109,7 +109,7 @@ export default function SouthportFCMatchdayGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-fc-matchday-hero.webp"
-            alt="Haig Avenue stadium floodlights at dusk — Southport FC matchday guide"
+            alt="Haig Avenue stadium floodlights at dusk: Southport FC matchday guide"
             fill
             sizes="100vw"
             quality={85}
@@ -196,8 +196,8 @@ export default function SouthportFCMatchdayGuidePage() {
                 If you are visiting as an away fan, the things that actually matter: there is no car park, so
                 sort your travel before you arrive. The away end (the Blowick End, at the south) is an open terrace
                 and Southport in winter is on the coast, which means wind. Dress for it. The Thatch and Thistle
-                at the bottom of Haig Avenue is the default option for a pre-match drink near the ground.
-                It is fine. If you have more time and want something better, the town centre has it.
+                at the bottom of Haig Avenue is the closest pub for a pre-match drink.
+                If you have more time, the town centre has more choice.
               </p>
               <p>
                 Southport as a town is worth spending some time in. Lord Street is genuinely one of the better
@@ -317,7 +317,7 @@ export default function SouthportFCMatchdayGuidePage() {
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Pubs Near Haig Avenue</h2>
             <p className="text-gray-600 mt-3 max-w-2xl">
               Options close to the ground are limited. If you have two or more hours before kick-off, the town
-              centre is the better choice.
+              centre has more choice.
             </p>
           </div>
 
@@ -333,12 +333,12 @@ export default function SouthportFCMatchdayGuidePage() {
                 {
                   name: "Thatch and Thistle",
                   location: "Haig Avenue / Norwood Road junction",
-                  detail: "The default option for away fans, right at the bottom of the road leading to the ground. Sky Sports, food, functional. Nothing special but it works. Gets busy for popular games.",
+                  detail: "The closest pub for away fans, right at the bottom of the road leading to the ground. Sky Sports and food. Gets busy for popular games.",
                 },
                 {
                   name: "The Richmond",
                   location: "Scarisbrick New Road",
-                  detail: "A short walk from the ground on Scarisbrick New Road. Slightly less hectic than the Thatch and Thistle for bigger fixtures. A reasonable alternative if you want more space.",
+                  detail: "A short walk from the ground on Scarisbrick New Road. An alternative if you want more space.",
                 },
               ].map((pub) => (
                 <div key={pub.name} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -357,14 +357,13 @@ export default function SouthportFCMatchdayGuidePage() {
               <p className="text-gray-700 leading-relaxed mb-5">
                 Southport town centre is about a mile and a half from Haig Avenue. 25–30 minutes on foot or
                 a short bus ride on the number 44. If you are arriving two or more hours before kick-off,
-                this is the better option for a pre-match drink. The pubs are significantly better than the options
-                right by the ground.
+                there is more choice here for a pre-match drink.
               </p>
               <div className="grid sm:grid-cols-3 gap-4">
                 {[
-                  { name: "Tap and Bottles", desc: "CAMRA award-winning. One of the better pubs in Southport for real ale. Worth making the effort for." },
-                  { name: "The Guest House", desc: "Popular town centre pub. Good atmosphere for a pre-match if you are in the area." },
-                  { name: "Inn Beer Shop", desc: "Independent bottle shop and bar. If you are a beer enthusiast, worth knowing about." },
+                  { name: "Tap and Bottles", desc: "CAMRA award-winning real ale pub." },
+                  { name: "The Guest House", desc: "Popular town centre pub, for a pre-match drink if you are in the area." },
+                  { name: "Inn Beer Shop", desc: "Independent bottle shop and bar, for beer enthusiasts." },
                 ].map((pub) => (
                   <div key={pub.name} className="bg-[#FAF8F5] rounded-xl p-4">
                     <h4 className="font-display font-bold text-[#1B2E4B] text-sm mb-2">{pub.name}</h4>

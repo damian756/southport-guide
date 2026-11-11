@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: "What can kids do in Southport on a rainy day?",
-    a: "Splash World is the main dedicated option for families with children, it's genuinely excellent and very popular. Beyond that, the Pleasureland indoor attractions, The Atkinson (family-friendly gallery and activities), and Southport Market are all good. Bowling is available at Southport Superbowl near the seafront.",
+    a: "Splash World is the main dedicated option for families with children, and it's very popular. Beyond that, the Pleasureland indoor attractions, The Atkinson (family-friendly gallery and activities), and Southport Market are all good. Bowling is available at Southport Superbowl near the seafront.",
   },
 ];
 
@@ -228,13 +228,13 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Splash World</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Splash World is the standout option for families. It&apos;s an indoor waterpark on Marine Drive, part of the Southport Pleasureland complex, with slides, flumes, a wave machine, pools, and facilities for young children and older kids alike.
+            Splash World is the main indoor option for families. It&apos;s an indoor waterpark on Marine Drive, part of the Southport Pleasureland complex, with slides, flumes, a wave machine, pools, and facilities for young children and older kids alike.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Postcode: <strong>PR8 1RX</strong>. Book tickets online at splashworld.co.uk, it&apos;s cheaper and guarantees entry. On wet school holiday days, walk-up can be difficult.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            It&apos;s genuinely one of the better attractions in Southport and significantly underrated by visitors who come primarily for the beach. Worth building a day around if you have children.
+            If you have children, you can build a wet day around it.
           </p>
         </section>
 
@@ -256,7 +256,7 @@ export default async function RainyDaySouthportGuidePage() {
             <strong>Southport Market</strong> is a covered indoor market hall in the town centre (postcode PR8 1HH). It has independent food stalls, street food traders, a café, and craft vendors. A good lunch option and pleasant to browse for an hour without spending anything. See our <Link href="/guides/southport-market" className="text-[#C9A84C] font-semibold hover:underline">complete Southport Market guide</Link> for every trader, opening times, and what to order.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            <strong>Wayfarers Arcade</strong> is a Victorian arcade just off Lord Street (PR8 1QN). Covered and independent, with a café inside. Not a destination in itself but a genuinely pleasant alternative to walking in the rain, and the architecture is worth a look.
+            <strong>Wayfarers Arcade</strong> is a Victorian arcade just off Lord Street (PR8 1QN). Covered and independent, with a café inside: an alternative to walking in the rain, in a Victorian building.
           </p>
         </section>
 
@@ -265,7 +265,7 @@ export default async function RainyDaySouthportGuidePage() {
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Cinema, Bowling &amp; Other Options</h2>
           <ul className="space-y-4">
             {[
-              { title: "Vue Cinema", desc: "Mainstream multiplex on The Esplanade (PR8 1QS). Check vue.com for listings. A solid fallback if nothing else appeals.", },
+              { title: "Vue Cinema", desc: "Mainstream multiplex on The Esplanade (PR8 1QS). Check vue.com for listings.", },
               { title: "Southport Superbowl", desc: "Ten-pin bowling near the seafront. Good for groups and families. Has an arcade games section. Book online at peak times." },
               { title: "Southport Pleasureland", desc: "Some indoor attractions within the Pleasureland complex on Marine Drive alongside Splash World. Check what's open seasonally." },
             ].map(({ title, desc }) => (
@@ -281,10 +281,10 @@ export default async function RainyDaySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Where to Sit It Out</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Sometimes the best rainy-day strategy is a good café and running out the clock. The Atkinson café and Southport Market are the best bets in the town centre, both have space, decent coffee, and food worth ordering. Wayfarers Arcade has a café too.
+            Sometimes the best rainy-day strategy is a good café and running out the clock. In the town centre, the Atkinson café and Southport Market both have space, coffee and food. Wayfarers Arcade has a café too.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            For more café options, see our <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] font-semibold hover:underline">Best Cafés guide</Link>.
+            For more café options, see our <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] font-semibold hover:underline">Cafés in Southport guide</Link>.
           </p>
         </section>
 
@@ -311,7 +311,7 @@ export default async function RainyDaySouthportGuidePage() {
           <div className="flex flex-wrap gap-3">
             {[
               { href: "/guides/dog-friendly-southport", label: "Dog-Friendly Southport" },
-              { href: "/guides/best-cafes-southport", label: "Best Cafés" },
+              { href: "/guides/best-cafes-southport", label: "Cafés in Southport" },
               { href: "/guides/parking-southport", label: "Parking Guide" },
               { href: "/guides/southport-beach", label: "Southport Beach" },
             ].map(({ href, label }) => (

@@ -168,9 +168,9 @@ export const BLOG_POSTS: BlogPost[] = [
   // Food & Drink
   {
     slug: "best-restaurants-southport-2026",
-    title: "The Best Restaurants in Southport 2026",
+    title: "Restaurants in Southport 2026: Where to Eat",
     excerpt:
-      "From fine dining on Lord Street to hidden seaside gems, we've rounded up the very best places to eat in Southport right now.",
+      "From Lord Street to Birkdale Village and the seafront, a guide to where to eat in Southport.",
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "15 Feb 2026",
@@ -196,7 +196,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-bnbs-southport",
-    title: "The Best B&Bs and Guest Houses in Southport",
+    title: "B&Bs and Guest Houses in Southport",
     excerpt:
       "Looking for something more personal than a hotel? Southport has a fantastic range of B&Bs and guest houses, from Victorian townhouses to coastal retreats.",
     categorySlug: "where-to-stay",
@@ -253,7 +253,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Golf
   {
     slug: "pubs-near-royal-birkdale-open-2026",
-    title: "Best Pubs Near Royal Birkdale for The Open 2026",
+    title: "Pubs Near Royal Birkdale for The Open 2026",
     excerpt:
       "Where to drink during Open week: from Birkdale village classics to town centre options that won't drive you mad with queues. A local's honest guide.",
     categorySlug: "food-drink",
@@ -280,7 +280,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-golf-courses-southport",
-    title: "The Best Golf Courses Near Southport",
+    title: "Golf Courses Near Southport",
     excerpt:
       "Southport is one of England's premier golfing destinations, from Royal Birkdale to Hillside and Southport & Ainsdale. Here's your guide.",
     categorySlug: "golf",
@@ -290,7 +290,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Shopping
   {
     slug: "best-independent-shops-lord-street",
-    title: "The Best Independent Shops on Lord Street",
+    title: "Independent Shops on Lord Street",
     excerpt:
       "Lord Street is one of England's most beautiful Victorian boulevards, lined with independent boutiques, galleries, and specialty shops. Here's where to go.",
     categorySlug: "shopping",
@@ -300,9 +300,9 @@ export const BLOG_POSTS: BlogPost[] = [
   // Bars & Nightlife
   {
     slug: "best-bars-southport-lord-street",
-    title: "The Best Bars on Lord Street Southport",
+    title: "Bars on Lord Street Southport",
     excerpt:
-      "Lord Street isn't just for shopping: Southport's main boulevard is home to some of the town's finest bars. Here's where locals actually drink.",
+      "Lord Street isn't just for shopping: Southport's main boulevard is home to many of the town's bars. Here's where to find them.",
     categorySlug: "bars-nightlife",
     image: "/images/blog-pubs.jpg",
     date: "11 Feb 2026",
@@ -310,7 +310,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Wellness
   {
     slug: "best-spas-southport",
-    title: "The Best Spas and Wellness Retreats in Southport",
+    title: "Spas and Wellness Retreats in Southport",
     excerpt:
       "From luxury hotel spas to independent beauty studios, Southport has a growing wellness scene. Here's where to relax and recharge.",
     categorySlug: "wellness",
@@ -413,7 +413,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "restaurants-open-week-southport-2026",
     title: "Where to Eat in Southport During Open Week 2026",
     excerpt:
-      "Open week means 40,000 extra people wanting a table. Here's where to eat, when to book, and which restaurants are worth the effort when Southport is at full capacity.",
+      "Open week means 40,000 extra people wanting a table. Here's where to eat, when to book, and which restaurants to book when Southport is at full capacity.",
     categorySlug: "food-drink",
     image: "/images/blog/restaurants-open-week-southport-2026.webp",
     date: "19 Feb 2026",
@@ -431,9 +431,9 @@ export const BLOG_POSTS: BlogPost[] = [
   // ── New posts: Evergreen gaps ─────────────────────────────────────────────
   {
     slug: "best-cafes-southport",
-    title: "The Best Cafes and Coffee Shops in Southport",
+    title: "Cafes and Coffee Shops in Southport",
     excerpt:
-      "Independent coffee shops, proper tea rooms, and the spots where Southport locals actually go for a decent flat white. Terry's unfiltered guide.",
+      "Independent coffee shops, proper tea rooms, and the spots where Southport locals actually go for a flat white. Terry's guide.",
     categorySlug: "food-drink",
     image: "/images/blog/best-cafes-southport.webp",
     date: "19 Feb 2026",
@@ -441,9 +441,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-brunch-southport",
-    title: "Best Brunch Spots in Southport",
+    title: "Brunch in Southport: Where to Go",
     excerpt:
-      "Weekend brunch in Southport has improved considerably. Here's where to go, and where to avoid, for the best eggs, toast, and flat whites in town.",
+      "Weekend brunch in Southport has improved considerably. Here's where to go for eggs, toast and flat whites.",
     categorySlug: "food-drink",
     image: "/images/blog/best-brunch-southport.webp",
     date: "19 Feb 2026",
@@ -488,18 +488,18 @@ export const BLOG_POSTS: BlogPost[] = [
   // ── New posts: Content gap closers ────────────────────────────────────────
   {
     slug: "best-indian-restaurants-southport",
-    title: "The Best Indian Restaurants in Southport",
+    title: "Indian Restaurants in Southport",
     excerpt:
-      "Southport has a proper curry scene, most of it clustered around the town centre and Lord Street. Terry's honest guide to where to actually go.",
+      "Southport has a proper curry scene, most of it clustered around the town centre and Lord Street. Terry's guide to the curry scene.",
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "19 Feb 2026",
   },
   {
     slug: "best-italian-restaurants-southport",
-    title: "The Best Italian Restaurants in Southport",
+    title: "Italian Restaurants in Southport",
     excerpt:
-      "From Lord Street trattorias to neighbourhood Italian joints, Southport does Italian better than you'd expect. Here's where to actually go.",
+      "From Lord Street trattorias to neighbourhood Italian joints, Here's a guide to Italian food in Southport.",
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "19 Feb 2026",
@@ -515,7 +515,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "cocktail-bars-southport",
-    title: "The Best Cocktail Bars in Southport",
+    title: "Cocktail Bars in Southport",
     excerpt:
       "Southport's cocktail scene has quietly improved. Here's where to go for a proper drink on Lord Street and beyond, from craft cocktails to classic pours.",
     categorySlug: "bars-nightlife",
@@ -536,9 +536,9 @@ export const BLOG_POSTS: BlogPost[] = [
   // March 2026 — keyword gap closers
   {
     slug: "afternoon-tea-southport",
-    title: "The Best Afternoon Tea in Southport",
+    title: "Afternoon Tea in Southport",
     excerpt:
-      "The Scarisbrick, The Vincent, and a few others worth knowing about. Terry's guide to afternoon tea in Southport: what's actually good, what to book ahead for, and what to expect.",
+      "The Scarisbrick, The Vincent and others. Terry's guide to afternoon tea in Southport: where to go, what to book ahead for, and what to expect.",
     categorySlug: "food-drink",
     image: "/images/blog/afternoon-tea-southport.webp",
     date: "14 Mar 2026",
@@ -649,9 +649,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-sunday-lunch-southport",
-    title: "Best Sunday Lunch in Southport: Where to Actually Go",
+    title: "Sunday Lunch in Southport: Where to Go",
     excerpt:
-      "Sunday lunch in Southport is worth doing properly. The town has a handful of pubs and restaurants that take it seriously: proper roasts, decent gravy, no microwave involved. I've eaten at most of them. Here's the honest breakdown.",
+      "Sunday lunch in Southport is worth doing properly. Here are the pubs and restaurants that serve it, and what to know before you book.",
     categorySlug: "food-drink",
     image: "/images/blog/sunday-lunch-southport.jpg",
     date: "19 Mar 2026",
@@ -840,7 +840,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "gemini-lounge-lord-street",
     title: "Gemini Lounge, Lord Street: The Old Bank Has a New Purpose",
     excerpt:
-      "Southport's former NatWest bank on Lord Street is now a cocktail bar and restaurant with serious ambition. I went on a Friday night. Here's the honest take.",
+      "Southport's former NatWest bank on Lord Street is now a cocktail bar and restaurant. Here's what it offers.",
     categorySlug: "food-drink",
     image: "/images/blog/gemini-lounge-lord-street.jpg",
     date: "13 Apr 2026",
@@ -893,9 +893,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-hotels-southport-2026",
-    title: "Best Hotels in Southport 2026: Where to Stay and What to Pay",
+    title: "Hotels in Southport 2026: Where to Stay and What to Pay",
     excerpt:
-      "From The Scarisbrick and Vincent on Lord Street to B&Bs in Birkdale and budget chains near Ocean Plaza. Every decent option with honest advice on what each one is actually like to stay in.",
+      "From The Scarisbrick and Vincent on Lord Street to B&Bs in Birkdale and budget chains near Ocean Plaza. What each one offers and what to pay.",
     categorySlug: "where-to-stay",
     image: "/images/blog/blog-hotels-southport-2026.jpg",
     date: "1 May 2026",
@@ -930,7 +930,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "where-to-watch-the-open-2026-southport-pubs",
-    title: "Where to Watch The Open 2026 in Southport: The Best Pubs With Screens",
+    title: "Where to Watch The Open 2026 in Southport: Pubs With Screens",
     excerpt:
       "Not everyone has a ticket. The Open runs 12-19 July at Royal Birkdale and if you're in Southport that week you'll want somewhere good to watch the coverage. Here's where to go.",
     categorySlug: "golf",
@@ -966,7 +966,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-restaurants-open-week-2026",
     title: "Eating in Southport During Open Week: Book Now or You Won't Eat Well",
     excerpt:
-      "Open week in Southport means every decent restaurant is full. I've eaten in most of them. Here's the honest guide to where to book, what to expect, and how not to end up with a disappointing meal on the most exciting week this town has had in years.",
+      "Open week in Southport means the restaurants are full. Here's where to book and what to expect.",
     categorySlug: "restaurants",
     image: "/images/blog/blog-southport-restaurants-open-week.jpg",
     date: "11 May 2026",
@@ -1038,7 +1038,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-ice-cream-southport",
-    title: "Best Ice Cream in Southport: Where to Go on a Hot Day",
+    title: "Ice Cream in Southport: Where to Go on a Hot Day",
     excerpt:
       "Southport does ice cream properly. From the seafront kiosks to the proper parlours, here is where I actually go when the sun comes out and the kids start asking.",
     categorySlug: "food-drink",
@@ -1146,7 +1146,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "birkdale-village-restaurants-open-week",
     title: "Birkdale Village Restaurants: Where to Eat During Open Week",
-    excerpt: "The restaurants in Birkdale village are busier this week than at any other point in the year. Here is what is there, what is worth booking, and the honest view on walk-in chances.",
+    excerpt: "The restaurants in Birkdale village are busier this week than at any other point in the year. Here is what is there, what to book, and walk-in chances.",
     categorySlug: "food-drink",
     image: "/images/blog/blog-birkdale-restaurants.webp",
     date: "14 Jul 2026",
@@ -1170,8 +1170,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "best-breakfast-southport",
-    title: "Best Breakfast in Southport: Where to Go for a Proper Morning",
-    excerpt: "I have had a lot of breakfasts in this town over four decades. These are the ones worth getting out of bed for. Full Englishes, good coffee, proper toast, and the honest version of what makes each place worth knowing.",
+    title: "Breakfast in Southport: Where to Go",
+    excerpt: "I have had a lot of breakfasts in this town over four decades. Here is where to go for a full English, coffee and pastries, and how to beat the weekend rush.",
     categorySlug: "food-drink",
     image: "/images/blog/blog-best-breakfast-southport.webp",
     date: "9 Sep 2026",
@@ -1187,8 +1187,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "hesketh-arms-southport",
-    title: "The Hesketh Arms Southport: The Pub Worth Knowing",
-    excerpt: "If you ask me where to go for a proper pint in Southport, The Hesketh Arms in Churchtown is the honest answer. Low ceilings, real ale, a beer garden Frank approves of, and none of the things that ruin a pub.",
+    title: "The Hesketh Arms, Churchtown: A Guide to the Pub",
+    excerpt: "The Hesketh Arms is a traditional pub in Churchtown: low ceilings, real ale and a beer garden Frank approves of.",
     categorySlug: "food-drink",
     image: "/images/blog/blog-hesketh-arms-southport.webp",
     date: "21 Aug 2026",

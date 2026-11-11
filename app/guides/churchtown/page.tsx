@@ -210,8 +210,8 @@ export default function ChurchtownGuidePage() {
           </p>
           <ul className="space-y-3 mb-4">
             {[
-              "The Hesketh Arms, traditional village pub, good for lunch, reliable food. On the main village road.",
-              "The Bold Arms, another solid local option in the village.",
+              "The Hesketh Arms, traditional village pub serving lunch. On the main village road.",
+              "The Bold Arms, another local pub in the village.",
               "Botanic Gardens Café, good for coffee and a bite while you're in the gardens. Nothing fancy but fine.",
             ].map((item) => (
               <li key={item} className="flex gap-3 text-gray-700">

@@ -25,11 +25,11 @@ export const metadata: Metadata = {
 // Distance data — measured from Royal Birkdale Golf Club main entrance
 const HOTELS_BY_DISTANCE = [
   { name: "Birkdale Guesthouses & B&Bs", distance: "0.3–0.8 miles", walk: "6–16 min", drive: "2–4 min", price: "£", note: "Closest possible. Book months ahead." },
-  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Southport's finest. Luxury boutique." },
+  { name: "The Vincent Hotel", distance: "0.9 miles", walk: "18 min", drive: "4 min", price: "£££", note: "Boutique hotel on Lord Street." },
   { name: "Ramada Plaza Southport", distance: "1.1 miles", walk: "22 min", drive: "5 min", price: "£££", note: "Large hotel, conference facilities, seafront" },
   { name: "Holiday Inn Southport", distance: "1.3 miles", walk: "26 min", drive: "6 min", price: "££", note: "Reliable chain, good availability" },
   { name: "Scarisbrick Hotel", distance: "1.4 miles", walk: "28 min", drive: "6 min", price: "££", note: "Historic Lord Street hotel, character property" },
-  { name: "Premier Inn Southport", distance: "1.5 miles", walk: "30 min", drive: "7 min", price: "£", note: "Best-value option, book early for Open week" },
+  { name: "Premier Inn Southport", distance: "1.5 miles", walk: "30 min", drive: "7 min", price: "£", note: "Budget chain hotel." },
   { name: "Prince of Wales Hotel", distance: "1.6 miles", walk: "32 min", drive: "7 min", price: "£££", note: "Historic Lord Street hotel, spa and leisure facilities" },
   { name: "The Metropole Hotel", distance: "1.7 miles", walk: "34 min", drive: "8 min", price: "££", note: "Victorian seafront hotel, traditional atmosphere" },
   { name: "Travelodge Southport", distance: "1.8 miles", walk: "36 min", drive: "8 min", price: "£", note: "Budget-friendly, no frills, functional" },

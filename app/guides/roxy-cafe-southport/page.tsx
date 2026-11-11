@@ -63,7 +63,7 @@ const FAQ_LD = {
     { "@type": "Question", name: "Where is Roxy's Cafe in Southport?", acceptedAnswer: { "@type": "Answer", text: "Roxy's Cafe is at 42 London Street, Southport, PR9 0TJ. It is right next to Southport train station: less than a minute's walk from the main entrance." } },
     { "@type": "Question", name: "What are Roxy's Cafe opening hours?", acceptedAnswer: { "@type": "Answer", text: "Monday to Friday: 8am to 4pm. Saturday: 9am to 5pm. Sunday: 10:30am to 3:30pm." } },
     { "@type": "Question", name: "What coffee does Roxy's Cafe serve?", acceptedAnswer: { "@type": "Answer", text: "Roxy's uses Julius Meinl coffee, an Austrian roaster with a long tradition of Italian-style espresso. Drinks include espresso, cappuccino, flat white, and the popular pistachio coffee at £3.95." } },
-    { "@type": "Question", name: "What is the pistachio coffee at Roxy's?", acceptedAnswer: { "@type": "Answer", text: "The pistachio coffee at £3.95 is the standout drink at Roxy's Cafe in Southport. It is an espresso-based drink with pistachio flavouring, consistently the most recommended item in customer reviews." } },
+    { "@type": "Question", name: "What is the pistachio coffee at Roxy's?", acceptedAnswer: { "@type": "Answer", text: "The pistachio coffee at Roxy's Cafe in Southport costs £3.95. It is an espresso-based drink with pistachio flavouring." } },
     { "@type": "Question", name: "Does Roxy's Cafe do a coffee and cake deal?", acceptedAnswer: { "@type": "Answer", text: "Yes. Coffee and cake for £7.50, available all day Monday to Friday. The homemade Italian cakes rotate and are frequently highlighted in reviews." } },
     { "@type": "Question", name: "Who owns Roxy's Cafe Southport?", acceptedAnswer: { "@type": "Answer", text: "Roxy's Cafe is owned by Roxana Budoi, known as Roxy. She is Romanian-born, a former Italian resident, and spent nearly eight years at Volare restaurant in Southport before opening her own place in February 2025." } },
   ],
@@ -139,9 +139,9 @@ const PLATTERS = [
 
 const DESSERTS = [
   { name: "Homemade Cake", price: "£5.95", desc: "Changes daily. Ask staff for what is available." },
-  { name: "Italian Gelato — 1 scoop", price: "£3.45", desc: "" },
-  { name: "Italian Gelato — 2 scoops", price: "£4.95", desc: "" },
-  { name: "Italian Gelato — 3 scoops", price: "£6.45", desc: "" },
+  { name: "Italian Gelato: 1 scoop", price: "£3.45", desc: "" },
+  { name: "Italian Gelato: 2 scoops", price: "£4.95", desc: "" },
+  { name: "Italian Gelato: 3 scoops", price: "£6.45", desc: "" },
   { name: "Coffee & Cake Deal", price: "£7.50", desc: "Any coffee plus a homemade cake. Monday to Friday, all day." },
 ];
 
@@ -172,11 +172,11 @@ const HOURS = [
 
 const FAQS = [
   { q: "Where exactly is it?", a: "42 London Street, PR9 0TJ. Right next to Southport train station. If you are arriving by train from Liverpool or Manchester, you walk out of the station and it is in front of you. Useful to know." },
-  { q: "What is the pistachio coffee?", a: "The pistachio coffee at £3.95 is the most recommended drink at Roxy's. It is espresso-based with pistachio flavouring. More than one person has specifically made the trip after seeing it posted online. Order it." },
-  { q: "What coffee brand does Roxy's use?", a: "Julius Meinl. A Viennese roaster with a 160-year history and a strong Italian-style espresso tradition. The red cardinal logo is on the cups. It is a step up from the standard high-street roasters and a deliberate choice by Roxy." },
+  { q: "What is the pistachio coffee?", a: "The pistachio coffee costs £3.95. It is espresso-based with pistachio flavouring. More than one person has specifically made the trip after seeing it posted online." },
+  { q: "What coffee brand does Roxy's use?", a: "Julius Meinl. A Viennese roaster with a 160-year history and a strong Italian-style espresso tradition. The red cardinal logo is on the cups. It is a deliberate choice by Roxy." },
   { q: "Is it good for a quick stop before a train?", a: "It is right next to the station. That is the point. Takeaway is available. In the time it takes to walk from the platform to the street, you can have a coffee in your hand. Several reviewers mention using it exactly this way." },
   { q: "Are the cakes actually homemade?", a: "Yes. The Italian cakes are made by Roxy. They rotate. The cheesecake versions are the ones most mentioned in reviews. Multiple reviewers use the phrase 'to die for' which, for Southport, is high praise." },
-  { q: "Is there a deal?", a: "Coffee and any cake for £7.50, Monday to Friday, all day. Probably the best value sit-down treat in this part of town." },
+  { q: "Is there a deal?", a: "Coffee and any cake for £7.50, Monday to Friday, all day." },
 ];
 
 export default function RoxyCafeGuide() {
@@ -276,19 +276,19 @@ export default function RoxyCafeGuide() {
 
               {/* Terry's intro */}
               <section>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-4">The honest take</h2>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] mb-4">About Roxy&apos;s</h2>
                 <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
                   <p>
-                    Roxy opened this place in February 2025, a few steps from Southport station, and it was exactly what that end of town needed. It is Italian in the proper sense: Julius Meinl coffee, a Viennese roaster with a 160-year history of Italian-style espresso, the cups with the red cardinal, freshly baked croissants, paninis with real cured meats and Italian cheese, and homemade cakes that rotate daily.
+                    Roxy opened this place in February 2025, a few steps from Southport station. It is an Italian coffee shop: Julius Meinl coffee, a Viennese roaster with a 160-year history of Italian-style espresso, the cups with the red cardinal, freshly baked croissants, paninis with real cured meats and Italian cheese, and homemade cakes that rotate daily.
                   </p>
                   <p>
-                    Roxy spent nearly eight years at Volare before doing this herself. Volare is one of the most respected Italian restaurants in Southport and has been for years. That background matters: this is not someone who decided to open a coffee shop and bought a machine. This is someone who knows Italian food from the inside and built a place around it.
+                    Roxy spent nearly eight years at Volare, the Italian restaurant, before doing this herself, and she built this place around Italian food.
                   </p>
                   <p>
-                    The pistachio coffee is the thing people make a specific trip for. The panini are proper Italian: named breads, proper fillings, nothing generic about them. The Pinsa Romana is something most people in Southport have not tried before. The coffee and cake deal is £7.50, Monday to Friday, all day, and is one of the better value things in this part of town. And the cakes are genuinely excellent.
+                    The pistachio coffee is the thing people make a specific trip for. The panini are Italian, made with named breads. The Pinsa Romana is something most people in Southport have not tried before. The coffee and cake deal is £7.50, Monday to Friday, all day.
                   </p>
                   <p>
-                    If you are catching a train, it is right there. If you want a proper Italian coffee and something freshly baked with it, it is the place to go in Southport. I have lived here 41 years. This is the kind of independent that makes a town worth living in.
+                    If you are catching a train, it is right there, for an Italian coffee and something freshly baked.
                   </p>
                 </div>
               </section>
@@ -341,7 +341,7 @@ export default function RoxyCafeGuide() {
                 </div>
                 <div className="mt-4 flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-900">
                   <Star className="w-4 h-4 text-amber-500 shrink-0" />
-                  <p><strong>Order the pistachio coffee.</strong> At £3.95 it is the most recommended item. Multiple people have walked in having seen it online specifically to try it.</p>
+                  <p><strong>The pistachio coffee</strong> is £3.95. Multiple people have walked in having seen it online specifically to try it.</p>
                 </div>
               </section>
 
@@ -529,7 +529,7 @@ export default function RoxyCafeGuide() {
                 <nav className="space-y-2">
                   {[
                     { href: "/cafes", label: "All Cafes in Southport" },
-                    { href: "/guides/best-cafes-southport", label: "Best Cafes Guide" },
+                    { href: "/guides/best-cafes-southport", label: "Cafés in Southport Guide" },
                     { href: "/things-to-do", label: "Things to Do in Southport" },
                     { href: "/restaurants", label: "Restaurants in Southport" },
                   ].map(({ href, label }) => (

@@ -86,7 +86,7 @@ const LUNCH = [
 const FAQS = [
   { q: "Where is Season Coffee in Southport?", a: "14-16 King Street, PR8 1JZ, directly opposite Southport Market. It's an easy five-minute walk from Lord Street." },
   { q: "What are the opening hours?", a: "Tuesday to Sunday, 10am to 4pm. Closed Monday. Breakfast is served until 1pm. The kitchen closes at 3pm, so if you want food, don't arrive at 2:45." },
-  { q: "What makes Season's coffee different?", a: "They use micro-lot single-origin beans from two local independent roasters: Django Coffee Co. and Heart & Graft. The beans change with the seasons and are ground to order. It's genuinely better than most places in town." },
+  { q: "What makes Season's coffee different?", a: "They use micro-lot single-origin beans from two local independent roasters: Django Coffee Co. and Heart & Graft. The beans change with the seasons and are ground to order." },
   { q: "Is there a veggie or vegan option?", a: "Yes. The Veggie Special is a full cooked breakfast. The Season Stack has a veggie version. The Build Your Own lets you mix and match. The beef burger has a vegan 'no beef' alternative." },
   { q: "Does Season do venue hire?", a: "Yes. Private events: birthdays, baby showers, wine and cheese evenings, corporate. Call 01704 535372." },
   { q: "Is Season dog-friendly?", a: "Based on the relaxed atmosphere and size, it's worth ringing ahead to confirm. It's an independent run by a team who know their regulars, so they're usually practical about it." },
@@ -105,11 +105,10 @@ export default function SeasonsGuide() {
           <div className="container mx-auto px-4 max-w-6xl py-3">
             <p className="text-sm text-amber-900 flex items-center gap-2 flex-wrap">
               <span className="font-bold">Season Coffee has now closed.</span>
-              <span className="text-amber-800">If you are looking for a great independent coffee shop in Southport, we have written a full guide to</span>
+              <span className="text-amber-800">If you are looking for an independent coffee shop in Southport, we have a full guide to</span>
               <Link href="/guides/roxy-cafe-southport" className="font-bold text-amber-900 underline underline-offset-2 hover:text-[#1B2E4B] transition">
-                Roxy&apos;s Cafe on London Street
+                Roxy&apos;s Cafe on London Street.
               </Link>
-              <span className="text-amber-800">which we would recommend.</span>
             </p>
           </div>
         </div>
@@ -190,10 +189,10 @@ export default function SeasonsGuide() {
               {/* About */}
               <section className="space-y-6">
                 <p className="text-xl text-gray-600 leading-relaxed border-l-4 border-[#C9A84C] pl-5">
-                  Season opened on King Street in August 2021 and has spent the time since quietly building one of the most loyal customer bases of any independent café in Southport. Michelle runs it. She prepares everything fresh each morning and the team know their regulars by name. That tells you more about a café than any review.
+                  Season opened on King Street in August 2021 and has spent the time since building a loyal customer base. Michelle runs it. She prepares everything fresh each morning and the team know their regulars by name. That tells you more about a café than any review.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed">
-                  It&apos;s on King Street, directly opposite Southport Market, which makes it an obvious stop if you&apos;re spending time around that end of town. The interior is relaxed and unhurried: industrial-meets-rustic, the kind of space where you can actually sit and talk without feeling like you&apos;re being moved on.
+                  It&apos;s on King Street, directly opposite Southport Market, which makes it a handy stop if you&apos;re spending time around that end of town. The interior is relaxed and unhurried: industrial-meets-rustic, the kind of space where you can actually sit and talk without feeling like you&apos;re being moved on.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed">
                   Everything food-related comes from local independent suppliers. The meat is from Blackhurst Butchers. The coffee is from two independent North West roasters: Django Coffee Co. (based in Manchester, inspired by Melbourne&apos;s specialty scene) and Heart & Graft (from Salford). Micro-lot single-origin beans, rotated seasonally, ground to order. It&apos;s the kind of coffee setup most Southport visitors don&apos;t expect to find in a town this size.
@@ -407,7 +406,7 @@ export default function SeasonsGuide() {
                     { label: "Southport Market", href: "/guides/southport-market", note: "Directly opposite" },
                     { label: "Lord Street", href: "/guides/lord-street", note: "5 min walk" },
                     { label: "The Atkinson", href: "/guides/the-atkinson-southport", note: "10 min walk" },
-                    { label: "Best Cafés in Southport", href: "/guides/best-cafes-southport", note: "Full guide" },
+                    { label: "Cafés in Southport", href: "/guides/best-cafes-southport", note: "Full guide" },
                   ].map(({ label, href, note }) => (
                     <Link key={href} href={href} className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0 group">
                       <div>
@@ -429,7 +428,7 @@ export default function SeasonsGuide() {
             <p className="text-gray-400 text-sm mb-3">More independent businesses in Southport</p>
             <div className="flex justify-center gap-3 flex-wrap">
               <Link href="/cafes" className="inline-flex items-center gap-2 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white border border-gray-200 hover:border-[#1B2E4B] font-semibold text-sm px-5 py-2.5 rounded-full transition-all">All Cafés <ArrowRight className="w-3.5 h-3.5" /></Link>
-              <Link href="/guides/best-cafes-southport" className="inline-flex items-center gap-2 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white border border-gray-200 hover:border-[#1B2E4B] font-semibold text-sm px-5 py-2.5 rounded-full transition-all">Best Cafés Guide <ArrowRight className="w-3.5 h-3.5" /></Link>
+              <Link href="/guides/best-cafes-southport" className="inline-flex items-center gap-2 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white border border-gray-200 hover:border-[#1B2E4B] font-semibold text-sm px-5 py-2.5 rounded-full transition-all">Cafés in Southport Guide <ArrowRight className="w-3.5 h-3.5" /></Link>
               <Link href="/restaurants" className="inline-flex items-center gap-2 bg-[#FAF8F5] hover:bg-[#1B2E4B] text-[#1B2E4B] hover:text-white border border-gray-200 hover:border-[#1B2E4B] font-semibold text-sm px-5 py-2.5 rounded-full transition-all">Restaurants <ArrowRight className="w-3.5 h-3.5" /></Link>
             </div>
           </div>

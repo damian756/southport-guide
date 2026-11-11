@@ -8,13 +8,13 @@ import OpenListingCard from "@/components/OpenListingCard";
 export const metadata: Metadata = {
   title: "Restaurants Near Royal Birkdale | The Open 2026",
   description:
-    "The best restaurants and dining in Southport and Birkdale for The Open Championship 2026. Book ahead, venues near Royal Birkdale fill up weeks in advance during Open week.",
+    "Restaurants in Southport and Birkdale near Royal Birkdale, from the guide written for The Open Championship 2026.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/restaurants" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     title: "Restaurants Near Royal Birkdale | The Open 2026",
-    description: "The best restaurants in Southport and Birkdale for The Open 2026. Book ahead — venues fill weeks in advance.",
+    description: "Restaurants in Southport and Birkdale near Royal Birkdale, from the guide written for The Open 2026.",
     url: "https://www.southportguide.co.uk/the-open-2026/restaurants",
   },
 };
@@ -36,7 +36,7 @@ const faqLd = {
     {
       "@type": "Question",
       name: "Where should I eat near Royal Birkdale during The Open 2026?",
-      acceptedAnswer: { "@type": "Answer", text: "Birkdale village has the closest restaurants and pubs to Royal Birkdale, within a 5-minute walk of the course. Book well in advance — these venues fill up entirely during Open week. Southport town centre (10 minutes by taxi) has a wider selection of restaurants along Lord Street." },
+      acceptedAnswer: { "@type": "Answer", text: "Birkdale village has the closest restaurants and pubs to Royal Birkdale, within a 5-minute walk of the course. Book well in advance: these venues fill up entirely during Open week. Southport town centre (10 minutes by taxi) has a wider selection of restaurants along Lord Street." },
     },
     {
       "@type": "Question",
@@ -46,7 +46,7 @@ const faqLd = {
     {
       "@type": "Question",
       name: "Are there restaurants inside Royal Birkdale during The Open?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — on-course hospitality and food concessions are available inside the grounds, but prices are high. Many spectators eat properly at their accommodation or a local restaurant before arriving, and use on-course facilities for snacks and drinks only." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. On-course hospitality and food concessions are available inside the grounds, but prices are high. Many spectators eat properly at their accommodation or a local restaurant before arriving, and use on-course facilities for snacks and drinks only." },
     },
   ],
 };
@@ -273,7 +273,7 @@ export default async function OpenRestaurantsPage() {
         <div className="bg-[#FAF8F5] border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4">
           <div className="flex-1">
             <p className="font-bold text-[#1B2E4B] text-sm">From the blog</p>
-            <p className="text-gray-600 text-sm mt-1">Read Terry&apos;s honest guide to the best restaurants in Southport for 2026. Written by someone who&apos;s eaten in most of them.</p>
+            <p className="text-gray-600 text-sm mt-1">Read Terry&apos;s guide to where to eat in Southport.</p>
           </div>
           <Link href="/blog/best-restaurants-southport-2026" className="flex-none bg-[#1B2E4B] text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-[#2A4A73] transition-colors whitespace-nowrap">
             Read the guide →

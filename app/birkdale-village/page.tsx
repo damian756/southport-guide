@@ -18,7 +18,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Birkdale Village | Shops, Restaurants & Cafés Guide",
   description:
-    "Birkdale Village. Southport&apos;s independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
+    "Birkdale Village: Southport's independent shopping and dining quarter. Shops, restaurants and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
   keywords:
     "Birkdale village, Birkdale village shops, Birkdale village restaurants, Birkdale village Southport, Liverpool Road Birkdale, Birkdale cafes",
   alternates: { canonical: `${BASE_URL}/guides/birkdale-village` },
@@ -119,7 +119,7 @@ export default function BirkdaleVillagePage() {
           <div className="absolute inset-0">
             <Image
               src="/images/birkdale-village.webp"
-              alt="Birkdale Village — independent boutique shopfronts with hanging flower baskets"
+              alt="Birkdale Village: independent boutique shopfronts with hanging flower baskets"
               fill
               sizes="100vw"
               quality={90}
@@ -229,7 +229,7 @@ export default function BirkdaleVillagePage() {
                 {
                   emoji: "🏡",
                   category: "Homeware & Gifts",
-                  detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present, not the standard Waterstones-adjacent gift shop fare. Several have strong local maker representation.",
+                  detail: "Interiors shops and gift retailers stocking the kind of things that make for a proper present, rather than standard high street gift fare. Several have strong local maker representation.",
                 },
                 {
                   emoji: "💎",
@@ -321,7 +321,7 @@ export default function BirkdaleVillagePage() {
                   type: "Pubs & Bars",
                   color: "from-[#7A1A1A] to-[#B02020]",
                   highlights: [
-                    "The Birkdale Arms is the main pub in the village, proper ale, good atmosphere",
+                    "The Birkdale Arms is a traditional pub in the village, serving ale",
                     "Several traditional pubs within walking distance",
                     "Village pubs tend to welcome dogs, ask on arrival",
                     "Post-round drinks culture strong during Open week",
@@ -366,7 +366,7 @@ export default function BirkdaleVillagePage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <p className="text-white/70 text-base leading-relaxed mb-4">
-                    Royal Birkdale Golf Club, one of the finest links courses in England, host of The Open Championship 
+                    Royal Birkdale Golf Club, host of The Open Championship 
                     eleven times, is approximately 10 minutes&apos; walk from the village centre. The two are neighbours 
                     in the most literal sense.
                   </p>
@@ -379,7 +379,6 @@ export default function BirkdaleVillagePage() {
                 <div className="space-y-4">
                   {[
                     { label: "Walking distance to club", value: "10 minutes" },
-                    { label: "Royal Birkdale ranking", value: "World Top 25" },
                     { label: "Open Championships hosted", value: "11 times" },
                     { label: "Next Open at Birkdale", value: "July 2026" },
                   ].map((item) => (

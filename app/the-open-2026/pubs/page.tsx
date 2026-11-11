@@ -8,13 +8,13 @@ import OpenListingCard from "@/components/OpenListingCard";
 export const metadata: Metadata = {
   title: "Pubs Near Royal Birkdale | The Open 2026",
   description:
-    "The best pubs within walking distance of Royal Birkdale for The Open Championship 2026. Birkdale village pubs, Southport bars, and tips for Open week drinking in Southport.",
+    "Pubs within walking distance of Royal Birkdale, from the guide written for The Open Championship 2026: Birkdale village pubs and Southport bars.",
   alternates: { canonical: "https://www.southportguide.co.uk/the-open-2026/pubs" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     title: "Pubs Near Royal Birkdale | The Open 2026",
-    description: "The best pubs within walking distance of Royal Birkdale for The Open 2026. Birkdale village pubs, Southport bars, and Open week tips.",
+    description: "Pubs within walking distance of Royal Birkdale, from the guide written for The Open 2026.",
     url: "https://www.southportguide.co.uk/the-open-2026/pubs",
   },
 };
@@ -192,7 +192,7 @@ export default async function OpenPubsPage() {
                         <span className="text-[#C9A84C] font-bold flex-none mt-0.5">→</span>
                         <span>
                           <span className="font-semibold text-[#1B2E4B]">{name}</span>
-                          {" — "}
+                          {": "}
                           <span className="text-gray-500">{note}</span>
                         </span>
                       </li>

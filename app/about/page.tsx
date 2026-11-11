@@ -263,7 +263,7 @@ export default function AboutPage() {
                 SouthportGuide is written in the voice of Terry, a composite editorial persona built from genuine local knowledge, reader feedback, and decades of experience living in the town. Terry reflects the perspective of someone who has eaten in most of the restaurants, walked every part of the seafront, and knows which car parks fill up first on a summer Saturday.
               </p>
               <p className="text-white/75 leading-relaxed mb-6">
-                The content is honest. If something is not worth the journey, we say so. If somewhere is overpriced, we mention it. No paid editorial placements. No sponsored content disguised as a review.
+                We describe places as they are: what they are, where they are and what they offer. No paid editorial placements. No sponsored content disguised as a review.
               </p>
               <div className="bg-white/10 rounded-2xl px-5 py-4 mt-auto">
                 <p className="text-white/60 text-sm">
@@ -469,7 +469,7 @@ export default function AboutPage() {
                 SouthportGuide is free to use and fully independent. No official body funds it. No council budget. Churchtown Media Ltd pays for the guide. Businesses can pay for a Featured place in the directory or a labelled advert, and both are marked on the site.
               </p>
               <p>
-                Featured placement does not influence editorial content. A restaurant that pays for a featured listing does not get a better review. It gets better visibility in the directory. If anything is sponsored, it is explicitly labelled.
+                Featured placement does not influence editorial content. A restaurant that pays for a featured listing is not written about any differently. It gets better visibility in the directory. If anything is sponsored, it is explicitly labelled.
               </p>
               <p>
                 The commercial interests of Damian Roche and Churchtown Media Ltd are listed on our{" "}

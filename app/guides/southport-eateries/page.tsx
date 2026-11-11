@@ -43,28 +43,28 @@ const LORD_STREET_PICKS = [
     name: "Bistrot Véronique",
     style: "French bistro",
     price: "££££",
-    note: "The top end of Southport dining. Proper French bistro, technically strong, good wine list, worth the bill. On Scarisbrick New Road, not Lord Street itself, but a 2-minute walk. Book a week ahead at weekends.",
+    note: "French bistro with a wine list. On Scarisbrick New Road, not Lord Street itself, but a 2-minute walk. Book a week ahead at weekends.",
     bookAhead: true,
   },
   {
     name: "V-Café",
     style: "Modern British / All-day",
     price: "£££",
-    note: "Reliable and popular on Lord Street. Works equally well for a lunch or an evening out. Crowd-pleaser in the best sense, good food, good service, not trying too hard.",
+    note: "All-day restaurant on Lord Street, open for lunch and for an evening out.",
     bookAhead: true,
   },
   {
     name: "Bistro Bar Med",
     style: "Mediterranean",
     price: "£££",
-    note: "Mediterranean-influenced menu on Lord Street. Reliable for a relaxed evening, pasta, fish, salads done well. Good for groups. Worth booking on weekend evenings.",
+    note: "Mediterranean-influenced menu on Lord Street: pasta, fish and salads. Takes groups. Worth booking on weekend evenings.",
     bookAhead: false,
   },
   {
     name: "The Vinegar Tap",
     style: "Fish & Chips / Casual",
     price: "££",
-    note: "If you want proper fish and chips without going to the seafront, this is the answer. Sit-in and takeaway. Queue on Friday lunchtimes, that's always a good sign.",
+    note: "Fish and chips in the town centre, without going to the seafront. Sit-in and takeaway. Expect a queue on Friday lunchtimes.",
     bookAhead: false,
   },
   {
@@ -81,28 +81,28 @@ const BIRKDALE_PICKS = [
     name: "The Swan",
     style: "Classic British pub / dining",
     price: "£££",
-    note: "The most-recommended pub meal in Southport among locals. Good kitchen, proper portions, reliable service. Gets busy, call ahead for evening sittings at weekends.",
+    note: "Pub dining in Birkdale. Gets busy, so call ahead for evening sittings at weekends.",
     bookAhead: true,
   },
   {
     name: "Volare",
     style: "Italian",
     price: "£££",
-    note: "Italian on Liverpool Road, Birkdale. The pasta is good. The kind of place that becomes a regular once you've been, familiar, honest, not trying to be anything other than a solid Italian.",
+    note: "Italian restaurant on Liverpool Road, Birkdale, serving pasta.",
     bookAhead: false,
   },
   {
     name: "The Birkdale Palms",
     style: "Café / Brunch / Light meals",
     price: "££",
-    note: "Best brunch option in Birkdale. The eggs benedict is worth going out of your way for. Gets busy on Sunday mornings, expect a short wait.",
+    note: "Café in Birkdale serving brunch, including eggs benedict, and light meals. Gets busy on Sunday mornings, expect a short wait.",
     bookAhead: false,
   },
   {
     name: "Crust & Co",
     style: "Pizza",
     price: "££",
-    note: "Good independent pizza place in Birkdale. Sourdough bases, quality ingredients. Works well for a relaxed evening without the formality of a full sit-down restaurant.",
+    note: "Independent pizza place in Birkdale with sourdough bases. A relaxed evening option, less formal than a full sit-down restaurant.",
     bookAhead: false,
   },
 ];
@@ -112,14 +112,14 @@ const CHURCHTOWN_PICKS = [
     name: "The Hesketh Arms",
     style: "Traditional British pub / food",
     price: "££–£££",
-    note: "The best pub meal in Churchtown, old stone pub, solid Sunday lunch, reliable kitchen year-round. Worth the 10-minute drive from the town centre. Dog-friendly in the garden.",
+    note: "Old stone pub in Churchtown serving food year-round, including Sunday lunch. A 10-minute drive from the town centre. Dog-friendly in the garden.",
     bookAhead: true,
   },
   {
     name: "The Bold Arms",
     style: "Traditional pub",
     price: "££",
-    note: "A proper village local in the heart of Churchtown village. Less food-focused than the Hesketh, but good for a pint and a pie if you're passing through the village.",
+    note: "A village local in the heart of Churchtown village, for a pint and a pie if you're passing through.",
     bookAhead: false,
   },
 ];
@@ -129,14 +129,14 @@ const SEAFRONT_PICKS = [
     name: "The Funky Fish Bar",
     style: "Fish & Chips / Seafront",
     price: "££",
-    note: "The best of the seafront fish and chip options. Proper batter, decent portions, works as a sit-down or takeaway. Gets very busy in summer, arrive before 12:30 or after 2:30.",
+    note: "Fish and chips on the seafront, sit-down or takeaway. Gets very busy in summer, arrive before 12:30 or after 2:30.",
     bookAhead: false,
   },
   {
     name: "Ocean Plaza Food Court",
     style: "Chain options / Casual",
     price: "£–££",
-    note: "The retail park on the seafront has the usual chain café options, useful to know they're there, especially with children, but not a destination in itself.",
+    note: "The retail park on the seafront has chain café options, useful to know about, especially with children.",
     bookAhead: false,
   },
 ];
@@ -145,37 +145,37 @@ const BY_OCCASION = [
   {
     occasion: "Date night",
     pick: "Bistrot Véronique",
-    note: "Book at least a week ahead. Dress reasonably well. Order the French onion soup.",
+    note: "French bistro. Book at least a week ahead. Dress reasonably well.",
     link: "/restaurants",
   },
   {
     occasion: "Big family lunch",
     pick: "The Swan, Birkdale",
-    note: "Space for larger groups, good food, decent prices. Call ahead to reserve.",
+    note: "Space for larger groups. Call ahead to reserve.",
     link: "/restaurants",
   },
   {
     occasion: "Post-beach food",
     pick: "Funky Fish Bar or Southport Market",
-    note: "Salt in the air, chips in hand, the correct choice after a beach walk. Market for groups who can't agree.",
+    note: "Fish and chips near the beach, or the market for groups who can't agree.",
     link: "/restaurants",
   },
   {
     occasion: "Sunday lunch",
-    pick: "The Hesketh Arms, Churchtown",
-    note: "Book ahead. Take the 10-minute drive to Churchtown. You won't regret it.",
+    pick: "The Hesketh Arms, Churchtown, or The Swan, Birkdale",
+    note: "Book ahead, by Thursday for a Sunday table. Churchtown is a 10-minute drive from the town centre.",
     link: "/restaurants",
   },
   {
     occasion: "Quick weekday lunch",
     pick: "Southport Market or Vinegar Tap",
-    note: "Both quick, both reliable, both good value. Market for variety, Vinegar Tap if you're after fish and chips.",
+    note: "Both take walk-ins. Market for variety, Vinegar Tap if you're after fish and chips.",
     link: "/restaurants",
   },
   {
     occasion: "Coffee and something good",
     pick: "Birkdale Palms or any of the Lord Street independents",
-    note: "Skip the chains and go independent, the quality gap is significant in Southport.",
+    note: "Independent cafés in Birkdale Village and on and around Lord Street.",
     link: "/cafes",
   },
   {
@@ -187,38 +187,38 @@ const BY_OCCASION = [
 ];
 
 const CUISINES = [
-  { type: "French / European fine dining", where: "Bistrot Véronique, best in town by most accounts" },
+  { type: "French / European fine dining", where: "Bistrot Véronique (Scarisbrick New Road)" },
   { type: "Italian", where: "Volare (Birkdale), Bistro Bar Med (Lord Street)" },
   { type: "Indian / Curry", where: "Several options on and around Lord Street, check Google ratings for current form" },
   { type: "Chinese", where: "A handful of options in the town centre, worth checking current reviews" },
   { type: "Thai", where: "Limited but available, check the restaurants directory for current listings" },
   { type: "Fish & Chips", where: "Funky Fish Bar (seafront), Vinegar Tap (town centre)" },
   { type: "Pizza", where: "Crust & Co (Birkdale), Southport Market vendors" },
-  { type: "Street food / casual", where: "Southport Market, best variety in one place" },
+  { type: "Street food / casual", where: "Southport Market, many vendors in one place" },
   { type: "Pub food", where: "Hesketh Arms (Churchtown), The Swan (Birkdale)" },
-  { type: "Brunch", where: "Birkdale Palms, best in town for brunch" },
+  { type: "Brunch", where: "Birkdale Palms (Birkdale), Lord Street independent cafés" },
 ];
 
 const FAQS = [
   {
-    q: "What are the best places to eat in Southport?",
-    a: "Bistrot Véronique on Scarisbrick New Road is the standout for a proper occasion. French bistro, good wine list, book ahead. For everyday eating out, The Swan in Birkdale and V-Café on Lord Street are the most consistently recommended. Southport Market is the best option for groups with mixed tastes.",
+    q: "Where can I eat out in Southport?",
+    a: "Bistrot Véronique on Scarisbrick New Road is a French bistro with a wine list; book ahead. For everyday eating out, there is The Swan in Birkdale and V-Café on Lord Street. Southport Market suits groups with mixed tastes.",
   },
   {
     q: "Where should I eat on Lord Street in Southport?",
-    a: "V-Café and Bistro Bar Med are both reliable options on Lord Street itself. For something slightly more special, Bistrot Véronique is around the corner on Scarisbrick New Road. 2 minutes' walk and a noticeable step up in quality.",
+    a: "V-Café and Bistro Bar Med are both on Lord Street itself. Bistrot Véronique, a French bistro, is around the corner on Scarisbrick New Road, 2 minutes' walk away.",
   },
   {
     q: "Are there good restaurants near Southport Beach?",
-    a: "The seafront has casual options, fish and chips, beach cafés, and a few pub-grill type places. For a proper restaurant meal, it's worth the 15-minute walk or short drive into town to Lord Street or Birkdale Village. The quality difference is significant.",
+    a: "The seafront has casual options, fish and chips, beach cafés, and a few pub-grill type places. For a sit-down restaurant meal, it's a 15-minute walk or short drive into town to Lord Street or Birkdale Village.",
   },
   {
     q: "Do I need to book restaurants in Southport?",
-    a: "For the better places, yes, especially Friday and Saturday evenings. Bistrot Véronique books out a week or more in advance at weekends. During Open week (July 2026), the whole town's restaurant capacity gets stretched, book as early as possible.",
+    a: "For many places, yes, especially Friday and Saturday evenings. Bistrot Véronique books out a week or more in advance at weekends. During Open week (July 2026), the whole town's restaurant capacity gets stretched, book as early as possible.",
   },
   {
-    q: "Where is the best Sunday lunch in Southport?",
-    a: "The Hesketh Arms in Churchtown is the locals' choice for Sunday lunch. Worth the 10-minute drive from the town centre. Book in advance, it fills up. The Swan in Birkdale is a close second.",
+    q: "Where can I get Sunday lunch in Southport?",
+    a: "The Hesketh Arms in Churchtown and The Swan in Birkdale both do Sunday lunch. Churchtown is a 10-minute drive from the town centre. Book in advance, as both get busy.",
   },
   {
     q: "What is the difference between Southport eateries and restaurants?",
@@ -226,7 +226,7 @@ const FAQS = [
   },
   {
     q: "Are there vegetarian or vegan options in Southport?",
-    a: "Yes. Most of the mid-range and upmarket restaurants in Southport now have solid vegetarian options. Bistro Bar Med and V-Café both cater well. Southport Market has street food vendors with vegan-specific options. The independent café scene in Birkdale and on Lord Street generally handles dietary requirements without fuss.",
+    a: "Yes. Most of the mid-range and upmarket restaurants in Southport now have solid vegetarian options. Bistro Bar Med and V-Café both have vegetarian options. Southport Market has street food vendors with vegan-specific options. The independent café scene in Birkdale and on Lord Street generally handles dietary requirements without fuss.",
   },
   {
     q: "Where can I eat near Southport train station?",
@@ -289,7 +289,7 @@ export default async function SouthportEateriesGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/categories/restaurants.webp"
-            alt="Eating out in Southport — restaurants on Lord Street"
+            alt="Eating out in Southport: restaurants on Lord Street"
             fill
             sizes="100vw"
             quality={90}
@@ -354,15 +354,15 @@ export default async function SouthportEateriesGuidePage() {
       {/* ── Quick Answer ── */}
       <div className="bg-[#1B2E4B] text-white">
         <div className="container mx-auto px-4 max-w-7xl py-8">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">Quick answers</p>
+          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">At a glance</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
-              { label: "Best occasion meal", value: "Bistrot Véronique" },
-              { label: "Best pub lunch", value: "The Swan, Birkdale" },
-              { label: "Best Sunday lunch", value: "Hesketh Arms" },
-              { label: "Best food market", value: "Southport Market" },
-              { label: "Best fish & chips", value: "Funky Fish Bar" },
-              { label: "Best brunch", value: "Birkdale Palms" },
+              { label: "French bistro", value: "Bistrot Véronique" },
+              { label: "Pub food", value: "Hesketh Arms, The Swan" },
+              { label: "Sunday lunch", value: "Hesketh Arms, The Swan" },
+              { label: "Food market", value: "Southport Market" },
+              { label: "Fish & chips", value: "Funky Fish Bar, Vinegar Tap" },
+              { label: "Brunch", value: "Birkdale Palms" },
             ].map((item) => (
               <div key={item.label} className="bg-white/10 rounded-xl p-4 text-center">
                 <p className="text-[10px] text-white/50 uppercase tracking-wider font-semibold">{item.label}</p>
@@ -379,22 +379,20 @@ export default async function SouthportEateriesGuidePage() {
         <section>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 border-l-4 border-l-[#C9A84C]">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
-            <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Eating Out in Southport. The Honest Version</h2>
+            <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Eating Out in Southport: An Overview</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>
-                Southport&apos;s food scene is better than its reputation, and its reputation is better than it was a decade ago.
-                The headline act is Bistrot Véronique, proper French bistro cooking, not playing at it, a genuinely good restaurant by any standard.
-                The mid-range in Birkdale Village has been quietly improving: The Swan does the kind of pub lunch that makes you book a table for next week before you&apos;ve finished pudding.
+                Southport has places to eat for most occasions, from French bistro cooking at Bistrot Véronique on Scarisbrick New Road
+                to pub dining at The Swan in Birkdale Village, where Liverpool Road has its own cluster of independent restaurants and cafés.
               </p>
               <p>
-                Lord Street is the obvious starting point for eating out. It&apos;s a long street, the choice is spread out, and quality varies.
-                V-Café and Bistro Bar Med are both reliable. For fine dining, walk two minutes to Scarisbrick New Road and you&apos;re at Bistrot Véronique.
-                For something quick and good, Southport Market has the most variety in one place.
+                Lord Street is the obvious starting point for eating out. It&apos;s a long street and the choice is spread out.
+                V-Café and Bistro Bar Med are both on Lord Street, and Bistrot Véronique is two minutes away on Scarisbrick New Road.
+                For something quick, Southport Market has many vendors in one place.
               </p>
               <p>
-                The seafront is weaker, honestly. Fish and chips at Funky Fish Bar are worth having, but the cluster of
-                chain-adjacent options around Ocean Plaza is not why you come to Southport.
-                Churchtown, ten minutes from the town centre, is often missed: the Hesketh Arms does the best Sunday lunch in town, full stop.
+                The seafront leans toward casual food: Funky Fish Bar does fish and chips, and there are chain options around Ocean Plaza.
+                Churchtown, ten minutes from the town centre, is often missed: the Hesketh Arms there does Sunday lunch.
               </p>
               <p>
                 One practical note: during Open week (July 2026, Royal Birkdale), the entire town&apos;s eating capacity gets stretched.
@@ -411,7 +409,7 @@ export default async function SouthportEateriesGuidePage() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Lord Street &amp; Town Centre</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
               Lord Street is a Victorian boulevard wide enough to feel relaxed rather than rushed. The eating options run the full
-              length, quality is patchy, but the best places are worth finding.
+              length, from cafés to restaurants.
             </p>
           </div>
 
@@ -493,8 +491,8 @@ export default async function SouthportEateriesGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">10 minutes from town centre</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Churchtown</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-              Most visitors to Southport never make it to Churchtown. That&apos;s their loss, it&apos;s the oldest part of town,
-              and it has the best pub lunch in Southport.
+              Most visitors to Southport never make it to Churchtown. It&apos;s the oldest part of town,
+              with two village pubs that serve food.
             </p>
           </div>
 
@@ -535,7 +533,7 @@ export default async function SouthportEateriesGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Marine Drive · PR8 1RX</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The Seafront</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-              Honest answer: the seafront is the weakest area for eating in Southport. There are exceptions, fish and chips are always appropriate here, but for a proper meal, head inland.
+              The seafront is mostly casual eating: fish and chips and chain cafés. For a sit-down meal, head inland.
             </p>
           </div>
 
@@ -561,7 +559,7 @@ export default async function SouthportEateriesGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Matched to your visit</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Where to Eat. By Occasion</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-              The right place depends on what kind of day you&apos;re having. Here&apos;s the shortcut.
+              Some places to consider, matched to the kind of day you&apos;re having.
             </p>
           </div>
 
@@ -589,7 +587,7 @@ export default async function SouthportEateriesGuidePage() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Budget Eats in Southport</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
               Southport is not an expensive town to eat in, most mid-range places are very reasonable.
-              Here&apos;s the best of the honest, affordable end.
+              Here&apos;s the affordable end.
             </p>
           </div>
 
@@ -602,7 +600,7 @@ export default async function SouthportEateriesGuidePage() {
               },
               {
                 name: "The Vinegar Tap",
-                note: "Proper fish and chips without going to the seafront. The queue at lunchtime tells you everything you need to know.",
+                note: "Fish and chips without going to the seafront. Expect a queue at lunchtime.",
                 price: "££",
               },
               {
@@ -612,12 +610,12 @@ export default async function SouthportEateriesGuidePage() {
               },
               {
                 name: "Funky Fish Bar",
-                note: "Seafront fish and chips, the correct way to spend £12 on a sunny afternoon by the beach.",
+                note: "Seafront fish and chips, around £12, for a sunny afternoon by the beach.",
                 price: "££",
               },
               {
                 name: "Birkdale Palms",
-                note: "Brunch is the best-value meal here. Good eggs, good coffee, good price for the quality.",
+                note: "Brunch, with eggs and coffee on the menu.",
                 price: "££",
               },
               {
@@ -688,7 +686,7 @@ export default async function SouthportEateriesGuidePage() {
               {
                 icon: Clock,
                 title: "When to book",
-                tip: "Friday and Saturday evenings at the better places, book at least a few days ahead. Sunday lunch at Hesketh Arms or The Swan, book by Thursday. Open Championship week, book weeks ahead.",
+                tip: "Friday and Saturday evenings at popular places, book at least a few days ahead. Sunday lunch at Hesketh Arms or The Swan, book by Thursday. Open Championship week, book weeks ahead.",
               },
               {
                 icon: MapPin,
@@ -703,7 +701,7 @@ export default async function SouthportEateriesGuidePage() {
               {
                 icon: Star,
                 title: "Checking current form",
-                tip: "This guide covers the reliable places, but restaurants change. Check Google reviews for current ratings before booking anywhere specific. Recency matters.",
+                tip: "Restaurants change. Check Google reviews for current ratings before booking anywhere specific. Recency matters.",
               },
               {
                 icon: Utensils,
@@ -730,12 +728,12 @@ export default async function SouthportEateriesGuidePage() {
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-4">Related guides</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link href="/guides/best-restaurants-southport" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
-              <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Best Restaurants in Southport</h3>
-              <p className="text-gray-500 text-xs">Terry&apos;s ranked guide to the top tables in town.</p>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Restaurants in Southport</h3>
+              <p className="text-gray-500 text-xs">Restaurants by area, with booking tips.</p>
             </Link>
             <Link href="/guides/best-cafes-southport" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
-              <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Best Cafés in Southport</h3>
-              <p className="text-gray-500 text-xs">Independent coffee shops and tea rooms worth knowing about.</p>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Cafés in Southport</h3>
+              <p className="text-gray-500 text-xs">Independent coffee shops and tea rooms by area.</p>
             </Link>
             <Link href="/guides/birkdale-village" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
               <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Birkdale Village</h3>

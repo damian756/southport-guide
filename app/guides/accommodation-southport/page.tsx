@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Where to Stay in Southport 2026 | Hotels, B&Bs & Accommodation Guide",
     description:
-      "The honest guide to accommodation in Southport. Hotels, B&Bs, guest houses and self-catering by area. Prices and booking advice for all budgets.",
+      "A guide to accommodation in Southport. Hotels, B&Bs, guest houses and self-catering by area. Prices and booking advice for all budgets.",
     url: `${BASE_URL}/guides/accommodation-southport`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -41,7 +41,7 @@ const HOTELS = [
     type: "Boutique / Heritage",
     priceRange: "£££",
     description:
-      "The Victorian option. Been on Lord Street since 1845 and it looks the part. Good central location, rooms vary in quality so it's worth reading recent reviews before booking. Popular with weddings and events. The bar is decent.",
+      "The Victorian option. On Lord Street since 1845, in a central location. Popular with weddings and events, and has a bar.",
     bestFor: "Character, central location, Lord Street access",
     postcode: "PR8 1NL",
   },
@@ -51,7 +51,7 @@ const HOTELS = [
     type: "Contemporary",
     priceRange: "£££",
     description:
-      "The contemporary choice. Modern, well-run, popular with couples and weekend breaks. Spa facilities on site. Food is reliable. Probably the most consistent option in town if you want something smart without the heritage quirks.",
+      "A contemporary hotel, popular with couples and weekend breaks. Spa facilities on site, and a restaurant.",
     bestFor: "Modern comfort, spa, couples, weekend breaks",
     postcode: "PR8 1LW",
   },
@@ -61,7 +61,7 @@ const HOTELS = [
     type: "Traditional",
     priceRange: "££",
     description:
-      "Solid mid-range option on the Promenade with sea views. Good value for what it is. Popular with families and groups. The location is great for beach access: you're right on the seafront. Not the most stylish but it does what it says.",
+      "Mid-range hotel on the Promenade with sea views. Popular with families and groups. Right on the seafront for beach access.",
     bestFor: "Sea views, beach proximity, families, value",
     postcode: "PR9 0JD",
   },
@@ -71,8 +71,8 @@ const HOTELS = [
     type: "Budget / Chain",
     priceRange: "£",
     description:
-      "Reliable, consistent, and priced accordingly. Near the train station and a short walk into town. No surprises in either direction. If you want a guaranteed room at a fixed price, this does the job.",
-    bestFor: "Budget, solo travellers, reliability, train access",
+      "Budget chain hotel near the train station, a short walk into town.",
+    bestFor: "Budget, solo travellers, train access",
     postcode: "PR8 1RE",
   },
   {
@@ -125,7 +125,7 @@ const AREAS = [
 const FAQS = [
   {
     q: "What is the best area to stay in Southport?",
-    a: "It depends what you're after. Lord Street is the most central and puts you near the best restaurants, shopping and nightlife. The Promenade is better if you want immediate beach access. Birkdale is the place for golfers: it's walking distance from Royal Birkdale. Churchtown is worth considering if you want quiet and good value.",
+    a: "It depends what you're after. Lord Street is the most central and puts you near most of the restaurants, shopping and nightlife. The Promenade is better if you want immediate beach access. Birkdale is the place for golfers: it's walking distance from Royal Birkdale. Churchtown is worth considering if you want quiet and good value.",
   },
   {
     q: "How much do hotels in Southport cost?",
@@ -145,7 +145,7 @@ const FAQS = [
   },
   {
     q: "Do any Southport hotels have a pool or spa?",
-    a: "The Vincent Hotel has spa facilities including treatments and a thermal suite. Some of the larger hotels have basic leisure facilities. For a proper spa day, The Vincent is the most reliable option in the town centre.",
+    a: "The Vincent Hotel has spa facilities including treatments and a thermal suite. Some of the larger hotels have basic leisure facilities.",
   },
 ];
 
@@ -290,8 +290,8 @@ export default function AccommodationSouthportPage() {
             reviews are worth reading before booking.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            For golfers, the owner-run guest houses near Royal Birkdale are often a better option than
-            the town-centre hotels: you can walk to the course, and they book up first when a
+            For golfers, the owner-run guest houses near Royal Birkdale are often the practical
+            choice: you can walk to the course, and they book up first when a
             championship is on.
           </p>
         </section>

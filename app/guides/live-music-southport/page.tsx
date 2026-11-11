@@ -27,7 +27,7 @@ const FAQS = [
   { q: "Where is there live music in Southport?", a: "Southport has regular live music at Coopers Bar (Lord Street), The Auld Dubliner (Lord Street), The Chop House (Lord Street), and several other town centre venues. Most live music happens on Friday and Saturday evenings, with some Sunday afternoon sessions and weeknight open mic nights." },
   { q: "Which pubs have live music every weekend in Southport?", a: "Coopers Bar on Lord Street has consistent live music on Friday and Saturday nights, a mix of jazz, soul, and rock acts. The Auld Dubliner runs acoustic sessions at weekends. The Chop House hosts bands on Fridays and Saturdays. The Marine pub on the Promenade also has regular live music." },
   { q: "Is there an open mic night in Southport?", a: "Yes. Several Southport pubs run open mic nights, typically mid-week. Venues change their schedules seasonally, so check social media for the current weekly open mic night in town. The Hesketh Arms in Churchtown has had open mic sessions historically." },
-  { q: "Where is the best live music in Southport?", a: "Coopers Bar on Lord Street is consistently rated the best live music venue in Southport for quality and regularity of acts. It is a proper music bar rather than a pub that occasionally has a band on. For acoustic and singer-songwriter acts, The Auld Dubliner is the go-to." },
+  { q: "Which Southport venues have live music most weekends?", a: "Coopers Bar on Lord Street is a music bar rather than a pub that occasionally has a band on, with live acts on Friday and Saturday evenings. For acoustic and singer-songwriter acts, there is The Auld Dubliner, also on Lord Street." },
   { q: "Does Southport have any music festivals?", a: "Southport Beer Week (May) includes live music across 18 town-centre pubs. The Big Top Festival (May) features circus and street arts. The Comedy Festival (October) sometimes includes music acts. The Bijou Cinema on Post Office Avenue runs regular live gig nights throughout the year." },
   { q: "What type of music can I see live in Southport?", a: "The main genres covered by Southport's live music venues are classic rock, soul, jazz, acoustic/singer-songwriter, and covers bands. There is less of a scene for electronic, hip-hop, or indie music compared to a major city. Southport's live music is pub-and-bar focused and tends toward accessible crowd-pleasers." },
 ];
@@ -53,7 +53,7 @@ const VENUES = [
     area: "Lord Street",
     music: "Jazz, soul, rock, regular weekend live acts",
     nights: "Fri & Sat evenings",
-    vibe: "Proper music bar. The best consistent live music offer in Southport.",
+    vibe: "Music bar with regular weekend live acts.",
     dogFriendly: false,
   },
   {
@@ -61,7 +61,7 @@ const VENUES = [
     area: "Lord Street",
     music: "Acoustic, singer-songwriter, folk",
     nights: "Fri & Sat, some midweek",
-    vibe: "Irish pub atmosphere. More relaxed than Coopers. Good for acoustic acts.",
+    vibe: "Irish pub atmosphere, with acoustic acts.",
     dogFriendly: false,
   },
   {
@@ -77,7 +77,7 @@ const VENUES = [
     area: "Promenade / Seafront",
     music: "Mixed, local acts and covers",
     nights: "Weekend evenings",
-    vibe: "Seafront pub with decent music nights. Good summer option.",
+    vibe: "Seafront pub with regular music nights.",
     dogFriendly: true,
   },
   {
@@ -93,7 +93,7 @@ const VENUES = [
     area: "Churchtown",
     music: "Open mic, acoustic sessions",
     nights: "Midweek, check schedule",
-    vibe: "Traditional village pub in Churchtown. Good for open mic evenings.",
+    vibe: "Traditional village pub in Churchtown, with open mic evenings.",
     dogFriendly: true,
   },
 ];
@@ -109,7 +109,7 @@ export default function LiveMusicPage() {
         <div className="flex flex-col md:flex-row md:min-h-[72vh]">
           {/* Poster */}
           <div className="relative min-h-[260px] sm:min-h-[360px] md:min-h-0 md:w-[44%] order-first md:order-last">
-            <Image src="/images/guides/live-music-southport.jpg" alt="Live music in Southport — guide to venues and nights" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
+            <Image src="/images/guides/live-music-southport.jpg" alt="Live music in Southport: guide to venues and nights" fill sizes="(max-width: 768px) 100vw, 44vw" className="object-contain" priority />
           </div>
           {/* Text */}
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
@@ -136,8 +136,8 @@ export default function LiveMusicPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Southport Has a Proper Live Music Scene</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
-              <p>Southport is not Manchester. It does not have a sweaty indie venue with three bands on a Tuesday. What it does have is a consistent pub-based live music scene that punches above its weight for a town this size. Coopers Bar on Lord Street in particular has been putting on good acts for years.</p>
-              <p>If you are visiting for a weekend and want an evening out with live music, Friday or Saturday on Lord Street covers you. Coopers for the best acts, Auld Dubliner for something more low-key, Chop House if you want it louder. They are within walking distance of each other.</p>
+              <p>Southport is not Manchester. It does not have a sweaty indie venue with three bands on a Tuesday. What it does have is a consistent pub-based live music scene that punches above its weight for a town this size. Coopers Bar on Lord Street has been putting on live acts for years.</p>
+              <p>If you are visiting for a weekend and want an evening out with live music, Friday or Saturday on Lord Street covers you. There is Coopers, the Auld Dubliner for something more low-key, and the Chop House if you want it louder. They are within walking distance of each other.</p>
               <p>The Bijou Cinema gig nights are worth knowing about for something different. The Hesketh Arms in Churchtown is the local option if you are staying that end of town. And during Beer Week in May, live music breaks out across 18 pubs simultaneously, that week is worth planning a visit around specifically.</p>
             </div>
           </div>

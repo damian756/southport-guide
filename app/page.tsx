@@ -996,9 +996,9 @@ export default async function Home() {
         <section className="py-16 bg-[#FAF8F5]">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-12">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Verified by Google</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B] mb-3">Top Rated in Southport</h2>
-              <p className="text-gray-400 text-sm">The highest-rated businesses in Southport, ranked by thousands of verified Google reviews</p>
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">From Google reviews</p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B] mb-3">Highly Rated on Google</h2>
+              <p className="text-gray-400 text-sm">Southport businesses with high Google ratings, each from more than 100 reviews</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-4">
@@ -1025,11 +1025,6 @@ export default async function Home() {
                       <div className={`absolute inset-0 bg-gradient-to-br ${theme?.gradient || "from-[#1B2E4B] to-[#2A4A73]"}`} />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-[#C9A84C] text-white text-xs font-bold px-3 py-1 rounded-full">
-                        #1 Rated
-                      </span>
-                    </div>
                     <div className="relative p-7 flex flex-col justify-end h-full min-h-[260px]">
                       <div className="mt-auto">
                         <span className="text-white/60 text-xs uppercase tracking-wider">
@@ -1059,7 +1054,7 @@ export default async function Home() {
 
               {/* Two smaller cards */}
               <div className="grid grid-rows-2 gap-4">
-                {featured.slice(1, 3).map((b, i) => {
+                {featured.slice(1, 3).map((b) => {
                   const theme = catMeta[b.category.slug];
                   const area = getArea(b.address);
                   return (
@@ -1081,11 +1076,6 @@ export default async function Home() {
                         <div className={`absolute inset-0 bg-gradient-to-br ${theme?.gradient || "from-[#1B2E4B] to-[#2A4A73]"}`} />
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute top-3 right-3">
-                        <span className="bg-[#C9A84C] text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
-                          #{i + 2}
-                        </span>
-                      </div>
                       <div className="relative p-5 flex flex-col justify-end min-h-[118px]">
                         <div className="mt-auto">
                           <span className="text-white/50 text-xs">{area}</span>
@@ -1105,7 +1095,7 @@ export default async function Home() {
               </div>
 
               {/* Bottom row — 6 more */}
-              {featured.slice(3, 9).map((b, i) => {
+              {featured.slice(3, 9).map((b) => {
                 const theme = catMeta[b.category.slug];
                 const area = getArea(b.address);
                 return (
@@ -1125,9 +1115,6 @@ export default async function Home() {
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                        <span className="absolute top-2 right-2 bg-[#C9A84C] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          #{i + 4}
-                        </span>
                       </div>
                     ) : null}
                     <div className="p-5">
@@ -1139,7 +1126,6 @@ export default async function Home() {
                           >
                             {b.category.slug.replace(/-/g, " ")}
                           </span>
-                          <span className="text-[#C9A84C] text-xs font-bold">#{i + 4}</span>
                         </div>
                       )}
                       {b.heroImage && (
@@ -1190,7 +1176,7 @@ export default async function Home() {
                 I&apos;ve lived in Churchtown my whole life. 41 years. I&apos;ve eaten in most of the restaurants in this town, some of them multiple times a week when the kids were small. I know where Marine Drive car park fills up by 10am on a summer Saturday, and I know which end of Lord Street to park on. I have a bulldog called Frank who has opinions about beer gardens.
               </p>
               <p className="text-gray-600 leading-relaxed mb-3">
-                SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide. Not a reprint of the council website. If something isn&apos;t worth your time, I say so.
+                SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide. Not a reprint of the council website.
               </p>
               <p className="text-gray-600 leading-relaxed mb-5">
                 Any Southport business can be listed here for free. Paid placements and adverts are labelled, and paying does not change what we write. If your business is not listed yet, you can suggest it and we will add it.

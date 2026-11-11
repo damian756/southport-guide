@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
     description:
-      "Southport Market on King Street: every trader reviewed, what to order, opening times, parking, and the honest picture. Written by a Southport local.",
+      "Southport Market on King Street: every trader, what they serve, opening times, parking and tips. Written by a Southport local.",
     url: `${BASE_URL}/guides/southport-market`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const ARTICLE_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Southport Market: The Complete Guide to Every Trader, Menu and Honest Tip",
+  headline: "Southport Market: A Complete Guide to the Traders, Menus and Visiting Tips",
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/southport-market`,
   datePublished: "2026-04-02",
@@ -326,7 +326,7 @@ const TRADERS = [
       "Chicken Salad Boxes",
     ],
     terryPick:
-      "The Korean Fried Chicken is the main event. Boneless breast, sauces made here. If you have teenagers they will find the corndogs on TikTok before you finish reading this sentence. Worth the fuss.",
+      "The Korean Fried Chicken is the main event. Boneless breast, sauces made here. If you have teenagers they will find the corndogs on TikTok before you finish reading this sentence.",
     dietary: [] as string[],
     hoursNote: null,
     badge: "Viral on TikTok",
@@ -347,7 +347,7 @@ const TRADERS = [
       "Seafood options (setting it apart from standard burger stalls)",
     ],
     terryPick:
-      "A smash burger done properly is better than most pub burgers at twice the price. The seafood element is what makes this one different. The meat is from Blackhurst ten feet away.",
+      "Smash burgers, plus a seafood element that makes this one different. The meat is from Blackhurst ten feet away.",
     dietary: [] as string[],
     hoursNote: null,
     badge: "Meat from Blackhurst next door",
@@ -488,7 +488,7 @@ const FAQS = [
     a: "Yes. The Extravaganza Room handles weddings, parties, corporate events, conferences, live bands, and performance shows. Smaller function rooms are also available for meetings. Use the enquiry button in the events section above, or visit southportmarket.com directly.",
   },
   {
-    q: "What is the best thing to eat at Southport Market?",
+    q: "What food is there at Southport Market?",
     a: "Depends what you are after. For pizza: 600 Degrees Margherita. For something Greek: Pitamu halloumi fries or the yeeros. For pasta: Pasta 51 orecchiette with cacio e pepe. For brunch: Brunch N' Bagel Big Brunch Bite. For Korean: Little Korean Kitchen fried chicken. For a burger: Lennys Smashport. For something sweet: Cake Corner brownies or a fresh waffle.",
   },
   {
@@ -533,8 +533,8 @@ export default function SouthportMarketPage() {
               <span className="block text-[#C9A84C]">Market</span>
             </h1>
             <p className="text-white/80 text-xl max-w-2xl mb-8 leading-relaxed">
-              Nine independent traders, one bar, live music, and the best lunch in town.
-              The complete guide: every trader reviewed, what to order, and honest advice on when to go.
+              Nine independent traders, one bar and live music.
+              The complete guide: every trader, what they serve, and when to go.
             </p>
 
             {/* Quick facts strip */}
@@ -653,7 +653,7 @@ export default function SouthportMarketPage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">The food</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">The Traders</h2>
             <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-              Every trader reviewed. What they do, who runs it, what to order, and the honest opinion.
+              Every trader: what they do, who runs it, and what is on the menu.
             </p>
           </div>
 

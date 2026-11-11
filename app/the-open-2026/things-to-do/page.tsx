@@ -32,7 +32,7 @@ const THINGS = [
     category: "Golf (Beyond Royal Birkdale)",
     emoji: "⛳",
     items: [
-      { name: "Hillside Golf Club", desc: "Directly adjacent to Royal Birkdale and of similar quality. Hillside is one of England's finest links courses. If you're a golfer and want to play a course of genuine championship standard during Open week, Hillside is the answer. Book well ahead." },
+      { name: "Hillside Golf Club", desc: "Directly adjacent to Royal Birkdale. A links course that takes visitors, if you are a golfer and want to play during Open week. Book well ahead." },
       { name: "Southport & Ainsdale Golf Club", desc: "Another links course of real quality, minutes from Birkdale. Has hosted the Ryder Cup. Worth playing if Hillside is unavailable." },
       { name: "Hesketh Golf Club", desc: "A respected parkland course on the edge of Southport. More forgiving than the links courses but still an enjoyable round." },
     ],
@@ -51,7 +51,7 @@ const THINGS = [
     emoji: "🛍️",
     items: [
       { name: "Lord Street", desc: "Southport's famous Victorian boulevard with a covered canopy running its length. Independent shops, cafes, and restaurants. One of the finest shopping streets in the North of England and worth exploring properly." },
-      { name: "Wayfarers Arcade", desc: "A beautiful Victorian indoor arcade off Lord Street. Independent retailers, a good café, and one of Southport's best-preserved historic buildings." },
+      { name: "Wayfarers Arcade", desc: "A Victorian indoor arcade off Lord Street, with independent retailers and a café." },
       { name: "Ocean Plaza Retail & Leisure", desc: "The seafront development has larger retail names, a cinema, and casual dining if you need a more relaxed shopping environment." },
     ],
   },
@@ -73,7 +73,7 @@ const FAQS = [
   },
   {
     q: "Can I play golf in Southport during Open week?",
-    a: "Yes. Hillside Golf Club and Southport & Ainsdale Golf Club both offer public access and are among England's finest links courses. Book well in advance as Open week demand is high. Both courses sit adjacent to or near Royal Birkdale.",
+    a: "Yes. Hillside Golf Club and Southport & Ainsdale Golf Club both offer public access. Book well in advance as Open week demand is high. Both courses sit adjacent to or near Royal Birkdale.",
   },
   {
     q: "What can families do in Southport during The Open Championship?",

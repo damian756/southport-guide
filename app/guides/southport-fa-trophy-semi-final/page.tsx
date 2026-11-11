@@ -51,7 +51,7 @@ const FAQS = [
   },
   {
     q: "Which pubs near Haig Avenue allow away fans?",
-    a: "The Thatch and Thistle at the junction of Norwood Road and Haig Avenue is the most convenient option near the ground, it has Sky Sports and food. The Richmond on Scarisbrick New Road is a short walk away and tends to be slightly more relaxed. Both are fine for away fans. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission or away supporters.",
+    a: "The Thatch and Thistle at the junction of Norwood Road and Haig Avenue is the closest option to the ground, with Sky Sports and food. The Richmond on Scarisbrick New Road is a short walk away. Both are options for away fans. Note that the Grandstand Bar at the ground is for hospitality guests only and is not accessible to general admission or away supporters.",
   },
   {
     q: "What is the away end like at Haig Avenue?",
@@ -123,7 +123,7 @@ export default function FATrophySemiFinalGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-fa-trophy-semifinal-hero.webp"
-            alt="The FA Trophy — Southport FC reach the semi-final for the first time in 28 years"
+            alt="The FA Trophy: Southport FC reach the semi-final for the first time in 28 years"
             fill
             sizes="100vw"
             quality={85}
@@ -397,8 +397,8 @@ export default function FATrophySemiFinalGuidePage() {
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Before the Match</p>
             <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Pubs Near Haig Avenue</h2>
             <p className="text-gray-600 mt-3 max-w-2xl">
-              Options near the ground are limited but functional. If you have time, Southport town centre (a mile and a half
-              away) is the better call for a proper pre-match drink.
+              Options near the ground are limited. If you have time, Southport town centre (a mile and a half
+              away) has more choice for a pre-match drink.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -416,9 +416,9 @@ export default function FATrophySemiFinalGuidePage() {
                 name: "Thatch and Thistle",
                 location: "Norwood Road / Haig Avenue junction",
                 type: "Pub",
-                badge: "Most convenient",
+                badge: "Opposite the ground",
                 badgeColor: "bg-green-700 text-white",
-                detail: "Right at the bottom of Haig Avenue, directly opposite the ground entrance. Sky Sports, food available, decent enough for a pre-match. Nothing special but it does the job. Gets very busy before a game this size.",
+                detail: "Right at the bottom of Haig Avenue, directly opposite the ground entrance. Sky Sports and food available. Gets very busy before a game this size.",
                 tip: "Arrive early, tables go fast.",
               },
               {
@@ -427,17 +427,17 @@ export default function FATrophySemiFinalGuidePage() {
                 type: "Pub",
                 badge: "Short walk",
                 badgeColor: "bg-blue-700 text-white",
-                detail: "A few minutes from the ground on Scarisbrick New Road. Slightly more relaxed than the Thatch and Thistle before a big game. A reasonable option for away fans who want a bit more space.",
-                tip: "Less crowded alternative.",
+                detail: "A few minutes from the ground on Scarisbrick New Road. An option for away fans who want a bit more space.",
+                tip: "A few minutes from the ground.",
               },
               {
                 name: "Tap and Bottles",
                 location: "Town centre",
                 type: "Craft beer",
-                badge: "Best pint",
+                badge: "CAMRA award",
                 badgeColor: "bg-amber-600 text-white",
-                detail: "Luke Randles (of the Southport BID) ran this for years, proper CAMRA-award-winning pub in the town centre. If you are arriving 2+ hours early and want a genuinely good pint, this is where to go. About 20–25 minutes walk from the ground.",
-                tip: "Worth the walk if you have time.",
+                detail: "Luke Randles (of the Southport BID) ran this for years. A CAMRA-award-winning pub in the town centre, about 20–25 minutes walk from the ground, if you are arriving 2+ hours early.",
+                tip: "For an early arrival.",
               },
               {
                 name: "The Guest House",
@@ -445,7 +445,7 @@ export default function FATrophySemiFinalGuidePage() {
                 type: "Pub",
                 badge: "Town centre",
                 badgeColor: "bg-purple-700 text-white",
-                detail: "A popular town centre pub that gets mentioned by away fans researching the area. Good atmosphere, central location. Bus the mile and a half to the ground from here when you are ready.",
+                detail: "A popular town centre pub that gets mentioned by away fans researching the area. Central location. Bus the mile and a half to the ground from here when you are ready.",
                 tip: "Get the bus back, don't rush.",
               },
               {
@@ -454,8 +454,8 @@ export default function FATrophySemiFinalGuidePage() {
                 type: "Bottle shop/bar",
                 badge: "Specialist",
                 badgeColor: "bg-gray-700 text-white",
-                detail: "Independent bottle shop and bar in Southport town centre. Good selection. If you are a beer enthusiast and have time before the match, worth knowing about.",
-                tip: "Good for a different kind of pre-match.",
+                detail: "Independent bottle shop and bar in Southport town centre, for beer enthusiasts with time before the match.",
+                tip: "A different kind of pre-match.",
               },
             ].map((pub) => (
               <div key={pub.name} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

@@ -151,7 +151,7 @@ const FAMILY = [
     name: "Splash World",
     sub: "Indoor water park. All weather.",
     detail:
-      "The answer to the inevitable Lancashire question. Splash World is Southport's indoor water park, with slides, pools, and water play for all ages. Fully under cover, which makes it the obvious backup plan when the weather turns.",
+      "The answer to the inevitable Lancashire question. Splash World is Southport's indoor water park, with slides, pools, and water play for all ages. Fully under cover, which makes it a backup plan when the weather turns.",
     practical: "Esplanade, PR8 1RX · Near Adventure Coast · Check opening times online",
     emoji: "🌊",
     href: "/activities",
@@ -292,7 +292,7 @@ const GOLF_COURSES = [
     name: "Royal Birkdale",
     rank: "World Top 25",
     detail:
-      "Widely regarded as the finest links course in England and consistently ranked in the world top 25. Royal Birkdale hosted The 154th Open in July 2026, won by Ryan Fox. The course is famous for its willow scrub rough, towering dunes, and the relentless challenge it presents to the world's best players. Green fees from £210.",
+      "Royal Birkdale hosted The 154th Open in July 2026, won by Ryan Fox. The course is known for its willow scrub rough and towering dunes. Green fees from £210.",
     open: "Open from April · Green fees from £210",
     tag: "The Open 2026 host",
     tagColor: "bg-green-100 text-green-800",
@@ -303,9 +303,9 @@ const GOLF_COURSES = [
     name: "Hillside Golf Club",
     rank: "UK & Ireland Top 100",
     detail:
-      "England Top 100. UK &amp; Ireland Top 100. And yet Hillside has never hosted The Open Championship. A fact that golfers find bewildering and locals take mild satisfaction in. The back nine, running through towering dunes alongside Royal Birkdale's fairways, is as good a stretch of links golf as you'll play anywhere in Britain. Host of the 2019 British Masters. Green fees from £110.",
+      "Hillside sits next to Royal Birkdale and has never hosted The Open Championship. The back nine runs through towering dunes alongside Royal Birkdale's fairways. Host of the 2019 British Masters. Green fees from £110.",
     open: "Members & visitors · Green fees from £110",
-    tag: "Often called Birkdale's equal",
+    tag: "2019 British Masters host",
     tagColor: "bg-blue-100 text-blue-800",
     href: "/golf",
     emoji: "⛳",
@@ -314,7 +314,7 @@ const GOLF_COURSES = [
     name: "Southport & Ainsdale",
     rank: "Open Championship Qualifier",
     detail:
-      "Classic links, across the railway line from Hillside. S&amp;A serves as an Open Championship Qualifier course when the Open is at Royal Birkdale. Sir Nick Faldo described the cluster of Birkdale, Hillside, and S&amp;A as 'tough to beat for true links golf anywhere in the world.' Underrated and often underbooked. Good value relative to its neighbours.",
+      "Classic links, across the railway line from Hillside. S&amp;A serves as an Open Championship Qualifier course when the Open is at Royal Birkdale. Sir Nick Faldo described the cluster of Birkdale, Hillside, and S&amp;A as 'tough to beat for true links golf anywhere in the world.'",
     open: "Members & visitors · Green fees from ~£60",
     tag: "Open qualifier course",
     tagColor: "bg-amber-100 text-amber-800",
@@ -325,9 +325,9 @@ const GOLF_COURSES = [
     name: "Hesketh Golf Club",
     rank: "Founded 1885. Southport's oldest club.",
     detail:
-      "The most underrated course in the area. Founded in 1885, making it Southport's oldest golf club. Sir Henry Cotton described the 16th hole as 'Lancashire's best Par 3.' Green fees start from £50. Exceptional value for a course of this quality and history. Often the easiest to book, and worth seeking out specifically.",
+      "Founded in 1885, making it Southport's oldest golf club. Sir Henry Cotton described the 16th hole as 'Lancashire's best Par 3.' Green fees start from £50.",
     open: "Members & visitors · Green fees from £50",
-    tag: "Best value in the area",
+    tag: "Green fees from £50",
     tagColor: "bg-purple-100 text-purple-800",
     href: "/golf",
     emoji: "⛳",
@@ -393,7 +393,7 @@ const FAQS = [
   },
   {
     q: "What is Southport famous for?",
-    a: "Southport is best known for its pier (England's second longest at 1,108 metres), its Victorian boulevard Lord Street (reportedly the inspiration for Haussmann's redesign of Paris), the Southport Flower Show, the Air Show, and above all its golf. England's Golf Coast, home to Royal Birkdale, Hillside, and several other courses ranked in the UK's top 100. In July 2026 Royal Birkdale hosted The 154th Open, won by Ryan Fox.",
+    a: "Southport is best known for its pier (England's second longest at 1,108 metres), its Victorian boulevard Lord Street (reportedly the inspiration for Haussmann's redesign of Paris), the Southport Flower Show, the Air Show, and above all its golf. England's Golf Coast, home to Royal Birkdale, Hillside and several other links courses. In July 2026 Royal Birkdale hosted The 154th Open, won by Ryan Fox.",
   },
   {
     q: "Is Southport Beach worth visiting?",
@@ -583,8 +583,8 @@ export default function ThingsToDoPage() {
                   representing some of the finest links golf in the world.
                 </p>
                 <p>
-                  The guide below covers all of it. We&apos;ve been honest about what&apos;s worth your time and what isn&apos;t,
-                  and we&apos;ve included the practical details that the official tourism sites tend to leave out.
+                  The guide below covers all of it, with the practical details that the official tourism sites
+                  tend to leave out.
                   Southport is better than its reputation. Use this guide to find out why.
                 </p>
               </div>
@@ -897,7 +897,7 @@ export default function ThingsToDoPage() {
                 {
                   name: "Wayfarers Arcade",
                   sub: "Grade II listed · 125 years old",
-                  detail: "Lord Street's hidden interior. A Grade II listed Victorian arcade, around 125 years old, with independent traders, antiques, and a café. The architecture alone is worth the detour.",
+                  detail: "Lord Street's hidden interior. A Grade II listed Victorian arcade, around 125 years old, with independent traders, antiques, and a café.",
                   href: "/shopping",
                   emoji: "🏚️",
                 },
@@ -918,7 +918,7 @@ export default function ThingsToDoPage() {
                 {
                   name: "Ocean Plaza & Central 12",
                   sub: "High street brands · Parking",
-                  detail: "Southport's retail parks for high street brands. Ocean Plaza is on the seafront; Central 12 is off the main ring road. Both have parking. Neither is the reason to visit Southport, but useful to know.",
+                  detail: "Southport's retail parks for high street brands. Ocean Plaza is on the seafront; Central 12 is off the main ring road. Both have parking.",
                   href: "/shopping",
                   emoji: "🛒",
                 },
@@ -1022,7 +1022,7 @@ export default function ThingsToDoPage() {
                   <MapPin className="w-7 h-7 text-red-600" />
                 </div>
                 <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Restaurants</h3>
-                <p className="text-gray-500 text-sm">The best places to eat, from Lord Street fine dining to seafront fish and chips.</p>
+                <p className="text-gray-500 text-sm">Where to eat, from Lord Street fine dining to seafront fish and chips.</p>
               </Link>
               <div className="flex flex-col items-center text-center p-6 rounded-xl">
                 <Link href="/hotels" className="group flex flex-col items-center">

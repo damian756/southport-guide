@@ -188,7 +188,7 @@ export default async function DogFriendlySouthportGuidePage() {
           <div className="rounded-2xl overflow-hidden mb-6 relative">
             <Image
               src="/images/marshside/rspb-marshside-dogs.jpg"
-              alt="Dog running through a tidal pool on the Marshside coastal path — Ribble Estuary saltmarsh and blue sky behind"
+              alt="Dog running through a tidal pool on the Marshside coastal path, with Ribble Estuary saltmarsh and blue sky behind"
               width={900}
               height={450}
               className="w-full h-52 sm:h-64 object-cover"
@@ -250,19 +250,19 @@ export default async function DogFriendlySouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Dog-Friendly Pubs</h2>
           <p className="text-gray-700 leading-relaxed mb-5">
-            A number of Southport pubs are genuinely dog-friendly, water bowls outside, dogs allowed inside, no fuss. These are the most reliably welcoming:
+            A number of Southport pubs are genuinely dog-friendly, water bowls outside, dogs allowed inside, no fuss. These include:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {[
               {
                 name: "The Hesketh Arms",
                 location: "Churchtown village",
-                notes: "Classic village pub. Dog-friendly throughout. Good for post-walk food. Traditional atmosphere.",
+                notes: "Village pub. Dog-friendly throughout. Serves food after a walk. Traditional atmosphere.",
               },
               {
                 name: "The Bold Arms",
                 location: "Churchtown",
-                notes: "Another solid Churchtown option. Local pub, no pretension. Dogs welcome.",
+                notes: "Another Churchtown option. Local pub. Dogs welcome.",
               },
               {
                 name: "Seafront pubs (Marine Drive)",
@@ -305,7 +305,7 @@ export default async function DogFriendlySouthportGuidePage() {
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">
               <span className="mr-2">☕</span>
-              For a full list of good cafés, see the <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] hover:underline font-semibold">Best Cafés in Southport guide</Link>. Most independent cafés listed there are dog-friendly or have outdoor seating, worth checking the notes.
+              For a full list of cafés, see the <Link href="/guides/best-cafes-southport" className="text-[#C9A84C] hover:underline font-semibold">Cafés in Southport guide</Link>. Most independent cafés listed there are dog-friendly or have outdoor seating, worth checking the notes.
             </p>
           </div>
         </section>
@@ -354,7 +354,7 @@ export default async function DogFriendlySouthportGuidePage() {
               { href: "/guides/southport-beach", label: "Southport Beach Guide" },
               { href: "/guides/parking-southport", label: "Parking Guide" },
               { href: "/guides/churchtown", label: "Churchtown" },
-              { href: "/guides/best-cafes-southport", label: "Best Cafés" },
+              { href: "/guides/best-cafes-southport", label: "Cafés in Southport" },
             ].map(({ href, label }) => (
               <Link
                 key={href}
