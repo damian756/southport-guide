@@ -7,6 +7,8 @@ import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
 import { ViewTracker } from "@/components/ViewTracker";
 import ReviewSection from "@/components/ReviewSection";
+import ListingMapLazy from "@/components/ListingMapLazy";
+import GoogleMapClickToLoad from "@/components/GoogleMapClickToLoad";
 import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
 import { postsForListing } from "@/lib/listing-posts";
 import { PRO_BADGE } from "@/lib/listing-order";
@@ -477,13 +479,26 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     }
   }
 
-  // Map embed URL – use placeId if available, else lat/lng
-  const mapSrc = mapsKey
-    ? business.placeId
-      ? `https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=place_id:${business.placeId}&zoom=16`
-      : business.lat && business.lng
-        ? `https://www.google.com/maps/embed/v1/view?key=${mapsKey}&center=${business.lat},${business.lng}&zoom=16&maptype=roadmap`
-        : null
+  // Map: an OpenStreetMap map on the stored coordinates. A listing with no
+  // coordinates but a Google place id gets a click-to-load Google map instead
+  // (the embed needs mapsKey, read on the server). No location is guessed.
+  const coords = business.lat != null && business.lng != null
+    ? { lat: business.lat, lng: business.lng }
+    : null;
+  const placeQuery = encodeURIComponent(`${business.name}, ${formattedAddress}`);
+  const placeIdParam = business.placeId ? encodeURIComponent(business.placeId) : null;
+  const directionsUrl = coords
+    ? `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}`
+    : placeIdParam
+      ? `https://www.google.com/maps/dir/?api=1&destination=${placeQuery}&destination_place_id=${placeIdParam}`
+      : null;
+  const googleMapsUrl = coords
+    ? `https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}${placeIdParam ? `&query_place_id=${placeIdParam}` : ""}`
+    : placeIdParam
+      ? `https://www.google.com/maps/search/?api=1&query=${placeQuery}&query_place_id=${placeIdParam}`
+      : null;
+  const clickToLoad = !coords && business.placeId && mapsKey
+    ? { placeId: business.placeId, apiKey: mapsKey }
     : null;
 
   // Breadcrumb JSON-LD
@@ -777,22 +792,49 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                 </div>
               </div>
 
-              {/* Google Maps embed */}
-              {mapSrc && (
+              {/* Location: OpenStreetMap map, or click-to-load Google map, then plain links */}
+              {(coords || clickToLoad || directionsUrl) && (
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="px-6 pt-5 pb-2">
+                  <div className="px-6 pt-5 pb-3">
                     <h2 className="font-semibold text-gray-900 flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-blue-500" /> Location
                     </h2>
                   </div>
-                  <iframe
-                    loading="lazy"
-                    className="w-full h-80"
-                    src={mapSrc}
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`Map showing location of ${business.name}`}
-                  />
+                  {(coords || clickToLoad) && (
+                    // Fixed height so nothing moves when the map arrives; isolate keeps
+                    // Leaflet's own z-indexes (up to 1000) inside this box.
+                    <div className="relative isolate h-80 bg-slate-100">
+                      {coords ? (
+                        <ListingMapLazy lat={coords.lat} lng={coords.lng} name={business.name} />
+                      ) : clickToLoad ? (
+                        <GoogleMapClickToLoad placeId={clickToLoad.placeId} apiKey={clickToLoad.apiKey} name={business.name} />
+                      ) : null}
+                      <noscript>
+                        <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 px-6 text-center text-sm text-gray-600">
+                          The map needs JavaScript. The links below open Google Maps.
+                        </div>
+                      </noscript>
+                    </div>
+                  )}
+                  {(directionsUrl || googleMapsUrl) && (
+                    <div className="px-6 py-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+                      {directionsUrl && (
+                        <a
+                          href={trackUrl(business.id, "directions", directionsUrl)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          Get directions <span aria-hidden="true">→</span>
+                        </a>
+                      )}
+                      {googleMapsUrl && (
+                        <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                          View on Google Maps <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
 
