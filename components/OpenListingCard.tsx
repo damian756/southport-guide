@@ -32,23 +32,17 @@ export default function OpenListingCard({
   rating,
   reviewCount,
   priceRange,
-  listingTier,
   firstImage,
   categorySlug,
   themeGradient,
   emoji,
 }: Props) {
-  const isFeatured = listingTier === "featured" || listingTier === "premium";
   const areaLabel = getAreaLabel(address);
 
   return (
     <Link
       href={`/${categorySlug}/${slug}`}
-      className={`group flex flex-col bg-white rounded-2xl overflow-hidden border transition-all hover:-translate-y-0.5 ${
-        isFeatured
-          ? "border-[#C9A84C]/40 ring-1 ring-[#C9A84C]/15 shadow-md hover:shadow-lg"
-          : "border-gray-100 hover:border-gray-200 hover:shadow-md shadow-sm"
-      }`}
+      className="group flex flex-col bg-white rounded-2xl overflow-hidden border transition-all hover:-translate-y-0.5 border-gray-100 hover:border-gray-200 hover:shadow-md shadow-sm"
     >
       {/* Image */}
       <div className={`relative w-full h-44 flex-none overflow-hidden bg-gradient-to-br ${themeGradient}`}>
@@ -66,13 +60,6 @@ export default function OpenListingCard({
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="absolute top-3 right-3 w-20 h-20 bg-white/5 rounded-full blur-2xl" />
             <span className="text-5xl opacity-30 select-none">{emoji}</span>
-          </div>
-        )}
-        {isFeatured && (
-          <div className="absolute top-3 left-3">
-            <span className="text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
-              ✦ Featured
-            </span>
           </div>
         )}
       </div>

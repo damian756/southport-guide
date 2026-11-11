@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { unpaidListingWhere } from "@/lib/unpaid-listings";
 import type { Metadata } from "next";
 import OpenListingCard from "@/components/OpenListingCard";
 
@@ -114,7 +115,7 @@ export default async function OpenRestaurantsPage() {
     ]);
     if (rCat) {
       restaurants = await prisma.business.findMany({
-        where: { categoryId: rCat.id },
+        where: { categoryId: rCat.id, ...unpaidListingWhere() },
         take: 9,
         orderBy: [{ rating: "desc" }],
         select: SELECT,
@@ -122,7 +123,7 @@ export default async function OpenRestaurantsPage() {
     }
     if (bCat) {
       bars = await prisma.business.findMany({
-        where: { categoryId: bCat.id },
+        where: { categoryId: bCat.id, ...unpaidListingWhere() },
         take: 6,
         orderBy: [{ rating: "desc" }],
         select: SELECT,

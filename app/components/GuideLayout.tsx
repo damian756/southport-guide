@@ -4,6 +4,7 @@ import { ChevronRight, ArrowRight, MapPin, CalendarDays } from "lucide-react";
 import type { Guide } from "@/lib/guides-config";
 import { getRelatedGuides, getRelatedCollections, GUIDE_CATEGORIES, eventNotice, todayISO } from "@/lib/guides-config";
 import { COLLECTIONS } from "@/lib/collections-config";
+import { unpaidListingWhere } from "@/lib/unpaid-listings";
 
 interface BusinessCard {
   id: string;
@@ -38,13 +39,14 @@ async function fetchRelatedListings(guide: Guide): Promise<BusinessCard[]> {
       ].filter(Boolean) as object[],
     };
 
-    // Top-rated listings only. Paid places (Pro) are left out: a guide's
-    // related listings are editorial, and paid places only appear, labelled,
-    // on category pages. The admin-set listingTier is not paid for.
+    // Top-rated listings only. Paid places (Pro, or a boost that is running)
+    // are left out: a guide's related listings are editorial, and paid places
+    // only appear, labelled, on category pages. The admin-set listingTier is
+    // not paid for.
     const listings = await prisma.business.findMany({
       where: {
         ...whereCondition,
-        hubTier: { not: "pro" },
+        ...unpaidListingWhere(),
         rating: { not: null },
       },
       select: {
