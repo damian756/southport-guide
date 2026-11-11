@@ -38,28 +38,13 @@ async function fetchRelatedListings(guide: Guide): Promise<BusinessCard[]> {
       ].filter(Boolean) as object[],
     };
 
-    // Prefer paid tiers first; fall back to top-rated standard listings so the
-    // section is never empty just because no business has paid for a tier upgrade.
-    const paid = await prisma.business.findMany({
-      where: { ...whereCondition, listingTier: { in: ["featured", "premium"] } },
-      select: {
-        id: true, slug: true, name: true, shortDescription: true,
-        category: { select: { slug: true, name: true } },
-        images: true, listingTier: true, rating: true,
-      },
-      orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
-      take: 6,
-    });
-
-    if (paid.length >= 3) return paid as BusinessCard[];
-
-    // Not enough paid listings — top up with best-rated free/standard listings
-    const paidIds = paid.map((b) => b.id);
-    const standard = await prisma.business.findMany({
+    // Top-rated listings only. Paid tiers are left out: a guide's related
+    // listings are editorial, and paid places only appear, labelled, on
+    // category pages.
+    const listings = await prisma.business.findMany({
       where: {
         ...whereCondition,
         listingTier: { notIn: ["featured", "premium"] },
-        id: { notIn: paidIds },
         rating: { not: null },
       },
       select: {
@@ -68,10 +53,10 @@ async function fetchRelatedListings(guide: Guide): Promise<BusinessCard[]> {
         images: true, listingTier: true, rating: true,
       },
       orderBy: [{ rating: "desc" }],
-      take: 6 - paid.length,
+      take: 6,
     });
 
-    return [...paid, ...standard] as BusinessCard[];
+    return listings as BusinessCard[];
   } catch {
     return [];
   }
@@ -141,7 +126,7 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                 Relevant Listings
               </h2>
               <p className="text-gray-600 mt-2 text-base">
-                Featured businesses related to this guide.
+                Businesses related to this guide, by Google rating.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -173,13 +158,6 @@ export default async function GuideLayout({ guide, children }: GuideLayoutProps)
                         {biz.category.name}
                       </p>
                     </div>
-                    {biz.listingTier === "featured" && (
-                      <div className="absolute top-2 right-2">
-                        <span className="bg-[#C9A84C] text-[#1B2E4B] text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          Featured
-                        </span>
-                      </div>
-                    )}
                   </div>
                   <div className="p-5">
                     <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-1.5 group-hover:text-[#C9A84C] transition-colors">

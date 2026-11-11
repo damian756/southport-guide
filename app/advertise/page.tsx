@@ -1,368 +1,227 @@
 import Link from "next/link";
-import { Mail, BarChart2, Shield, Users } from "lucide-react";
+import { Check } from "lucide-react";
+import type { Metadata } from "next";
+import { AD_OPTIONS, NETWORK_BUNDLE, describeSpace, enquiryHref, AD_SLOTS, type AdOption } from "@/lib/ad-slots";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
-export const metadata = {
-  title: "Advertise on SouthportGuide | Sefton Coast Network",
-  description:
-    "Reach Southport visitors and local residents. Featured business listings and display advertising across the Sefton Coast Network.",
-  alternates: { canonical: "https://www.southportguide.co.uk/advertise" },
+const PAGE_URL = "https://www.southportguide.co.uk/advertise";
+const DESCRIPTION =
+  "Advertising on SouthportGuide: guide and event sponsorships, a home page card, sponsored articles and Featured places. Fixed prices, every advert labelled.";
+
+export const metadata: Metadata = {
+  title: "Advertise on SouthportGuide",
+  description: DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    title: "Advertise on SouthportGuide | Sefton Coast Network",
-    description:
-      "Reach Southport visitors and local residents. Featured listings and display advertising across the Sefton Coast Network.",
-    url: "https://www.southportguide.co.uk/advertise",
+    title: "Advertise on SouthportGuide",
+    description: DESCRIPTION,
+    url: PAGE_URL,
   },
 };
 
-export default function AdvertisePage() {
-  return (
-    <div className="min-h-screen bg-white">
+const RULES = [
+  "Every advert is labelled Advertisement, Sponsor, Sponsored or Featured.",
+  "Paid links are marked as sponsored for search engines.",
+  "Adverts never appear inside a review, and paying for a space does not change what we write.",
+  "No ad networks, tracking scripts or advertising cookies. Adverts are a picture, a few words and a link.",
+];
 
+const SITES = [
+  { name: "SouthportGuide.co.uk", desc: "Southport: things to do, events, beaches, parking and a directory of local businesses." },
+  { name: "FormbyGuide.co.uk", desc: "Formby: the beach, the pinewoods, red squirrels and the village." },
+  { name: "SeftonLinks.com", desc: "Golf on the Sefton Coast: Royal Birkdale, Hillside, Formby and the other links courses." },
+  { name: "SeftonCoastWildlife.co.uk", desc: "Birds, mammals, insects and plants of the Sefton Coast, season by season." },
+];
+
+type Props = { searchParams: Promise<{ space?: string }> };
+
+function OptionCard({ o, askHref }: { o: AdOption; askHref: string }) {
+  const isFeatured = o.id === "featured";
+  return (
+    <div id={o.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col scroll-mt-28">
+      <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-3">{o.name}</h3>
+      <p className="mb-1">
+        <span className={`${isFeatured ? "text-xl" : "text-3xl"} font-bold text-[#1B2E4B]`}>{o.price}</span>{" "}
+        {o.per && <span className="text-sm text-gray-500">{o.per}</span>}
+      </p>
+      <p className="text-xs text-gray-400 mb-4">
+        {isFeatured ? o.note : `${o.note}. Plus VAT.`}
+      </p>
+      <ul className="space-y-2 text-sm text-gray-600 mb-5 flex-1">
+        {o.points.map((p) => (
+          <li key={p} className="flex gap-2">
+            <Check className="w-4 h-4 text-[#C9A84C] flex-none mt-0.5" aria-hidden="true" />
+            {p}
+          </li>
+        ))}
+      </ul>
+      <p className="text-xs font-semibold text-[#C9A84C] mb-4">{o.term}</p>
+      {isFeatured ? (
+        <Link
+          href="/pricing"
+          className="text-center bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white text-sm font-bold px-4 py-2.5 rounded-full transition-colors"
+        >
+          See Pro and boost prices
+        </Link>
+      ) : (
+        <Link
+          href={askHref}
+          className="text-center bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white text-sm font-bold px-4 py-2.5 rounded-full transition-colors"
+        >
+          Ask about this space
+        </Link>
+      )}
+    </div>
+  );
+}
+
+export default async function AdvertisePage({ searchParams }: Props) {
+  const { space } = await searchParams;
+  // Only known space ids are named back to the visitor.
+  const asked = describeSpace(space);
+  const askedOption = space ? (AD_SLOTS[space]?.option ?? space) : null;
+  const askFor = (o: AdOption) => enquiryHref(asked && askedOption === o.id ? space : o.id);
+
+  return (
+    <div className="min-h-screen bg-[#FAF8F5]">
       {/* ── Hero ── */}
-      <div className="bg-[#0d1b2a] text-white py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xs font-bold tracking-widest uppercase text-[#c9a84c] mb-4">
-            Advertising &amp; Partnerships
-          </p>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
-            Reach the Sefton Coast audience.<br />
-            <span className="text-[#c9a84c]">Four local guides</span> covering this coast.
-          </h1>
-          <p className="text-lg text-white/70 max-w-2xl mb-10 leading-relaxed">
-            SouthportGuide is part of the Sefton Coast Network: four editorial sites covering Southport, Formby, and the links golf corridor. No tourist board. No aggregator content. Local guides written for the people who use them.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="mailto:partnerships@seftoncoast.network"
-              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#b8952a] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              partnerships@seftoncoast.network
-            </a>
+      <section className="bg-[#1B2E4B] relative overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+        <div className="relative container mx-auto px-4 max-w-6xl py-14 md:py-20">
+          <div className="max-w-3xl">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-4">Advertising</p>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              Advertise to people planning a day in Southport
+            </h1>
+            <p className="text-lg text-white/70 leading-relaxed mb-8">
+              Simple local options at a fixed price. Every advert is clearly labelled, there are no ad networks or
+              tracking cookies, and you pay by invoice.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={enquiryHref(asked ? space : undefined)}
+                className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold px-6 py-3 rounded-full transition-colors"
+              >
+                Ask about a space
+              </Link>
+              <Link
+                href="/claim-listing"
+                className="border border-white/30 text-white hover:bg-white/10 font-semibold px-6 py-3 rounded-full transition-colors"
+              >
+                Claim your free listing
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Ways to advertise ── */}
+      <section className="container mx-auto px-4 max-w-6xl py-14">
+        <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">Ways to advertise</h2>
+        <p className="text-gray-500 text-sm mb-8 max-w-2xl">
+          Prices are plus VAT. Every listing in the directory stays free; these options add visibility on top.
+        </p>
+
+        {asked && (
+          <div className="mb-6 rounded-xl border border-[#C9A84C]/40 bg-white px-5 py-3 text-sm text-[#1B2E4B]">
+            You asked about: <strong>{asked}</strong>
+          </div>
+        )}
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {AD_OPTIONS.map((o) => (
+            <OptionCard key={o.id} o={o} askHref={askFor(o)} />
+          ))}
+
+          <div id={NETWORK_BUNDLE.id} className="bg-[#1B2E4B] text-white rounded-2xl p-6 flex flex-col scroll-mt-28">
+            <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">All four sites</p>
+            <h3 className="font-display text-xl font-bold mb-3">{NETWORK_BUNDLE.name}</h3>
+            <p className="mb-1">
+              <span className="text-3xl font-bold">{NETWORK_BUNDLE.price}</span>{" "}
+              <span className="text-sm text-white/60">{NETWORK_BUNDLE.per}</span>
+            </p>
+            <p className="text-xs text-white/50 mb-4">{NETWORK_BUNDLE.note}. Plus VAT.</p>
+            <ul className="space-y-2 text-sm text-white/80 mb-5 flex-1">
+              {NETWORK_BUNDLE.points.map((p) => (
+                <li key={p} className="flex gap-2">
+                  <Check className="w-4 h-4 text-[#C9A84C] flex-none mt-0.5" aria-hidden="true" />
+                  {p}
+                </li>
+              ))}
+            </ul>
             <Link
-              href="/claim-listing"
-              className="inline-flex items-center gap-2 border border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              href={askFor(NETWORK_BUNDLE)}
+              className="text-center bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-sm font-bold px-4 py-2.5 rounded-full transition-colors"
             >
-              Claim a free listing
+              Ask about the bundle
             </Link>
           </div>
         </div>
-      </div>
 
-      {/* ── Stats band ── */}
-      <div className="bg-[#0d1b2a] border-t border-white/10 px-4 pb-10">
-        <div className="max-w-4xl mx-auto grid grid-cols-3 gap-6 pt-2">
-          {[
-            { stat: "4", label: "Editorial sites" },
-            { stat: "18", label: "Languages on SeftonLinks" },
-            { stat: "500+", label: "Business listings" },
-          ].map((item) => (
-            <div key={item.label} className="text-center py-6">
-              <div className="text-3xl font-extrabold text-[#c9a84c] mb-1">{item.stat}</div>
-              <div className="text-sm text-white/50 font-medium">{item.label}</div>
-            </div>
-          ))}
+        <div className="mt-8 rounded-2xl border border-[#C9A84C]/40 bg-[#C9A84C]/10 p-6">
+          <h3 className="font-display text-lg font-bold text-[#1B2E4B] mb-1">Founding advertisers</h3>
+          <p className="text-sm text-gray-700">
+            Half price for your first three months, and your monthly price held for twelve months, for the first ten
+            advertisers across the Sefton Coast sites.
+          </p>
         </div>
-      </div>
+      </section>
 
-      {/* ── Two routes ── */}
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <p className="text-xs font-bold tracking-widest uppercase text-[#c9a84c] mb-3">Two ways to advertise</p>
-          <h2 className="text-3xl font-bold text-[#0d1b2a]">Featured listings and display advertising</h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-
-          {/* Featured listings */}
-          <div className="border border-gray-200 rounded-2xl overflow-hidden">
-            <div className="bg-[#2E6B3E] px-6 py-5">
-              <h3 className="text-white font-bold text-lg">Featured Business Listings</h3>
-              <p className="text-white/70 text-sm mt-1">For Southport businesses that want to stand out in the directory</p>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-600 text-sm leading-relaxed mb-5">
-                Your business appears in the relevant SouthportGuide category with enhanced placement, a featured badge, photos, extended description, and a direct link. Visible to everyone searching for what you do in Southport.
-              </p>
-              <ul className="space-y-3 mb-6">
-                {[
-                  "Priority position in category listings",
-                  "Featured badge and enhanced profile",
-                  "Photos, description, website link",
-                  "Homepage placement by arrangement",
-                  "Click and view analytics in the Business Hub dashboard",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
-                    <span className="w-4 h-4 rounded-full bg-[#2E6B3E] flex-shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex gap-3">
-                <Link
-                  href="/pricing"
-                  className="flex-1 text-center bg-[#2E6B3E] hover:bg-[#245530] text-white font-semibold py-2.5 rounded-lg text-sm transition-colors"
-                >
-                  View listing prices
-                </Link>
-                <Link
-                  href="/claim-listing"
-                  className="flex-1 text-center border border-[#2E6B3E] text-[#2E6B3E] hover:bg-[#2E6B3E] hover:text-white font-semibold py-2.5 rounded-lg text-sm transition-colors"
-                >
-                  Claim free listing
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Display advertising */}
-          <div className="border border-gray-200 rounded-2xl overflow-hidden">
-            <div className="bg-[#0d1b2a] px-6 py-5">
-              <h3 className="text-white font-bold text-lg">Display Advertising</h3>
-              <p className="text-white/70 text-sm mt-1">For brands targeting the Sefton Coast audience across the network</p>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-600 text-sm leading-relaxed mb-5">
-                Display placements on SouthportGuide, FormbyGuide and SeftonLinks, with positions agreed by arrangement. Category exclusivity included. One relationship and one invoice across the network.
-              </p>
-              <ul className="space-y-3 mb-6">
-                {[
-                  "Placement positions agreed by arrangement",
-                  "Placement on SeftonLinks by arrangement",
-                  "Category exclusivity for contract term",
-                  "Monthly performance reporting",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
-                    <span className="w-4 h-4 rounded-full bg-[#c9a84c] flex-shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="mailto:partnerships@seftoncoast.network"
-                className="block text-center bg-[#0d1b2a] hover:bg-[#1a3050] text-white font-semibold py-2.5 rounded-lg text-sm transition-colors"
-              >
-                Request media kit
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* ── Network section ── */}
-      <div className="bg-gray-50 border-t border-gray-100 px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold tracking-widest uppercase text-[#c9a84c] mb-3">The Network</p>
-            <h2 className="text-3xl font-bold text-[#0d1b2a] mb-3">The sites</h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              Display advertising packages can cover one site or several. The Premium package covers SouthportGuide, FormbyGuide and SeftonLinks.
+      {/* ── How it works / Our rules ── */}
+      <section className="bg-white border-y border-gray-100">
+        <div className="container mx-auto px-4 max-w-6xl py-14 grid md:grid-cols-2 gap-10">
+          <div>
+            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-4">How it works</h2>
+            <ol className="space-y-3 text-sm text-gray-600 list-decimal pl-5">
+              <li>Tell us which space you would like through the contact form.</li>
+              <li>We confirm it is free and send an invoice.</li>
+              <li>Send a photo and up to 30 words. Your advert goes live within two working days.</li>
+              <li>After any minimum term, stop with a month&apos;s notice.</li>
+            </ol>
+            <p className="text-sm text-gray-500 mt-5">
+              Prefer email? Write to{" "}
+              <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] font-semibold hover:underline">{DISPLAY_EMAIL}</a>.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "SouthportGuide.co.uk",
-                color: "bg-[#0d1b2a]",
-                desc: "The main visitor guide to Southport: hotels, restaurants, things to do and events, for local residents and visitors planning trips.",
-                tags: ["Southport residents", "Visitors", "Families"],
-              },
-              {
-                name: "FormbyGuide.co.uk",
-                color: "bg-[#2E6B3E]",
-                desc: "A guide to Formby: the National Trust beach, the pinewoods and the village restaurants.",
-                tags: ["Formby residents", "Liverpool day trippers", "Village diners", "NT visitors"],
-              },
-              {
-                name: "SeftonLinks.com",
-                color: "bg-[#1a3820]",
-                desc: "Specialist links golf guide to the Sefton Coast: Royal Birkdale, Hillside, Formby Golf Club and more. Available in 18 languages.",
-                tags: ["Golf visitors", "International"],
-              },
-            ].map((site) => (
-              <div key={site.name} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-                <div className={`${site.color} px-4 py-4`}>
-                  <p className="text-white font-bold text-sm">{site.name}</p>
-                </div>
-                <div className="p-4">
-                  <p className="text-gray-600 text-xs leading-relaxed mb-3">{site.desc}</p>
-                  <div className="flex flex-wrap gap-1">
-                    {site.tags.map((tag) => (
-                      <span key={tag} className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div>
+            <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-4">Our rules</h2>
+            <ul className="space-y-3 text-sm text-gray-600">
+              {RULES.map((r) => (
+                <li key={r} className="flex gap-2">
+                  <Check className="w-4 h-4 text-[#C9A84C] flex-none mt-0.5" aria-hidden="true" />
+                  {r}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-gray-500 mt-5">
+              More on how the guide is paid for is on our{" "}
+              <Link href="/disclosure#advertising" className="text-[#C9A84C] font-semibold hover:underline">disclosure page</Link>.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── Packages summary ── */}
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="text-center mb-10">
-          <p className="text-xs font-bold tracking-widest uppercase text-[#c9a84c] mb-3">Display Advertising</p>
-          <h2 className="text-3xl font-bold text-[#0d1b2a]">Network packages</h2>
-          <p className="text-gray-500 mt-3 text-sm">All packages are six-month minimum contracts. Category exclusivity included.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              name: "Core",
-              sites: "SouthportGuide + FormbyGuide",
-              price: "£450",
-              total: "£2,700",
-              featured: false,
-              features: [
-                "Placement positions on both sites by arrangement",
-                "Category exclusivity",
-                "Monthly reporting",
-              ],
-            },
-            {
-              name: "Premium",
-              sites: "SouthportGuide + FormbyGuide + SeftonLinks",
-              price: "£650",
-              total: "£3,900",
-              featured: true,
-              features: [
-                "All Core placements",
-                "SeftonLinks placement by arrangement",
-                "Category exclusivity across all three sites",
-                "Monthly reporting",
-                "Up to 2 creative updates per month",
-              ],
-            },
-            {
-              name: "Full Network",
-              sites: "All four Sefton Coast Network sites",
-              price: "£800",
-              total: "£4,800",
-              featured: false,
-              features: [
-                "All Premium placements",
-                "SeftonCoastWildlife included",
-                "Quarterly review call",
-                "Monthly reporting",
-              ],
-            },
-          ].map((pkg) => (
-            <div
-              key={pkg.name}
-              className={`rounded-2xl overflow-hidden border-2 ${pkg.featured ? "border-[#c9a84c]" : "border-gray-200"}`}
-            >
-              <div className={`px-5 py-4 ${pkg.featured ? "bg-[#0d1b2a]" : "bg-gray-50"}`}>
-                {pkg.featured && (
-                  <span className="inline-block bg-[#c9a84c] text-white text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-2">
-                    Recommended
-                  </span>
-                )}
-                <h3 className={`font-bold text-lg ${pkg.featured ? "text-white" : "text-[#0d1b2a]"}`}>{pkg.name}</h3>
-                <p className={`text-xs mt-0.5 ${pkg.featured ? "text-white/60" : "text-gray-400"}`}>{pkg.sites}</p>
-              </div>
-              <div className="p-5 bg-white">
-                <div className="mb-1">
-                  <span className="text-3xl font-extrabold text-[#0d1b2a]">{pkg.price}</span>
-                  <span className="text-gray-400 text-sm"> / month</span>
-                </div>
-                <p className="text-xs text-gray-400 mb-4">{pkg.total} · 6-month minimum contract</p>
-                <ul className="space-y-2 mb-5">
-                  {pkg.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-xs text-gray-600">
-                      <span className={`w-3 h-3 rounded-full flex-shrink-0 mt-0.5 ${pkg.featured ? "bg-[#c9a84c]" : "bg-[#2E6B3E]"}`} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="mailto:partnerships@seftoncoast.network"
-                  className={`block text-center font-semibold py-2.5 rounded-lg text-sm transition-colors ${
-                    pkg.featured
-                      ? "bg-[#c9a84c] hover:bg-[#b8952a] text-white"
-                      : "border border-[#0d1b2a] text-[#0d1b2a] hover:bg-[#0d1b2a] hover:text-white"
-                  }`}
-                >
-                  Enquire about this package
-                </a>
-              </div>
+      {/* ── The sites ── */}
+      <section className="container mx-auto px-4 max-w-6xl py-14">
+        <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-2">The Sefton Coast sites</h2>
+        <p className="text-gray-500 text-sm mb-8 max-w-2xl">
+          SouthportGuide is one of four local sites published by Churchtown Media Ltd.
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {SITES.map((s) => (
+            <div key={s.name} className="bg-white rounded-xl border border-gray-100 p-5">
+              <p className="font-bold text-[#1B2E4B] text-sm mb-1.5">{s.name}</p>
+              <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
-
-        <p className="text-center text-xs text-gray-400 mt-6">
-          All placements are clearly labelled as Advertisement or Sponsored on site. All outbound links carry rel="sponsored". Full terms in the media kit.
+        <p className="text-xs text-gray-400 mt-8">
+          Listing your business in the directory is free:{" "}
+          <Link href="/claim-listing" className="underline hover:text-[#C9A84C]">claim your listing</Link>.
         </p>
-      </div>
-
-      {/* ── Why advertise ── */}
-      <div className="bg-gray-50 border-t border-gray-100 px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-[#0d1b2a]">Why it works</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <Users className="w-6 h-6 text-[#c9a84c]" />,
-                title: "Trusted editorial",
-                body: "The network is independent. No tourist board and no aggregator copy.",
-              },
-              {
-                icon: <Shield className="w-6 h-6 text-[#c9a84c]" />,
-                title: "Category exclusivity",
-                body: "No competitor in your category will appear on the same site during your contract. That is a firm commitment, not a best-efforts clause.",
-              },
-              {
-                icon: <BarChart2 className="w-6 h-6 text-[#c9a84c]" />,
-                title: "Simple and transparent",
-                body: "Static image ads and one invoice. No ad tech and no tracking scripts.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-white border border-gray-200 rounded-xl p-5">
-                <div className="mb-3">{item.icon}</div>
-                <h3 className="font-bold text-[#0d1b2a] mb-2 text-sm">{item.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── CTA ── */}
-      <div className="bg-[#0d1b2a] text-white px-4 py-16">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3">Get the media kit</h2>
-          <p className="text-white/60 mb-8 text-sm leading-relaxed">
-            Email us at partnerships@seftoncoast.network and we will send the full media kit including ad specifications, package details, and terms. We respond to all advertising enquiries within one working day.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:partnerships@seftoncoast.network"
-              className="inline-flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#b8952a] text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              partnerships@seftoncoast.network
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-            >
-              Use the contact form
-            </Link>
-          </div>
-          <p className="text-white/30 text-xs mt-8">
-            For business directory listings, visit <Link href="/pricing" className="underline hover:text-white/60">our pricing page</Link> or <Link href="/claim-listing" className="underline hover:text-white/60">claim a free listing</Link>.
-          </p>
-        </div>
-      </div>
-
+      </section>
     </div>
   );
 }

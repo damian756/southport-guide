@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, AlertTriangle, MapPin, CheckCircle, ExternalLink } from "lucide-react";
+import { ArrowLeft, AlertTriangle, MapPin, CheckCircle } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import OpenListingCard from "@/components/OpenListingCard";
@@ -15,13 +15,12 @@ export const metadata: Metadata = {
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
     title: "Hotels Near Royal Birkdale Golf Club | The Open 2026",
-    description: "Every Southport hotel ranked by distance from Royal Birkdale — walking times, prices and availability for The Open Championship 2026. Birkdale books out first.",
+    description: "Every Southport hotel ranked by distance from Royal Birkdale: walking times, prices and availability for The Open Championship 2026. Birkdale books out first.",
     url: "https://www.southportguide.co.uk/the-open-2026/accommodation",
     images: [{ url: "/images/categories/hotels.webp", width: 1200, height: 630, alt: "Hotels near Royal Birkdale Golf Club" }],
   },
 };
 
-import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES, SYKES } from "@/lib/affiliate-links";
 
 // Distance data — measured from Royal Birkdale Golf Club main entrance
 const HOTELS_BY_DISTANCE = [
@@ -101,9 +100,8 @@ const FAQS = [
 
 const TIPS = [
   "Book tonight. Every day you wait, availability decreases and prices rise.",
-  "Self-catering sleeps groups more cheaply than multiple hotel rooms. Cottages.com has options across the Sefton Coast.",
-  "Check LateRooms and direct hotel websites. Rates differ.",
-  "If you want a full golf travel package (hotel, transfers, course access), Champions Travel specialise in exactly this.",
+  "Self-catering sleeps groups more cheaply than multiple hotel rooms.",
+  "Check hotels' own websites as well as booking sites. Rates differ.",
   "Ask your accommodation about parking during Open week. On-site parking is worth its weight.",
   "Some hotels offer shuttle packages. Worth asking when you call.",
   "If your first choice is full, call the hotel directly. Some allocations aren't listed online.",
@@ -139,7 +137,7 @@ const itemListLd = {
     "@type": "ListItem",
     position: i + 1,
     name: h.name,
-    description: `${h.distance} from Royal Birkdale — ${h.walk} walk, ${h.drive} drive`,
+    description: `${h.distance} from Royal Birkdale: ${h.walk} walk, ${h.drive} drive`,
   })),
 };
 
@@ -237,7 +235,6 @@ export default async function OpenAccommodationPage() {
                       <th className="text-left px-4 py-3.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">Walk</th>
                       <th className="text-left px-4 py-3.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">Drive</th>
                       <th className="text-left px-4 py-3.5 font-semibold text-xs uppercase tracking-wider">Price</th>
-                      <th className="px-4 py-3.5"></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50">
@@ -251,23 +248,13 @@ export default async function OpenAccommodationPage() {
                         <td className="px-4 py-4 text-gray-600 whitespace-nowrap">{h.walk}</td>
                         <td className="px-4 py-4 text-gray-600 whitespace-nowrap">{h.drive}</td>
                         <td className="px-4 py-4 text-gray-700 font-semibold">{h.price}</td>
-                        <td className="px-4 py-4">
-                          <a
-                            href={LATEROOMS.southportOpen2026}
-                            target="_blank"
-                            rel="noopener noreferrer sponsored"
-                            className="inline-flex items-center gap-1 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
-                          >
-                            Check availability <ExternalLink className="w-3 h-3" />
-                          </a>
-                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
               <div className="px-5 py-3 bg-[#FAF8F5] border-t border-gray-100">
-                <p className="text-xs text-gray-400">Prices are approximate and subject to change. Availability links open LateRooms.com in a new tab (partner link). Distances verified via Google Maps from Royal Birkdale main entrance.</p>
+                <p className="text-xs text-gray-400">Prices are approximate and subject to change. Distances verified via Google Maps from Royal Birkdale main entrance.</p>
               </div>
             </div>
           </div>
@@ -312,82 +299,6 @@ export default async function OpenAccommodationPage() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* LateRooms partner CTA */}
-          <div className="bg-gradient-to-r from-[#1B2E4B] to-[#2A4A73] rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
-            <div className="flex-1 text-center sm:text-left">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Partner</p>
-              <h3 className="font-display text-xl font-bold text-white mb-2">Search Southport Hotels for Open Week</h3>
-              <p className="text-white/70 text-sm leading-relaxed">
-                Compare prices and availability for 12–19 July 2026 across hotels, B&Bs and guest houses in Southport. Free cancellation on most rooms.
-              </p>
-            </div>
-            <a
-              href={LATEROOMS.southportOpen2026}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
-            >
-              Search on LateRooms →
-            </a>
-          </div>
-
-          {/* Sykes Cottages partner CTA */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
-            <div className="flex-1 text-center sm:text-left">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Self-Catering Partner</p>
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Cottages Near Southport for Open Week</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Hotels near Royal Birkdale are almost all gone. Self-catering in Formby, Ainsdale and Birkdale is a genuinely better option for groups anyway. Sykes have properties across the Sefton Coast with availability for Open week.
-              </p>
-            </div>
-            <a
-              href={SYKES.southportOpen2026}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
-            >
-              Search Sykes Cottages →
-            </a>
-          </div>
-
-          {/* Cottages.com partner CTA */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
-            <div className="flex-1 text-center sm:text-left">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Self-Catering Partner</p>
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">More Self-Catering Options</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Cottages.com have additional holiday lets across Southport, Formby, and the Sefton Coast. Worth checking if Sykes doesn't have what you need for your dates.
-              </p>
-            </div>
-            <a
-              href={COTTAGES.summerSale}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
-            >
-              Browse cottages →
-            </a>
-          </div>
-
-          {/* Champions Travel partner CTA */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
-            <div className="flex-1 text-center sm:text-left">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Golf Travel Partner</p>
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Want a Full Open Week Package?</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Champions Travel specialise in golf travel packages for major championships. If you want hotel, transfers and course access sorted in one place, they are worth checking before you piece it together yourself.
-              </p>
-            </div>
-            <a
-              href={CHAMPIONS_TRAVEL.homepage}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
-            >
-              View packages →
-            </a>
           </div>
 
           {/* Featured hotel listings from DB */}

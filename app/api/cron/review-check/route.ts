@@ -11,7 +11,7 @@ const BATCH_DELAY_MS = 200;
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL || "SouthportGuide <onboarding@resend.dev>";
+  process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));

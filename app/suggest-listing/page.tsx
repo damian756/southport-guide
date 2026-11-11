@@ -28,6 +28,7 @@ export default function SuggestListingPage() {
     phone: "",
     contactName: "",
     contactEmail: "",
+    homepage: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -102,7 +103,14 @@ export default function SuggestListingPage() {
           to update your details, add photos, and respond to reviews.
         </p>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 p-7 space-y-5">
+        <form onSubmit={handleSubmit} className="relative bg-white rounded-2xl border border-gray-100 p-7 space-y-5">
+          {/* Honeypot: hidden from people, filled in by bots. A filled one is accepted and nothing is sent. */}
+          <div aria-hidden="true" className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden">
+            <label>
+              Leave this empty
+              <input type="text" name="homepage" tabIndex={-1} autoComplete="off" value={fields.homepage} onChange={(e) => set("homepage")(e.target.value)} />
+            </label>
+          </div>
           <div className="space-y-1.5">
             <label htmlFor="businessName" className="block text-sm font-semibold text-[#1B2E4B]">
               Business name <span className="text-red-500">*</span>

@@ -19,6 +19,10 @@ import {
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import AdSlot from "@/components/AdSlot";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 // WMO weather code → label + emoji
 function weatherLabel(code: number): { label: string; emoji: string } {
@@ -875,6 +879,9 @@ export default async function SouthportBeachGuidePage() {
             </div>
           </div>
         </section>
+
+        {/* ── Advertising: one sponsor card (lib/ad-slots.ts) ── */}
+        <AdSlot id="guide-southport-beach" />
 
         {/* ── Coastal property callout ── */}
         <section>

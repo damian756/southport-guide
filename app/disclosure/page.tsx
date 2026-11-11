@@ -35,7 +35,7 @@ export default function DisclosurePage() {
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">Transparency</p>
           </div>
           <h1 className="font-display text-4xl font-bold text-white mb-2">Disclosure</h1>
-          <p className="text-white/50 text-sm">Last updated: 5 October 2026</p>
+          <p className="text-white/50 text-sm">Last updated: 11 November 2026</p>
         </div>
       </section>
 
@@ -52,10 +52,24 @@ export default function DisclosurePage() {
           <section>
             <h2 className={h2}>How it is paid for</h2>
             <p className={`${p} mb-3`}>
-              The guide is paid for by Churchtown Media Ltd and by featured listings from local businesses. Some booking links earn us a small affiliate commission, and these are marked where they appear.
+              Churchtown Media Ltd pays for the guide. Businesses can pay for a Featured place in the directory (a Pro listing or a boost) or for a labelled advert or sponsorship on the site. We do not use affiliate links.
             </p>
             <p className={p}>
               A paid listing gives a business more visibility in the directory. It does not change what we write about that business.
+            </p>
+          </section>
+
+          <section id="advertising">
+            <h2 className={h2}>Advertising</h2>
+            <p className={`${p} mb-3`}>
+              Every advert on this site is labelled on the advert itself: <strong>Advertisement</strong> on a home page card, <strong>Sponsor</strong> on a card at the end of a guide or post, and <strong>Sponsored</strong> on an article written with a business, which carries the line &ldquo;Sponsored by&rdquo; and the business&apos;s name instead of our byline. Businesses that pay for a boost appear at the top of their category marked <strong>Featured</strong> with the words &ldquo;Paid placement&rdquo;.
+            </p>
+            <p className={`${p} mb-3`}>
+              Links in adverts and sponsored articles are marked as sponsored for search engines. Adverts never appear inside a review, and paying for a space does not change what we write.
+            </p>
+            <p className={p}>
+              The same goes for a boost or a Pro listing. The options and prices are on our{" "}
+              <Link href="/advertise" className="text-[#C9A84C] hover:underline font-medium">advertising page</Link>.
             </p>
           </section>
 

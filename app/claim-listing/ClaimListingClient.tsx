@@ -53,7 +53,7 @@ export default function ClaimListingClient() {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const [selected, setSelected] = useState<SearchResult | null>(preselected);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", homepage: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
@@ -124,6 +124,7 @@ export default function ClaimListingClient() {
           name: form.name.trim(),
           email: form.email.trim(),
           message: form.message.trim() || undefined,
+          homepage: form.homepage,
         }),
       });
       const data = await res.json();
@@ -211,7 +212,7 @@ export default function ClaimListingClient() {
                   Featured listing
                 </p>
                 <p className="font-display font-bold text-white mb-2">
-                  More visibility from £29/mo
+                  More visibility with Pro
                 </p>
                 <p className="text-white/60 text-sm mb-4">
                   Appear at the top of your category and get a prominent featured
@@ -346,7 +347,7 @@ export default function ClaimListingClient() {
                   onClick={() => {
                     setStep(1);
                     setSelected(null);
-                    setForm({ name: "", email: "", message: "" });
+                    setForm({ name: "", email: "", message: "", homepage: "" });
                     setSubmitError("");
                     setSearchName("");
                     setSuggestions([]);
@@ -368,7 +369,14 @@ export default function ClaimListingClient() {
                   )}
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="relative space-y-5">
+                  {/* Honeypot: hidden from people, filled in by bots. A filled one is accepted and nothing is sent. */}
+                  <div aria-hidden="true" className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden">
+                    <label>
+                      Leave this empty
+                      <input type="text" name="homepage" tabIndex={-1} autoComplete="off" value={form.homepage} onChange={(e) => setForm({ ...form, homepage: e.target.value })} />
+                    </label>
+                  </div>
                   {submitError && (
                     <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4">
                       <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />

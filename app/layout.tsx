@@ -7,6 +7,7 @@ import Script from "next/script";
 import NavMenu from "./components/NavMenu";
 import { ConditionalNav, ConditionalFooter } from "./components/ConditionalShell";
 import { InstagramCta } from "@/components/InstagramCta";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -259,8 +260,8 @@ function Footer() {
             Local business in Southport?{" "}
             <span className="text-[#C9A84C] font-semibold">Partner with the Sefton Coast Network</span>
           </p>
-          <a href="mailto:hello@seftoncoast.network" className="text-[#C9A84C] hover:text-white transition font-medium text-sm">
-            hello@seftoncoast.network →
+          <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] hover:text-white transition font-medium text-sm">
+            {DISPLAY_EMAIL} →
           </a>
         </div>
 

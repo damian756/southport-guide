@@ -680,6 +680,12 @@ export interface BlogPost {
   heroAlt?: string;
   /** Short line shown under the hero, e.g. when the photo is illustrative. */
   heroCaption?: string;
+  /**
+   * Set only for a paid, sponsored article (see /advertise). The post is then
+   * labelled Sponsored, bylined "Sponsored by <name>" instead of Terry, has no
+   * persona bio, and links to the sponsor carry rel="sponsored noopener".
+   */
+  sponsor?: { name: string; url: string };
 }
 
 export const BLOG_POSTS: BlogPost[] = [

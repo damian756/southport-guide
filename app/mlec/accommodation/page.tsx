@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Hotel, MapPin, Clock, Star, ChevronRight, ArrowRight, Waves, CheckCircle } from "lucide-react";
-import { LATEROOMS } from "@/lib/affiliate-links";
 
 export const metadata = {
   title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs",
@@ -36,22 +35,22 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Where is the best place to stay near the Marine Lake Events Centre?",
-      acceptedAnswer: { "@type": "Answer", text: "The closest accommodation to MLEC is on the Promenade itself — a 2–5 minute walk. Southport town centre and Lord Street hotels are the next best option, about 10–20 minutes on foot along the seafront. For the widest choice of price points, town centre B&Bs and hotels are recommended." },
+      acceptedAnswer: { "@type": "Answer", text: "The closest accommodation to MLEC is on the Promenade itself, a 2–5 minute walk. Southport town centre and Lord Street hotels are the next best option, about 10–20 minutes on foot along the seafront. For the widest choice of price points, town centre B&Bs and hotels are recommended." },
     },
     {
       "@type": "Question",
       name: "How far is Southport town centre from MLEC?",
-      acceptedAnswer: { "@type": "Answer", text: "Southport town centre is approximately 10–20 minutes on foot from the Marine Lake Events Centre. The walk along the Promenade past King's Gardens is flat, well-lit, and pleasant — most visitors find it an enjoyable part of the evening rather than an inconvenience." },
+      acceptedAnswer: { "@type": "Answer", text: "Southport town centre is approximately 10–20 minutes on foot from the Marine Lake Events Centre. The walk along the Promenade past King's Gardens is flat, well-lit, and pleasant. Most visitors find it an enjoyable part of the evening rather than an inconvenience." },
     },
     {
       "@type": "Question",
       name: "Should I book accommodation in advance for MLEC events?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — for major concerts and sell-out events, book accommodation the day tickets go on sale. Southport hotels fill quickly for large events, particularly those at the 2,400-capacity exhibition hall or the 1,500-seat theatre. Flexible cancellation rates are worth the small premium for events booked far in advance." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. For major concerts and sell-out events, book accommodation the day tickets go on sale. Southport hotels fill quickly for large events, particularly those at the 2,400-capacity exhibition hall or the 1,500-seat theatre. Flexible cancellation rates are worth the small premium for events booked far in advance." },
     },
     {
       "@type": "Question",
       name: "Are there hotels within walking distance of MLEC?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Several hotels and B&Bs on the Promenade are within 2–5 minutes walk of MLEC. Southport town centre hotels on and around Lord Street are 10–20 minutes on foot. Birkdale village guest houses are further — a taxi or short Merseyrail hop from Birkdale station to Southport is recommended." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Several hotels and B&Bs on the Promenade are within 2–5 minutes walk of MLEC. Southport town centre hotels on and around Lord Street are 10–20 minutes on foot. Birkdale village guest houses are further away: a taxi or short Merseyrail hop from Birkdale station to Southport is recommended." },
     },
     {
       "@type": "Question",
@@ -252,25 +251,6 @@ export default function MLECAccommodationPage() {
             ))}
           </div>
         </section>
-
-        {/* LateRooms partner CTA */}
-        <div className="bg-gradient-to-r from-[#1B2E4B] to-[#2A4A73] rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
-          <div className="flex-1 text-center sm:text-left">
-            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Partner</p>
-            <h3 className="font-display text-xl font-bold text-white mb-2">Compare Southport Hotel Prices</h3>
-            <p className="text-white/70 text-sm leading-relaxed">
-              Over 100,000 UK properties. Free cancellation and pay-later flexibility on most rooms.
-            </p>
-          </div>
-          <a
-            href={LATEROOMS.southport}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="flex-none bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
-          >
-            Search on LateRooms →
-          </a>
-        </div>
 
         {/* CTA */}
         <section className="bg-slate-900 text-white rounded-2xl p-8 md:p-10">

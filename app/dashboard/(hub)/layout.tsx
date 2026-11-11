@@ -6,6 +6,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import HubShell from "./HubShell";
 import SignOutButton from "./SignOutButton";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export default async function HubLayout({
   children,
@@ -48,7 +49,7 @@ export default async function HubLayout({
             Claim your listing →
           </Link>
           <a
-            href="mailto:hello@southportguide.co.uk"
+            href={`mailto:${DISPLAY_EMAIL}`}
             className="border border-gray-200 text-gray-600 hover:bg-gray-50 px-6 py-3 rounded-full font-medium text-sm transition-colors text-center"
           >
             Contact us

@@ -24,6 +24,7 @@ import { getGuide } from "@/lib/guides-config";
 import ImageLightbox from "@/app/components/ImageLightbox";
 import GalleryLightbox from "@/app/components/GalleryLightbox";
 import StopPropLink from "@/app/components/StopPropLink";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-market");
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
     description:
-      "Southport Market on King Street — every trader reviewed, what to order, opening times, parking, and the honest picture. Written by a Southport local.",
+      "Southport Market on King Street: every trader reviewed, what to order, opening times, parking, and the honest picture. Written by a Southport local.",
     url: `${BASE_URL}/guides/southport-market`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
 const ARTICLE_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Southport Market: The Complete Guide — Every Trader, Menu and Honest Tip",
+  headline: "Southport Market: The Complete Guide to Every Trader, Menu and Honest Tip",
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/southport-market`,
   datePublished: "2026-04-02",
@@ -223,7 +224,7 @@ const TRADERS = [
     imageAlt: "Brunch dishes at Brunch N Bagel, Southport Market",
     owner: "Leanne Prescott (24)",
     ownerStory:
-      "Leanne started Cake Corner from home at 17. By 24 she runs two units inside Southport Market, a shop in Hillside, and caters at Edge Hill University. Brunch N' Bagel opened in October 2025 — inspired by time spent in New York — and is the first trader in the market to open at 10am. All meat comes from Blackhurst Butchers, next door at Unit 11.",
+      "Leanne started Cake Corner from home at 17. By 24 she runs two units inside Southport Market, a shop in Hillside, and caters at Edge Hill University. Brunch N' Bagel opened in October 2025, inspired by time spent in New York, and is the first trader in the market to open at 10am. All meat comes from Blackhurst Butchers, next door at Unit 11.",
     signatureDishes: [
       "The Big Brunch Bite (Cumberland sausages, bacon, eggs, tater tots, black pudding)",
       "The Buffalo One (crispy chicken tenders, Frank's buffalo sauce, coleslaw, pickles)",
@@ -291,7 +292,7 @@ const TRADERS = [
     imageAlt: "Fresh pasta dishes at Pasta 51 Express, Southport Market",
     owner: "Attilio Sergi",
     ownerStory:
-      "Attilio was born in Santa Maria di Leuca, Puglia — the heel of Italy, where his family grew wheat for pasta. He has 45 years in the food business. He came to Southport twenty years ago and opened Trattoria 51 on the Promenade in 2003, which is still there. He also runs Trattoria 51 on Old Hall Street in Liverpool. Pasta 51 Express is the fast-casual market version of his craft.",
+      "Attilio was born in Santa Maria di Leuca, Puglia, the heel of Italy, where his family grew wheat for pasta. He has 45 years in the food business. He came to Southport twenty years ago and opened Trattoria 51 on the Promenade in 2003, which is still there. He also runs Trattoria 51 on Old Hall Street in Liverpool. Pasta 51 Express is the fast-casual market version of his craft.",
     signatureDishes: [
       "Orecchiette with cacio e pepe",
       "Pappardelle with slow-cooked bolognese",
@@ -355,7 +356,7 @@ const TRADERS = [
   {
     unit: "11",
     name: "Blackhurst Butchers",
-    cuisine: "Traditional butcher — dry-aged beef, handmade sausages, BBQ packs",
+    cuisine: "Traditional butcher: dry-aged beef, handmade sausages, BBQ packs",
     image: "/images/southport-market/traders/blackhurst-butchers-tile.webp",
     imageAlt: "Blackhurst Butchers at Southport Market, established 1963",
     owner: "Tony Blackhurst",
@@ -468,7 +469,7 @@ const FAQS = [
   },
   {
     q: "Is there gluten-free food at Southport Market?",
-    a: "Yes. Pitamu has a dedicated gluten-free fryer and is the safest choice for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and other traders also offer GF options. Talk directly to the trader at the counter about allergens — the open-counter format makes this straightforward.",
+    a: "Yes. Pitamu has a dedicated gluten-free fryer and is the safest choice for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and other traders also offer GF options. Talk directly to the trader at the counter about allergens. The open-counter format makes this straightforward.",
   },
   {
     q: "Is Southport Market wheelchair accessible?",
@@ -476,7 +477,7 @@ const FAQS = [
   },
   {
     q: "Where do I park for Southport Market?",
-    a: "Market Street car park is directly adjacent. Tulketh Street car park is a five-minute walk. Lord Street car parks are five to eight minutes on foot. Postcode: PR8 1LA. Note that Market Street was being pedestrianised in 2025 — check current road access before driving to the door.",
+    a: "Market Street car park is directly adjacent. Tulketh Street car park is a five-minute walk. Lord Street car parks are five to eight minutes on foot. Postcode: PR8 1LA. Note that Market Street was being pedestrianised in 2025, so check current road access before driving to the door.",
   },
   {
     q: "How old is Southport Market?",
@@ -533,7 +534,7 @@ export default function SouthportMarketPage() {
             </h1>
             <p className="text-white/80 text-xl max-w-2xl mb-8 leading-relaxed">
               Nine independent traders, one bar, live music, and the best lunch in town.
-              The complete guide — every trader reviewed, what to order, and honest advice on when to go.
+              The complete guide: every trader reviewed, what to order, and honest advice on when to go.
             </p>
 
             {/* Quick facts strip */}
@@ -743,7 +744,7 @@ export default function SouthportMarketPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <ImageLightbox
               src="/images/southport-market/interior/the-bar-tile.webp"
-              alt="The Market Bar at Southport Market — carousel-inspired centrepiece"
+              alt="The Market Bar at Southport Market: carousel-inspired centrepiece"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               containerClassName="relative rounded-2xl overflow-hidden h-72 md:h-full min-h-[280px]"
@@ -751,7 +752,7 @@ export default function SouthportMarketPage() {
             >
               <div className="absolute bottom-4 left-5 pointer-events-none">
                 <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
-                  Bar of the Year — twice
+                  Bar of the Year, twice
                 </span>
               </div>
             </ImageLightbox>
@@ -936,7 +937,7 @@ export default function SouthportMarketPage() {
                     {[
                       "Thursday evening onward (live music at the bar)",
                       "Friday and Saturday evenings (full capacity, loud)",
-                      "The carousel bar area is the loudest zone — seat away from it if noise is a concern",
+                      "The carousel bar area is the loudest zone. Sit away from it if noise is a concern",
                     ].map((tip) => (
                       <li key={tip} className="flex items-start gap-2 text-amber-700 text-xs leading-relaxed">
                         <span className="flex-shrink-0 mt-0.5">·</span>
@@ -952,7 +953,7 @@ export default function SouthportMarketPage() {
                 <p className="font-bold text-[#1B2E4B] text-sm mb-2">Dietary and allergen support</p>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Pitamu (Unit 04) has a dedicated gluten-free fryer and staff trained specifically on allergen
-                  management — it is the safest choice for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and
+                  management. It is the safest choice for coeliac visitors. Brunch N' Bagel, Pasta 51 Express, and
                   Little Korean Kitchen all have vegan and vegetarian options clearly available. Because the format
                   is open-counter, you can have a direct conversation with the person making your food. That is
                   genuinely easier than managing allergens in a full restaurant.
@@ -967,7 +968,7 @@ export default function SouthportMarketPage() {
                   member, your experience would genuinely help improve this guide.
                 </p>
                 <a
-                  href="mailto:hello@seftoncoast.network?subject=Southport Market sensory-friendly feedback"
+                  href={`mailto:${DISPLAY_EMAIL}?subject=Southport Market sensory-friendly feedback`}
                   className="inline-flex items-center gap-2 bg-white text-blue-700 font-bold text-xs px-4 py-2 rounded-full hover:bg-blue-50 transition-colors"
                 >
                   Share your experience <ArrowRight className="w-3.5 h-3.5" />
@@ -1045,7 +1046,7 @@ export default function SouthportMarketPage() {
               <h3 className="font-display font-bold text-[#1B2E4B] mb-3">From Lord Street</h3>
               <div className="space-y-3 text-gray-600 text-sm">
                 <p>Three minutes on foot. Walk to the bottom of Lord Street and turn onto King Street. The market entrance is on the corner of King Street and Market Street.</p>
-                <p>Multiple bus routes serve Lord Street — it is Southport&apos;s main stop.</p>
+                <p>Multiple bus routes serve Lord Street, Southport&apos;s main stop.</p>
               </div>
             </div>
           </div>
@@ -1071,7 +1072,7 @@ export default function SouthportMarketPage() {
             </h3>
             <p className="text-white/70 text-[15px] leading-relaxed mb-4">
               Thin-cut ribeye, griddled onions and peppers, melted cheese, loaded into a proper hoagie roll.
-              Brunch N&apos; Bagel have form for doing this — they take a classic and they nail it.
+              Brunch N&apos; Bagel have form for doing this: they take a classic and they nail it.
               This is the kind of thing that sells out before most people know it&apos;s on the menu.
             </p>
             <p className="text-white/50 text-sm">
@@ -1252,7 +1253,7 @@ export default function SouthportMarketPage() {
               </div>
               <ImageLightbox
                 src="/images/southport-market/events/poster-offering-to-rent-the-extravaganze-room.webp"
-                alt="The Extravaganza Room at Southport Market — available for private hire"
+                alt="The Extravaganza Room at Southport Market, available for private hire"
                 fill
                 sizes="(max-width: 768px) 100vw, 260px"
                 containerClassName="relative rounded-xl overflow-hidden bg-[#0f1f38] aspect-[3/4] md:aspect-auto md:h-[360px]"

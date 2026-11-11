@@ -202,7 +202,7 @@ export default function BlogClient({ posts, categories }: Props) {
               </div>
               {/* Text */}
               <div className="flex flex-col justify-center p-7 md:p-10 flex-1">
-                <p className="text-gray-400 text-xs mb-3 uppercase tracking-wider">{featuredPost.date}</p>
+                <p className="text-gray-400 text-xs mb-3 uppercase tracking-wider">{featuredPost.sponsor && <span className="font-bold text-[#C9A84C]">Sponsored · </span>}{featuredPost.date}</p>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B] leading-snug mb-4 group-hover:text-[#C9A84C] transition-colors">
                   {featuredPost.title}
                 </h2>
@@ -266,7 +266,7 @@ export default function BlogClient({ posts, categories }: Props) {
                   </div>
                   {/* Body */}
                   <div className="p-5 flex flex-col flex-1">
-                    <p className="text-[11px] text-gray-400 mb-2">{post.date}</p>
+                    <p className="text-[11px] text-gray-400 mb-2">{post.sponsor && <span className="font-bold text-[#C9A84C]">Sponsored · </span>}{post.date}</p>
                     <h2 className="font-display font-bold text-[#1B2E4B] text-lg leading-snug mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
                       {post.title}
                     </h2>

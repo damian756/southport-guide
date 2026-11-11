@@ -9,12 +9,10 @@ import {
   ChevronRight,
   ArrowRight,
   CalendarDays,
-  Info,
 } from "lucide-react";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
-import { LATEROOMS, CHAMPIONS_TRAVEL, COTTAGES, SYKES } from "@/lib/affiliate-links";
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("accommodation-southport");
@@ -63,7 +61,7 @@ const HOTELS = [
     type: "Traditional",
     priceRange: "££",
     description:
-      "Solid mid-range option on the Promenade with sea views. Good value for what it is. Popular with families and groups. The location is great for beach access — you're right on the seafront. Not the most stylish but it does what it says.",
+      "Solid mid-range option on the Promenade with sea views. Good value for what it is. Popular with families and groups. The location is great for beach access: you're right on the seafront. Not the most stylish but it does what it says.",
     bestFor: "Sea views, beach proximity, families, value",
     postcode: "PR9 0JD",
   },
@@ -127,23 +125,23 @@ const AREAS = [
 const FAQS = [
   {
     q: "What is the best area to stay in Southport?",
-    a: "It depends what you're after. Lord Street is the most central and puts you near the best restaurants, shopping and nightlife. The Promenade is better if you want immediate beach access. Birkdale is the place if you're visiting for The Open 2026 at Royal Birkdale — it's walking distance from the course. Churchtown is worth considering if you want quiet and good value.",
+    a: "It depends what you're after. Lord Street is the most central and puts you near the best restaurants, shopping and nightlife. The Promenade is better if you want immediate beach access. Birkdale is the place for golfers: it's walking distance from Royal Birkdale. Churchtown is worth considering if you want quiet and good value.",
   },
   {
     q: "How much do hotels in Southport cost?",
-    a: "Budget hotels (Premier Inn) typically run £60-80 per night midweek, £90-120 at weekends. Mid-range options like the Metropole are £80-120 midweek. The Scarisbrick and Vincent are £120-180 per night typically. During Open week at Royal Birkdale (12-19 July 2026) and peak summer events (Flower Show 20-23 Aug, Air Show 29-30 Aug), prices are significantly higher and most good options sell out weeks or months in advance.",
+    a: "Budget hotels (Premier Inn) typically run £60-80 per night midweek, £90-120 at weekends. Mid-range options like the Metropole are £80-120 midweek. The Scarisbrick and Vincent are £120-180 per night typically. During the big summer events, such as the Flower Show in August and the Air Show over the August bank holiday, prices are significantly higher and most good options sell out weeks or months in advance.",
   },
   {
-    q: "Is there accommodation near Royal Birkdale for The Open 2026?",
-    a: "Yes, but it has almost all gone. The Open runs 12-19 July 2026 at Royal Birkdale. Birkdale village properties (the closest to the course) were the first to go. If you haven't booked, check Formby, Ormskirk and Ainsdale as fallback options — all within 20-30 minutes of Royal Birkdale.",
+    q: "Is there accommodation near Royal Birkdale?",
+    a: "Yes. Birkdale village has guest houses and B&Bs closest to the course, and they are the first to book up when there is a championship or a big event on. Formby, Ormskirk and Ainsdale are all within 20 to 30 minutes of Royal Birkdale.",
   },
   {
     q: "Are there self-catering holiday lets in Southport?",
-    a: "Yes. There are holiday apartments and self-catering properties around the town centre and seafront, and a small number of cottages and houses in Churchtown and Birkdale. They make sense for longer stays, families or groups who want kitchen facilities. Cottages.com and similar platforms list the main options.",
+    a: "Yes. There are holiday apartments and self-catering properties around the town centre and seafront, and a small number of cottages and houses in Churchtown and Birkdale. They make sense for longer stays, families or groups who want kitchen facilities.",
   },
   {
     q: "Which hotels in Southport have free parking?",
-    a: "The Premier Inn Southport South (Ainsdale) has free parking. The Metropole has limited parking. The Scarisbrick and Vincent are on Lord Street and do not have dedicated free parking, though nearby car parks are available. The Open 2026 period is tricky for parking — check each hotel's policy when booking.",
+    a: "The Premier Inn Southport South (Ainsdale) has free parking. The Metropole has limited parking. The Scarisbrick and Vincent are on Lord Street and do not have dedicated free parking, though nearby car parks are available. Check each hotel's parking policy when you book, especially for big event weekends.",
   },
   {
     q: "Do any Southport hotels have a pool or spa?",
@@ -240,26 +238,9 @@ export default function AccommodationSouthportPage() {
               <div><span className="font-mono font-bold">£££</span> <span className="text-gray-700">Premium: £130+/night</span></div>
             </div>
             <p className="text-xs text-amber-800 mt-2">
-              Prices increase significantly during Open week (12–19 Jul), Flower Show (20–23 Aug) and Air Show (29–30 Aug). Book well in advance for these dates.
+              Prices rise during the big summer events, such as the Flower Show in August and the Air Show over the August bank holiday. Book well ahead for those weekends.
             </p>
           </div>
-        </section>
-
-        {/* ── LateRooms CTA ──────────────────────────────────────────── */}
-        <section className="bg-blue-600 text-white rounded-2xl p-6 mb-10">
-          <h3 className="text-lg font-bold mb-1">Search Southport Hotels</h3>
-          <p className="text-blue-100 text-sm mb-4">
-            Check live rates across hotels in Southport including last-minute availability.
-          </p>
-          <a
-            href={LATEROOMS.southport}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-50 transition-colors text-sm"
-          >
-            Check Hotels on LateRooms
-            <ArrowRight className="w-4 h-4" />
-          </a>
         </section>
 
         {/* ── Areas breakdown ────────────────────────────────────────── */}
@@ -283,52 +264,6 @@ export default function AccommodationSouthportPage() {
           </div>
         </section>
 
-        {/* ── Open 2026 callout ──────────────────────────────────────── */}
-        <section className="bg-green-700 text-white rounded-2xl p-6 mb-10">
-          <div className="flex items-start gap-4">
-            <Info className="w-6 h-6 shrink-0 text-green-200 mt-0.5" />
-            <div>
-              <h3 className="font-bold text-lg mb-1">The Open 2026 at Royal Birkdale</h3>
-              <p className="text-green-100 text-sm leading-relaxed mb-4">
-                The Open Championship runs 12–19 July 2026. Most Southport accommodation in walking
-                distance of Royal Birkdale is already fully booked. If you haven't sorted a room, look
-                at Formby (L37 postcode), Ormskirk, Ainsdale, and even Blackpool as fallback options.
-                All are within 20–40 minutes of the course. For golf packages that include travel and
-                hospitality, specialist operators can often find options when standard searches can't.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={SYKES.southportOpen2026}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  className="inline-flex items-center gap-2 bg-white text-green-800 font-semibold px-4 py-2 rounded-lg hover:bg-green-50 transition-colors text-sm"
-                >
-                  Sykes Cottages for Open Week
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href={LATEROOMS.southportOpen2026}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  className="inline-flex items-center gap-2 bg-white text-green-800 font-semibold px-4 py-2 rounded-lg hover:bg-green-50 transition-colors text-sm"
-                >
-                  Check Open Week Hotels
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href={CHAMPIONS_TRAVEL.homepage}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  className="inline-flex items-center gap-2 bg-green-600 text-white border border-green-400 font-semibold px-4 py-2 rounded-lg hover:bg-green-500 transition-colors text-sm"
-                >
-                  Golf Travel Packages
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── Self-catering ──────────────────────────────────────────── */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">Self-Catering and Holiday Lets</h2>
@@ -340,29 +275,9 @@ export default function AccommodationSouthportPage() {
           </p>
           <p className="text-gray-700 leading-relaxed mb-6">
             Self-catering in Southport tends to be reasonable value for the area. The Sefton Coast
-            more broadly — Formby, Ainsdale, West Lancashire — has more options if you're flexible
+            more broadly (Formby, Ainsdale, West Lancashire) has more options if you're flexible
             about being a short drive from town.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={SYKES.southport}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="inline-flex items-center gap-2 bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-800 transition-colors text-sm"
-            >
-              Search Sykes Cottages near Southport
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href={COTTAGES.summerSale}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="inline-flex items-center gap-2 bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-orange-700 transition-colors text-sm"
-            >
-              Browse on Cottages.com
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
         </section>
 
         {/* ── B&Bs note ──────────────────────────────────────────────── */}
@@ -375,10 +290,9 @@ export default function AccommodationSouthportPage() {
             reviews are worth reading before booking.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            For Open week, Birkdale B&Bs are as in-demand as the hotels. The owner-run guest houses
-            near Royal Birkdale are often a better option than the town-centre hotels for golf
-            visitors — you're walking to the course and there's no need to deal with tournament-week
-            traffic.
+            For golfers, the owner-run guest houses near Royal Birkdale are often a better option than
+            the town-centre hotels: you can walk to the course, and they book up first when a
+            championship is on.
           </p>
         </section>
 
@@ -421,26 +335,15 @@ export default function AccommodationSouthportPage() {
 
         {/* ── Bottom CTA ─────────────────────────────────────────────── */}
         <section className="text-center">
-          <p className="text-gray-600 mb-4">Ready to book? Check live availability.</p>
+          <p className="text-gray-600 mb-4">Hotels, B&amp;Bs and guest houses in our directory, with addresses and directions.</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={LATEROOMS.southport}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
+            <Link
+              href="/hotels"
               className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors"
             >
-              Search Hotels on LateRooms
+              Browse places to stay
               <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href={COTTAGES.summerSale}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="inline-flex items-center gap-2 bg-white border-2 border-gray-300 text-gray-700 font-semibold px-6 py-3 rounded-xl hover:border-gray-400 transition-colors"
-            >
-              Holiday Lets via Cottages.com
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </section>
         </div>

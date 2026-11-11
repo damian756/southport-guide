@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Hotel, Utensils, Car, MapPin, CalendarDays, ArrowRight, ExternalLink, Trophy, ChevronRight } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/southport-data";
-import { SYKES } from "@/lib/affiliate-links";
 
 export const metadata = {
   title: "The Open 2026 Southport | Ryan Fox Wins at Royal Birkdale: Results and Review",
@@ -582,11 +581,8 @@ export default function TheOpen2026Page() {
               The week is done. But if The Open brought you to Southport for the first time, the town is worth coming back to. Royal Birkdale takes visitor tee times outside championship setup weeks. Hillside, right next door, is one of England&apos;s finest links courses and significantly easier to book.
             </p>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl">
-              Summer availability in Southport and Formby is much better outside Open week.{" "}
-              <a href={SYKES.southport} target="_blank" rel="noopener noreferrer sponsored" className="text-[#C9A84C] font-semibold underline hover:text-[#E8C87A]">
-                Sykes Cottages has self-catering options near Southport and Formby
-              </a>{" "}
-              from a weekend break to a full week on the Sefton Coast.
+              Summer availability in Southport and Formby is much better outside Open week, from a weekend break
+              to a full week on the Sefton Coast.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -595,14 +591,6 @@ export default function TheOpen2026Page() {
               >
                 Southport hotels <ArrowRight className="w-4 h-4" />
               </Link>
-              <a
-                href={SYKES.southport}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
-              >
-                Self-catering via Sykes Cottages →
-              </a>
               <a
                 href="https://www.seftonlinks.com/courses/royal-birkdale"
                 target="_blank"

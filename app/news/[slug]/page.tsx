@@ -23,6 +23,7 @@ import {
   ParkingCircle,
 } from "lucide-react";
 import ShareButtons from "./components/ShareButtons";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const revalidate = 60;
 
@@ -507,7 +508,7 @@ export default async function NewsArticlePage({
             </p>
           </div>
           <a
-            href="mailto:hello@seftoncoast.network?subject=Story tip for Southport Live"
+            href={`mailto:${DISPLAY_EMAIL}?subject=Story tip for Southport Live`}
             className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2.5 bg-[#C9A84C] text-white font-semibold text-sm rounded-xl hover:bg-[#b8963d] transition-colors"
           >
             <Mail className="w-4 h-4" />

@@ -337,7 +337,7 @@ export default function CategoryBrowser({
                   <div className="flex flex-col flex-1 p-6 justify-between">
                     <div>
                       <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">
-                        Editor&apos;s Pick · {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
+                        {isBoosted ? "Featured This Week · Paid placement" : <>Editor&apos;s Pick</>} · {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
                       </p>
                       <h2 className="font-display font-bold text-[#1B2E4B] text-xl leading-snug group-hover:text-[#C9A84C] transition-colors mb-3 line-clamp-2">
                         {b.name}
@@ -417,9 +417,14 @@ export default function CategoryBrowser({
                         </span>
                       )}
                       {isBoosted && !isStandardFeatured && (
-                        <span className="text-[10px] font-semibold bg-white/90 text-[#1B2E4B] px-2.5 py-1 rounded-full shadow-sm">
-                          Featured This Week
-                        </span>
+                        <>
+                          <span className="text-[10px] font-semibold bg-white/90 text-[#1B2E4B] px-2.5 py-1 rounded-full shadow-sm">
+                            Featured This Week
+                          </span>
+                          <span className="text-[10px] font-medium bg-[#1B2E4B]/80 text-white px-2 py-1 rounded-full shadow-sm">
+                            Paid placement
+                          </span>
+                        </>
                       )}
                     </div>
                   )}

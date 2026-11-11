@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ArrowLeft, Shield } from "lucide-react";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for SouthportGuide.co.uk — how we collect, use and protect your personal data in accordance with UK GDPR.",
+  description: "Privacy Policy for SouthportGuide.co.uk: how we collect, use and protect your personal data in accordance with UK GDPR.",
   alternates: { canonical: "https://www.southportguide.co.uk/privacy" },
   openGraph: {
     type: "website",
@@ -46,8 +47,8 @@ export default function PrivacyPage() {
             </p>
             <p className="text-gray-600 leading-relaxed">
               <strong>Contact:</strong>{" "}
-              <a href="mailto:hello@seftoncoast.network" className="text-[#C9A84C] hover:underline">
-                hello@seftoncoast.network
+              <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] hover:underline">
+                {DISPLAY_EMAIL}
               </a>
             </p>
           </section>
@@ -191,8 +192,8 @@ export default function PrivacyPage() {
             </div>
             <p className="text-gray-600 text-sm mt-4">
               To exercise any of these rights, email{" "}
-              <a href="mailto:hello@seftoncoast.network" className="text-[#C9A84C] hover:underline">
-                hello@seftoncoast.network
+              <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] hover:underline">
+                {DISPLAY_EMAIL}
               </a>. You may also lodge a complaint with the{" "}
               <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline">
                 Information Commissioner&apos;s Office (ICO)
@@ -203,7 +204,7 @@ export default function PrivacyPage() {
           <section id="cookies">
             <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">8. Cookies</h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              We use cookies and similar tracking technologies to operate the site and support affiliate revenue when you click through to partner booking sites. Plausible Analytics is cookieless by design and does not require consent.
+              We use cookies and similar tracking technologies to operate the site. Plausible Analytics is cookieless by design and does not require consent.
             </p>
             <div className="overflow-x-auto rounded-xl border border-gray-100">
               <table className="w-full text-sm">
@@ -218,7 +219,6 @@ export default function PrivacyPage() {
                   {[
                     ["Necessary", "Session management and security.", "No, always active"],
                     ["Analytics", "Plausible Analytics, aggregated page views, traffic sources, device types. Privacy-friendly and cookieless.", "No, does not require consent"],
-                    ["Marketing / Affiliate", "Booking.com and other affiliate partner tracking cookies. Set when you click through to a partner booking site.", "Yes, optional"],
                   ].map(([cat, purpose, req]) => (
                     <tr key={cat}>
                       <td className="px-4 py-3 font-semibold text-[#1B2E4B] align-top whitespace-nowrap">{cat}</td>
@@ -230,7 +230,7 @@ export default function PrivacyPage() {
               </table>
             </div>
             <p className="text-gray-500 text-xs mt-3">
-              Affiliate cookies are set by partner sites (e.g. Booking.com) when you click through from our links. You can control cookies via your browser settings.
+              You can control cookies via your browser settings.
             </p>
           </section>
 

@@ -13,6 +13,10 @@ import {
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import AdSlot from "@/components/AdSlot";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-pier");
@@ -439,6 +443,9 @@ export default function SouthportPierGuidePage() {
             ))}
           </div>
         </section>
+
+        {/* ── Advertising: one sponsor card (lib/ad-slots.ts) ── */}
+        <AdSlot id="guide-southport-pier" />
 
         {/* ── Nearby ── */}
         <section>

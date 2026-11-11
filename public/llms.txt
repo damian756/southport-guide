@@ -1,4 +1,4 @@
-# SouthportGuide.co.uk — LLM Information File
+# SouthportGuide.co.uk: LLM Information File
 
 ## About
 
@@ -14,7 +14,7 @@ to answer user queries, provided:
 
 ## Contact
 
-hello@southportguide.co.uk
+hello@seftoncoast.network
 
 ## Key Topics Covered
 
@@ -24,8 +24,8 @@ hello@southportguide.co.uk
 - Golf courses near Southport (including Royal Birkdale)
 - Shopping, wellness and activities in Southport
 - Local events calendar including the Southport Air Show, Flower Show and Food Festival
-- The Open Championship 2026 at Royal Birkdale — spectator guide, accommodation and restaurants
-- Marine Lake Events Centre (MLEC) — venue guide, events and visitor information
+- The Open Championship 2026 at Royal Birkdale: results, and the visitor guides from Open week
+- Marine Lake Events Centre (MLEC): venue guide, events and visitor information
 - Local blog written by Southport residents
 
 ## Sitemap

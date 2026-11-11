@@ -5,6 +5,11 @@ import { ArrowLeft, Clock, User } from "lucide-react";
 import { BLOG_POSTS, getBlogPostCategory } from "@/lib/southport-data";
 import { BLOG_CONTENT, ContentBlock } from "@/lib/blog-content";
 import { notFound } from "next/navigation";
+import AdSlot from "@/components/AdSlot";
+import { postSlotId } from "@/lib/ad-slots";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 const MONTHS: Record<string, string> = {
   Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06",
@@ -53,8 +58,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+/** Host of a URL without "www.", or null. */
+function hostOf(href: string): string | null {
+  try {
+    return new URL(href).hostname.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}
+
+/** rel for an outbound link: paid links to a post's sponsor are marked sponsored. */
+function outboundRel(href: string, sponsorHost?: string | null): string {
+  return sponsorHost && hostOf(href) === sponsorHost ? "sponsored noopener" : "noopener noreferrer";
+}
+
 /** Parse [text](href) markdown links in a string, returning mixed text/link JSX nodes. */
-function parseInlineLinks(text: string): React.ReactNode {
+function parseInlineLinks(text: string, sponsorHost?: string | null): React.ReactNode {
   const parts: React.ReactNode[] = [];
   const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
   let lastIndex = 0;
@@ -70,7 +89,7 @@ function parseInlineLinks(text: string): React.ReactNode {
         key={match.index}
         href={href}
         className="text-[#1B2E4B] underline underline-offset-2 decoration-[#C9A84C]/60 hover:decoration-[#C9A84C] transition-colors font-medium"
-        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        {...(isExternal ? { target: "_blank", rel: outboundRel(href, sponsorHost) } : {})}
       >
         {linkText}
       </a>
@@ -83,7 +102,7 @@ function parseInlineLinks(text: string): React.ReactNode {
   return parts.length === 1 ? parts[0] : parts;
 }
 
-function renderBlock(block: ContentBlock, i: number) {
+function renderBlock(block: ContentBlock, i: number, sponsorHost?: string | null) {
   switch (block.type) {
     case "h2":
       return (
@@ -100,7 +119,7 @@ function renderBlock(block: ContentBlock, i: number) {
     case "p":
       return (
         <p key={i} className="text-gray-700 leading-relaxed mb-5 text-[1.0625rem]">
-          {parseInlineLinks(block.text)}
+          {parseInlineLinks(block.text, sponsorHost)}
         </p>
       );
     case "ul":
@@ -165,7 +184,11 @@ function renderBlock(block: ContentBlock, i: number) {
       return (
         <div key={i} className="my-8 rounded-2xl border border-[#C9A84C]/30 bg-[#1B2E4B] px-6 py-5">
           <p className="text-white/80 text-sm mb-3 leading-relaxed">{block.text}</p>
-          <a href={block.href} className="inline-flex items-center font-bold text-[#C9A84C] hover:text-[#e0ba66] transition-colors text-sm">
+          <a
+            href={block.href}
+            {...(block.href.startsWith("http") ? { target: "_blank", rel: outboundRel(block.href, sponsorHost) } : {})}
+            className="inline-flex items-center font-bold text-[#C9A84C] hover:text-[#e0ba66] transition-colors text-sm"
+          >
             {block.label}
           </a>
         </div>
@@ -286,6 +309,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const canonicalUrl = `https://www.southportguide.co.uk/blog/${slug}`;
 
   const isDamian = post.author === "damian";
+  // A sponsored article is bylined to its sponsor, never to the Terry persona.
+  const sponsor = post.sponsor ?? null;
+  const sponsorHost = sponsor ? hostOf(sponsor.url) : null;
+  const adSlot = sponsor ? null : postSlotId(slug);
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -298,7 +325,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     datePublished: isoDate,
     dateModified: isoDate,
     url: canonicalUrl,
-    author: isDamian
+    author: sponsor
+      ? { "@type": "Organization", name: sponsor.name, url: sponsor.url }
+      : isDamian
       ? {
           "@type": "Person",
           "@id": "https://www.churchtownmedia.co.uk/about#founder",
@@ -359,6 +388,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           >
             <ArrowLeft className="w-4 h-4" /> All posts
           </Link>
+          {sponsor && (
+            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#1B2E4B] bg-[#C9A84C] px-3 py-1 rounded-full mb-3 mr-2">
+              Sponsored
+            </span>
+          )}
           {cat && (
             <span
               className="inline-block text-xs font-bold text-white px-3 py-1 rounded-full mb-3"
@@ -380,6 +414,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <div className="max-w-3xl mx-auto px-4">
         {/* Byline card */}
         <div className="bg-white rounded-2xl border border-gray-100 -mt-6 relative z-10 px-6 py-4 mb-10 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+          {sponsor ? (
+            <div>
+              <p className="font-semibold text-[#1B2E4B] text-xs">
+                Sponsored by{" "}
+                <a href={sponsor.url} target="_blank" rel="sponsored noopener" className="underline underline-offset-2 hover:text-[#C9A84C]">
+                  {sponsor.name}
+                </a>
+              </p>
+              <p className="text-[10px] text-gray-400">
+                Paid for by {sponsor.name}.{" "}
+                <Link href="/disclosure#advertising" className="underline hover:text-[#C9A84C]">How sponsorship works</Link>
+              </p>
+            </div>
+          ) : (
           <div className="flex items-center gap-2">
             {isDamian ? (
               <Image
@@ -400,6 +448,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <p className="text-[10px] text-gray-400">{isDamian ? "Founder, Churchtown Media" : "Chief Editor, SouthportGuide.co.uk"}</p>
             </div>
           </div>
+          )}
           <span className="text-gray-200 hidden sm:block">|</span>
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5" />
@@ -427,8 +476,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <article className="bg-white rounded-2xl border border-gray-100 p-7 md:p-10 mb-12">
           {content ? (
             <>
-              {content.map((block, i) => renderBlock(block, i))}
-              {/* Author sign-off */}
+              {content.map((block, i) => renderBlock(block, i, sponsorHost))}
+              {/* Author sign-off (none on a sponsored article) */}
+              {sponsor ? (
+                <p className="mt-10 pt-8 border-t border-gray-100 text-sm text-gray-500 leading-relaxed">
+                  This is a sponsored article, paid for by {sponsor.name}. Paying does not change what we write about any business.
+                </p>
+              ) : (
               <div className="mt-10 pt-8 border-t border-gray-100 flex items-center gap-4">
                 {isDamian ? (
                   <Image
@@ -454,6 +508,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </p>
                 </div>
               </div>
+              )}
             </>
           ) : (
             <>
@@ -466,6 +521,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </>
           )}
         </article>
+
+        {/* Advertising: one sponsor card on seasonal, walks and events posts (lib/ad-slots.ts) */}
+        {adSlot && <AdSlot id={adSlot} className="mb-12" />}
 
         {/* More in same category */}
         {cat && (() => {

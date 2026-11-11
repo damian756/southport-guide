@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, FileText } from "lucide-react";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata = {
   title: "Terms & Conditions",
@@ -49,7 +50,7 @@ export default function TermsPage() {
               SouthportGuide.co.uk is a visitor guide and local business directory for Southport, Merseyside, operated by <strong>Churchtown Media</strong>. The Site provides information about local businesses, events, and attractions for the benefit of visitors and residents.
             </p>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Contact: <a href="mailto:hello@seftoncoast.network" className="text-[#C9A84C] hover:underline">hello@seftoncoast.network</a>
+              Contact: <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] hover:underline">{DISPLAY_EMAIL}</a>
             </p>
           </section>
 

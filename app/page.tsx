@@ -9,6 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { BLOG_POSTS, getBlogPostCategory, getUpcomingEvents } from "@/lib/southport-data";
 import { GUIDES } from "@/lib/guides-config";
 import type { Metadata } from "next";
+import AdSlot from "@/components/AdSlot";
 
 export const revalidate = 3600;
 
@@ -800,6 +801,13 @@ export default async function Home() {
         );
       })()}
 
+      {/* Advertising: one home page card (lib/ad-slots.ts) */}
+      <section className="bg-white pb-12">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <AdSlot id="home-card" />
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════════════════
           STATS / TRUST BAR
       ══════════════════════════════════════════════════════ */}
@@ -1244,7 +1252,7 @@ export default async function Home() {
                 SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide. Not a reprint of the council website. If something isn&apos;t worth your time, I say so.
               </p>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Any Southport business can be listed here for free. Places that pay for a Pro listing or a boost are marked Featured, and paying does not change what we write. If your business is not listed yet, you can suggest it and we will add it.
+                Any Southport business can be listed here for free. Paid placements and adverts are labelled, and paying does not change what we write. If your business is not listed yet, you can suggest it and we will add it.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import ActivateClient from "./ActivateClient";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata = {
   title: "Set Your Password | SouthportGuide",
@@ -25,10 +26,10 @@ export default async function ActivatePage({ searchParams }: Props) {
             This link is missing or invalid. Check your email for the correct
             activation link, or contact{" "}
             <a
-              href="mailto:hello@southportguide.co.uk"
+              href={`mailto:${DISPLAY_EMAIL}`}
               className="text-[#C9A84C] font-semibold"
             >
-              hello@southportguide.co.uk
+              {DISPLAY_EMAIL}
             </a>
             .
           </p>
@@ -70,10 +71,10 @@ export default async function ActivatePage({ searchParams }: Props) {
           <p className="text-gray-500 text-sm mb-6">
             This link has expired. Contact{" "}
             <a
-              href="mailto:hello@southportguide.co.uk"
+              href={`mailto:${DISPLAY_EMAIL}`}
               className="text-[#C9A84C] font-semibold"
             >
-              hello@southportguide.co.uk
+              {DISPLAY_EMAIL}
             </a>{" "}
             to request a new one.
           </p>

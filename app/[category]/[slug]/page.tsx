@@ -5,7 +5,6 @@ import { MapPin, Phone, Globe, Clock, Star, ChevronRight, ShieldCheck, ShieldAle
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { prisma } from "@/lib/prisma";
 import { cn } from "@/lib/utils";
-import { LATEROOMS } from "@/lib/affiliate-links";
 import { ViewTracker } from "@/components/ViewTracker";
 import ReviewSection from "@/components/ReviewSection";
 import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
@@ -632,17 +631,6 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                         <Phone className="w-4 h-4 text-[#C9A84C]" /> {business.phone}
                       </a>
                     )}
-                    {category === "hotels" && (
-                      <a
-                        href={LATEROOMS.southport}
-                        target="_blank"
-                        rel="noopener noreferrer sponsored"
-                        className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-5 py-2.5 rounded-full transition font-semibold text-sm"
-                      >
-                        Check Availability
-                        <span className="text-[10px] font-normal opacity-70">Partner</span>
-                      </a>
-                    )}
                   </div>
                 </div>
               </div>
@@ -1098,7 +1086,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
               {/* Upgrade */}
               <div className="bg-white border border-gray-100 rounded-2xl p-5 text-center">
                 <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-2">Upgrade this listing</p>
-                <p className="text-gray-600 text-sm mb-3">Get more visibility with a featured listing from £29/month</p>
+                <p className="text-gray-600 text-sm mb-3">Get more visibility with a Pro listing or a boost</p>
                 <Link href="/pricing" className="text-[#C9A84C] text-sm font-bold hover:underline">View pricing →</Link>
               </div>
             </div>

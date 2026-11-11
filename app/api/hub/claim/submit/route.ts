@@ -4,10 +4,13 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
+import { DELIVERY_EMAIL } from "@/lib/contact";
+import { buildClaimNotice, cleanSubject, escapeHtml, isHoneypotFilled, logSendError, plainAddress } from "@/lib/enquiry-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
-const ADMIN_EMAIL = "damian@churchtownmedia.co.uk";
+// The admin notice of a new claim is an enquiry: it goes to DELIVERY_EMAIL.
+const ADMIN_EMAIL = DELIVERY_EMAIL;
 const BASE_URL = process.env.NEXTAUTH_URL || "https://www.southportguide.co.uk";
 
 const Schema = z.object({
@@ -23,6 +26,12 @@ function randomPassword(): string {
 
 export async function POST(req: Request) {
   const body = await req.json();
+
+  // Honeypot filled in: a bot. Answer as if accepted; create nothing, send nothing.
+  if (isHoneypotFilled(body)) {
+    return NextResponse.json({ ok: true });
+  }
+
   const parsed = Schema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
@@ -109,7 +118,7 @@ export async function POST(req: Request) {
   await resend.emails.send({
     from: FROM_EMAIL,
     to: parsed.data.email,
-    subject: `We've received your claim request — ${business.name}`,
+    subject: `We've received your claim request: ${cleanSubject(business.name)}`,
     html: `
       <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #FAF8F5; padding: 32px; border-radius: 8px;">
         <div style="border-bottom: 3px solid #C9A84C; padding-bottom: 16px; margin-bottom: 24px;">
@@ -118,9 +127,9 @@ export async function POST(req: Request) {
           </h1>
           <p style="color: #666; font-size: 13px; margin: 4px 0 0;">Claim request received</p>
         </div>
-        <p style="color: #1B2E4B; font-size: 16px;">Hi ${parsed.data.name},</p>
+        <p style="color: #1B2E4B; font-size: 16px;">Hello,</p>
         <p style="color: #444; line-height: 1.7;">
-          Thanks for submitting a claim request for <strong>${business.name}</strong>.
+          Thanks for submitting a claim request for <strong>${escapeHtml(business.name)}</strong>.
           We'll review it and get back to you by email, usually within 1–2 business days.
         </p>
         <p style="color: #444; line-height: 1.7;">
@@ -133,62 +142,27 @@ export async function POST(req: Request) {
     `,
   });
 
-  // Notification to admin
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: ADMIN_EMAIL,
-    subject: `[SouthportGuide] New claim request — ${business.name}`,
-    html: `
-      <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #FAF8F5; padding: 32px; border-radius: 8px;">
-        <div style="border-bottom: 3px solid #C9A84C; padding-bottom: 16px; margin-bottom: 24px;">
-          <h1 style="font-size: 24px; color: #1B2E4B; margin: 0;">
-            Southport<span style="color: #C9A84C;">Guide</span>.co.uk
-          </h1>
-          <p style="color: #666; font-size: 13px; margin: 4px 0 0;">New claim request</p>
-        </div>
-
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
-          <tr>
-            <td style="padding: 8px 0; color: #888; font-size: 13px; width: 120px; vertical-align: top;">Business</td>
-            <td style="padding: 8px 0; color: #1B2E4B; font-weight: bold;">${business.name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Address</td>
-            <td style="padding: 8px 0; color: #1B2E4B;">${business.address}, ${business.postcode}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Category</td>
-            <td style="padding: 8px 0; color: #1B2E4B;">${business.category.name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Claimant</td>
-            <td style="padding: 8px 0; color: #1B2E4B;">${parsed.data.name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Email</td>
-            <td style="padding: 8px 0;"><a href="mailto:${parsed.data.email}" style="color: #C9A84C;">${parsed.data.email}</a></td>
-          </tr>
-        </table>
-
-        ${message ? `
-          <div style="background: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 20px; margin-bottom: 24px;">
-            <p style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 12px;">Message</p>
-            <p style="color: #1B2E4B; line-height: 1.7; margin: 0; white-space: pre-wrap;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
-          </div>
-        ` : ""}
-
-        <p style="margin-top: 24px;">
-          <a href="${BASE_URL}/admin/claims" style="display: inline-block; background: #C9A84C; color: #1B2E4B; font-weight: bold; padding: 12px 24px; border-radius: 8px; text-decoration: none;">
-            Review claims →
-          </a>
-        </p>
-
-        <p style="color: #999; font-size: 12px; margin-top: 24px;">
-          SouthportGuide.co.uk. Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
-        </p>
-      </div>
-    `,
-  });
+  // Notification to admin (an enquiry): to DELIVERY_EMAIL, reply-to the claimant,
+  // every value escaped, and a failed send logged.
+  const notice = buildClaimNotice(
+    {
+      businessName: business.name,
+      address: `${business.address}, ${business.postcode}`,
+      category: business.category.name,
+      claimantName: parsed.data.name,
+      claimantEmail: parsed.data.email,
+      message,
+      reviewUrl: `${BASE_URL}/admin/claims`,
+    },
+    { from: FROM_EMAIL, to: ADMIN_EMAIL, replyTo: plainAddress(parsed.data.email) },
+  );
+  try {
+    const { error } = await resend.emails.send(notice);
+    if (error) logSendError("claim", "admin notice", error);
+  } catch (err) {
+    logSendError("claim", "admin notice", err);
+    throw err;
+  }
 
   return NextResponse.json({ ok: true });
 }

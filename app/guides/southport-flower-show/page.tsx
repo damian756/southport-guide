@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LATEROOMS, SYKES } from "@/lib/affiliate-links";
 import {
   MapPin,
   Car,
@@ -17,6 +16,10 @@ import SensoryInfoCard from "@/app/components/SensoryInfoCard";
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import AdSlot from "@/components/AdSlot";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-flower-show");
@@ -85,11 +88,11 @@ const CELEBRITIES = [
 ];
 
 const TICKETS = [
-  { type: "Adult Day Ticket", earlyBird: "£25", gate: "—", notes: "Early bird online price. Children under 16 free." },
+  { type: "Adult Day Ticket", earlyBird: "£25", gate: "n/a", notes: "Early bird online price. Children under 16 free." },
   { type: "Child (under 16)", earlyBird: "Free", gate: "Free", notes: "With a paying adult" },
-  { type: "4-Day Patron Pass", earlyBird: "£90", gate: "—", notes: "Online only. All four days." },
-  { type: "Afternoon Tea + Entry", earlyBird: "£55", gate: "—", notes: "Includes show entry + catering. Book early." },
-  { type: "VIP Experience", earlyBird: "£120", gate: "—", notes: "Full VIP package. Limited availability." },
+  { type: "4-Day Patron Pass", earlyBird: "£90", gate: "n/a", notes: "Online only. All four days." },
+  { type: "Afternoon Tea + Entry", earlyBird: "£55", gate: "n/a", notes: "Includes show entry + catering. Book early." },
+  { type: "VIP Experience", earlyBird: "£120", gate: "n/a", notes: "Full VIP package. Limited availability." },
 ];
 
 const FAQS = [
@@ -483,14 +486,6 @@ export default function SouthportFlowerShowGuidePage() {
                   <Link href="/hotels" className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:text-[#1B2E4B] transition-colors">
                     Hotels in Southport <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <a
-                    href={SYKES.southport}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                    className="inline-flex items-center gap-1.5 text-[#1B2E4B] font-semibold text-sm hover:text-[#C9A84C] transition-colors"
-                  >
-                    Cottages via Sykes <ArrowRight className="w-4 h-4" />
-                  </a>
                 </div>
               </div>
             </div>
@@ -526,7 +521,7 @@ export default function SouthportFlowerShowGuidePage() {
           noiseLevelNote="Live music stages, PA announcements, general show ambience. Avoidable by staying in the show gardens away from entertainment areas."
           crowdDensity="high"
           crowdDensityNote="Ticketed site but busy, particularly on Saturday. Thursday is the quietest day by a significant margin."
-          quietSpace="The show gardens themselves — the designed gardens created for the event — are relatively calm and away from the main entertainment zones. Head there first before the crowds build."
+          quietSpace="The show gardens themselves, designed and built for the event, are relatively calm and away from the main entertainment zones. Head there first before the crowds build."
           sensoryTriggers={["PA announcements across the site", "Celebrity stage noise", "Busy food market area", "Unexpected queues at busy exhibits", "Saturday afternoon crowd peaks"]}
           sunflowerNote="The Southport Flower Show is a large outdoor event. Contact the show organisers via southportflowershow.co.uk ahead of your visit if you have specific accessibility requirements."
           lowSensoryTip="Thursday (opening day) is consistently the quietest. Arrive at 10am, go to the show gardens first, avoid the celebrity stage and food market until after 2pm when they are better managed. Children under 16 are free, so this is one of the most accessible family events in the Southport calendar."
@@ -574,6 +569,9 @@ export default function SouthportFlowerShowGuidePage() {
           </div>
         </section>
 
+        {/* ── Advertising: one sponsor card (lib/ad-slots.ts) ── */}
+        <AdSlot id="event-flower-show" />
+
         {/* ── Tickets CTA ── */}
         <section className="bg-[#1A4020] rounded-2xl p-8 md:p-12 text-center text-white">
           <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Southport Flower Show 2026</p>
@@ -594,22 +592,6 @@ export default function SouthportFlowerShowGuidePage() {
             <Link href="/hotels" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">
               Find a Hotel →
             </Link>
-            <a
-              href={LATEROOMS.southport}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20"
-            >
-              Compare on LateRooms →
-            </a>
-            <a
-              href={SYKES.southport}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20"
-            >
-              Cottages via Sykes →
-            </a>
           </div>
         </section>
 

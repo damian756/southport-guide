@@ -20,6 +20,7 @@ import {
   Mail,
 } from "lucide-react";
 import type { NewsItemCard } from "./page";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 const CATEGORIES: { value: string; label: string }[] = [
   { value: "all", label: "All news" },
@@ -198,7 +199,7 @@ function GotAStoryCTA() {
         </p>
       </div>
       <a
-        href="mailto:hello@seftoncoast.network?subject=Story tip for Southport Live"
+        href={`mailto:${DISPLAY_EMAIL}?subject=Story tip for Southport Live`}
         className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-white font-semibold text-sm rounded-xl hover:bg-[#b8963d] transition-colors"
       >
         <Mail className="w-4 h-4" />

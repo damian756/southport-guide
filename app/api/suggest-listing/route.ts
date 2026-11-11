@@ -1,13 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { DELIVERY_EMAIL } from "@/lib/contact";
+import { MAX_SHORT, buildSuggestionEmail, firstTooLong, isHoneypotFilled, logSendError, plainAddress } from "@/lib/enquiry-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const TO_EMAIL = "damian@churchtownmedia.co.uk";
+// Suggestions are delivered to DELIVERY_EMAIL and sent from the site's own verified domain.
+const TO_EMAIL = DELIVERY_EMAIL;
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+
+    // Honeypot filled in: a bot. Answer as if sent, and send nothing.
+    if (isHoneypotFilled(body)) {
+      return NextResponse.json({ success: true });
+    }
+
     const { businessName, category, address, website, phone, contactName, contactEmail } = body as {
       businessName: string;
       category: string;
@@ -21,65 +30,41 @@ export async function POST(req: NextRequest) {
     if (!businessName?.trim() || !category?.trim() || !contactName?.trim() || !contactEmail?.trim()) {
       return NextResponse.json({ error: "Business name, category, your name and email are required." }, { status: 400 });
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail)) {
+    const replyTo = plainAddress(contactEmail);
+    if (!replyTo) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
     }
+    if (firstTooLong(
+      { businessName, category, contactName, phone, address, website },
+      { businessName: MAX_SHORT, category: MAX_SHORT, contactName: MAX_SHORT, phone: MAX_SHORT, address: 200, website: 300 },
+    )) {
+      return NextResponse.json({ error: "One of the fields is too long. Please shorten it and try again." }, { status: 400 });
+    }
 
-    const { error } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      replyTo: `${contactName} <${contactEmail}>`,
-      subject: `[SouthportGuide] New listing suggestion: ${businessName}`,
-      html: `
-        <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #FAF8F5; padding: 32px; border-radius: 8px;">
-          <div style="border-bottom: 3px solid #C9A84C; padding-bottom: 16px; margin-bottom: 24px;">
-            <h1 style="font-size: 24px; color: #1B2E4B; margin: 0;">
-              Southport<span style="color: #C9A84C;">Guide</span><span style="color: #999; font-size: 14px;">.co.uk</span>
-            </h1>
-            <p style="color: #666; font-size: 13px; margin: 4px 0 0;">New business listing suggestion</p>
-          </div>
+    const suggestion = {
+      businessName: String(businessName),
+      category: String(category),
+      address: address ? String(address) : undefined,
+      website: website ? String(website) : undefined,
+      phone: phone ? String(phone) : undefined,
+      contactName: String(contactName),
+      contactEmail: replyTo,
+    };
 
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
-            <tr>
-              <td style="padding: 8px 0; color: #888; font-size: 13px; width: 130px; vertical-align: top;">Business name</td>
-              <td style="padding: 8px 0; color: #1B2E4B; font-weight: bold;">${businessName}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Category</td>
-              <td style="padding: 8px 0; color: #1B2E4B;">${category}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Address</td>
-              <td style="padding: 8px 0; color: #1B2E4B;">${address || "Not provided"}</td>
-            </tr>
-            ${website ? `<tr><td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Website</td><td style="padding: 8px 0;"><a href="${website}" style="color: #C9A84C;">${website}</a></td></tr>` : ""}
-            ${phone ? `<tr><td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Phone</td><td style="padding: 8px 0; color: #1B2E4B;">${phone}</td></tr>` : ""}
-            <tr>
-              <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Submitted by</td>
-              <td style="padding: 8px 0; color: #1B2E4B;">${contactName}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 0; color: #888; font-size: 13px; vertical-align: top;">Contact email</td>
-              <td style="padding: 8px 0;"><a href="mailto:${contactEmail}" style="color: #C9A84C;">${contactEmail}</a></td>
-            </tr>
-          </table>
-
-          <p style="color: #999; font-size: 12px; text-align: center;">
-            Reply directly to this email to contact ${contactName}.<br/>
-            SouthportGuide.co.uk. Built by <a href="https://churchtownmedia.co.uk" style="color: #C9A84C;">Churchtown Media</a>
-          </p>
-        </div>
-      `,
-    });
-
-    if (error) {
-      console.error("Resend suggest-listing error:", JSON.stringify(error));
+    try {
+      const { error } = await resend.emails.send(buildSuggestionEmail(suggestion, { from: FROM_EMAIL, to: TO_EMAIL, replyTo }));
+      if (error) {
+        logSendError("suggest-listing", "suggestion", error);
+        return NextResponse.json({ error: "Failed to send. Please try again." }, { status: 500 });
+      }
+    } catch (err) {
+      logSendError("suggest-listing", "suggestion", err);
       return NextResponse.json({ error: "Failed to send. Please try again." }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Suggest listing route error:", err);
+    logSendError("suggest-listing", "route", err);
     return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 }

@@ -4,23 +4,30 @@ import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle, AlertCircle, MapPin, Clock } from "lucide-react";
 import { InstagramCta } from "@/components/InstagramCta";
+import { ADVERTISING_SUBJECT } from "@/lib/contact";
 
+// Enquiry types. The advertising one is shared with the advertise page's links.
 const SUBJECTS = [
   "Claim my listing",
-  "Advertise / Featured listing",
-  "The Open 2026 package",
+  ADVERTISING_SUBJECT,
   "MLEC partner opportunity",
   "Report an issue",
   "Media / press enquiry",
   "General enquiry",
 ];
 
-export default function ContactClient() {
-  const [form, setForm] = useState({ name: "", email: "", subject: SUBJECTS[0], businessName: "", message: "" });
+const EMPTY = { name: "", email: "", subject: SUBJECTS[0], businessName: "", message: "", homepage: "" };
+
+export default function ContactClient({ initialSubject, initialMessage }: { initialSubject?: string; initialMessage?: string } = {}) {
+  const [form, setForm] = useState({
+    ...EMPTY,
+    subject: initialSubject && SUBJECTS.includes(initialSubject) ? initialSubject : SUBJECTS[0],
+    message: initialMessage ?? "",
+  });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const isBusiness = form.subject === "Claim my listing" || form.subject === "Advertise / Featured listing";
+  const isBusiness = form.subject === "Claim my listing" || form.subject === ADVERTISING_SUBJECT;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -122,7 +129,7 @@ export default function ContactClient() {
                 <p className="text-gray-500 mb-6">We&apos;ll be in touch within 1–2 business days. Check your inbox for a confirmation.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <button
-                    onClick={() => { setForm({ name: "", email: "", subject: SUBJECTS[0], businessName: "", message: "" }); setStatus("idle"); }}
+                    onClick={() => { setForm(EMPTY); setStatus("idle"); }}
                     className="px-6 py-2.5 border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-50 transition"
                   >
                     Send another message
@@ -133,8 +140,15 @@ export default function ContactClient() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 p-7 space-y-5">
+              <form onSubmit={handleSubmit} className="relative bg-white rounded-2xl border border-gray-100 p-7 space-y-5">
                 <h2 className="font-display text-xl font-bold text-[#1B2E4B]">Send a message</h2>
+                {/* Honeypot: hidden from people, filled in by bots. A filled one is accepted and nothing is sent. */}
+                <div aria-hidden="true" className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden">
+                  <label>
+                    Leave this empty
+                    <input type="text" name="homepage" tabIndex={-1} autoComplete="off" value={form.homepage} onChange={(e) => setForm({ ...form, homepage: e.target.value })} />
+                  </label>
+                </div>
 
                 {status === "error" && (
                   <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4">
@@ -151,6 +165,7 @@ export default function ContactClient() {
                     <input
                       type="text"
                       required
+                      maxLength={100}
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="John Smith"
@@ -192,6 +207,7 @@ export default function ContactClient() {
                     </label>
                     <input
                       type="text"
+                      maxLength={100}
                       value={form.businessName}
                       onChange={(e) => setForm({ ...form, businessName: e.target.value })}
                       placeholder="e.g. The Scarisbrick Hotel"
@@ -206,6 +222,7 @@ export default function ContactClient() {
                   </label>
                   <textarea
                     required
+                    maxLength={3000}
                     rows={6}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}

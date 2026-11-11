@@ -2,11 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle, Flower2, Heart, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement | SouthportGuide.co.uk",
   description:
-    "SouthportGuide's accessibility commitments — web accessibility standards, Hidden Disabilities Sunflower membership, content standards, and how to contact us with accessibility feedback.",
+    "SouthportGuide's accessibility commitments: web accessibility standards, Hidden Disabilities Sunflower membership, content standards, and how to contact us with accessibility feedback.",
   alternates: { canonical: "https://www.southportguide.co.uk/accessibility" },
 };
 
@@ -24,7 +25,7 @@ const COMMITMENTS = [
   {
     icon: CheckCircle,
     title: "Keyboard navigation",
-    body: "The site is navigable by keyboard. Interactive elements — links, buttons, forms — are focusable and have visible focus indicators. We do not rely on mouse-only interactions for any core content.",
+    body: "The site is navigable by keyboard. Interactive elements (links, buttons and forms) are focusable and have visible focus indicators. We do not rely on mouse-only interactions for any core content.",
   },
   {
     icon: CheckCircle,
@@ -39,7 +40,7 @@ const COMMITMENTS = [
   {
     icon: Heart,
     title: "Accessible content standards",
-    body: "Our guides carry sensory and accessibility information as standard — not buried in footnotes. We flag noise levels, quiet hours, wheelchair access, Sunflower recognition, and the best times to visit for low-sensory experiences.",
+    body: "Our guides carry sensory and accessibility information as standard, not buried in footnotes. We flag noise levels, quiet hours, wheelchair access, Sunflower recognition, and the best times to visit for low-sensory experiences.",
   },
 ];
 
@@ -82,7 +83,7 @@ export default function AccessibilityStatementPage() {
             <div className="bg-white flex items-center justify-center p-8 min-h-[100px]">
               <Image
                 src="/images/sunflower/PROUD-To-SUPPORT-UK_2.webp"
-                alt="Hidden Disabilities Sunflower — Proud to Support UK"
+                alt="Hidden Disabilities Sunflower: Proud to Support UK"
                 width={90}
                 height={90}
                 className="object-contain"
@@ -168,10 +169,10 @@ export default function AccessibilityStatementPage() {
               information about accessible Southport that should be in our guides, we want to hear that too.
             </p>
             <a
-              href="mailto:hello@southportguide.co.uk"
+              href={`mailto:${DISPLAY_EMAIL}`}
               className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-[#243d63] transition-colors"
             >
-              hello@southportguide.co.uk
+              {DISPLAY_EMAIL}
             </a>
           </div>
         </section>

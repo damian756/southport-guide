@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LATEROOMS } from "@/lib/affiliate-links";
 import {
   MapPin,
   Car,
@@ -15,6 +14,10 @@ import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
 import SensoryInfoCard from "@/app/components/SensoryInfoCard";
+import AdSlot from "@/components/AdSlot";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("southport-air-show");
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/southport-air-show`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/air-show-hero.webp`, width: 1200, height: 630, alt: "Southport Air Show — aircraft over the seafront" }],
+    images: [{ url: `${BASE_URL}/images/air-show-hero.webp`, width: 1200, height: 630, alt: "Southport Air Show: aircraft over the seafront" }],
   },
 };
 
@@ -97,7 +100,7 @@ const TIMELINE = [
 ];
 
 const PARKING = [
-  { name: "Train (Merseyrail)", postcode: "—", cost: "~£8 rtn", verdict: "Liverpool Central to Southport. 15 min walk to beach. The easy option. Do this.", recommended: true },
+  { name: "Train (Merseyrail)", postcode: "n/a", cost: "~£8 rtn", verdict: "Liverpool Central to Southport. 15 min walk to beach. The easy option. Do this.", recommended: true },
   { name: "Princes Park", postcode: "PR8 1RX", cost: "~£10", verdict: "Better car option than Marine Drive. Gets busy, arrive before 9am.", recommended: false },
   { name: "Marine Drive", postcode: "PR8 1RX", cost: "~£10", verdict: "Full before 9am on air show day. Don't plan on it.", recommended: false },
   { name: "Town centre (various)", postcode: "PR8 1QJ", cost: "£3–8", verdict: "Most reliable car option. 10–15 min walk to beach. Usually has space.", recommended: false },
@@ -448,7 +451,7 @@ export default function SouthportAirShowGuidePage() {
           quietSpace="No designated quiet space on the beach. The southern end towards Ainsdale has significantly thinner crowds. Princes Park is a 15-minute walk from the main display area and is quieter."
           sensoryTriggers={["Sudden high-volume jet engine noise", "Supersonic passes and bangs", "Very large crowd density", "PA system announcements", "Coastal wind", "Crowd surge during headline acts"]}
           sunflowerNote="Wear your Sunflower lanyard. St John Ambulance and event marshals are on-site throughout and can direct you to quieter areas."
-          lowSensoryTip="Watch from Ainsdale (south end of the beach) — the same display, significantly fewer people. Ear defenders or noise-reducing ear plugs are genuinely useful here, not optional. Sunday afternoon is marginally quieter than Saturday. Early morning gives you the best position and lowest crowd density."
+          lowSensoryTip="Watch from Ainsdale (south end of the beach): the same display, significantly fewer people. Ear defenders or noise-reducing ear plugs are genuinely useful here, not optional. Sunday afternoon is marginally quieter than Saturday. Early morning gives you the best position and lowest crowd density."
         />
 
         {/* ── Late Summer Cross-Sell ── */}
@@ -471,14 +474,6 @@ export default function SouthportAirShowGuidePage() {
                 className="bg-white/10 border border-white/25 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors hover:bg-white/20">
                 Hotels in Southport
               </Link>
-              <a
-                href={LATEROOMS.southport}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="bg-white/10 border border-white/25 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
-              >
-                Compare on LateRooms →
-              </a>
             </div>
           </div>
         </section>
@@ -501,6 +496,9 @@ export default function SouthportAirShowGuidePage() {
             ))}
           </div>
         </section>
+
+        {/* ── Advertising: one sponsor card (lib/ad-slots.ts) ── */}
+        <AdSlot id="event-air-show" />
 
         {/* ── Other Events ── */}
         <section>

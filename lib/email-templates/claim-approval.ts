@@ -1,3 +1,5 @@
+import { DISPLAY_EMAIL } from "@/lib/contact";
+
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
 const BASE_URL = process.env.NEXTAUTH_URL || "https://www.southportguide.co.uk";
 
@@ -24,7 +26,7 @@ export function getClaimApprovalHtml(params: {
         </a>
       </p>
       <p style="color: #888; font-size: 13px;">
-        This link expires in 7 days. If you need a new link, contact hello@southportguide.co.uk.
+        This link expires in 7 days. If you need a new link, contact ${DISPLAY_EMAIL}.
       </p>
       <p style="color: #1B2E4B; margin-top: 24px;">The SouthportGuide Team</p>
       <p style="color: #999; font-size: 12px; margin-top: 24px;">
@@ -50,7 +52,7 @@ export function getClaimRejectionHtml(params: {
         We weren&apos;t able to verify your claim for <strong>${params.businessName}</strong> at this time.
       </p>
       <p style="color: #555; line-height: 1.7;">
-        If you think this is a mistake, reply to this email and we&apos;ll look into it.
+        If you think this is a mistake, email ${DISPLAY_EMAIL} and we&apos;ll look into it.
       </p>
       <p style="color: #1B2E4B; margin-top: 24px;">The SouthportGuide Team</p>
       <p style="color: #999; font-size: 12px; margin-top: 24px;">

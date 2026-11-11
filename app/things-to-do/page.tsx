@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LATEROOMS, GO_APE } from "@/lib/affiliate-links";
 import {
   Waves,
   MapPin,
@@ -20,6 +19,10 @@ import {
   Wine,
 } from "lucide-react";
 import type { Metadata } from "next";
+import AdSlot from "@/components/AdSlot";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 const BASE_URL = "https://www.southportguide.co.uk";
 
@@ -865,26 +868,6 @@ export default function ThingsToDoPage() {
             </div>
           </section>
 
-          {/* Go Ape partner callout */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6">
-            <div className="text-5xl flex-none">🌳</div>
-            <div className="flex-1 text-center sm:text-left">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Activity Partner</p>
-              <h3 className="font-display text-xl font-bold text-[#1B2E4B] mb-2">Go Ape: Treetop Adventures Near Southport</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Go Ape run treetop assault courses, zip wires, and outdoor adventure sessions at woodland sites across the UK. The Rivington site in Lancashire is under 45 minutes from Southport and is a solid half-day out for families or groups who want something more physical than the beach.
-              </p>
-            </div>
-            <a
-              href={GO_APE.homepage}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="flex-none bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
-            >
-              Find a location →
-            </a>
-          </div>
-
           {/* ── Shopping ── */}
           <section id="shopping" className="scroll-mt-28">
             <div className="mb-8">
@@ -1049,14 +1032,6 @@ export default function ThingsToDoPage() {
                   <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-1 group-hover:text-[#C9A84C] transition-colors">Hotels</h3>
                   <p className="text-gray-500 text-sm">From The Vincent on Lord Street to B&amp;Bs in Birkdale. Accommodation for every budget.</p>
                 </Link>
-                <a
-                  href={LATEROOMS.southport}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  className="mt-3 text-xs font-semibold text-[#C9A84C] hover:text-[#1B2E4B] transition-colors"
-                >
-                  Compare prices on LateRooms →
-                </a>
               </div>
               <Link href="/bars-nightlife" className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-[#FAF8F5] transition">
                 <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-4 group-hover:bg-purple-100 transition">
@@ -1110,6 +1085,9 @@ export default function ThingsToDoPage() {
               </div>
             </div>
           </section>
+
+          {/* ── Advertising: one sponsor card (lib/ad-slots.ts) ── */}
+          <AdSlot id="guide-things-to-do" />
 
           {/* ── CTA ── */}
           <section className="bg-[#1B2E4B] rounded-2xl p-8 md:p-12 text-center text-white">

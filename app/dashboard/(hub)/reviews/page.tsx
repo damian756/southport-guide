@@ -6,6 +6,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { formatDistanceToNow } from "date-fns";
 import SiteReviewsTab from "./SiteReviewsTab";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata = {
   title: "Reviews | Business Hub",
@@ -155,14 +156,14 @@ export default async function ReviewsPage({
                 {!business.placeId && (
                   <p className="text-xs text-gray-400 mt-3">
                     Want a direct link to your Google listing?{" "}
-                    <a href="mailto:hello@southportguide.co.uk" className="text-[#C9A84C] font-medium hover:underline">Contact us to connect it.</a>
+                    <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] font-medium hover:underline">Contact us to connect it.</a>
                   </p>
                 )}
               </>
             ) : (
               <p className="text-sm text-gray-500">
                 Google Reviews not connected.{" "}
-                <a href="mailto:hello@southportguide.co.uk" className="text-[#C9A84C] font-semibold hover:underline">Contact us</a>{" "}
+                <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] font-semibold hover:underline">Contact us</a>{" "}
                 to link your Google listing.
               </p>
             )}

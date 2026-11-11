@@ -16,7 +16,7 @@ const BATCH_DELAY_MS = 500;
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL || "SouthportGuide <onboarding@resend.dev>";
+  process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
 
 function getWeekBounds(): { thisWeekStart: Date; thisWeekEnd: Date; lastWeekStart: Date; lastWeekEnd: Date } {
   const now = new Date();
@@ -158,7 +158,7 @@ export async function GET(request: Request) {
         const { error } = await resend.emails.send({
           from: FROM_EMAIL,
           to: user.email,
-          subject: `Your SouthportGuide week — ${business.name}`,
+          subject: `Your SouthportGuide week: ${business.name}`,
           html,
         });
 

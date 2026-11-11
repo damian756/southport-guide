@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata = {
   title: "About SouthportGuide | Independent Local Guide to Southport",
@@ -128,7 +129,7 @@ const PARTNERS = [
   {
     icon: "🤝",
     title: "Commercial partnerships",
-    body: "Sponsored content (clearly labelled), display advertising and bespoke arrangements. Particularly relevant around The Open 2026 and the MLEC launch.",
+    body: "Sponsored articles and adverts, always clearly labelled. Our advertising page lists the options and prices.",
   },
 ];
 
@@ -445,10 +446,10 @@ export default function AboutPage() {
           </div>
           <div className="text-center">
             <a
-              href="mailto:hello@seftoncoast.network"
+              href={`mailto:${DISPLAY_EMAIL}`}
               className="inline-flex items-center gap-2 bg-[#1B2E4B] hover:bg-[#C9A84C] text-white font-bold px-8 py-4 rounded-xl transition-colors text-sm"
             >
-              Get in touch: hello@seftoncoast.network →
+              Get in touch: {DISPLAY_EMAIL} →
             </a>
           </div>
         </div>
@@ -465,13 +466,10 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                SouthportGuide is free to use and fully independent. No official body funds it. No council budget. It is funded by featured placement in the business directory. Businesses can pay for premium positioning in listings and categories. This is clearly disclosed on the site.
+                SouthportGuide is free to use and fully independent. No official body funds it. No council budget. Churchtown Media Ltd pays for the guide. Businesses can pay for a Featured place in the directory or a labelled advert, and both are marked on the site.
               </p>
               <p>
                 Featured placement does not influence editorial content. A restaurant that pays for a featured listing does not get a better review. It gets better visibility in the directory. If anything is sponsored, it is explicitly labelled.
-              </p>
-              <p>
-                We may also earn affiliate commissions from some booking links. These are disclosed where they appear.
               </p>
               <p>
                 The commercial interests of Damian Roche and Churchtown Media Ltd are listed on our{" "}
@@ -505,10 +503,10 @@ export default function AboutPage() {
                 Claim your listing →
               </Link>
               <a
-                href="mailto:hello@seftoncoast.network"
+                href={`mailto:${DISPLAY_EMAIL}`}
                 className="flex items-center justify-center text-white/50 hover:text-white text-sm transition-colors py-2 w-full"
               >
-                hello@seftoncoast.network
+                {DISPLAY_EMAIL}
               </a>
             </div>
           </div>

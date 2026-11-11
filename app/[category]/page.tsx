@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import AdSlot from "@/components/AdSlot";
+import { FEATURED_CATEGORIES } from "@/lib/ad-slots";
 import Link from "next/link";
 import Image from "next/image";
 import { unstable_cache } from "next/cache";
@@ -7,7 +9,6 @@ import { ChevronRight, MapPin as MapPinIcon, Bed, CalendarDays, PoundSterling } 
 import { getCategoryBySlug, isValidCategory } from "@/lib/config";
 import { COLLECTIONS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
-import { LATEROOMS, SYKES } from "@/lib/affiliate-links";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
 import type { MapPin as MapPinType } from "@/components/CategoryMapTypes";
 
@@ -340,6 +341,13 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ? businesses.filter((b) => matchesArea(b.address ?? "", b.postcode ?? "", area))
     : businesses;
 
+  // Featured places showing (boosted, or a featured/premium tier). Below two,
+  // the page shows one empty card pointing to Pro and boosts.
+  const featuredShowing = filteredBusinesses.filter(
+    (b) => boostedIds.includes(b.id) || b.listingTier === "featured" || b.listingTier === "premium"
+  ).length;
+  const showFeaturedCard = FEATURED_CATEGORIES.includes(category) && featuredShowing < 2;
+
   // Map pins (only geolocated businesses)
   const mapPins: MapPinType[] = filteredBusinesses
     .filter((b) => b.lat != null && b.lng != null)
@@ -607,41 +615,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 </div>
               )}
 
-              {category === "hotels" && (
-                <>
-                  <div className="bg-[#1B2E4B] rounded-2xl p-4 text-center">
-                    <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">Partner</p>
-                    <p className="text-white text-sm font-semibold mb-1">Compare prices on LateRooms</p>
-                    <p className="text-white/60 text-xs leading-relaxed mb-3">
-                      UK&apos;s biggest range of accommodation. Free cancellation on most rooms.
-                    </p>
-                    <a
-                      href={LATEROOMS.southport}
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                      className="inline-block bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] text-xs font-bold px-4 py-2 rounded-full transition-colors"
-                    >
-                      Search Southport →
-                    </a>
-                  </div>
-                  <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 text-center">
-                    <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">Self-Catering</p>
-                    <p className="text-[#1B2E4B] text-sm font-semibold mb-1">Cottages &amp; holiday lets</p>
-                    <p className="text-gray-500 text-xs leading-relaxed mb-3">
-                      Visiting for The Open or a longer stay? Sykes have cottages across Southport and the Sefton Coast.
-                    </p>
-                    <a
-                      href={SYKES.southport}
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                      className="inline-block bg-[#1B2E4B] hover:bg-[#C9A84C] hover:text-[#1B2E4B] text-white text-xs font-bold px-4 py-2 rounded-full transition-colors"
-                    >
-                      Search Sykes →
-                    </a>
-                  </div>
-                </>
-              )}
-
               {/* Related Guides */}
               {CATEGORY_GUIDES[category] && (
                 <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
@@ -729,6 +702,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
           {/* ── Main content ──────────────────────────────────────────────── */}
           <div className="flex-1 min-w-0">
+            {showFeaturedCard && <AdSlot id={`featured-${category}`} className="mb-5" />}
             <CategoryBrowser
               businesses={filteredBusinesses}
               mapPins={mapPins}

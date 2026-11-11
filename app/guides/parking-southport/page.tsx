@@ -4,6 +4,10 @@ import { MapPin, Car, ChevronRight, ArrowRight, Clock, CreditCard } from "lucide
 import type { Metadata } from "next";
 import GuideLayout from "@/app/components/GuideLayout";
 import { getGuide } from "@/lib/guides-config";
+import AdSlot from "@/components/AdSlot";
+
+// Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
+export const revalidate = 86400;
 
 const BASE_URL = "https://www.southportguide.co.uk";
 const GUIDE = getGuide("parking-southport");
@@ -338,7 +342,7 @@ export default function ParkingSouthportGuidePage() {
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Staying Overnight?</p>
             <p className="text-white/80 text-sm leading-relaxed">
               If you&apos;re visiting for more than a day, Southport has hotels on Lord Street, the seafront, and in Birkdale.
-              During Open week (July 2026) and summer event weekends, accommodation books out quickly. Check availability early.
+              On summer event weekends, accommodation books out quickly. Check availability early.
             </p>
           </div>
           <Link
@@ -348,6 +352,9 @@ export default function ParkingSouthportGuidePage() {
             Hotels in Southport →
           </Link>
         </section>
+
+        {/* ── Advertising: one sponsor card (lib/ad-slots.ts) ── */}
+        <AdSlot id="guide-parking-southport" className="mb-8" />
 
         <section className="bg-[#FAF8F5] rounded-2xl p-6">
           <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">More practical guides</p>
