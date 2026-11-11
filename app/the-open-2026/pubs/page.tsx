@@ -116,7 +116,7 @@ export default async function OpenPubsPage() {
       bars = await prisma.business.findMany({
         where: { categoryId: cat.id },
         take: 9,
-        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        orderBy: [{ rating: "desc" }],
         select: {
           slug: true,
           name: true,

@@ -53,6 +53,8 @@ type Props = {
   currentSort: string | undefined;
   currentArea: string | undefined;
   boostedBusinessIds?: string[];
+  /** Paid Featured places (not boosts): the first gets the wide card */
+  featuredBusinessIds?: string[];
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -106,6 +108,7 @@ export default function CategoryBrowser({
   currentSort,
   currentArea,
   boostedBusinessIds = [],
+  featuredBusinessIds = [],
 }: Props) {
   const [search, setSearch] = useState("");
   const [view, setView] = useState<"list" | "map">("list");
@@ -289,13 +292,14 @@ export default function CategoryBrowser({
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((b, idx) => {
-            const isFeatured = b.listingTier === "featured" || b.listingTier === "premium";
+            // Only paid places are featured; the admin-set listingTier is not
+            const isFeatured = featuredBusinessIds.includes(b.id);
             const isBoosted = boostedBusinessIds.includes(b.id);
             const areaLabel = getAreaLabel(b.address);
             const showHygiene = isFoodCat && b.hygieneRating && b.hygieneRatingShow && /^\d+$/.test(b.hygieneRating);
             const hStyle = showHygiene && b.hygieneRating ? hygieneStyle(b.hygieneRating) : null;
             const snippet = getSnippet(b);
-            const firstFeaturedIdx = filtered.findIndex(x => x.listingTier === "featured" || x.listingTier === "premium");
+            const firstFeaturedIdx = filtered.findIndex(x => featuredBusinessIds.includes(x.id));
             // Hero = first featured card; Standard = subsequent featured cards
             const isHeroFeatured = isFeatured && firstFeaturedIdx === idx;
             // Only one hero per page — all other featured render as normal free cards
@@ -337,7 +341,7 @@ export default function CategoryBrowser({
                   <div className="flex flex-col flex-1 p-6 justify-between">
                     <div>
                       <p className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-2">
-                        {isBoosted ? "Featured This Week · Paid placement" : <>Editor&apos;s Pick</>} · {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
+                        {isBoosted ? "Featured This Week · Paid placement" : "Featured · Paid placement"} · {areaLabel}{areaLabel !== "Southport" ? ", Southport" : ""}
                       </p>
                       <h2 className="font-display font-bold text-[#1B2E4B] text-xl leading-snug group-hover:text-[#C9A84C] transition-colors mb-3 line-clamp-2">
                         {b.name}

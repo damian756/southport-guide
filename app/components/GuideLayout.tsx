@@ -38,13 +38,13 @@ async function fetchRelatedListings(guide: Guide): Promise<BusinessCard[]> {
       ].filter(Boolean) as object[],
     };
 
-    // Top-rated listings only. Paid tiers are left out: a guide's related
-    // listings are editorial, and paid places only appear, labelled, on
-    // category pages.
+    // Top-rated listings only. Paid places (Pro) are left out: a guide's
+    // related listings are editorial, and paid places only appear, labelled,
+    // on category pages. The admin-set listingTier is not paid for.
     const listings = await prisma.business.findMany({
       where: {
         ...whereCondition,
-        listingTier: { notIn: ["featured", "premium"] },
+        hubTier: { not: "pro" },
         rating: { not: null },
       },
       select: {

@@ -311,7 +311,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
-                CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
                 COALESCE(rating, 0) DESC, COALESCE("reviewCount", 0) DESC, name ASC`
           : prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
@@ -320,7 +319,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
-                CASE "listingTier" WHEN 'premium' THEN 1 WHEN 'featured' THEN 2 WHEN 'standard' THEN 3 ELSE 4 END ASC,
                 (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC`,
       ]);
       businesses = rawBusinesses;
@@ -341,11 +339,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ? businesses.filter((b) => matchesArea(b.address ?? "", b.postcode ?? "", area))
     : businesses;
 
-  // Featured places showing (boosted, or a featured/premium tier). Below two,
-  // the page shows one empty card pointing to Pro and boosts.
-  const featuredShowing = filteredBusinesses.filter(
-    (b) => boostedIds.includes(b.id) || b.listingTier === "featured" || b.listingTier === "premium"
-  ).length;
+  // Paid Featured places showing (boosted). The admin-set listingTier is not
+  // paid for, so it does not count. Below two, the page shows one empty card
+  // pointing to Pro and boosts.
+  const featuredShowing = filteredBusinesses.filter((b) => boostedIds.includes(b.id)).length;
   const showFeaturedCard = FEATURED_CATEGORIES.includes(category) && featuredShowing < 2;
 
   // Map pins (only geolocated businesses)
@@ -354,7 +351,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     .map((b) => ({
       slug: b.slug, name: b.name, lat: b.lat!, lng: b.lng!,
       rating: b.rating, reviewCount: b.reviewCount, priceRange: b.priceRange,
-      listingTier: b.listingTier, address: b.address, category,
+      address: b.address, category,
     }));
 
   const activeSort = sort || "default";

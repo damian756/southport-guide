@@ -115,7 +115,7 @@ export default async function OpenRestaurantsPage() {
       restaurants = await prisma.business.findMany({
         where: { categoryId: rCat.id },
         take: 9,
-        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        orderBy: [{ rating: "desc" }],
         select: SELECT,
       });
     }
@@ -123,7 +123,7 @@ export default async function OpenRestaurantsPage() {
       bars = await prisma.business.findMany({
         where: { categoryId: bCat.id },
         take: 6,
-        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        orderBy: [{ rating: "desc" }],
         select: SELECT,
       });
     }

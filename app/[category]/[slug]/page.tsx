@@ -384,7 +384,6 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     }
   } catch { /* non-fatal — schema emits without aggregateRating */ }
 
-  const isFeatured = business.listingTier === "featured" || business.listingTier === "premium";
   const isPremium = business.listingTier === "premium";
   const area = extractArea(business.address, business.postcode);
   const propertyLink = propertyLinkForPostcode(business.postcode);
@@ -538,9 +537,6 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                 <div className="p-6">
                   {/* Badges row */}
                   <div className="flex flex-wrap items-center gap-2 mb-3">
-                    {isFeatured && (
-                      <span className="bg-[#C9A84C]/10 text-[#C9A84C] text-xs font-bold px-3 py-1 rounded-full border border-[#C9A84C]/20">✦ FEATURED</span>
-                    )}
                     <Link href={`/${category}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{cat.name}</Link>
                     {secondaryCategories.map((sc) => (
                       <Link key={sc.slug} href={`/${sc.slug}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{sc.name}</Link>

@@ -6,7 +6,8 @@ export type MapPin = {
   rating: number | null;
   reviewCount: number | null;
   priceRange: string | null;
-  listingTier: string;
+  /** A paid Featured place: gold pin */
+  featured?: boolean;
   address: string;
   category: string;
 };

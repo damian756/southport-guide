@@ -102,8 +102,6 @@ export default async function CollectionPage({ params }: Props) {
       },
     });
 
-    const tierOrder: Record<string, number> = { premium: 1, featured: 2, standard: 3 };
-
     businesses = rawResults
       .map((b) => ({
         id: b.id,
@@ -122,9 +120,6 @@ export default async function CollectionPage({ params }: Props) {
         photoUrl: b.images?.[0] ?? null,
       }))
       .sort((a, b) => {
-        const ta = tierOrder[a.listingTier] ?? 4;
-        const tb = tierOrder[b.listingTier] ?? 4;
-        if (ta !== tb) return ta - tb;
         const scoreA = (a.rating ?? 0) * Math.log((a.reviewCount ?? 0) + 1);
         const scoreB = (b.rating ?? 0) * Math.log((b.reviewCount ?? 0) + 1);
         if (scoreB !== scoreA) return scoreB - scoreA;
@@ -345,12 +340,6 @@ function BusinessCard({ business: b }: { business: CollectionBusiness }) {
           </div>
         )}
 
-        {/* Featured badge overlaid on image */}
-        {b.listingTier === "premium" && (
-          <span className="absolute top-3 left-3 text-[10px] font-black bg-[#C9A84C] text-[#1B2E4B] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
-            ✦ Featured
-          </span>
-        )}
       </div>
 
       {/* Card body */}

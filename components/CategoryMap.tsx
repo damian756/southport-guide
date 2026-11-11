@@ -48,7 +48,7 @@ export default function CategoryMap({ pins, accentColor }: Props) {
           maxZoom={19}
         />
         {validPins.map((pin) => {
-          const isFeatured = pin.listingTier === "featured" || pin.listingTier === "premium";
+          const isFeatured = pin.featured === true;
           const bgColor = isFeatured ? "#C9A84C" : markerColor;
 
           const icon = divIcon({

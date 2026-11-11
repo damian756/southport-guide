@@ -161,7 +161,7 @@ export default async function OpenAccommodationPage() {
       featuredHotels = await prisma.business.findMany({
         where: { categoryId: cat.id },
         take: 6,
-        orderBy: [{ listingTier: "desc" }, { rating: "desc" }],
+        orderBy: [{ rating: "desc" }],
         select: {
           slug: true,
           name: true,
