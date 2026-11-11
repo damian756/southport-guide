@@ -12,6 +12,7 @@ import GoogleMapClickToLoad from "@/components/GoogleMapClickToLoad";
 import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
 import { postsForListing } from "@/lib/listing-posts";
 import { PRO_BADGE } from "@/lib/listing-order";
+import { imageCreditFor, listingImageAlt } from "@/lib/image-credits";
 
 type Props = {
   params: Promise<{ category: string; slug: string }>;
@@ -397,6 +398,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
   const totalClicks = business._count?.clicks ?? 0;
 
   const heroImage = business.images?.[0] ?? null;
+  const heroCredit = imageCreditFor(heroImage);
 
   // Format "last updated" label
   const updatedLabel = (() => {
@@ -539,9 +541,20 @@ export default async function BusinessPage({ params, searchParams }: Props) {
               {/* Hero card */}
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
                 <div className="h-52 bg-gradient-to-br from-[#1B2E4B] to-[#2A4A73] flex items-center justify-center relative overflow-hidden">
-                  {heroImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={heroImage} alt={business.name} className="w-full h-full object-cover" />
+                  {heroImage && heroCredit?.isLogo ? (
+                    <div className="absolute inset-0" style={{ backgroundColor: heroCredit.background }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={heroImage} alt={listingImageAlt(business.name, heroImage)} className="w-full h-full object-contain px-4 pt-3 pb-7" />
+                      <span className="absolute bottom-2 right-3 text-[11px] leading-none text-gray-600">{heroCredit.credit}</span>
+                    </div>
+                  ) : heroImage ? (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={heroImage} alt={business.name} className="w-full h-full object-cover" />
+                      {heroCredit && (
+                        <span className="absolute bottom-2 right-3 text-[11px] leading-none text-white bg-black/50 px-1.5 py-1 rounded">{heroCredit.credit}</span>
+                      )}
+                    </>
                   ) : (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-br from-[#1B2E4B] to-[#2A4A73]" />

@@ -8,6 +8,20 @@ import {
   MapPin, Search, X, LayoutGrid, Map, SlidersHorizontal,
 } from "lucide-react";
 import { MapSkeleton, type MapPin as MapPinType } from "./CategoryMapTypes";
+import { imageCreditFor, listingImageAlt } from "@/lib/image-credits";
+
+// A credited logo: shown whole on its background, with the credit on the image.
+function LogoImage({ src, name }: { src: string; name: string }) {
+  const info = imageCreditFor(src);
+  if (!info) return null;
+  return (
+    <div className="absolute inset-0" style={{ backgroundColor: info.background }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={listingImageAlt(name, src)} className="w-full h-full object-contain px-4 pt-3 pb-7" />
+      <span className="absolute bottom-2 right-3 text-[11px] leading-none text-gray-600">{info.credit}</span>
+    </div>
+  );
+}
 
 const CategoryMap = dynamic(() => import("./CategoryMap"), {
   ssr: false,
@@ -318,7 +332,9 @@ export default function CategoryBrowser({
                 >
                   {/* Image — left half on desktop */}
                   <div className={`relative w-full sm:w-2/5 flex-none overflow-hidden bg-gradient-to-br ${themeGradient} h-56 sm:h-auto`}>
-                    {b.firstImage ? (
+                    {b.firstImage && imageCreditFor(b.firstImage)?.isLogo ? (
+                      <LogoImage src={b.firstImage} name={b.name} />
+                    ) : b.firstImage ? (
                       <>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -400,7 +416,9 @@ export default function CategoryBrowser({
                 }`}
               >
                 <div className={`relative w-full h-44 flex-none overflow-hidden bg-gradient-to-br ${themeGradient}`}>
-                  {b.firstImage ? (
+                  {b.firstImage && imageCreditFor(b.firstImage)?.isLogo ? (
+                    <LogoImage src={b.firstImage} name={b.name} />
+                  ) : b.firstImage ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
