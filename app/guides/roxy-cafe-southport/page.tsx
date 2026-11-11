@@ -3,6 +3,12 @@ import Image from "next/image";
 import { MapPin, Clock, Phone, ChevronRight, ArrowRight, Coffee, Star } from "lucide-react";
 import type { Metadata } from "next";
 import GalleryLightbox from "./GalleryLightbox";
+import ListingMapLazy from "@/components/ListingMapLazy";
+
+// Where the map pin goes: the stored latitude, longitude and Google place id of
+// the cafes/roxy-s-cafe listing (read 11 Nov 2026), not the rounded figures the
+// old Google embed used.
+const ROXY_LOCATION = { lat: 53.6472081, lng: -3.0024101, placeId: "ChIJFyyw3G0_e0gRXh0Ix8FdFZg" };
 
 const BASE_URL = "https://www.southportguide.co.uk";
 
@@ -511,16 +517,33 @@ export default function RoxyCafeGuide() {
                   </p>
                   <p className="text-xs text-gray-400 mt-0.5">Next to Southport train station</p>
                 </div>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.9!2d-3.0075!3d53.6453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b03bac21a9a37%3A0x1!2s42+London+Street%2C+Southport+PR9+0TJ!5e0!3m2!1sen!2sgb!4v1699999999999!5m2!1sen!2sgb"
-                  width="100%"
-                  height="200"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Roxy's Cafe location on Google Maps"
-                />
+                {/* OpenStreetMap map on the stored location, fixed height so nothing moves */}
+                <div className="relative isolate h-56 bg-slate-100">
+                  <ListingMapLazy lat={ROXY_LOCATION.lat} lng={ROXY_LOCATION.lng} name="Roxy's Cafe" />
+                  <noscript>
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 px-6 text-center text-sm text-gray-600">
+                      The map needs JavaScript. The links below open Google Maps.
+                    </div>
+                  </noscript>
+                </div>
+                <div className="px-4 py-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${ROXY_LOCATION.lat},${ROXY_LOCATION.lng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#1B2E4B] hover:underline"
+                  >
+                    Get directions <span aria-hidden="true">→</span>
+                  </a>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${ROXY_LOCATION.lat},${ROXY_LOCATION.lng}&query_place_id=${ROXY_LOCATION.placeId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#1B2E4B] hover:underline"
+                  >
+                    View on Google Maps <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
               </div>
 
               {/* Related guides */}

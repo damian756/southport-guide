@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { divIcon, latLngBounds } from "leaflet";
+import { OSM_ATTRIBUTION, OSM_MAX_ZOOM, OSM_TILE_URL } from "@/lib/osm-tiles";
 import type { MapPin } from "./CategoryMapTypes";
 export type { MapPin } from "./CategoryMapTypes";
 export { MapSkeleton } from "./CategoryMapTypes";
@@ -43,9 +44,9 @@ export default function CategoryMap({ pins, accentColor }: Props) {
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maxZoom={19}
+          attribution={OSM_ATTRIBUTION}
+          url={OSM_TILE_URL}
+          maxZoom={OSM_MAX_ZOOM}
         />
         {validPins.map((pin) => {
           const isFeatured = pin.featured === true;

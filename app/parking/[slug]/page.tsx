@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { MapPin, Clock, Star, ChevronRight, Navigation } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { ViewTracker } from "@/components/ViewTracker";
+import ListingMapLazy from "@/components/ListingMapLazy";
+import GoogleMapClickToLoad from "@/components/GoogleMapClickToLoad";
 import { PostcodeCopy } from "./PostcodeCopy";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -543,12 +545,20 @@ export default async function ParkingSlugPage({ params }: Props) {
   const formattedAddress = formatAddress(business.address, business.postcode);
   const dUrl        = directionsUrl(business.lat, business.lng, business.postcode);
 
-  const mapSrc = mapsKey
-    ? business.placeId
-      ? `https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=place_id:${business.placeId}&zoom=16`
-      : business.lat && business.lng
-        ? `https://www.google.com/maps/embed/v1/view?key=${mapsKey}&center=${business.lat},${business.lng}&zoom=16&maptype=roadmap`
-        : null
+  // Map: an OpenStreetMap map on the stored coordinates. A car park with no
+  // coordinates but a Google place id gets a click-to-load Google map instead
+  // (the embed needs mapsKey, read on the server). No location is guessed.
+  const coords = business.lat != null && business.lng != null
+    ? { lat: business.lat, lng: business.lng }
+    : null;
+  const placeIdParam = business.placeId ? encodeURIComponent(business.placeId) : null;
+  const googleMapsUrl = coords
+    ? `https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}${placeIdParam ? `&query_place_id=${placeIdParam}` : ""}`
+    : placeIdParam
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${business.name}, ${formattedAddress}`)}&query_place_id=${placeIdParam}`
+      : null;
+  const clickToLoad = !coords && business.placeId && mapsKey
+    ? { placeId: business.placeId, apiKey: mapsKey }
     : null;
 
   // Schema.org — ParkingFacility entity
@@ -896,21 +906,41 @@ export default async function ParkingSlugPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Map embed — mobile only (desktop in sidebar) */}
-              {mapSrc && (
+              {/* Map, mobile only (desktop in sidebar): OpenStreetMap, or click-to-load Google map, then plain links.
+                  A box hidden at this width never mounts its map (ListingMapLazy waits until it is on screen). */}
+              {(coords || clickToLoad) && (
                 <div className="lg:hidden bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                   <div className="px-5 pt-4 pb-2 flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-blue-500" />
                     <h2 className="font-semibold text-gray-900 text-[15px]">Location</h2>
                   </div>
-                  <iframe
-                    loading="lazy"
-                    className="w-full h-64"
-                    src={mapSrc}
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`Map of ${business.name}`}
-                  />
+                  <div className="relative isolate h-64 bg-slate-100">
+                    {coords ? (
+                      <ListingMapLazy lat={coords.lat} lng={coords.lng} name={business.name} />
+                    ) : clickToLoad ? (
+                      <GoogleMapClickToLoad placeId={clickToLoad.placeId} apiKey={clickToLoad.apiKey} name={business.name} />
+                    ) : null}
+                    <noscript>
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 px-6 text-center text-sm text-gray-600">
+                        The map needs JavaScript. The links below open Google Maps.
+                      </div>
+                    </noscript>
+                  </div>
+                  <div className="px-5 py-3 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+                    <a
+                      href={trackUrl(business.id, "directions", dUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Get directions <span aria-hidden="true">→</span>
+                    </a>
+                    {googleMapsUrl && (
+                      <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        View on Google Maps <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -918,17 +948,21 @@ export default async function ParkingSlugPage({ params }: Props) {
             {/* ── Right sidebar ───────────────────────────────────────────── */}
             <div className="space-y-4">
 
-              {/* Map embed — desktop */}
-              {mapSrc && (
+              {/* Map, desktop: OpenStreetMap, or click-to-load Google map, then plain links */}
+              {(coords || clickToLoad) && (
                 <div className="hidden lg:block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                  <iframe
-                    loading="lazy"
-                    className="w-full h-56"
-                    src={mapSrc}
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`Map of ${business.name}`}
-                  />
+                  <div className="relative isolate h-56 bg-slate-100">
+                    {coords ? (
+                      <ListingMapLazy lat={coords.lat} lng={coords.lng} name={business.name} />
+                    ) : clickToLoad ? (
+                      <GoogleMapClickToLoad placeId={clickToLoad.placeId} apiKey={clickToLoad.apiKey} name={business.name} />
+                    ) : null}
+                    <noscript>
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 px-6 text-center text-sm text-gray-600">
+                        The map needs JavaScript. The links below open Google Maps.
+                      </div>
+                    </noscript>
+                  </div>
                   <div className="p-4">
                     <a
                       href={trackUrl(business.id, "directions", dUrl)}
@@ -939,6 +973,16 @@ export default async function ParkingSlugPage({ params }: Props) {
                       <Navigation className="w-4 h-4" />
                       Get Directions
                     </a>
+                    {googleMapsUrl && (
+                      <a
+                        href={googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 block text-center text-sm font-medium text-blue-600 hover:underline"
+                      >
+                        View on Google Maps <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               )}
