@@ -125,7 +125,7 @@ export default async function AdvertisePage({ searchParams }: Props) {
       <section className="container mx-auto px-4 max-w-6xl py-14">
         <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">Ways to advertise</h2>
         <p className="text-gray-500 text-sm mb-8 max-w-2xl">
-          Prices are plus VAT. Every listing in the directory stays free; these options add visibility on top.
+          Advertising spaces are invoiced, and their prices are plus VAT. Pro and boosts are paid by card in the Business Hub at the price shown. Every listing in the directory stays free; these options add visibility on top.
         </p>
 
         {asked && (

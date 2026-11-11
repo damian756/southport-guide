@@ -62,16 +62,18 @@ export const AD_OPTIONS: AdOption[] = [
   {
     id: "featured",
     name: "Featured in a category",
-    // Pro and boosts are sold by card through the Business Hub; their prices
-    // live on /pricing (Stripe) and are not repeated here.
-    price: "Pro or a boost",
-    per: "",
-    note: "prices on our pricing page",
-    from: "a Pro listing or a boost",
+    // Pro and boosts are sold by card through the Business Hub (Stripe adds no
+    // VAT), so they show the price paid and never sit under "plus VAT".
+    // Prices as on /pricing: Pro £39 a month or £390 a year; boosts from £10.
+    price: "£39",
+    per: "a month for Pro",
+    note: "or £390 a year. Boosts from £10. Paid by card at the price shown",
+    from: "Pro at £39 a month, or a boost from £10",
     term: "Through the Business Hub",
     points: [
+      "Pro listings sort above standard listings in their category",
       "A boost puts your business at the top of its category page for a set period",
-      "Boosted places are marked Featured, with the words Paid placement",
+      "Pro and boosted places are marked Featured, with the words Paid placement",
       "Claim your free listing first, then upgrade in the Business Hub",
     ],
   },
