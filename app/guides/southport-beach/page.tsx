@@ -92,11 +92,11 @@ const QUICK_LINKS = [
 const FAQS = [
   {
     q: "What is the postcode for Southport Beach?",
-    a: "The main parking for Southport Beach is on Marine Drive, the pay-and-display car park running along the seafront promenade. The Esplanade car park (PR8 1RX) is a smaller alternative 50m from the sand near Adventure Coast. For satnav, use PR8 1RQ.",
+    a: "The main parking for Southport Beach is on Marine Drive, the pay-and-display car park running along the seafront promenade. The Esplanade car park (PR8 1RX) is another pay-and-display option, 50m from the sand near Adventure Coast. No postcode is published for the beach itself.",
   },
   {
     q: "Is there parking at Southport Beach?",
-    a: "Yes. Marine Drive is the main beach car park, with pay-and-display bays running along the promenade. The Esplanade car park (PR8 1RX) is a smaller pay-and-display option near Adventure Coast. Ocean Plaza (PR8 1SQ) is free for shoppers. On summer weekends, Marine Drive fills by mid-morning, so arrive before 10am or use town centre parking and walk (12 minutes).",
+    a: "Yes. Marine Drive is the main beach car park, with pay-and-display bays running along the promenade. The Esplanade car park (PR8 1RX) is another pay-and-display option near Adventure Coast. Ocean Plaza is free for shoppers. On summer weekends, Marine Drive fills by mid-morning, so arrive before 10am or use town centre parking and walk (12 minutes).",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
