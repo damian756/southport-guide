@@ -59,7 +59,7 @@ export default function PrivacyPage() {
               {[
                 {
                   title: "Contact forms",
-                  desc: "Your name, email address, and message contents when you use our contact or business enquiry forms.",
+                  desc: "Contact and advertising forms send your name, email address and message (and any details you give about an advert) to our inbox by email through our email provider, Resend.",
                 },
                 {
                   title: "Business listing submissions",
@@ -71,7 +71,15 @@ export default function PrivacyPage() {
                 },
                 {
                   title: "Usage data",
-                  desc: "Ahrefs Web Analytics: page view statistics without cookies. It records the page, referrer, browser, device, language, screen size and approximate location (city level), and counts visitors with a daily pseudonymous identifier that is not kept across days.",
+                  desc: "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored.",
+                },
+                {
+                  title: "Listing counts",
+                  desc: "When you use a listing's buttons (website, phone, directions, Google reviews) or view a listing, we record which listing, which button and the time. Nothing about you is stored.",
+                },
+                {
+                  title: "Reviews",
+                  desc: "If you write a review we store your name, email address, rating, text and any photos. Your email is used only to confirm the review and is never shown. Your IP address is kept for 30 days to prevent abuse and then replaced with a one-way hash.",
                 },
                 {
                   title: "Cookies",
@@ -128,9 +136,9 @@ export default function PrivacyPage() {
             <h2 className="font-display text-xl font-bold text-[#1B2E4B] mb-4">5. Third parties we share data with</h2>
             <div className="space-y-3">
               {[
-                { name: "Ahrefs (Analytics)", detail: "Ahrefs Web Analytics: page view statistics without cookies. It records the page, referrer, browser, device, language, screen size and approximate location (city level), and counts visitors with a daily pseudonymous identifier that is not kept across days." },
+                { name: "Ahrefs (Analytics)", detail: "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored." },
                 { name: "Stripe", detail: "Payment processing for paid business listings. Subject to Stripe's own privacy policy." },
-                { name: "Vercel", detail: "Website hosting infrastructure. Data is processed in UK/EU-region data centres where possible." },
+                { name: "Vercel", detail: "Hosts the website. Pages are served from Vercel's network, and the site's server code, including the forms and the Business Hub, runs in Vercel's iad1 region in Washington, D.C., USA." },
               ].map(({ name, detail }) => (
                 <div key={name} className="bg-[#FAF8F5] rounded-xl p-4">
                   <p className="font-semibold text-[#1B2E4B] text-sm mb-1">{name}</p>
@@ -216,7 +224,7 @@ export default function PrivacyPage() {
                 <tbody className="divide-y divide-gray-50">
                   {[
                     ["Necessary", "NextAuth sign-in and the Business Hub session: next-auth.session-token, next-auth.csrf-token and next-auth.callback-url (with a __Secure- or __Host- prefix on the live site). Set only when you sign in.", "No, needed to sign in"],
-                    ["Analytics", "Ahrefs Web Analytics: page view statistics without cookies. It records the page, referrer, browser, device, language, screen size and approximate location (city level), and counts visitors with a daily pseudonymous identifier that is not kept across days.", "No, sets no cookies"],
+                    ["Analytics", "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored.", "No, sets no cookies"],
                   ].map(([cat, purpose, req]) => (
                     <tr key={cat}>
                       <td className="px-4 py-3 font-semibold text-[#1B2E4B] align-top whitespace-nowrap">{cat}</td>

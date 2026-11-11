@@ -150,7 +150,7 @@ export default function AccessibilityStatementPage() {
               can pause or stop any video playback.
             </p>
             <p>
-              {"Ahrefs Web Analytics: page view statistics without cookies. It records the page, referrer, browser, device, language, screen size and approximate location (city level), and counts visitors with a daily pseudonymous identifier that is not kept across days."} We do not use advertising trackers.
+              {"Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored."} We do not use advertising trackers.
             </p>
           </div>
         </section>
