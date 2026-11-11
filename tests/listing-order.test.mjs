@@ -73,13 +73,13 @@ test("the pages use the paid order and labels, not listingTier", () => {
   const page = read("app/[category]/page.tsx");
   assert.doesNotMatch(page, /CASE "listingTier"/);
   assert.match(page, /orderListings\(businesses, \{ categoryId: catId, boostedIds \}\)/);
-  assert.match(page, /"hubTier", "categoryId"/);
+  assert.match(page, /END AS "hubTier", "categoryId"/, "Pro only with a subscription (tests/paid-label.test.mjs)");
   const browser = read("components/CategoryBrowser.tsx");
   assert.doesNotMatch(browser, /Editor&apos;s Pick|Editor's Pick/);
   assert.doesNotMatch(browser, /listingTier === "(featured|premium)"/);
   assert.match(browser, /"Featured · Paid placement"/);
   const listing = read("app/[category]/[slug]/page.tsx");
-  assert.match(listing, /business\.hubTier === "pro" && \(/);
+  assert.match(listing, /business\.hubTier === "pro" && !!business\.stripeSubscriptionId && \(/);
   assert.doesNotMatch(listing, /✦ FEATURED/);
   assert.doesNotMatch(read("app/collections/[slug]/page.tsx"), /tierOrder|listingTier === "premium"/);
   for (const p of ["app/the-open-2026/accommodation/page.tsx", "app/the-open-2026/pubs/page.tsx", "app/the-open-2026/restaurants/page.tsx"]) {
