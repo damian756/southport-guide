@@ -4,6 +4,7 @@ import { Resend } from "resend";
 import { generateReviewVerificationEmail } from "@/lib/email-templates/review-verify";
 import { randomUUID } from "crypto";
 import { put } from "@vercel/blob";
+import { firstTooLong, isHoneypotFilled, MAX_SHORT } from "@/lib/enquiry-email";
 
 export const runtime = "nodejs";
 
@@ -39,10 +40,24 @@ export async function POST(req: NextRequest) {
       fields = await req.json();
     }
 
+    // Honeypot: a hidden field people never see. When a bot fills it in, reply
+    // ok and do nothing: no review is stored, no photo uploaded, no email sent.
+    if (isHoneypotFilled(fields)) {
+      return NextResponse.json({ success: true });
+    }
+
     const { businessId, firstName, lastName, displayName, email, starRating, title, body } = fields;
 
     if (!businessId || !firstName || !lastName || !email || !starRating || !body) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+    }
+
+    // Short fields are capped at 100 characters (the verification email goes to the address typed in)
+    if (firstTooLong(
+      { firstName, lastName, displayName, email, title },
+      { firstName: MAX_SHORT, lastName: MAX_SHORT, displayName: MAX_SHORT, email: MAX_SHORT, title: MAX_SHORT },
+    )) {
+      return NextResponse.json({ error: "Names, email and title must be 100 characters or fewer." }, { status: 400 });
     }
 
     const rating = parseInt(starRating);

@@ -68,6 +68,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [homepage, setHomepage] = useState(""); // honeypot: stays empty for people
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -118,6 +119,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
     form.append("starRating", String(starRating));
     form.append("title", title.trim());
     form.append("body", body.trim());
+    form.append("homepage", homepage);
     compressedPhotos.forEach((p) => form.append("photos", p));
 
     try {
@@ -179,7 +181,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
         <div className="border border-dashed border-[#C9A84C]/60 rounded-xl p-5 text-center space-y-2">
           <Receipt className="w-7 h-7 text-[#C9A84C] mx-auto" />
           <p className="font-semibold text-gray-800 text-sm">Want a Verified Purchase badge?</p>
-          <p className="text-xs text-gray-500">Upload a receipt or transaction screenshot to prove your visit. It won&apos;t be published — we check it privately then delete it.</p>
+          <p className="text-xs text-gray-500">Upload a receipt or transaction screenshot to prove your visit. It won&apos;t be published. We check it privately, then delete it.</p>
 
           {receiptDone ? (
             <p className="text-sm font-semibold text-emerald-700">Receipt uploaded. Thanks!</p>
@@ -221,7 +223,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
           onClick={() => setStep("done")}
           className="text-sm text-gray-500 hover:text-gray-700 underline"
         >
-          Skip — continue without receipt
+          Skip and continue without a receipt
         </button>
       </div>
     );
@@ -233,7 +235,14 @@ export default function ReviewForm({ businessId, businessName }: Props) {
         Leave a review for {businessName}
       </h3>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="relative space-y-4">
+        {/* Honeypot: hidden from people, filled in by bots. A filled one is accepted and nothing is stored or sent. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden">
+          <label>
+            Leave this empty
+            <input type="text" name="homepage" tabIndex={-1} autoComplete="off" value={homepage} onChange={(e) => setHomepage(e.target.value)} />
+          </label>
+        </div>
         {/* Star rating */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Rating *</label>
@@ -263,6 +272,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              maxLength={100}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]"
               placeholder="Damian"
             />
@@ -273,6 +283,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              maxLength={100}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]"
               placeholder="Smith"
             />
@@ -303,6 +314,7 @@ export default function ReviewForm({ businessId, businessName }: Props) {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            maxLength={100}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A84C]"
             placeholder="you@example.com"
           />
