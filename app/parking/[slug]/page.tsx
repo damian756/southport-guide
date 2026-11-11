@@ -7,6 +7,7 @@ import { ViewTracker } from "@/components/ViewTracker";
 import ListingMapLazy from "@/components/ListingMapLazy";
 import GoogleMapClickToLoad from "@/components/GoogleMapClickToLoad";
 import { PostcodeCopy } from "./PostcodeCopy";
+import { openingHoursSpecification } from "@/lib/opening-hours";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -346,7 +347,9 @@ function buildParkingMetaDesc(
     // Split only at real sentence boundaries (punctuation followed by uppercase)
     const sentences = stripped.split(/(?<=[.!?]) +(?=[A-Z])/);
     const first = sentences[0] ?? "";
-    if (first.length >= 40 && first.length <= 130) {
+    // A short opener or a question ("Right, so you're heading to Formby?") does not
+    // say what the car park is; those fall through to the plain-words description.
+    if (first.length >= 70 && first.length <= 130 && !first.endsWith("?")) {
       const suffix = postcode && !first.includes(postcode) ? ` ${postcode}.` : "";
       const evSuffix = hasEv && !first.toLowerCase().includes("ev") && !first.toLowerCase().includes("electric") ? evPart : "";
       const candidate = `${first}${suffix}${evSuffix}${ratingPart}`.trim();
@@ -566,27 +569,9 @@ export default async function ParkingSlugPage({ params }: Props) {
   const schemaArea  = extractAreaMeta(business.address);
   const schemaLocality = schemaArea === "Southport" ? "Southport" : schemaArea;
 
-  // Build openingHoursSpecification from stored data (same logic as general listing page)
-  let openingHoursSpec: unknown[] = [];
-  if (business.openingHours && typeof business.openingHours === "object") {
-    const oh = business.openingHours as { weekdayText?: string[] };
-    if (oh.weekdayText?.length) {
-      openingHoursSpec = oh.weekdayText.map((line: string) => {
-        const [day, times] = line.split(": ");
-        if (!times || times === "Closed") return null;
-        if (times === "Open 24 hours") {
-          return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${day}`, opens: "00:00", closes: "23:59" };
-        }
-        const [open, close] = times.split(" – ").map((t: string) => {
-          const [time, ampm] = t.split(" ");
-          const [h, m] = time.split(":").map(Number);
-          const h24 = ampm === "PM" && h !== 12 ? h + 12 : (ampm === "AM" && h === 12 ? 0 : h);
-          return `${String(h24).padStart(2, "0")}:${String(m || 0).padStart(2, "0")}`;
-        });
-        return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${day}`, opens: open, closes: close };
-      }).filter(Boolean);
-    }
-  }
+  // openingHoursSpecification from the same stored hours the page prints, with
+  // closing times; anything that cannot be read is left out (lib/opening-hours.ts).
+  const openingHoursSpec = openingHoursSpecification(business.openingHours);
 
   // amenityFeature — EV charging
   const amenityFeatures = [];
@@ -614,14 +599,8 @@ export default async function ParkingSlugPage({ params }: Props) {
     ...(business.lat && business.lng ? {
       geo: { "@type": "GeoCoordinates", latitude: business.lat, longitude: business.lng },
     } : {}),
-    ...(business.rating && business.reviewCount ? {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: business.rating.toFixed(1),
-        reviewCount: business.reviewCount,
-        bestRating: "5", worstRating: "1",
-      },
-    } : {}),
+    // No aggregateRating: the only rating here is Google's, and Google's rules do not
+    // allow another site's ratings in this markup (the listing pages follow the same rule).
     ...(business.description ? { description: business.description } : {}),
     ...(heroImage ? { image: heroImage } : {}),
     // ParkingFacility-specific
@@ -1103,7 +1082,10 @@ function OpeningHours({ data }: { data: unknown }) {
 
   if (hours.weekdayText?.length) {
     const today = new Date().getDay();
-    const reordered = [...hours.weekdayText.slice(1), hours.weekdayText[0]];
+    // Google's weekdayText starts on Monday; only a Sunday-first list is turned round,
+    // so "today" is the right row.
+    const sundayFirst = /^Sunday:/.test(hours.weekdayText[0] ?? "");
+    const reordered = sundayFirst ? [...hours.weekdayText.slice(1), hours.weekdayText[0]] : [...hours.weekdayText];
     const todayIdx = today === 0 ? 6 : today - 1;
     return (
       <ul className="space-y-0.5 text-xs">

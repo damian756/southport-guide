@@ -13,6 +13,7 @@ import { SECTOR_AREA_LABELS, sectorToSlug } from "@/lib/property-config";
 import { postsForListing } from "@/lib/listing-posts";
 import { PRO_BADGE } from "@/lib/listing-order";
 import { imageCreditFor, listingImageAlt } from "@/lib/image-credits";
+import { openingHoursSpecification } from "@/lib/opening-hours";
 
 type Props = {
   params: Promise<{ category: string; slug: string }>;
@@ -25,6 +26,10 @@ function trackUrl(businessId: string, type: string, dest: string): string {
 
 function websiteHref(website: string): string {
   return website.startsWith("http") ? website : `https://${website}`;
+}
+
+function listingUrl(categorySlug: string, slug: string): string {
+  return `https://www.southportguide.co.uk/${categorySlug}/${slug}`;
 }
 
 // Normalise non-ASCII typography for safe SERP output.
@@ -152,6 +157,10 @@ function buildTitle(name: string, catSlug: string, area: string): string {
   return cleanName.length <= 44 ? cleanName : cleanName.slice(0, 44) + "…";
 }
 
+// Under this many characters, the text taken from a listing's description is only an
+// opener, not a description of the place.
+const MIN_META_FROM_DESCRIPTION = 90;
+
 function buildMetaDescription(
   name: string, catName: string, area: string,
   description: string | null, shortDescription: string | null,
@@ -180,7 +189,9 @@ function buildMetaDescription(
       const suffix = ` ${locLabel}.`;
       if ((result + suffix).length <= 160) result += suffix;
     }
-    return result.slice(0, 160);
+    // A short opener ("Right then, Ainsdale Beach...") does not say what the place is,
+    // so it falls through to the plain-words description below.
+    if (result.length >= MIN_META_FROM_DESCRIPTION) return result.slice(0, 160);
   }
 
   if (shortDescription) {
@@ -201,55 +212,73 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = getCategoryBySlug(category);
   if (!cat) return { title: slug };
 
+  let movedTo: string | null = null;
   try {
     const catRecord = await prisma.category.findFirst({ where: { slug: category } });
     if (!catRecord) return { title: slug };
+    // The page also shows a listing under a second category it belongs to, so look
+    // it up the same way the page does.
     const b = await prisma.business.findFirst({
-      where: { slug, categoryId: catRecord.id },
-      select: { name: true, address: true, postcode: true, shortDescription: true, description: true, rating: true, reviewCount: true, images: true },
+      where: {
+        slug,
+        OR: [
+          { categoryId: catRecord.id },
+          { secondaryCategoryIds: { has: catRecord.id } },
+        ],
+      },
+      select: { name: true, address: true, postcode: true, shortDescription: true, description: true, rating: true, reviewCount: true, images: true, category: { select: { slug: true } } },
     });
     if (!b) {
       const moved = await prisma.business.findFirst({
         where: { slug },
         select: { category: { select: { slug: true } } },
       });
-      if (moved) permanentRedirect(`/${moved.category.slug}/${slug}`);
-      return { title: slug };
+      if (moved) movedTo = `/${moved.category.slug}/${slug}`;
+      else return { title: slug };
     }
 
-    const area      = extractArea(b.address, b.postcode);
-    const cleanName = sanitize(b.name);
-    const overrideKey = `${category}/${slug}`;
-    const override  = LISTING_META_OVERRIDES[overrideKey];
-    const title     = override?.title ?? buildTitle(cleanName, category, area);
-    const desc      = override?.description ?? buildMetaDescription(cleanName, cat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
-    const imageUrl  = b.images?.[0] || null;
+    if (b) {
+      // One canonical per listing: the page under its own category. A second
+      // category's copy of the page (/restaurants/<hotel>) points there.
+      const primary   = b.category.slug;
+      const primaryCat = getCategoryBySlug(primary) ?? cat;
+      const area      = extractArea(b.address, b.postcode);
+      const cleanName = sanitize(b.name);
+      const overrideKey = `${primary}/${slug}`;
+      const override  = LISTING_META_OVERRIDES[overrideKey];
+      const title     = override?.title ?? buildTitle(cleanName, primary, area);
+      const desc      = override?.description ?? buildMetaDescription(cleanName, primaryCat.name, area, b.description, b.shortDescription, b.rating, b.reviewCount);
+      const imageUrl  = b.images?.[0] || null;
 
-    const canonicalUrl = `https://www.southportguide.co.uk/${category}/${slug}`;
+      const canonicalUrl = listingUrl(primary, slug);
 
-    return {
-      title,
-      description: desc,
-      alternates: { canonical: canonicalUrl },
-      openGraph: {
+      return {
         title,
         description: desc,
-        url: canonicalUrl,
-        type: "website",
-        siteName: "SouthportGuide.co.uk",
-        locale: "en_GB",
-        ...(imageUrl ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: cleanName }] } : {}),
-      },
-      twitter: {
-        card: "summary_large_image",
-        title,
-        description: desc,
-        ...(imageUrl ? { images: [imageUrl] } : {}),
-      },
-    };
+        alternates: { canonical: canonicalUrl },
+        openGraph: {
+          title,
+          description: desc,
+          url: canonicalUrl,
+          type: "website",
+          siteName: "SouthportGuide.co.uk",
+          locale: "en_GB",
+          ...(imageUrl ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: cleanName }] } : {}),
+        },
+        twitter: {
+          card: "summary_large_image",
+          title,
+          description: desc,
+          ...(imageUrl ? { images: [imageUrl] } : {}),
+        },
+      };
+    }
   } catch {
     return { title: slug };
   }
+  // Outside the try: the redirect works by throwing, and the catch would swallow it.
+  if (movedTo) permanentRedirect(movedTo);
+  return { title: slug };
 }
 
 export default async function BusinessPage({ params, searchParams }: Props) {
@@ -285,6 +314,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     fhrsId: string | null;
     updatedAt: Date;
     secondaryCategoryIds: string[];
+    category: { slug: string };
     tags: string[];
     _count?: { clicks: number };
   };
@@ -317,6 +347,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
           claimed: true, rating: true, reviewCount: true, placeId: true,
           hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
           updatedAt: true, secondaryCategoryIds: true, tags: true,
+          category: { select: { slug: true } },
           _count: { select: { clicks: true } },
         },
       }) as Business | null;
@@ -361,13 +392,16 @@ export default async function BusinessPage({ params, searchParams }: Props) {
   }
 
   if (!business) {
+    let movedTo: string | null = null;
     try {
       const moved = await prisma.business.findFirst({
         where: { slug },
         select: { category: { select: { slug: true } } },
       });
-      if (moved) permanentRedirect(`/${moved.category.slug}/${slug}`);
+      if (moved) movedTo = `/${moved.category.slug}/${slug}`;
     } catch { /* fall through to 404 */ }
+    // Outside the try: the redirect works by throwing, and the catch would swallow it.
+    if (movedTo) permanentRedirect(movedTo);
     notFound();
   }
 
@@ -439,7 +473,9 @@ export default async function BusinessPage({ params, searchParams }: Props) {
       addressCountry: "GB",
     },
     ...(business.phone ? { telephone: business.phone } : {}),
-    ...(business.website ? { url: business.website } : {}),
+    // The business's own website only where the page shows it (claimed listings);
+    // otherwise this listing's page.
+    url: business.website && business.claimed ? websiteHref(business.website) : listingUrl(business.category.slug, slug),
     ...(business.lat && business.lng ? {
       geo: { "@type": "GeoCoordinates", latitude: business.lat, longitude: business.lng },
     } : {}),
@@ -459,27 +495,10 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     ...(business.images?.[0] ? { image: business.images[0] } : {}),
   };
 
-  // Opening hours for JSON-LD
-  if (business.openingHours && typeof business.openingHours === "object") {
-    const oh = business.openingHours as { weekdayText?: string[] };
-    if (oh.weekdayText?.length) {
-      const specs = oh.weekdayText.map((line: string) => {
-        const [day, times] = line.split(": ");
-        if (!times || times === "Closed") return null;
-        if (times === "Open 24 hours") {
-          return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${day}`, opens: "00:00", closes: "23:59" };
-        }
-        const [open, close] = times.split(" – ").map((t: string) => {
-          const [time, ampm] = t.split(" ");
-          const [h, m] = time.split(":").map(Number);
-          const h24 = ampm === "PM" && h !== 12 ? h + 12 : (ampm === "AM" && h === 12 ? 0 : h);
-          return `${String(h24).padStart(2, "0")}:${String(m || 0).padStart(2, "0")}`;
-        });
-        return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${day}`, opens: open, closes: close };
-      }).filter(Boolean);
-      if (specs.length) jsonLd.openingHoursSpecification = specs;
-    }
-  }
+  // Opening hours for JSON-LD: from the same stored hours the page prints, with
+  // closing times; anything that cannot be read is left out (lib/opening-hours.ts).
+  const hoursSpec = openingHoursSpecification(business.openingHours);
+  if (hoursSpec.length) jsonLd.openingHoursSpecification = hoursSpec;
 
   // Map: an OpenStreetMap map on the stored coordinates. A listing with no
   // coordinates but a Google place id gets a click-to-load Google map instead
@@ -1262,7 +1281,10 @@ function OpeningHours({ data }: { data: unknown }) {
 
   if (hours.weekdayText?.length) {
     const today = new Date().getDay();
-    const reordered = [...hours.weekdayText.slice(1), hours.weekdayText[0]];
+    // Google's weekdayText starts on Monday; only a Sunday-first list is turned round,
+    // so "today" is the right row.
+    const sundayFirst = /^Sunday:/.test(hours.weekdayText[0] ?? "");
+    const reordered = sundayFirst ? [...hours.weekdayText.slice(1), hours.weekdayText[0]] : [...hours.weekdayText];
     const todayIndex = today === 0 ? 6 : today - 1;
     return (
       <ul className="space-y-0.5">
