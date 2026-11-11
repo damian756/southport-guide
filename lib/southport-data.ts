@@ -24,7 +24,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     label: "Food & Drink",
     color: "#8B2635",
     emoji: "🍽️",
-    description: "Restaurant reviews, cafe guides, and food news from across Southport.",
+    description: "Restaurant and café guides, and food news from across Southport.",
     siteCategory: "restaurants",
   },
   {
@@ -40,7 +40,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     label: "Bars & Nightlife",
     color: "#3D1A5C",
     emoji: "🍺",
-    description: "The best bars, pubs, and live music venues in Southport.",
+    description: "Bars, pubs, and live music venues in Southport.",
     siteCategory: "bars-nightlife",
   },
   {
@@ -80,7 +80,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     label: "Shopping",
     color: "#8B2847",
     emoji: "🛍️",
-    description: "Lord Street boutiques, markets, and the best independent shops.",
+    description: "Lord Street boutiques, markets, and independent shops.",
     siteCategory: "shopping",
   },
   {
@@ -185,7 +185,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "dog-friendly-pubs-southport",
     title: "Dog-Friendly Pubs in Southport and Birkdale",
     excerpt:
-      "Taking your four-legged friend to Southport? Here are the warmest welcomes for dogs across the town's best pubs and bars.",
+      "Taking your four-legged friend to Southport? These pubs and bars welcome dogs.",
     categorySlug: "food-drink",
     image: "/images/categories/bars-nightlife.webp",
     date: "12 Feb 2026",
@@ -195,7 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "where-to-stay-open-championship-2026",
     title: "Where to Stay for The Open Championship 2026",
     excerpt:
-      "Royal Birkdale hosts golf's greatest major this July. Our guide to the best hotels and accommodation, and why you need to book now.",
+      "Royal Birkdale hosts golf's greatest major this July. Our guide to hotels and accommodation, and why you need to book now.",
     categorySlug: "where-to-stay",
     image: "/images/blog-hero.jpg",
     date: "10 Feb 2026",
@@ -205,7 +205,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-bnbs-southport",
     title: "B&Bs and Guest Houses in Southport",
     excerpt:
-      "Looking for something more personal than a hotel? Southport has a fantastic range of B&Bs and guest houses, from Victorian townhouses to coastal retreats.",
+      "Looking for something more personal than a hotel? Southport has a range of B&Bs and guest houses, from Victorian townhouses to coastal retreats.",
     categorySlug: "where-to-stay",
     image: "/images/categories/hotels.webp",
     date: "8 Feb 2026",
@@ -232,7 +232,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // Outdoors
   {
     slug: "southport-hidden-gems",
-    title: "10 Southport Hidden Gems Locals Love",
+    title: "10 Southport Places Visitors Often Miss",
     excerpt:
       "Beyond the pier and the beach, Southport has a wealth of secret spots. A local's guide to the places visitors rarely find.",
     categorySlug: "outdoors",
@@ -262,7 +262,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "pubs-near-royal-birkdale-open-2026",
     title: "Pubs Near Royal Birkdale for The Open 2026",
     excerpt:
-      "Where to drink during Open week: from Birkdale village classics to town centre options that won't drive you mad with queues. A local's honest guide.",
+      "Where to drink during Open week: from Birkdale village pubs to town centre options. A local's guide.",
     categorySlug: "food-drink",
     image: "/images/blog-pubs.jpg",
     date: "17 Feb 2026",
@@ -449,7 +449,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-cafes-southport",
     title: "Cafes and Coffee Shops in Southport",
     excerpt:
-      "Independent coffee shops, proper tea rooms, and the spots where Southport locals actually go for a flat white. Terry's guide.",
+      "Independent coffee shops, tea rooms, and the spots where Southport locals go for a flat white. Terry's guide.",
     categorySlug: "food-drink",
     image: "/images/blog/best-cafes-southport.webp",
     date: "19 Feb 2026",
@@ -459,7 +459,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-brunch-southport",
     title: "Brunch in Southport: Where to Go",
     excerpt:
-      "Weekend brunch in Southport has improved considerably. Here's where to go for eggs, toast and flat whites.",
+      "Weekend brunch in Southport: where to go for eggs, toast and flat whites.",
     categorySlug: "food-drink",
     image: "/images/blog/best-brunch-southport.webp",
     date: "19 Feb 2026",
@@ -534,7 +534,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "cocktail-bars-southport",
     title: "Cocktail Bars in Southport",
     excerpt:
-      "Southport's cocktail scene has quietly improved. Here's where to go for a proper drink on Lord Street and beyond, from craft cocktails to classic pours.",
+      "Where to go for a cocktail on Lord Street and beyond, from craft cocktails to classic pours.",
     categorySlug: "bars-nightlife",
     image: "/images/categories/bars-nightlife.webp",
     date: "19 Feb 2026",
@@ -573,7 +573,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "atkinson-southport",
     title: "The Atkinson Southport: Gallery, Theatre and What to Expect",
     excerpt:
-      "Free gallery and museum on Lord Street, a proper theatre programme, and a decent café. If you've walked past the Atkinson without going in, here's why you should.",
+      "Free gallery and museum on Lord Street, a theatre programme and a café.",
     categorySlug: "things-to-do",
     image: "/images/blog/atkinson-southport.webp",
     date: "15 Mar 2026",
@@ -648,9 +648,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-market-guide",
-    title: "Southport Market: The Honest Guide to Market Street",
+    title: "Southport Market: The Guide to Market Street",
     excerpt:
-      "Southport Market on Market Street is genuinely one of the better things in this town: street food, independent traders, a decent coffee, and a proper atmosphere. Here's what it is, how it works, and when to go.",
+      "Southport Market on Market Street has street food, independent traders, coffee and a bar. Here's what it is, how it works, and when to go.",
     categorySlug: "local-guides",
     image: "/images/blog/southport-market-guide.jpg",
     date: "17 Mar 2026",
@@ -920,7 +920,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-beer-week-2026-guide",
-    title: "Southport Beer Week 2026: The Honest Preview",
+    title: "Southport Beer Week 2026: The Preview",
     excerpt:
       "Six days, 18 pubs, 90+ beers and a free ale trail stamp card. Beer Week runs 20–25 May and it's the best week to visit Southport if you like a proper drink. Here's the breakdown.",
     categorySlug: "bars-nightlife",
@@ -961,7 +961,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-food-and-drink-festival-2026",
     title: "Southport Food and Drink Festival 2026: What to Expect",
     excerpt:
-      "Bank Holiday weekend, May 29-31. Victoria Park fills up with food stalls, craft producers and live music. I've been most years. Here's the honest guide to what's actually worth your time and what to skip.",
+      "Bank Holiday weekend, May 29-31. Victoria Park fills up with food stalls, craft producers and live music. I've been most years. Here's the guide to what's on.",
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-southport-2026.jpg",
     date: "7 May 2026",
@@ -972,7 +972,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "where-to-watch-the-open-2026-southport-pubs",
     title: "Where to Watch The Open 2026 in Southport: Pubs With Screens",
     excerpt:
-      "Not everyone has a ticket. The Open runs 12-19 July at Royal Birkdale and if you're in Southport that week you'll want somewhere good to watch the coverage. Here's where to go.",
+      "Not everyone has a ticket. The Open runs 12-19 July at Royal Birkdale and if you're in Southport that week you'll want somewhere to watch the coverage. Here's where to go.",
     categorySlug: "golf",
     image: "/images/blog/blog-open-southport-pubs.jpg",
     date: "7 May 2026",
@@ -980,7 +980,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "southport-fish-and-chips-guide",
-    title: "Southport Fish and Chips: The Honest Local Guide",
+    title: "Southport Fish and Chips: The Local Guide",
     excerpt: "I've eaten fish and chips in this town for 41 years. Here's where to go, what to order, and the one thing most visitors get wrong.",
     categorySlug: "food-drink",
     image: "/images/blog/blog-fish-chips-southport.jpg",
@@ -1120,7 +1120,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "fathers-day-southport-2026",
     title: "Father's Day in Southport 2026: Where to Go, Where to Eat, and What Not to Leave to Chance",
     excerpt:
-      "Father's Day is Sunday 15 June. Southport has good options if you plan ahead. Leave it too late and the good tables are gone. Here is what Terry would actually do.",
+      "Father's Day is Sunday 15 June. Plan ahead: leave it too late and the tables are gone. Here is what Terry would actually do.",
     categorySlug: "local-guides",
     image: "/images/blog/blog-fathers-day-restaurant.webp",
     date: "10 Jun 2026",

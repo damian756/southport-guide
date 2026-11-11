@@ -62,12 +62,12 @@ const AREA_DINING = [
   {
     area: "Lord Street, Southport",
     desc: "Southport's main boulevard has the widest range of restaurants and bars in the area: Italian, modern British, casual dining, and independent cafes all line the Victorian canopy. A short taxi or shuttle from the course, and the better choice for evening entertainment if you want variety.",
-    tips: ["More availability than Birkdale, but book for evening sittings during Open week", "Coopers Bar has live music every evening", "Wayfarers Arcade has good café options for lunch before play"],
+    tips: ["More availability than Birkdale, but book for evening sittings during Open week", "Coopers Bar has live music every evening", "Wayfarers Arcade has café options for lunch before play"],
   },
   {
     area: "Ocean Plaza / Seafront",
-    desc: "The seafront development has chains and casual dining options that can absorb larger groups without a booking. Not the most atmospheric option but practical for families or large parties who need flexibility.",
-    tips: ["Hickory's Smokehouse is good for groups and families", "Walk-in friendly compared to town centre venues", "Good for a quick pre-course breakfast"],
+    desc: "The seafront development has chains and casual dining options that can absorb larger groups without a booking.",
+    tips: ["Hickory's Smokehouse takes groups and families", "Walk-in friendly compared to town centre venues", "Good for a quick pre-course breakfast"],
   },
 ];
 

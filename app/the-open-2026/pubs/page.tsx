@@ -27,8 +27,8 @@ const PUBS_BY_AREA = [
     distance: "Walking distance from course",
     desc: "Birkdale village has a handful of proper local pubs that become the beating heart of Open week. They are small, atmospheric, and absolutely rammed from lunchtime onwards on championship days. If you want a drink in Birkdale, get there early or expect a long wait.",
     pubs: [
-      { name: "The Fisherman's Rest", note: "Classic village local. Open from 11am, live music some evenings during Open week." },
-      { name: "The Birkdale Village Inn", note: "Traditional pub atmosphere, large beer garden, good for groups." },
+      { name: "The Fisherman's Rest", note: "Village pub. Open from 11am, live music some evenings during Open week." },
+      { name: "The Birkdale Village Inn", note: "Traditional pub, large beer garden." },
       { name: "Locals along Liverpool Road", note: "Several smaller bars within the village, explore on foot from the station." },
     ],
   },
@@ -37,16 +37,16 @@ const PUBS_BY_AREA = [
     distance: "10 min by taxi from course",
     desc: "Southport's town centre pub and bar scene is extensive. Lord Street, Chapel Street, and the surrounding streets have everything from Victorian boozers to cocktail bars. This is the better option for evenings when you want variety and atmosphere beyond the immediate course area.",
     pubs: [
-      { name: "Coopers Bar", note: "One of the most popular in town. Live music most evenings. Good beer selection." },
-      { name: "The Guest House", note: "Relaxed, local feel. Real ales and a proper pub menu." },
-      { name: "The Lakehouse", note: "Near Marine Lake. Good for a post-game drink with views." },
+      { name: "Coopers Bar", note: "Live music most evenings." },
+      { name: "The Guest House", note: "Real ales and a pub menu." },
+      { name: "The Lakehouse", note: "Near Marine Lake, with views." },
       { name: "Lord Street bars", note: "Multiple options along the Victorian boulevard, explore at your own pace." },
     ],
   },
   {
     area: "Seafront & Ocean Plaza",
     distance: "15–20 min walk or 5 min taxi",
-    desc: "The seafront has a mix of chain bars and independent spots. Less atmospheric than the town centre or Birkdale, but useful if you're staying on the seafront side of town or want somewhere with outdoor space and sea views.",
+    desc: "The seafront has a mix of chain bars and independent spots. Useful if you're staying on the seafront side of town or want somewhere with outdoor space and sea views.",
     pubs: [
       { name: "Southport seafront bars", note: "Seasonal venues with outdoor seating, good on a warm Open week evening." },
       { name: "Ocean Plaza venues", note: "Chain options, can handle larger groups, walk-in friendly." },

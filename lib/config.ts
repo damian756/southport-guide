@@ -1,5 +1,5 @@
 export const CATEGORIES = [
-  { slug: "restaurants", name: "Restaurants", description: "Best restaurants in Southport" },
+  { slug: "restaurants", name: "Restaurants", description: "Restaurants in Southport" },
   { slug: "hotels", name: "Hotels & Accommodation", description: "Where to stay in Southport" },
   { slug: "bars-nightlife", name: "Bars & Nightlife", description: "Pubs and bars in Southport" },
   { slug: "cafes", name: "Cafes & Tea Rooms", description: "Cafes and coffee shops in Southport" },

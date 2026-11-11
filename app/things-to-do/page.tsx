@@ -171,16 +171,16 @@ const FAMILY = [
     name: "Southport Model Railway Village",
     sub: "UK's first model railway village",
     detail:
-      "The first model railway village ever built in the UK. 45mm G-gauge trains run through a miniature village built to replicate south west Lancashire architecture. Niche and wonderful. Ideal for a couple of hours with children or grandchildren who have any interest in railways.",
+      "The first model railway village ever built in the UK. 45mm G-gauge trains run through a miniature village built to replicate south west Lancashire architecture. Allow a couple of hours.",
     practical: "Kings Gardens, Marine Drive · Check seasonal opening times",
     emoji: "🚂",
     href: "/attractions",
   },
   {
     name: "British Lawnmower Museum",
-    sub: "The world's strangest museum",
+    sub: "Over 200 vintage lawnmowers",
     detail:
-      "Genuinely the most peculiar museum in England. Over 200 vintage and celebrity lawnmowers, including machines owned by Nicholas Parsons, Brian May, and HRH Prince Charles. Inexplicably compelling. Allow 45 minutes and come with an open mind.",
+      "Over 200 vintage and celebrity lawnmowers, including machines owned by Nicholas Parsons, Brian May, and HRH Prince Charles. Allow 45 minutes.",
     practical: "106 Shakespeare Street, PR8 5AJ · Small admission charge · Year-round",
     emoji: "🌱",
     href: "/attractions",
@@ -193,7 +193,7 @@ const NATURE = [
     org: "Royal Society for the Protection of Birds",
     vol: "Free entry · 80,000+ Pink-footed Geese · PR9 9PH",
     story:
-      "On the northern edge of Southport, five minutes from Churchtown, and almost completely unknown to visitors. Free entry to one of the best birdwatching sites in the North West. In winter, 80,000+ Pink-footed Geese roost on the Ribble Estuary and flight overhead at dusk; the noise arrives before the birds do. Nel's Hide looks over the managed scrapes with breeding Avocets in spring. The coastal saltmarsh path on the other side of the sea wall adds a completely different walk. Flat, exposed, tidal pools, big sky. Dogs on leads throughout.",
+      "On the northern edge of Southport, five minutes from Churchtown, and almost completely unknown to visitors. Free entry. In winter, 80,000+ Pink-footed Geese roost on the Ribble Estuary and flight overhead at dusk; the noise arrives before the birds do. Nel's Hide looks over the managed scrapes with breeding Avocets in spring. The coastal saltmarsh path on the other side of the sea wall adds a completely different walk. Flat, exposed, tidal pools, big sky. Dogs on leads throughout.",
     tips: [
       "Car park on Redshank Road. £1.50 up to 2 hrs, £3 over 2 hrs. RSPB members free.",
       "Car park hours: 8:30am–4pm (Nov–Mar), 8:30am–5pm (Mar–Oct). Locked at closing.",
@@ -225,7 +225,7 @@ const NATURE = [
     org: "Wildfowl & Wetlands Trust",
     vol: "600 acres · 10 miles from Southport",
     story:
-      "One of the best wildlife experiences in the North West, yet almost entirely unknown to people visiting Southport. Martin Mere's 600 acres of wetland attract thousands of migratory birds each year: pink-footed geese in winter, breeding lapwing and redshank in spring, marsh harriers and avocets through summer. Year-round otters, kingfishers, and canoe safaris on the waterways. Guided walks run Tuesday to Thursday. Free parking; discounted entry if you arrive without a car.",
+      "Martin Mere's 600 acres of wetland attract thousands of migratory birds each year: pink-footed geese in winter, breeding lapwing and redshank in spring, marsh harriers and avocets through summer. Year-round otters, kingfishers, and canoe safaris on the waterways. Guided walks run Tuesday to Thursday. Free parking; discounted entry if you arrive without a car.",
     tips: [
       "Fish Lane, Burscough, L40 0TA. 10 miles from Southport.",
       "Free parking on site.",
@@ -275,7 +275,7 @@ const CULTURE = [
     name: "Wayfarers Arcade",
     tag: "Grade II listed · Victorian · 125 years old",
     detail:
-      "Lord Street's hidden gem. A Grade II listed Victorian shopping arcade, around 125 years old, tucked off the main boulevard. Independents, antiques dealers, a coffee shop, and the particular atmosphere that only a covered Victorian arcade can provide. Worth 20 minutes.",
+      "A Grade II listed Victorian shopping arcade, around 125 years old, tucked off the main boulevard. Independents, antiques dealers and a coffee shop.",
     href: "/shopping",
     emoji: "🏚️",
   },
@@ -292,7 +292,7 @@ const CULTURE = [
 const GOLF_COURSES = [
   {
     name: "Royal Birkdale",
-    rank: "World Top 25",
+    rank: "Open Championship venue",
     detail:
       "Royal Birkdale hosted The 154th Open in July 2026, won by Ryan Fox. The course is known for its willow scrub rough and towering dunes. Green fees from £210.",
     open: "Open from April · Green fees from £210",
@@ -303,7 +303,7 @@ const GOLF_COURSES = [
   },
   {
     name: "Hillside Golf Club",
-    rank: "UK & Ireland Top 100",
+    rank: "Next to Royal Birkdale",
     detail:
       "Hillside sits next to Royal Birkdale and has never hosted The Open Championship. The back nine runs through towering dunes alongside Royal Birkdale's fairways. Host of the 2019 British Masters. Green fees from £110.",
     open: "Members & visitors · Green fees from £110",
@@ -682,7 +682,7 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Beyond the Beach</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Nature &amp; Wildlife</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                Three of the best wildlife experiences in the North West, all within 10 miles of Southport, all almost entirely
+                Three wildlife sites within 10 miles of Southport, all almost entirely
                 overlooked by visitors who come for the beach.
               </p>
             </div>
@@ -749,8 +749,8 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">England&apos;s Golf Coast</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Golf in Southport</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                England&apos;s Golf Coast encompasses 14 courses, 8 ranked in the UK &amp; Ireland Top 100, and 3 Open Championship venues.
-                From Southport you can play four world-class links courses without getting back in the car.
+                England&apos;s Golf Coast encompasses 14 courses and 3 Open Championship venues.
+                From Southport you can play four links courses without getting back in the car.
               </p>
             </div>
 
@@ -816,7 +816,7 @@ export default function ThingsToDoPage() {
                 {
                   emoji: "🏊",
                   title: "Wild Swimming & Sailing",
-                  detail: "Crosby Lakeside Adventure Centre, near the Gormley installation, offers sailing lessons, wild swimming, and kayak hire. A good option for a half-day activity alongside a visit to Another Place.",
+                  detail: "Crosby Lakeside Adventure Centre, near the Gormley installation, offers sailing lessons, wild swimming, and kayak hire. A half-day activity alongside a visit to Another Place.",
                   link: "/activities",
                 },
                 {
@@ -893,7 +893,7 @@ export default function ThingsToDoPage() {
                 {
                   name: "Southport Market",
                   sub: "Street food · Independent traders",
-                  detail: "Southport's indoor market hall, with street food vendors alongside independent market traders. Good for a lunch stop while exploring the town centre.",
+                  detail: "Southport's indoor market hall, with street food vendors alongside independent market traders.",
                   href: "/shopping",
                   emoji: "🏪",
                 },
@@ -1058,7 +1058,7 @@ export default function ThingsToDoPage() {
                 <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-1">Visiting with Autism or Sensory Sensitivities</p>
                 <h2 className="font-display text-xl md:text-2xl font-bold text-[#1B2E4B] mb-2">Planning a Sensory-Friendly Trip</h2>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Southport has calm open spaces, a quiet gallery, and beaches that are rarely crowded outside summer weekends. The honest guide covers which venues work, which events to avoid, and the practical details that actually matter.
+                  Southport has calm open spaces, a quiet gallery, and beaches that are rarely crowded outside summer weekends. The guide covers venues, events and practical details.
                 </p>
               </div>
               <div className="flex flex-col gap-2 flex-none">

@@ -533,7 +533,7 @@ export const GUIDES: Guide[] = [
     slug: "the-atkinson-southport",
     title: "The Atkinson Southport",
     shortTitle: "The Atkinson",
-    description: "Gallery, theatre, café, and library on Lord Street. The cultural heart of Southport. PR8 1DB.",
+    description: "Gallery, theatre, café, and library on Lord Street. PR8 1DB.",
     excerpt:
       "The Atkinson on Lord Street is Southport's main arts and cultural centre. A gallery, theatre, café, and library in a Victorian building in the middle of town. Free gallery entry. The full guide.",
     category: "events",
@@ -554,7 +554,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Bijou Cinema",
     description: "Southport's independent community cinema. Weekly screenings, Screen Club, and live music. Post Office Avenue.",
     excerpt:
-      "The Bijou Cinema on Post Office Avenue is Southport's independent community cinema. Weekly Tuesday screenings, a monthly film school (Screen Club), and live gig nights in a proper old-school venue. The complete guide.",
+      "The Bijou Cinema on Post Office Avenue is Southport's independent community cinema. Weekly Tuesday screenings, a monthly film school (Screen Club), and live gig nights. The complete guide.",
     category: "events",
     heroImage: "/images/guides/southport-bijou-cinema.jpg",
     seoPriority: 0.82,
@@ -592,7 +592,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Big Top Festival",
     description: "Circus arts festival in Southport town centre. Circa and Gandini Juggling. 2–3 May 2026. Free outdoor events.",
     excerpt:
-      "Big Top Festival Southport 2026: two days of world-class circus and street arts in the town centre. Circa and Gandini Juggling performing at Southport's main cultural festival of the spring. 2–3 May. Mix of free outdoor and ticketed indoor shows.",
+      "Big Top Festival Southport 2026: two days of circus and street arts in the town centre. Circa and Gandini Juggling performing at Southport's main cultural festival of the spring. 2–3 May. Mix of free outdoor and ticketed indoor shows.",
     category: "events",
     heroImage: "/images/guides/big-top-festival-southport-2026.jpg",
     seoPriority: 0.82,
@@ -605,7 +605,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Big Top Festival Southport 2026 | 2–3 May · Circus Arts & Complete Guide",
     metaDescription:
-      "Big Top Festival Southport 2026: 2–3 May in the town centre. Circa, Gandini Juggling, and world-class circus arts. Free outdoor events and ticketed shows. Parking, hotels, and what to expect.",
+      "Big Top Festival Southport 2026: 2–3 May in the town centre. Circa, Gandini Juggling, and circus arts. Free outdoor events and ticketed shows. Parking, hotels, and what to expect.",
   },
   {
     slug: "southport-food-drink-festival-2026",
@@ -698,7 +698,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "birkdale-village",
     title: "Birkdale Village",
-    description: "Independent shops, proper restaurants, and decent coffee: the locals' preference.",
+    description: "Independent shops, restaurants, and coffee.",
     excerpt:
       "Birkdale Village: Southport's independent shopping and dining quarter on Liverpool Road. Two minutes from Royal Birkdale Golf Club. The complete local guide.",
     category: "areas",
@@ -714,7 +714,7 @@ export const GUIDES: Guide[] = [
     },
     metaTitle: "Birkdale Village | Shops, Restaurants, Cafés & Guide",
     metaDescription:
-      "Birkdale Village: Southport's independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
+      "Birkdale Village: Southport's independent shopping and dining quarter. Shops, restaurants and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
     relatedCollections: ["birkdale-village-restaurants", "hotels-near-royal-birkdale", "dog-friendly-pubs-southport", "outdoor-seating-restaurants-southport"],
   },
   {
@@ -823,7 +823,7 @@ export const GUIDES: Guide[] = [
     title: "Rainy Day Southport",
     description: "Indoor options, covered attractions, and what to do when Lancashire does its thing.",
     excerpt:
-      "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade: everything worth doing in Southport when it's raining.",
+      "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade: things to do in Southport when it's raining.",
     category: "practical",
     heroImage: "/images/categories/activities.webp",
     seoPriority: 0.82,
@@ -832,7 +832,7 @@ export const GUIDES: Guide[] = [
     tags: ["indoor", "rainy-day", "practical", "families"],
     status: "published",
     metaTitle: "Rainy Day Southport | Indoor Things to Do",
-    metaDescription: "What to do in Southport when it rains: Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth knowing for a wet day.",
+    metaDescription: "What to do in Southport when it rains: Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and other options for a wet day.",
     listingFilter: {
       categorySlugs: ["attractions", "cafes", "activities"],
     },
@@ -866,7 +866,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Southport Market",
     description: "Southport Market on King Street: the food hall, its traders, opening times and parking.",
     excerpt:
-      "Southport Market: the complete guide. Every trader reviewed, opening times, what to order, the sensory-friendly picture, parking, and the history. King Street, PR8 1LA.",
+      "Southport Market: the complete guide. Every trader listed, opening times, what to order, the sensory-friendly picture, parking, and the history. King Street, PR8 1LA.",
     category: "food-drink",
     heroImage: "/images/southport-market/exterior/entrance-main-signage.webp",
     seoPriority: 0.92,
@@ -881,7 +881,7 @@ export const GUIDES: Guide[] = [
     ],
     metaTitle: "Southport Market Guide | Traders, Menus, Parking & Tips",
     metaDescription:
-      "Southport Market on King Street (PR8 1LA): every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
+      "Southport Market on King Street (PR8 1LA): every trader listed, what to order, opening times, parking and accessibility. Written by a Southport local.",
     relatedCollections: ["family-friendly-restaurants-southport", "sensory-friendly-southport", "free-things-to-do-southport"],
   },
   {
@@ -946,7 +946,7 @@ export const GUIDES: Guide[] = [
     slug: "roxy-cafe-southport",
     title: "Roxy's Cafe Southport: The Full Guide",
     shortTitle: "Roxy's Cafe",
-    description: "Italian coffee shop on London Street, next to Southport train station. Julius Meinl espresso, freshly baked croissants, homemade cakes and the famous pistachio coffee.",
+    description: "Italian coffee shop on London Street, next to Southport train station. Julius Meinl espresso, freshly baked croissants, homemade cakes and a pistachio coffee.",
     excerpt: "Roxy's Cafe on London Street is an Italian coffee shop. Julius Meinl beans, freshly baked pistachio croissants, homemade cakes and a coffee and cake deal for £7.50. Right next to the train station. Open from 8am Monday to Friday. Terry's full guide.",
     category: "food-drink",
     heroImage: "/images/guides/roxy-cafe-southport/hero.jpg",
@@ -965,7 +965,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Cafés by Area",
     description: "Independent coffee shops and tea rooms around Southport, by area.",
     excerpt:
-      "Cafés and coffee shops in Southport by area, from Lord Street and King Street to Churchtown and Birkdale Village.",
+      "Cafés and coffee shops in Southport by area, from Lord Street to Churchtown and Birkdale Village.",
     category: "food-drink",
     heroImage: "/images/categories/cafes.webp",
     seoPriority: 0.85,
@@ -974,7 +974,7 @@ export const GUIDES: Guide[] = [
     tags: ["cafes", "coffee", "food"],
     status: "published",
     metaTitle: "Cafés in Southport: A Guide by Area",
-    metaDescription: "Cafés and coffee shops in Southport by area: Lord Street, King Street, the market, Churchtown and Birkdale Village, with tips for brunch, laptops and dogs.",
+    metaDescription: "Cafés and coffee shops in Southport by area: Lord Street, the market, Churchtown and Birkdale Village, with tips for brunch, laptops and dogs.",
     listingFilter: {
       categorySlugs: ["cafes"],
     },
@@ -1032,7 +1032,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Autism Friendly",
     description: "Sensory-friendly venues, quiet beaches, and honest advice for autistic visitors and their families planning a trip to Southport.",
     excerpt:
-      "Autism friendly Southport: a practical guide for autistic visitors and families. Quiet beaches, calm venues, which events to avoid, parking close to entrances, and the honest picture of what works and what does not.",
+      "Autism friendly Southport: a practical guide for autistic visitors and families. Quiet beaches, calm venues and parking close to entrances.",
     category: "practical",
     heroImage: "/images/autism-logo.png",
     seoPriority: 0.92,
@@ -1042,7 +1042,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     metaTitle: "Autism Friendly Southport | Sensory-Friendly Guide for Visitors",
     metaDescription:
-      "Autism friendly Southport: quiet beaches, calm venues, sensory-friendly days out, and honest advice about which events to avoid. A practical guide for autistic visitors and their families.",
+      "Autism friendly Southport: quiet beaches, calm venues and sensory-friendly days out. A practical guide for autistic visitors and their families.",
     listingFilter: {
       tags: ["sensory-friendly"],
     },
@@ -1055,7 +1055,7 @@ export const GUIDES: Guide[] = [
     slug: "accommodation-southport",
     title: "Where to Stay in Southport",
     shortTitle: "Southport Accommodation",
-    description: "Hotels, B&Bs, guest houses and self-catering in Southport. The honest local breakdown of where to stay, what to expect, and what to avoid.",
+    description: "Hotels, B&Bs, guest houses and self-catering in Southport, by area.",
     excerpt:
       "A guide to accommodation in Southport. Hotels, B&Bs, guest houses and holiday lets by area, with prices and booking advice.",
     category: "practical",
@@ -1067,7 +1067,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     metaTitle: "Where to Stay in Southport | Hotels, B&Bs & Accommodation Guide",
     metaDescription:
-      "The honest guide to accommodation in Southport. Hotels on Lord Street, seafront B&Bs, Birkdale guest houses near Royal Birkdale, and Churchtown village stays. Prices and booking advice.",
+      "A guide to accommodation in Southport. Hotels on Lord Street, seafront B&Bs, Birkdale guest houses near Royal Birkdale, and Churchtown village stays. Prices and booking advice.",
     relatedSlugs: ["parking-southport", "southport-beach", "the-open-2026-accessibility"],
     relatedCollections: ["hotels-with-parking-southport", "hotels-near-royal-birkdale", "budget-hotels-southport"],
   },

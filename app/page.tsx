@@ -809,7 +809,7 @@ export default async function Home() {
                 </Link>
               </h2>
               <p className="text-white/70 leading-relaxed mb-5 max-w-lg">
-                Every sale in PR8 and PR9 over three years. School Ofsted ratings, crime by category, flood zones, broadband speeds, and Merseyrail commute times. All in one place. This is what Rightmove doesn&apos;t give you.
+                Every sale in PR8 and PR9 over three years. School Ofsted ratings, crime by category, flood zones, broadband speeds, and Merseyrail commute times. All in one place.
               </p>
               <div className="flex flex-wrap gap-3 text-sm mb-5">
                 {[
@@ -1218,7 +1218,7 @@ export default async function Home() {
               {[
                 { label: "Based in Churchtown" },
                 { label: "Family-tested" },
-                { label: "Every business listed" },
+                { label: "Free listing for any business" },
               ].map(({ label }) => (
                 <div key={label} className="flex items-center gap-2.5 bg-white rounded-xl px-3 py-2.5 border border-gray-100 shadow-sm">
                   <span className="text-xs font-semibold text-[#1B2E4B]">{label}</span>

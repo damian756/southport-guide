@@ -5,7 +5,7 @@ import { Utensils, Clock, MapPin, Star, ChevronRight, Coffee, Wine, AlertTriangl
 export const metadata = {
   title: "Restaurants & Bars near MLEC Southport | Pre-Show Dining Guide",
   description:
-    "Best restaurants, bars, and cafés near the Marine Lake Events Centre in Southport. Pre-show dining guide with options by area, price, and distance from MLEC.",
+    "Restaurants, bars, and cafés near the Marine Lake Events Centre in Southport. Pre-show dining guide with options by area, price, and distance from MLEC.",
   keywords:
     "restaurants near MLEC, bars near Marine Lake Events Centre, pre-show dining Southport, eat near MLEC, Southport restaurants",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec/restaurants" },
@@ -33,7 +33,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Does MLEC have its own restaurant?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both will open with the venue. The signature restaurant is expected to be a popular pre-show dining option, book ahead for event nights." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both will open with the venue. Book ahead for event nights." },
     },
     {
       "@type": "Question",
@@ -118,7 +118,7 @@ const PRE_SHOW_TIPS = [
   {
     icon: Coffee,
     title: "MLEC Has Its Own Restaurant",
-    body: "Once the venue opens, you'll be able to dine in the MLEC signature restaurant with 180-degree lake views. Book this for special occasions, it will be the most dramatic pre-show dining experience in the town.",
+    body: "Once the venue opens, you'll be able to dine in the MLEC signature restaurant with 180-degree lake views. Book this for special occasions.",
   },
   {
     icon: Star,
@@ -131,7 +131,7 @@ const FOOD_TYPES = [
   { cuisine: "Modern British", desc: "Fine dining and gastropubs doing seasonal menus. Lord Street and town centre." },
   { cuisine: "Italian", desc: "Several solid Italian restaurants across town, from casual pizza to proper trattoria." },
   { cuisine: "Indian", desc: "Strong Indian restaurant scene. Southport has several long-standing quality spots." },
-  { cuisine: "Fish & Chips", desc: "Mandatory at the seaside. Multiple award-winning chippies within a mile of MLEC." },
+  { cuisine: "Fish & Chips", desc: "Mandatory at the seaside. Multiple chippies within a mile of MLEC." },
   { cuisine: "Thai & Asian Fusion", desc: "Growing selection of Thai, Japanese, and Asian fusion restaurants in the town centre." },
   { cuisine: "Bars & Cocktails", desc: "Lord Street has a strong cocktail bar scene for pre and post-show drinks." },
   { cuisine: "Brunch & Cafés", desc: "Southport's café culture is strong, ideal for matinée days starting with brunch." },

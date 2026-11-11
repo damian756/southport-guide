@@ -35,7 +35,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Dog-friendly restaurants in Southport: places with water bowls outside and dogs welcome inside. Updated local list.",
     intro:
-      "Frank has been to most of the dog-friendly restaurants in Southport at least once. The ones that genuinely welcome dogs are a shorter list than you might think: water bowls out front, space inside, staff who don't look panicked when you walk in with a bulldog. Those are the ones on this list. Phone ahead for evening visits. Most places have limited outside tables and the inside situation can change.",
+      "Frank has been to most of the dog-friendly restaurants in Southport at least once. The ones on this list welcome dogs: water bowls out front, space inside, staff who don't look panicked when you walk in with a bulldog. Phone ahead for evening visits. Most places have limited outside tables and the inside situation can change.",
     tags: ["dog-friendly"],
     categorySlugs: ["restaurants"],
     emoji: "🐾",
@@ -48,7 +48,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Dog-friendly pubs in Southport: welcoming dogs inside, with outdoor space and food after a walk. A local list.",
     intro:
-      "Frank rates a pub partly on its beer garden and partly on whether the bar staff acknowledge him when he walks in. He has strong opinions. These are the Southport pubs that pass both tests: dogs welcome inside, outdoor space, and food after a walk. Call ahead at weekends. Some of the smaller places fill up fast.",
+      "Frank rates a pub partly on its beer garden and partly on whether the bar staff acknowledge him when he walks in. He has strong opinions. These are Southport pubs with dogs welcome inside, outdoor space, and food after a walk. Call ahead at weekends. Some of the smaller places fill up fast.",
     tags: ["dog-friendly"],
     categorySlugs: ["bars-nightlife"],
     emoji: "🐶",
@@ -61,7 +61,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Dog-friendly cafés in Southport: independent coffee shops and tea rooms that welcome dogs. A local list, water bowls and all.",
     intro:
-      "After a walk on the beach or through the dunes, a coffee is non-negotiable. Frank's view is that a decent café has a water bowl outside and doesn't make you tie him to a post in the rain. I agree. These are the Southport cafes that actually mean it when they say dogs welcome. They're almost all independents, which is usually a reliable indicator.",
+      "After a walk on the beach or through the dunes, a coffee is non-negotiable. Frank's view is that a decent café has a water bowl outside and doesn't make you tie him to a post in the rain. I agree. These are Southport cafes that welcome dogs. They're almost all independents.",
     tags: ["dog-friendly"],
     categorySlugs: ["cafes"],
     emoji: "☕",
@@ -89,7 +89,7 @@ export const COLLECTIONS: Collection[] = [
     slug: "family-friendly-restaurants-southport",
     title: "Family-Friendly Restaurants in Southport",
     metaDescription:
-      "Family-friendly restaurants in Southport: places with kids' menus, highchairs, and staff who don't visibly panic when children arrive.",
+      "Family-friendly restaurants in Southport: places with kids' menus and highchairs.",
     intro:
       "I've taken four kids to most of the restaurants in this town. These are places with kids' menus, highchairs, and enough space that your four-year-old dropping a fork doesn't ruin anyone's evening. Covers everything from pizza to something a bit more ambitious, depending on what your lot will actually eat.",
     tags: ["family-friendly"],
@@ -102,9 +102,9 @@ export const COLLECTIONS: Collection[] = [
     slug: "family-friendly-things-to-do-southport",
     title: "Family-Friendly Things to Do in Southport",
     metaDescription:
-      "Family-friendly things to do in Southport: activities and attractions worth the effort with kids. Honest, no filler.",
+      "Family-friendly things to do in Southport: activities and attractions for kids.",
     intro:
-      "Southport is genuinely good with kids. I've been taking mine to the beach, the Atkinson, Pleasureland, and the Botanic Gardens for years, and I have a reasonable sense of what holds up with actual children in tow and what looks better in a leaflet than it is. This list is the honest version, across a range of ages and budgets.",
+      "Southport is genuinely good with kids. I've been taking mine to the beach, the Atkinson, Pleasureland, and the Botanic Gardens for years, and I have a reasonable sense of what holds up with actual children in tow and what looks better in a leaflet than it is. This list covers a range of ages and budgets.",
     tags: ["family-friendly"],
     categorySlugs: ["attractions", "activities"],
     emoji: "🎡",
@@ -130,7 +130,7 @@ export const COLLECTIONS: Collection[] = [
     slug: "lord-street-cafes-southport",
     title: "Cafés on Lord Street Southport",
     metaDescription:
-      "Cafés on Lord Street Southport: coffee shops and tea rooms along the Victorian boulevard. Where to stop for a proper coffee.",
+      "Cafés on Lord Street Southport: coffee shops and tea rooms along the Victorian boulevard. Where to stop for a coffee.",
     intro:
       "There are more cafes on Lord Street than most people realise. They're tucked into the arcades and behind the glass canopies. These are cafés on and around the street. If you're spending time on the street anyway, a coffee and something to eat is the right way to do it.",
     tags: ["lord-street"],
@@ -160,7 +160,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Afternoon tea in Southport: hotels and independent tea rooms serving afternoon tea, and when to book ahead.",
     intro:
-      "Southport does afternoon tea reasonably well. Not Bath, but better than you'd think for a seaside town in Merseyside. These are places serving afternoon tea: sandwiches, scones with jam, tea in a pot rather than a bag on a string. Book ahead at weekends, especially in summer.",
+      "These are places serving afternoon tea: sandwiches, scones with jam, tea in a pot rather than a bag on a string. Book ahead at weekends, especially in summer.",
     tags: ["afternoon-tea"],
     categorySlugs: ["restaurants", "cafes", "hotels"],
     emoji: "🫖",
@@ -199,7 +199,7 @@ export const COLLECTIONS: Collection[] = [
     slug: "budget-hotels-southport",
     title: "Budget Hotels in Southport",
     metaDescription:
-      "Budget hotels in Southport: affordable accommodation without the premium. Good value places to stay in Southport and nearby.",
+      "Budget hotels in Southport: affordable accommodation without the premium. Places to stay in Southport and nearby.",
     intro:
       "Southport has plenty of budget accommodation. These are independent guest houses and mid-market options that offer a stay without the premium. Good for families and anyone who doesn't need a fancy hotel to enjoy the town.",
     tags: ["budget"],
@@ -259,7 +259,7 @@ export const COLLECTIONS: Collection[] = [
     metaDescription:
       "Art galleries in Southport: independent galleries and exhibition spaces across the town. From Lord Street to Wayfarers Arcade and beyond.",
     intro:
-      "Most visitors walk straight past the galleries in Southport without realising they're there. Wayfarers Arcade alone has three of them. The Atkinson on Lord Street is the main one: free entry, regularly changing exhibitions, and genuinely good. It's the kind of place that makes you proud to live here. The independents on Lord Street and out in Ainsdale are smaller but worth the stop. No booking, no entry fee.",
+      "Most visitors walk straight past the galleries in Southport without realising they're there. Wayfarers Arcade alone has three of them. The Atkinson on Lord Street is the main one: free entry and regularly changing exhibitions. The independents on Lord Street and out in Ainsdale are smaller. No booking, no entry fee.",
     tags: ["gallery"],
     categorySlugs: ["attractions", "shopping"],
     emoji: "🖼️",
@@ -333,9 +333,9 @@ export const COLLECTIONS: Collection[] = [
     slug: "live-music-bars-southport",
     title: "Live Music Bars in Southport",
     metaDescription:
-      "Live music bars in Southport: pubs and bars with regular live music. Where to find a proper night out with live acts.",
+      "Live music bars in Southport: pubs and bars with regular live music. Where to find a night out with live acts.",
     intro:
-      "Southport has a decent live music scene, most of it concentrated in a handful of bars. These are the ones with regular acts, usually at weekends and occasionally midweek. Check the venue's social media before you go: the listings change and cancellations happen.",
+      "Southport's live music is mostly concentrated in a handful of bars. These are the ones with regular acts, usually at weekends and occasionally midweek. Check the venue's social media before you go: the listings change and cancellations happen.",
     tags: ["live-music"],
     categorySlugs: ["bars-nightlife"],
     emoji: "🎸",

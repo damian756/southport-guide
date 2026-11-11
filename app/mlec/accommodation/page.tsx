@@ -5,7 +5,7 @@ import { Hotel, MapPin, Clock, Star, ChevronRight, ArrowRight, Waves, CheckCircl
 export const metadata = {
   title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs",
   description:
-    "Find the best hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips for events at the Marine Lake Events Centre.",
+    "Hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips for events at the Marine Lake Events Centre.",
   keywords:
     "accommodation near MLEC, hotels near Marine Lake Events Centre, Southport hotels, where to stay MLEC, Marine Lake accommodation",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec/accommodation" },
@@ -13,7 +13,7 @@ export const metadata = {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     title: "Accommodation near Marine Lake Events Centre | Hotels & B&Bs",
-    description: "Find the best hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips.",
+    description: "Hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips.",
     url: "https://www.southportguide.co.uk/mlec/accommodation",
   },
 };

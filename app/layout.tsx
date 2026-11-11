@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | SouthportGuide.co.uk",
   },
   description:
-    "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
+    "Restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
   keywords:
     "Southport, restaurants Southport, hotels Southport, things to do Southport, Royal Birkdale, visitor guide, Southport Guide",
   authors: [{ name: "Churchtown Media", url: "https://churchtownmedia.co.uk" }],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "SouthportGuide.co.uk",
     title: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
     description:
-      "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
+      "Restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
     images: [
       {
         url: `${BASE_URL}/og-default.png`,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
-    description: "Discover the best restaurants, hotels, bars, attractions and things to do in Southport.",
+    description: "Restaurants, hotels, bars, attractions and things to do in Southport.",
     images: [`${BASE_URL}/og-default.png`],
     creator: "@SouthportGuide",
   },

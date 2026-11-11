@@ -35,16 +35,16 @@ const THINGS = [
     emoji: "⛳",
     items: [
       { name: "Hillside Golf Club", desc: "Directly adjacent to Royal Birkdale. A links course that takes visitors, if you are a golfer and want to play during Open week. Book well ahead." },
-      { name: "Southport & Ainsdale Golf Club", desc: "Another links course of real quality, minutes from Birkdale. Has hosted the Ryder Cup. Worth playing if Hillside is unavailable." },
-      { name: "Hesketh Golf Club", desc: "A respected parkland course on the edge of Southport. More forgiving than the links courses but still an enjoyable round." },
+      { name: "Southport & Ainsdale Golf Club", desc: "A links course, minutes from Birkdale. Has hosted the Ryder Cup." },
+      { name: "Hesketh Golf Club", desc: "A parkland course on the edge of Southport." },
     ],
   },
   {
     category: "Family & Indoor Attractions",
     emoji: "🎡",
     items: [
-      { name: "Pleasureland Southport", desc: "A traditional seaside amusement park on the seafront, good for families with younger children who need a break from golf. Rides, attractions, and food all in one site." },
-      { name: "Southport Model Railway Village", desc: "A quirky and genuinely impressive scale model railway exhibition that surprises most visitors. Good for a couple of hours on a rainy afternoon." },
+      { name: "Pleasureland Southport", desc: "A traditional seaside amusement park on the seafront. Rides, attractions, and food all in one site." },
+      { name: "Southport Model Railway Village", desc: "A scale model railway exhibition." },
       { name: "Botanic Gardens & Museum", desc: "Southport's botanic gardens in Churchtown are beautiful in July. The adjacent Atkinson arts centre runs exhibitions. A peaceful morning option if you want something away from the Open buzz." },
     ],
   },
@@ -79,7 +79,7 @@ const FAQS = [
   },
   {
     q: "What can families do in Southport during The Open Championship?",
-    a: "Families are well served. Pleasureland amusement park on the seafront, Southport Pier and beach, Botanic Gardens in Churchtown, and Formby beach with the red squirrel reserve are all suitable for children. The Model Railway Village is a surprisingly good option for younger visitors.",
+    a: "Families are well served. Pleasureland amusement park on the seafront, Southport Pier and beach, Botanic Gardens in Churchtown, and Formby beach with the red squirrel reserve are all suitable for children. The Model Railway Village is another option for younger visitors.",
   },
 ];
 

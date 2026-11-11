@@ -296,7 +296,7 @@ export default function TheOpen2026Page() {
             <div>
               <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">About the Course</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B] mb-5 leading-tight">
-                Royal Birkdale: One of the World&apos;s Great Links Courses
+                Royal Birkdale: An Open Championship Links Course
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Royal Birkdale Golf Club sits in the sand dunes of Southport, Merseyside, less than two miles from the town centre. Founded in 1889 and awarded its Royal charter in 1951, it has hosted The Open Championship more times than almost any other venue.
