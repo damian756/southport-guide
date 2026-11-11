@@ -65,7 +65,6 @@ const PLACE_LD = {
   name: "Southport Market",
   description:
     "A food and drink hall on King Street in Southport town centre. Nine independent traders, a central bar, live music, and regular events.",
-  url: "https://southportmarket.com",
   image: `${BASE_URL}/images/southport-market/exterior/entrance-main-signage.webp`,
   address: {
     "@type": "PostalAddress",
@@ -834,16 +833,8 @@ export default function SouthportMarketPage() {
           </div>
 
           <p className="mt-4 text-sm text-gray-500 leading-relaxed">
-            Hours vary on bank holidays and during special events. Always confirm before travelling at{" "}
-            <a
-              href="https://southportmarket.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#C9A84C] font-semibold hover:underline"
-            >
-              southportmarket.com
-            </a>
-            .
+            Hours vary on bank holidays and during special events. Always confirm before travelling at
+            southportmarket.com.
           </p>
         </section>
 
@@ -1242,14 +1233,6 @@ export default function SouthportMarketPage() {
                   conferences, networking, buffets, live bands, and performance shows. Smaller function rooms
                   are also available for meetings. The room is better than it sounds.
                 </p>
-                <a
-                  href="https://southportmarket.com/information"
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] font-bold text-sm px-6 py-3 rounded-full transition-colors"
-                >
-                  Enquire about hire <ArrowRight className="w-4 h-4" />
-                </a>
               </div>
               <ImageLightbox
                 src="/images/southport-market/events/poster-offering-to-rent-the-extravaganze-room.webp"
