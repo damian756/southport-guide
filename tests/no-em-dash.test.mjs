@@ -18,12 +18,12 @@ const ESCAPE = /(["'`])(?:(?!\1).)*\\u2014/;
 const hasDash = (s) => s.includes(EM) || ENTITY.test(s) || ESCAPE.test(s);
 
 // Covered: app/ (house-price pages and the business owners' hub included),
-// components/, lib/, content/ (.ts, .tsx), public/llms.txt, and in app/api/
-// the subject lines of the mail the site sends.
+// components/, lib/ (email templates included), content/ (.ts, .tsx),
+// public/llms.txt, and app/api/ (mail subjects and bodies, API answers).
 // Not covered, and why:
 const EXCLUDE = [
   /^app\/admin\//, //            internal admin screens (Damian only)
-  /^app\/api\//, //              route handlers: their mail subjects are read by the test below
+  /^app\/api\//, //              route handlers: read by their own test below
   /^lib\/rewrite-as-terry\.ts$/, // an instruction prompt, never rendered
   /^lib\/post-to-social\.ts$/, //   log messages only
 ];
@@ -64,13 +64,19 @@ test("no em dash in page titles, metadata, JSON-LD, copy or rendered data files"
   assert.deepEqual(hits, []);
 });
 
-test("no em dash in the subject of any mail the site sends (app/api)", () => {
+// app/api: the mail the site sends (subjects and bodies) and the text its
+// routes answer with. Two exceptions: the command-centre routes are Damian's
+// own dashboard, and the Stripe boost product name (create-boost-checkout) is
+// payment code, left for Damian.
+const API_EXCLUDE = [/^app\/api\/command-centre\//, /^app\/api\/hub\/create-boost-checkout\/route\.ts$/];
+
+test("no em dash in any mail the site sends or any API answer (app/api)", () => {
   const hits = [];
-  for (const p of walk("app/api")) {
+  for (const p of walk("app/api").filter((f) => !API_EXCLUDE.some((re) => re.test(f)))) {
     const code = stripComments(readFileSync(join(ROOT, p), "utf8"));
-    for (const m of code.matchAll(/subject:\s*(`[^`]*`|"[^"]*"|'[^']*')/g)) {
-      if (hasDash(m[1])) hits.push(`${p}: ${m[1].slice(0, 100)}`);
-    }
+    code.split("\n").forEach((line, i) => {
+      if (hasDash(line)) hits.push(`${p}:${i + 1}: ${line.trim().slice(0, 120)}`);
+    });
   }
   assert.deepEqual(hits, []);
 });
