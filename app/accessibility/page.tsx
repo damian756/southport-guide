@@ -150,8 +150,7 @@ export default function AccessibilityStatementPage() {
               can pause or stop any video playback.
             </p>
             <p>
-              Analytics are provided by Plausible, a privacy-first platform that does not use cookies or collect personal
-              data. We do not use advertising trackers.
+              {"Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored."} We do not use advertising trackers.
             </p>
           </div>
         </section>
