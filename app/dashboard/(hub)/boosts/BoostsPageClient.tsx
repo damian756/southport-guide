@@ -116,7 +116,7 @@ export default function BoostsPageClient({
           >
             {boostTypes.map((t) => (
               <option key={t.id} value={t.id}>
-                {t.label} — {formatPrice(t.pricePence)}
+                {t.label}: {formatPrice(t.pricePence)}
               </option>
             ))}
           </select>

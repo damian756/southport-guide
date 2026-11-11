@@ -286,7 +286,7 @@ export default async function BoostsPage() {
                       </td>
                       <td className="py-4 px-6 text-gray-700">{b.type}</td>
                       <td className="py-4 px-6 text-gray-600">
-                        {b.label || "—"}
+                        {b.label || "n/a"}
                       </td>
                       <td className="py-4 px-6 text-right font-medium">
                         {v.during}

@@ -67,7 +67,7 @@ export async function POST(
   await resend.emails.send({
     from: FROM_EMAIL,
     to: claim.user.email,
-    subject: `Your claim for ${claim.business.name} has been approved — SouthportGuide`,
+    subject: `Your claim for ${claim.business.name} has been approved: SouthportGuide`,
     html: getClaimApprovalHtml({
       name: claim.name,
       businessName: claim.business.name,

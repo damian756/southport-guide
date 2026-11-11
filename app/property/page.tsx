@@ -9,7 +9,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "House Prices in Southport | PR8 & PR9 Data",
   description:
-    "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport. PR8 and PR9, from Birkdale to Churchtown. Land Registry data, updated regularly.",
+    "House prices, recent sales, school Ofsted ratings, crime data and local amenities for every postcode in Southport. PR8 and PR9, from Birkdale to Churchtown. Land Registry data.",
   alternates: { canonical: `${BASE_URL}/property` },
   openGraph: {
     title: "House Prices in Southport. Honest Data, Local Knowledge",
@@ -56,7 +56,7 @@ const FAQS = [
   },
   {
     q: "Is Southport a good place to buy a house?",
-    a: "Southport has several things going for it as a place to buy. The Merseyrail line to Liverpool Central (approximately 45 minutes) makes it practical for commuters. The beach, the National Trust coastline at Ainsdale, the independent village feel of Churchtown and Birkdale, and the Botanic Gardens all provide genuine quality of life. The town's investment pipeline (The Open Championship returning to Royal Birkdale in July 2026, and the Marine Lake Events Centre opening in 2027) points toward improving footfall and visitor economy. Property prices remain significantly more affordable than Liverpool's suburbs of comparable quality.",
+    a: "Southport has several things going for it as a place to buy. The Merseyrail line to Liverpool Central (approximately 45 minutes) makes it practical for commuters. The beach, the National Trust coastline at Ainsdale, the independent village feel of Churchtown and Birkdale, and the Botanic Gardens all provide genuine quality of life. The town's investment pipeline (Royal Birkdale hosted The Open in July 2026, and the Marine Lake Events Centre is due to be built by winter 2028) points toward improving footfall and visitor economy. Property prices remain significantly more affordable than Liverpool's suburbs of comparable quality.",
   },
   {
     q: "Which is the most expensive area in Southport?",
@@ -180,15 +180,15 @@ export default async function PropertyLandingPage() {
               House Prices in Southport
             </h1>
             <p className="text-white/70 text-base leading-relaxed max-w-2xl mb-8">
-              Every Land Registry sale across PR8 and PR9 over three years, broken down by postcode sector with school Ofsted ratings, crime comparisons, flood zones, broadband speeds, and Merseyrail commute times. The things Rightmove doesn&apos;t show you.
+              Every Land Registry sale across PR8 and PR9 over three years, broken down by postcode sector with school Ofsted ratings, crime comparisons, flood zones, broadband speeds, and Merseyrail commute times.
             </p>
 
             {/* Stats pills */}
             <div className="flex flex-wrap gap-3">
               {[
-                { label: "3-year sales", value: totalSales > 0 ? totalSales.toLocaleString() : "—" },
-                { label: "Average price", value: avgPrice > 0 ? fmtK(avgPrice) : "—" },
-                { label: "Median price", value: medianPrice > 0 ? fmtK(medianPrice) : "—" },
+                { label: "3-year sales", value: totalSales > 0 ? totalSales.toLocaleString() : "n/a" },
+                { label: "Average price", value: avgPrice > 0 ? fmtK(avgPrice) : "n/a" },
+                { label: "Median price", value: medianPrice > 0 ? fmtK(medianPrice) : "n/a" },
                 { label: "Postcode sectors", value: sectors.length.toString() },
               ].map(({ label, value }) => (
                 <div key={label} className="rounded-xl bg-white/10 backdrop-blur-sm px-4 py-3 text-center min-w-[90px]">
@@ -234,7 +234,7 @@ export default async function PropertyLandingPage() {
                 What I find missing from the national property portals is the context. Knowing a house sold for £220,000 doesn&apos;t tell you whether the nearest primary school is Outstanding or Requires Improvement, whether the street floods, or how long it takes to get to Liverpool Central on a Tuesday morning. That&apos;s what we&apos;ve tried to build here: one place with all of it.
               </p>
               <p>
-                The timing matters too. The Open Championship returns to Royal Birkdale in July 2026 and the Marine Lake Events Centre is due to be built by winter 2028, with an operator fit-out to follow. Both will change the volume of visitors to Southport. Whether that flows through to property prices is speculative, but the logic is there: more footfall, more hospitality spend, more infrastructure. Worth factoring in if you&apos;re thinking long-term.
+                The timing matters too. Royal Birkdale hosted The Open in July 2026, and the Marine Lake Events Centre is due to be built by winter 2028, with an operator fit-out to follow. Both bring visitors to Southport. Whether that flows through to property prices is speculative, but the logic is there: more footfall, more hospitality spend, more infrastructure. Worth factoring in if you&apos;re thinking long-term.
               </p>
             </div>
           </section>
@@ -264,7 +264,7 @@ export default async function PropertyLandingPage() {
                         {sec.avgPrice3yr ? (
                           <p className="font-bold text-[#1B2E4B] text-base">{fmtK(sec.avgPrice3yr)}</p>
                         ) : (
-                          <p className="text-sm text-gray-400">—</p>
+                          <p className="text-sm text-gray-400">n/a</p>
                         )}
                         <p className="text-xs text-gray-400">{sec.salesCount3yr} sales (3yr)</p>
                       </div>
@@ -363,7 +363,7 @@ export default async function PropertyLandingPage() {
               <div className="text-2xl mb-3">⛳</div>
               <h3 className="font-display font-bold text-[#1B2E4B] text-lg mb-2">The Open 2026: Royal Birkdale</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                Golf&apos;s oldest major returns to Royal Birkdale in July 2026. The championship brings 200,000+ visitors over the week and puts Birkdale (PR8 4) and the surrounding sectors in the global spotlight. Accommodation is already scarce.
+                Royal Birkdale hosted The Open in July 2026, putting Birkdale (PR8 4) and the surrounding sectors in the spotlight for the week.
               </p>
               <Link href="/the-open-2026" className="text-[#C9A84C] text-sm font-semibold hover:text-[#1B2E4B] transition-colors flex items-center gap-1">
                 The Open 2026 guide <ArrowRight className="w-3.5 h-3.5" />

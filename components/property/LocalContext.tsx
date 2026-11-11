@@ -15,8 +15,8 @@ type ContextEntry = {
 const SECTOR_CONTEXT: Record<string, ContextEntry> = {
   "PR8 4": {
     tag: "The Open 2026",
-    headline: "Royal Birkdale Golf Club — The Open Championship",
-    body: "Royal Birkdale is at the southern end of PR8 4 and is hosting The Open Championship from 12–19 July 2026. If you're buying in Birkdale, you're buying next door to one of the world's great links courses. The Open returns to Royal Birkdale roughly every 8–12 years — the next visit after 2026 won't be until the mid-2030s.",
+    headline: "Royal Birkdale Golf Club: The Open Championship",
+    body: "Royal Birkdale is at the southern end of PR8 4 and hosted The Open Championship in July 2026. If you're buying in Birkdale, you're buying next door to an Open Championship course. The Open returns to Royal Birkdale roughly every 8–12 years, so the next visit after 2026 won't be until the mid-2030s.",
     link: "/the-open-2026",
     linkLabel: "Full Open 2026 guide →",
     icon: "⛳",
@@ -26,8 +26,8 @@ const SECTOR_CONTEXT: Record<string, ContextEntry> = {
   },
   "PR8 2": {
     tag: "The Open 2026",
-    headline: "Near Royal Birkdale — short-term rental potential",
-    body: "PR8 2 is within a few miles of Royal Birkdale Golf Club, which hosts The Open in July 2026. Accommodation across the whole area is already scarce for Open week. Buyers in this postcode should factor in the short-term rental potential — properties with parking and spare rooms are particularly sought during major events.",
+    headline: "Near Royal Birkdale: short-term rental potential",
+    body: "PR8 2 is within a few miles of Royal Birkdale Golf Club, which hosted The Open in July 2026. Accommodation across the whole area was scarce for Open week. Buyers in this postcode may want to factor in short-term rental potential: properties with parking and spare rooms are sought during major events.",
     link: "/the-open-2026",
     linkLabel: "The Open 2026 guide →",
     icon: "⛳",
@@ -37,8 +37,8 @@ const SECTOR_CONTEXT: Record<string, ContextEntry> = {
   },
   "PR8 3": {
     tag: "The Open 2026",
-    headline: "Ainsdale — within reach of Royal Birkdale",
-    body: "Ainsdale is about 3 miles from Royal Birkdale Golf Club, which hosts The Open in July 2026. For buyers considering short-term rentals, Ainsdale is close enough to benefit from Open week demand while sitting at a lower price point than Birkdale itself.",
+    headline: "Ainsdale: within reach of Royal Birkdale",
+    body: "Ainsdale is about 3 miles from Royal Birkdale Golf Club, which hosted The Open in July 2026. For buyers considering short-term rentals, Ainsdale is close enough to benefit from big-event demand while sitting at a lower price point than Birkdale itself.",
     link: "/the-open-2026",
     linkLabel: "The Open 2026 guide →",
     icon: "⛳",

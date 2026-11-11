@@ -456,7 +456,7 @@ export default function ListingEditorClient({ business }: Props) {
                 ★ {business.rating.toFixed(1)} ({business.reviewCount.toLocaleString()} reviews)
               </p>
             )}
-            <p className="text-xs text-gray-500 mt-1">{business.category.slug} · {business.priceRange ?? "—"}</p>
+            <p className="text-xs text-gray-500 mt-1">{business.category.slug} · {business.priceRange ?? "n/a"}</p>
             <a
               href={listingUrl}
               target="_blank"

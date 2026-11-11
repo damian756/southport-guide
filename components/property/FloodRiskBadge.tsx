@@ -23,7 +23,7 @@ export default function FloodRiskBadge({ zone, isSector = false }: Props) {
         Flood risk{isSector ? " (sector)" : ""}
       </p>
       <p className={`mt-1 inline-block rounded border px-3 py-1 font-semibold ${style}`}>
-        Zone {zone} — {label}
+        Zone {zone}: {label}
       </p>
       <p className="mt-2 text-sm text-gray-600">
         {zone === "1" && "Low probability of flooding from rivers or the sea."}
@@ -32,7 +32,7 @@ export default function FloodRiskBadge({ zone, isSector = false }: Props) {
       </p>
       {isSector && (
         <p className="mt-2 text-xs text-gray-400">
-          Based on predominant risk across postcodes in this sector. Individual postcode risk may vary — check each unit page.
+          Based on predominant risk across postcodes in this sector. Individual postcode risk may vary, so check each unit page.
         </p>
       )}
     </div>

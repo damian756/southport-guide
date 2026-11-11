@@ -103,7 +103,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (sector) {
     const areaLabel = getAreaLabelForSector(sector.sector);
-    const title = (sector.metaTitle as string) ?? `House Prices in ${sector.sector} — ${areaLabel}, Southport`;
+    const title = (sector.metaTitle as string) ?? `House Prices in ${sector.sector}: ${areaLabel}, Southport`;
     const desc =
       (sector.metaDescription as string) ??
       `Average house price in ${sector.sector} is £${((sector.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales, schools, crime data and local amenities.`;
@@ -122,7 +122,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             url: `${BASE_URL}/og-property.webp`,
             width: 1200,
             height: 630,
-            alt: `House prices in ${sector.sector} — ${areaLabel}, Southport`,
+            alt: `House prices in ${sector.sector}: ${areaLabel}, Southport`,
           },
         ],
       },
@@ -144,7 +144,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
     const areaLabel = sectorRec ? getAreaLabelForSector(unit.sector) : unit.sector;
     const title =
-      (unit.metaTitle as string) ?? `House Prices in ${unit.postcode} — ${areaLabel}, Southport`;
+      (unit.metaTitle as string) ?? `House Prices in ${unit.postcode}: ${areaLabel}, Southport`;
     const desc =
       (unit.metaDescription as string) ??
       `Average house price in ${unit.postcode} is £${((unit.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales and local data.`;
@@ -336,15 +336,15 @@ async function SectorPage({
   const comparisonRows = [
     {
       metric: "Average price",
-      postcode: sector.avgPrice3yr ? `£${(sector.avgPrice3yr / 1000).toFixed(0)}k` : "—",
+      postcode: sector.avgPrice3yr ? `£${(sector.avgPrice3yr / 1000).toFixed(0)}k` : "n/a",
       southport: southportAvg._avg.avgPrice3yr
         ? `£${((southportAvg._avg.avgPrice3yr as number) / 1000).toFixed(0)}k`
-        : "—",
+        : "n/a",
     },
     {
       metric: "Sales (3yr)",
       postcode: String(sector.salesCount3yr),
-      southport: "—",
+      southport: "n/a",
     },
   ];
 
@@ -354,7 +354,7 @@ async function SectorPage({
   const placeLd = {
     "@context": "https://schema.org",
     "@type": "Place",
-    name: `${sector.sector} — ${areaLabel}, Southport`,
+    name: `${sector.sector}: ${areaLabel}, Southport`,
     geo: { "@type": "GeoCoordinates", latitude: sector.lat, longitude: sector.lng },
     containedInPlace: {
       "@type": "City",
@@ -387,7 +387,7 @@ async function SectorPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
       { "@type": "ListItem", position: 2, name: "Property", item: `${BASE_URL}/property` },
-      { "@type": "ListItem", position: 3, name: `${sector.sector} — ${areaLabel}`, item: sectorPageUrl },
+      { "@type": "ListItem", position: 3, name: `${sector.sector}: ${areaLabel}`, item: sectorPageUrl },
     ],
   };
   const faqLd = faqItems.length > 0
@@ -413,7 +413,7 @@ async function SectorPage({
   const breadcrumbs: { label: string; href?: string }[] = [
     { label: "Home", href: "/" },
     { label: "Property", href: "/property" },
-    { label: `${sector.sector} — ${areaLabel}`, href: undefined },
+    { label: `${sector.sector}: ${areaLabel}`, href: undefined },
   ];
 
   return (
@@ -691,7 +691,7 @@ async function UnitPage({
   const breadcrumbs: { label: string; href?: string }[] = [
     { label: "Home", href: "/" },
     { label: "Property", href: "/property" },
-    { label: `${unit.sector} — ${areaLabel}`, href: `/property/${sectorToSlug(unit.sector)}` },
+    { label: `${unit.sector}: ${areaLabel}`, href: `/property/${sectorToSlug(unit.sector)}` },
     { label: unit.postcode, href: undefined },
   ];
 
@@ -726,7 +726,7 @@ async function UnitPage({
             ) : (
               <div className="rounded-xl bg-white/10 px-4 py-3 text-center backdrop-blur-sm">
                 <p className="text-xs font-medium text-white/60 uppercase tracking-wide">3yr average</p>
-                <p className="mt-1 text-lg font-semibold text-white/50">—</p>
+                <p className="mt-1 text-lg font-semibold text-white/50">n/a</p>
               </div>
             )}
             {unit.medianPrice3yr ? (
@@ -739,7 +739,7 @@ async function UnitPage({
             ) : (
               <div className="rounded-xl bg-white/10 px-4 py-3 text-center backdrop-blur-sm">
                 <p className="text-xs font-medium text-white/60 uppercase tracking-wide">Median</p>
-                <p className="mt-1 text-lg font-semibold text-white/50">—</p>
+                <p className="mt-1 text-lg font-semibold text-white/50">n/a</p>
               </div>
             )}
             <div className="rounded-xl bg-white/10 px-4 py-3 text-center backdrop-blur-sm">

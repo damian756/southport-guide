@@ -150,7 +150,7 @@ export async function PATCH(
       await resend.emails.send({
         from: "SouthportGuide <hello@southportguide.co.uk>",
         to: "damian@churchtownmedia.co.uk",
-        subject: `Review approved — ${review.business.name} (${review.starRating}★)`,
+        subject: `Review approved: ${review.business.name} (${review.starRating}★)`,
         html: `<p><strong>${displayName(review)}</strong> left a ${review.starRating}★ review for <strong>${review.business.name}</strong>.</p><p>${review.body}</p><p><a href="${listingUrl}">View listing</a></p>`,
       });
     } catch { /* non-fatal */ }

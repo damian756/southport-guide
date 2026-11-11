@@ -24,7 +24,7 @@ const SECTOR_STATIONS: Record<string, StationInfo | null> = {
     walkMins: 15,
     toSouthport: 12,
     toLiverpool: 50,
-    note: "Coastal streets — station is inland, ~15 min walk or short drive",
+    note: "Coastal streets: the station is inland, ~15 min walk or short drive",
   },
   "PR8 3": {
     name: "Ainsdale",
@@ -121,7 +121,7 @@ export default function MerseyrailTimes({ sector }: Props) {
         </div>
         {info.toSouthport === 0 && (
           <div className="rounded-lg bg-gray-50 px-3 py-2 text-center">
-            <p className="text-lg font-bold text-[var(--navy)]">—</p>
+            <p className="text-lg font-bold text-[var(--navy)]">n/a</p>
             <p className="text-xs text-gray-500 mt-0.5">terminus</p>
           </div>
         )}

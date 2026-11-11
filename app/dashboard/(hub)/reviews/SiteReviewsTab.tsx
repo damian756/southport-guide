@@ -267,10 +267,10 @@ export default function SiteReviewsTab({
           {/* Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { label: "Average rating", value: ratingAvg ? `${ratingAvg.toFixed(1)} ★` : "—" },
+              { label: "Average rating", value: ratingAvg ? `${ratingAvg.toFixed(1)} ★` : "n/a" },
               { label: "Total reviews", value: reviews.length },
               { label: "Verified Purchase", value: verifiedCount },
-              { label: "Response rate", value: reviews.length ? `${Math.round((respondedCount / reviews.length) * 100)}%` : "—" },
+              { label: "Response rate", value: reviews.length ? `${Math.round((respondedCount / reviews.length) * 100)}%` : "n/a" },
             ].map((s) => (
               <div key={s.label} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
                 <p className="text-2xl font-display font-bold text-[#1B2E4B]">{s.value}</p>
