@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HOME_PICK } from "@/lib/home-pick";
 import Image from "next/image";
 import {
   Star, Utensils, Hotel, Beer, Coffee, MapPin, ShoppingBag, Flag,
@@ -496,84 +497,64 @@ export default async function Home() {
         </section>
       )}
 
-      {/* ══════════════════════════════════════════════════════
-          FEATURED GUIDE — ROXY'S CAFE
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-14 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Terry&apos;s Pick</p>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
-                Featured on SouthportGuide
-              </h2>
+      {/* HOME PICK: data in lib/home-pick.ts; renders nothing while HOME_PICK is null */}
+      {HOME_PICK && (
+        <section className="py-14 bg-white">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">{HOME_PICK.kicker}</p>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1B2E4B]">
+                  {HOME_PICK.heading}
+                </h2>
+              </div>
+              <Link
+                href="/guides"
+                className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#1B2E4B] hover:text-[#C9A84C] font-semibold transition-colors"
+              >
+                All guides <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
             <Link
-              href="/guides"
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#1B2E4B] hover:text-[#C9A84C] font-semibold transition-colors"
+              href={HOME_PICK.href}
+              className="group grid md:grid-cols-[1fr_480px] lg:grid-cols-[1fr_560px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100"
             >
-              All guides <ArrowRight className="w-3.5 h-3.5" />
+              <div className="relative h-72 md:h-full min-h-[340px] overflow-hidden order-first">
+                <Image
+                  src={HOME_PICK.image}
+                  alt={HOME_PICK.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="bg-[#1B2E4B] p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+                <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-5">
+                  {HOME_PICK.tag}
+                </span>
+                <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                  {HOME_PICK.title}
+                </h3>
+                <p className="text-white/65 text-base leading-relaxed mb-6 max-w-md">{HOME_PICK.description}</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {HOME_PICK.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="bg-white/10 border border-white/15 text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2 text-[#C9A84C] font-bold text-sm group-hover:gap-3 transition-all">
+                  <span>{HOME_PICK.cta}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
             </Link>
           </div>
-
-          <Link
-            href="/guides/roxy-cafe-southport"
-            className="group grid md:grid-cols-[1fr_480px] lg:grid-cols-[1fr_560px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100"
-          >
-            {/* Image panel */}
-            <div className="relative h-72 md:h-full min-h-[340px] overflow-hidden order-first">
-              <Image
-                src="/images/guides/roxy-cafe-southport/hero.jpg"
-                alt="Roxy Budoi, owner of Roxy's Cafe Southport, holding a Julius Meinl espresso and freshly baked croissant"
-                fill
-                sizes="(max-width: 768px) 100vw, 60vw"
-                quality={90}
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-
-            {/* Content panel */}
-            <div className="bg-[#1B2E4B] p-8 md:p-10 lg:p-12 flex flex-col justify-center">
-              <span className="inline-flex items-center gap-1.5 bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider self-start mb-5">
-                ☕ Café Guide · London Street
-              </span>
-
-              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                Roxy&apos;s Cafe,<br />Italian Coffee Shop
-              </h3>
-
-              <p className="text-white/65 text-base leading-relaxed mb-6 max-w-md">
-                Julius Meinl espresso, freshly baked pistachio croissants, artisan paninis and homemade Italian
-                cakes. Family-run by Roxana, formerly of Volare. Right next to Southport train station.
-                London Street, PR9 0TJ.
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-8">
-                {[
-                  "Julius Meinl coffee",
-                  "Pistachio coffee",
-                  "Freshly baked croissants",
-                  "Homemade cakes",
-                  "Open from 8am",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-white/10 border border-white/15 text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2 text-[#C9A84C] font-bold text-sm group-hover:gap-3 transition-all">
-                <span>Read the full guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
+        </section>
+      )}
 
       {/* ══════════════════════════════════════════════════════
           LATEST FROM THE BLOG
