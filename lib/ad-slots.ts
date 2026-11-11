@@ -221,12 +221,11 @@ const SLOT_LIST: AdSlotDef[] = [
   // End of post: seasonal, walks and events posts that do not name or judge a business.
   post("autumn-walks-southport", "Autumn Walks in Southport"),
   post("southport-marine-lake-seafront-walk", "Marine Lake and Seafront Walk"),
-  post("southport-marine-lake-summer", "Marine Lake in Summer"),
   post("hesketh-park-southport", "Hesketh Park"),
   post("beachcombing-ainsdale-winter", "Beachcombing at Ainsdale"),
   post("southport-fireworks-championship-explained", "Fireworks Championship"),
   post("southport-air-show-best-viewing-spots-2026", "Air Show Viewing Spots"),
-  post("southport-flower-show-first-timers-guide-2026", "Flower Show First Timer's"),
+  post("southport-flower-show-first-timers-guide-2026", "Flower Show First-Timers"),
 ];
 
 export const AD_SLOTS: Record<string, AdSlotDef> = Object.fromEntries(SLOT_LIST.map((s) => [s.id, s]));
