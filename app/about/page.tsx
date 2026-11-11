@@ -230,7 +230,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-5 text-gray-600 text-lg leading-relaxed text-left sm:text-center max-w-3xl mx-auto">
             <p>
-              Southport has never had a visitor guide with real editorial depth. Tourism bodies produce brochure copy. TripAdvisor has no local knowledge. The council site answers different questions entirely.
+              Southport has never had a visitor guide with real editorial depth. Tourism bodies produce brochure copy. The council site answers different questions entirely.
             </p>
             <p>
               SouthportGuide is the answer to that gap. A guide with the data depth, editorial quality and technical foundation that a town that hosted The Open Championship in 2026 and has a new events centre due by winter 2028 actually needs. Not a site that exists for a single season. Something built to rank, built to last, and genuinely useful to the people who visit and the businesses who serve them.
@@ -263,7 +263,7 @@ export default function AboutPage() {
                 SouthportGuide is written in the voice of Terry, a composite editorial persona built from genuine local knowledge, reader feedback, and decades of experience living in the town. Terry reflects the perspective of someone who has eaten in most of the restaurants, walked every part of the seafront, and knows which car parks fill up first on a summer Saturday.
               </p>
               <p className="text-white/75 leading-relaxed mb-6">
-                We describe places as they are: what they are, where they are and what they offer. No paid editorial placements. No sponsored content disguised as a review.
+                We describe places as they are: what they are, where they are and what they offer. Sponsored articles are labelled Sponsored, and paying does not change what we write about any business. No sponsored content disguised as a review.
               </p>
               <div className="bg-white/10 rounded-2xl px-5 py-4 mt-auto">
                 <p className="text-white/60 text-sm">
