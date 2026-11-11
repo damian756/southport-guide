@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Check, Minus, ChevronDown } from "lucide-react";
 import PricingFAQ from "./PricingFAQ";
+import { getBoostTypes, formatPrice } from "@/lib/boost-config";
 
 export const metadata = {
   title: "Pricing | List Your Business on SouthportGuide",
@@ -31,15 +32,15 @@ const FEATURES = [
   { label: "1 boost credit per month", free: false, pro: true },
 ] as const;
 
-const BOOSTS = [
-  { type: "Standard 7 days", price: "£15", pence: 1500 },
-  { type: "Weekend (Fri–Sun)", price: "£10", pence: 1000 },
-  { type: "Flower Show Weekend", price: "£49", pence: 4900 },
-  { type: "Air Show Weekend", price: "£49", pence: 4900 },
-  { type: "Bank Holiday Weekend", price: "£35", pence: 3500 },
-  { type: "Christmas Markets Month", price: "£99", pence: 9900 },
-  { type: "The Open 2026 Fortnight", price: "£149", pence: 14900 },
-] as const;
+// Boost tiles come from the list checkout accepts (lib/boost-config.ts), so a
+// boost past its deadline drops off by itself. Display only: prices and rules
+// live in boost-config. The page is rebuilt at least daily to stay current.
+export const revalidate = 86400;
+
+/** "£15" for whole pounds, "£15.50" otherwise */
+function tilePrice(pence: number): string {
+  return pence % 100 === 0 ? `£${pence / 100}` : formatPrice(pence);
+}
 
 export default function PricingPage() {
   return (
@@ -154,13 +155,13 @@ export default function PricingPage() {
             get one free credit per month.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BOOSTS.map((b) => (
+            {getBoostTypes().map((b) => (
               <div
-                key={b.type}
+                key={b.id}
                 className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm"
               >
-                <p className="font-semibold text-[#1B2E4B]">{b.type}</p>
-                <p className="text-2xl font-bold text-[#C9A84C] mt-2">{b.price}</p>
+                <p className="font-semibold text-[#1B2E4B]">{b.label}</p>
+                <p className="text-2xl font-bold text-[#C9A84C] mt-2">{tilePrice(b.pricePence)}</p>
               </div>
             ))}
           </div>
