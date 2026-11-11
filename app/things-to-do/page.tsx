@@ -100,7 +100,7 @@ const BEACHES = [
     description:
       "Two miles south of Southport, Ainsdale is backed by one of north-west Europe's most important dune systems, a Site of Special Scientific Interest home to natterjack toads, sand lizards, and great crested newts. Blue Flag awarded. Noticeably quieter than Southport Beach, with a more natural feel. The beach here is genuinely wide even at higher tide, making it the best choice when you want sand underfoot rather than a hike across the flats.",
     practical: [
-      "Car park on Shore Road, Ainsdale. Pay and display.",
+      "Beach parking on the sand at Ainsdale, 1 April to 30 September, £10 for the day.",
       "Dogs welcome outside the summer exclusion zone: no dogs within 200m either side of the main entrance, 1 May to 30 September.",
       "Blue Flag beach. High water quality.",
       "4 miles from Southport town centre; direct train to Ainsdale station.",

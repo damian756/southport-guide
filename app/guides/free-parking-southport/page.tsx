@@ -93,7 +93,7 @@ const FAQS = [
   },
   {
     q: "Is there free parking at Ainsdale Beach?",
-    a: "Shore Road is free outside peak season and works as an alternative when the official Ainsdale car park (which charges from April) is full. It fills fast on sunny days so arrive early. The official Ainsdale car park is about £3-4 for a full day, which is reasonable if Shore Road is full.",
+    a: "Shore Road is free outside peak season and works as an alternative when the beach parking at Ainsdale is full. It fills fast on sunny days so arrive early. Beach parking on the sand at Ainsdale runs from 1 April to 30 September, £10 for the day, and can be made smaller or closed because of the tide or bad weather.",
   },
   {
     q: "Can blue badge holders park free in Southport?",

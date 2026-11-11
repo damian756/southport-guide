@@ -1906,7 +1906,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Southport beach: low tide in May gives you the full width of the beach. Go in the morning. Marine Drive car park is the main option.",
       "The Botanic Gardens in Churchtown: properly lovely in May when things are in bloom. Free entry, good café. Worth 90 minutes of your afternoon.",
       "Lord Street: end-to-end walk under the glass canopies. Wayfarers Arcade is worth going through even if you're not buying anything.",
-      "Ainsdale beach: quieter than Southport beach, National Trust managed, free parking early in the day. PR8 3ST.",
+      "Ainsdale beach: quieter than Southport beach. Beach parking on the sand runs from 1 April to 30 September, £10 for the day. PR8 3ST.",
     ]},
     { type: "h2", text: "Coming Up in June and July" },
     { type: "p", text: "Summer Solstice Festival at Victoria Park (20 June), Armed Forces Festival (27–28 June, free), and The Open Championship at Royal Birkdale (12–19 July). If you haven't sorted accommodation for The Open yet, do it now. The town is heavily booked." },
