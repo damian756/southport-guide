@@ -17,7 +17,7 @@ function LogoImage({ src, name }: { src: string; name: string }) {
   return (
     <div className="absolute inset-0" style={{ backgroundColor: info.background }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={listingImageAlt(name, src)} className="w-full h-full object-contain p-4" />
+      <img src={src} alt={listingImageAlt(name, src)} className="w-full h-full object-contain px-4 pt-3 pb-7" />
       <span className="absolute bottom-2 right-3 text-[11px] leading-none text-gray-600">{info.credit}</span>
     </div>
   );

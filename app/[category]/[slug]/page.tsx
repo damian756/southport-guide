@@ -544,7 +544,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                   {heroImage && heroCredit?.isLogo ? (
                     <div className="absolute inset-0" style={{ backgroundColor: heroCredit.background }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={heroImage} alt={listingImageAlt(business.name, heroImage)} className="w-full h-full object-contain p-4" />
+                      <img src={heroImage} alt={listingImageAlt(business.name, heroImage)} className="w-full h-full object-contain px-4 pt-3 pb-7" />
                       <span className="absolute bottom-2 right-3 text-[11px] leading-none text-gray-600">{heroCredit.credit}</span>
                     </div>
                   ) : heroImage ? (
