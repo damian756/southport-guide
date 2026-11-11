@@ -8,6 +8,7 @@ import {
   postcodeToSlug,
   slugToSector,
 } from "@/lib/property-config";
+import { faqWithoutEmDash, withoutEmDash } from "@/lib/property-text";
 import PropertyBreadcrumb from "@/components/property/PropertyBreadcrumb";
 import PropertyPriceChart from "@/components/property/PropertyPriceChart";
 import PropertyTypeChart from "@/components/property/PropertyTypeChart";
@@ -103,10 +104,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (sector) {
     const areaLabel = getAreaLabelForSector(sector.sector);
-    const title = (sector.metaTitle as string) ?? `House Prices in ${sector.sector}: ${areaLabel}, Southport`;
-    const desc =
+    const title = withoutEmDash((sector.metaTitle as string) ?? `House Prices in ${sector.sector}: ${areaLabel}, Southport`);
+    const desc = withoutEmDash(
       (sector.metaDescription as string) ??
-      `Average house price in ${sector.sector} is £${((sector.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales, schools, crime data and local amenities.`;
+      `Average house price in ${sector.sector} is £${((sector.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales, schools, crime data and local amenities.`);
     return {
       title,
       description: desc,
@@ -143,11 +144,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       where: { sector: unit.sector },
     });
     const areaLabel = sectorRec ? getAreaLabelForSector(unit.sector) : unit.sector;
-    const title =
-      (unit.metaTitle as string) ?? `House Prices in ${unit.postcode}: ${areaLabel}, Southport`;
-    const desc =
+    const title = withoutEmDash(
+      (unit.metaTitle as string) ?? `House Prices in ${unit.postcode}: ${areaLabel}, Southport`);
+    const desc = withoutEmDash(
       (unit.metaDescription as string) ??
-      `Average house price in ${unit.postcode} is £${((unit.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales and local data.`;
+      `Average house price in ${unit.postcode} is £${((unit.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales and local data.`);
     const hasContent = !!(unit.editorialContent);
     return {
       title,
@@ -348,7 +349,7 @@ async function SectorPage({
     },
   ];
 
-  const faqItems = (sector.faqJson as { question: string; answer: string }[] | null) ?? [];
+  const faqItems = faqWithoutEmDash((sector.faqJson as { question: string; answer: string }[] | null) ?? []);
   const sectorPageUrl = `${BASE_URL}/property/${slug}`;
 
   const placeLd = {
@@ -695,7 +696,7 @@ async function UnitPage({
     { label: unit.postcode, href: undefined },
   ];
 
-  const faqArray = (unit.faqJson as { question: string; answer: string }[] | null) ?? [];
+  const faqArray = faqWithoutEmDash((unit.faqJson as { question: string; answer: string }[] | null) ?? []);
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
