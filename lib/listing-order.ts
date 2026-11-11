@@ -20,16 +20,37 @@ export function isPaidFeatured(listing: OrderableListing, categoryId: string): b
   return listing.hubTier === "pro" && listing.categoryId === categoryId;
 }
 
+/** A category page has up to two Featured places. */
+export const MAX_FEATURED = 2;
+
 /**
- * Boosted listings first (as before), then Pro listings in their primary
- * category, then everyone else, each group keeping the order it came in.
+ * The paid places featured on a category page: boosted listings first, then
+ * Pro listings in their primary category, in the order they came in, at most
+ * MAX_FEATURED in all. Paid places beyond that keep their normal place.
+ */
+export function featuredPlaces<T extends OrderableListing>(
+  listings: T[],
+  opts: { categoryId: string; boostedIds: Iterable<string> },
+): { boosted: string[]; pro: string[] } {
+  const boostedSet = new Set(opts.boostedIds);
+  const boosted = listings.filter((b) => boostedSet.has(b.id)).map((b) => b.id);
+  const pro = listings.filter((b) => !boostedSet.has(b.id) && isPaidFeatured(b, opts.categoryId)).map((b) => b.id);
+  const picked = new Set([...boosted, ...pro].slice(0, MAX_FEATURED));
+  return { boosted: boosted.filter((id) => picked.has(id)), pro: pro.filter((id) => picked.has(id)) };
+}
+
+/**
+ * The Featured places (up to two: boosts first, then Pro in its primary
+ * category) first, then everyone else, each group keeping the order it came in.
  */
 export function orderListings<T extends OrderableListing>(
   listings: T[],
   opts: { categoryId: string; boostedIds: Iterable<string> },
 ): T[] {
-  const boosted = new Set(opts.boostedIds);
-  const rank = (b: T) => (boosted.has(b.id) ? 0 : isPaidFeatured(b, opts.categoryId) ? 1 : 2);
+  const featured = featuredPlaces(listings, opts);
+  const boosted = new Set(featured.boosted);
+  const pro = new Set(featured.pro);
+  const rank = (b: T) => (boosted.has(b.id) ? 0 : pro.has(b.id) ? 1 : 2);
   return listings
     .map((b, i) => ({ b, i, r: rank(b) }))
     .sort((x, y) => x.r - y.r || x.i - y.i)

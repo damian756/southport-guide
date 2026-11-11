@@ -9,7 +9,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BOOST_BADGE, PRO_BADGE, isPaidFeatured, orderListings, paidBadge } from "../lib/listing-order.ts";
+import { BOOST_BADGE, MAX_FEATURED, PRO_BADGE, featuredPlaces, isPaidFeatured, orderListings, paidBadge } from "../lib/listing-order.ts";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -53,6 +53,22 @@ test("a lapsed or cancelled Pro (hubTier not 'pro') loses both the order and the
   }
 });
 
+test("at most two Featured places: boosts first, then Pro; the rest keep their normal place", () => {
+  assert.equal(MAX_FEATURED, 2);
+  const many = [
+    { id: "x", hubTier: "free", categoryId: CAT },
+    { id: "p1", hubTier: "pro", categoryId: CAT },
+    { id: "b1", hubTier: "free", categoryId: CAT },
+    { id: "b2", hubTier: "free", categoryId: CAT },
+    { id: "b3", hubTier: "free", categoryId: CAT },
+  ];
+  const opts = { categoryId: CAT, boostedIds: ["b1", "b2", "b3"] };
+  assert.deepEqual(featuredPlaces(many, opts), { boosted: ["b1", "b2"], pro: [] });
+  assert.deepEqual(orderListings(many, opts).map((b) => b.id), ["b1", "b2", "x", "p1", "b3"]);
+  const one = { categoryId: CAT, boostedIds: ["b1"] };
+  assert.deepEqual(featuredPlaces(many, one), { boosted: ["b1"], pro: ["p1"] });
+});
+
 test("the pages use the paid order and labels, not listingTier", () => {
   const page = read("app/[category]/page.tsx");
   assert.doesNotMatch(page, /CASE "listingTier"/);
@@ -69,5 +85,18 @@ test("the pages use the paid order and labels, not listingTier", () => {
   for (const p of ["app/the-open-2026/accommodation/page.tsx", "app/the-open-2026/pubs/page.tsx", "app/the-open-2026/restaurants/page.tsx"]) {
     assert.doesNotMatch(read(p), /orderBy: \[\{ listingTier/, p);
   }
-  assert.match(read("app/components/GuideLayout.tsx"), /hubTier: \{ not: "pro" \}/);
+  assert.match(page, /featuredPlaces\(businesses, \{ categoryId: catId, boostedIds \}\)/);
+  assert.match(page, /if \(!sort \|\| sort === "default"\)/, "paid places sort first only in the default order");
+  assert.match(page, /\?\.categoryId === catId\)/, "a boost counts only in its primary category");
+  // Editorial blocks (guides, The Open pages) leave out Pro and running boosts.
+  assert.match(read("lib/unpaid-listings.ts"), /hubTier: \{ not: "pro" \}/);
+  assert.match(read("lib/unpaid-listings.ts"), /boosts: \{ none: \{ status: "active"/);
+  assert.match(read("app/components/GuideLayout.tsx"), /\.\.\.unpaidListingWhere\(\)/);
+  for (const p of ["accommodation", "pubs", "restaurants", "things-to-do"]) {
+    const src = read(`app/the-open-2026/${p}/page.tsx`);
+    const calls = src.match(/prisma\.business\.findMany\(\{\s*where: \{[^}]*\}/g) ?? [];
+    assert.ok(calls.length > 0, p);
+    for (const c of calls) assert.match(c, /unpaidListingWhere\(\)/, p);
+  }
+  assert.doesNotMatch(read("components/OpenListingCard.tsx"), /Featured/);
 });

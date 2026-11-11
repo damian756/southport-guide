@@ -11,7 +11,7 @@ import { COLLECTIONS } from "@/lib/collections-config";
 import { prisma } from "@/lib/prisma";
 import CategoryBrowser, { type BrowserBusiness } from "@/components/CategoryBrowser";
 import type { MapPin as MapPinType } from "@/components/CategoryMapTypes";
-import { orderListings, isPaidFeatured } from "@/lib/listing-order";
+import { orderListings, featuredPlaces } from "@/lib/listing-order";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -324,14 +324,20 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 (COALESCE(rating, 0) * LOG(COALESCE("reviewCount", 0) + 1)) DESC, name ASC`,
       ]);
       businesses = rawBusinesses;
-      boostedIds = activeBoosts.map((b) => b.businessId);
+      // A boost counts only on the business's own primary category page.
+      boostedIds = activeBoosts
+        .filter((b) => businesses.find((x) => x.id === b.businessId)?.categoryId === catId)
+        .map((b) => b.businessId);
 
-      // Paid places first in the default and Google orders: active boosts, then
-      // Pro listings in their primary category (lib/listing-order.ts).
-      if (sort !== "alpha" && sort !== "hygiene") {
+      // Up to two Featured places (active boosts, then Pro listings in their
+      // primary category; lib/listing-order.ts). They sort first only in the
+      // default order: a visitor who picks another sort gets that sort.
+      if (!sort || sort === "default") {
         businesses = orderListings(businesses, { categoryId: catId, boostedIds });
       }
-      paidFeaturedIds = businesses.filter((b) => isPaidFeatured(b, catId)).map((b) => b.id);
+      const featured = featuredPlaces(businesses, { categoryId: catId, boostedIds });
+      boostedIds = featured.boosted;
+      paidFeaturedIds = featured.pro;
     }
   } catch { /* DB unavailable — page renders with empty listings */ }
 
