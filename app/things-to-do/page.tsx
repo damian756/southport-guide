@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import AdSlot from "@/components/AdSlot";
+import { getUpcomingEvents } from "@/lib/events-data";
 
 // Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
 export const revalidate = 86400;
@@ -27,7 +28,7 @@ export const revalidate = 86400;
 const BASE_URL = "https://www.southportguide.co.uk";
 
 export const metadata: Metadata = {
-  title: "Things to Do in Southport 2026 | The Honest Local Guide",
+  title: "Things to Do in Southport | The Local Guide",
   description:
     "Things to do in Southport: the beach, Marine Lake watersports, Lord Street, the parks, Antony Gormley's iron men at Crosby and the events calendar. Written by people who live here.",
   keywords:
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "Things to Do in Southport 2026 | The Honest Local Guide",
+    title: "Things to Do in Southport | The Local Guide",
     description:
       "Beach, Marine Lake, Lord Street, parks, Antony Gormley's iron men at Crosby and the events calendar, from a local guide.",
     url: `${BASE_URL}/things-to-do`,
@@ -53,7 +54,7 @@ const QUICK_LINKS = [
   { href: "#golf", label: "Golf", icon: Flag },
   { href: "#activities", label: "Activities", icon: Dumbbell },
   { href: "#shopping", label: "Shopping", icon: ShoppingBag },
-  { href: "#events", label: "Events 2026", icon: CalendarDays },
+  { href: "#events", label: "Events", icon: CalendarDays },
   { href: "#faq", label: "FAQs", icon: Star },
 ];
 
@@ -369,23 +370,10 @@ const AUDIENCE_PANELS = [
   },
 ];
 
-const EVENTS_2026 = [
-  { month: "Feb", event: "Lightport", desc: "World-class light installation on Lord Street.", free: true },
-  { month: "Apr", event: "Cristal Palace", desc: "French street theatre. 15m flying chandelier on Lord Street.", free: true },
-  { month: "May", event: "Big Top Festival", desc: "International circus arts. Circa and Gandini Juggling.", free: true },
-  { month: "May", event: "Food & Drink Festival", desc: "Best food weekend of the year.", free: true },
-  { month: "Jul", event: "The Open Championship", desc: "The 154th Open at Royal Birkdale.", free: false },
-  { month: "Aug", event: "Southport Flower Show", desc: "One of England's most prestigious flower shows.", free: false },
-  { month: "Aug", event: "Southport Air Show", desc: "Free. Southport Beach. One of the UK's best.", free: true },
-  { month: "Sep", event: "British Fireworks Championship", desc: "Victoria Park. Multiple displays over two nights.", free: false },
-  { month: "Oct", event: "Southport Comedy Festival", desc: "The Atkinson and venues across town.", free: false },
-  { month: "Oct", event: "Books Alive! Literature Festival", desc: "Storytelling installations and author workshops.", free: true },
-];
-
 const FAQS = [
   {
     q: "What is there to do in Southport?",
-    a: "More than most people expect. Southport has 22 miles of coastline across four distinct beaches, England's Golf Coast with 14 championship courses including Royal Birkdale, the National Trust red squirrel reserve at Formby, Antony Gormley's Another Place at Crosby, The Atkinson cultural centre, the Victorian boulevard of Lord Street (which reportedly inspired the redesign of Paris), WWT Martin Mere wetland, and a year-round events calendar running from Lightport in February to a Comedy Festival in October.",
+    a: "More than most people expect. Southport has 22 miles of coastline across four distinct beaches, England's Golf Coast with 14 championship courses including Royal Birkdale, the National Trust red squirrel reserve at Formby, Antony Gormley's Another Place at Crosby, The Atkinson cultural centre, the Victorian boulevard of Lord Street (which reportedly inspired the redesign of Paris), WWT Martin Mere wetland, and events through the year.",
   },
   {
     q: "Is Southport good for a family day out?",
@@ -413,7 +401,7 @@ const FAQS = [
   },
   {
     q: "What is the best time to visit Southport?",
-    a: "Summer (June to August) for the beach and outdoor events, including the Air Show and Flower Show. Spring and autumn are best for Formby red squirrels and quieter beaches. The town has a solid year-round events calendar. Even February has Lightport, one of the best light installations in the North.",
+    a: "Summer (June to August) for the beach and outdoor events, including the Flower Show in August. Spring and autumn are best for Formby red squirrels and quieter beaches. The town has events through the year: see the events calendar.",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
@@ -505,7 +493,7 @@ export default function ThingsToDoPage() {
                   href="/events"
                   className="bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-colors hover:bg-white/20"
                 >
-                  Events 2026 →
+                  What&apos;s on →
                 </Link>
               </div>
             </div>
@@ -544,7 +532,7 @@ export default function ThingsToDoPage() {
                 { value: "100", unit: "iron figures", label: "Antony Gormley, Crosby" },
                 { value: "1,108", unit: "metres", label: "Southport Pier" },
                 { value: "1", unit: "of 12", label: "UK red squirrel refuges" },
-                { value: "12+", unit: "events", label: "in 2026 alone" },
+                { value: "22", unit: "miles", label: "of Sefton coastline" },
               ].map((s) => (
                 <div key={s.label} className="text-center px-4 py-6">
                   <div className="text-2xl font-extrabold text-[#C9A84C]">{s.value}</div>
@@ -937,28 +925,27 @@ export default function ThingsToDoPage() {
             </div>
           </section>
 
-          {/* ── Events 2026 ── */}
+          {/* ── Coming up: the next events from lib/events-data.ts ── */}
           <section id="events" className="scroll-mt-28">
             <div className="mb-10">
-              <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Year-Round</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Events in Southport 2026</h2>
+              <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Coming up</p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Events in Southport</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                2026 brought ten major events between February and October, including The Open Championship,
-                the Air Show, the Flower Show and a cultural programme under the Southport 2026 banner.
+                The next events on our calendar, each checked on the organiser&apos;s own page.
               </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
-              {EVENTS_2026.map((ev) => (
-                <div key={ev.event} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+              {getUpcomingEvents(10).map((ev) => (
+                <div key={ev.title + ev.isoDate} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[#C9A84C] text-xs font-black uppercase tracking-widest">{ev.month}</span>
-                    {ev.free && (
+                    <span className="text-[#C9A84C] text-xs font-black uppercase tracking-widest">{ev.dayLabel}</span>
+                    {ev.free === true && (
                       <span className="text-[10px] bg-green-100 text-green-700 font-bold px-1.5 py-0.5 rounded-full">FREE</span>
                     )}
                   </div>
-                  <h3 className="font-display font-bold text-[#1B2E4B] text-sm leading-snug mb-1">{ev.event}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{ev.desc}</p>
+                  <h3 className="font-display font-bold text-[#1B2E4B] text-sm leading-snug mb-1">{ev.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{ev.venue}</p>
                 </div>
               ))}
             </div>
@@ -967,7 +954,7 @@ export default function ThingsToDoPage() {
               href="/events"
               className="inline-flex items-center gap-2 bg-[#1B2E4B] text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-[#2A4A73] transition-colors"
             >
-              Full 2026 Events Calendar <ArrowRight className="w-4 h-4" />
+              Full Events Calendar <ArrowRight className="w-4 h-4" />
             </Link>
           </section>
 

@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "Best restaurants, bars, and cafés near the Marine Lake Events Centre in Southport. Pre-show dining guide with options by area, price, and distance from MLEC.",
   keywords:
-    "restaurants near MLEC, bars near Marine Lake Events Centre, pre-show dining Southport, eat near MLEC, Southport restaurants 2027",
+    "restaurants near MLEC, bars near Marine Lake Events Centre, pre-show dining Southport, eat near MLEC, Southport restaurants",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec/restaurants" },
 };
 
@@ -33,7 +33,7 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "Does MLEC have its own restaurant?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both are due to open with the venue in April 2027. The signature restaurant is expected to be a popular pre-show dining option, book ahead for event nights." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. MLEC will include a signature restaurant with 180-degree views across Marine Lake, plus a lakeside café operating year-round. Both will open with the venue. The signature restaurant is expected to be a popular pre-show dining option, book ahead for event nights." },
     },
     {
       "@type": "Question",
@@ -61,7 +61,7 @@ const DINING_AREAS = [
     description:
       "The stretch of the Promenade around MLEC will have the MLEC's own signature restaurant and lakeside café as anchors. Existing seafront options include fish and chips, casual cafés, and ice cream, ideal for a relaxed pre-show snack or a quick post-show something sweet. Expect the dining offer on the Promenade to expand significantly once MLEC opens and footfall increases.",
     options: [
-      { type: "MLEC Signature Restaurant", detail: "Lake views, full-service dining, inside MLEC itself. Opening 2027." },
+      { type: "MLEC Signature Restaurant", detail: "Lake views, full-service dining, inside MLEC itself. When the venue opens." },
       { type: "MLEC Lakeside Café", detail: "Coffee by day, bistro by night. Year-round, no event required." },
       { type: "Seafront fish & chip shops", detail: "Classic British seaside, grab and go, or sit down." },
       { type: "Promenade cafés & kiosks", detail: "Coffee, ice cream, light bites, good for pre-show casual." },
@@ -118,7 +118,7 @@ const PRE_SHOW_TIPS = [
   {
     icon: Coffee,
     title: "MLEC Has Its Own Restaurant",
-    body: "From 2027, you'll be able to dine in the MLEC signature restaurant with 180-degree lake views. Book this for special occasions, it will be the most dramatic pre-show dining experience in the town.",
+    body: "Once the venue opens, you'll be able to dine in the MLEC signature restaurant with 180-degree lake views. Book this for special occasions, it will be the most dramatic pre-show dining experience in the town.",
   },
   {
     icon: Star,
@@ -135,7 +135,7 @@ const FOOD_TYPES = [
   { cuisine: "Thai & Asian Fusion", desc: "Growing selection of Thai, Japanese, and Asian fusion restaurants in the town centre." },
   { cuisine: "Bars & Cocktails", desc: "Lord Street has a strong cocktail bar scene for pre and post-show drinks." },
   { cuisine: "Brunch & Cafés", desc: "Southport's café culture is strong, ideal for matinée days starting with brunch." },
-  { cuisine: "MLEC Dining", desc: "MLEC's own signature restaurant (lake views) and lakeside café from April 2027." },
+  { cuisine: "MLEC Dining", desc: "MLEC's own signature restaurant (lake views) and lakeside café, once the venue opens." },
 ];
 
 export default function MLECRestaurantsPage() {

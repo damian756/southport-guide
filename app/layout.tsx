@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   description:
     "Discover the best restaurants, hotels, bars, attractions and things to do in Southport. Your complete local guide.",
   keywords:
-    "Southport, restaurants Southport, hotels Southport, things to do Southport, The Open 2026, Royal Birkdale, visitor guide, Southport Guide",
+    "Southport, restaurants Southport, hotels Southport, things to do Southport, Royal Birkdale, visitor guide, Southport Guide",
   authors: [{ name: "Churchtown Media", url: "https://churchtownmedia.co.uk" }],
   creator: "Churchtown Media",
   publisher: "SouthportGuide.co.uk",

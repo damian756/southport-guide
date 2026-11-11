@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   title: GUIDE.metaTitle,
   description: GUIDE.metaDescription,
   keywords:
-    "hotels in Southport, where to stay in Southport, Southport accommodation, B&B Southport, guest houses Southport, Southport hotels, hotels near Royal Birkdale, Southport Open 2026 accommodation",
+    "hotels in Southport, where to stay in Southport, Southport accommodation, B&B Southport, guest houses Southport, Southport hotels, hotels near Royal Birkdale",
   alternates: { canonical: `${BASE_URL}/guides/accommodation-southport` },
   openGraph: {
-    title: "Where to Stay in Southport 2026 | Hotels, B&Bs & Accommodation Guide",
+    title: "Where to Stay in Southport | Hotels, B&Bs & Accommodation Guide",
     description:
       "A guide to accommodation in Southport. Hotels, B&Bs, guest houses and self-catering by area. Prices and booking advice for all budgets.",
     url: `${BASE_URL}/guides/accommodation-southport`,
@@ -176,9 +176,8 @@ export default function AccommodationSouthportPage() {
             question is which type suits you and what you're doing here.
           </p>
           <p className="text-gray-700">
-            If you're visiting for The Open 2026 at Royal Birkdale (12–19 July), most good options are
-            already gone. Book whatever is left immediately. If you're here for anything else,
-            availability is generally fine outside peak summer weekends.
+            Availability is generally fine outside peak summer weekends and the weekends of big events
+            such as the Flower Show.
           </p>
         </section>
 
@@ -188,7 +187,7 @@ export default function AccommodationSouthportPage() {
             { icon: PoundSterling, label: "Budget hotels", value: "From £60/night" },
             { icon: Star, label: "Best rated area", value: "Birkdale / Lord St" },
             { icon: Car, label: "Free parking", value: "Premier Inn South" },
-            { icon: CalendarDays, label: "Peak: avoid booking late", value: "Jul & Aug 2026" },
+            { icon: CalendarDays, label: "Peak: avoid booking late", value: "Jul & Aug" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="bg-blue-50 rounded-xl p-4 flex flex-col gap-1">
               <div className="flex items-center gap-2 text-blue-700">
@@ -304,7 +303,7 @@ export default function AccommodationSouthportPage() {
               { href: "/things-to-do", label: "Things to Do in Southport" },
               { href: "/guides/parking-southport", label: "Parking in Southport" },
               { href: "/restaurants", label: "Restaurants in Southport" },
-              { href: "/the-open-2026", label: "The Open 2026 Visitor Guide" },
+              { href: "/the-open-2026", label: "The Open 2026: Results and Review" },
               { href: "/guides/southport-beach", label: "Southport Beach Guide" },
               { href: "/guides/birkdale-village", label: "Birkdale Village" },
             ].map(({ href, label }) => (

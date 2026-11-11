@@ -1,3 +1,4 @@
+import { todayISO } from "@/lib/guides-config";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -472,6 +473,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {post.heroCaption && (
           <p className="-mt-7 mb-8 px-2 text-xs text-gray-400 leading-relaxed">{post.heroCaption}</p>
+        )}
+
+        {/* A dated post whose event or season has passed (BlogPost.eventEndDate) */}
+        {post.eventEndDate && post.eventEndDate < todayISO() && (
+          <div role="note" className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-[#1B2E4B]">
+            <p className="font-semibold">
+              This post was written on {post.date} for an event or season that has now passed. Some details will have changed.{" "}
+              <Link href="/events" className="text-[#8a6d1f] underline underline-offset-2 hover:text-[#1B2E4B]">What&apos;s on in Southport now</Link>
+            </p>
+          </div>
         )}
 
         {/* Content */}

@@ -210,7 +210,7 @@ export default async function CollectionPage({ params }: Props) {
               <span>{count === 1 ? "listing" : "listings"} found</span>
               {!isIndexable && (
                 <span className="ml-2 text-amber-400 text-xs font-semibold uppercase tracking-wider">
-                  · Building, more coming soon
+                  · Only a few listings so far
                 </span>
               )}
             </div>

@@ -18,7 +18,7 @@ export async function GET() {
   <channel>
     <title>SouthportGuide.co.uk. Blog</title>
     <link>${BASE_URL}/blog</link>
-    <description>Local guides, tips and stories from Southport, restaurants, hotels, things to do and The Open 2026.</description>
+    <description>Local guides, tips and stories from Southport, restaurants, hotels, things to do and events.</description>
     <language>en-gb</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${BASE_URL}/feed" rel="self" type="application/rss+xml"/>

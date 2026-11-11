@@ -363,7 +363,7 @@ export default function MLECGettingTherePage() {
                 "The walk from station to MLEC is entirely flat with smooth pavements",
                 "Accessible parking bays will be designated at or near MLEC, details TBC",
                 "For disabled-adapted taxis, pre-book with local specialist firms",
-                "Full accessibility guide to be published by Sefton Council ahead of 2027 opening",
+                "Full accessibility guide to be published by Sefton Council ahead of opening",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-2 text-sm text-gray-700">
                   <CheckCircle className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />

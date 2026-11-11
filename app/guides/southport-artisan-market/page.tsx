@@ -199,7 +199,7 @@ export default function SouthportArtisanMarketPage() {
               {[
                 { name: "KC Artisan Party in the Park", month: "11–12 April 2026", desc: "Two days of artisan market, live music and street food at Victoria Park.", href: "/guides/kc-artisan-party-in-the-park-southport-2026" },
                 { name: "Food & Drink Festival", month: "29–31 May 2026", desc: "Bank Holiday weekend food festival, 100+ traders, free entry.", href: "/guides/southport-food-drink-festival-2026" },
-                { name: "Full Events Calendar", month: "All of 2026", desc: "Everything happening in Southport this year.", href: "/events" },
+                { name: "Full Events Calendar", month: "Coming up", desc: "What is on in Southport in the months ahead.", href: "/events" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">{item.month}</p>

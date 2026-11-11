@@ -373,10 +373,10 @@ export default async function Home() {
           <div className="flex flex-wrap items-center gap-2 py-3">
             <span className="text-[10px] font-bold text-[#1B2E4B]/40 uppercase tracking-widest mr-1 hidden sm:inline">Quick answers:</span>
             {[
-              { label: "Beach parking", value: "PR8 1RQ", href: "/guides/southport-beach" },
+              { label: "Beach parking", value: "Marine Drive", href: "/guides/southport-beach" },
               { label: "Train station", value: "Southport", href: "/guides/getting-to-southport" },
-              { label: "Marine Drive car park", value: "PR8 1RQ", href: "/guides/parking-southport" },
-              { label: "Southport Market", value: "Market Street", href: "/guides/southport-market" },
+              { label: "Southport Pier", value: "Closed for repairs", href: "/guides/southport-pier" },
+              { label: "Southport Market", value: "King Street", href: "/guides/southport-market" },
               { label: "The Atkinson", value: "PR8 1DB", href: "/guides/the-atkinson-southport" },
               { label: "House prices", value: "PR8 & PR9 data", href: "/property" },
             ].map(({ label, value, href }) => (
@@ -1256,7 +1256,7 @@ export default async function Home() {
                 </Link>
               </h2>
               <p className="text-white/70 leading-relaxed mb-5 max-w-lg">
-                Parking postcode PR8 1RQ (Marine Drive). Free entry. Dogs welcome year-round. At low tide the sea retreats over a kilometre. A coastal landscape like nothing else in the North West.
+                Parking on Marine Drive. Free entry. Dogs are welcome, except on the stretch south of the pier from 1 May to 30 September. At low tide the sea retreats over a kilometre. A coastal landscape like nothing else in the North West.
               </p>
               <div className="flex flex-wrap gap-3 text-sm mb-5">
                 <span className="bg-white/10 text-white/80 rounded-full px-3 py-1">Free to visit</span>
@@ -1281,7 +1281,7 @@ export default async function Home() {
             </div>
             <div className="flex-none md:w-64 lg:w-80 grid grid-cols-2 gap-2">
               {[
-                { label: "Postcode", value: "PR8 1RQ" },
+                { label: "Car park", value: "Marine Drive" },
                 { label: "Parking", value: "Pay & display" },
                 { label: "Entry", value: "Free" },
                 { label: "Dogs", value: "Welcome" },

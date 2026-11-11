@@ -134,7 +134,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
   "restaurants": [
     "Lord Street runs through the town centre and has restaurants at most price points, and Birkdale Village has more on Liverpool Road.",
     "The town has more independent restaurants than you'd expect, particularly on and around Lord Street and Chapel Street. If you're after Indian or Asian food, you've got a decent range and most places are very reasonably priced.",
-    "Worth knowing: the busier spots on Lord Street fill up quickly at weekends, particularly if there's an event on at Southport Theatre. Book ahead or go early.",
+    "Worth knowing: the busier spots on Lord Street fill up quickly at weekends and when there's a big event in town. Book ahead or go early.",
   ],
   "hotels": [
     "Southport has a range of places to stay: hotels on Lord Street and the Promenade, B&Bs and guest houses, and budget chain hotels. The listings below show where each one is.",

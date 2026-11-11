@@ -1,3 +1,4 @@
+import OpenPastNote from "@/app/components/OpenPastNote";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Train, Car, Bus, MapPin, AlertTriangle, Clock } from "lucide-react";
@@ -54,6 +55,7 @@ export default function OpenGettingTherePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <OpenPastNote />
     <div className="min-h-screen bg-[#FAF8F5]">
 
       {/* Hero */}

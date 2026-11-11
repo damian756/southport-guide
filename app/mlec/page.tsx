@@ -20,19 +20,19 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Marine Lake Events Centre (MLEC) Southport | Complete Visitor Guide 2027",
+  title: "Marine Lake Events Centre (MLEC) Southport | Visitor Guide",
   description:
-    "Everything you need to know about Southport's new £73m Marine Lake Events Centre, opening April 2027. Venue details, The Light Fantastic water show, where to stay, how to get there, and what's on.",
+    "Everything you need to know about Southport's new £106m Marine Lake Events Centre, which Sefton Council plans to complete by winter 2028. Venue details, The Light Fantastic water show, where to stay, how to get there, and what's on.",
   keywords:
-    "Marine Lake Events Centre, MLEC Southport, MLEC 2027, Light Fantastic Southport, Marine Lake, Southport events venue, Southport Town Deal",
+    "Marine Lake Events Centre, MLEC Southport, Light Fantastic Southport, Marine Lake, Southport events venue, Southport Town Deal",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec" },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
     locale: "en_GB",
-    title: "Marine Lake Events Centre (MLEC) | Southport's New £73m Landmark",
+    title: "Marine Lake Events Centre (MLEC) | Southport's New £106m Venue",
     description:
-      "Your complete guide to MLEC. 1,500-seat theatre, 2,400-capacity exhibition hall, The Light Fantastic water show, and more. Opening April 2027.",
+      "Your complete guide to MLEC. 1,500-seat theatre, 2,400-capacity exhibition hall, The Light Fantastic water show, and more. Due for completion by winter 2028.",
     url: "https://www.southportguide.co.uk/mlec",
     images: [{ url: "/images/mlec.webp", width: 1200, height: 630, alt: "Marine Lake Events Centre Southport" }],
   },
@@ -53,7 +53,7 @@ const STATS = [
   { label: "Additional Visitors", value: "515k", sub: "projected per year", icon: TrendingUp },
   { label: "Economic Boost", value: "£18m", sub: "annually to Southport", icon: TrendingUp },
   { label: "New Jobs Created", value: "300", sub: "permanent positions", icon: Users },
-  { label: "Total Investment", value: "£73m", sub: "project value", icon: Building2 },
+  { label: "Total Investment", value: "£106m", sub: "Sefton Council", icon: Building2 },
 ];
 
 const TIMELINE = [
@@ -86,31 +86,10 @@ const TIMELINE = [
     status: "done",
   },
   {
-    date: "March–April 2026",
-    event: "Interior & Specialist Fit-Out",
+    date: "Winter 2028",
+    event: "Building Due",
     detail:
-      "High-level walkways and gantries installed (24 weeks). Fabric, finishes and specialist theatre installations begin, including the Liberty sprung dance floor and AV systems.",
-    status: "active",
-  },
-  {
-    date: "August 2026",
-    event: "Completion Activities",
-    detail:
-      "Final completion works begin (29 weeks). The Light Fantastic water show components installed on Marine Lake.",
-    status: "upcoming",
-  },
-  {
-    date: "October 2026",
-    event: "Handover & Staff Training",
-    detail:
-      "Building formally handed over to Sefton Council. ASM Global (appointed venue manager) begins 24-week staff training and familiarisation programme.",
-    status: "upcoming",
-  },
-  {
-    date: "April 2027",
-    event: "Doors Open",
-    detail:
-      "MLEC opens to the public. Southport gets its landmark cultural venue back. Bigger, better, and built for the next 50 years.",
+      "Sefton Council: Vinci Construction is carrying out the main works to deliver the building by winter 2028, with a fit-out of several months by the operator to follow.",
     status: "target",
   },
 ];
@@ -118,7 +97,7 @@ const TIMELINE = [
 const FAQS = [
   {
     q: "When does the Marine Lake Events Centre open?",
-    a: "Practical completion is expected in April 2027. Sefton Council and venue manager ASM Global will announce specific opening events and shows in the months leading up to opening.",
+    a: "Sefton Council says Vinci Construction is carrying out the main works to deliver the building by winter 2028, with a fit-out of several months by the operator to follow. Opening events will be announced nearer the time.",
   },
   {
     q: "What kind of events will MLEC host?",
@@ -134,11 +113,11 @@ const FAQS = [
   },
   {
     q: "Who is managing the MLEC?",
-    a: "ASM Global has been appointed as venue operator. ASM Global manages over 350 venues worldwide, including Manchester's AO Arena and Liverpool's M&S Bank Arena, so Southport is in capable hands.",
+    a: "Sefton Council's page says an operator will fit out the venue once the main works are finished. Check the council's MLEC page for the latest.",
   },
   {
     q: "How is MLEC being paid for?",
-    a: "The £73m project is funded through: £33.3m from the Southport Town Deal, £20m from the Liverpool City Region Combined Authority, and £19.9m in Sefton Council prudential borrowing. It is the central project of the Southport Town Deal.",
+    a: "Sefton Council describes the MLEC as a £106m multipurpose events centre. It is part of the Southport Town Deal.",
   },
   {
     q: "What happened to the old Southport Theatre?",
@@ -154,7 +133,7 @@ const MLEC_EVENT_LD = {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   name: "Marine Lake Events Centre (MLEC)",
-  description: "Southport's new £73m Marine Lake Events Centre: 1,500-seat theatre, 2,400-capacity exhibition hall, and The Light Fantastic water show. Opening April 2027.",
+  description: "Southport's new £106m Marine Lake Events Centre: 1,500-seat theatre, 2,400-capacity exhibition hall, and The Light Fantastic water show. Due for completion by winter 2028.",
   url: "https://www.southportguide.co.uk/mlec",
   image: "https://www.southportguide.co.uk/images/mlec.webp",
   address: {
@@ -213,7 +192,7 @@ export default function MLECPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                Opening April 2027
+                Due by winter 2028
               </span>
               <span className="text-slate-300 text-sm">Southport Town Deal</span>
             </div>
@@ -222,7 +201,7 @@ export default function MLECPage() {
               <span className="text-amber-400">Events Centre</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 mb-6 max-w-2xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-              Southport's landmark £73m cultural venue. 1,500-seat theatre, 2,400-capacity exhibition hall,
+              Southport's landmark £106m cultural venue. 1,500-seat theatre, 2,400-capacity exhibition hall,
               and the UK's first water and light show, right on Marine Lake.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -291,7 +270,7 @@ export default function MLECPage() {
                 what's coming to replace it is genuinely extraordinary.
               </p>
               <p>
-                The Marine Lake Events Centre isn't just a new venue. It's a statement. A £73 million statement, funded by the
+                The Marine Lake Events Centre isn't just a new venue. It's a statement. A £106 million statement, funded by the
                 Southport Town Deal, that says this town is serious about its future. A 1,500-seat theatre with a Liberty sprung
                 dance floor. A 2,400-capacity exhibition hall that can be split three ways. A signature restaurant. A lakeside
                 café with 180-degree views. And right outside the front doors, the UK's first water and light show:
@@ -603,14 +582,9 @@ export default function MLECPage() {
                 <p>
                   For a town that has spent a decade fighting for its share of the visitor economy, the MLEC isn't
                   just a building. It's the anchor of a wider transformation. The Town Deal isn't the only
-                  regeneration money coming to Southport, but it's the most visible. When those doors open in 2027,
+                  regeneration money coming to Southport, but it's the most visible. When those doors open,
                   they'll open onto a town that has also seen investment in Lord Street, the seafront, and the
                   wider cultural offer.
-                </p>
-                <p>
-                  ASM Global, who also run Manchester's AO Arena and Liverpool's M&amp;S Bank Arena, have been appointed
-                  to manage the venue. That's serious pedigree. It means touring shows, major conferences, and national
-                  acts will be looking at Southport as a genuine stop on their circuit for the first time in years.
                 </p>
                 <p>
                   Half a million extra visitors a year don't just go to the venue. They stay in our hotels, eat in our
@@ -620,45 +594,17 @@ export default function MLECPage() {
               </div>
             </div>
             <div className="space-y-4">
+              {/* Sefton Council's MLEC page, checked 11 Nov 2026 */}
               <div className="bg-slate-900 text-white rounded-xl p-6">
-                <h3 className="text-lg font-bold text-amber-400 mb-4">Funding Breakdown</h3>
-                <div className="space-y-3">
-                  {[
-                    { source: "Southport Town Deal", amount: "£33.3m", pct: "45%" },
-                    { source: "Liverpool City Region Combined Authority", amount: "£20m", pct: "27%" },
-                    { source: "Sefton Council Prudential Borrowing", amount: "£19.9m", pct: "27%" },
-                  ].map((row) => (
-                    <div key={row.source}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-slate-300">{row.source}</span>
-                        <span className="text-amber-400 font-bold">{row.amount}</span>
-                      </div>
-                      <div className="h-2 bg-slate-700 rounded-full">
-                        <div
-                          className="h-2 bg-amber-400 rounded-full"
-                          style={{ width: row.pct }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                  <div className="border-t border-slate-700 pt-3 mt-3 flex justify-between">
-                    <span className="text-slate-300 font-semibold">Total Investment</span>
-                    <span className="text-white font-extrabold text-lg">£73m+</span>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
-                <h3 className="text-base font-bold text-amber-800 mb-3">Key Project Partners</h3>
-                <ul className="space-y-2 text-sm text-amber-900">
-                  <li><span className="font-semibold">Lead Architect:</span> AFL Architects</li>
-                  <li><span className="font-semibold">Project Manager:</span> Gardiner & Theobald</li>
-                  <li><span className="font-semibold">Civil Engineers:</span> AECOM</li>
-                  <li><span className="font-semibold">Venue Consultants:</span> IPW</li>
-                  <li><span className="font-semibold">Main Contractor:</span> John Graham Construction</li>
-                  <li><span className="font-semibold">Demolition:</span> DSM Group</li>
-                  <li><span className="font-semibold">Venue Operator:</span> ASM Global</li>
-                  <li><span className="font-semibold">Light Show:</span> LCI Productions</li>
-                </ul>
+                <h3 className="text-lg font-bold text-amber-400 mb-3">From Sefton Council</h3>
+                <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                  Sefton Council describes the MLEC as a £106m multipurpose events centre. Its page says Vinci
+                  Construction is carrying out the main works to deliver the building by winter 2028, with a fit-out
+                  of several months by the operator to follow.
+                </p>
+                <a href="https://www.sefton.gov.uk/around-sefton/southport-town-deal/marine-lake-events-centre-water-and-light-show/" target="_blank" rel="noopener noreferrer" className="text-amber-400 text-sm font-semibold hover:underline">
+                  Sefton Council: the MLEC page
+                </a>
               </div>
             </div>
           </div>
@@ -686,8 +632,7 @@ export default function MLECPage() {
                 </p>
                 <p>
                   The MLEC isn&apos;t a replacement. It&apos;s a transformation. The site, the lake, the views, the Promenade:
-                  all the same. But the building sitting on that plot in 2027 will be one of the finest venues in the
-                  North of England.
+                  all the same. But the building on that plot will be a new venue for the whole town.
                 </p>
               </div>
             </div>
@@ -759,7 +704,7 @@ export default function MLECPage() {
 
         {/* ── Partner CTA ── */}
         <section className="bg-gradient-to-r from-slate-900 to-blue-950 rounded-2xl text-white p-8 md:p-12 text-center">
-          <p className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Be Ready for 2027</p>
+          <p className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Be Ready</p>
           <h2 className="text-3xl font-extrabold mb-4">Get Listed Before the Crowds Arrive</h2>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
             MLEC is projected to bring 515,000 extra visitors to Southport every year. Is your accommodation,

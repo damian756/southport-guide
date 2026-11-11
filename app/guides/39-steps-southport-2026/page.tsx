@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "When is The 39 Steps at Southport Little Theatre?", a: "The 39 Steps runs at Southport Little Theatre from Friday 10 April to Saturday 18 April 2026. This is a nine-night run. Evening performances are typically at 7:30pm. Check the Little Theatre website for the complete schedule and any matinee performances." },
-  { q: "Where is Southport Little Theatre?", a: "Southport Little Theatre is on Hoghton Street, Southport, PR9 0SX. It is approximately 10 minutes' walk from Southport railway station and 15 minutes from the Lord Street town centre." },
+  { q: "Where is Southport Little Theatre?", a: "Southport Little Theatre is on Hoghton Street, Southport, PR9 0PA. It is approximately 10 minutes' walk from Southport railway station and 15 minutes from the Lord Street town centre." },
   { q: "What is The 39 Steps play?", a: "The 39 Steps is a stage adaptation of John Buchan's 1915 spy novel, made famous by Alfred Hitchcock's 1935 film. The comedic stage version, adapted by Patrick Barlow, uses four actors to play all 150 characters and is known for its inventive staging and physical comedy. It is a fast-paced, entertaining thriller." },
   { q: "How do I book tickets for The 39 Steps at the Little Theatre?", a: "Book directly through Southport Little Theatre's website. The Little Theatre is a community theatre with a loyal audience, so early booking is recommended, particularly for weekend performances." },
   { q: "Is Southport Little Theatre accessible?", a: "Contact the Little Theatre directly to discuss access requirements. The venue is a traditional community theatre and access arrangements vary, it is best to call ahead if you have specific needs." },
@@ -47,7 +47,7 @@ const PAGE_LD = {
   location: {
     "@type": "Place",
     name: "Southport Little Theatre",
-    address: { "@type": "PostalAddress", streetAddress: "Hoghton Street", addressLocality: "Southport", postalCode: "PR9 0SX", addressCountry: "GB" },
+    address: { "@type": "PostalAddress", streetAddress: "Hoghton Street", addressLocality: "Southport", postalCode: "PR9 0PA", addressCountry: "GB" },
   },
   organizer: { "@type": "Organization", name: "Southport Dramatic Club" },
   performer: { "@type": "PerformingGroup", name: "Southport Dramatic Club" },
@@ -76,7 +76,7 @@ export default function ThirtyNineStepsPage() {
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">10–18 April 2026</span>
-              <span className="text-white/50 text-sm font-medium">Little Theatre · Hoghton Street · PR9 0SX</span>
+              <span className="text-white/50 text-sm font-medium">Little Theatre · Hoghton Street · PR9 0PA</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               The 39 Steps
@@ -96,7 +96,7 @@ export default function ThirtyNineStepsPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "10–18 Apr", label: "When", sub: "Nine-night run" },
-              { icon: MapPin, value: "PR9 0SX", label: "Where", sub: "Little Theatre, Hoghton St" },
+              { icon: MapPin, value: "PR9 0PA", label: "Where", sub: "Little Theatre, Hoghton St" },
               { icon: Clock, value: "7:30pm", label: "Showtimes", sub: "Evening performances" },
               { icon: Ticket, value: "Ticketed", label: "Entry", sub: "Book in advance" },
             ].map((s) => (

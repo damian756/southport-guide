@@ -142,19 +142,20 @@ export default function TheAtkinsonPage() {
         <section>
           <div className="mb-8">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">What&apos;s On Now</p>
-            <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">Current Programme</h2>
+            <h2 className="font-display text-3xl font-bold text-[#1B2E4B]">This Winter</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
-            <Link href="/guides/sefton-open-2026" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">2 April – 13 June 2026</p>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">Sefton Open 2026 <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Annual open art exhibition, painting, sculpture, print, and mixed media from local and regional artists. Free entry.</p>
-            </Link>
-            <Link href="/guides/whistle-down-the-wind-southport-2026" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">9–11 April 2026</p>
-              <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">Whistle Down the Wind <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Andrew Lloyd Webber&apos;s musical by SONG Productions. Three nights in the theatre. Book in advance.</p>
-            </Link>
+            {/* Checked on theatkinson.co.uk, 11 Nov 2026. Past dates drop off with the events calendar. */}
+            <a href="https://theatkinson.co.uk/exhibition/artist-rooms-gilbert-george/" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">7 November 2026 to 20 February 2027</p>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">ARTIST ROOMS Gilbert &amp; George <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Exhibition in the galleries. Free entry, Monday to Saturday, 10am to 4pm.</p>
+            </a>
+            <a href="https://theatkinson.co.uk/events/cinderella-panto-2026/" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-2">4 to 31 December 2026</p>
+              <h3 className="font-display font-bold text-[#1B2E4B] text-xl mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-2">Cinderella: Christmas Pantomime <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></h3>
+              <p className="text-gray-600 text-sm leading-relaxed">The Atkinson&apos;s family pantomime in the theatre. Tickets from The Atkinson.</p>
+            </a>
           </div>
         </section>
 
@@ -208,7 +209,7 @@ export default function TheAtkinsonPage() {
           <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">Gallery entry is free. Check what is on before you visit, the programme changes monthly.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="https://www.theatkinson.co.uk" target="_blank" rel="noopener noreferrer" className="bg-[#C9A84C] hover:bg-[#E8C87A] text-[#1B2E4B] px-8 py-3.5 rounded-full font-bold transition-colors">theatkinson.co.uk</a>
-            <Link href="/guides/sefton-open-2026" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">Sefton Open 2026 →</Link>
+            <Link href="/events" className="bg-white/10 border border-white/25 text-white px-8 py-3.5 rounded-full font-semibold transition-colors hover:bg-white/20">What&apos;s on in Southport →</Link>
           </div>
         </section>
       </div>

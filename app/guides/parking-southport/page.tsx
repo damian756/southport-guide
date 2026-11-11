@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "Where is the best place to park near Southport Beach?",
-    a: "Marine Drive car park (PR8 1RQ) is the main option for beach parking, it runs alongside the promenade and beach. It's a large car park so it can accommodate significant numbers, but it does fill on busy summer Saturdays and during the Air Show. Arrive before 10am in peak season to be safe.",
+    a: "Marine Drive car park is the main option for beach parking, it runs alongside the promenade and beach. It's a large car park so it can accommodate significant numbers, but it does fill on busy summer Saturdays and during the Air Show. Arrive before 10am in peak season to be safe.",
   },
   {
     q: "Where should I park for Lord Street?",
@@ -44,11 +44,11 @@ const FAQS = [
   },
   {
     q: "Is there parking near Southport Pier?",
-    a: "Yes. Marine Drive car park is the closest to Southport Pier, approximately 5 minutes' walk. The Promenade car park (PR8 1RQ) is also nearby.",
+    a: "Yes. Marine Drive car park is the closest to Southport Pier, approximately 5 minutes' walk. The Promenade car park is also nearby.",
   },
   {
     q: "What is the postcode for Southport beach parking?",
-    a: "Marine Drive car park postcode is PR8 1RQ. This will get you to the main beach-side car park on Marine Drive, which runs along the seafront.",
+    a: "Sefton Council's beach page gives no postcode for the Marine Drive car park, and the postcode this guide used to give is no longer in use. Head for Marine Drive, which runs along the seafront.",
   },
   {
     q: "Is there EV charging in Southport?",
@@ -61,7 +61,7 @@ const FAQS = [
 ];
 
 const CAR_PARKS = [
-  { name: "Marine Drive (Beach)", postcode: "PR8 1RQ", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays, arrive early.", href: "/parking/parking-southport-marine-drive-car-park" },
+  { name: "Marine Drive (Beach)", postcode: "Marine Drive", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays, arrive early.", href: "/parking/parking-southport-marine-drive-car-park" },
   { name: "Esplanade", postcode: "PR8 1RX", best: "Beach, seafront", notes: "Pay-and-display on the Esplanade, steps from the sand.", href: "/parking/parking-esplanade-parking" },
   { name: "NCP London Street", postcode: "PR8 1QU", best: "Town centre, Lord Street", notes: "Multi-storey. Covered, good in wet weather. Central for Lord Street.", href: "/parking/parking-ncp-southport-london-street" },
   { name: "Tulketh Street", postcode: "PR8 1DP", best: "Lord Street (north)", notes: "Convenient for The Atkinson and northern Lord Street." },
@@ -124,7 +124,7 @@ export default function ParkingSouthportGuidePage() {
           <div className="flex flex-wrap gap-3 text-sm">
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <MapPin className="w-4 h-4 text-[#C9A84C]" />
-              <span>Beach parking: PR8 1RQ</span>
+              <span>Beach parking: Marine Drive</span>
             </div>
             <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
               <CreditCard className="w-4 h-4 text-[#C9A84C]" />
@@ -139,7 +139,7 @@ export default function ParkingSouthportGuidePage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {[
-              { label: "Beach parking postcode", value: "PR8 1RQ" },
+              { label: "Beach parking", value: "Marine Drive" },
               { label: "Lord St parking", value: "Tulketh / Eastbank" },
               { label: "Typical cost", value: "£2–£5" },
               { label: "Peak arrival (summer)", value: "Before 10am" },
@@ -202,7 +202,7 @@ export default function ParkingSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Parking Near Southport Beach</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Marine Drive is the main beach-side car park. It runs along the promenade for about a mile, with pay-and-display bays facing the beach. Postcode: <strong>PR8 1RQ</strong>.
+            Marine Drive is the main beach-side car park. It runs along the promenade for about a mile, with pay-and-display bays facing the beach.
           </p>
           <div className="bg-[#FAF8F5] border-l-4 border-[#C9A84C] rounded-r-xl px-5 py-4 my-6">
             <p className="text-[#1B2E4B] font-medium leading-relaxed">

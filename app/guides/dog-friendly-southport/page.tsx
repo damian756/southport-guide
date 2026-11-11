@@ -208,7 +208,7 @@ export default async function DogFriendlySouthportGuidePage() {
               },
               {
                 name: "Marine Drive Promenade",
-                postcode: "PR8 1RQ",
+                postcode: "Marine Drive",
                 notes: "The full seafront promenade. Easy walking on tarmac. Sea views throughout.",
               },
               {

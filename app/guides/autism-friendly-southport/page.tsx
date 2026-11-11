@@ -191,20 +191,6 @@ const EVENTS_CAUTION = [
     severity: "medium",
   },
   {
-    name: "The Open Championship",
-    when: "12–19 July 2026",
-    issue: "40,000+ visitors per day in a small area. Traffic, queues, noise throughout the town. The whole of Southport operates at maximum capacity for a week.",
-    verdict: "Not suitable for most sensory-sensitive visitors during championship days.",
-    severity: "high",
-  },
-  {
-    name: "Cristal Palace on Lord Street",
-    when: "3–4 April 2026",
-    issue: "Thousands gathered on Lord Street. Aerial performance with live music directly overhead. A very narrow boulevard becomes very full.",
-    verdict: "Approach carefully. Watching from the fringes at a distance is possible.",
-    severity: "medium",
-  },
-  {
     name: "Southport Flower Show",
     when: "August",
     issue: "Large show across Victoria Park. Can be busy. Music stages operate on certain days.",
@@ -540,7 +526,7 @@ export default function AutismFriendlySouthportPage() {
                 <p className="text-white/60 text-xs leading-relaxed">
                   For a full calendar of what is on when, see the{" "}
                   <Link href="/events" className="text-[#C9A84C] hover:underline font-semibold">
-                    2026 events page
+                    events calendar
                   </Link>
                   . Individual event guides include crowd estimates and logistics.
                 </p>

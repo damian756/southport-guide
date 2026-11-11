@@ -223,8 +223,8 @@ export default function LiveMusicPage() {
             <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">More Southport Nightlife &amp; Events</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { name: "Southport Beer Week 2026", month: "20–25 May 2026", desc: "Live music across 18 town-centre pubs. The week to plan a visit around.", href: "/guides/southport-beer-week-2026" },
-                { name: "Southport Comedy Festival", month: "2–18 October 2026", desc: "15 years of comedy at Victoria Park. 17 nights, proper headliners.", href: "/guides/southport-comedy-festival" },
+                { name: "What's on in Southport", month: "Coming up", desc: "Theatre, Christmas events, markets and shows, with links to each organiser.", href: "/events" },
+                { name: "Southport Comedy Festival", month: "Annual", desc: "Comedy at Victoria Park. 2027 festival dates not yet announced.", href: "/guides/southport-comedy-festival" },
                 { name: "Southport Bijou Cinema", month: "Year-round", desc: "Gig nights at Southport's independent cinema. Different to a pub night.", href: "/guides/southport-bijou-cinema" },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">

@@ -59,12 +59,12 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "What is the postcode for Southport town centre?",
-      acceptedAnswer: { "@type": "Answer", text: "The postcode for Southport train station is PR8 1QW. Lord Street (the main shopping boulevard) is PR8 1PX. The seafront and Marine Drive is PR8 1RQ. For the Atkinson arts centre: PR8 1DB." },
+      acceptedAnswer: { "@type": "Answer", text: "The postcode for Southport train station is PR8 1QW. Lord Street (the main shopping boulevard) is PR8 1PX. For the Atkinson arts centre: PR8 1DB." },
     },
     {
       "@type": "Question",
       name: "Is there parking in Southport town centre?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. There are several car parks in and around Southport town centre including the NCP on Nevill Street (PR8 1LB), the Tulketh Street multi-storey (PR8 1EL), and surface car parks along Marine Drive (PR8 1RQ) near the seafront. On-street parking is also available on many side streets." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. There are several car parks in and around Southport town centre including the NCP on Nevill Street (PR8 1LB), the Tulketh Street multi-storey (PR8 1EL), and surface car parks along Marine Drive near the seafront. On-street parking is also available on many side streets." },
     },
     {
       "@type": "Question",
@@ -230,7 +230,7 @@ export default function GettingToSouthportPage() {
           </div>
           <div className="mt-4 grid sm:grid-cols-2 gap-3">
             {[
-              { name: "Marine Drive Seafront Car Park", postcode: "PR8 1RQ", notes: "Closest to the beach. Fills quickly on sunny days." },
+              { name: "Marine Drive Seafront Car Park", postcode: "Marine Drive", notes: "Closest to the beach. Fills quickly on sunny days." },
               { name: "NCP Nevill Street", postcode: "PR8 1LB", notes: "Multi-storey near Lord Street. Covered. Open daily." },
               { name: "Tulketh Street", postcode: "PR8 1EL", notes: "Town centre multi-storey. Good for shopping." },
               { name: "Kew Street", postcode: "PR8 1HB", notes: "Surface car park, central, often available." },
@@ -321,7 +321,7 @@ export default function GettingToSouthportPage() {
           <div className="space-y-4">
             {[
               { q: "How long does it take to get to Southport by train from Liverpool?", a: "Approximately 50 minutes on the Merseyrail Northern Line from Liverpool Central, direct, no changes. Trains run every 15 to 30 minutes." },
-              { q: "What is the postcode for Southport town centre?", a: "Southport station is PR8 1QW. Lord Street is PR8 1PX. The seafront and Marine Drive is PR8 1RQ. The Atkinson arts centre is PR8 1DB." },
+              { q: "What is the postcode for Southport town centre?", a: "Southport station is PR8 1QW. Lord Street is PR8 1PX. The Atkinson arts centre is PR8 1DB." },
               { q: "Is there parking at Southport station?", a: "There is limited short-stay parking immediately outside the station. For longer stays, the NCP car park on Nevill Street (PR8 1LB) is a short walk and covered. See the full parking guide for all options." },
               { q: "How do I get to Southport from Manchester?", a: "By car via the M60 and M58, around 60 to 90 minutes depending on traffic. By train, change at Wigan Wallgate or Liverpool Central for Merseyrail to Southport, total journey around 90 minutes." },
               { q: "Can I get to Southport without a car?", a: "Yes, easily. Merseyrail runs frequent services from Liverpool Central directly to Southport. Once in Southport, the beach, Lord Street, and main attractions are all walkable from the station." },

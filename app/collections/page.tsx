@@ -144,7 +144,7 @@ export default async function CollectionsIndexPage() {
           {/* Coming soon — collapsed, not linked */}
           {comingSoon.length > 0 && (
             <div className="mt-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Coming soon</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Not enough listings yet</p>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {comingSoon.map((c) => (
                   <div

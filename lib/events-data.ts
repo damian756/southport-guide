@@ -211,7 +211,7 @@ export const EVENTS: SouthportEvent[] = [
     isoDate: "2026-04-10",
     endIsoDate: "2026-04-18",
     dayLabel: "10–18 Apr",
-    venue: "Little Theatre, PR9 0SX",
+    venue: "Little Theatre, PR9 0PA",
     category: "Theatre",
     emoji: "🕵️",
     free: false,

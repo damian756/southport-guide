@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "Find the best hotels, B&Bs and self-catering near MLEC Southport. Area-by-area guide with walking times, price ranges, and booking tips for events at the Marine Lake Events Centre.",
   keywords:
-    "accommodation near MLEC, hotels near Marine Lake Events Centre, Southport hotels 2027, where to stay MLEC, Marine Lake accommodation",
+    "accommodation near MLEC, hotels near Marine Lake Events Centre, Southport hotels, where to stay MLEC, Marine Lake accommodation",
   alternates: { canonical: "https://www.southportguide.co.uk/mlec/accommodation" },
   openGraph: {
     type: "website",

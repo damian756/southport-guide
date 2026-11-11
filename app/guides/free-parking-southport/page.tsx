@@ -60,10 +60,10 @@ const FREE_OPTIONS = [
   },
   {
     name: "Shore Road, Ainsdale (seasonal)",
-    postcode: "PR8 2QD",
+    postcode: "Shore Road",
     type: "Free on-street",
     walkTo: "Ainsdale beach: 10 min walk.",
-    notes: "Free on the road itself outside peak season. The official Ainsdale beach car park charges from April. Shore Road fills fast on sunny summer days, arrive before 9am.",
+    notes: "Sefton Council's beach parking on the sand at Ainsdale runs from 1 April to 30 September, £10 for the day, and can be made smaller or closed because of the tide or bad weather. Check the signs on Shore Road for on-street rules. It fills fast on sunny summer days, arrive before 9am.",
     href: null,
   },
   {
@@ -77,7 +77,7 @@ const FREE_OPTIONS = [
 ];
 
 const PAID_BUT_CHEAP = [
-  { name: "Marine Drive (Beach)", postcode: "PR8 1RQ", cost: "From £1.50", notes: "Pay-and-display. Main beach car park. Cheaper than town centre multi-storeys." },
+  { name: "Marine Drive (Beach)", postcode: "Marine Drive", cost: "From £1.50", notes: "Pay-and-display. Main beach car park. Cheaper than town centre multi-storeys." },
   { name: "Tulketh Street", postcode: "PR8 1DP", cost: "From £1.00", notes: "Cheap surface car park. Good for Lord Street (north). Limited spaces." },
   { name: "Market Street", postcode: "PR8 1HH", cost: "From £1.00", notes: "Central. Good for the market and southern Lord Street." },
 ];
@@ -177,7 +177,7 @@ export default function FreeParkingSouthportPage() {
               { label: "Free near Lord Street", value: "Roe Lane area" },
               { label: "Free near Churchtown", value: "Cambridge Road" },
               { label: "Free near Ainsdale beach", value: "Shore Road (seasonal)" },
-              { label: "Beach parking (paid)", value: "PR8 1RQ from £1.50" },
+              { label: "Beach parking (paid)", value: "Marine Drive, from £1.50" },
             ].map(({ label, value }) => (
               <div key={label} className="px-6 py-4 text-center">
                 <p className="text-white/50 text-[11px] uppercase tracking-wider mb-1">{label}</p>

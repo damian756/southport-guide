@@ -178,12 +178,6 @@ const BY_OCCASION = [
     note: "Independent cafés in Birkdale Village and on and around Lord Street.",
     link: "/cafes",
   },
-  {
-    occasion: "Open Championship week",
-    pick: "Book everything weeks in advance",
-    note: "The entire town fills up for Open week in July 2026. Every decent restaurant will be rammed. Book as soon as you know you're coming.",
-    link: "/the-open-2026",
-  },
 ];
 
 const CUISINES = [
@@ -214,7 +208,7 @@ const FAQS = [
   },
   {
     q: "Do I need to book restaurants in Southport?",
-    a: "For many places, yes, especially Friday and Saturday evenings. Bistrot Véronique books out a week or more in advance at weekends. During Open week (July 2026), the whole town's restaurant capacity gets stretched, book as early as possible.",
+    a: "For many places, yes, especially Friday and Saturday evenings. Bistrot Véronique books out a week or more in advance at weekends. On big event weekends, such as the Flower Show, book as early as possible.",
   },
   {
     q: "Where can I get Sunday lunch in Southport?",
@@ -395,8 +389,7 @@ export default async function SouthportEateriesGuidePage() {
                 Churchtown, ten minutes from the town centre, is often missed: the Hesketh Arms there does Sunday lunch.
               </p>
               <p>
-                One practical note: during Open week (July 2026, Royal Birkdale), the entire town&apos;s eating capacity gets stretched.
-                Every good restaurant will be full. Book well ahead if you&apos;re coming for the golf.
+                One practical note: on big event weekends, such as the Flower Show, restaurants fill up. Book well ahead.
               </p>
             </div>
           </div>
@@ -478,9 +471,8 @@ export default async function SouthportEateriesGuidePage() {
 
           <div className="mt-6 bg-[#1B2E4B] rounded-2xl p-5 text-white">
             <p className="text-sm leading-relaxed text-white/80">
-              <span className="font-bold text-[#C9A84C]">Birkdale tip:</span> Birkdale Village is also two minutes from Royal Birkdale Golf Club,
-              making it the natural base for Open Championship visitors. Accommodation on Liverpool Road and nearby streets is practical for golf week.
-              <Link href="/the-open-2026" className="text-[#C9A84C] hover:underline ml-1">The Open 2026 guide →</Link>
+              <span className="font-bold text-[#C9A84C]">Birkdale tip:</span> Birkdale Village is also close to Royal Birkdale Golf Club,
+              so it suits golfers visiting the course.
             </p>
           </div>
         </section>
@@ -686,7 +678,7 @@ export default async function SouthportEateriesGuidePage() {
               {
                 icon: Clock,
                 title: "When to book",
-                tip: "Friday and Saturday evenings at popular places, book at least a few days ahead. Sunday lunch at Hesketh Arms or The Swan, book by Thursday. Open Championship week, book weeks ahead.",
+                tip: "Friday and Saturday evenings at popular places, book at least a few days ahead. Sunday lunch at Hesketh Arms or The Swan, book by Thursday.",
               },
               {
                 icon: MapPin,
@@ -741,7 +733,7 @@ export default async function SouthportEateriesGuidePage() {
             </Link>
             <Link href="/hotels" className="group bg-white rounded-xl border border-gray-100 p-4 hover:border-[#C9A84C]/30 hover:shadow-sm transition-all">
               <h3 className="font-display font-bold text-[#1B2E4B] text-sm mb-1 group-hover:text-[#C9A84C] transition-colors">Hotels in Southport</h3>
-              <p className="text-gray-500 text-xs">From The Bold on Lord Street to seafront B&amp;Bs. Book early for Open week.</p>
+              <p className="text-gray-500 text-xs">From The Bold on Lord Street to seafront B&amp;Bs.</p>
             </Link>
           </div>
         </section>

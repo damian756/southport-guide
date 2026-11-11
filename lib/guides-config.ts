@@ -79,7 +79,7 @@ export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; descriptio
   },
   events: {
     label: "Events",
-    description: "Major annual events: The Open, Air Show, Flower Show, and more.",
+    description: "Events, festivals, theatre and regular nights out in Southport.",
     emoji: "📅",
   },
   areas: {
@@ -106,7 +106,7 @@ export const GUIDES: Guide[] = [
     title: "Southport Beach",
     description: "One of England's widest beaches. Postcode, parking, dogs, tides, and what to expect.",
     excerpt:
-      "Southport Beach guide: parking postcode PR8 1RQ (Marine Drive), dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
+      "Southport Beach guide: parking on Marine Drive, dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
     category: "beaches-coast",
     heroImage: "/images/southport-beach.webp",
     seoPriority: 0.92,
@@ -118,9 +118,9 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["cafes", "activities", "attractions"],
       tags: ["beach", "seafront"],
     },
-    metaTitle: "Southport Beach Guide 2026 | Parking, Dogs, Tides & Honest Advice",
+    metaTitle: "Southport Beach Guide | Parking, Dogs, Tides & Advice",
     metaDescription:
-      "Everything you need before visiting Southport Beach. Parking postcode PR8 1RQ (Marine Drive), dogs welcome all year, live tide times, what the beach is actually like, and how to get the most out of it. The honest local guide.",
+      "Everything you need before visiting Southport Beach: parking on Marine Drive, dog rules, live tide times, what the beach is like, and how to get the most out of it. The honest local guide.",
     relatedCollections: ["free-things-to-do-southport", "nature-reserves-southport", "dog-friendly-cafes-southport", "marine-lake-southport"],
   },
   {
@@ -505,9 +505,9 @@ export const GUIDES: Guide[] = [
     slug: "39-steps-southport-2026",
     title: "The 39 Steps at Southport Little Theatre",
     shortTitle: "The 39 Steps",
-    description: "Southport Dramatic Club's production of the spy thriller. 10–18 April 2026. Little Theatre, PR9 0SX.",
+    description: "Southport Dramatic Club's production of the spy thriller. 10–18 April 2026. Little Theatre, PR9 0PA.",
     excerpt:
-      "The 39 Steps at Southport Little Theatre: Southport Dramatic Club's production of John Buchan's spy thriller. 10–18 April 2026, nine-night run. Little Theatre, Hoghton Street, PR9 0SX.",
+      "The 39 Steps at Southport Little Theatre: Southport Dramatic Club's production of John Buchan's spy thriller. 10–18 April 2026, nine-night run. Little Theatre, Hoghton Street, PR9 0PA.",
     category: "events",
     heroImage: "/images/guides/39-steps-southport-2026.jpg",
     seoPriority: 0.72,
@@ -520,7 +520,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "bars-nightlife"] },
     metaTitle: "The 39 Steps Southport 2026 | Little Theatre 10–18 April · Tickets & Guide",
     metaDescription:
-      "The 39 Steps at Southport Little Theatre: Southport Dramatic Club, 10–18 April 2026. Hoghton Street, PR9 0SX. Tickets, parking nearby, and where to eat before the show.",
+      "The 39 Steps at Southport Little Theatre: Southport Dramatic Club, 10–18 April 2026. Hoghton Street, PR9 0PA. Tickets, parking nearby, and where to eat before the show.",
   },
   {
     slug: "the-atkinson-southport",
@@ -575,7 +575,7 @@ export const GUIDES: Guide[] = [
     tags: ["live-music", "music", "pubs", "bars-nightlife", "entertainment"],
     status: "published",
     listingFilter: { categorySlugs: ["bars-nightlife", "restaurants"] },
-    metaTitle: "Live Music in Southport | Every Venue & Night Guide 2026",
+    metaTitle: "Live Music in Southport | Venue and Night Guide",
     metaDescription:
       "Live music in Southport: every venue doing regular live music. Jazz, rock, acoustic, open mic. Which nights, which venues, what to expect. Written by a local who's been to most of them.",
   },
@@ -869,11 +869,10 @@ export const GUIDES: Guide[] = [
     status: "published",
     relatedSlugs: [
       "southport-artisan-market",
-      "easter-in-southport-2026",
       "live-music-southport",
       "autism-friendly-southport",
     ],
-    metaTitle: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
+    metaTitle: "Southport Market Guide | Traders, Menus, Parking & Tips",
     metaDescription:
       "Southport Market on King Street (PR8 1LA): every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
     relatedCollections: ["family-friendly-restaurants-southport", "sensory-friendly-southport", "free-things-to-do-southport"],
@@ -1051,7 +1050,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Southport Accommodation",
     description: "Hotels, B&Bs, guest houses and self-catering in Southport. The honest local breakdown of where to stay, what to expect, and what to avoid.",
     excerpt:
-      "The honest guide to accommodation in Southport. Hotels, B&Bs, guest houses and holiday lets by area. Prices, honest assessments, and what to book if you're visiting for The Open 2026 at Royal Birkdale.",
+      "A guide to accommodation in Southport. Hotels, B&Bs, guest houses and holiday lets by area, with prices and booking advice.",
     category: "practical",
     heroImage: "/images/southport-lord-street.webp",
     seoPriority: 0.9,
@@ -1059,9 +1058,9 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-06-01",
     tags: ["hotels", "accommodation", "where-to-stay", "b&b", "self-catering"],
     status: "published",
-    metaTitle: "Where to Stay in Southport 2026 | Hotels, B&Bs & Accommodation Guide",
+    metaTitle: "Where to Stay in Southport | Hotels, B&Bs & Accommodation Guide",
     metaDescription:
-      "The honest guide to accommodation in Southport. Hotels on Lord Street, seafront B&Bs, Birkdale guest houses near Royal Birkdale, and Churchtown village stays. Prices, honest reviews and booking advice for The Open 2026.",
+      "The honest guide to accommodation in Southport. Hotels on Lord Street, seafront B&Bs, Birkdale guest houses near Royal Birkdale, and Churchtown village stays. Prices and booking advice.",
     relatedSlugs: ["parking-southport", "southport-beach", "the-open-2026-accessibility"],
     relatedCollections: ["hotels-with-parking-southport", "hotels-near-royal-birkdale", "budget-hotels-southport"],
   },

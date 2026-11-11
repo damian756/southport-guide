@@ -1,3 +1,4 @@
+import OpenPastNote from "@/app/components/OpenPastNote";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, MapPin } from "lucide-react";
@@ -138,6 +139,7 @@ export default async function OpenPubsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <OpenPastNote />
 
       <div className="min-h-screen bg-[#FAF8F5]">
 

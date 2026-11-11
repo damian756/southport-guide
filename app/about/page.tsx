@@ -101,10 +101,10 @@ const DIFFERENTIATORS = [
 
 const COVERS = [
   { label: "Restaurants and Cafes", desc: "Independent editorial and a full directory of places to eat and drink across Southport and Birkdale." },
-  { label: "Hotels and Accommodation", desc: "Hotels, B&Bs, and self-catering from budget to boutique. Includes Open 2026 availability notes." },
+  { label: "Hotels and Accommodation", desc: "Hotels, B&Bs, and self-catering from budget to boutique." },
   { label: "Things To Do", desc: "Attractions, activities, nature, beaches and everything else to fill a day in Southport." },
-  { label: "Events", desc: "What's on calendar, from the Flower Show to the Air Show to The Open Championship." },
-  { label: "The Open 2026", desc: "The complete visitor hub for The Open Championship at Royal Birkdale, July 2026." },
+  { label: "Events", desc: "What's on calendar, with dates checked on each organiser's own page." },
+  { label: "The Open 2026", desc: "Results and the visitor guides from The Open Championship at Royal Birkdale, July 2026." },
   { label: "MLEC Guide", desc: "The Marine Lake Events Centre. What it is, what's planned, and what it means for the town." },
   { label: "House Prices by Postcode", desc: "Land Registry sold prices enriched with schools, crime, flood risk and broadband. No estate agent spin." },
   { label: "Parking", desc: "106 car parks across Southport and the Sefton Coast, verified, mapped and described." },
@@ -164,7 +164,7 @@ export default function AboutPage() {
                   We help visitors make confident decisions about where to eat, stay, park, and what to see. And we help local businesses reach the tourism audience that, until now, had no proper digital home to find them.
                 </p>
                 <p>
-                  The Open Championship returns to Royal Birkdale in July 2026. The Marine Lake Events Centre opens in 2027. Southport is entering its most significant period for visitor footfall in a generation. We are building the digital infrastructure to make the most of it.
+                  Royal Birkdale hosted The Open Championship in July 2026. Sefton Council is building the Marine Lake Events Centre, with main works under way to deliver it by winter 2028.
                 </p>
               </div>
             </div>
@@ -380,7 +380,7 @@ export default function AboutPage() {
                 Most local businesses are well known to their regulars. The harder problem is reaching the tourism audience: day trippers from Liverpool and Manchester, visitors planning their first trip to Southport, Open Championship attendees, future MLEC audiences. These are people actively searching for where to eat, where to stay, what to do. SouthportGuide is where they land.
               </p>
               <p className="text-white/70 leading-relaxed mb-10">
-                Every Southport business can claim a free listing with full analytics, a weekly performance email, and complete control over their details. With The Open in July 2026 and MLEC opening in 2027, there has never been a better time to be properly visible online.
+                Every Southport business can claim a free listing with full analytics, a weekly performance email, and complete control over their details. 
               </p>
               <div className="flex flex-wrap gap-4 mb-6">
                 <Link

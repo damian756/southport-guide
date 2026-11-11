@@ -10,7 +10,7 @@ const BASE_URL = "https://www.southportguide.co.uk";
 export const metadata: Metadata = {
   title: "Southport Guides | The Complete Local Guide Collection",
   description:
-    "All of SouthportGuide's editorial guides in one place, beaches, events, areas, practical info, and food & drink. Written by locals. Updated regularly.",
+    "All of SouthportGuide's editorial guides in one place, beaches, events, areas, practical info, and food & drink. Written by locals.",
   alternates: { canonical: `${BASE_URL}/guides` },
   openGraph: {
     title: "Southport Guides",

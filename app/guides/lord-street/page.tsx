@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Where can I park for Lord Street?",
-    a: "The closest car parks to Lord Street are Tulketh Street car park (PR8 1DP, short walk from the northern end), Eastbank Street (PR8 1DG), and Promenade car park (PR8 1RQ, slightly further). Marine Drive is the best option for beach parking if you're combining both. On weekdays, on-street pay-and-display on the side streets is usually available.",
+    a: "The closest car parks to Lord Street are Tulketh Street car park (PR8 1DP, short walk from the northern end), Eastbank Street (PR8 1DG), and Promenade car park (slightly further). Marine Drive is the best option for beach parking if you're combining both. On weekdays, on-street pay-and-display on the side streets is usually available.",
   },
   {
     q: "Is Lord Street good for restaurants?",
@@ -241,7 +241,7 @@ export default function LordStreetGuidePage() {
                   { name: "Eastbank Street", code: "PR8 1DG", walk: "3 min" },
                   { name: "Market Street", code: "PR8 1HH", walk: "4 min" },
                   { name: "NCP London Street", code: "PR8 1QU", walk: "3 min", href: "/parking/parking-ncp-southport-london-street" },
-                  { name: "Marine Drive (Beach)", code: "PR8 1RQ", walk: "10 min", href: "/parking/parking-southport-marine-drive-car-park" },
+                  { name: "Marine Drive (Beach)", code: "Marine Drive", walk: "10 min", href: "/parking/parking-southport-marine-drive-car-park" },
                 ].map((row) => (
                   <tr key={row.name} className="hover:bg-[#FAF8F5] transition-colors">
                     <td className="px-5 py-3.5 font-medium text-[#1B2E4B]">
