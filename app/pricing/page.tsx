@@ -24,7 +24,6 @@ const FEATURES = [
   { label: "Visibility score", free: true, pro: true },
   { label: "Google review alerts", free: true, pro: true },
   { label: "Milestone notifications", free: true, pro: true },
-  { label: "Followed (dofollow) link to your website", free: false, pro: true },
   { label: "Category benchmarks", free: false, pro: true },
   { label: "Compare vs competitors", free: false, pro: true },
   { label: "Event intelligence", free: false, pro: true },
@@ -122,9 +121,6 @@ export default function PricingPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-400 mt-4 leading-relaxed">
-            Free and unclaimed listings include a <strong>nofollow</strong> link to your website. Pro subscribers receive a <strong>dofollow</strong> link, passing full SEO value and link equity to your site. This is standard practice for paid directory listings.
-          </p>
         </section>
 
         {/* Annual banner */}
@@ -134,7 +130,7 @@ export default function PricingPage() {
               Pay annually and save 2 months
             </h3>
             <p className="text-gray-600 text-sm mt-0.5">
-              £390/year instead of £468
+              Pro is £39 a month, or £390 a year instead of £468
             </p>
           </div>
           <Link

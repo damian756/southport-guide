@@ -26,7 +26,7 @@ const RULES = [
   "Every advert is labelled Advertisement, Sponsor, Sponsored or Featured.",
   "Paid links are marked as sponsored for search engines.",
   "Adverts never appear inside a review, and paying for a space does not change what we write.",
-  "No ad networks, tracking scripts or advertising cookies. Adverts are a picture, a few words and a link.",
+  "No ad networks and no advertising cookies; our analytics set no cookies. Adverts are a picture, a few words and a link.",
 ];
 
 const SITES = [
