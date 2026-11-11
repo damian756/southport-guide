@@ -2378,7 +2378,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "The main spectator entrance for The Open 2026 is on Waterloo Road. From Liverpool Road in Birkdale village, that is roughly a 12 to 15 minute walk south. During Open week, the roads around the club are controlled, which means walking is often faster than sitting in a taxi queue anyway." },
     { type: "p", text: "If you want a taxi from the village to the course entrance, it is around five minutes and plentiful during Open week. You will not be waiting long." },
     { type: "h2", text: "Where to Eat in Birkdale Village" },
-    { type: "p", text: "The Bold Hotel on Liverpool Road has a restaurant. Book ahead for Open week. It will fill up. It is walkable from the course." },
+    { type: "p", text: "The Bold Hotel, on Lord Street rather than in the village, has a restaurant. Book ahead for Open week. It will fill up." },
     { type: "p", text: "Trattoria 51 is an Italian restaurant, also on Liverpool Road. Worth booking if you are in the village for the week. There are also a couple of cafes for a working breakfast before heading to the course." },
     { type: "cta", text: "Full guide to where to eat during Open week:", href: "/the-open-2026/restaurants", label: "Restaurants near Royal Birkdale →" },
     { type: "h2", text: "Where to Drink" },
@@ -2499,7 +2499,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
   "birkdale-village-restaurants-open-week": [
     { type: "p", text: "Birkdale village sits about fifteen minutes walk from the Royal Birkdale entrance. This week it is the most convenient place to eat within walking distance of the course. The restaurants here are busy. Most are full in the evenings. Here is the honest picture." },
     { type: "h2", text: "The Bold Hotel" },
-    { type: "p", text: "The Bold is on Queens Road in Birkdale village. It has a restaurant and a wine list. Evening tables are essentially gone for the rest of this week without a reservation. Lunch is more achievable if you arrive before noon. If the dining room is full, the bar serves the same food." },
+    { type: "p", text: "The Bold is on Lord Street, in the town centre rather than Birkdale village. It has a restaurant and a wine list. Evening tables are essentially gone for the rest of this week without a reservation. Lunch is more achievable if you arrive before noon. If the dining room is full, the bar serves the same food." },
     { type: "h2", text: "Along Liverpool Road" },
     { type: "p", text: "Liverpool Road through Birkdale village has a handful of cafes and casual dining options that are more walkable than The Bold. These are the options that can absorb walk-ins in a way that the smarter restaurants cannot. Go before 12:30 for lunch and before 6:30 for dinner. After those windows, expect to wait." },
     { type: "h2", text: "What Is Still Bookable" },
