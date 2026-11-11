@@ -6,11 +6,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/_next/image"],
+        // /_next/static/ (the CSS and JavaScript) stays open: Google needs it to
+        // render the pages.
         disallow: [
           "/api/",
           "/dashboard/",
           "/admin/",
-          "/_next/static/",
           "/manifest.json",
           "/claim-listing",
         ],

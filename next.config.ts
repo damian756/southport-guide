@@ -66,9 +66,10 @@ const nextConfig: NextConfig = {
   // Canonical www redirect + permanent fixes
   async redirects() {
     return [
-      // Vercel preview → canonical domain
+      // Vercel preview → canonical domain, keeping the path ("/(.*)" left :path
+      // empty, so every page went to the home page)
       {
-        source: "/(.*)",
+        source: "/:path*",
         has: [{ type: "host", value: "southport-guide.vercel.app" }],
         destination: "https://www.southportguide.co.uk/:path*",
         permanent: true,

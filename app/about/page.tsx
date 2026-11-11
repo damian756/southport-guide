@@ -3,7 +3,7 @@ import Image from "next/image";
 import { DISPLAY_EMAIL } from "@/lib/contact";
 
 export const metadata = {
-  title: "About SouthportGuide | Independent Local Guide to Southport",
+  title: { absolute: "About SouthportGuide.co.uk: Independent Local Guide to Southport" },
   description:
     "SouthportGuide.co.uk is an independent visitor guide to Southport, published by Churchtown Media. Find out who we are, what we cover, and how we support local businesses.",
   alternates: { canonical: "https://www.southportguide.co.uk/about" },
@@ -19,14 +19,16 @@ export const metadata = {
 
 const schemaData = [
   {
+    // The WebSite itself is described once, on the home page; this page is about it.
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://www.southportguide.co.uk/#website",
-    name: "SouthportGuide.co.uk",
-    url: "https://www.southportguide.co.uk",
+    "@type": "AboutPage",
+    "@id": "https://www.southportguide.co.uk/about#webpage",
+    name: "About SouthportGuide.co.uk",
+    url: "https://www.southportguide.co.uk/about",
     description:
       "Independent visitor guide to Southport, restaurants, hotels, events, things to do, and everything visitors need.",
-    publisher: {
+    isPartOf: { "@id": "https://www.southportguide.co.uk/#website" },
+    about: {
       "@type": "Organization",
       "@id": "https://www.southportguide.co.uk/#organization",
       name: "SouthportGuide.co.uk",

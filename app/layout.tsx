@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   creator: "Churchtown Media",
   publisher: "SouthportGuide.co.uk",
 
-  // Canonical & feeds
+  // Feeds. No canonical here: every page sets its own, and a site-wide default
+  // pointed pages without one (and 404s) at the home page.
   alternates: {
-    canonical: BASE_URL,
     types: {
       "application/rss+xml": `${BASE_URL}/feed`,
     },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: BASE_URL,
+    // No og:url default: a page without its own would otherwise claim the home page's.
     siteName: "SouthportGuide.co.uk",
     title: "SouthportGuide.co.uk. The Complete Visitor Guide to Southport",
     description:

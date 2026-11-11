@@ -17,7 +17,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: { absolute: "Southport Visitor Guide | Restaurants, Hotels & Things to Do | SouthportGuide.co.uk" },
-  description: "The independent guide to Southport: restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals who live here. Your complete guide to visiting Southport, Merseyside.",
+  description: "The independent guide to visiting Southport, Merseyside: restaurants, hotels, bars, attractions, beaches, golf and events. Written by locals who live here.",
   alternates: { canonical: "https://www.southportguide.co.uk" },
   openGraph: {
     type: "website",
@@ -197,14 +197,7 @@ export default async function Home() {
         description: "The independent guide to Southport: restaurants, hotels, bars, attractions, beaches, golf, and events. Written by locals.",
         publisher: { "@id": "https://www.southportguide.co.uk/#organization" },
         inLanguage: "en-GB",
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: "https://www.southportguide.co.uk/search?q={search_term_string}",
-          },
-          "query-input": "required name=search_term_string",
-        },
+        // No SearchAction: the site has no /search page (it returns 404).
       },
       {
         "@type": "Organization",
@@ -229,30 +222,8 @@ export default async function Home() {
           "https://churchtownmedia.co.uk",
         ],
       },
-      {
-        "@type": ["LocalBusiness", "TouristInformationCenter"],
-        "@id": "https://www.southportguide.co.uk/#business",
-        name: "SouthportGuide.co.uk",
-        description: "Independent visitor guide to Southport, Merseyside. Restaurants, hotels, beaches, events, and house prices. Written by locals.",
-        url: "https://www.southportguide.co.uk",
-        image: "https://www.southportguide.co.uk/og-default.png",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Southport",
-          addressRegion: "Merseyside",
-          addressCountry: "GB",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 53.6452,
-          longitude: -3.0056,
-        },
-        areaServed: {
-          "@type": "City",
-          name: "Southport",
-          sameAs: "https://en.wikipedia.org/wiki/Southport",
-        },
-      },
+      // The guide is a website, not a tourist information centre or a business with
+      // premises, so the Organization above is its only entity (no LocalBusiness).
       {
         "@type": "WebPage",
         "@id": "https://www.southportguide.co.uk/#webpage",
@@ -266,7 +237,7 @@ export default async function Home() {
           sameAs: "https://en.wikipedia.org/wiki/Southport",
         },
         inLanguage: "en-GB",
-        dateModified: new Date().toISOString().slice(0, 10),
+        // No dateModified: it was the time of each rebuild, not of a change.
       },
     ],
   };
