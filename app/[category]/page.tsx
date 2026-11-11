@@ -285,13 +285,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     const categoryRecord = await getCategoryRecord(category);
     if (categoryRecord) {
       const catId = categoryRecord.id;
+      // "hubTier" here is "pro" only with a subscription behind it, so an unpaid
+      // listing (such as a demo) is never featured or labelled Paid placement.
+      // The subscription id itself never leaves the server.
       const [activeBoosts, rawBusinesses] = await Promise.all([
         getActiveBoosts(catId),
         sort === "alpha"
           ? prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage", "hubTier", "categoryId"
+                     images[1] AS "firstImage", CASE WHEN "hubTier" = 'pro' AND "stripeSubscriptionId" IS NOT NULL THEN 'pro' ELSE 'free' END AS "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY name ASC`
@@ -299,7 +302,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           ? prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage", "hubTier", "categoryId"
+                     images[1] AS "firstImage", CASE WHEN "hubTier" = 'pro' AND "stripeSubscriptionId" IS NOT NULL THEN 'pro' ELSE 'free' END AS "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
@@ -309,7 +312,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           ? prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage", "hubTier", "categoryId"
+                     images[1] AS "firstImage", CASE WHEN "hubTier" = 'pro' AND "stripeSubscriptionId" IS NOT NULL THEN 'pro' ELSE 'free' END AS "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY
@@ -317,7 +320,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           : prisma.$queryRaw<BrowserBusiness[]>`
               SELECT id, slug, name, "shortDescription", description, "listingTier", address, postcode,
                      rating, "reviewCount", "priceRange", "hygieneRating", "hygieneRatingShow", lat, lng,
-                     images[1] AS "firstImage", "hubTier", "categoryId"
+                     images[1] AS "firstImage", CASE WHEN "hubTier" = 'pro' AND "stripeSubscriptionId" IS NOT NULL THEN 'pro' ELSE 'free' END AS "hubTier", "categoryId"
               FROM "Business"
               WHERE "categoryId" = ${catId} OR ${catId} = ANY("secondaryCategoryIds")
               ORDER BY

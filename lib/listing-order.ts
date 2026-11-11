@@ -1,6 +1,7 @@
 // ── Listing order and paid labels ────────────────────────────────────────────
 // What pays changes order, and is labelled: an active category boost (first),
-// then a Pro listing (hubTier "pro") in its own primary category. Nothing else
+// then a Pro listing (hubTier "pro", with a subscription behind it: the category
+// query reports "pro" only then) in its own primary category. Nothing else
 // changes the order: the admin-set `listingTier` (standard, featured, premium)
 // is not paid for, so it neither sorts first nor earns a badge. A Pro listing
 // that lapses or is cancelled has hubTier "free" again and loses both.

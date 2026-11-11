@@ -271,6 +271,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
     shortDescription: string | null;
     listingTier: string;
     hubTier: string;
+    stripeSubscriptionId: string | null;
     priceRange: string | null;
     openingHours: unknown;
     images: string[];
@@ -312,7 +313,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
         select: {
           id: true, name: true, address: true, postcode: true, lat: true, lng: true,
           phone: true, website: true, description: true, shortDescription: true,
-          listingTier: true, hubTier: true, priceRange: true, openingHours: true, images: true,
+          listingTier: true, hubTier: true, stripeSubscriptionId: true, priceRange: true, openingHours: true, images: true,
           claimed: true, rating: true, reviewCount: true, placeId: true,
           hygieneRating: true, hygieneRatingDate: true, hygieneRatingShow: true, fhrsId: true,
           updatedAt: true, secondaryCategoryIds: true, tags: true,
@@ -566,7 +567,8 @@ export default async function BusinessPage({ params, searchParams }: Props) {
                 <div className="p-6">
                   {/* Badges row */}
                   <div className="flex flex-wrap items-center gap-2 mb-3">
-                    {business.hubTier === "pro" && (
+                    {/* Paid only with a subscription behind it: a demo on "pro" is not labelled paid */}
+                    {business.hubTier === "pro" && !!business.stripeSubscriptionId && (
                       <span className="bg-[#C9A84C]/10 text-[#8a6d1f] text-xs font-bold px-3 py-1 rounded-full border border-[#C9A84C]/30">{PRO_BADGE}</span>
                     )}
                     <Link href={`/${category}`} className="bg-[#FAF8F5] text-[#1B2E4B] text-xs font-medium px-3 py-1 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">{cat.name}</Link>
