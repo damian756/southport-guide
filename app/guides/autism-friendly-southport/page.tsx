@@ -152,7 +152,7 @@ const VENUES = [
     distance: "Town centre",
     entry: "Free",
     why: "Public library, inherently calm, free to visit, accessible building with clear layout. Quiet by design. A reliable fallback if unexpected weather changes your plan. Children's section is well-resourced.",
-    practical: "Princes Street, Southport PR8 1ST. Free entry. Accessible. Parking in nearby town centre car parks.",
+    practical: "Princes Street, Southport. Free entry. Accessible. Parking in nearby town centre car parks.",
     tags: ["Free", "Indoor", "Quiet by design"],
     tagColor: "bg-indigo-100 text-indigo-800",
   },

@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { q: "When is KC Artisan Party in the Park in Southport 2026?", a: "KC Artisan Party in the Park 2026 takes place on Saturday 11 April and Sunday 12 April at Victoria Park, Southport (PR8 2BZ)." },
+  { q: "When is KC Artisan Party in the Park in Southport 2026?", a: "KC Artisan Party in the Park 2026 takes place on Saturday 11 April and Sunday 12 April at Victoria Park, Southport (PR8 1RX)." },
   { q: "Is KC Artisan Party in the Park free?", a: "Yes, entry to KC Artisan Party in the Park is free. You pay for anything you buy from the stalls or food traders." },
   { q: "What is at KC Artisan Party in the Park?", a: "The event features artisan market stalls from independent makers and crafters, live music performances across the two days, street food traders, and entertainment for families and children. It runs as an outdoor festival across Victoria Park." },
-  { q: "Where is Victoria Park in Southport?", a: "Victoria Park is on Rotten Row, Southport, postcode PR8 2BZ. It is approximately 15 minutes' walk from Southport railway station and 10–15 minutes from the town centre. It is the same park used for the Sausage & Cider Festival and the Flower Show." },
+  { q: "Where is Victoria Park in Southport?", a: "Victoria Park is on Rotten Row, Southport, postcode PR8 1RX. It is approximately 15 minutes' walk from Southport railway station and 10–15 minutes from the town centre. It is the same park used for the Sausage & Cider Festival and the Flower Show." },
   { q: "Is KC Artisan Party in the Park family friendly?", a: "Yes. The event includes family entertainment alongside the artisan market and live music. It is designed as an all-ages outdoor event. Dogs on leads are usually welcome in the park itself." },
   { q: "How do I get to Victoria Park for KC Party in the Park?", a: "Victoria Park is accessible by car (park on surrounding residential streets), by train (15 min walk from Southport station), or by bus. Town centre car parks are a 10–15 min walk from the park entrance on Rotten Row." },
 ];
@@ -47,7 +47,7 @@ const PAGE_LD = {
   location: {
     "@type": "Place",
     name: "Victoria Park, Southport",
-    address: { "@type": "PostalAddress", streetAddress: "Rotten Row", addressLocality: "Southport", postalCode: "PR8 2BZ", addressCountry: "GB" },
+    address: { "@type": "PostalAddress", streetAddress: "Rotten Row", addressLocality: "Southport", postalCode: "PR8 1RX", addressCountry: "GB" },
   },
 };
 
@@ -74,7 +74,7 @@ export default function KCArtisanParkPage() {
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">11–12 April 2026</span>
-              <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 2BZ · Free</span>
+              <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 1RX · Free</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               KC Artisan
@@ -94,7 +94,7 @@ export default function KCArtisanParkPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "11–12 Apr", label: "When", sub: "Easter weekend" },
-              { icon: MapPin, value: "PR8 2BZ", label: "Where", sub: "Victoria Park" },
+              { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
               { icon: Clock, value: "Both Days", label: "Duration", sub: "Two-day festival" },
               { icon: MapPin, value: "Free", label: "Entry", sub: "No charge" },
             ].map((s) => (
@@ -155,7 +155,7 @@ export default function KCArtisanParkPage() {
               <div>
                 <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-3">By Car</h3>
                 <div className="space-y-2">
-                  {["Victoria Park postcode: PR8 2BZ", "Street parking on Rotten Row and surrounding roads", "Town centre car parks. 10–15 min walk to the park", "Do not rely on finding a space directly outside on busy days"].map((l) => (
+                  {["Victoria Park postcode: PR8 1RX", "Street parking on Rotten Row and surrounding roads", "Town centre car parks. 10–15 min walk to the park", "Do not rely on finding a space directly outside on busy days"].map((l) => (
                     <div key={l} className="flex gap-2 text-sm text-gray-600"><ChevronRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" /><span>{l}</span></div>
                   ))}
                 </div>

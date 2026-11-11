@@ -426,7 +426,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Ocean Plaza (PR8 1RY): free parking for the retail and leisure complex, two hours limit before charges apply",
     ]},
     { type: "h2", text: "Birkdale village" },
-    { type: "p", text: "If you're visiting Birkdale village for restaurants or the shops on Liverpool Road, street parking on the side roads off Liverpool Road (PR8 4XX postcodes) is usually available outside weekend lunchtimes. There is no large designated car park in the village itself, so street parking is what you are working with. During Open Championship week, forget it entirely. The whole area is affected." },
+    { type: "p", text: "If you're visiting Birkdale village for restaurants or the shops on Liverpool Road, street parking on the side roads off Liverpool Road is usually available outside weekend lunchtimes. There is no large designated car park in the village itself, so street parking is what you are working with. During Open Championship week, forget it entirely. The whole area is affected." },
     { type: "h2", text: "Churchtown" },
     { type: "p", text: "Churchtown has limited dedicated parking. For the Botanic Gardens, the car park off Bankfield Lane (PR9 7NB) is the right place. It's small and fills quickly on weekends. For the village itself and the pubs on Botanic Road, street parking on the surrounding roads is usually available outside peak times." },
     { type: "h2", text: "Free parking: yes, it exists" },
@@ -1020,9 +1020,9 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "These photos were taken this morning. 2nd of March 2026. Walked through the Botanic Gardens on the way back from dropping the kids at school and the slope under the trees was covered in crocuses: purple and white, hundreds of them, pushing up through the dead leaves. It genuinely stopped me in my tracks. So: if you're in Southport this week, go." },
     { type: "image", src: "/images/blog/churchtown-botanic-crocuses-carpet.jpg", alt: "Carpet of purple and white crocuses on the hillside at Churchtown Botanic Gardens, trees behind, soft morning light", caption: "The slope under the trees at Churchtown Botanic Gardens, this morning, 2 March 2026." },
     { type: "h2", text: "Where it is and how to get there" },
-    { type: "p", text: "Churchtown Botanic Gardens is on Bankfield Lane, PR9 7NY. It's a proper Victorian public park: free to enter, open every day. About five minutes' drive from Southport town centre, or a 25-minute walk if you're coming through Churchtown village." },
+    { type: "p", text: "Churchtown Botanic Gardens is on Bankfield Lane. It's a proper Victorian public park: free to enter, open every day. About five minutes' drive from Southport town centre, or a 25-minute walk if you're coming through Churchtown village." },
     { type: "p", text: "The crocus display is on the sloped area near the main entrance. You'll see it as soon as you're through the gate. You can't miss it." },
-    { type: "callout", emoji: "🌸", text: "Free entry. Open daily. Parking on Bankfield Lane or Botanic Road. PR9 7NY." },
+    { type: "callout", emoji: "🌸", text: "Free entry. Open daily. Parking on Bankfield Lane or Botanic Road." },
     { type: "h2", text: "How long is the window?" },
     { type: "p", text: "Crocuses at this latitude typically peak for about two to three weeks in late February and early March. They go over quickly once the weather turns warmer or wet, so the window is now. Come this week. Come at the weekend if you can't do a weekday. But come soon." },
     { type: "p", text: "The display is better in morning light: the sun hits the slope from the east and the purple really pops against the brown leaf litter. I was there at about 8:30am and the light was good." },
@@ -1328,7 +1328,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Avoid it on a wet Sunday afternoon in January when the car park on Tulketh Street is full and you've got nowhere to go. That's a different experience from a warm Saturday in May." },
     { type: "h2", text: "Parking and getting there" },
     { type: "ul", items: [
-      "Tulketh Street car park is directly adjacent: PR8 1NP. Reasonable rates, close.",
+      "Tulketh Street car park is directly adjacent: PR8 1AW. Reasonable rates, close.",
       "Lord Street and the town centre car parks are all within easy walking distance.",
       "The market is pedestrian-accessible from Lord Street via Market Street. Five-minute walk.",
     ] },
@@ -1389,7 +1389,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "southport-fireworks-championship-explained": [
     { type: "p", text: "I've been to the British Musical Fireworks Championship at Victoria Park more times than I can count. Every time I mention it to visitors or people who've just moved to Southport, they say the same thing: 'Oh, a fireworks display? Nice.' And I have to explain that it's not that. It's a competition." },
-    { type: "callout", emoji: "📍", text: "British Musical Fireworks Championship · Victoria Park, Southport PR8 2LG · 26–27 September 2026 · Tickets £12 · No gate sales. Book at visitsouthport.com" },
+    { type: "callout", emoji: "📍", text: "British Musical Fireworks Championship · Victoria Park, Southport PR8 1RX · 26–27 September 2026 · Tickets £12 · No gate sales. Book at visitsouthport.com" },
     { type: "h2", text: "What Actually Happens" },
     { type: "p", text: "Each competing team fires a display choreographed precisely to a music track of their choice. Every burst (colour, intensity, timing, height) is designed to match the music. You're watching the fireworks and listening to the score simultaneously, and the whole point is how well they match. Judges score on synchronisation, mood, and flow." },
     { type: "p", text: "That's fundamentally different from a display. A display is just fireworks. This is like the difference between watching someone play scales on the piano and watching someone perform a concerto. The craft is entirely different." },
@@ -1436,7 +1436,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "victoria-park-southport-events-2026": [
     { type: "p", text: "Victoria Park sits on the eastern edge of Southport town centre, a short walk from Lord Street. Most visitors walk past it without giving it much thought. They're missing the point. This park hosts more major events than any other single venue in the town, and in 2026, the calendar is the fullest it's ever been." },
-    { type: "callout", emoji: "📍", text: "Victoria Park, Southport · Rotten Row, PR8 2BZ · Open year-round · Free to enter (events are separately ticketed)" },
+    { type: "callout", emoji: "📍", text: "Victoria Park, Southport · Rotten Row, PR8 1RX · Open year-round · Free to enter (events are separately ticketed)" },
     { type: "h2", text: "The 2026 Victoria Park Events Calendar" },
     { type: "ul", items: [
       "Sausage & Cider Festival: Saturday 18 April 2026. Two sessions (1–5pm / 5–10pm). Tickets required.",
@@ -1564,7 +1564,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "southport-sausage-cider-festival-which-session": [
     { type: "p", text: "The Sausage & Cider Festival at Victoria Park runs on 18 April 2026 in two separate ticketed sessions. Afternoon: 1pm to 5pm. Evening: 5pm to 10pm. The two sessions have a different character and the right choice depends on who you're going with and what you want from it." },
-    { type: "callout", emoji: "📍", text: "Sausage & Cider Festival · Victoria Park, Rotten Row, Southport PR8 2BZ · Saturday 18 April 2026 · Two sessions: book each separately · Tickets via feverup.com/m/99142" },
+    { type: "callout", emoji: "📍", text: "Sausage & Cider Festival · Victoria Park, Rotten Row, Southport PR8 1RX · Saturday 18 April 2026 · Two sessions: book each separately · Tickets via feverup.com/m/99142" },
     { type: "h2", text: "The Afternoon Session (1pm–5pm)" },
     { type: "p", text: "Better for food. More relaxed pace: you can actually browse the stalls without queueing as much, taste things properly, and have a conversation over a stein without shouting. Better for families or anyone who wants to actually eat well rather than drink heavily. The oompah bands dominate the afternoon programme. Ends at 5pm, which leaves the evening completely free." },
     { type: "h2", text: "The Evening Session (5pm–10pm)" },
@@ -1664,7 +1664,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "southport-flower-show-first-timers-guide-2026": [
     { type: "p", text: "The Southport Flower Show runs 20–23 August 2026. It's one of England's most prestigious horticultural shows. Been going since 1924. If you've never been, the scale of it surprises people. This is not a church fête. It's a full four-day event at Victoria Park with marquees, gardens, celebrity appearances, and enough to fill a long day." },
-    { type: "callout", emoji: "📍", text: "Southport Flower Show 2026 · Victoria Park, PR8 2LG · 20–23 August · Tickets from £23 early bird · Book at southportflowershow.co.uk" },
+    { type: "callout", emoji: "📍", text: "Southport Flower Show 2026 · Victoria Park, PR8 1RX · 20–23 August · Tickets from £23 early bird · Book at southportflowershow.co.uk" },
     { type: "h2", text: "How to Get There and What to Do First" },
     { type: "p", text: "Victoria Park main entrance is your starting point. Buy tickets in advance online: early bird from £23, gate prices higher. If you're driving, the official parking is at local car parks signposted to the event; the Flower Show parking fills early on Saturday. Arriving before 10am means manageable car parks and the pick of the show before the crowds build." },
     { type: "h2", text: "The Show Gardens" },
@@ -1896,7 +1896,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "May is one of the better months to visit Southport. The Bank Holiday weekend has the Big Top Festival, Beer Week starts on the 20th, and the Food and Drink Festival runs at the end of the month. The weather is variable, it's the North West, but the town is properly alive in a way it isn't in January." },
     { type: "h2", text: "Big Top Festival: 2 and 3 May (This Weekend)" },
     { type: "p", text: "Circa and Gandini Juggling are in town for the Bank Holiday weekend. Free outdoor shows across the town centre, ticketed indoor performances at night. It's the kind of event that Southport doesn't usually get, proper international circus arts, not a fairground. If you're reading this before Sunday, go." },
-    { type: "p", text: "Full details on southport2026.com. Outdoor shows are free. Parking at Victoria Road (PR8 2LZ) is the best option if Marine Drive has filled." },
+    { type: "p", text: "Full details on southport2026.com. Outdoor shows are free. Parking at Victoria Road is the best option if Marine Drive has filled." },
     { type: "h2", text: "Southport Beer Week: 20–25 May" },
     { type: "p", text: "Six days, 18 pubs, 90+ beers, free stamp card. It's the most enjoyable week on the social calendar if you like a drink. The ale trail takes you around pubs you might not normally visit, which is the point. Details at southportbid.com closer to the date." },
     { type: "h2", text: "Food and Drink Festival: 29–31 May" },
@@ -2028,7 +2028,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "h2", text: "What the week actually feels like" },
     { type: "p", text: "I was here for the 2017 Open. I know what the town is like that week. Lord Street is busier than any other week of the year. Every restaurant is full by 7pm. The energy is genuinely electric in a way that doesn't happen at the Flower Show or any other event. It's one of the few times Southport is on every sports broadcaster's screen simultaneously." },
     { type: "p", text: "It's also chaotic if you're not prepared. Traffic is bad. Parking is limited. Some residents in Birkdale rent their driveways. The seafront is busy. None of that is a reason to avoid it. It's a reason to plan properly." },
-    { type: "callout", emoji: "💡", text: "Practical tip: if you're arriving by car and not using park-and-ride, Victoria Road car park (PR8 2LZ) and Marine Drive car park are the main town centre options. Both will be busy from early morning on championship days." },
+    { type: "callout", emoji: "💡", text: "Practical tip: if you're arriving by car and not using park-and-ride, Victoria Road car park and Marine Drive car park are the main town centre options. Both will be busy from early morning on championship days." },
     { type: "h2", text: "Ten weeks. Plenty of time to sort it properly." },
     { type: "p", text: "If you haven't booked anything yet, you're behind but not out. Move on accommodation in the next week or two. Get your transport sorted. The rest will follow. And if you're already booked: good. You're going to have one of the best weeks of your life." },
     { type: "cta", text: "Full Open 2026 visitor guide for Southport:", href: "/the-open-2026", label: "The Open 2026 at Royal Birkdale: Complete Guide →" },
@@ -2068,7 +2068,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "I live in Churchtown. In May, the Botanic Gardens are properly good. Free entry. They get busy on Bank Holiday weekends but on a normal weekday morning you can have large sections of the gardens almost to yourself. The café is decent. It's about 90 minutes at an easy pace and worth doing even if you're not especially interested in plants." },
     { type: "h2", text: "The Open buzz starting to build" },
     { type: "p", text: "You can feel it. I've been talking to restaurant owners, hotel staff, people who run the seafront operations. Everyone knows July is going to be huge. The preparations are already visible near the course. If you're planning to come for The Open, the time to sort accommodation and restaurants is now, not June." },
-    { type: "callout", emoji: "📍", text: "Marine Drive car park and Victoria Road car park (PR8 2LZ): both free early in the day, both fill on warm Saturdays by mid-morning." },
+    { type: "callout", emoji: "📍", text: "Marine Drive car park and Victoria Road car park: both free early in the day, both fill on warm Saturdays by mid-morning." },
     { type: "cta", text: "What's on in Southport this summer:", href: "/events", label: "Southport Events 2026: Full Calendar →" },
   ],
 
@@ -2117,7 +2117,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
 
   "southport-food-drink-festival-2026-what-to-know": [
     { type: "p", text: "Victoria Park, Bank Holiday weekend. 29, 30 and 31 May 2026. This is the one Southport food event that actually draws a proper crowd. I've been most years. It's good. Here's what to expect and how to make the most of it." },
-    { type: "callout", emoji: "📅", text: "Southport Food and Drink Festival 2026: 29-31 May, Victoria Park, PR8 1RG. Free entry. Open from late morning each day. The Bank Holiday Monday gets particularly busy from about 1pm." },
+    { type: "callout", emoji: "📅", text: "Southport Food and Drink Festival 2026: 29-31 May, Victoria Park, PR8 1RX. Free entry. Open from late morning each day. The Bank Holiday Monday gets particularly busy from about 1pm." },
     { type: "h2", text: "What It Actually Is" },
     { type: "p", text: "Around 100 producers, street food traders, and independent food businesses spread across Victoria Park. A mix of things to eat on the day and things to take home. There's usually a gin and craft beer area, a prosecco bar, and a handful of live cooking demonstrations." },
     { type: "p", text: "The quality varies between stalls, as it does at any festival. There are usually two or three standout traders worth seeking out and a few that are fine but nothing special. Go with the attitude of exploring rather than having specific expectations." },
@@ -2125,7 +2125,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "Saturday is the most popular day. If you want it quieter and slightly less queued, Friday afternoon or Sunday morning are better bets. The Bank Holiday Monday tends to tail off earlier as traders start packing up." },
     { type: "p", text: "Get there by 11am if possible. By 1pm on Saturday the queues for the popular stalls are long and parking nearby is almost gone." },
     { type: "h2", text: "Parking" },
-    { type: "p", text: "Victoria Park itself has limited parking. The town centre car parks are the sensible option. The multi-storey on Tulketh Street (PR8 1BJ) is the closest. Marine Drive is further but usually has space." },
+    { type: "p", text: "Victoria Park itself has limited parking. The town centre car parks are the sensible option. The car park on Tulketh Street (PR8 1AW) is the closest. Marine Drive is further but usually has space." },
     { type: "h2", text: "Getting There" },
     { type: "p", text: "Victoria Park is a short walk from Southport station. Merseyrail Northern line from Liverpool Central, direct. For the Bank Holiday weekend this is genuinely the easier option than driving." },
     { type: "h2", text: "Worth Going?" },
@@ -2185,14 +2185,14 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
     { type: "p", text: "The mix of traders is broader than you might expect. International street food sits alongside local producers selling jams, chutneys, bread, and cheese. There are usually a handful of restaurant-quality food stalls if you're after a proper sit-down meal rather than walking food." },
     { type: "p", text: "The evenings tend to be the liveliest. Friday evening is genuinely good. Saturday afternoon is the busiest session of the weekend. Sunday is the most relaxed. If you have the choice, Sunday morning is the best time to go." },
     { type: "h2", text: "Parking" },
-    { type: "p", text: "Victoria Park is on Rotten Row (PR8 2BJ). The park has no on-site parking. Lord Street car parks are the nearest options: Bold Street multi-storey is 10 minutes on foot. Marine Drive car park on the Promenade is a similar distance from the festival entrance." },
+    { type: "p", text: "Victoria Park is on Rotten Row (PR8 1RX). The park has no on-site parking. Lord Street car parks are the nearest options: Bold Street multi-storey is 10 minutes on foot. Marine Drive car park on the Promenade is a similar distance from the festival entrance." },
     { type: "p", text: "It will be busy this weekend, particularly Saturday. If you're coming from outside Southport, the train is a genuinely good option. Southport station is about 12 minutes' walk from Victoria Park." },
     { type: "h2", text: "What to Eat First" },
     { type: "p", text: "My approach: go straight past the entrance and do a full lap before buying anything. The layout changes year to year but the best stalls are usually at the far end, away from the entrance, where people who haven't done the lap end up missing them entirely." },
     { type: "p", text: "Budget around £15-25 for food and drinks if you're doing it properly. It adds up quickly." },
     { type: "h2", text: "Practical Notes" },
     { type: "ul", items: [
-      "Victoria Park, Rotten Row, Southport PR8 2BJ",
+      "Victoria Park, Rotten Row, Southport PR8 1RX",
       "May 29, 30 and 31: Thursday to Sunday",
       "Entry paid at the gate",
       "Dogs allowed on leads",

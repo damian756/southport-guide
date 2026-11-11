@@ -104,7 +104,7 @@ const PARKING = [
   { name: "Princes Park", postcode: "PR8 1RX", cost: "~£10", verdict: "Better car option than Marine Drive. Gets busy, arrive before 9am.", recommended: false },
   { name: "Marine Drive", postcode: "PR8 1RX", cost: "~£10", verdict: "Full before 9am on air show day. Don't plan on it.", recommended: false },
   { name: "Town centre (various)", postcode: "PR8 1QJ", cost: "£3–8", verdict: "Most reliable car option. 10–15 min walk to beach. Usually has space.", recommended: false },
-  { name: "Victoria Park", postcode: "PR8 2LG", cost: "~£10", verdict: "15-min walk to beach. Reliable if you arrive by 9am. Furthest of the main options.", recommended: false },
+  { name: "Victoria Park", postcode: "PR8 1RX", cost: "~£10", verdict: "15-min walk to beach. Reliable if you arrive by 9am. Furthest of the main options.", recommended: false },
 ];
 
 const FAQS = [

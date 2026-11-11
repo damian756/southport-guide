@@ -153,7 +153,7 @@ export default function SuggestListingPage() {
               type="text"
               value={fields.address}
               onChange={(e) => set("address")(e.target.value)}
-              placeholder="e.g. 9 Lord Street, Southport, PR8 1JN"
+              placeholder="e.g. 9 Lord Street, Southport"
               className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#1B2E4B]/20 focus:border-[#1B2E4B]"
             />
           </div>

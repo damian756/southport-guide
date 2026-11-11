@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Where should I park for Lord Street?",
-    a: "The most convenient options for Lord Street are Tulketh Street car park (PR8 1DP) for the northern end, Eastbank Street (PR8 1DG) for the central stretch, and Market Street for the southern end. All are within a few minutes' walk.",
+    a: "The most convenient options for Lord Street are Tulketh Street car park (PR8 1AW) for the northern end, Eastbank Street (PR8 1DG) for the central stretch, and Market Street for the southern end. All are within a few minutes' walk.",
   },
   {
     q: "Is there parking near Southport Pier?",
@@ -64,7 +64,7 @@ const CAR_PARKS = [
   { name: "Marine Drive (Beach)", postcode: "Marine Drive", best: "Beach, Pier, Promenade", notes: "Main beach car park. Fills on summer Saturdays, arrive early.", href: "/parking/parking-southport-marine-drive-car-park" },
   { name: "Esplanade", postcode: "PR8 1RX", best: "Beach, seafront", notes: "Pay-and-display on the Esplanade, steps from the sand.", href: "/parking/parking-esplanade-parking" },
   { name: "NCP London Street", postcode: "PR8 1QU", best: "Town centre, Lord Street", notes: "Multi-storey. Covered, good in wet weather. Central for Lord Street.", href: "/parking/parking-ncp-southport-london-street" },
-  { name: "Tulketh Street", postcode: "PR8 1DP", best: "Lord Street (north)", notes: "Convenient for The Atkinson and northern Lord Street." },
+  { name: "Tulketh Street", postcode: "PR8 1AW", best: "Lord Street (north)", notes: "Convenient for The Atkinson and northern Lord Street." },
   { name: "Eastbank Street", postcode: "PR8 1DG", best: "Lord Street (central)", notes: "Multi-storey. Central for Lord Street shopping." },
   { name: "Market Street", postcode: "PR8 1HH", best: "Town centre, Market", notes: "Good for the market hall and southern Lord Street." },
   { name: "Cambridge Road", postcode: "PR9 9NB", best: "Hesketh Park, Churchtown", notes: "Free. Good base for Churchtown and Hesketh Park." },
@@ -222,7 +222,7 @@ export default function ParkingSouthportGuidePage() {
         <section className="mb-14">
           <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-5">Parking for Lord Street</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            For shopping on Lord Street, Tulketh Street car park (PR8 1DP) is the most convenient for the northern end near The Atkinson. Eastbank Street multi-storey (PR8 1DG) serves the central stretch and has more capacity.
+            For shopping on Lord Street, Tulketh Street car park (PR8 1AW) is the most convenient for the northern end near The Atkinson. Eastbank Street multi-storey (PR8 1DG) serves the central stretch and has more capacity.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             Free on-street parking is usually available on residential side streets running north from Lord Street, off Roe Lane, Scarisbrick Avenue, and similar. Check the signs carefully; some areas have permit requirements.

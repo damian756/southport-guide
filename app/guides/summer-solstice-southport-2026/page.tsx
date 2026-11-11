@@ -27,7 +27,7 @@ const FAQS = [
   { q: "When is the Summer Solstice Festival in Southport 2026?", a: "The Summer Solstice Festival takes place on Saturday 20 June 2026 at Victoria Park, Southport. The event runs from 2pm to 10pm, an 8-hour outdoor event on the longest day of the year." },
   { q: "What is the Summer Solstice Festival in Southport?", a: "The Summer Solstice Festival is an outdoor dance and music event at Victoria Park, forming part of the Southport 2026: Elegantly Eccentric cultural programme. It runs on the summer solstice, the longest day, for 8 hours of continuous music and performance." },
   { q: "Do I need tickets for the Summer Solstice Festival?", a: "Yes, the Summer Solstice Festival is a ticketed VIP event. Tickets must be purchased in advance. Check the Southport 2026 website and Southport BID for ticket information." },
-  { q: "Where is Victoria Park in Southport?", a: "Victoria Park is on Rotten Row, Southport, PR8 2BZ. Southport's main public park, used for the Flower Show, Sausage & Cider Festival, and other major events. It is approximately 15 minutes' walk from Southport railway station." },
+  { q: "Where is Victoria Park in Southport?", a: "Victoria Park is on Rotten Row, Southport, PR8 1RX. Southport's main public park, used for the Flower Show, Sausage & Cider Festival, and other major events. It is approximately 15 minutes' walk from Southport railway station." },
   { q: "What type of music is at the Summer Solstice Festival?", a: "The Summer Solstice Festival focuses on dance and electronic music. It is positioned as a premium outdoor dance event. The 8-hour format and VIP positioning suggests a festival-quality production rather than a local night out." },
   { q: "Is the Summer Solstice Festival family friendly?", a: "The event is an evening dance event running until 10pm, which makes it more adult-oriented. It is not described as a family festival. Check the official event information for age restrictions." },
 ];
@@ -47,7 +47,7 @@ const PAGE_LD = {
   location: {
     "@type": "Place",
     name: "Victoria Park, Southport",
-    address: { "@type": "PostalAddress", streetAddress: "Rotten Row", addressLocality: "Southport", postalCode: "PR8 2BZ", addressCountry: "GB" },
+    address: { "@type": "PostalAddress", streetAddress: "Rotten Row", addressLocality: "Southport", postalCode: "PR8 1RX", addressCountry: "GB" },
   },
 };
 
@@ -74,7 +74,7 @@ export default function SummerSolsticePage() {
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-20 md:pl-16 md:pr-12 order-last md:order-first">
             <div className="flex items-center gap-3 mb-5">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">20 June 2026</span>
-              <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 2BZ · 2pm–10pm</span>
+              <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 1RX · 2pm–10pm</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               Summer Solstice
@@ -94,7 +94,7 @@ export default function SummerSolsticePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "20 June", label: "When", sub: "Summer Solstice, Saturday" },
-              { icon: MapPin, value: "PR8 2BZ", label: "Where", sub: "Victoria Park" },
+              { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
               { icon: Clock, value: "2pm–10pm", label: "Hours", sub: "8-hour event" },
               { icon: Ticket, value: "Ticketed", label: "Entry", sub: "VIP event" },
             ].map((s) => (

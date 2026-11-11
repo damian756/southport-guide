@@ -66,7 +66,7 @@ const EVENTS = [
     tagColor: "bg-amber-100 text-amber-800",
     tag: "Ticketed",
     detail: "The longest day of the year, celebrated in Victoria Park with an 8-hour dance event. Street food village, sun terrace, live music. All tickets are VIP. Runs from 2pm to 10pm on Saturday 20 June. A more commercial event than the Year of Culture programme but a significant Southport weekend nonetheless.",
-    practical: "Ticketed event, all tickets are VIP. Victoria Park, PR8 2BZ. Runs 2pm–10pm. Check eventbrite or local listings for 2026 tickets.",
+    practical: "Ticketed event, all tickets are VIP. Victoria Park, PR8 1RX. Runs 2pm–10pm. Check eventbrite or local listings for 2026 tickets.",
   },
   {
     slug: "books-alive",

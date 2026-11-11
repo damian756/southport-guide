@@ -33,10 +33,10 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { q: "When is the Sausage & Cider Festival in Southport 2026?", a: "The Sausage & Cider Festival Southport 2026 is on Saturday 18 April 2026 at Victoria Park (Rotten Row, PR8 2BZ). There are two sessions: afternoon (1pm–5pm) and evening (5pm–10pm)." },
+  { q: "When is the Sausage & Cider Festival in Southport 2026?", a: "The Sausage & Cider Festival Southport 2026 is on Saturday 18 April 2026 at Victoria Park (Rotten Row, PR8 1RX). There are two sessions: afternoon (1pm–5pm) and evening (5pm–10pm)." },
   { q: "Do I need a ticket for the Sausage & Cider Festival?", a: "Yes, tickets are required and must be purchased in advance. The event runs as two separate sessions (afternoon 1–5pm and evening 5–10pm). Book online via the event ticketing pages, check feverup.com/m/99142 or skiddle.com for availability." },
   { q: "What is at the Sausage & Cider Festival?", a: "A Bavarian-inspired food and drink festival featuring: a traditional beer and cider tent with craft beers, seasonal brews, and artisan ciders; German-style food (bratwurst, schnitzel, oversized pretzels, cider-infused sausages); live oompah bands and Bavarian folk dancers; a live DJ; and on-stage challenges and giveaways." },
-  { q: "Where is the Sausage & Cider Festival in Southport?", a: "Victoria Park, Rotten Row, Southport. Postcode PR8 2BZ. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station." },
+  { q: "Where is the Sausage & Cider Festival in Southport?", a: "Victoria Park, Rotten Row, Southport. Postcode PR8 1RX. Victoria Park is on the eastern edge of Southport town centre, approximately 15 minutes' walk from Southport railway station." },
   { q: "Which session should I go to, afternoon or evening?", a: "The afternoon session (1–5pm) is generally better for families and those who want a more relaxed experience. The evening session (5–10pm) tends to have a livelier atmosphere. Both include the full food and drink offer, live music, and entertainment." },
   { q: "Is the Sausage & Cider Festival suitable for families?", a: "The afternoon session (1–5pm) is generally family-friendly. The evening session is more adult-oriented as the evening progresses. There is no specific age restriction but it's primarily an adult food and drink event. Check the event listing for the latest guidance." },
   { q: "How do I get to the Sausage & Cider Festival?", a: "Victoria Park is approximately 15 minutes' walk from Southport railway station (Merseyrail from Liverpool). Town centre car parks are a 10–15 minute walk from the park. Street parking is available on surrounding roads." },
@@ -57,7 +57,7 @@ const PAGE_LD = {
       "@type": "PostalAddress",
       streetAddress: "Rotten Row",
       addressLocality: "Southport",
-      postalCode: "PR8 2BZ",
+      postalCode: "PR8 1RX",
       addressCountry: "GB",
     },
   },
@@ -97,7 +97,7 @@ export default function SausageCiderFestivalPage() {
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">
                 18 April 2026
               </span>
-              <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 2BZ · 1pm–10pm</span>
+              <span className="text-white/50 text-sm font-medium">Victoria Park · PR8 1RX · 1pm–10pm</span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-5">
               Sausage &amp; Cider
@@ -127,7 +127,7 @@ export default function SausageCiderFestivalPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "18 April", label: "When", sub: "Saturday 2026" },
-              { icon: MapPin, value: "PR8 2BZ", label: "Where", sub: "Victoria Park, Southport" },
+              { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park, Southport" },
               { icon: Clock, value: "1pm–10pm", label: "Hours", sub: "Two sessions" },
               { icon: Ticket, value: "Ticketed", label: "Entry", sub: "Advance booking required" },
             ].map((s) => (
@@ -252,7 +252,7 @@ export default function SausageCiderFestivalPage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { icon: MapPin, title: "Venue & Getting There", items: ["Victoria Park, Rotten Row, Southport. Postcode PR8 2BZ", "10–15 min walk from Southport town centre", "15 min walk from Southport railway station (Merseyrail from Liverpool)", "Town centre car parks: 10–15 min walk from the park entrance", "Street parking available on surrounding residential roads"] },
+              { icon: MapPin, title: "Venue & Getting There", items: ["Victoria Park, Rotten Row, Southport. Postcode PR8 1RX", "10–15 min walk from Southport town centre", "15 min walk from Southport railway station (Merseyrail from Liverpool)", "Town centre car parks: 10–15 min walk from the park entrance", "Street parking available on surrounding residential roads"] },
               { icon: Utensils, title: "Food & Drink Tips", items: ["Card payments accepted at most stalls", "Bring cash as backup, some traders prefer it", "April weather is unpredictable, bring a light jacket", "Eat before if you're not a fan of festival food prices", "The cider selection is usually the strongest part of the offering"] },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7">

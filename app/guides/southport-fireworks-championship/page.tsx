@@ -70,7 +70,7 @@ const PAGE_LD = {
       "@type": "PostalAddress",
       streetAddress: "Victoria Park",
       addressLocality: "Southport",
-      postalCode: "PR8 2LG",
+      postalCode: "PR8 1RX",
       addressCountry: "GB",
     },
   },
@@ -156,7 +156,7 @@ export default function FireworksChampionshipPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
             {[
               { icon: CalendarDays, value: "26–27 Sep", label: "When", sub: "Saturday & Sunday" },
-              { icon: MapPin, value: "PR8 2LG", label: "Where", sub: "Victoria Park" },
+              { icon: MapPin, value: "PR8 1RX", label: "Where", sub: "Victoria Park" },
               { icon: Ticket, value: "£12", label: "Tickets", sub: "Book online, no gate sales" },
               { icon: Clock, value: "5:30–9:30pm", label: "Hours", sub: "Gates open 5:30pm" },
             ].map((s) => (

@@ -210,7 +210,7 @@ export default function WoodvaleCommunityPage() {
                 <MapPin className="w-4 h-4 text-[#C9A84C] flex-none mt-0.5" />
                 <div>
                   <p className="text-sm font-semibold">Off Orchard Lane, Ainsdale</p>
-                  <p className="text-white/70 text-xs">Southport, Merseyside, PR8 3RG</p>
+                  <p className="text-white/70 text-xs">Southport, Merseyside</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -472,7 +472,6 @@ export default function WoodvaleCommunityPage() {
                 <span className="text-xs text-gray-500">Woodvale Community Centre</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-[#1B2E4B] bg-white px-2 py-0.5 rounded border">PR8 3RG</span>
                 <span className="text-xs text-gray-500">WACA Recreation Centre</span>
               </div>
             </div>

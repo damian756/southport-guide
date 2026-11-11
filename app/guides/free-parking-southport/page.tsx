@@ -44,7 +44,7 @@ const FREE_OPTIONS = [
   },
   {
     name: "Scarisbrick Avenue (on-street)",
-    postcode: "PR8 6PX",
+    postcode: "",
     type: "Free on-street",
     walkTo: "Lord Street (central): 10 min. Town centre: 12 min.",
     notes: "Free residential bays. Busy on weekends but usually some spaces available on weekday mornings.",
@@ -78,7 +78,7 @@ const FREE_OPTIONS = [
 
 const PAID_BUT_CHEAP = [
   { name: "Marine Drive (Beach)", postcode: "Marine Drive", cost: "From £1.50", notes: "Pay-and-display. Main beach car park. Cheaper than town centre multi-storeys." },
-  { name: "Tulketh Street", postcode: "PR8 1DP", cost: "From £1.00", notes: "Cheap surface car park. Good for Lord Street (north). Limited spaces." },
+  { name: "Tulketh Street", postcode: "PR8 1AW", cost: "From £1.00", notes: "Cheap surface car park. Good for Lord Street (north). Limited spaces." },
   { name: "Market Street", postcode: "PR8 1HH", cost: "From £1.00", notes: "Central. Good for the market and southern Lord Street." },
 ];
 

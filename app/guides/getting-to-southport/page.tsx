@@ -59,12 +59,12 @@ const FAQ_LD = {
     {
       "@type": "Question",
       name: "What is the postcode for Southport town centre?",
-      acceptedAnswer: { "@type": "Answer", text: "The postcode for Southport train station is PR8 1QW. Lord Street (the main shopping boulevard) is PR8 1PX. For the Atkinson arts centre: PR8 1DB." },
+      acceptedAnswer: { "@type": "Answer", text: "The postcode for Southport train station is PR8 1BE. For the Atkinson arts centre: PR8 1DB." },
     },
     {
       "@type": "Question",
       name: "Is there parking in Southport town centre?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. There are several car parks in and around Southport town centre including the NCP on Nevill Street (PR8 1LB), the Tulketh Street multi-storey (PR8 1EL), and surface car parks along Marine Drive near the seafront. On-street parking is also available on many side streets." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. There are several car parks in and around Southport town centre including the NCP on Nevill Street (PR8 1LB), the Tulketh Street car park (PR8 1AW), and surface car parks along Marine Drive near the seafront. On-street parking is also available on many side streets." },
     },
     {
       "@type": "Question",
@@ -124,7 +124,7 @@ export default function GettingToSouthportPage() {
           <div className="flex-1 flex flex-col justify-center px-6 py-12 md:py-16 md:pl-16 md:pr-10 order-last md:order-first">
             <div className="flex items-center gap-3 mb-4">
               <span className="bg-[#C9A84C] text-[#1B2E4B] text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">Transport</span>
-              <span className="text-white/50 text-sm">Southport · PR8 1QW</span>
+              <span className="text-white/50 text-sm">Southport · PR8 1BE</span>
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
               Getting to
@@ -199,7 +199,7 @@ export default function GettingToSouthportPage() {
             </p>
             <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/25 rounded-xl p-4 not-prose">
               <p className="text-sm text-[#1B2E4B] font-medium">
-                Southport station postcode: <strong>PR8 1QW</strong>. For timetables and tickets:{" "}
+                Southport station postcode: <strong>PR8 1BE</strong>. For timetables and tickets:{" "}
                 <a href="https://www.merseyrail.org" target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:underline font-bold">merseyrail.org</a>
               </p>
             </div>
@@ -232,7 +232,7 @@ export default function GettingToSouthportPage() {
             {[
               { name: "Marine Drive Seafront Car Park", postcode: "Marine Drive", notes: "Closest to the beach. Fills quickly on sunny days." },
               { name: "NCP Nevill Street", postcode: "PR8 1LB", notes: "Multi-storey near Lord Street. Covered. Open daily." },
-              { name: "Tulketh Street", postcode: "PR8 1EL", notes: "Town centre multi-storey. Good for shopping." },
+              { name: "Tulketh Street", postcode: "PR8 1AW", notes: "Town centre multi-storey. Good for shopping." },
               { name: "Kew Street", postcode: "PR8 1HB", notes: "Surface car park, central, often available." },
             ].map((cp) => (
               <div key={cp.name} className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
@@ -321,7 +321,7 @@ export default function GettingToSouthportPage() {
           <div className="space-y-4">
             {[
               { q: "How long does it take to get to Southport by train from Liverpool?", a: "Approximately 50 minutes on the Merseyrail Northern Line from Liverpool Central, direct, no changes. Trains run every 15 to 30 minutes." },
-              { q: "What is the postcode for Southport town centre?", a: "Southport station is PR8 1QW. Lord Street is PR8 1PX. The Atkinson arts centre is PR8 1DB." },
+              { q: "What is the postcode for Southport town centre?", a: "Southport station is PR8 1BE. The Atkinson arts centre is PR8 1DB." },
               { q: "Is there parking at Southport station?", a: "There is limited short-stay parking immediately outside the station. For longer stays, the NCP car park on Nevill Street (PR8 1LB) is a short walk and covered. See the full parking guide for all options." },
               { q: "How do I get to Southport from Manchester?", a: "By car via the M60 and M58, around 60 to 90 minutes depending on traffic. By train, change at Wigan Wallgate or Liverpool Central for Merseyrail to Southport, total journey around 90 minutes." },
               { q: "Can I get to Southport without a car?", a: "Yes, easily. Merseyrail runs frequent services from Liverpool Central directly to Southport. Once in Southport, the beach, Lord Street, and main attractions are all walkable from the station." },

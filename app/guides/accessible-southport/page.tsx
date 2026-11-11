@@ -75,7 +75,7 @@ const VENUES = [
   },
   {
     name: "Southport Train Station",
-    postcode: "PR8 1NL",
+    postcode: "PR8 1BE",
     address: "Chapel Street",
     category: "Transport",
     sunflower: true,
@@ -99,7 +99,7 @@ const VENUES = [
   },
   {
     name: "Victoria Park",
-    postcode: "PR8 2LG",
+    postcode: "PR8 1RX",
     address: "Rotten Row",
     category: "Park, outdoor",
     sunflower: false,
@@ -120,7 +120,7 @@ const PRACTICAL = [
   {
     icon: Train,
     title: "Getting here by train",
-    body: "Merseyrail from Liverpool Central to Southport is step-free and fully accessible. The journey is approximately 45 minutes. Southport station (PR8 1NL) is itself a Sunflower-registered venue. Trains run regularly throughout the day including evenings.",
+    body: "Merseyrail from Liverpool Central to Southport is step-free and fully accessible. The journey is approximately 45 minutes. Southport station (PR8 1BE) is itself a Sunflower-registered venue. Trains run regularly throughout the day including evenings.",
   },
   {
     icon: MapPin,

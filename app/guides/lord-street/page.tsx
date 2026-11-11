@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Where can I park for Lord Street?",
-    a: "The closest car parks to Lord Street are Tulketh Street car park (PR8 1DP, short walk from the northern end), Eastbank Street (PR8 1DG), and Promenade car park (slightly further). Marine Drive is the best option for beach parking if you're combining both. On weekdays, on-street pay-and-display on the side streets is usually available.",
+    a: "The closest car parks to Lord Street are Tulketh Street car park (PR8 1AW, short walk from the northern end), Eastbank Street (PR8 1DG), and Promenade car park (slightly further). Marine Drive is the best option for beach parking if you're combining both. On weekdays, on-street pay-and-display on the side streets is usually available.",
   },
   {
     q: "Is Lord Street good for restaurants?",
@@ -237,7 +237,7 @@ export default function LordStreetGuidePage() {
               </thead>
               <tbody className="divide-y divide-gray-100 bg-white">
                 {[
-                  { name: "Tulketh Street", code: "PR8 1DP", walk: "2 min" },
+                  { name: "Tulketh Street", code: "PR8 1AW", walk: "2 min" },
                   { name: "Eastbank Street", code: "PR8 1DG", walk: "3 min" },
                   { name: "Market Street", code: "PR8 1HH", walk: "4 min" },
                   { name: "NCP London Street", code: "PR8 1QU", walk: "3 min", href: "/parking/parking-ncp-southport-london-street" },

@@ -37,7 +37,7 @@ const FAQS = [
   },
   {
     q: "Is Ainsdale beach dog-friendly?",
-    a: "Ainsdale beach, just south of Southport, is popular with dog owners. From 1 May to 30 September dogs are not allowed within 200m either side of the main beach entrance, down to the tide line; elsewhere on the beach they are welcome all year. It's a National Nature Reserve, dogs must be kept under control near the dunes and nature reserve areas. Good parking at Ainsdale-on-Sea (PR8 2PZ).",
+    a: "Ainsdale beach, just south of Southport, is popular with dog owners. From 1 May to 30 September dogs are not allowed within 200m either side of the main beach entrance, down to the tide line; elsewhere on the beach they are welcome all year. It's a National Nature Reserve, dogs must be kept under control near the dunes and nature reserve areas. Parking is at Ainsdale-on-Sea, off Shore Road.",
   },
   {
     q: "Are dogs allowed in Southport town centre?",
@@ -159,7 +159,7 @@ export default async function DogFriendlySouthportGuidePage() {
           </div>
 
           <p className="text-gray-700 leading-relaxed mb-4">
-            In practice, most dog owners head straight for the northern end regardless. It&apos;s less busy, the sand is better, and the access from Marine Drive is straightforward. Postcode for the northern parking area: <strong>PR8 1RL</strong>.
+            In practice, most dog owners head straight for the northern end regardless. It&apos;s less busy, the sand is better, and the access from Marine Drive is straightforward. Park on Marine Drive.
           </p>
           <p className="text-gray-700 leading-relaxed">
             The Promenade (Marine Drive) runs the full length of the seafront and is completely dog-friendly year-round. It&apos;s tarmacked and easily walkable, a good option on days when you don&apos;t want to deal with sand.
@@ -173,7 +173,7 @@ export default async function DogFriendlySouthportGuidePage() {
             Ainsdale beach is a 5-minute drive south of Southport and is one of the best dog-walking destinations on the Sefton coast. It&apos;s a National Nature Reserve, so dogs must be kept under control near the dunes and designated areas. From 1 May to 30 September dogs are not allowed within 200m either side of the main beach entrance, down to the tide line; the rest of the beach has off-lead space all year.
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Parking at Ainsdale-on-Sea: postcode <strong>PR8 2PZ</strong>. Paid car park. The beach is a short walk from the car park through the dunes.
+            Parking at Ainsdale-on-Sea: the beach car park off Shore Road. Paid car park. The beach is a short walk from the car park through the dunes.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Quieter than Southport Beach in summer and very popular with local dog owners. In summer, walk well clear of the main entrance before letting your dog off.
@@ -203,7 +203,7 @@ export default async function DogFriendlySouthportGuidePage() {
             {[
               {
                 name: "Southport Beach (north end)",
-                postcode: "PR8 1RL",
+                postcode: "Marine Drive",
                 notes: "North of the pier, dogs are welcome all year. From 1 May to 30 September there are no dogs for 555m south of the pier. Wide and flat, good for any dog.",
               },
               {
@@ -213,7 +213,7 @@ export default async function DogFriendlySouthportGuidePage() {
               },
               {
                 name: "Ainsdale Beach and Dunes",
-                postcode: "PR8 2PZ",
+                postcode: "Shore Road, Ainsdale",
                 notes: "NNR, dogs under control near dunes. No dogs within 200m either side of the main entrance from 1 May to 30 September; open beach for off-lead running elsewhere.",
               },
               {
@@ -318,7 +318,7 @@ export default async function DogFriendlySouthportGuidePage() {
               "Bag dispensers are available at the main beach access points, but bring your own to be safe.",
               "Fresh water on the beach is limited. Bring a travel bowl and water for longer outings.",
               "During the Air Show (August), Southport Beach gets very crowded, not ideal for anxious dogs.",
-              "Parking at the northern beach end (PR8 1RL) is the quickest route to the unrestricted section.",
+              "Parking at the northern beach end, on Marine Drive, is the quickest route to the unrestricted section.",
               "Nearest vet: several practices in Southport town centre, search 'vet Southport PR8' for current options.",
             ].map((tip) => (
               <li key={tip} className="flex gap-3 text-gray-700">

@@ -43,7 +43,7 @@ const HOTELS = [
     description:
       "The Victorian option. On Lord Street since 1845, in a central location. Popular with weddings and events, and has a bar.",
     bestFor: "Character, central location, Lord Street access",
-    postcode: "PR8 1NL",
+    postcode: "",
   },
   {
     name: "The Vincent Hotel",
