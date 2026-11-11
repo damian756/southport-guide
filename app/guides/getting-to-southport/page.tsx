@@ -31,7 +31,7 @@ const PAGE_LD = {
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/getting-to-southport`,
   datePublished: "2026-04-04",
-  dateModified: "2026-04-04",
+  dateModified: GUIDE.dateUpdated,
   author: { "@type": "Person", name: "Terry", url: `${BASE_URL}/about` },
   publisher: { "@type": "Organization", name: "SouthportGuide.co.uk", url: BASE_URL },
   image: `${BASE_URL}/images/guides/getting-to-southport.jpg`,

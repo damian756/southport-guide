@@ -2218,7 +2218,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "On a really hot day the queue at the main seafront kiosks can be ten minutes. Worth walking slightly further to avoid the worst of it.",
       "Most parlours are card only now. Keep that in mind.",
     ]},
-    { type: "cta", text: "Exploring Southport with kids this summer?", href: "/southport-with-kids", label: "Full Kids Guide to Southport →" },
+    { type: "cta", text: "Exploring Southport with kids this summer?", href: "/blog/southport-with-kids-full-guide", label: "Full Kids Guide to Southport →" },
   ],
 
   "southport-summer-holidays-2026": [
@@ -2245,7 +2245,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Week 5: August bank holiday weekend (last weekend of August). The Air Show is usually around this time. Marine Drive will be packed.",
       "Week 6: Schools go back first week of September. The town quiets down immediately.",
     ]},
-    { type: "cta", text: "Full kids guide to Southport:", href: "/southport-with-kids", label: "Things to Do in Southport with Kids →" },
+    { type: "cta", text: "Full kids guide to Southport:", href: "/blog/southport-with-kids-full-guide", label: "Things to Do in Southport with Kids →" },
   ],
 
   "southport-in-june-2026": [
@@ -2544,7 +2544,7 @@ export const BLOG_CONTENT: Record<string, ContentBlock[]> = {
       "Parking: town centre multi-storey (Tulketh Street PR8 1AW) is the reliable option for a half term visit",
     ]},
     { type: "callout", emoji: "🎃", text: "October half term = 26-30 Oct 2026. Schools break up Friday 23 Oct, return Monday 2 Nov. Most Merseyside and Lancashire schools follow this pattern, but check your specific school." },
-    { type: "cta", text: "Full guide to things to do in Southport with children at any time of year.", href: "/guides/southport-with-kids", label: "Southport with Kids: Complete Guide" },
+    { type: "cta", text: "Full guide to things to do in Southport with children at any time of year.", href: "/blog/southport-with-kids-full-guide", label: "Southport with Kids: Complete Guide" },
   ],
 
   "hesketh-arms-southport": [

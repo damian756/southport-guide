@@ -146,6 +146,11 @@ export interface BlogPost {
   categorySlug: string;
   image: string;
   date: string;
+  /**
+   * YYYY-MM-DD: the last day the post's words changed after `date` (from git), for
+   * the Article JSON-LD and the sitemap. Leave unset if they have not changed.
+   */
+  dateModified?: string;
   /** Omit for default Terry author. Set to "damian" for posts written by Damian Roche. */
   author?: "terry" | "damian";
   /** Pin this post to the homepage blog section. Up to 3 featured posts are shown; extras are ignored. */
@@ -198,6 +203,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "15 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "dog-friendly-pubs-southport",
@@ -207,6 +213,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/categories/bars-nightlife.webp",
     date: "12 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Where to Stay
   {
@@ -217,6 +224,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "where-to-stay",
     image: "/images/blog-hero.jpg",
     date: "10 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -227,6 +235,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "where-to-stay",
     image: "/images/categories/hotels.webp",
     date: "8 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Things to Do
   {
@@ -237,6 +246,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "things-to-do",
     image: "/images/categories/attractions.webp",
     date: "5 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "southport-with-kids-full-guide",
@@ -246,6 +256,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "things-to-do",
     image: "/images/categories/activities.webp",
     date: "3 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Outdoors
   {
@@ -256,6 +267,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/categories/cafes.webp",
     date: "5 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "best-beaches-near-southport",
@@ -265,6 +277,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/categories/beaches-parks.webp",
     date: "1 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "beachcombing-ainsdale-winter",
@@ -274,6 +287,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/blog/ainsdale/ainsdale-beach-dunes-sea-view.webp",
     date: "4 Mar 2026",
+    dateModified: "2026-11-11",
   },
   // Golf
   {
@@ -284,6 +298,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog-pubs.jpg",
     date: "17 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -294,6 +309,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "getting-around",
     image: "/images/categories/transport.webp",
     date: "18 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -304,6 +320,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/open-2026.webp",
     date: "7 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -314,6 +331,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/categories/golf.webp",
     date: "2 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Shopping
   {
@@ -324,6 +342,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "shopping",
     image: "/images/categories/shopping.webp",
     date: "4 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Bars & Nightlife
   {
@@ -334,6 +353,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "bars-nightlife",
     image: "/images/blog-pubs.jpg",
     date: "11 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Wellness
   {
@@ -344,6 +364,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "wellness",
     image: "/images/categories/wellness.webp",
     date: "6 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Activities
   {
@@ -354,6 +375,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "activities",
     image: "/images/categories/beaches-parks.webp",
     date: "9 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Property
   {
@@ -364,6 +386,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/southport-house-prices.webp",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   // Parking
@@ -375,6 +398,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "getting-around",
     image: "/images/categories/parking.webp",
     date: "5 Mar 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   // Getting Around
@@ -386,6 +410,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "getting-around",
     image: "/images/categories/transport.webp",
     date: "13 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Local Guides
   {
@@ -396,6 +421,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/southport-pier.webp",
     date: "14 Feb 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   // Events
@@ -407,6 +433,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/mlec.webp",
     date: "16 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-12-31",
   },
 
@@ -419,6 +446,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-tickets-guide.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -429,6 +457,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/what-to-bring-open-championship-2026.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -439,6 +468,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-spectator-guide.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -449,6 +479,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/restaurants-open-week-southport-2026.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -459,6 +490,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/open-championship-2026-day-by-day.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
 
@@ -471,6 +503,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/best-cafes-southport.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     canonicalUrl: "https://www.southportguide.co.uk/guides/best-cafes-southport",
   },
   {
@@ -481,6 +514,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/best-brunch-southport.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "southport-pier-guide",
@@ -490,6 +524,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "things-to-do",
     image: "/images/blog/southport-pier-guide.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "day-trips-from-southport",
@@ -499,6 +534,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/day-trips-from-southport.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "southport-flower-show-guide",
@@ -508,6 +544,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/southport-flower-show-guide.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-08-23",
   },
   {
@@ -518,6 +555,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/southport-vs-blackpool.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
 
   // ── New posts: Content gap closers ────────────────────────────────────────
@@ -529,6 +567,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "best-italian-restaurants-southport",
@@ -538,6 +577,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/categories/restaurants.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "watersports-southport",
@@ -547,6 +587,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "activities",
     image: "/images/categories/beaches-parks.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "cocktail-bars-southport",
@@ -556,6 +597,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "bars-nightlife",
     image: "/images/categories/bars-nightlife.webp",
     date: "19 Feb 2026",
+    dateModified: "2026-11-11",
   },
   // Local Guides
   {
@@ -566,6 +608,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/churchtown-botanic-crocuses-carpet.jpg",
     date: "02 Mar 2026",
+    dateModified: "2026-11-11",
     author: "damian",
   },
   // March 2026 — keyword gap closers
@@ -577,6 +620,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/afternoon-tea-southport.webp",
     date: "14 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "splash-world-southport",
@@ -586,6 +630,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "things-to-do",
     image: "/images/blog/splash-world-southport.webp",
     date: "14 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "atkinson-southport",
@@ -595,6 +640,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "things-to-do",
     image: "/images/blog/atkinson-southport.webp",
     date: "15 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "marine-lake-events-centre-southport",
@@ -604,6 +650,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/mlec-southport.webp",
     date: "16 Mar 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   // Property sector guides
@@ -615,6 +662,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/neighbourhoods/birkdale.webp",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "living-in-churchtown-southport",
@@ -624,6 +672,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/neighbourhoods/churchtown.webp",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "living-in-ainsdale-southport",
@@ -633,6 +682,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/neighbourhoods/ainsdale.webp",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "should-i-buy-in-southport-2026",
@@ -642,6 +692,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/southport-house-prices.webp",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
   },
   // History
   {
@@ -652,6 +703,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "history",
     image: "/images/blog/churchtown-st-cuthberts-history.jpg",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
   },
   // For Business
   {
@@ -662,6 +714,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "for-business",
     image: "/images/blog/southport-business-hub.jpg",
     date: "26 Feb 2026",
+    dateModified: "2026-11-11",
     author: "damian",
   },
   {
@@ -672,6 +725,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/southport-market-guide.jpg",
     date: "17 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "easter-things-to-do-southport-2026",
@@ -681,6 +735,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/easter-southport.jpg",
     date: "18 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-04-06",
   },
   {
@@ -691,6 +746,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/sunday-lunch-southport.jpg",
     date: "19 Mar 2026",
+    dateModified: "2026-11-11",
   },
 
   // ── 2026 Events cluster ──────────────────────────────────────────────────
@@ -704,6 +760,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/southport-fireworks-championship.webp",
     date: "26 Mar 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "southport-september-2026-events",
@@ -713,6 +770,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-southport-september-2026.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-09-30",
   },
 
@@ -725,6 +783,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-comedy-lineup.webp",
     date: "26 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-10-18",
   },
   {
@@ -735,6 +794,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-victoria-park-events.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-12-31",
   },
 
@@ -747,6 +807,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-june-2026.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-06-30",
   },
 
@@ -759,6 +820,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-easter-southport.jpg",
     date: "3 Apr 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-04-06",
   },
   {
@@ -768,6 +830,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/blog/blog-marine-lake-walk.jpg",
     date: "3 Apr 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   {
@@ -777,6 +840,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-birkdale-station-real.jpg",
     date: "4 Apr 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -787,6 +851,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-sausage-cider-fun.webp",
     date: "30 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-04-18",
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-sausage-cider-festival",
   },
@@ -798,6 +863,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-southport-spring-april.webp",
     date: "26 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
   },
 
@@ -810,6 +876,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-cristal-palace.webp",
     date: "26 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-04-04",
   },
   {
@@ -820,6 +887,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-southport-culture.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-12-31",
   },
 
@@ -832,6 +900,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-week-southport.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -842,6 +911,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-2026-no-tickets.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
 
@@ -854,6 +924,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-flower-show-guide.webp",
     date: "26 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-08-23",
   },
   {
@@ -864,6 +935,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-august-southport.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-08-31",
   },
 
@@ -876,6 +948,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-airshow-crowds.webp",
     date: "29 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-08-30",
   },
   {
@@ -886,6 +959,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-august-bank-holiday-southport.webp",
     date: "25 Mar 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-08-31",
   },
   {
@@ -896,6 +970,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/gemini-lounge-lord-street.jpg",
     date: "13 Apr 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   {
@@ -906,6 +981,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-cristal-palace.webp",
     date: "12 Apr 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "blackpool-or-southport-day-out",
@@ -915,6 +991,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-blackpool-southport-daytrip.jpg",
     date: "2 Apr 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "blackpool-open-week-add-southport",
@@ -924,6 +1001,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-blackpool-open-southport.jpg",
     date: "2 Apr 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -934,6 +1012,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-big-top-festival-2026.jpg",
     date: "1 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-03",
   },
   {
@@ -944,6 +1023,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "bars-nightlife",
     image: "/images/blog/blog-beer-week-southport-2026.jpg",
     date: "1 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-25",
   },
   {
@@ -954,6 +1034,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "where-to-stay",
     image: "/images/blog/blog-hotels-southport-2026.jpg",
     date: "1 May 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "the-open-2026-park-and-ride-transport-guide",
@@ -963,6 +1044,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-2026-transport.jpg",
     date: "1 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -973,6 +1055,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-southport-may-2026.jpg",
     date: "1 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
   },
   {
@@ -983,6 +1066,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-southport-2026.jpg",
     date: "7 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
@@ -994,6 +1078,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-southport-pubs.jpg",
     date: "7 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1003,6 +1088,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/blog-fish-chips-southport.jpg",
     date: "17 May 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "southport-rainy-day-guide",
@@ -1011,6 +1097,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-rainy-day-southport.jpg",
     date: "18 May 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "open-2026-southport-ten-weeks-out",
@@ -1020,6 +1107,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-ten-weeks-southport.jpg",
     date: "10 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1030,6 +1118,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "restaurants",
     image: "/images/blog/blog-southport-restaurants-open-week.jpg",
     date: "11 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1040,6 +1129,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-may-2026.jpg",
     date: "12 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
   },
   {
@@ -1050,6 +1140,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-halfterm-may-2026.jpg",
     date: "18 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
   },
   {
@@ -1060,6 +1151,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-countdown-2026.jpg",
     date: "19 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
@@ -1071,6 +1163,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-8-weeks-2026.jpg",
     date: "20 May 2026",
+    dateModified: "2026-07-13",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1081,6 +1174,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-armed-forces-day-flag.jpg",
     date: "20 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-06-28",
   },
   {
@@ -1091,6 +1185,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "events",
     image: "/images/blog/blog-food-festival-this-weekend.jpg",
     date: "28 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-05-31",
     canonicalUrl: "https://www.southportguide.co.uk/guides/southport-food-drink-festival-2026",
   },
@@ -1102,6 +1197,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-june-2026.webp",
     date: "28 May 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-06-30",
   },
   {
@@ -1112,6 +1208,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/blog-southport-ice-cream.jpg",
     date: "1 Jun 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   {
@@ -1122,6 +1219,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-summer-holidays-kids.jpg",
     date: "1 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-08-31",
   },
   {
@@ -1132,6 +1230,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-cottages-sefton.jpg",
     date: "4 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1142,6 +1241,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-fathers-day-restaurant.webp",
     date: "10 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-06-21",
   },
   {
@@ -1152,6 +1252,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-open-watching-links.webp",
     date: "10 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1162,6 +1263,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-birkdale-village-open-week.jpg",
     date: "5 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1172,6 +1274,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-southport-july-2026.jpg",
     date: "5 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-31",
   },
   {
@@ -1182,6 +1285,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-three-weeks.webp",
     date: "22 Jun 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1192,6 +1296,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/blog/blog-southport-seafront-summer.webp",
     date: "22 Jun 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "getting-around-southport-open-week",
@@ -1201,6 +1306,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "getting-around",
     image: "/images/blog/blog-southport-transport-open.webp",
     date: "1 Jul 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1210,6 +1316,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "golf",
     image: "/images/blog/blog-open-2026-ryan-fox.webp",
     date: "19 Jul 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "open-2026-round-1-southport",
@@ -1227,6 +1334,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/blog-birkdale-restaurants.webp",
     date: "14 Jul 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1236,6 +1344,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "local-guides",
     image: "/images/blog/blog-open-local-view.webp",
     date: "14 Jul 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-07-19",
   },
   {
@@ -1246,6 +1355,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "things-to-do",
     image: "/images/blog/blog-lord-street-summer.webp",
     date: "1 Jul 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "best-breakfast-southport",
@@ -1254,6 +1364,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/blog-best-breakfast-southport.webp",
     date: "9 Sep 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   {
@@ -1263,6 +1374,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "family",
     image: "/images/blog/blog-southport-october-half-term.webp",
     date: "9 Sep 2026",
+    dateModified: "2026-11-11",
     eventEndDate: "2026-10-30",
   },
   {
@@ -1272,6 +1384,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "food-drink",
     image: "/images/blog/blog-hesketh-arms-southport.webp",
     date: "21 Aug 2026",
+    dateModified: "2026-11-11",
     featured: true,
   },
   {
@@ -1281,6 +1394,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "outdoors",
     image: "/images/blog/blog-autumn-walks-southport.webp",
     date: "21 Aug 2026",
+    dateModified: "2026-11-11",
   },
   {
     slug: "southport-pier-closure-restoration",

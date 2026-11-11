@@ -43,7 +43,7 @@ const ARTICLE_LD = {
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/woodvale-community-centre`,
   datePublished: "2026-04-14",
-  dateModified: "2026-04-14",
+  dateModified: GUIDE.dateUpdated,
   author: { "@type": "Person", name: "Terry", url: `${BASE_URL}/about` },
   publisher: { "@type": "Organization", name: "SouthportGuide.co.uk", url: BASE_URL },
   image: `${BASE_URL}/images/woodvale-community-centre/woodvale-centre-front.webp`,

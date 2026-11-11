@@ -8,6 +8,7 @@ import { BLOG_CONTENT, ContentBlock } from "@/lib/blog-content";
 import { notFound } from "next/navigation";
 import AdSlot from "@/components/AdSlot";
 import { postSlotId } from "@/lib/ad-slots";
+import { metaDescription } from "@/lib/meta-description";
 
 // Pages with an advert space rebuild daily, so a sponsor whose end date has passed drops off.
 export const revalidate = 86400;
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : DEFAULT_OG;
   return {
     title: post.title,
-    description: post.excerpt,
+    // Whole sentences of the excerpt up to about 160 characters (lib/meta-description.ts)
+    description: metaDescription(post.excerpt),
     alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
@@ -48,6 +50,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.excerpt,
       url,
+      publishedTime: toIso(post.date),
+      ...(post.dateModified ? { modifiedTime: post.dateModified } : {}),
       images: [{ url: imageUrl, width: 1200, height: 630, alt: post.heroAlt ?? post.title }],
     },
     twitter: {
@@ -324,7 +328,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       ? { image: post.image.startsWith("http") ? post.image : `https://www.southportguide.co.uk${post.image}` }
       : {}),
     datePublished: isoDate,
-    dateModified: isoDate,
+    // The last change to the words, else the date the post shows
+    dateModified: post.dateModified ?? isoDate,
     url: canonicalUrl,
     author: sponsor
       ? { "@type": "Organization", name: sponsor.name, url: sponsor.url }
@@ -577,9 +582,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* More in same category */}
         {cat && (() => {
+          // The two posts in the category nearest in date, so every post is linked from
+          // its neighbours (the first two in the list were the same two on every post).
+          const at = (d: string) => Date.parse(`${toIso(d)}T00:00:00Z`);
           const sameCategory = BLOG_POSTS.filter(
             (p) => p.categorySlug === post.categorySlug && p.slug !== slug && !(p.eventEndDate && p.eventEndDate < todayISO())
-          ).slice(0, 2);
+          )
+            .map((p, i) => ({ p, i, gap: Math.abs(at(p.date) - at(post.date)) }))
+            .sort((a, b) => a.gap - b.gap || a.i - b.i)
+            .slice(0, 2)
+            .map(({ p }) => p);
           if (sameCategory.length === 0) return null;
           return (
             <div className="mb-10">

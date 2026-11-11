@@ -53,7 +53,7 @@ const ARTICLE_LD = {
   description: GUIDE.metaDescription,
   url: `${BASE_URL}/guides/southport-market`,
   datePublished: "2026-04-02",
-  dateModified: "2026-04-02",
+  dateModified: GUIDE.dateUpdated,
   author: { "@type": "Person", name: "Terry", url: `${BASE_URL}/about` },
   publisher: { "@type": "Organization", name: "SouthportGuide.co.uk", url: BASE_URL },
   image: `${BASE_URL}/images/southport-market/exterior/entrance-main-signage.webp`,

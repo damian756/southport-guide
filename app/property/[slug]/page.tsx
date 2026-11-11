@@ -133,8 +133,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: desc,
         images: [`${BASE_URL}/og-property.webp`],
       },
+      // When the sector's figures and text were last updated, not the day of the request
       other: {
-        "article:modified_time": new Date().toISOString().split("T")[0],
+        "article:modified_time": sector.updatedAt.toISOString().split("T")[0],
       },
     };
   }
@@ -183,7 +184,7 @@ async function SectorPage({
   sector,
   slug,
 }: {
-  sector: { id: string; sector: string; lat: number; lng: number; avgPrice3yr: number | null; medianPrice3yr: number | null; salesCount3yr: number; editorialContent: string | null; metaTitle: string | null; metaDescription: string | null; faqJson: unknown };
+  sector: { id: string; sector: string; lat: number; lng: number; avgPrice3yr: number | null; medianPrice3yr: number | null; salesCount3yr: number; editorialContent: string | null; metaTitle: string | null; metaDescription: string | null; faqJson: unknown; updatedAt: Date };
   slug: string;
 }) {
   const areaLabel = getAreaLabelForSector(sector.sector);
@@ -281,6 +282,14 @@ async function SectorPage({
       }),
     ]);
 
+  // The newest sale in the stored Land Registry data for this sector: the month the
+  // price figures run to (the label showed the current month, whatever the data).
+  const latestSale = await prisma.propertySale.aggregate({
+    _max: { dateOfTransfer: true },
+    where: { postcode: { startsWith: sector.sector }, recordStatus: { not: "D" } },
+  });
+  const priceDataTo = latestSale._max.dateOfTransfer;
+
   const schoolsWithDistance = schools
     .filter((s) => s.lat != null && s.lng != null)
     .map((s) => ({
@@ -368,7 +377,7 @@ async function SectorPage({
     "@type": "Dataset",
     name: `House prices in ${sector.sector}`,
     description: `Average and median house prices, sales data for ${sector.sector}, Southport.`,
-    dateModified: new Date().toISOString().split("T")[0],
+    dateModified: sector.updatedAt.toISOString().split("T")[0],
     creator: {
       "@type": "Organization",
       name: "SouthportGuide.co.uk",
@@ -618,7 +627,7 @@ async function SectorPage({
             <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
               <MethodologySection />
               <div className="mt-3">
-                <DataFreshness priceDate={format(new Date(), "MMMM yyyy")} />
+                <DataFreshness priceDate={priceDataTo ? `sales to ${format(priceDataTo, "MMMM yyyy")}` : undefined} />
               </div>
             </div>
 
