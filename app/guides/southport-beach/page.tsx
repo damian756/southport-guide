@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/guides/southport-beach`,
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    images: [{ url: `${BASE_URL}/images/southport-beach-hero.webp`, width: 1200, height: 630, alt: "Southport Beach — wide flat sand at low tide" }],
+    images: [{ url: `${BASE_URL}/images/southport-beach-hero.webp`, width: 1200, height: 630, alt: "Southport Beach: wide flat sand at low tide" }],
   },
 };
 
@@ -88,11 +88,11 @@ const QUICK_LINKS = [
 const FAQS = [
   {
     q: "What is the postcode for Southport Beach?",
-    a: "The main parking postcode for Southport Beach is PR8 1RQ — this is Marine Drive, the pay-and-display car park running along the seafront promenade. The Esplanade car park (PR8 1RX) is a smaller alternative 50m from the sand near Adventure Coast. For satnav, use PR8 1RQ.",
+    a: "The main parking postcode for Southport Beach is PR8 1RQ. This is Marine Drive, the pay-and-display car park running along the seafront promenade. The Esplanade car park (PR8 1RX) is a smaller alternative 50m from the sand near Adventure Coast. For satnav, use PR8 1RQ.",
   },
   {
     q: "Is there parking at Southport Beach?",
-    a: "Yes. Marine Drive (PR8 1RQ) is the main beach car park — pay-and-display bays running along the promenade. The Esplanade car park (PR8 1RX) is a smaller pay-and-display option near Adventure Coast. Ocean Plaza (PR8 1SQ) is free for shoppers. On summer weekends, Marine Drive fills by mid-morning — arrive before 10am or use town centre parking and walk (12 minutes).",
+    a: "Yes. Marine Drive (PR8 1RQ) is the main beach car park, with pay-and-display bays running along the promenade. The Esplanade car park (PR8 1RX) is a smaller pay-and-display option near Adventure Coast. Ocean Plaza (PR8 1SQ) is free for shoppers. On summer weekends, Marine Drive fills by mid-morning, so arrive before 10am or use town centre parking and walk (12 minutes).",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
@@ -166,7 +166,7 @@ export default async function SouthportBeachGuidePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/southport-beach-hero.webp"
-            alt="Southport Beach — wide flat sand stretching to the sea at low tide"
+            alt="Southport Beach: wide flat sand stretching to the sea at low tide"
             fill
             sizes="100vw"
             quality={90}
@@ -464,7 +464,7 @@ export default async function SouthportBeachGuidePage() {
               <div>
                 <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Satnav Postcode</p>
                 <p className="text-white font-mono text-2xl font-bold mb-1">PR8 1RQ</p>
-                <p className="text-white/60 text-sm">Marine Drive, Southport — the main pay-and-display car park running alongside the beach and Marine Lake.</p>
+                <p className="text-white/60 text-sm">Marine Drive, Southport: the main pay-and-display car park running alongside the beach and Marine Lake.</p>
               </div>
             </div>
           </div>
@@ -685,8 +685,8 @@ export default async function SouthportBeachGuidePage() {
               {
                 emoji: "🎡",
                 name: "Southport Pier",
-                sub: "1,108m · England&apos;s 2nd longest",
-                detail: "A 20-minute walk from the main beach access. Walk the full length for views across the estuary and the Irish Sea. Free to walk, worth the detour.",
+                sub: "1,108m · Closed for restoration",
+                detail: "England's second longest pier, closed since December 2022 while a £20 million restoration is carried out. The guide covers its history and where to find updates.",
                 href: "/guides/southport-pier",
               },
               {
@@ -818,7 +818,7 @@ export default async function SouthportBeachGuidePage() {
             >
               <Image
                 src="/images/blog/ainsdale/ainsdale-beach-dunes-sea-view.webp"
-                alt="Ainsdale Beach — dune grass in the foreground, Irish Sea behind"
+                alt="Ainsdale Beach: dune grass in the foreground, Irish Sea behind"
                 fill
                 className="object-cover object-[center_55%] transition-transform duration-700 group-hover:scale-105"
                 sizes="100vw"

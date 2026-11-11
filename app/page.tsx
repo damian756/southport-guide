@@ -1244,7 +1244,7 @@ export default async function Home() {
                 SouthportGuide is what I&apos;d show someone who asked for an honest, up-to-date guide. Not a reprint of the council website. If something isn&apos;t worth your time, I say so.
               </p>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Every business in this directory is listed on its own merits. No business pays for its position in search results here. If your business is not listed yet, you can suggest it and we will add it.
+                Any Southport business can be listed here for free. Places that pay for a Pro listing or a boost are marked Featured, and paying does not change what we write. If your business is not listed yet, you can suggest it and we will add it.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -1274,10 +1274,7 @@ export default async function Home() {
             <div className="flex-none md:w-48 flex flex-col gap-3">
               {[
                 { label: "Based in Churchtown" },
-                { label: "Dog-friendly tested" },
                 { label: "Family-tested" },
-                { label: "Updated daily" },
-                { label: "No sponsored rankings" },
                 { label: "Every business listed" },
               ].map(({ label }) => (
                 <div key={label} className="flex items-center gap-2.5 bg-white rounded-xl px-3 py-2.5 border border-gray-100 shadow-sm">

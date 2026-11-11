@@ -166,22 +166,6 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* The Open 2026 */}
-        <div className="bg-[#1B2E4B] rounded-2xl p-6 text-white">
-          <h3 className="font-display font-bold text-lg mb-2 flex items-center gap-2">
-            🏌️ The Open 2026, Royal Birkdale
-          </h3>
-          <p className="text-white/80 text-sm">
-            Limited to one slot per category. 6 of 11 category slots available.
-          </p>
-          <Link
-            href="/dashboard"
-            className="inline-block mt-4 border border-[#C9A84C]/40 text-[#C9A84C] px-4 py-2 rounded-full font-bold text-sm hover:bg-[#C9A84C]/10 transition"
-          >
-            Book your boost →
-          </Link>
-        </div>
-
         {/* FAQ */}
         <section>
           <h2 className="font-display text-2xl font-bold text-[#1B2E4B] mb-6">

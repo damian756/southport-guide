@@ -60,12 +60,11 @@ const CATEGORY_GUIDES: Record<string, { href: string; label: string }[]> = {
     { href: "/guides/southport-beach", label: "Southport Beach Guide" },
   ],
   "golf": [
-    { href: "/the-open-2026", label: "The Open 2026 Visitor Guide" },
+    { href: "/the-open-2026", label: "The Open 2026: Results and Review" },
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
   ],
   "hotels": [
     { href: "/guides/accommodation-southport", label: "Where to Stay in Southport Guide" },
-    { href: "/the-open-2026/accommodation", label: "Open 2026 Accommodation Guide" },
     { href: "/guides/birkdale-village", label: "Birkdale Village" },
     { href: "/things-to-do", label: "Things to Do in Southport" },
     { href: "/guides/parking-southport", label: "Parking in Southport" },
@@ -151,7 +150,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "For tea rooms and a slower pace, Churchtown village is worth the short drive, it's got that quieter, more village feel that can be hard to find in the town centre on a busy day.",
   ],
   "attractions": [
-    "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier is one of the longest in England, worth a walk, especially if the weather's decent.",
+    "Southport has more to keep you busy than most people expect. The Botanic Gardens in Churchtown are free, genuinely lovely, and rarely crowded. Southport Pier, the second longest in England, is closed while a £20 million restoration is carried out, but the Promenade and Marine Lake around it are free to walk.",
     "Adventure Coast Southport (formerly Pleasureland) is the obvious family draw, fairground rides, free entry with pay-per-ride. Combine it with the beach and a walk along the seafront and you've got a solid day out without spending much.",
     "The Atkinson on Lord Street is the arts centre and local museum, free entry, good exhibitions, and a decent café. Worth an hour if the weather turns.",
   ],
@@ -161,7 +160,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "The Marine Lake is a calmer alternative to the open beach, separated from the sea by the promenade, much flatter water. Good for paddleboarding and kayaking; the Watersports Centre is based there.",
   ],
   "golf": [
-    "Southport is one of the best places to play golf in England, no exaggeration. Royal Birkdale is the headline act, one of the Open Championship venues and hosting The Open again in summer 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
+    "Southport is one of the best places to play golf in England, no exaggeration. Royal Birkdale is the headline act, one of the Open Championship venues, and hosted The Open again in July 2026. Getting on as a visitor requires forward planning and a handicap certificate, but it's possible.",
     "Formby Golf Club is about 15 minutes south and considered one of the finest heathland links courses in the country, slightly more straightforward to book as a visitor than Royal Birkdale. Southport Old Links, Hillside Golf Club, and Southport & Ainsdale are all nearby and all serious courses.",
     "If you're a golfer visiting the area, this stretch of the Sefton Coast is genuinely exceptional and underrated by most people outside the golfing community. Plan a few days and work your way around them.",
   ],
@@ -175,7 +174,7 @@ const CATEGORY_CONTENT: Record<string, string[]> = {
     "Day spas and independent beauty salons are scattered throughout town. This directory lists what's available across all areas so you can find what you need based on where you're staying.",
   ],
   "activities": [
-    "Things to do in Southport range from the obvious (beach, Pleasureland, the pier) to the less expected. The Marine Lake Watersports Centre does paddleboarding, kayaking and sailing, good fun for adults and kids, no experience needed for most sessions.",
+    "Things to do in Southport range from the obvious (beach, Pleasureland, the Marine Lake) to the less expected. The Marine Lake Watersports Centre does paddleboarding, kayaking and sailing, good fun for adults and kids, no experience needed for most sessions.",
     "Southport is well set up for cycling, the coastal path runs along the seafront and bikes are available to hire locally. It's a flat, easy ride with proper sea views.",
     "For families, Pleasureland is the main draw alongside the beach. The Botanic Gardens in Churchtown have a small zoo and play areas, free entry and much less busy than the seafront on peak days.",
   ],
@@ -240,7 +239,7 @@ const CAT_META_DESCRIPTIONS: Partial<Record<string, string>> = {
   parking: "Car parks and parking across Southport, Formby and the Sefton Coast. Free and paid options with postcodes, directions, and how busy they get on peak days, all on SouthportGuide.",
   attractions: "Browse Southport's attractions. The Atkinson, Adventure Coast, Marine Lake, Southport Pier, Botanic Gardens, and more. Listings with Google ratings, opening times and directions.",
   activities: "Watersports on Marine Lake, coastal cycling, walking the Sefton Coastal Path, horse riding, and outdoor leisure in Southport. Browse all activity listings with ratings and contact details.",
-  hotels: "Where to stay in Southport. The Scarisbrick Hotel, The Vincent, The Metropole, Premier Inn Southport, seafront B&Bs, Birkdale guest houses and Churchtown village stays. Every option with Google ratings and honest local advice. Visiting for The Open 2026 at Royal Birkdale? Book now.",
+  hotels: "Where to stay in Southport. The Scarisbrick Hotel, The Vincent, The Metropole, Premier Inn Southport, seafront B&Bs, Birkdale guest houses and Churchtown village stays. Every option with Google ratings and honest local advice.",
   restaurants: "Restaurants in Southport. Italian, Indian, seafood, brunch and Sunday lunch. Browse every restaurant with Google ratings, menus and booking links. From Bistrot Verite in Birkdale to Lord Street dining.",
 };
 
@@ -476,9 +475,8 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 </p>
                 <p>
                   Birkdale village is the quieter, more upmarket option, particularly for golfers. It&apos;s walking distance from
-                  Royal Birkdale Golf Club and has its own cluster of good restaurants and pubs. For The Open 2026 (12-19 July),
-                  Birkdale is the most practical base, but accommodation within walking distance of the course books out months
-                  in advance.
+                  Royal Birkdale Golf Club and has its own cluster of good restaurants and pubs. During The Open in July 2026,
+                  accommodation within walking distance of the course booked out months in advance.
                 </p>
                 <p>
                   B&amp;Bs and guest houses are scattered across the residential streets between Lord Street and the seafront.
@@ -492,7 +490,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               {[
                 { icon: MapPinIcon, label: "Best for Lord Street", value: "The Scarisbrick, The Vincent" },
                 { icon: Bed, label: "Best budget", value: "Premier Inn, B&Bs off Lord St" },
-                { icon: CalendarDays, label: "Open 2026 base", value: "Birkdale village" },
+                { icon: CalendarDays, label: "Best for golfers", value: "Birkdale village" },
                 { icon: PoundSterling, label: "Midweek doubles from", value: "~£60/night" },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="px-5 py-4 text-center">
@@ -512,7 +510,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 },
                 {
                   area: "Birkdale",
-                  desc: "Quieter, more residential. Close to Royal Birkdale golf course. Independent restaurants and a village feel. Best for Open 2026.",
+                  desc: "Quieter, more residential. Close to Royal Birkdale golf course. Independent restaurants and a village feel. Best for golfers.",
                   link: "/hotels?area=birkdale",
                 },
                 {

@@ -289,7 +289,7 @@ const GOLF_COURSES = [
     name: "Royal Birkdale",
     rank: "World Top 25",
     detail:
-      "Widely regarded as the finest links course in England and consistently ranked in the world top 25. Hosting The Open Championship for the 11th time in July 2026. The course is famous for its willow scrub rough, towering dunes, and the relentless challenge it presents to the world's best players. Green fees from £210.",
+      "Widely regarded as the finest links course in England and consistently ranked in the world top 25. Royal Birkdale hosted The 154th Open in July 2026, won by Ryan Fox. The course is famous for its willow scrub rough, towering dunes, and the relentless challenge it presents to the world's best players. Green fees from £210.",
     open: "Open from April · Green fees from £210",
     tag: "The Open 2026 host",
     tagColor: "bg-green-100 text-green-800",
@@ -390,7 +390,7 @@ const FAQS = [
   },
   {
     q: "What is Southport famous for?",
-    a: "Southport is best known for its pier (England's second longest at 1,108 metres), its Victorian boulevard Lord Street (reportedly the inspiration for Haussmann's redesign of Paris), the Southport Flower Show, the Air Show, and above all its golf. England's Golf Coast, home to Royal Birkdale, Hillside, and several other courses ranked in the UK's top 100. In 2026, Southport will host The Open Championship for the 11th time.",
+    a: "Southport is best known for its pier (England's second longest at 1,108 metres), its Victorian boulevard Lord Street (reportedly the inspiration for Haussmann's redesign of Paris), the Southport Flower Show, the Air Show, and above all its golf. England's Golf Coast, home to Royal Birkdale, Hillside, and several other courses ranked in the UK's top 100. In July 2026 Royal Birkdale hosted The 154th Open, won by Ryan Fox.",
   },
   {
     q: "Is Southport Beach worth visiting?",
@@ -406,11 +406,11 @@ const FAQS = [
   },
   {
     q: "Can you walk on Southport Pier?",
-    a: "Not at the moment. Sefton Council closed the pier in December 2022 on structural engineers' advice, and it stays closed while a £20 million restoration is carried out. The council posts progress updates at sefton.gov.uk/southportpier.",
+    a: "Not at the moment. Sefton Council closed the pier in December 2022 on structural engineers' advice, and it stays closed while a £20 million restoration is carried out. Its pier page (sefton.gov.uk/southportpier) has the background and FAQs, last updated in January 2026; later progress reports are on the council's MySefton News pages.",
   },
   {
     q: "What is the best time to visit Southport?",
-    a: "Summer (June to August) for the beach and outdoor events, including the Air Show and Flower Show. Spring and autumn are best for Formby red squirrels and quieter beaches. July 2026 is unmissable for The Open Championship at Royal Birkdale. The town has a solid year-round events calendar. Even February has Lightport, one of the best light installations in the North.",
+    a: "Summer (June to August) for the beach and outdoor events, including the Air Show and Flower Show. Spring and autumn are best for Formby red squirrels and quieter beaches. The town has a solid year-round events calendar. Even February has Lightport, one of the best light installations in the North.",
   },
   {
     q: "Are dogs allowed on Southport Beach?",
@@ -790,15 +790,15 @@ export default function ThingsToDoPage() {
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">July 2026</p>
                   <h3 className="font-display text-xl font-bold">The Open Championship at Royal Birkdale</h3>
                   <p className="text-white/60 text-sm mt-2 leading-relaxed">
-                    The 154th Open Championship. 12–19 July 2026. The biggest sporting event in Southport&apos;s modern history.
-                    Accommodation is limited. If you&apos;re attending, plan now.
+                    The 154th Open was played at Royal Birkdale from 12 to 19 July 2026. Ryan Fox of New Zealand won it
+                    with a birdie on the 72nd hole.
                   </p>
                 </div>
                 <Link
                   href="/the-open-2026"
                   className="flex-shrink-0 bg-[#C9A84C] text-[#1B2E4B] px-6 py-3 rounded-full font-bold text-sm hover:bg-[#E8C87A] transition-colors"
                 >
-                  The Open 2026 Guide →
+                  The Open 2026: Results →
                 </Link>
               </div>
             </div>
@@ -960,8 +960,8 @@ export default function ThingsToDoPage() {
               <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-2">Year-Round</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1B2E4B]">Events in Southport 2026</h2>
               <p className="text-gray-600 mt-3 max-w-2xl text-lg leading-relaxed">
-                2026 is exceptional. Ten major events running from February to October, including The Open Championship,
-                the Air Show, the Flower Show, and a full cultural programme under the Southport 2026 banner.
+                2026 brought ten major events between February and October, including The Open Championship,
+                the Air Show, the Flower Show and a cultural programme under the Southport 2026 banner.
               </p>
             </div>
 

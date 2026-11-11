@@ -676,6 +676,10 @@ export interface BlogPost {
   featured?: boolean;
   /** Override canonical URL — use when a guide page is the authoritative version of this content. */
   canonicalUrl?: string;
+  /** Alt text for the hero image when the title does not describe the picture. */
+  heroAlt?: string;
+  /** Short line shown under the hero, e.g. when the photo is illustrative. */
+  heroCaption?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -796,7 +800,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-golf-courses-southport",
     title: "The Best Golf Courses Near Southport",
     excerpt:
-      "Southport is one of England's premier golfing destinations. From Royal Birkdale to Hillside and Southport & Ainsdale. Here's your guide.",
+      "Southport is one of England's premier golfing destinations, from Royal Birkdale to Hillside and Southport & Ainsdale. Here's your guide.",
     categorySlug: "golf",
     image: "/images/categories/golf.webp",
     date: "2 Feb 2026",
@@ -966,7 +970,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "southport-pier-guide",
     title: "Southport Pier: The Complete Guide",
     excerpt:
-      "England's second-longest pier gets less credit than it deserves. Here's what's actually there, when to visit, and why it's worth walking the full length.",
+      "England's second-longest pier has been closed since December 2022 while it is restored. Its history, what was on it, and where to check for reopening news.",
     categorySlug: "things-to-do",
     image: "/images/blog/southport-pier-guide.webp",
     date: "19 Feb 2026",
@@ -1694,7 +1698,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "southport-october-half-term-2026",
     title: "Southport October Half Term 2026: Family Guide to the Week",
-    excerpt: "October half term is 26-30 October. Southport has more going on than most families realise. Splash World, the pier, the Marine Lake, the market. Here is the honest guide to making the week work.",
+    excerpt: "October half term is 26-30 October. Southport has more going on than most families realise. Splash World, the Marine Lake, the market. Here is the honest guide to making the week work.",
     categorySlug: "family",
     image: "/images/blog/blog-southport-october-half-term.webp",
     date: "9 Sep 2026",
@@ -1723,6 +1727,8 @@ export const BLOG_POSTS: BlogPost[] = [
       "Southport Pier has been closed since December 2022. Why it shut, what the £20 million restoration involves, how far the work has got and where to check for updates.",
     categorySlug: "things-to-do",
     image: "/southport-pier.webp",
+    heroAlt: "Southport Pier at sunset, before the restoration",
+    heroCaption: "Southport Pier before the restoration. The lighting arches and kiosks in this photo have since been removed.",
     date: "11 Nov 2026",
     featured: true,
   },
@@ -1733,6 +1739,8 @@ export const BLOG_POSTS: BlogPost[] = [
       "A 12-hectare Victorian park north-east of the town centre, with a lake, a floral clock, a listed conservatory and an observatory. How it came about, what to look for and how to get there.",
     categorySlug: "outdoors",
     image: "/images/blog/blog-autumn-walks-southport.webp",
+    heroAlt: "A tarmac path curving between trees in early autumn, with a wooden bench on the grass",
+    heroCaption: "An autumn park path, used to illustrate this post. It is not a photo of Hesketh Park.",
     date: "11 Nov 2026",
     featured: true,
   },

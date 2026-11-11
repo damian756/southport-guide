@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import {
   Menu, X, ChevronDown, Instagram,
@@ -77,6 +77,41 @@ function guideShortDate(guide: { eventDate?: string; description: string }): str
   return m ? m[0].replace(/\s+\d{4}$/, "") : "";
 }
 
+// Today's date (YYYY-MM-DD) in the browser, or null on the server and during
+// hydration. Pages are built once, so filtering by date while rendering on the
+// server would bake in the build date and then disagree with the browser after
+// a cutoff passes. With null on the server, the date-dependent event lists are
+// filled in only after the page has hydrated.
+const subscribeNever = () => () => {};
+function useToday(): string | null {
+  return useSyncExternalStore(
+    subscribeNever,
+    () => new Date().toISOString().slice(0, 10),
+    () => null,
+  );
+}
+
+type PublishedGuide = (typeof GUIDES)[number];
+
+/** Event guides less than 30 days past their date, upcoming first. Empty until `today` is known. */
+function currentEventGuides(guides: PublishedGuide[], today: string | null): PublishedGuide[] {
+  if (!today) return [];
+  const cutoffDate = new Date(today);
+  cutoffDate.setUTCDate(cutoffDate.getUTCDate() - 30);
+  const cutoff = cutoffDate.toISOString().slice(0, 10);
+  return guides
+    .filter((g) => g.category === "events" && g.slug !== "southport-year-of-culture-2026" && (!g.eventDate || g.eventDate >= cutoff))
+    .sort((a, b) => {
+      const aDate = a.eventDate ?? "9999-12-31";
+      const bDate = b.eventDate ?? "9999-12-31";
+      const aUpcoming = aDate >= today;
+      const bUpcoming = bDate >= today;
+      if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+      if (aDate !== bDate) return aDate.localeCompare(bDate);
+      return b.seoPriority - a.seoPriority;
+    });
+}
+
 // Shared nav link style — uppercase editorial feel
 const NAV_LINK = "text-[11px] font-bold tracking-[0.12em] uppercase text-[#1B2E4B] hover:text-[#C9A84C] px-3 py-2 transition-colors flex items-center gap-1";
 
@@ -87,6 +122,8 @@ export default function NavMenu() {
   const [eventsOpen,  setEventsOpen]  = useState(false);
 
   const publishedGuides = GUIDES.filter((g) => g.status === "published");
+  const today = useToday();
+  const eventGuides = currentEventGuides(publishedGuides, today);
 
   return (
     <>
@@ -184,24 +221,15 @@ export default function NavMenu() {
             <Link href="/guides" onClick={() => setGuidesOpen(false)}
               className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1B2E4B] text-white text-sm hover:bg-[#2A4A73] transition-colors mb-3">
               <BookOpen className="w-4 h-4 flex-none text-[#C9A84C]" />
-              <span className="font-semibold">All Guides. Full Index</span>
+              <span className="font-semibold">All guides: full index</span>
             </Link>
             {/* Top 2 per category */}
             {(["events", "beaches-coast", "areas", "food-drink", "practical"] as GuideCategory[]).map((cat) => {
-              const today = new Date().toISOString().slice(0, 10);
-              const catGuides = publishedGuides
-                .filter((g) => g.category === cat)
-                .sort((a, b) => {
-                  if (cat === "events") {
-                    const aDate = a.eventDate ?? "9999-12-31";
-                    const bDate = b.eventDate ?? "9999-12-31";
-                    const aUpcoming = aDate >= today;
-                    const bUpcoming = bDate >= today;
-                    if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
-                    if (aDate !== bDate) return aDate.localeCompare(bDate);
-                  }
-                  return b.seoPriority - a.seoPriority;
-                });
+              const catGuides = cat === "events"
+                ? eventGuides
+                : publishedGuides
+                    .filter((g) => g.category === cat)
+                    .sort((a, b) => b.seoPriority - a.seoPriority);
               if (catGuides.length === 0) return null;
               const { label, emoji } = GUIDE_CATEGORIES[cat];
               const top = catGuides.slice(0, 2);
@@ -247,27 +275,11 @@ export default function NavMenu() {
           <div className="absolute top-full left-0 right-0 h-3 z-40" />
 
           {(() => {
-            const today = new Date().toISOString().slice(0, 10);
-            // Hide event guides whose start date is more than 30 days past
-            const cutoffDate = new Date();
-            cutoffDate.setDate(cutoffDate.getDate() - 30);
-            const cutoff = cutoffDate.toISOString().slice(0, 10);
-            const eventGuides = publishedGuides
-              .filter((g) => g.category === "events" && g.slug !== "southport-year-of-culture-2026" && (!g.eventDate || g.eventDate >= cutoff))
-              .sort((a, b) => {
-                const aDate = a.eventDate ?? "9999-12-31";
-                const bDate = b.eventDate ?? "9999-12-31";
-                const aUpcoming = aDate >= today;
-                const bUpcoming = bDate >= today;
-                if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
-                if (aDate !== bDate) return aDate.localeCompare(bDate);
-                return b.seoPriority - a.seoPriority;
-              })
-              .slice(0, 9);
+            const eventGuidesShown = eventGuides.slice(0, 9);
             return (
               <div className={`absolute top-full -translate-x-1/2 left-1/2 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-[520px] z-50 transition-all duration-200 ${eventsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
                 <div className="grid grid-cols-3 gap-2">
-                  {eventGuides.map((g) => (
+                  {eventGuidesShown.map((g) => (
                     <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setEventsOpen(false)}
                       className="group p-3 rounded-xl bg-[#FAF8F5] border border-gray-100 hover:border-[#C9A84C]/40 hover:bg-amber-50 transition-all">
                       <span className="text-xl">{GUIDE_EMOJIS[g.slug] ?? "📅"}</span>
@@ -366,21 +378,7 @@ export default function NavMenu() {
             </div>
             <div className="grid grid-cols-2 gap-1.5">
               {(() => {
-                const today = new Date().toISOString().slice(0, 10);
-                const cutoffDate = new Date();
-                cutoffDate.setDate(cutoffDate.getDate() - 30);
-                const cutoff = cutoffDate.toISOString().slice(0, 10);
-                return publishedGuides
-                  .filter((g) => g.category === "events" && g.slug !== "southport-year-of-culture-2026" && (!g.eventDate || g.eventDate >= cutoff))
-                  .sort((a, b) => {
-                    const aDate = a.eventDate ?? "9999-12-31";
-                    const bDate = b.eventDate ?? "9999-12-31";
-                    const aUpcoming = aDate >= today;
-                    const bUpcoming = bDate >= today;
-                    if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
-                    if (aDate !== bDate) return aDate.localeCompare(bDate);
-                    return b.seoPriority - a.seoPriority;
-                  })
+                return eventGuides
                   .slice(0, 6)
                   .map((g) => (
                     <Link key={g.slug} href={`/guides/${g.slug}`} onClick={() => setMobileOpen(false)}

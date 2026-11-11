@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.excerpt,
       url,
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: post.heroAlt ?? post.title }],
     },
     twitter: {
       card: "summary_large_image",
@@ -343,7 +343,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <div className="relative h-72 md:h-[26rem] bg-[#1B2E4B]">
         <Image
           src={post.image}
-          alt={post.title}
+          alt={post.heroAlt ?? post.title}
           fill
           priority
           sizes="100vw"
@@ -418,6 +418,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </>
           )}
         </div>
+
+        {post.heroCaption && (
+          <p className="-mt-7 mb-8 px-2 text-xs text-gray-400 leading-relaxed">{post.heroCaption}</p>
+        )}
 
         {/* Content */}
         <article className="bg-white rounded-2xl border border-gray-100 p-7 md:p-10 mb-12">

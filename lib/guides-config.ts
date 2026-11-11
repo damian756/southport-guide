@@ -52,12 +52,12 @@ export interface Guide {
 export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; description: string; emoji: string }> = {
   "beaches-coast": {
     label: "Beaches & Coast",
-    description: "The 22-mile Sefton Coast — from Southport Beach to Crosby.",
+    description: "The 22-mile Sefton Coast, from Southport Beach to Crosby.",
     emoji: "🏖️",
   },
   events: {
     label: "Events",
-    description: "Major annual events — The Open, Air Show, Flower Show, and more.",
+    description: "Major annual events: The Open, Air Show, Flower Show, and more.",
     emoji: "📅",
   },
   areas: {
@@ -67,7 +67,7 @@ export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; descriptio
   },
   practical: {
     label: "Practical",
-    description: "Parking, transport, rainy days, and dog-friendly — the useful stuff.",
+    description: "Parking, transport, rainy days, and dog-friendly: the useful stuff.",
     emoji: "🔧",
   },
   "food-drink": {
@@ -84,7 +84,7 @@ export const GUIDES: Guide[] = [
     title: "Southport Beach",
     description: "One of England's widest beaches. Postcode, parking, dogs, tides, and what to expect.",
     excerpt:
-      "Southport Beach guide — parking postcode PR8 1RQ (Marine Drive), dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
+      "Southport Beach guide: parking postcode PR8 1RQ (Marine Drive), dog rules, tides, facilities, and honest advice on what to expect. Written by a Southport local.",
     category: "beaches-coast",
     heroImage: "/images/southport-beach.webp",
     seoPriority: 0.92,
@@ -104,9 +104,9 @@ export const GUIDES: Guide[] = [
   {
     slug: "southport-pier",
     title: "Southport Pier",
-    description: "England's second longest pier — 1,108m. Free to walk. Views to Wales on a clear day.",
+    description: "England's second longest pier, 1,108m. Closed since December 2022 for a £20 million restoration.",
     excerpt:
-      "Southport Pier is 1,108 metres long — England's second longest. Free to walk. History, the walk out, views from the pierhead, and practical info.",
+      "Southport Pier is 1,108 metres long, England's second longest. Closed since December 2022 while it is restored. Its history, the restoration, and what it was like to visit.",
     category: "beaches-coast",
     heroImage: "/southport-pier.webp",
     seoPriority: 0.88,
@@ -120,18 +120,18 @@ export const GUIDES: Guide[] = [
     },
     metaTitle: "Southport Pier | England's Second Longest Pier | Complete Guide",
     metaDescription:
-      "Southport Pier — 1,108 metres, England's second longest. History, what to see, when to visit, parking, and honest advice from a local. Free to walk.",
+      "Southport Pier: 1,108 metres, England's second longest, closed since December 2022 while a £20 million restoration is carried out. Its history, the restoration and where to find updates.",
     relatedCollections: ["free-things-to-do-southport", "marine-lake-southport", "dog-friendly-cafes-southport"],
   },
 
   // ── Events ───────────────────────────────────────────────────────────────
   {
     slug: "southport-fa-trophy-semi-final",
-    title: "Southport FC v Southend United — FA Trophy Semi-Final",
+    title: "Southport FC v Southend United: FA Trophy Semi-Final",
     shortTitle: "FA Trophy Semi-Final",
     description: "Saturday 28 March 2026. Haig Avenue. First semi-final in 28 years. Parking, pubs, getting there, and making a day of it.",
     excerpt:
-      "Southport FC host Southend United in the FA Trophy semi-final on Saturday 28 March 2026 — the biggest home game in 28 years. Parking, pubs, how to get to Haig Avenue, and what else to do in Southport if you're making a day of it.",
+      "Southport FC host Southend United in the FA Trophy semi-final on Saturday 28 March 2026. The biggest home game in 28 years. Parking, pubs, how to get to Haig Avenue, and what else to do in Southport if you're making a day of it.",
     category: "events",
     heroImage: "/images/southport-fa-trophy-semifinal-hero.webp",
     seoPriority: 0.92,
@@ -149,7 +149,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "southport-fc-matchday",
-    title: "Visiting Haig Avenue — Southport FC Matchday Guide",
+    title: "Visiting Haig Avenue: Southport FC Matchday Guide",
     shortTitle: "Matchday at Haig Avenue",
     description: "Everything an away fan needs. Parking, pubs, getting there, the ground itself, and making a day of Southport.",
     excerpt:
@@ -173,7 +173,7 @@ export const GUIDES: Guide[] = [
     title: "Southport Flower Show 2026",
     description: "One of England's most prestigious flower shows. 20–23 August 2026 at Victoria Park.",
     excerpt:
-      "Southport Flower Show 2026 — 20–23 August, Victoria Park. Tickets from £23, celebrity schedule, what to see, parking, and honest advice on which day to go from someone who's been too many times to count.",
+      "Southport Flower Show 2026: 20–23 August, Victoria Park. Tickets from £23, celebrity schedule, what to see, parking, and honest advice on which day to go from someone who's been too many times to count.",
     category: "events",
     heroImage: "/images/southport-flower-show.webp",
     seoPriority: 0.92,
@@ -187,14 +187,14 @@ export const GUIDES: Guide[] = [
     },
     metaTitle: "Southport Flower Show 2026 | 20–23 August · Tickets, Dates & Complete Guide",
     metaDescription:
-      "Southport Flower Show 2026 — 20–23 August at Victoria Park. Tickets from £23 early bird, celebrity schedule, parking, and everything you need. Written by a Southport local.",
+      "Southport Flower Show 2026: 20–23 August at Victoria Park. Tickets from £23 early bird, celebrity schedule, parking, and everything you need. Written by a Southport local.",
   },
   {
     slug: "southport-air-show",
     title: "Southport Air Show 2026",
     description: "Free. 100,000+ visitors. 29–30 August 2026. Southport Beach.",
     excerpt:
-      "Southport Air Show 2026 — 29–30 August, Bank Holiday weekend. Free event on Southport Beach. Expected aircraft, best viewing spots, parking table, and day-by-day timeline.",
+      "Southport Air Show 2026: 29–30 August, Bank Holiday weekend. Free event on Southport Beach. Expected aircraft, best viewing spots, parking table, and day-by-day timeline.",
     category: "events",
     heroImage: "/images/southport-air-show.webp",
     seoPriority: 0.92,
@@ -208,7 +208,7 @@ export const GUIDES: Guide[] = [
     },
     metaTitle: "Southport Air Show 2026 | 29–30 August · Free Event, Aircraft & Guide",
     metaDescription:
-      "Southport Air Show 2026 — 29–30 August, Bank Holiday weekend. Free on Southport Beach. Expected aircraft, best viewing spots, parking table, and a timeline of the day.",
+      "Southport Air Show 2026: 29–30 August, Bank Holiday weekend. Free on Southport Beach. Expected aircraft, best viewing spots, parking table, and a timeline of the day.",
   },
 
   {
@@ -217,7 +217,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Fireworks Championship",
     description: "Pyrotechnics choreographed to music. Two nights at Victoria Park. 26–27 September 2026.",
     excerpt:
-      "The British Musical Fireworks Championship 2026 — 26–27 September, Victoria Park. Pyrotechnics synchronized to music, a drone show, street food, and bars. Tickets £12. No gate sales.",
+      "The British Musical Fireworks Championship 2026: 26–27 September, Victoria Park. Pyrotechnics synchronized to music, a drone show, street food, and bars. Tickets £12. No gate sales.",
     category: "events",
     heroImage: "/images/southport-fireworks-championship.webp",
     seoPriority: 0.88,
@@ -229,7 +229,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Southport Fireworks Championship 2026 | Tickets & Guide",
     metaDescription:
-      "British Musical Fireworks Championship 2026 — 26–27 September, Victoria Park, Southport. Tickets from £12. Pyrotechnics synchronized to music, drone show, and full practical guide.",
+      "British Musical Fireworks Championship 2026: 26–27 September, Victoria Park, Southport. Tickets from £12. Pyrotechnics synchronized to music, drone show, and full practical guide.",
   },
   {
     slug: "southport-comedy-festival",
@@ -237,7 +237,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Comedy Festival",
     description: "15th annual comedy festival. 17 nights in a luxury heated marquee at Victoria Park. 2–18 October.",
     excerpt:
-      "Southport Comedy Festival 2026 — 2 to 18 October, 15th annual festival. Luxury heated marquee at Victoria Park. Confirmed acts include Henning Wehn, Gary Delaney and more. 6,000+ attend each year.",
+      "Southport Comedy Festival 2026: 2 to 18 October, 15th annual festival. Luxury heated marquee at Victoria Park. Confirmed acts include Henning Wehn, Gary Delaney and more. 6,000+ attend each year.",
     category: "events",
     heroImage: "/images/southport-comedy-festival.webp",
     seoPriority: 0.88,
@@ -249,7 +249,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "bars-nightlife"] },
     metaTitle: "Southport Comedy Festival 2026 | 2–18 October · Lineup, Tickets & Guide",
     metaDescription:
-      "Southport Comedy Festival 2026 — 2 to 18 October in a luxury heated marquee at Victoria Park. 15th annual festival. Henning Wehn, Gary Delaney, and more confirmed. Tickets via southportcomedyfestival.com.",
+      "Southport Comedy Festival 2026: 2 to 18 October in a luxury heated marquee at Victoria Park. 15th annual festival. Henning Wehn, Gary Delaney, and more confirmed. Tickets via southportcomedyfestival.com.",
   },
   {
     slug: "southport-armed-forces-festival",
@@ -257,7 +257,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Armed Forces Festival",
     description: "Town-wide military celebration. 27–28 June 2026. Parades, fly-overs, vehicles. Free to attend.",
     excerpt:
-      "Southport Armed Forces Festival 2026 — 27–28 June. Free town-wide event across the Promenade, King's Gardens, and The Atkinson. Military parades, fly-overs, Drumhead Service, and live entertainment.",
+      "Southport Armed Forces Festival 2026: 27–28 June. Free town-wide event across the Promenade, King's Gardens, and The Atkinson. Military parades, fly-overs, Drumhead Service, and live entertainment.",
     category: "events",
     heroImage: "/images/southport-armed-forces-festival.webp",
     seoPriority: 0.85,
@@ -269,7 +269,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Southport Armed Forces Festival 2026 | Free Event Guide",
     metaDescription:
-      "Southport Armed Forces Festival 2026 — 27–28 June. Free town-wide event. Military parades, fly-overs, vehicles on display, Drumhead Service. Across the Promenade, King's Gardens, and town centre.",
+      "Southport Armed Forces Festival 2026: 27–28 June. Free town-wide event. Military parades, fly-overs, vehicles on display, Drumhead Service. Across the Promenade, King's Gardens, and town centre.",
   },
   {
     slug: "southport-sausage-cider-festival",
@@ -277,7 +277,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Sausage & Cider Festival",
     description: "Bavarian-style food and drink festival. Victoria Park, 18 April 2026. Bratwurst, cider, oompah bands.",
     excerpt:
-      "Sausage & Cider Festival Southport 2026 — Saturday 18 April at Victoria Park. Afternoon and evening sessions. Bratwurst, artisan ciders, live oompah bands, and folk dancers.",
+      "Sausage & Cider Festival Southport 2026: Saturday 18 April at Victoria Park. Afternoon and evening sessions. Bratwurst, artisan ciders, live oompah bands, and folk dancers.",
     category: "events",
     heroImage: "/images/southport-sausage-cider-festival.webp",
     seoPriority: 0.82,
@@ -289,7 +289,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "bars-nightlife", "parking"] },
     metaTitle: "Sausage & Cider Festival Southport 2026 | 18 April · Tickets & Guide",
     metaDescription:
-      "Sausage & Cider Festival Southport 2026 — Saturday 18 April at Victoria Park. Two sessions (afternoon and evening). Bratwurst, artisan ciders, live oompah bands. Tickets required.",
+      "Sausage & Cider Festival Southport 2026: Saturday 18 April at Victoria Park. Two sessions (afternoon and evening). Bratwurst, artisan ciders, live oompah bands. Tickets required.",
   },
   {
     slug: "southport-beer-week-2026",
@@ -309,15 +309,15 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["bars-nightlife", "restaurants", "hotels", "parking"] },
     metaTitle: "Southport Beer Week 2026 | 20–25 May · Ale Trail, Venues & Complete Guide",
     metaDescription:
-      "Southport Beer Week 2026 — 20 to 25 May across 18 pubs and bars. Free ale trail, 90+ beers, Big Top Festival on the same weekend. Getting here from Liverpool, Manchester, Wigan. Parking, hotels, and practical guide.",
+      "Southport Beer Week 2026: 20 to 25 May across 18 pubs and bars. Free ale trail, 90+ beers, Big Top Festival on the same weekend. Getting here from Liverpool, Manchester, Wigan. Parking, hotels, and practical guide.",
   },
   {
     slug: "southport-year-of-culture-2026",
     title: "Southport 2026: Elegantly Eccentric",
     shortTitle: "Year of Culture 2026",
-    description: "Southport's year-round cultural programme — Cristal Palace, Big Top Festival, Books Alive! and more.",
+    description: "Southport's year-round cultural programme: Cristal Palace, Big Top Festival, Books Alive! and more.",
     excerpt:
-      "Southport 2026: Elegantly Eccentric — a year-round cultural programme backed by Sefton Council and the Liverpool City Region. Cristal Palace on Lord Street (April), Big Top Festival (May), Summer Solstice (June), Books Alive! (October).",
+      "Southport 2026: Elegantly Eccentric. A year-round cultural programme backed by Sefton Council and the Liverpool City Region. Cristal Palace on Lord Street (April), Big Top Festival (May), Summer Solstice (June), Books Alive! (October).",
     category: "events",
     heroImage: "/images/southport-year-of-culture-2026.webp",
     seoPriority: 0.90,
@@ -328,7 +328,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "attractions"] },
     metaTitle: "Southport 2026: Elegantly Eccentric | Year of Culture Events Guide",
     metaDescription:
-      "Southport's year of culture 2026 — Cristal Palace street theatre on Lord Street (April), Big Top circus festival (May), Summer Solstice (June), Books Alive! (October). Free events across the town.",
+      "Southport's year of culture 2026: Cristal Palace street theatre on Lord Street (April), Big Top circus festival (May), Summer Solstice (June), Books Alive! (October). Free events across the town.",
   },
 
   // ── New 2026 Event Guides ─────────────────────────────────────────────────
@@ -338,7 +338,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Cristal Palace",
     description: "A 12-metre chandelier suspended above the crowd. Free street theatre on Lord Street. 3–4 April 2026.",
     excerpt:
-      "Cristal Palace 2026 — free aerial street theatre by French company Transe Express. A 12-metre chandelier, 36 local performers, and a 90-minute spectacle above Town Hall Gardens on Lord Street. 3–4 April, 7:30pm.",
+      "Cristal Palace 2026: free aerial street theatre by French company Transe Express. A 12-metre chandelier, 36 local performers, and a 90-minute spectacle above Town Hall Gardens on Lord Street. 3–4 April, 7:30pm.",
     category: "events",
     heroImage: "/images/guides/cristal-palace-southport-2026.jpg",
     seoPriority: 0.90,
@@ -350,15 +350,15 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "bars-nightlife", "parking"] },
     metaTitle: "Cristal Palace Southport 2026 | 3–4 April · Free Street Theatre Guide",
     metaDescription:
-      "Cristal Palace Southport 2026 — free aerial spectacle by Transe Express. 12-metre chandelier, 36 performers, Town Hall Gardens, Lord Street. 3–4 April, 7:30pm. Parking, where to stand, and what to expect.",
+      "Cristal Palace Southport 2026: free aerial spectacle by Transe Express. 12-metre chandelier, 36 performers, Town Hall Gardens, Lord Street. 3–4 April, 7:30pm. Parking, where to stand, and what to expect.",
   },
   {
     slug: "easter-in-southport-2026",
     title: "Easter in Southport 2026",
     shortTitle: "Easter Events",
-    description: "All the Easter events in one place — egg hunts, craft workshops, panto, Cristal Palace, and more. 1–6 April 2026.",
+    description: "All the Easter events in one place: egg hunts, craft workshops, panto, Cristal Palace, and more. 1–6 April 2026.",
     excerpt:
-      "Easter in Southport 2026 — everything happening across the Easter school holidays. Cristal Palace street theatre, Wayfarers Arcade egg hunt, Make It! craft workshops at The Atkinson, Easter Panto, and family raves. By day.",
+      "Easter in Southport 2026: everything happening across the Easter school holidays. Cristal Palace street theatre, Wayfarers Arcade egg hunt, Make It! craft workshops at The Atkinson, Easter Panto, and family raves. By day.",
     category: "events",
     heroImage: "/images/guides/easter-in-southport-2026.jpg",
     seoPriority: 0.85,
@@ -370,7 +370,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "cafes", "activities", "attractions"] },
     metaTitle: "Easter in Southport 2026 | Easter Events, Egg Hunts & Family Activities",
     metaDescription:
-      "Easter in Southport 2026 — every family event across the Easter holidays. Cristal Palace free street theatre, Wayfarers egg hunt, craft workshops, Easter panto, and more. What's on each day.",
+      "Easter in Southport 2026: every family event across the Easter holidays. Cristal Palace free street theatre, Wayfarers egg hunt, craft workshops, Easter panto, and more. What's on each day.",
   },
   {
     slug: "southport-artisan-market",
@@ -378,7 +378,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Artisan Market",
     description: "50+ independent makers at Southport Market. Monthly. Free entry. PR8 1EF.",
     excerpt:
-      "Southport Artisan Market — 50+ independent makers, artists, and food producers at Southport Market on Market Street. Monthly event, free entry. Handmade gifts, street food, and proper independent browsing.",
+      "Southport Artisan Market: 50+ independent makers, artists, and food producers at Southport Market on Market Street. Monthly event, free entry. Handmade gifts, street food, and proper independent browsing.",
     category: "events",
     heroImage: "/images/guides/southport-artisan-market.jpg",
     seoPriority: 0.80,
@@ -389,7 +389,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "cafes", "shopping"] },
     metaTitle: "Southport Artisan Market | Monthly Market Guide | Dates, Location & What to Expect",
     metaDescription:
-      "Southport Artisan Market at Southport Market (PR8 1EF) — 50+ independent makers, artists, and food producers. Monthly event, free entry. Parking, what to expect, and where to eat after.",
+      "Southport Artisan Market at Southport Market (PR8 1EF): 50+ independent makers, artists, and food producers. Monthly event, free entry. Parking, what to expect, and where to eat after.",
   },
   {
     slug: "kc-artisan-party-in-the-park-southport-2026",
@@ -397,7 +397,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Party in the Park",
     description: "Live music, artisan stalls, street food, and kids entertainment at Victoria Park. 11–12 April 2026. Free.",
     excerpt:
-      "KC Artisan Party in the Park 2026 — two days of live music, artisan market stalls, street food, and family entertainment at Victoria Park, Southport. 11–12 April. Free entry.",
+      "KC Artisan Party in the Park 2026: two days of live music, artisan market stalls, street food, and family entertainment at Victoria Park, Southport. 11–12 April. Free entry.",
     category: "events",
     heroImage: "/images/guides/kc-artisan-party-in-the-park-southport-2026.jpg",
     seoPriority: 0.78,
@@ -409,7 +409,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "parking"] },
     metaTitle: "KC Artisan Party in the Park Southport 2026 | 11–12 April · Free Event Guide",
     metaDescription:
-      "KC Artisan Party in the Park Southport 2026 — two days at Victoria Park. Live music, artisan stalls, street food, and kids entertainment. 11–12 April. Free entry. Parking, getting there, and what to expect.",
+      "KC Artisan Party in the Park Southport 2026: two days at Victoria Park. Live music, artisan stalls, street food, and kids entertainment. 11–12 April. Free entry. Parking, getting there, and what to expect.",
   },
   {
     slug: "comedy-pub-crawl-southport-2026",
@@ -417,7 +417,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Comedy Pub Crawl",
     description: "Live comedy across multiple Southport pubs in one night. 22 April 2026. Tickets required.",
     excerpt:
-      "Southport Comedy Pub Crawl 2026 — live stand-up comedy at multiple venues across town in a single evening. 22 April 2026. Mystery route revealed on the night. Tickets required.",
+      "Southport Comedy Pub Crawl 2026: live stand-up comedy at multiple venues across town in a single evening. 22 April 2026. Mystery route revealed on the night. Tickets required.",
     category: "events",
     heroImage: "/images/guides/comedy-pub-crawl-southport-2026.jpg",
     seoPriority: 0.78,
@@ -429,7 +429,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["bars-nightlife", "restaurants"] },
     metaTitle: "Comedy Pub Crawl Southport 2026 | 22 April · Tickets & Complete Guide",
     metaDescription:
-      "Southport Comedy Pub Crawl 2026 — live comedy across multiple venues, 22 April. Mystery route, tickets required. Which pubs are typically included, where to eat beforehand, and how to get home.",
+      "Southport Comedy Pub Crawl 2026: live comedy across multiple venues, 22 April. Mystery route, tickets required. Which pubs are typically included, where to eat beforehand, and how to get home.",
   },
   {
     slug: "whistle-down-the-wind-southport-2026",
@@ -437,7 +437,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Whistle Down the Wind",
     description: "Andrew Lloyd Webber's musical at The Atkinson, Lord Street. 9–11 April 2026.",
     excerpt:
-      "Whistle Down the Wind at The Atkinson Southport — Andrew Lloyd Webber's powerful musical performed by SONG Productions. 9–11 April 2026. Lord Street, PR8 1DB. Booking essential.",
+      "Whistle Down the Wind at The Atkinson Southport: Andrew Lloyd Webber's powerful musical performed by SONG Productions. 9–11 April 2026. Lord Street, PR8 1DB. Booking essential.",
     category: "events",
     heroImage: "/images/guides/whistle-down-the-wind-southport-2026.jpg",
     seoPriority: 0.75,
@@ -449,7 +449,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "parking"] },
     metaTitle: "Whistle Down the Wind Southport 2026 | The Atkinson 9–11 April · Guide",
     metaDescription:
-      "Whistle Down the Wind at The Atkinson Southport 2026 — Andrew Lloyd Webber musical by SONG Productions. 9–11 April, Lord Street PR8 1DB. Tickets, parking, where to eat before the show.",
+      "Whistle Down the Wind at The Atkinson Southport 2026: Andrew Lloyd Webber musical by SONG Productions. 9–11 April, Lord Street PR8 1DB. Tickets, parking, where to eat before the show.",
   },
   {
     slug: "39-steps-southport-2026",
@@ -457,7 +457,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "The 39 Steps",
     description: "Southport Dramatic Club's production of the spy thriller. 10–18 April 2026. Little Theatre, PR9 0SX.",
     excerpt:
-      "The 39 Steps at Southport Little Theatre — Southport Dramatic Club's production of John Buchan's spy thriller. 10–18 April 2026, nine-night run. Little Theatre, Hoghton Street, PR9 0SX.",
+      "The 39 Steps at Southport Little Theatre: Southport Dramatic Club's production of John Buchan's spy thriller. 10–18 April 2026, nine-night run. Little Theatre, Hoghton Street, PR9 0SX.",
     category: "events",
     heroImage: "/images/guides/39-steps-southport-2026.jpg",
     seoPriority: 0.72,
@@ -469,7 +469,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "bars-nightlife"] },
     metaTitle: "The 39 Steps Southport 2026 | Little Theatre 10–18 April · Tickets & Guide",
     metaDescription:
-      "The 39 Steps at Southport Little Theatre — Southport Dramatic Club, 10–18 April 2026. Hoghton Street, PR9 0SX. Tickets, parking nearby, and where to eat before the show.",
+      "The 39 Steps at Southport Little Theatre: Southport Dramatic Club, 10–18 April 2026. Hoghton Street, PR9 0SX. Tickets, parking nearby, and where to eat before the show.",
   },
   {
     slug: "the-atkinson-southport",
@@ -477,7 +477,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "The Atkinson",
     description: "Gallery, theatre, café, and library on Lord Street. The cultural heart of Southport. PR8 1DB.",
     excerpt:
-      "The Atkinson on Lord Street is Southport's main arts and cultural centre — a gallery, theatre, café, and library in a Victorian building in the middle of town. Free gallery entry. The full guide.",
+      "The Atkinson on Lord Street is Southport's main arts and cultural centre. A gallery, theatre, café, and library in a Victorian building in the middle of town. Free gallery entry. The full guide.",
     category: "events",
     heroImage: "/images/guides/the-atkinson-southport.jpg",
     seoPriority: 0.88,
@@ -488,7 +488,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["cafes", "restaurants", "parking"] },
     metaTitle: "The Atkinson Southport | Gallery, Theatre & Café on Lord Street | Complete Guide",
     metaDescription:
-      "The Atkinson on Lord Street, Southport (PR8 1DB) — gallery, theatre, café, and library. Free gallery entry. What's on, what to see, parking, and the café. The complete guide.",
+      "The Atkinson on Lord Street, Southport (PR8 1DB): gallery, theatre, café, and library. Free gallery entry. What's on, what to see, parking, and the café. The complete guide.",
   },
   {
     slug: "southport-bijou-cinema",
@@ -496,7 +496,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Bijou Cinema",
     description: "Southport's independent community cinema. Weekly screenings, Screen Club, and live music. Post Office Avenue.",
     excerpt:
-      "The Bijou Cinema on Post Office Avenue is Southport's independent community cinema — weekly Tuesday screenings, a monthly film school (Screen Club), and live gig nights in a proper old-school venue. The complete guide.",
+      "The Bijou Cinema on Post Office Avenue is Southport's independent community cinema. Weekly Tuesday screenings, a monthly film school (Screen Club), and live gig nights in a proper old-school venue. The complete guide.",
     category: "events",
     heroImage: "/images/guides/southport-bijou-cinema.jpg",
     seoPriority: 0.82,
@@ -507,15 +507,15 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["bars-nightlife", "restaurants"] },
     metaTitle: "Southport Bijou Cinema | Independent Cinema Guide | Screen Club & What's On",
     metaDescription:
-      "Southport Bijou Cinema on Post Office Avenue (PR9 0AG) — independent community cinema. Weekly screenings, Screen Club film school, live gig nights. How to book, what's on, and parking.",
+      "Southport Bijou Cinema on Post Office Avenue (PR9 0AG): independent community cinema. Weekly screenings, Screen Club film school, live gig nights. How to book, what's on, and parking.",
   },
   {
     slug: "live-music-southport",
     title: "Live Music in Southport",
     shortTitle: "Live Music",
-    description: "Where to find live music in Southport — every venue, every night of the week.",
+    description: "Where to find live music in Southport: every venue, every night of the week.",
     excerpt:
-      "Live music in Southport happens every weekend and most weeknights — jazz at Coopers, acoustic at The Auld Dubliner, rock at the ChopHouse, and open mic nights across town. The complete venue-by-venue guide.",
+      "Live music in Southport happens every weekend and most weeknights: jazz at Coopers, acoustic at The Auld Dubliner, rock at the ChopHouse, and open mic nights across town. The complete venue-by-venue guide.",
     category: "events",
     heroImage: "/images/guides/live-music-southport.jpg",
     seoPriority: 0.85,
@@ -526,7 +526,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["bars-nightlife", "restaurants"] },
     metaTitle: "Live Music in Southport | Every Venue & Night Guide 2026",
     metaDescription:
-      "Live music in Southport — every venue doing regular live music. Jazz, rock, acoustic, open mic. Which nights, which venues, what to expect. Written by a local who's been to most of them.",
+      "Live music in Southport: every venue doing regular live music. Jazz, rock, acoustic, open mic. Which nights, which venues, what to expect. Written by a local who's been to most of them.",
   },
   {
     slug: "big-top-festival-southport-2026",
@@ -534,7 +534,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Big Top Festival",
     description: "Circus arts festival in Southport town centre. Circa and Gandini Juggling. 2–3 May 2026. Free outdoor events.",
     excerpt:
-      "Big Top Festival Southport 2026 — two days of world-class circus and street arts in the town centre. Circa and Gandini Juggling performing at Southport's main cultural festival of the spring. 2–3 May. Mix of free outdoor and ticketed indoor shows.",
+      "Big Top Festival Southport 2026: two days of world-class circus and street arts in the town centre. Circa and Gandini Juggling performing at Southport's main cultural festival of the spring. 2–3 May. Mix of free outdoor and ticketed indoor shows.",
     category: "events",
     heroImage: "/images/guides/big-top-festival-southport-2026.jpg",
     seoPriority: 0.82,
@@ -546,7 +546,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Big Top Festival Southport 2026 | 2–3 May · Circus Arts & Complete Guide",
     metaDescription:
-      "Big Top Festival Southport 2026 — 2–3 May in the town centre. Circa, Gandini Juggling, and world-class circus arts. Free outdoor events and ticketed shows. Parking, hotels, and what to expect.",
+      "Big Top Festival Southport 2026: 2–3 May in the town centre. Circa, Gandini Juggling, and world-class circus arts. Free outdoor events and ticketed shows. Parking, hotels, and what to expect.",
   },
   {
     slug: "southport-food-drink-festival-2026",
@@ -554,7 +554,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Food & Drink Festival",
     description: "Bank Holiday weekend food festival in the town centre. 29–31 May 2026. Free entry. 100+ traders.",
     excerpt:
-      "Southport Food and Drink Festival 2026 — three days across the Bank Holiday weekend, 29–31 May. Free entry, 100+ food and drink traders, live entertainment, and the town centre buzzing. The complete visitor guide.",
+      "Southport Food and Drink Festival 2026: three days across the Bank Holiday weekend, 29–31 May. Free entry, 100+ food and drink traders, live entertainment, and the town centre buzzing. The complete visitor guide.",
     category: "events",
     heroImage: "/images/guides/southport-food-drink-festival-2026.jpg",
     seoPriority: 0.82,
@@ -566,7 +566,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Southport Food and Drink Festival 2026 | 29–31 May · Bank Holiday Weekend Guide",
     metaDescription:
-      "Southport Food and Drink Festival 2026 — 29–31 May, Bank Holiday weekend. Free entry, 100+ traders, live entertainment. Parking, hotels, and what to expect from one of the town's biggest weekends.",
+      "Southport Food and Drink Festival 2026: 29–31 May, Bank Holiday weekend. Free entry, 100+ traders, live entertainment. Parking, hotels, and what to expect from one of the town's biggest weekends.",
   },
   {
     slug: "summer-solstice-southport-2026",
@@ -574,7 +574,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Summer Solstice",
     description: "8-hour dance and music event at Victoria Park. 20 June 2026. 2pm–10pm. Ticketed.",
     excerpt:
-      "Summer Solstice Festival Southport 2026 — an 8-hour outdoor dance and music event at Victoria Park on the longest day. 20 June, 2pm to 10pm. Ticketed VIP event as part of the Southport 2026: Elegantly Eccentric cultural programme.",
+      "Summer Solstice Festival Southport 2026: an 8-hour outdoor dance and music event at Victoria Park on the longest day. 20 June, 2pm to 10pm. Ticketed VIP event as part of the Southport 2026: Elegantly Eccentric cultural programme.",
     category: "events",
     heroImage: "/images/guides/summer-solstice-southport-2026.jpg",
     seoPriority: 0.78,
@@ -586,7 +586,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["hotels", "restaurants", "parking"] },
     metaTitle: "Summer Solstice Festival Southport 2026 | 20 June · Victoria Park · Tickets & Guide",
     metaDescription:
-      "Summer Solstice Festival Southport 2026 — 20 June, 2pm to 10pm at Victoria Park. 8-hour dance and music event. Tickets, parking, where to eat, and what to expect.",
+      "Summer Solstice Festival Southport 2026: 20 June, 2pm to 10pm at Victoria Park. 8-hour dance and music event. Tickets, parking, where to eat, and what to expect.",
   },
   {
     slug: "sefton-open-2026",
@@ -594,7 +594,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Sefton Open",
     description: "Annual open art exhibition at The Atkinson. Painting, sculpture, print, and mixed media. 2 April – 13 June 2026.",
     excerpt:
-      "Sefton Open 2026 at The Atkinson on Lord Street — the annual open art exhibition showcasing work from local and regional artists. Painting, sculpture, print, and mixed media. 2 April to 13 June. Free to visit.",
+      "Sefton Open 2026 at The Atkinson on Lord Street: the annual open art exhibition showcasing work from local and regional artists. Painting, sculpture, print, and mixed media. 2 April to 13 June. Free to visit.",
     category: "events",
     heroImage: "/images/guides/sefton-open-2026.jpg",
     seoPriority: 0.75,
@@ -606,7 +606,7 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["cafes", "restaurants"] },
     metaTitle: "Sefton Open 2026 | The Atkinson · 2 April–13 June · Free Art Exhibition",
     metaDescription:
-      "Sefton Open 2026 at The Atkinson, Lord Street, Southport — annual open art exhibition. Painting, sculpture, print, mixed media. 2 April to 13 June. Free entry. Opening times and visitor info.",
+      "Sefton Open 2026 at The Atkinson, Lord Street, Southport: annual open art exhibition. Painting, sculpture, print, mixed media. 2 April to 13 June. Free entry. Opening times and visitor info.",
   },
   {
     slug: "books-alive-southport-2026",
@@ -614,7 +614,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Books Alive!",
     description: "Half-term family literature festival across Southport. Storytelling, author events, workshops. 24–31 October 2026.",
     excerpt:
-      "Books Alive! Southport 2026 — a week-long family literature festival running over October half-term. Storytelling installations, author performances, and workshops at venues across the town. 24–31 October. Free events.",
+      "Books Alive! Southport 2026: a week-long family literature festival running over October half-term. Storytelling installations, author performances, and workshops at venues across the town. 24–31 October. Free events.",
     category: "events",
     heroImage: "/images/guides/books-alive-southport-2026.jpg",
     seoPriority: 0.78,
@@ -626,16 +626,16 @@ export const GUIDES: Guide[] = [
     listingFilter: { categorySlugs: ["restaurants", "cafes", "activities"] },
     metaTitle: "Books Alive! Literature Festival Southport 2026 | 24–31 October · Family Guide",
     metaDescription:
-      "Books Alive! Southport 2026 — family literature festival over October half-term. Storytelling, author events, workshops. 24–31 October, venues across town. Free events. What to expect and how to get there.",
+      "Books Alive! Southport 2026: family literature festival over October half-term. Storytelling, author events, workshops. 24–31 October, venues across town. Free events. What to expect and how to get there.",
   },
 
   // ── Areas ────────────────────────────────────────────────────────────────
   {
     slug: "birkdale-village",
     title: "Birkdale Village",
-    description: "Independent shops, proper restaurants, and decent coffee — the locals' preference.",
+    description: "Independent shops, proper restaurants, and decent coffee: the locals' preference.",
     excerpt:
-      "Birkdale Village — Southport's independent shopping and dining quarter on Liverpool Road. Two minutes from Royal Birkdale Golf Club. The complete local guide.",
+      "Birkdale Village: Southport's independent shopping and dining quarter on Liverpool Road. Two minutes from Royal Birkdale Golf Club. The complete local guide.",
     category: "areas",
     heroImage: "/images/birkdale-village.webp",
     seoPriority: 0.85,
@@ -649,15 +649,15 @@ export const GUIDES: Guide[] = [
     },
     metaTitle: "Birkdale Village | Shops, Restaurants, Cafés & Guide",
     metaDescription:
-      "Birkdale Village — Southport's independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
+      "Birkdale Village: Southport's independent shopping and dining quarter. The best shops, restaurants, and cafés on Liverpool Road, two minutes from Royal Birkdale Golf Club.",
     relatedCollections: ["birkdale-village-restaurants", "hotels-near-royal-birkdale", "dog-friendly-pubs-southport", "outdoor-seating-restaurants-southport"],
   },
   {
     slug: "lord-street",
     title: "Lord Street",
-    description: "Southport's Victorian boulevard — the street that may have inspired the redesign of Paris.",
+    description: "Southport's Victorian boulevard: the street that may have inspired the redesign of Paris.",
     excerpt:
-      "Lord Street is a mile-long Victorian boulevard at the heart of Southport — independent boutiques, restaurants, and a Napoleon connection. Your complete guide.",
+      "Lord Street is a mile-long Victorian boulevard at the heart of Southport. Independent boutiques, restaurants, and a Napoleon connection. Your complete guide.",
     category: "areas",
     heroImage: "/images/categories/shopping.webp",
     seoPriority: 0.85,
@@ -666,7 +666,7 @@ export const GUIDES: Guide[] = [
     tags: ["lord-street", "shopping", "restaurants", "heritage", "victorian"],
     status: "published",
     metaTitle: "Lord Street Southport | Shops, Restaurants & Guide",
-    metaDescription: "Lord Street is Southport's mile-long Victorian boulevard — glass canopies, independent boutiques, restaurants, and a Napoleon III connection. Your complete guide.",
+    metaDescription: "Lord Street is Southport's mile-long Victorian boulevard: glass canopies, independent boutiques, restaurants, and a Napoleon III connection. Your complete guide.",
     listingFilter: {
       categorySlugs: ["restaurants", "shopping", "cafes", "bars-nightlife"],
       tags: ["lord-street"],
@@ -676,9 +676,9 @@ export const GUIDES: Guide[] = [
   {
     slug: "churchtown",
     title: "Churchtown",
-    description: "Southport's medieval village — Botanic Gardens, St Cuthbert's church, and local independents.",
+    description: "Southport's medieval village: Botanic Gardens, St Cuthbert's church, and local independents.",
     excerpt:
-      "Churchtown is the oldest part of Southport — a medieval village within the town. Botanic Gardens celebrating 150 years, St Cuthbert's church, and independent shops most visitors never find.",
+      "Churchtown is the oldest part of Southport: a medieval village within the town. Botanic Gardens celebrating 150 years, St Cuthbert's church, and independent shops most visitors never find.",
     category: "areas",
     heroImage: "/images/categories/attractions.webp",
     seoPriority: 0.82,
@@ -687,7 +687,7 @@ export const GUIDES: Guide[] = [
     tags: ["churchtown", "heritage", "gardens", "shopping"],
     status: "published",
     metaTitle: "Churchtown Southport | Botanic Gardens, St Cuthbert's & Guide",
-    metaDescription: "Churchtown is Southport's oldest village — Botanic Gardens (free entry), St Cuthbert's Church, Hesketh Park, and the independent shops most visitors never find.",
+    metaDescription: "Churchtown is Southport's oldest village: Botanic Gardens (free entry), St Cuthbert's Church, Hesketh Park, and the independent shops most visitors never find.",
     listingFilter: {
       categorySlugs: ["restaurants", "cafes", "shopping"],
       tags: ["churchtown"],
@@ -700,9 +700,9 @@ export const GUIDES: Guide[] = [
     slug: "getting-to-southport",
     title: "Getting to Southport",
     shortTitle: "Getting Here",
-    description: "Train, car, bus, or bike — the complete guide to getting to Southport from Liverpool, Manchester, and beyond.",
+    description: "Train, car, bus, or bike: the complete guide to getting to Southport from Liverpool, Manchester, and beyond.",
     excerpt:
-      "Southport is 35 minutes from Liverpool by Merseyrail, 90 minutes from Manchester by car, and surprisingly straightforward to reach without one. Train, car, coach, and cycle routes — the complete guide.",
+      "Southport is 35 minutes from Liverpool by Merseyrail, 90 minutes from Manchester by car, and surprisingly straightforward to reach without one. Train, car, coach, and cycle routes: the complete guide.",
     category: "practical",
     heroImage: "/images/guides/getting-to-southport.jpg",
     seoPriority: 0.87,
@@ -717,9 +717,9 @@ export const GUIDES: Guide[] = [
   {
     slug: "parking-southport",
     title: "Parking in Southport",
-    description: "Where to park near the beach, Lord Street, and the town centre — prices and tips.",
+    description: "Where to park near the beach, Lord Street, and the town centre: prices and tips.",
     excerpt:
-      "The complete parking guide for Southport — car parks near the beach, Lord Street, and the town centre. Prices, blue badge bays, and which ones fill first on a summer Saturday.",
+      "The complete parking guide for Southport: car parks near the beach, Lord Street, and the town centre. Prices, blue badge bays, and which ones fill first on a summer Saturday.",
     category: "practical",
     heroImage: "/images/categories/transport.webp",
     seoPriority: 0.85,
@@ -731,14 +731,14 @@ export const GUIDES: Guide[] = [
       categorySlugs: ["parking"],
     },
     metaTitle: "Parking in Southport | Car Parks, Prices & Postcodes",
-    metaDescription: "Where to park in Southport — car parks near the beach, Lord Street, and town centre. Prices, postcodes, free options, blue badge bays, and which ones fill up first on a summer Saturday.",
+    metaDescription: "Where to park in Southport: car parks near the beach, Lord Street, and town centre. Prices, postcodes, free options, blue badge bays, and which ones fill up first on a summer Saturday.",
   },
   {
     slug: "free-parking-southport",
     title: "Free Parking in Southport",
-    description: "Every free and low-cost parking option in Southport — with postcodes and walking times.",
+    description: "Every free and low-cost parking option in Southport, with postcodes and walking times.",
     excerpt:
-      "Free parking in Southport does exist. Here is where to find it — every free car park, free on-street area, and low-cost option across the town, with postcodes and honest walking times to the main destinations.",
+      "Free parking in Southport does exist. Here is where to find it: every free car park, free on-street area, and low-cost option across the town, with postcodes and honest walking times to the main destinations.",
     category: "practical",
     heroImage: "/images/categories/parking.webp",
     seoPriority: 0.85,
@@ -758,7 +758,7 @@ export const GUIDES: Guide[] = [
     title: "Rainy Day Southport",
     description: "Indoor options, covered attractions, and what to do when Lancashire does its thing.",
     excerpt:
-      "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade — everything worth doing in Southport when it's raining.",
+      "Lancashire weather is what it is. Splash World, The Atkinson, Southport Market, Wayfarers Arcade: everything worth doing in Southport when it's raining.",
     category: "practical",
     heroImage: "/images/categories/activities.webp",
     seoPriority: 0.82,
@@ -767,7 +767,7 @@ export const GUIDES: Guide[] = [
     tags: ["indoor", "rainy-day", "practical", "families"],
     status: "published",
     metaTitle: "Rainy Day Southport | Indoor Things to Do",
-    metaDescription: "What to do in Southport when it rains — Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth knowing for a wet day.",
+    metaDescription: "What to do in Southport when it rains: Splash World, The Atkinson, Southport Market, Wayfarers Arcade, and everything else worth knowing for a wet day.",
     listingFilter: {
       categorySlugs: ["attractions", "cafes", "activities"],
     },
@@ -776,9 +776,9 @@ export const GUIDES: Guide[] = [
   {
     slug: "dog-friendly-southport",
     title: "Dog-Friendly Southport",
-    description: "Dog-welcoming beaches, pubs, cafés, and walks — the guide for dogs and their people.",
+    description: "Dog-welcoming beaches, pubs, cafés, and walks: the guide for dogs and their people.",
     excerpt:
-      "Southport is genuinely dog-friendly — most of the beach, most of the Promenade, and a good number of pubs and cafés that mean it. The complete guide.",
+      "Southport is genuinely dog-friendly: most of the beach, most of the Promenade, and a good number of pubs and cafés that mean it. The complete guide.",
     category: "practical",
     heroImage: "/images/southport-beach.webp",
     seoPriority: 0.82,
@@ -787,7 +787,7 @@ export const GUIDES: Guide[] = [
     tags: ["dog-friendly", "practical", "beach", "pubs", "walks"],
     status: "published",
     metaTitle: "Dog-Friendly Southport | Beach Rules, Walks, Pubs & Cafés",
-    metaDescription: "Southport is genuinely dog-friendly. Beach access rules, best off-lead walks, dog-welcoming pubs and cafés — the complete guide for dogs and their people.",
+    metaDescription: "Southport is genuinely dog-friendly. Beach access rules, best off-lead walks, dog-welcoming pubs and cafés: the complete guide for dogs and their people.",
     listingFilter: {
       categorySlugs: ["bars-nightlife", "cafes", "restaurants"],
     },
@@ -801,7 +801,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Southport Market",
     description: "Nine traders, one bar, and the best food hall on the Sefton Coast. The complete local guide.",
     excerpt:
-      "Southport Market — the complete guide. Every trader reviewed, opening times, what to order, the sensory-friendly picture, parking, and the history. King Street, PR8 1LA.",
+      "Southport Market: the complete guide. Every trader reviewed, opening times, what to order, the sensory-friendly picture, parking, and the history. King Street, PR8 1LA.",
     category: "food-drink",
     heroImage: "/images/southport-market/exterior/entrance-main-signage.webp",
     seoPriority: 0.92,
@@ -817,15 +817,15 @@ export const GUIDES: Guide[] = [
     ],
     metaTitle: "Southport Market Guide | Every Trader, Menu, Parking & Tips (2026)",
     metaDescription:
-      "Southport Market on King Street (PR8 1LA) — every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
+      "Southport Market on King Street (PR8 1LA): every trader reviewed, what to order, opening times, parking, accessibility, and the honest picture. Written by a Southport local.",
     relatedCollections: ["family-friendly-restaurants-southport", "sensory-friendly-southport", "free-things-to-do-southport"],
   },
   {
     slug: "best-restaurants-southport",
     title: "Best Restaurants in Southport",
-    description: "The honest ranking — from Lord Street fine dining to hidden neighbourhood gems.",
+    description: "The honest ranking, from Lord Street fine dining to hidden neighbourhood gems.",
     excerpt:
-      "The best restaurants in Southport right now — Terry's honest ranking. Lord Street, Birkdale village, and the places most visitors never find.",
+      "The best restaurants in Southport right now: Terry's honest ranking. Lord Street, Birkdale village, and the places most visitors never find.",
     category: "food-drink",
     heroImage: "/images/categories/restaurants.webp",
     seoPriority: 0.88,
@@ -834,7 +834,7 @@ export const GUIDES: Guide[] = [
     tags: ["restaurants", "food", "dining"],
     status: "published",
     metaTitle: "Best Restaurants in Southport 2026 | Honest Local Guide",
-    metaDescription: "The best restaurants in Southport — Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
+    metaDescription: "The best restaurants in Southport: Terry's honest guide. Lord Street, Birkdale Village, and the places most visitors never find. No sponsored results.",
     listingFilter: {
       categorySlugs: ["restaurants"],
     },
@@ -843,9 +843,9 @@ export const GUIDES: Guide[] = [
   {
     slug: "southport-eateries",
     title: "Southport Eateries",
-    description: "Where to eat in Southport — every option from a quick lunch to a proper occasion, by area and cuisine.",
+    description: "Where to eat in Southport: every option from a quick lunch to a proper occasion, by area and cuisine.",
     excerpt:
-      "Southport eateries guide — where to eat by area, by occasion, and by budget. Lord Street, Birkdale Village, Churchtown, and the seafront. Named places, honest opinions.",
+      "Southport eateries guide: where to eat by area, by occasion, and by budget. Lord Street, Birkdale Village, Churchtown, and the seafront. Named places, honest opinions.",
     category: "food-drink",
     heroImage: "/images/categories/restaurants.webp",
     seoPriority: 0.90,
@@ -854,7 +854,7 @@ export const GUIDES: Guide[] = [
     tags: ["restaurants", "food", "dining", "eateries"],
     status: "published",
     metaTitle: "Southport Eateries | Where to Eat in Southport | Complete Local Guide",
-    metaDescription: "The complete guide to Southport eateries — where to eat by area, occasion, and budget. Lord Street, Birkdale Village, Churchtown, and the seafront. Written by a local.",
+    metaDescription: "The complete guide to Southport eateries: where to eat by area, occasion, and budget. Lord Street, Birkdale Village, Churchtown, and the seafront. Written by a local.",
     listingFilter: {
       categorySlugs: ["restaurants", "cafes", "bars-nightlife"],
     },
@@ -897,9 +897,9 @@ export const GUIDES: Guide[] = [
   {
     slug: "best-cafes-southport",
     title: "Best Cafés in Southport",
-    description: "Independent coffee shops and proper tea rooms — where locals actually go.",
+    description: "Independent coffee shops and proper tea rooms: where locals actually go.",
     excerpt:
-      "The best cafés and coffee shops in Southport — independent places with proper espresso machines and food worth eating. Terry's unfiltered guide.",
+      "The best cafés and coffee shops in Southport: independent places with proper espresso machines and food worth eating. Terry's unfiltered guide.",
     category: "food-drink",
     heroImage: "/images/categories/cafes.webp",
     seoPriority: 0.85,
@@ -908,7 +908,7 @@ export const GUIDES: Guide[] = [
     tags: ["cafes", "coffee", "food"],
     status: "published",
     metaTitle: "Best Cafés in Southport 2026 | Independent Coffee Shops",
-    metaDescription: "The best cafés and coffee shops in Southport — independent places with proper espresso machines and food worth ordering. Terry's unfiltered local guide.",
+    metaDescription: "The best cafés and coffee shops in Southport: independent places with proper espresso machines and food worth ordering. Terry's unfiltered local guide.",
     listingFilter: {
       categorySlugs: ["cafes"],
     },
@@ -922,7 +922,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Sunflower Member",
     description: "SouthportGuide is now a member of the Hidden Disabilities Sunflower scheme. What it means for visitors and our plans for accessible Southport.",
     excerpt:
-      "SouthportGuide has joined the Hidden Disabilities Sunflower scheme. Our commitment to accessible content, sensory-friendly events, and why it matters — written by a Southport local with a 17-year-old autistic son.",
+      "SouthportGuide has joined the Hidden Disabilities Sunflower scheme. Our commitment to accessible content, sensory-friendly events, and why it matters. Written by a Southport local with a 17-year-old autistic son.",
     category: "practical",
     heroImage: "/images/sunflower/PROUD-To-SUPPORT-UK_2.webp",
     seoPriority: 0.85,
@@ -944,7 +944,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Woodvale Centre",
     description: "Woodvale & Ainsdale Community Association runs two community centres in Woodvale and Ainsdale offering classes, youth sessions, holiday programmes and accessible community spaces.",
     excerpt:
-      "Woodvale & Ainsdale Community Association (WACA) is a registered charity running two community centres in Woodvale and Ainsdale. Daytime classes, youth sessions, holiday activities and accessible facilities for all ages — here's the complete guide.",
+      "Woodvale & Ainsdale Community Association (WACA) is a registered charity running two community centres in Woodvale and Ainsdale. Daytime classes, youth sessions, holiday activities and accessible facilities for all ages. Here's the complete guide.",
     category: "practical",
     heroImage: "/images/woodvale-community-centre/woodvale-centre-front.webp",
     seoPriority: 0.8,
@@ -952,9 +952,9 @@ export const GUIDES: Guide[] = [
     dateUpdated: "2026-04-14",
     tags: ["community", "family-friendly", "accessibility", "charity", "activities", "woodvale", "ainsdale", "youth"],
     status: "published",
-    metaTitle: "Woodvale Community Centre Southport | WACA Guide — Activities, Classes & Facilities",
+    metaTitle: "Woodvale Community Centre Southport | WACA Guide: Activities, Classes & Facilities",
     metaDescription:
-      "Woodvale & Ainsdale Community Association (WACA) — two community centres in Woodvale and Ainsdale. Chair Based Exercise, Craft Group, youth sessions, holiday programmes. Registered charity no. 1146522.",
+      "Woodvale & Ainsdale Community Association (WACA): two community centres in Woodvale and Ainsdale. Chair Based Exercise, Craft Group, youth sessions, holiday programmes. Registered charity no. 1146522.",
     relatedSlugs: ["autism-friendly-southport", "accessible-southport", "southport-with-kids"],
     relatedCollections: ["free-things-to-do-southport", "family-friendly-things-to-do-southport"],
   },
@@ -966,7 +966,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Autism Friendly",
     description: "Sensory-friendly venues, quiet beaches, and honest advice for autistic visitors and their families planning a trip to Southport.",
     excerpt:
-      "Autism friendly Southport — a practical guide for autistic visitors and families. Quiet beaches, calm venues, which events to avoid, parking close to entrances, and the honest picture of what works and what does not.",
+      "Autism friendly Southport: a practical guide for autistic visitors and families. Quiet beaches, calm venues, which events to avoid, parking close to entrances, and the honest picture of what works and what does not.",
     category: "practical",
     heroImage: "/images/autism-logo.png",
     seoPriority: 0.92,
@@ -976,7 +976,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     metaTitle: "Autism Friendly Southport | Sensory-Friendly Guide for Visitors",
     metaDescription:
-      "Autism friendly Southport — quiet beaches, calm venues, sensory-friendly days out, and honest advice about which events to avoid. A practical guide for autistic visitors and their families.",
+      "Autism friendly Southport: quiet beaches, calm venues, sensory-friendly days out, and honest advice about which events to avoid. A practical guide for autistic visitors and their families.",
     listingFilter: {
       tags: ["sensory-friendly"],
     },
@@ -1013,7 +1013,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Accessible Southport",
     description: "Wheelchair access, Sunflower-friendly venues, quiet hours, and practical guidance for visitors with visible and non-visible disabilities.",
     excerpt:
-      "Accessible Southport guide — wheelchair access, Sunflower-registered venues, quiet hours at Southport Market, blue badge parking, and practical transport information for disabled visitors.",
+      "Accessible Southport guide: wheelchair access, Sunflower-registered venues, quiet hours at Southport Market, blue badge parking, and practical transport information for disabled visitors.",
     category: "practical",
     heroImage: "/images/sunflower/PROUD-To-SUPPORT-UK_2.webp",
     seoPriority: 0.88,
@@ -1023,7 +1023,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     metaTitle: "Accessible Southport | Wheelchair Access, Sunflower Venues & Disability Guide",
     metaDescription:
-      "Accessible Southport — wheelchair access, Sunflower-registered venues, quiet hours, blue badge parking, and practical guidance for visitors with visible and hidden disabilities.",
+      "Accessible Southport: wheelchair access, Sunflower-registered venues, quiet hours, blue badge parking, and practical guidance for visitors with visible and hidden disabilities.",
     relatedSlugs: ["autism-friendly-southport", "southportguide-sunflower-member", "the-open-2026-accessibility", "southport-market"],
     listingFilter: {
       tags: ["sunflower-friendly"],
@@ -1038,7 +1038,7 @@ export const GUIDES: Guide[] = [
     shortTitle: "Open 2026 Accessibility",
     description: "Hidden disabilities, sensory zone, wheelchair access, and practical planning for The Open Championship at Royal Birkdale.",
     excerpt:
-      "The Open 2026 accessibility guide — sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, carer tickets, disabled parking, and practical advice for visiting Royal Birkdale with a hidden disability.",
+      "The Open 2026 accessibility guide: sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, carer tickets, disabled parking, and practical advice for visiting Royal Birkdale with a hidden disability.",
     category: "events",
     heroImage: "/images/open-2026.webp",
     seoPriority: 0.9,
@@ -1049,7 +1049,7 @@ export const GUIDES: Guide[] = [
     status: "published",
     metaTitle: "The Open 2026 Accessibility Guide | Sensory Zone, Sunflower Lanyard & Disabled Access",
     metaDescription:
-      "The Open Championship 2026 at Royal Birkdale — accessibility guide covering the sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, disabled parking, and practical tips for hidden disability visitors.",
+      "The Open Championship 2026 at Royal Birkdale: accessibility guide covering the sensory zone at Spectator Village 4, Sunflower lanyard recognition, wheelchair access, disabled parking, and practical tips for hidden disability visitors.",
     relatedSlugs: ["southportguide-sunflower-member", "autism-friendly-southport", "accessible-southport"],
     relatedCollections: ["hotels-near-royal-birkdale", "sunflower-friendly-southport", "sensory-friendly-southport"],
   },

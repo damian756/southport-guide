@@ -35,9 +35,9 @@ export const metadata: Metadata = {
 
 const FAQS = [
   { q: "How long is Southport Pier?", a: "Southport Pier is 1,108 metres long (3,636 feet). It is England's second longest pier. Southend-on-Sea Pier in Essex takes the top spot at 2,158 metres. Southport Pier stretches out from the seafront over the Irish Sea estuary." },
-  { q: "Is Southport Pier open?", a: "No. Sefton Council closed the pier in December 2022 on the advice of structural engineers. A £20 million restoration, funded by the Government's Growth Mission Fund, was approved in March 2026, and the pier stays closed until the work is finished. Progress updates are posted at sefton.gov.uk/southportpier." },
+  { q: "Is Southport Pier open?", a: "No. Sefton Council closed the pier in December 2022 on the advice of structural engineers. A £20 million restoration, funded by the Government's Growth Mission Fund, was approved in March 2026, and the pier stays closed until the work is finished. Sefton Council's pier page (sefton.gov.uk/southportpier) has the background and FAQs, last updated in January 2026; later progress reports are on the council's MySefton News pages." },
   { q: "What is the postcode for Southport Pier?", a: "The postcode for the pier entrance is PR8 1QP, on the Promenade near the seafront. Park along Marine Drive (PR8 1RX) or use nearby seafront car parks and walk to the pier, it's on the Promenade, easy to find." },
-  { q: "Can you see Wales from Southport Pier?", a: "On a clear day, yes. From the end of the pier you can see across the Ribble Estuary and the Irish Sea. The Welsh hills. Snowdonia, are visible on exceptionally clear days, particularly in winter when visibility is best." },
+  { q: "Can you see Wales from Southport Pier?", a: "On a clear day, yes. From the end of the pier you can see across the Ribble Estuary and the Irish Sea. The Welsh hills of Snowdonia are visible on exceptionally clear days, particularly in winter when visibility is best." },
   { q: "When was Southport Pier built?", a: "Southport Pier opened in 1860, making it one of the oldest seaside piers in England. It has been extended, restored, and renovated several times since, including a major restoration in the early 2000s that brought it back to its current state." },
   { q: "How long does it take to walk Southport Pier?", a: "The pier is closed while it is restored. When it was open, the walk took about 15–20 minutes each way at a relaxed pace. The full return walk takes approximately 35–40 minutes. There is no rushing required, the views change as you walk further out, and the end of the pier has the best panoramic views over the estuary." },
   { q: "Is Southport Pier accessible for wheelchairs?", a: "The pier has a flat, level surface and is generally accessible for wheelchairs and pushchairs, though the decking surface may be uneven in places. The Promenade approach to the pier is fully accessible." },
@@ -150,29 +150,38 @@ export default function SouthportPierGuidePage() {
             restoration, funded by the Government&apos;s Growth Mission Fund, was approved in March 2026, and the pier
             stays closed until the work is finished. The rest of this guide describes the pier as it was before it closed.
           </p>
-          <a href="https://www.sefton.gov.uk/southportpier" className="inline-block mt-4 text-sm font-semibold text-[#1B2E4B] underline underline-offset-2 hover:text-[#C9A84C]">
-            Restoration updates from Sefton Council
-          </a>
+          <p className="text-gray-700 leading-relaxed mt-3">
+            Sefton Council&apos;s pier page has the background and FAQs (last updated in January 2026). Later progress
+            reports are on the council&apos;s MySefton News pages.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+            <a href="https://www.sefton.gov.uk/southportpier" className="text-sm font-semibold text-[#1B2E4B] underline underline-offset-2 hover:text-[#C9A84C]">
+              Sefton Council: Southport Pier
+            </a>
+            <a href="https://www.sefton.gov.uk/mysefton-news/" className="text-sm font-semibold text-[#1B2E4B] underline underline-offset-2 hover:text-[#C9A84C]">
+              MySefton News
+            </a>
+          </div>
         </div>
 
         {/* ── Terry's Take ── */}
         <section>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 border-l-4 border-l-[#C9A84C]">
             <p className="text-xs uppercase tracking-widest text-[#C9A84C] font-bold mb-3">Terry&apos;s Take</p>
-            <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Why Southport Pier Is Worth the Walk</h2>
+            <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-6">Why Southport Pier Matters</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed text-[1.05rem]">
               <p>
                 People who haven&apos;t been tend to think it&apos;s just a pier, a bit of Victorian nostalgia, something you tick off
-                and move on from. It isn&apos;t. The walk out to the end of Southport Pier is one of those experiences that changes
-                your understanding of where you are. You walk out over the beach, over the sand, over the estuary,
-                and by the time you reach the pierhead you&apos;re over a kilometre out from the shore, with nothing but water
+                and move on from. It isn&apos;t. Before it closed, the walk out to the end of Southport Pier was one of those experiences
+                that changed your understanding of where you are. You walked out over the beach, over the sand, over the estuary,
+                and by the time you reached the pierhead you were over a kilometre out from the shore, with nothing but water
                 and sky in every direction except back the way you came.
               </p>
               <p>
-                From the end you get a proper sense of the Sefton Coast: the dunes stretching south towards Formby and
+                From the end you got a proper sense of the Sefton Coast: the dunes stretching south towards Formby and
                 Crosby, the Lancashire plain behind you, the Irish Sea opening out to the west. On a clear winter&apos;s day
-                you can see the Welsh hills. Snowdonia, on the southern horizon. It&apos;s a forty-minute round walk and
-                it costs nothing. That combination is rare.
+                you could see the Welsh hills of Snowdonia on the southern horizon. It was a forty-minute round walk and
+                it cost nothing. When the restoration is finished, it will be worth doing again.
               </p>
               <p>
                 My kids went through a phase of insisting on walking it every single visit to the seafront.
@@ -317,9 +326,8 @@ export default function SouthportPierGuidePage() {
                 title: "When to Visit",
                 content: [
                   "Closed to the public while the restoration is carried out",
-                  "Sunset walks are exceptional, the pier faces west over the Irish Sea",
-                  "Winter mornings: often the pier to yourself, views at their clearest",
-                  "Summer afternoons: busiest period, still manageable, the pier is long",
+                  "Before it closed, sunset was the best time: the pier faces west over the Irish Sea",
+                  "Meanwhile, the Promenade and Marine Lake give views of the pier from the shore",
                 ],
               },
               {
@@ -441,9 +449,9 @@ export default function SouthportPierGuidePage() {
             </div>
             <div className="grid sm:grid-cols-3 gap-5">
               {[
-                { name: "Southport Beach", href: "/guides/southport-beach", detail: "One of the widest beaches in England, right alongside the pier entrance. Walk the pier, then walk the beach." },
+                { name: "Southport Beach", href: "/guides/southport-beach", detail: "One of the widest beaches in England, right alongside the pier entrance. Free to walk, with the pier in view." },
                 { name: "King's Gardens", href: "/attractions", detail: "17 acres of free gardens with adventure playground, crazy golf, and Victorian features. 5 minutes from the pier." },
-                { name: "Marine Lake", href: "/activities", detail: "140 acres of flat water with boat hire and pedalos. Perimeter path is a lovely easy walk alongside the pier." },
+                { name: "Marine Lake", href: "/activities", detail: "140 acres of flat water with boat hire and pedalos. The perimeter path is an easy walk with views of the pier." },
               ].map((item) => (
                 <Link key={item.name} href={item.href} className="group bg-[#FAF8F5] rounded-xl p-5 hover:bg-white hover:shadow-sm transition-all">
                   <h3 className="font-display font-bold text-[#1B2E4B] text-base mb-2 group-hover:text-[#C9A84C] transition-colors flex items-center gap-1">
