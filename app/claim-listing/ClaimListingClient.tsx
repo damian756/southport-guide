@@ -11,6 +11,7 @@ import {
   MessageSquare,
   Loader2,
 } from "lucide-react";
+import { MAX_MESSAGE, MAX_NAME, submitErrorText, submitFieldErrors, type ClaimField } from "@/lib/claim-form";
 
 type SearchResult = {
   id: string;
@@ -56,6 +57,8 @@ export default function ClaimListingClient() {
   const [form, setForm] = useState({ name: "", email: "", message: "", homepage: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  // One plain message per refused field, shown beside the field (lib/claim-form.ts)
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<ClaimField, string>>>({});
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -115,6 +118,7 @@ export default function ClaimListingClient() {
     if (!selected) return;
     setSubmitting(true);
     setSubmitError("");
+    setFieldErrors({});
     try {
       const res = await fetch("/api/hub/claim/submit", {
         method: "POST",
@@ -127,9 +131,11 @@ export default function ClaimListingClient() {
           homepage: form.homepage,
         }),
       });
-      const data = await res.json();
+      const data: unknown = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setSubmitError(data.error || "Something went wrong. Please try again.");
+        // Always a sentence, never the error object (which crashed the page)
+        setSubmitError(submitErrorText(data));
+        setFieldErrors(submitFieldErrors(data));
         setSubmitting(false);
         return;
       }
@@ -325,14 +331,14 @@ export default function ClaimListingClient() {
                     <div className="flex items-start gap-2">
                       <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                       <p className="text-amber-800 text-sm">
-                        No listings found for &ldquo;{searchName}&rdquo;. Not on the guide yet?
+                        No listings found for &ldquo;{searchName}&rdquo;.
                       </p>
                     </div>
                     <Link
-                      href="/suggest-listing"
+                      href="/contact"
                       className="flex-shrink-0 text-xs font-bold text-amber-700 underline hover:text-amber-900 whitespace-nowrap"
                     >
-                      Suggest it →
+                      Can&apos;t see it? Tell us
                     </Link>
                   </div>
                 )}
@@ -391,11 +397,17 @@ export default function ClaimListingClient() {
                     <input
                       type="text"
                       required
+                      maxLength={MAX_NAME}
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="John Smith"
+                      aria-invalid={fieldErrors.name ? true : undefined}
+                      aria-describedby={fieldErrors.name ? "claim-name-error" : undefined}
                       className={inputCls}
                     />
+                    {fieldErrors.name && (
+                      <p id="claim-name-error" className="text-red-700 text-xs mt-1.5">{fieldErrors.name}</p>
+                    )}
                   </div>
 
                   <div>
@@ -411,8 +423,13 @@ export default function ClaimListingClient() {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="you@business.com"
+                      aria-invalid={fieldErrors.email ? true : undefined}
+                      aria-describedby={fieldErrors.email ? "claim-email-error" : undefined}
                       className={inputCls}
                     />
+                    {fieldErrors.email && (
+                      <p id="claim-email-error" className="text-red-700 text-xs mt-1.5">{fieldErrors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -427,6 +444,9 @@ export default function ClaimListingClient() {
                     </label>
                     <textarea
                       rows={3}
+                      maxLength={MAX_MESSAGE}
+                      aria-invalid={fieldErrors.message ? true : undefined}
+                      aria-describedby={fieldErrors.message ? "claim-message-error" : undefined}
                       value={form.message}
                       onChange={(e) =>
                         setForm({ ...form, message: e.target.value })
@@ -434,6 +454,9 @@ export default function ClaimListingClient() {
                       placeholder="e.g. I'm the owner, my phone number has changed..."
                       className={`${inputCls} resize-none`}
                     />
+                    {fieldErrors.message && (
+                      <p id="claim-message-error" className="text-red-700 text-xs mt-1.5">{fieldErrors.message}</p>
+                    )}
                   </div>
 
                   <button
@@ -452,7 +475,7 @@ export default function ClaimListingClient() {
                   </button>
 
                   <p className="text-xs text-gray-400 text-center">
-                    We&apos;ll review within 24 hours and email you at{" "}
+                    We reply within one working day. We&apos;ll email you at{" "}
                     {form.email || "your address"}.
                   </p>
                 </form>
@@ -469,8 +492,8 @@ export default function ClaimListingClient() {
                   Request submitted
                 </h2>
                 <p className="text-gray-500 mb-6">
-                  We&apos;ll review your claim within 24 hours and email you at{" "}
-                  <strong>{form.email}</strong> once it&apos;s approved. You&apos;ll then
+                  We reply within one working day. We&apos;ll email you at{" "}
+                  <strong>{form.email}</strong>, and once your claim is approved you&apos;ll
                   receive a link to set your password and access your dashboard.
                 </p>
                 <Link

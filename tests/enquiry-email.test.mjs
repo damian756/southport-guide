@@ -231,7 +231,9 @@ test("short fields are capped at 100 characters", () => {
   assert.equal(firstTooLong({ name: "a", businessName: "b".repeat(101) }, limits), "businessName");
   assert.match(read("app/api/contact/route.ts"), /firstTooLong\(\{ name, subject, businessName \}, \{ name: MAX_SHORT, subject: MAX_SHORT, businessName: MAX_SHORT \}\)/);
   assert.match(read("app/api/suggest-listing/route.ts"), /businessName: MAX_SHORT, category: MAX_SHORT, contactName: MAX_SHORT/);
-  assert.match(read("app/api/hub/claim/submit/route.ts"), /name: z\.string\(\)\.min\(1\)\.max\(100\)/);
+  // The claim schema moved to lib/claim-schema.ts (shared with its test); the route uses it.
+  assert.match(read("lib/claim-schema.ts"), /name: z\.string\(\)\.trim\(\)\.min\(1\)\.max\(100\)/);
+  assert.match(read("app/api/hub/claim/submit/route.ts"), /ClaimSchema\.safeParse\(body\)/);
 });
 
 test("the automatic reply carries no user-supplied text", () => {

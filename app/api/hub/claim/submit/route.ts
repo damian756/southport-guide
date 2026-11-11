@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import { DELIVERY_EMAIL } from "@/lib/contact";
 import { buildClaimNotice, cleanSubject, escapeHtml, isHoneypotFilled, logSendError, plainAddress } from "@/lib/enquiry-email";
+import { ClaimSchema } from "@/lib/claim-schema";
+import { CLAIM_FORM_ERROR, claimFieldErrors } from "@/lib/claim-form";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@southportguide.co.uk>";
@@ -13,29 +14,29 @@ const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "SouthportGuide <noreply@sou
 const ADMIN_EMAIL = DELIVERY_EMAIL;
 const BASE_URL = process.env.NEXTAUTH_URL || "https://www.southportguide.co.uk";
 
-const Schema = z.object({
-  businessId: z.string().uuid(),
-  name: z.string().min(1).max(100).trim(),
-  email: z.string().email().max(255),
-  message: z.string().max(2000).trim().optional(),
-});
-
 function randomPassword(): string {
   return crypto.randomBytes(24).toString("base64url");
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 400 });
+  }
 
   // Honeypot filled in: a bot. Answer as if accepted; create nothing, send nothing.
   if (isHoneypotFilled(body)) {
     return NextResponse.json({ ok: true });
   }
 
-  const parsed = Schema.safeParse(body);
+  // A refused field gets a plain sentence beside it (lib/claim-form.ts), never
+  // an error object: the form renders `error` as text.
+  const parsed = ClaimSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: parsed.error.flatten() },
+      { error: CLAIM_FORM_ERROR, fieldErrors: claimFieldErrors(parsed.error.issues) },
       { status: 400 }
     );
   }
@@ -114,8 +115,10 @@ export async function POST(req: Request) {
     },
   });
 
-  // Confirmation to claimant
-  await resend.emails.send({
+  // Confirmation to claimant. The claim is stored by now, so a failed send is
+  // logged (name and message only) and the claimant still sees success.
+  try {
+    const { error } = await resend.emails.send({
     from: FROM_EMAIL,
     to: parsed.data.email,
     subject: `We've received your claim request: ${cleanSubject(business.name)}`,
@@ -130,7 +133,7 @@ export async function POST(req: Request) {
         <p style="color: #1B2E4B; font-size: 16px;">Hello,</p>
         <p style="color: #444; line-height: 1.7;">
           Thanks for submitting a claim request for <strong>${escapeHtml(business.name)}</strong>.
-          We'll review it and get back to you by email, usually within 1–2 business days.
+          We reply within one working day.
         </p>
         <p style="color: #444; line-height: 1.7;">
           Once approved, you'll receive a link to set your password and access your Business Hub dashboard.
@@ -140,7 +143,11 @@ export async function POST(req: Request) {
         </p>
       </div>
     `,
-  });
+    });
+    if (error) logSendError("claim", "claimant confirmation", error);
+  } catch (err) {
+    logSendError("claim", "claimant confirmation", err);
+  }
 
   // Notification to admin (an enquiry): to DELIVERY_EMAIL, reply-to the claimant,
   // every value escaped, and a failed send logged.
@@ -160,8 +167,8 @@ export async function POST(req: Request) {
     const { error } = await resend.emails.send(notice);
     if (error) logSendError("claim", "admin notice", error);
   } catch (err) {
+    // Logged, not thrown: the claim is already stored, so the visitor sees success.
     logSendError("claim", "admin notice", err);
-    throw err;
   }
 
   return NextResponse.json({ ok: true });
