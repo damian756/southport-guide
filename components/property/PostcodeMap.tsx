@@ -8,6 +8,7 @@ const TileLayer = dynamic(() => import("react-leaflet").then((m) => m.TileLayer)
 const Marker = dynamic(() => import("react-leaflet").then((m) => m.Marker), { ssr: false });
 const Popup = dynamic(() => import("react-leaflet").then((m) => m.Popup), { ssr: false });
 import { divIcon } from "leaflet";
+import { OSM_ATTRIBUTION, OSM_MAX_ZOOM, OSM_TILE_URL } from "@/lib/osm-tiles";
 
 export type MapPoint = {
   id: string;
@@ -41,9 +42,9 @@ export default function PostcodeMap({ center, points, height = 400 }: Props) {
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            maxZoom={19}
+            attribution={OSM_ATTRIBUTION}
+            url={OSM_TILE_URL}
+            maxZoom={OSM_MAX_ZOOM}
           />
         </MapContainer>
       </div>
@@ -65,9 +66,9 @@ export default function PostcodeMap({ center, points, height = 400 }: Props) {
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maxZoom={19}
+          attribution={OSM_ATTRIBUTION}
+          url={OSM_TILE_URL}
+          maxZoom={OSM_MAX_ZOOM}
         />
         {validPoints.map((p) => {
           const color = p.type === "school" ? schoolColor : businessColor;
