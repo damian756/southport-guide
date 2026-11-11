@@ -8,7 +8,7 @@ import {
   postcodeToSlug,
   slugToSector,
 } from "@/lib/property-config";
-import { faqWithoutEmDash, withoutEmDash } from "@/lib/property-text";
+import { faqWithoutEmDash, unitMeta, withoutEmDash } from "@/lib/property-text";
 import PropertyBreadcrumb from "@/components/property/PropertyBreadcrumb";
 import PropertyPriceChart from "@/components/property/PropertyPriceChart";
 import PropertyTypeChart from "@/components/property/PropertyTypeChart";
@@ -145,11 +145,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       where: { sector: unit.sector },
     });
     const areaLabel = sectorRec ? getAreaLabelForSector(unit.sector) : unit.sector;
-    const title = withoutEmDash(
-      (unit.metaTitle as string) ?? `House Prices in ${unit.postcode}: ${areaLabel}, Southport`);
-    const desc = withoutEmDash(
-      (unit.metaDescription as string) ??
-      `Average house price in ${unit.postcode} is £${((unit.avgPrice3yr ?? 0) / 1000).toFixed(0)}k. See recent sales and local data.`);
+    // The same title and description the sitemap uses to leave out near-duplicates.
+    const { title, description: desc } = unitMeta(unit, areaLabel);
     const hasContent = !!(unit.editorialContent);
     return {
       title,

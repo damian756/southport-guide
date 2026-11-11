@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
-import { sectorToSlug } from "@/lib/property-config";
+import { getAreaLabelForSector, postcodeToSlug, sectorToSlug } from "@/lib/property-config";
+import { PROPERTY_TEXT_CHANGED, distinctUnitPages, unitMeta } from "@/lib/property-text";
 import { CATEGORIES } from "@/lib/config";
 import { BLOG_POSTS } from "@/lib/southport-data";
 import { GUIDES } from "@/lib/guides-config";
@@ -216,16 +217,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { published: true },
       select: { sector: true, updatedAt: true },
     });
-    // Unit-level postcode pages (/property/pr84aa etc.) are excluded from the sitemap.
-    // Google crawled 139 of them and declined to index all of them (thin data-only pages).
-    // The 10 sector-level pages have real editorial content and are retained.
+    // Postcode unit pages (/property/pr84aa etc.): every indexable one (published, with
+    // an editorial summary, as the page's own robots rule decides) is listed, because
+    // pages that can rank stay listed (Damian, 11 Nov 2026). Before, they were left out
+    // after Google crawled 139 and indexed none. Near-duplicates (title and description
+    // the same as another page's apart from the postcode) stay out.
+    const allSectors = new Set((await prisma.postcodeSector.findMany({ select: { sector: true } })).map((s) => s.sector));
+    const units = await prisma.postcodeUnit.findMany({
+      where: { published: true },
+      select: { postcode: true, sector: true, editorialContent: true, metaTitle: true, metaDescription: true, avgPrice3yr: true, updatedAt: true },
+    });
+    const { kept } = distinctUnitPages(
+      units
+        .filter((u) => !!u.editorialContent)
+        .map((u) => ({ ...u, ...unitMeta(u, allSectors.has(u.sector) ? getAreaLabelForSector(u.sector) : u.sector) })),
+    );
+    // Property text changed on every page on PROPERTY_TEXT_CHANGED, so lastmod is the later of that and the row's own change.
+    const textChanged = utcDate(PROPERTY_TEXT_CHANGED);
     propertyPages = [
       { url: `${BASE}/property`, ...lastmod(later(page("/property"), ...sectors.map((s) => s.updatedAt))), changeFrequency: "weekly" as const, priority: 0.85 },
       ...sectors.map((s) => ({
         url: `${BASE}/property/${sectorToSlug(s.sector)}`,
-        lastModified: s.updatedAt,
+        ...lastmod(later(s.updatedAt, textChanged)),
         changeFrequency: "monthly" as const,
         priority: 0.7,
+      })),
+      ...kept.map((u) => ({
+        url: `${BASE}/property/${postcodeToSlug(u.postcode)}`,
+        ...lastmod(later(u.updatedAt, textChanged)),
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
       })),
     ];
   } catch {
