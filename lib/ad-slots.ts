@@ -73,7 +73,7 @@ export const AD_OPTIONS: AdOption[] = [
     from: "Pro at £39 a month, or a boost from £10",
     term: "Through the Business Hub",
     points: [
-      "Pro listings sort above standard listings in their category",
+      "For Southport businesses that want to stand out in the directory: shown first, and labelled, in your category",
       "A boost puts your business at the top of its category page for a set period",
       "Pro and boosted places are marked Featured, with the words Paid placement",
       "Claim your free listing first, then upgrade in the Business Hub",

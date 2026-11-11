@@ -10,13 +10,13 @@ const DESCRIPTION =
   "Advertising on SouthportGuide: guide and event sponsorships, a home page card, sponsored articles and Featured places. Fixed prices, every advert labelled.";
 
 export const metadata: Metadata = {
-  title: "Advertise on SouthportGuide",
+  title: "Advertise on SouthportGuide | Sefton Coast Network",
   description: DESCRIPTION,
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
     siteName: "SouthportGuide.co.uk",
-    title: "Advertise on SouthportGuide",
+    title: "Advertise on SouthportGuide | Sefton Coast Network",
     description: DESCRIPTION,
     url: PAGE_URL,
   },
@@ -97,7 +97,7 @@ export default async function AdvertisePage({ searchParams }: Props) {
               Advertise to people planning a day in Southport
             </h1>
             <p className="text-lg text-white/70 leading-relaxed mb-8">
-              Simple local options at a fixed price. Every advert is clearly labelled, there are no ad networks or
+              Simple local options for advertising in Southport, at a fixed price. Every advert is clearly labelled, there are no ad networks or
               tracking cookies, and you pay by invoice.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -123,7 +123,11 @@ export default async function AdvertisePage({ searchParams }: Props) {
 
       {/* ── Ways to advertise ── */}
       <section className="container mx-auto px-4 max-w-6xl py-14">
-        <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">Ways to advertise</h2>
+        <h2 className="font-display text-3xl font-bold text-[#1B2E4B] mb-2">Featured listings and display advertising</h2>
+        <p className="text-gray-700 mb-2 max-w-2xl">
+          Two ways to advertise your business in Southport: a Featured place in your category, or a labelled
+          advertising space on the guide.
+        </p>
         <p className="text-gray-500 text-sm mb-8 max-w-2xl">
           Advertising spaces are invoiced, and their prices are plus VAT. Pro and boosts are paid by card in the Business Hub at the price shown. Every listing in the directory stays free; these options add visibility on top.
         </p>
@@ -184,7 +188,8 @@ export default async function AdvertisePage({ searchParams }: Props) {
               <li>Send a photo and up to 30 words. Your advert goes live within two working days.</li>
               <li>After any minimum term, stop with a month&apos;s notice.</li>
             </ol>
-            <p className="text-sm text-gray-500 mt-5">
+            <p className="text-sm text-gray-700 mt-5">We reply to advertising enquiries within one working day.</p>
+            <p className="text-sm text-gray-500 mt-3">
               Prefer email? Write to{" "}
               <a href={`mailto:${DISPLAY_EMAIL}`} className="text-[#C9A84C] font-semibold hover:underline">{DISPLAY_EMAIL}</a>.
             </p>
